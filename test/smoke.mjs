@@ -261,7 +261,7 @@ await press("v");
 await page.waitForFunction(() => !document.querySelector("#vocab").hidden);
 check((await R(() => document.querySelectorAll("#v-list .v-row").length)) > 20, "the word list shows the words met so far");
 await page.click('#v-tabs button[data-tab="freq"]');
-check(/^(9\d|100) of these 100 are in the game/.test(await R(() => document.querySelector("#f-summary").textContent)), "the Top 2000 tab shows how many of the top 100 the game teaches");
+check(/^(9\d|100) of these 100 are in the game/.test(await R(() => document.querySelector("#f-summary").textContent)), "the Top 3000 tab shows how many of the top 100 the game teaches");
 check((await page.$$("#f-list .f-row")).length === 100, "each page lists 100 words");
 await page.click('#v-tabs button[data-tab="mine"]');
 await shot("4-word-list");
