@@ -73,19 +73,34 @@ const quizResult = (right, sum) => right
   ? [`Tak! ${NUMBERS[sum][0].toUpperCase() + NUMBERS[sum].slice(1)}. Brawo!`, `Yes! ${sum}. Well done!`]
   : [`Nie, to jest ${NUMBERS[sum]}.`, `No, it's ${sum}.`];
 // every Polish sentence the game can show (labels aside)
-function gameTexts() {
-  const out = [], check = t => out.push(t);
+// every Polish sentence the game can show (labels aside), each with who says it
+function gameLines() {
+  const out = [];
   for (const N of Object.values(NPCS)) {
+    const check = t => out.push([t, N.name]);
     for (const key of ["intro", "done", "after", "thanks", "regive"]) (N[key] || []).forEach(l => check(l[0]));
     for (const key of ["remind", "wrong"]) if (N[key]) check(N[key][0]);
     N.receive?.lines.forEach(l => check(l[0]));
     if (N.orders) { N.orders.ok.forEach(l => check(l[0])); for (const id of N.orders.pool) N.orders.ask.forEach(a => check(fillTemplate(a, ITEMS[id])[0])); }
-    if (N.quiz) [...N.quiz.start, ...N.quiz.more].forEach(l => check(l[0]));
+    if (N.quiz) {
+      [...N.quiz.start, ...N.quiz.more].forEach(l => check(l[0]));
+      for (let a = 1; a <= QUIZ_MAX; a++) for (let b = 1; b <= QUIZ_MAX; b++) { check(quizQuestion(a, b)[0]); check(quizResult(true, a + b)[0]); check(quizResult(false, a + b)[0]); }
+    }
+    (N.chats || []).flat().forEach(l => check(l[0]));
   }
-  Object.keys(ITEMS).forEach(id => { check(thisIs(id)[0]); check(ITEMS[id].word); });
-  Object.values(REVIEW_LINES).forEach(l => check(l[0]));
-  for (let a = 1; a <= QUIZ_MAX; a++) for (let b = 1; b <= QUIZ_MAX; b++) { check(quizQuestion(a, b)[0]); check(quizResult(true, a + b)[0]); check(quizResult(false, a + b)[0]); }
+  Object.keys(ITEMS).forEach(id => { out.push([thisIs(id)[0], ""]); out.push([ITEMS[id].word, "a label"]); });
+  Object.values(REVIEW_LINES).forEach(l => out.push([l[0], NPCS.jozef.name]));
   return out;
+}
+const gameTexts = () => gameLines().map(([t]) => t);
+// form -> the people who say it (for the frequency list)
+function wordSources() {
+  const map = new Map();
+  for (const [t, who] of gameLines()) for (const tk of tokenize(t)) if (tk.w) {
+    const k = tk.t.toLowerCase(); if (!map.has(k)) map.set(k, new Set());
+    if (who) map.get(k).add(who);
+  }
+  return map;
 }
 // Words are learned form by form, the way a child picks them up: mam and masz are two
 // separate words with their own colour. A word's key is its lower-case written form.

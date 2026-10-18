@@ -23,5 +23,5 @@ test("the artifact build has no document skeleton and the standalone one does", 
 test("the only remote script is the pinned three.js build", () => {
   const html = build()["dist/index.html"];
   const urls = [...html.matchAll(/https:\/\/[^\s"'`)]+/g)].map(m => m[0]);
-  for (const u of urls) assert.ok(/^https:\/\/(cdn\.jsdelivr\.net\/npm\/three@0\.160\.0\/|fonts\.googleapis\.com|fonts\.gstatic\.com)/.test(u), `unexpected URL ${u}`);
+  for (const u of urls) assert.ok(/^https:\/\/(cdn\.jsdelivr\.net\/npm\/three@0\.160\.0\/|fonts\.googleapis\.com|fonts\.gstatic\.com|github\.com\/hermitdave\/FrequencyWords\b)/.test(u), `unexpected URL ${u}`);
 });

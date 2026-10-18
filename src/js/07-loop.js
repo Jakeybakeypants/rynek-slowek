@@ -26,7 +26,7 @@ function collide(p, r) {
       if (d < m && d > 1e-6) { p.x = c.x + dx / d * m; p.z = c.z + dz / d * m; }
     }
   }
-  p.x = clamp(p.x, -26.6, 26.6); p.z = clamp(p.z, -26.6, 26.6);
+  p.x = clamp(p.x, -26.6, PARK.x1 - 0.6); p.z = clamp(p.z, PARK.z0 + 0.6, 26.6); // houses and hedges do the rest
 }
 const keys = new Set();
 const stick = { x: 0, y: 0, id: null };
@@ -211,10 +211,14 @@ function drawMinimap() {
   const css = mm.clientWidth; if (!css) return;
   const dpr = Math.min(2, devicePixelRatio || 1), S = Math.round(css * dpr);
   if (mm.width !== S) { mm.width = S; mm.height = S; }
-  const g = mmc, sc = S / 2 / 34, X = x => S / 2 + x * sc, Z = z => S / 2 + z * sc;
+  // centred on you, about 70 m across, so the park shows up as you walk to it
+  const g = mmc, sc = S / 2 / 36, X = x => S / 2 + (x - player.pos.x) * sc, Z = z => S / 2 + (z - player.pos.z) * sc;
   g.clearRect(0, 0, S, S); g.save(); g.beginPath(); g.arc(S / 2, S / 2, S / 2, 0, Math.PI * 2); g.clip();
   g.fillStyle = palette.rim; g.globalAlpha = 0.28; g.fillRect(0, 0, S, S); g.globalAlpha = 1;
   g.fillStyle = palette.glaze; g.fillRect(X(-27), Z(-27), 54 * sc, 54 * sc);
+  g.fillRect(X(27), Z(PARK.gate[0]), 9 * sc, (PARK.gate[1] - PARK.gate[0]) * sc);
+  g.fillStyle = "#7DAA55"; g.fillRect(X(PARK.x0), Z(PARK.z0), (PARK.x1 - PARK.x0) * sc, (PARK.z1 - PARK.z0) * sc);
+  g.beginPath(); g.ellipse(X(PARK.pond.x), Z(PARK.pond.z), PARK.pond.rx * sc, PARK.pond.rz * sc, 0, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
   g.fillStyle = palette["glaze-2"]; g.fillRect(X(-7.2), Z(-14.2), 14.4 * sc, 9.4 * sc); g.fillRect(X(-16.3), Z(1.1), 4.6 * sc, 1.8 * sc);
   g.beginPath(); g.arc(X(0), Z(6), 3.4 * sc, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
   for (const o of Object.values(npcObjs)) {
@@ -230,6 +234,7 @@ function drawMinimap() {
 // theme: daytime for light, dusk with lit lamps for dark
 // ===================================================================
 function isDark() { const t = document.documentElement.dataset.theme; return t === "dark" ? true : t === "light" ? false : matchMedia("(prefers-color-scheme: dark)").matches; }
+const sunOffset = new THREE.Vector3(32, 48, 22);
 function applySceneTheme() {
   const dark = isDark();
   skyMat.uniforms.top.value.set(dark ? 0x16224f : 0x5f9ee6);
@@ -237,7 +242,7 @@ function applySceneTheme() {
   skyMat.uniforms.bottom.value.set(dark ? 0x3a3550 : 0xb8c4cf);
   scene.fog.color.set(dark ? 0x6a5a78 : 0xdde9f5);
   hemi.color.set(dark ? 0x7d86c4 : 0xcfe3ff); hemi.groundColor.set(dark ? 0x3a2e33 : 0x8c7a5e); hemi.intensity = dark ? 0.9 : 1.5;
-  sun.color.set(dark ? 0xffa36b : 0xfff1d6); sun.intensity = dark ? 1.25 : 2.6; sun.position.set(dark ? -40 : 32, dark ? 22 : 48, dark ? 18 : 22);
+  sun.color.set(dark ? 0xffa36b : 0xfff1d6); sun.intensity = dark ? 1.25 : 2.6; sunOffset.set(dark ? -40 : 32, dark ? 22 : 48, dark ? 18 : 22);
   lampGlass.emissiveIntensity = dark ? 2.2 : 0.15;
   lampLights.forEach(l => (l.intensity = dark ? 7 : 0));
   renderer.toneMappingExposure = dark ? 1.15 : 1.05;
@@ -330,7 +335,8 @@ let last = performance.now(), frame = 0, T = 0;
 function loop(now) {
   requestAnimationFrame(loop);
   const dt = Math.min(0.05, (now - last) / 1000); last = now; frame++; T += dt;
-  updatePlayer(dt, T); updateNPCs(dt, T); updateItems(dt, T); updatePigeons(dt, T); updateFountain(dt);
+  updatePlayer(dt, T); updateNPCs(dt, T); updateDucks(dt);
+  sun.target.position.set(player.pos.x, 0, player.pos.z); sun.position.copy(sun.target.position).add(sunOffset); // shadows follow you into the park updateItems(dt, T); updatePigeons(dt, T); updateFountain(dt);
   for (const c of clouds) { c.position.x += dt * 1.2; if (c.position.x > 170) c.position.x = -170; }
   updateCamera(dt, T);
   sky.position.copy(camera.position);
@@ -360,4 +366,4 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { modelledPeople: !!PEOPLE, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
+window.__rynek = { modelledPeople: !!PEOPLE, park: PARK, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };

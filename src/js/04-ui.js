@@ -214,7 +214,8 @@ function talk(id) {
       else if (s.order) lines.push(fillOrder(id));
       else lines.push(newOrder(id));
     } else {
-      lines.push(pick(N.after));
+      if (N.chats) { lines.push(...N.chats[(s.chat || 0) % N.chats.length]); s.chat = (s.chat || 0) + 1; } // a new conversation each visit
+      else lines.push(pick(N.after));
       if (N.music) after.push(() => sfx.tune());
       if (N.review) {
         if (Object.values(st.words).some(r => r.s === 1)) {
@@ -314,7 +315,38 @@ function setPrompt(near) {
 // word list (Słownik)
 // ===================================================================
 let vFilter = "all";
+// most common first; words outside the top 1000 after, in alphabetical order
+const rankOf = k => FREQ_RANK.get(k) ?? Infinity;
+const byFrequency = (a, b) => rankOf(a) - rankOf(b) || a.localeCompare(b, "pl");
+let vTab = "mine", fPage = 0, sources = null;
+$("#v-tabs").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  vTab = b.dataset.tab; $$("#v-tabs button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); renderVocab();
+});
+$("#f-pages").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; fPage = +b.dataset.page; renderFreq(); $("#f-list").scrollTop = 0; });
+function renderFreq() {
+  if (!sources) { sources = wordSources(); for (const L of labels) if (L.key) { if (!sources.has(L.key)) sources.set(L.key, new Set()); sources.get(L.key).add("a label"); } }
+  const inGame = w => sources.has(w) && !!lookup(w);
+  $("#f-pages").replaceChildren(...Array.from({ length: Math.ceil(FREQ.length / 100) }, (_, p) => {
+    const n = FREQ.slice(p * 100, p * 100 + 100).filter(inGame).length;
+    return h("button", { type: "button", dataset: { page: String(p) }, "aria-pressed": String(p === fPage), title: `${n} of these 100 are in the game` }, `${p * 100 + 1}–${p * 100 + 100}`);
+  }));
+  const from = fPage * 100, page = FREQ.slice(from, from + 100);
+  const have = page.filter(inGame), known = have.filter(w => status(w) === 2).length, learning = have.filter(w => status(w) === 1).length;
+  $("#f-summary").textContent = `${have.length} of these 100 are in the game. You know ${known} and are learning ${learning}.`;
+  $("#f-list").replaceChildren(...page.map((w, i) => {
+    const there = inGame(w), who = there ? [...sources.get(w)] : [];
+    const where = !there ? "not in the game yet" : who.length ? (who.length > 3 ? `${who.slice(0, 3).join(", ")} +${who.length - 3}` : who.join(", ")) : "in the game";
+    return h("li", { class: "f-row" + (there ? "" : " missing") },
+      h("span", { class: "f-rank" }, String(from + i + 1)),
+      there ? wordBtn(w, "w") : h("span", { class: "f-missing", lang: "pl" }, w),
+      h("span", { class: "f-gloss" }, there ? meaningOf(w).gloss : ""),
+      h("span", { class: "f-where" }, where));
+  }));
+}
 function renderVocab() {
+  $("#v-mine").hidden = vTab !== "mine"; $("#v-freq").hidden = vTab !== "freq";
+  if (vTab === "freq") return renderFreq();
   const c = counts(), q = $("#v-search").value.trim().toLowerCase();
   const bar = $("#v-bar").children, tot = c.total || 1;
   bar[0].style.width = (c.known / tot * 100) + "%"; bar[1].style.width = (c.learning / tot * 100) + "%"; bar[2].style.width = (c.fresh / tot * 100) + "%";
@@ -322,11 +354,11 @@ function renderVocab() {
   const met = Object.keys(st.words).filter(k => lookup(k) && ((st.words[k].seen || 0) > 0 || status(k) > 0));
   const list = met.filter(k => vFilter === "all" || String(status(k)) === vFilter)
     .filter(k => !q || k.includes(q) || meaningOf(k).gloss.toLowerCase().includes(q))
-    .sort((a, b) => a.localeCompare(b, "pl"));
+    .sort(byFrequency);
   const ul = $("#v-list");
   ul.replaceChildren(...list.map(l => {
     const s = status(l);
-    return h("li", { class: "v-row" }, wordBtn(displayWord(l), "w"), h("span", { class: "v-gloss" }, meaningOf(l).gloss),
+    return h("li", { class: "v-row" }, wordBtn(displayWord(l), "w"), h("span", { class: "v-gloss" }, FREQ_RANK.has(l) ? h("b", { class: "v-rank", title: "How common it is: 1 is the most common word in Polish" }, `#${FREQ_RANK.get(l)}`) : null, meaningOf(l).gloss),
       h("span", { class: "v-dots", role: "group", "aria-label": `Sort ${l}` }, [0, 1, 2].map(k =>
         h("button", { type: "button", class: "dot", dataset: { s: String(k) }, "aria-pressed": String(s === k), "aria-label": STATUS_NAMES[k], title: STATUS_NAMES[k], onclick: () => setStatus(l, k) }))));
   }));
@@ -355,7 +387,7 @@ $$("[data-close]").forEach(b => b.addEventListener("click", () => { const id = b
 // ===================================================================
 let rv = null;
 function openReview(kind) {
-  const deck = shuffle(Object.keys(st.words).filter(k => lookup(k) && (kind === "learning" ? status(k) === 1 : status(k) === 0 && (st.words[k].seen || 0) > 0)));
+  const deck = (Object.keys(st.words).filter(k => lookup(k) && (kind === "learning" ? status(k) === 1 : status(k) === 0 && (st.words[k].seen || 0) > 0))).sort(byFrequency); // most common first
   if (!deck.length) { toast(kind === "learning" ? "No orange words to review yet. Mark some words as Learning first." : "No new words to sort right now."); return; }
   rv = { deck, i: 0, shown: false, kind, known: 0 };
   closeCard(); toggleVocab(false); $("#review").hidden = false; renderReview();

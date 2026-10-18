@@ -104,7 +104,7 @@ function buildShops() {
   addWordLabel({ word: "piaskownica", anchor: sb, y: 0.9, max: 8, kind: "small" });
   HOMES.lalka = new THREE.Vector3(14.7, 0.32, 15.4); HOMES.miś = new THREE.Vector3(17.9, 0.3, 12.2); HOMES.latawiec = new THREE.Vector3(18.6, 0.2, 17.0);
   HOMES.piłka = new THREE.Vector3(2.5, 0.28, -19.5); HOMES.okulary = new THREE.Vector3(-2.6, 0.92, 3.9); HOMES.klucze = new THREE.Vector3(-19.6, 0.12, 14.6);
-  buildPainter(); buildPost(); buildBookstand(); buildClothesStall(); buildHopscotch();
+  buildPainter(); buildPost(); buildBookstand(); buildClothesStall(); buildHopscotch(); buildPark();
   HOMES.skakanka = new THREE.Vector3(-1.5, 0.1, 10.5); HOMES.nuty = new THREE.Vector3(-20.6, 0.1, 2.9);
   HOMES.torba = new THREE.Vector3(16.4, 0.25, 17.2); HOMES.kość = new THREE.Vector3(-20.7, 0.12, 20.7); HOMES.pędzel = new THREE.Vector3(-7.9, 0.12, -8.0);
 }
@@ -162,6 +162,69 @@ function buildPost() {
   box.add(mesh(new THREE.BoxGeometry(0.5, 0.06, 0.38), M("#A82A24"), 0, 1.44, 0));
   addCircle(p + 5.3, 25.6, 0.35);
   addWordLabel({ word: "skrzynka", anchor: box, y: 1.9, max: 7, kind: "small" });
+}
+function buildPark() {
+  const { x0, x1, z0, z1, gate, pond } = PARK, gm = (gate[0] + gate[1]) / 2;
+  const grass = new THREE.MeshStandardMaterial({ roughness: 1, polygonOffset: true, polygonOffsetFactor: -1, map: canvasTex(256, 256, (g, W, H) => {
+    g.fillStyle = "#6E9A4A"; g.fillRect(0, 0, W, H);
+    const R = rng(77); for (let i = 0; i < 2600; i++) { g.fillStyle = ["#5F8C3F", "#7DAA55", "#6A9447", "#88B463"][i % 4]; g.fillRect(R() * W, R() * H, 2, 4); }
+  }, 8) });
+  const lawn = mesh(new THREE.PlaneGeometry(x1 - x0, z1 - z0), grass, (x0 + x1) / 2, 0.01, (z0 + z1) / 2, false); lawn.rotation.x = -Math.PI / 2; scene.add(lawn);
+  const gravel = new THREE.MeshStandardMaterial({ map: cobbleTex("#D9CBAE", "#B7A889", 31, 6), roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 });
+  for (const [x, z, w, d] of [[(x0 + x1) / 2 - 3, gm, x1 - x0 - 6, 2.6], [44, (z0 + z1) / 2, 2.6, z1 - z0 - 4]]) {
+    const p = mesh(new THREE.PlaneGeometry(w, d), gravel, x, 0.02, z, false); p.rotation.x = -Math.PI / 2; scene.add(p);
+  }
+  // the street from the square
+  const st = mesh(new THREE.PlaneGeometry(10, gate[1] - gate[0]), gravel, 31.5, 0.015, gm, false); st.rotation.x = -Math.PI / 2; scene.add(st);
+  addWordLabel({ word: "ścieżka", pos: new THREE.Vector3(50, 0.6, gm), max: 6, kind: "small" });
+  addWordLabel({ word: "trawa", pos: new THREE.Vector3(40, 0.5, -8), max: 6, kind: "small" });
+  // hedges all round, open where the street comes in
+  const hedge = M("#3F6E35");
+  const hedgeBox = (ax, bx, az, bz) => { scene.add(mesh(new THREE.BoxGeometry(bx - ax, 1.3, bz - az), hedge, (ax + bx) / 2, 0.65, (az + bz) / 2)); addBox(ax, bx, az, bz); };
+  hedgeBox(x0, x0 + 0.8, z0, gate[0]); hedgeBox(x0, x0 + 0.8, gate[1], z1); hedgeBox(x0, x1, z0, z0 + 0.8); hedgeBox(x0, x1, z1 - 0.8, z1); hedgeBox(x1 - 0.8, x1, z0, z1);
+  // the gate sign
+  const post = new THREE.Group(); post.position.set(x0 + 1.4, 0, gate[0] + 0.6); scene.add(post);
+  post.add(mesh(new THREE.CylinderGeometry(0.07, 0.07, 2.4, 8), M(IRON), 0, 1.2, 0));
+  const wood = M("#4A3020");
+  // lettering on the west face, towards the street you arrive by
+  const board = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.5, 1.4), [wood, new THREE.MeshStandardMaterial({ map: signTex("PARK", "#3F6E35", "#FFFFFF") }), wood, wood, wood, wood]);
+  board.position.set(0, 2.2, 0); post.add(board);
+  addWordLabel({ word: "park", pos: new THREE.Vector3(x0 + 1.4, 2.9, gate[0] + 0.6), max: 24, kind: "sign" });
+  // the pond, with ducks
+  const shore = mesh(new THREE.CircleGeometry(1, 40), M("#CDBE95"), pond.x, 0.025, pond.z, false); shore.scale.set(pond.rx + 0.7, pond.rz + 0.7, 1); shore.rotation.x = -Math.PI / 2; scene.add(shore);
+  const water = mesh(new THREE.CircleGeometry(1, 40), new THREE.MeshStandardMaterial({ color: 0x4f97c4, roughness: 0.15, metalness: 0.1 }), pond.x, 0.04, pond.z, false);
+  water.scale.set(pond.rx, pond.rz, 1); water.rotation.x = -Math.PI / 2; scene.add(water);
+  addCircle(pond.x, pond.z, 4.9); addCircle(pond.x - 4.5, pond.z, 4.2); addCircle(pond.x + 4.5, pond.z, 4.2);
+  addWordLabel({ word: "staw", pos: new THREE.Vector3(pond.x, 1.0, pond.z), max: 16 });
+  for (let i = 0; i < 4; i++) {
+    const d = new THREE.Group(), body = mesh(new THREE.SphereGeometry(0.2, 10, 8), M(i ? "#8A6A45" : "#E9E4D6"), 0, 0.12, 0, false);
+    body.scale.set(0.8, 0.6, 1.3); d.add(body);
+    d.add(mesh(new THREE.SphereGeometry(0.11, 8, 6), M(i ? "#2F6B4F" : "#E9E4D6"), 0, 0.3, 0.2, false));
+    const beak = mesh(new THREE.ConeGeometry(0.04, 0.12, 6), M("#E9A23B"), 0, 0.28, 0.34, false); beak.rotation.x = Math.PI / 2; d.add(beak);
+    scene.add(d); ducks.push({ g: d, a: i * 1.6, speed: 0.12 + i * 0.03 });
+  }
+  addWordLabel({ word: "kaczka", anchor: ducks[0].g, y: 0.75, max: 12, kind: "small" });
+  // benches, trees, lamps, bins
+  bench(40.2, -33, Math.PI / 2); bench(47, -13.6, Math.PI); bench(57, -28, 0); bench(60, gm + 2.4, Math.PI);
+  [[40, -37], [48, -37], [56, -37], [63, -37], [63, -27], [62, -9], [63, 2], [54, 2.5], [40.5, 2], [39.5, -26], [48, -31], [58, -32.5], [51, -6], [39.5, -4]]
+    .forEach(([x, z], i) => tree(x, z, 0.9 + (i % 3) * 0.12));
+  [[42.3, gm - 2.2], [56, gm - 2.2], [42.3, -28], [42.3, 0]].forEach(([x, z]) => lamp(x, z));
+  for (const [x, z] of [[45.8, gm + 2], [53, -12.6]]) {
+    const b = new THREE.Group(); b.position.set(x, 0, z); scene.add(b);
+    b.add(mesh(new THREE.CylinderGeometry(0.26, 0.22, 0.75, 12, 1, true), M("#2F5A3A", { ds: true }), 0, 0.38, 0));
+    addCircle(x, z, 0.3); addWordLabel({ word: "kosz", anchor: b, y: 1.1, max: 5, kind: "small" });
+  }
+  HOMES.telefon = new THREE.Vector3(pond.x + 9.0, 0.08, pond.z + 1.6);
+  HOMES.deskorolka = new THREE.Vector3(63.3, 0.08, -10.4);
+}
+const ducks = [];
+function updateDucks(dt) {
+  for (const d of ducks) {
+    d.a += dt * d.speed;
+    const { x, z, rx, rz } = PARK.pond, x1 = x + Math.cos(d.a) * (rx - 1.6), z1 = z + Math.sin(d.a) * (rz - 1.4);
+    d.g.position.set(x1, 0.04 + Math.sin(d.a * 9) * 0.01, z1);
+    d.g.rotation.y = Math.atan2(-Math.sin(d.a) * (rx - 1.6), Math.cos(d.a) * (rz - 1.4));
+  }
 }
 function buildClothesStall() {
   const g = new THREE.Group(); g.position.set(-15.5, 0, -11.2); scene.add(g);
@@ -348,6 +411,10 @@ const LOOKS = {
   zuzia: { shirt: "#E86FA0", pants: "#F2EEE6", hair: "#C8913A", pigtails: true, scale: 0.66, skirt: "#E86FA0" },
   staszek: { shirt: "#7A2E2E", pants: "#2C2F3A", hair: "#3B2A20", hat: "cap", hatColor: "#2B2B2B", moustache: "#3B2A20", accordion: true },
   bogdan: { shirt: "#E8E0D0", apron: "#3A6EA5", hair: "#5A4636", moustache: "#5A4636" },
+  ania: { shirt: "#D0605E", pants: "#3C6FB0", hair: "#C8913A", ponytail: true },
+  wieslaw: { shirt: "#4F6B3A", pants: "#3B4232", hair: "#9A9A9A", hat: "cap", hatColor: "#3D5A2E", moustache: "#8A8A8A" },
+  tomek: { shirt: "#E04A4A", pants: "#2C2F3A", hair: "#6B3F1F", hat: "kidcap", hatColor: "#2B2B2B", scale: 0.8 },
+  piotr: { shirt: "#F2F2EE", pants: "#2C3446", hair: "#2B1D14", flowers: true },
   krysia: { shirt: "#8C5A8A", pants: "#4A4A52", hair: "#BDBDBD", hat: "scarf", hatColor: "#3F6FA0", glasses: true, skirt: "#4A3A5A" },
 };
 const npcObjs = {};
@@ -355,10 +422,15 @@ function placeNPCs() {
   const b = SHOP.piekarnia.a, c = SHOP.kawiarnia.a, k = SHOP.kwiaciarnia.a;
   const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0],
     ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0],
-    zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0] };
+    zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0],
+    wieslaw: [39.2, (PARK.gate[0] + PARK.gate[1]) / 2 + 2.6], ania: [46.2, -15.0], tomek: [57.5, -5.0], piotr: [42.2, -33.0] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
     const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);
+    if (LOOKS[id]?.flowers) { // Piotr's bouquet for Marta
+      const hand = g.userData.parts.forearms?.[1] ?? g.userData.parts.arms[1];
+      for (let k = 0; k < 3; k++) { const f = itemModel(["róża", "lilia", "stokrotka"][k]); f.position.set(-0.03 + k * 0.03, -0.32, -0.04); f.rotation.x = Math.PI; hand.add(f); }
+    }
     const y = N.cat ? 0.4 : 0;
     g.position.set(x, y, z);
     const base = Math.atan2(0 - x, 8 - z);
@@ -434,6 +506,14 @@ function itemModel(id) {
     case "kość":
       add(new THREE.CylinderGeometry(0.025, 0.025, 0.2, 8), "#F2EDE0").rotation.z = Math.PI / 2;
       for (const x of [-0.1, 0.1]) for (const z of [-0.022, 0.022]) add(new THREE.SphereGeometry(0.035, 8, 6), "#F2EDE0", x, 0, z);
+      break;
+    case "telefon":
+      add(new THREE.BoxGeometry(0.09, 0.012, 0.17), "#1E1E22");
+      add(new THREE.BoxGeometry(0.08, 0.004, 0.15), "#4A6FA5", 0, 0.008, 0, { e: 0x20406a, ei: 0.6 });
+      break;
+    case "deskorolka":
+      add(new THREE.BoxGeometry(0.2, 0.02, 0.62), "#C8352E");
+      for (const z of [-0.2, 0.2]) for (const x of [-0.07, 0.07]) add(new THREE.CylinderGeometry(0.03, 0.03, 0.03, 10), "#F2EEE6", x, -0.035, z).rotation.z = Math.PI / 2;
       break;
     case "skakanka":
       add(new THREE.TorusGeometry(0.17, 0.008, 4, 28, Math.PI * 1.6), "#D33A3A").rotation.x = Math.PI / 2;

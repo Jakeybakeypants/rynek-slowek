@@ -176,6 +176,20 @@ kbd{font:800 13px/1 var(--display);background:var(--rim);color:var(--glaze);bord
 #v-list{list-style:none;margin:0;padding:0;overflow:auto;flex:1;min-height:0}
 .v-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:8px 2px;border-bottom:1px solid var(--glaze-2)}
 .v-row .w{font-size:16px;justify-self:start}
+.v-rank{font:700 11px/1 var(--body);color:var(--ink-2);background:var(--glaze-2);border-radius:4px;padding:2px 4px;margin-right:6px;font-variant-numeric:tabular-nums}
+.v-pane{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+.pager{gap:4px}
+.pager button{padding:4px 7px;font-size:12px}
+#f-summary{margin:0;font-size:14px}
+#f-list{list-style:none;margin:0;padding:0;overflow:auto;flex:1;min-height:0}
+.f-row{display:grid;grid-template-columns:34px auto minmax(0,1fr);gap:2px 10px;align-items:baseline;padding:7px 2px;border-bottom:1px solid var(--glaze-2)}
+.f-rank{color:var(--ink-2);font-size:12px;text-align:right;font-variant-numeric:tabular-nums}
+.f-row .w{font-size:16px;justify-self:start}
+.f-missing{font-weight:700;font-size:16px;color:var(--ink-2);opacity:.7}
+.f-gloss{font-size:14px;color:var(--ink-2);min-width:0;overflow-wrap:anywhere}
+.f-where{grid-column:2 / -1;font-size:12px;color:var(--ink-2)}
+.f-row.missing .f-where{font-style:italic}
+.credit a{color:inherit}
 .v-gloss{font-size:14px;color:var(--ink-2);min-width:0;overflow-wrap:anywhere}
 .v-dots{display:flex;gap:5px}
 .dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--c);background:transparent;cursor:pointer;padding:0}
@@ -319,19 +333,32 @@ body.touch #bag{bottom:calc(var(--bottom) + 196px)}
 
   <section id="vocab" class="sheet glaze dots" hidden aria-label="Word list">
     <div class="sheet-head"><h2><span id="vocab-title"></span><small>your words</small></h2><button class="icon-btn small x" type="button" data-close="vocab" aria-label="Close">×</button></div>
-    <div class="bar" id="v-bar"><span data-s="2"></span><span data-s="1"></span><span data-s="0"></span></div>
-    <p id="v-summary"></p>
-    <div class="filters" id="v-filters">
-      <button type="button" data-f="all" aria-pressed="true">All</button>
-      <button type="button" data-f="0" data-s="0" aria-pressed="false">New</button>
-      <button type="button" data-f="1" data-s="1" aria-pressed="false">Learning</button>
-      <button type="button" data-f="2" data-s="2" aria-pressed="false">Known</button>
+    <div class="filters tabs" id="v-tabs">
+      <button type="button" data-tab="mine" aria-pressed="true">Your words</button>
+      <button type="button" data-tab="freq" aria-pressed="false">Top 1000</button>
     </div>
-    <input id="v-search" type="search" placeholder="Search Polish or English" aria-label="Search words" autocomplete="off">
-    <ul id="v-list"></ul>
-    <div class="sheet-foot">
-      <button id="v-review" class="primary" type="button">Review learning words</button>
-      <button id="v-review-new" class="chip-btn" type="button">Sort new words</button>
+    <div id="v-mine" class="v-pane">
+      <div class="bar" id="v-bar"><span data-s="2"></span><span data-s="1"></span><span data-s="0"></span></div>
+      <p id="v-summary"></p>
+      <div class="filters" id="v-filters">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="0" data-s="0" aria-pressed="false">New</button>
+        <button type="button" data-f="1" data-s="1" aria-pressed="false">Learning</button>
+        <button type="button" data-f="2" data-s="2" aria-pressed="false">Known</button>
+      </div>
+      <input id="v-search" type="search" placeholder="Search Polish or English" aria-label="Search words" autocomplete="off">
+      <ul id="v-list"></ul>
+      <div class="sheet-foot">
+        <button id="v-review" class="primary" type="button">Review learning words</button>
+        <button id="v-review-new" class="chip-btn" type="button">Sort new words</button>
+      </div>
+    </div>
+    <div id="v-freq" class="v-pane" hidden>
+      <p class="muted">The 1,000 most common words in spoken Polish, most common first. Each form counts on its own, as it does in the game.</p>
+      <div class="filters pager" id="f-pages"></div>
+      <p id="f-summary"></p>
+      <ol id="f-list"></ol>
+      <p class="muted credit">Ranking: <a href="https://github.com/hermitdave/FrequencyWords" target="_blank" rel="noopener">FrequencyWords</a> by Hermit Dave, from OpenSubtitles 2018, CC BY-SA 4.0.</p>
     </div>
   </section>
 
@@ -659,6 +686,126 @@ const LEX = {
   "staszek": ["Staszek: a man's name, short for Stanisław (Stanley)", "name"],
   "bogdan": ["Bogdan: a man's name", "name"],
   "krysia": ["Krysia: a woman's name, short for Krystyna (Christine)", "name"],
+  // the park, and the most common words in spoken Polish
+  "się": ["oneself; (makes a verb reflexive)", "particle", "One of the most common words: Jak się masz? = How are you? Uczyć się = to study."],
+  "że": ["that (as in 'I think that…')", "conjunction"],
+  "jak": ["how; like, as", "adverb"],
+  "ty": ["you (one person, informal)", "pronoun"],
+  "tu": ["here", "adverb"], "tutaj": ["here", "adverb", "A slightly longer tu."],
+  "dobrze": ["well; good, fine, OK", "adverb"],
+  "wiedzieć": ["to know (a fact)", "verb", "wiem, wiesz, wie… Nie wiem = I don't know."],
+  "przepraszać": ["to apologise", "verb", "Przepraszam = sorry; excuse me."],
+  "hej": ["hey!", "interjection"],
+  "telefon": ["phone", "noun · masculine"],
+  "gdzieś": ["somewhere", "adverb"],
+  "staw": ["pond", "noun · masculine"],
+  "naprawdę": ["really", "adverb"],
+  "robić": ["to do; to make", "verb"],
+  "musieć": ["to have to, must", "verb", "muszę, musisz, musi…"],
+  "uczyć": ["to teach", "verb", "Uczyć się = to learn, to study."],
+  "jutro": ["tomorrow", "adverb"],
+  "egzamin": ["exam", "noun · masculine"],
+  "park": ["park", "noun · masculine"],
+  "cicho": ["quiet(ly)", "adverb"],
+  "myśleć": ["to think", "verb"],
+  "dlaczego": ["why", "question word"],
+  "szybko": ["fast, quickly", "adverb"],
+  "rozumieć": ["to understand", "verb"],
+  "miło": ["nice(ly), pleasant(ly)", "adverb", "Miło cię widzieć = nice to see you."],
+  "jeśli": ["if", "conjunction"],
+  "pan": ["Mr; sir; you (polite, to a man)", "noun · masculine", "Polish uses pan and pani as the polite 'you'."],
+  "porządek": ["order, tidiness", "noun · masculine", "W porządku = all right, OK."],
+  "ludzie": ["people", "noun · plural"],
+  "nigdy": ["never", "adverb", "Polish says nigdy nie: never not."],
+  "słuchać": ["to listen", "verb"],
+  "kiedy": ["when", "question word · conjunction"],
+  "młody": ["young", "adjective"],
+  "pole": ["field", "noun · neuter"],
+  "znać": ["to know (a person, a place)", "verb"],
+  "zawsze": ["always", "adverb"],
+  "zapytać": ["to ask (a question)", "verb · perfective"],
+  "kto": ["who", "pronoun"],
+  "nikt": ["nobody", "pronoun", "With nie: nikt nie przychodzi = nobody comes."],
+  "przychodzić": ["to come, to arrive", "verb"],
+  "przez": ["through; across; for (a time)", "preposition"],
+  "dom": ["house; home", "noun · masculine", "Do domu = home(wards)."],
+  "dużo": ["a lot, much, many", "adverb"],
+  "czas": ["time", "noun · masculine"],
+  "prawda": ["truth; right?", "noun · feminine", "At the end of a sentence: …, prawda? = …, right?"],
+  "no": ["well; yeah", "particle"],
+  "głupi": ["silly, stupid", "adjective"],
+  "zabrać": ["to take (away)", "verb · perfective"],
+  "deskorolka": ["skateboard", "noun · feminine"],
+  "ojciec": ["father", "noun · masculine"],
+  "mówić": ["to speak, to say", "verb"],
+  "niebezpieczny": ["dangerous", "adjective"],
+  "nic": ["nothing", "pronoun", "With nie: nic nie wie = knows nothing."],
+  "też": ["too, also", "adverb"],
+  "coś": ["something", "pronoun"],
+  "pokazać": ["to show", "verb · perfective"],
+  "szkoła": ["school", "noun · feminine"],
+  "bo": ["because", "conjunction"],
+  "mama": ["mum", "noun · feminine"],
+  "minuta": ["minute", "noun · feminine"],
+  "spóźniać": ["to make late", "verb", "Spóźniać się = to be late."],
+  "kochać": ["to love", "verb"],
+  "przyjść": ["to come (arrive)", "verb · perfective"],
+  "nadzieja": ["hope", "noun · feminine", "Mam nadzieję = I hope (so)."],
+  "późno": ["late", "adverb"],
+  "kupić": ["to buy", "verb · perfective"],
+  "pomysł": ["idea", "noun · masculine"],
+  "nawet": ["even", "adverb"],
+  "tylko": ["only, just", "adverb"],
+  "stać": ["to stand", "verb", "Stać się = to happen: co się stało? = what happened?"],
+  "prosty": ["simple; straight", "adjective", "Po prostu = simply, just."],
+  "zmęczony": ["tired", "adjective"],
+  "dziś": ["today", "adverb", "Same as dzisiaj."],
+  "potem": ["then, later", "adverb"],
+  "kino": ["cinema", "noun · neuter"],
+  "zobaczyć": ["to see", "verb · perfective"],
+  "mały": ["small, little", "adjective"],
+  "dziecko": ["child", "noun · neuter", "Irregular plural: dzieci."],
+  "lekarka": ["doctor (a woman)", "noun · feminine"],
+  "oczywiście": ["of course", "adverb"],
+  "trudny": ["hard, difficult", "adjective"],
+  "siebie": ["oneself", "pronoun", "Sobie = (for) oneself: kupię sobie = I'll buy myself."],
+  "lody": ["ice cream", "noun · plural"],
+  "trzeba": ["one must, you have to", "word", "Trzeba + infinitive: trzeba mówić = you have to say."],
+  "przykro": ["sorry (sad)", "adverb", "Przykro mi = I'm sorry."],
+  "często": ["often", "adverb"],
+  "sam": ["alone; oneself; same", "pronoun", "Taki sam = the same."],
+  "lepiej": ["better", "adverb"],
+  "niż": ["than", "conjunction"],
+  "oni": ["they (when men are in the group)", "pronoun"],
+  "normalny": ["normal", "adjective"],
+  "dać": ["to give", "verb · perfective"],
+  "chwila": ["moment", "noun · feminine"],
+  "więcej": ["more", "adverb"],
+  "jasne": ["sure! of course!", "interjection"],
+  "ok": ["OK", "interjection"],
+  "więc": ["so, therefore", "conjunction"],
+  "my": ["we", "pronoun"],
+  "dziewczyna": ["girlfriend; girl", "noun · feminine"],
+  "porozmawiać": ["to have a talk", "verb · perfective"],
+  "gdy": ["when", "conjunction"],
+  "który": ["which; who (that)", "pronoun"],
+  "twój": ["your (one person, informal)", "pronoun"],
+  "plecak": ["backpack", "noun · masculine"],
+  "rodzice": ["parents", "noun · plural"],
+  "miły": ["nice, kind", "adjective"],
+  "powiedzieć": ["to say, to tell", "verb · perfective"],
+  "taki": ["such, so", "pronoun"],
+  "zrobić": ["to do, to make", "verb · perfective"],
+  "żeby": ["so that, in order to", "conjunction"],
+  "ania": ["Ania: a woman's name, short for Anna", "name"],
+  "wiesław": ["Wiesław: a man's name", "name"],
+  "tomek": ["Tomek: a boy's name, short for Tomasz (Thomas)", "name"],
+  "piotr": ["Piotr: a man's name (Peter)", "name"],
+  "marta": ["Marta: a woman's name", "name"],
+  "kaczka": ["duck", "noun · feminine"],
+  "trawa": ["grass", "noun · feminine"],
+  "ścieżka": ["path", "noun · feminine"],
+  "kosz": ["bin; basket", "noun · masculine"],
 };
 
 // surface form -> [lemma, what this form is]
@@ -799,6 +946,46 @@ const FORMS = {
   "piekarni": ["piekarnia", "genitive or locative"],
   "dużą": ["duży", "accusative, feminine (with rodzinę)"],
   "rodzinę": ["rodzina", "accusative (object form)"],
+  // the park
+  "wiem": ["wiedzieć", "I know"], "wiesz": ["wiedzieć", "you know"], "wie": ["wiedzieć", "he / she knows"],
+  "przepraszam": ["przepraszać", "I apologise → sorry, excuse me"],
+  "go": ["on", "him / it (object form)"], "jej": ["ona", "her; to her (genitive or dative)"], "nią": ["ona", "her (after a preposition: na nią)"],
+  "ci": ["ty", "to you (dative)"], "cię": ["ty", "you (object form)"],
+  "ma": ["mieć", "he / she / it has; nie ma = there isn't"], "mamy": ["mieć", "we have"],
+  "jesteś": ["być", "you are"], "był": ["być", "he / it was"], "była": ["być", "she was"], "było": ["być", "it was; there was"],
+  "byłem": ["być", "I was (said by a man)"], "będzie": ["być", "he / she / it will be"],
+  "stawie": ["staw", "locative: after przy"],
+  "robisz": ["robić", "you do"], "muszę": ["musieć", "I have to"],
+  "myślę": ["myśleć", "I think"], "myślisz": ["myśleć", "you think"],
+  "chodzą": ["chodzić", "they walk"], "chodź": ["chodzić", "command form: come (here)!"],
+  "rozumiem": ["rozumieć", "I understand"],
+  "parku": ["park", "locative (w parku) or genitive (nie było parku)"],
+  "porządku": ["porządek", "locative: w porządku = all right"],
+  "słuchają": ["słuchać", "they listen"],
+  "znasz": ["znać", "you know"], "piotra": ["piotr", "accusative: a person, so it ends in -a"], "martę": ["marta", "accusative (object form)"],
+  "problemu": ["problem", "genitive: after nie ma"],
+  "przychodzi": ["przychodzić", "he / she comes"],
+  "domu": ["dom", "genitive: after do"], "czasu": ["czas", "genitive: after dużo, nie mam"],
+  "głupie": ["głupi", "neuter (with to)"], "zabrał": ["zabrać", "he took (past tense)"], "moją": ["mój", "accusative, feminine (with deskorolkę)"],
+  "mówi": ["mówić", "he / she says"], "niebezpieczne": ["niebezpieczny", "neuter (with to)"],
+  "pokażę": ["pokazać", "I will show"], "szkoły": ["szkoła", "genitive: after do"],
+  "mamo": ["mama", "vocative: the form for calling someone"], "minut": ["minuta", "genitive plural: after pięć"],
+  "czekam": ["czekać", "I'm waiting"], "spóźnia": ["spóźniać", "she is late (with się)"],
+  "kocham": ["kochać", "I love"], "przyjdzie": ["przyjść", "he / she will come"],
+  "nadzieję": ["nadzieja", "accusative: mam nadzieję = I hope"],
+  "kupiłem": ["kupić", "I bought (said by a man)"], "powiem": ["powiedzieć", "I will say"],
+  "taka": ["taki", "feminine (with ona)"], "piękna": ["piękny", "feminine (with ona)"],
+  "zrobię": ["zrobić", "I will do"], "szczęśliwa": ["szczęśliwy", "feminine (with ona)"],
+  "kaczki": ["kaczka", "plural"],
+  "stało": ["stać", "it happened (with się)"], "prostu": ["prosty", "po prostu = simply, just"], "zmęczona": ["zmęczony", "feminine (Ania is speaking)"],
+  "kina": ["kino", "genitive: after do"], "musisz": ["musieć", "you have to"], "mają": ["mieć", "they have"], "małe": ["mały", "plural (with dzieci)"],
+  "dzieci": ["dziecko", "plural (irregular)"], "lekarką": ["lekarka", "instrumental: after być"], "trudne": ["trudny", "neuter (with to)"],
+  "kupię": ["kupić", "I will buy"], "sobie": ["siebie", "(to / for) oneself"], "ciebie": ["ty", "you (genitive: after dla)"], "prawdę": ["prawda", "accusative (object form)"],
+  "ich": ["oni", "their; them"], "grają": ["grać", "they play"], "jesteśmy": ["być", "we are"], "normalne": ["normalny", "neuter (with to)"],
+  "daj": ["dać", "command form: give!"], "chwilę": ["chwila", "accusative (object form)"], "możemy": ["móc", "we can"], "będę": ["być", "I will be"],
+  "nas": ["my", "us (object form)"], "dziewczyną": ["dziewczyna", "instrumental: after być"], "musimy": ["musieć", "we have to"],
+  "chodzi": ["chodzić", "chodzi o = it's about"], "będziesz": ["być", "you will be"], "mili": ["miły", "plural, men in the group (with rodzice)"],
+  "jego": ["on", "his; him (genitive)"],
 };
 
 const PHRASES = [
@@ -837,6 +1024,10 @@ const PHRASES = [
   ["do pracy", "to work"],
   ["na wesele", "to a wedding"],
   ["nie mam już", "I have no more"],
+  ["jak się masz", "how are you?"], ["nie wiem", "I don't know"], ["w porządku", "all right, OK"], ["mam nadzieję", "I hope (so)"],
+  ["nie ma", "there isn't; it's gone"], ["na razie", "see you; for now"], ["miło cię widzieć", "nice to see you"],
+  ["uczyć się", "to study"], ["do domu", "home(wards)"], ["nie ma problemu", "no problem"], ["wiesz co", "you know what"],
+  ["co jest", "what's up?"], ["ja też", "me too"], ["się spóźnia", "is late"],
 ].map(([pl, en]) => ({ pl, en, w: pl.split(" ") }));
 
 // things you can pick up
@@ -891,6 +1082,8 @@ const ITEMS = {
   parasolka: { acc: "parasolkę", gen: "parasolki", en: "an umbrella", the: "the umbrella", why: ["Pada deszcz.", "It's raining."] },
   rękawiczki: { acc: "rękawiczki", gen: "rękawiczek", en: "some gloves", the: "the gloves", pl: true, why: ["Jest bardzo zimno.", "It's very cold."] },
   koszula: { acc: "koszulę", gen: "koszuli", en: "a shirt", the: "the shirt", why: ["Ktoś idzie do pracy.", "Someone is going to work."] },
+  telefon: { acc: "telefon", gen: "telefonu", en: "the phone", the: "the phone", story: "ania" },
+  deskorolka: { acc: "deskorolkę", gen: "deskorolki", en: "the skateboard", the: "the skateboard", story: "tomek" },
   sukienka: { acc: "sukienkę", gen: "sukienki", en: "a dress", the: "the dress", why: ["Ktoś idzie na wesele.", "Someone is going to a wedding."] },
 };
 for (const [id, it] of Object.entries(ITEMS)) {
@@ -1193,13 +1386,118 @@ const NPCS = {
       ["Mam dużą rodzinę.", "I have a big family."],
     ],
   },
+  // the park: people who talk the way people talk, so their lines are made of the most common words.
+  // `chats` are short conversations, a different one each time you talk to them.
+  ania: {
+    name: "Ania", role: "a student by the pond",
+    intro: [
+      ["Hej! Jestem Ania.", "Hey! I'm Ania."],
+      ["Przepraszam, czy możesz mi pomóc?", "Sorry, can you help me?"],
+      ["Nie wiem, gdzie jest mój telefon.", "I don't know where my phone is."],
+      ["Byłam tu rano, a teraz go nie ma.", "I was here this morning, and now it's gone."],
+      ["Może jest gdzieś przy stawie?", "Maybe it's somewhere by the pond?"],
+    ],
+    quest: { item: "telefon", reward: 20, task: ["Find Ania's", ""] },
+    remind: ["Mój telefon jest chyba przy stawie.", "My phone is probably by the pond."],
+    wrong: ["Nie, to nie to.", "No, that's not it."],
+    done: [["Naprawdę? Mój telefon! Dziękuję!", "Really? My phone! Thank you!"], ["Jesteś super!", "You're great!"]],
+    chats: [
+      [["Jak się masz?", "How are you?"], ["Ja dobrze. A ty?", "I'm fine. And you?"]],
+      [["Co robisz dzisiaj?", "What are you doing today?"], ["Ja muszę się uczyć.", "I have to study."], ["Jutro mam egzamin.", "I have an exam tomorrow."]],
+      [["Wiesz co? Lubię ten park.", "You know what? I like this park."], ["Tu jest tak cicho.", "It's so quiet here."]],
+      [["Myślę, że będzie padać.", "I think it's going to rain."], ["Dobrze, że mam parasolkę.", "Good thing I have an umbrella."]],
+      [["Dlaczego wszyscy tak szybko chodzą?", "Why does everyone walk so fast?"], ["Nie rozumiem.", "I don't understand."]],
+      [["Miło cię widzieć!", "Nice to see you!"], ["Jeśli chcesz, mogę ci pomóc.", "If you want, I can help you."]],
+      [["Co się stało?", "What happened?"], ["Po prostu jestem zmęczona.", "I'm just tired."]],
+      [["Dziś jest piękny dzień.", "It's a beautiful day today."], ["Potem idę do kina.", "Later I'm going to the cinema."]],
+      [["Musisz to zobaczyć!", "You have to see this!"], ["Kaczki mają małe dzieci.", "The ducks have little ones."]],
+      [["Chcę być lekarką.", "I want to be a doctor."], ["Oczywiście, to trudne.", "Of course, it's hard."]],
+      [["Kupię sobie lody.", "I'll buy myself an ice cream."], ["Mam coś dla ciebie!", "I've got something for you!"]],
+      [["Muszę już iść. Na razie!", "I have to go now. See you!"]],
+    ],
+  },
+  wieslaw: {
+    name: "Wiesław", role: "the park keeper",
+    intro: [
+      ["Dzień dobry! Jestem pan Wiesław.", "Good morning! I'm Mr Wiesław."],
+      ["Pracuję w parku.", "I work in the park."],
+      ["Wszystko w porządku?", "Is everything all right?"],
+    ],
+    chats: [
+      [["Ludzie nigdy nie słuchają.", "People never listen."]],
+      [["Kiedy byłem młody, tu nie było parku.", "When I was young, there was no park here."], ["Było tu tylko pole.", "There was only a field here."]],
+      [["Znasz Piotra? On czeka na Martę.", "Do you know Piotr? He's waiting for Marta."]],
+      [["Nie ma problemu.", "No problem."], ["Zawsze możesz mnie zapytać.", "You can always ask me."]],
+      [["Kto to był?", "Who was that?"], ["Nie wiem. Nikt tu nie przychodzi.", "I don't know. Nobody comes here."]],
+      [["Idę przez park do domu.", "I'm walking home through the park."]],
+      [["Trzeba zawsze mówić prawdę.", "You should always tell the truth."]],
+      [["Przykro mi, nie wiem.", "I'm sorry, I don't know."]],
+      [["Często jestem tu sam.", "I'm often here alone."], ["Ale lepiej późno niż nigdy.", "But better late than never."]],
+      [["Ich dzieci zawsze tu grają.", "Their children always play here."], ["Jesteśmy w parku, więc to normalne.", "We're in a park, so that's normal."]],
+      [["Mamy dużo czasu, prawda?", "We have lots of time, right?"], ["Dobrze, dobrze. Do widzenia!", "All right, all right. Goodbye!"]],
+    ],
+  },
+  tomek: {
+    name: "Tomek", role: "a boy with a skateboard, usually", kid: true,
+    intro: [
+      ["Hej! Jestem Tomek.", "Hey! I'm Tomek."],
+      ["No, to jest trochę głupie...", "Well, this is a bit silly..."],
+      ["Ktoś zabrał moją deskorolkę!", "Someone took my skateboard!"],
+      ["Może jest za drzewem?", "Maybe it's behind a tree?"],
+    ],
+    quest: { item: "deskorolka", reward: 20, task: ["Find Tomek's", ""] },
+    remind: ["Moja deskorolka jest chyba za drzewem.", "My skateboard is probably behind a tree."],
+    wrong: ["Nie, to nie to.", "No, that's not it."],
+    done: [["Jest! Dzięki!", "There it is! Thanks!"], ["Jesteś naprawdę w porządku.", "You're really all right."]],
+    chats: [
+      [["Co jest? Wszystko dobrze?", "What's up? All good?"]],
+      [["Mój ojciec mówi, że to niebezpieczne.", "My dad says it's dangerous."], ["Ale on nic nie wie.", "But he doesn't know anything."]],
+      [["Ja też tak myślę!", "I think so too!"]],
+      [["Chodź tutaj! Coś ci pokażę.", "Come here! I'll show you something."]],
+      [["Jutro idę do szkoły.", "Tomorrow I'm going to school."], ["Nie chcę!", "I don't want to!"]],
+      [["Nie mogę, bo mama czeka.", "I can't, because Mum's waiting."], ["Mamo, jeszcze pięć minut!", "Mum, five more minutes!"]],
+      [["Daj mi chwilę!", "Give me a moment!"], ["Chcę więcej czasu!", "I want more time!"]],
+      [["Możemy grać razem, jeśli chcesz.", "We can play together, if you want."]],
+      [["Jasne! Będę tu jutro.", "Sure! I'll be here tomorrow."]],
+      [["Ok, ok. Więc co teraz?", "OK, OK. So what now?"], ["Mama na nas czeka.", "Mum's waiting for us."]],
+    ],
+  },
+  piotr: {
+    name: "Piotr", role: "waiting with flowers",
+    intro: [
+      ["Cześć. Jestem Piotr.", "Hi. I'm Piotr."],
+      ["Czekam na Martę.", "I'm waiting for Marta."],
+      ["Ona zawsze się spóźnia.", "She's always late."],
+    ],
+    chats: [
+      [["Kocham ją, wiesz?", "I love her, you know?"]],
+      [["Myślisz, że ona przyjdzie?", "Do you think she'll come?"], ["Mam nadzieję.", "I hope so."]],
+      [["Gdzie ona jest? Już jest późno.", "Where is she? It's late already."]],
+      [["Kupiłem jej kwiaty.", "I bought her flowers."], ["Czy to dobry pomysł?", "Is that a good idea?"]],
+      [["Przepraszam, nie mam czasu.", "Sorry, I don't have time."], ["Muszę na nią czekać.", "I have to wait for her."]],
+      [["Nawet nie wiem, co jej powiem.", "I don't even know what I'll say to her."]],
+      [["Ona jest taka piękna.", "She's so beautiful."], ["Zrobię wszystko, żeby była szczęśliwa.", "I'll do anything to make her happy."]],
+      [["Ona jest moją dziewczyną.", "She's my girlfriend."], ["Musimy porozmawiać, gdy przyjdzie.", "We have to talk when she comes."]],
+      [["Który kwiat lubisz?", "Which flower do you like?"], ["Nie chodzi o kwiaty.", "It's not about the flowers."]],
+      [["Będziesz tu jutro?", "Will you be here tomorrow?"], ["Może ona przyjdzie jutro.", "Maybe she'll come tomorrow."]],
+      [["Czy to twój plecak?", "Is that your backpack?"], ["Jej brat ma taki sam.", "Her brother has the same one."]],
+      [["Jej rodzice są bardzo mili.", "Her parents are very nice."], ["To jego problem.", "That's his problem."]],
+    ],
+  },
 };
 const NUMBERS = ["zero", "jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć", "dziesięć"];
 const REVIEW_LINES = {
   offer: ["Chcesz powtórzyć słówka?", "Do you want to review your words?"],
   none: ["Nie masz teraz słówek do powtórki.", "You have no words to review right now."],
 };
-const NPC_ORDER = ["jozef", "filemon", "marek", "basia", "ola", "kuba", "zosia", "ewa", "tadeusz", "halina", "burek", "zuzia", "staszek", "bogdan", "krysia"];
+const NPC_ORDER = ["jozef", "filemon", "marek", "basia", "ola", "kuba", "zosia", "ewa", "tadeusz", "halina", "burek", "zuzia", "staszek", "bogdan", "krysia", "ania", "wieslaw", "tomek", "piotr"];
+
+// ---- src/js/01-frequency.js ----
+// The 1000 most common Polish word forms, most common first (rank = index + 1).
+// Generated by tools/frequency.mjs from FrequencyWords by Hermit Dave (OpenSubtitles 2018),
+// https://github.com/hermitdave/FrequencyWords, licensed CC BY-SA 4.0. Don't edit by hand.
+const FREQ = ["nie","to","się","w","na","i","że","z","co","jest","do","tak","o","jak","ale","a","mnie","mi","za","ja","tym","tego","go","ci","po","tylko","czy","tu","może","jestem","ma","ty","cię","mam","jesteś","już","jeśli","dla","wiem","coś","dobrze","więc","od","teraz","pan","wszystko","być","będzie","masz","nic","tam","mogę","proszę","jej","są","gdzie","kiedy","ten","on","ciebie","by","sobie","ze","był","wiesz","bardzo","było","przez","jego","ją","chcę","dlaczego","pani","jeszcze","mój","nas","żeby","no","bo","chcesz","ich","też","tutaj","naprawdę","nigdy","mamy","kto","możesz","dobra","przepraszam","mu","gdy","muszę","porządku","dziękuję","nawet","chyba","domu","ona","prawda","zrobić","była","właśnie","będę","zawsze","hej","nim","nam","te","moja","musisz","je","dzięki","bez","tej","trochę","ktoś","panie","jesteśmy","moje","powiedzieć","który","czas","więcej","twój","musimy","lat","ta","chce","możemy","wszyscy","tobą","albo","prostu","chodzi","razem","stało","cześć","mną","czego","sam","myślę","pana","przed","boże","raz","czemu","będziesz","niż","ludzie","dalej","czym","was","dobry","przy","ludzi","dzień","życie","lepiej","miał","rzeczy","twoja","czasu","ok","temu","robisz","myślisz","kim","niech","które","oczywiście","siebie","niego","cóż","powiedział","u","daj","moim","chodź","musi","my","nikt","twoje","tych","pod","dlatego","pewnie","powiedz","aby","wtedy","wygląda","jeden","mojego","im","mówi","dziś","taki","mieć","jako","dwa","potem","wie","takie","nią","wszystkie","znaczy","rozumiem","dzieje","moją","będziemy","wiele","stąd","oni","mojej","miejsce","iść","kilka","pomóc","dużo","ile","jasne","byłem","swoje","myśli","cały","skąd","wiedzieć","dzieci","nich","która","wam","przykro","można","jakieś","tę","wszystkich","nad","jakiś","sposób","trzeba","mają","niej","pracy","kogoś","tyle","robić","bardziej","mówisz","zanim","zbyt","szybko","dzisiaj","tobie","takiego","świetnie","zobaczyć","zaraz","pewno","miałem","kocham","mówię","nadal","jaki","rację","kochanie","myślałem","trzy","ojciec","ani","robi","stanie","tą","później","ponieważ","idź","życia","twoim","przestań","swoją","chciałem","długo","mamo","kiedyś","cholera","wciąż","nadzieję","aż","będą","jutro","każdy","dni","problem","widzę","mógł","stary","taka","żebyś","widzisz","twojej","tato","potrzebuję","znowu","kurwa","dziecko","nocy","znaleźć","sama","dokładnie","dnia","oh","pierwszy","czuję","pieniądze","powiem","zrobił","nami","miała","twoją","gdyby","nasz","nasze","razie","samo","były","dobre","słuchaj","koniec","chciał","widziałem","jakie","wszystkim","znam","wcześniej","spokój","chwilę","mama","sobą","zostać","został","wy","czegoś","żyje","mówić","bym","którzy","porozmawiać","spójrz","roku","mogą","chciałbym","zabić","poza","dom","we","imię","twojego","lub","och","miło","którą","kogo","sir","minut","jakby","prawie","drzwi","byłam","jesteście","posłuchaj","powiedziałem","powodu","powinniśmy","gdzieś","końcu","lubię","mów","sprawy","czekaj","pomysł","zrobię","wiemy","wydaje","byłeś","razy","moich","człowiek","jednak","innego","dość","pomocy","przecież","panu","broń","żadnych","noc","macie","ciągle","c","żebym","źle","powiedziała","facet","mówiłem","którego","podoba","miejscu","jeżeli","skoro","ego","ojca","powinieneś","lata","sprawa","niczego","takim","pamiętasz","sądzę","właściwie","dwie","pokoju","którym","myślałam","jedno","idziemy","również","bądź","znasz","swój","swojego","byś","chodźmy","nowy","chciałam","pewien","wczoraj","jedną","musiał","której","idę","poważnie","swoim","życiu","rozumiesz","których","podczas","miałam","oczy","rano","sprawę","wystarczy","spokojnie","całą","telefon","rzecz","matka","samochód","świat","nimi","dwóch","pracę","dać","byli","powinienem","weź","jedna","zamknij","the","mały","da","pozwól","całe","wina","wiedziałem","wrócić","między","chcą","idzie","śmierci","mówił","numer","oto","miejsca","dopóki","czujesz","cokolwiek","swojej","nikogo","dam","powiedziałeś","tłumaczenie","dziewczyna","najpierw","pamiętam","powiesz","pytanie","inaczej","świecie","znów","wyglądasz","przynajmniej","widzieć","prawdę","zrobiłem","śmierć","swoich","halo","gdybym","jednego","pieniędzy","brzmi","wierzę","innych","trzymaj","robię","ogóle","super","kobiety","potrzebuje","tata","pójdę","wielu","dokąd","ręce","zrobiłeś","miłość","całkiem","naszej","nasza","możliwe","gra","prawo","inne","każdym","chwili","kobieta","jednym","zrób","ważne","wybacz","żona","chcemy","działa","byłoby","także","słyszałem","wiedział","dziewczyny","drogi","pewna","wiecie","mówią","cieszę","dopiero","poznać","serce","inny","witam","pojęcia","parę","przeciwko","udało","powinien","została","naszym","raczej","wiadomość","pięć","s","każdego","godziny","plan","wcale","ciało","słowa","witaj","naszego","mogła","czasie","dostać","nowego","czymś","stać","oznacza","jaką","naszych","patrz","czyli","twoich","człowieka","czasem","dziwne","żyć","zostaw","zabrać","żadnego","cholery","ostatnio","rodziny","ciężko","martw","miałeś","rozmawiać","rób","ziemi","nazywa","panowie","bóg","widziałam","szczęście","syn","takich","sprawie","zabił","powrotem","możecie","godzin","potrzebujemy","diabła","panią","powinnaś","ostatni","zrobimy","mąż","wyjść","krwi","szkoły","nieźle","syna","natychmiast","słucham","mieliśmy","taką","wszystkiego","widziałeś","serio","policja","chciała","zrobisz","byliśmy","radę","zgadza","one","czasami","końca","idziesz","zostanie","powinnam","byłaś","mogłem","drodze","mieli","najbardziej","pomoc","jaka","cztery","john","strony","część","należy","jack","kimś","głowy","brat","zobaczenia","blisko","zaczekaj","powiedziałam","uwierzyć","skarbie","zły","naszą","wieczór","dolarów","twarz","zostało","świata","cała","potrzebujesz","środku","pokój","innym","obchodzi","spotkanie","chcecie","gotowy","doktorze","temat","wielki","uważaj","daleko","pół","ode","uda","dr","chociaż","kiedykolwiek","rok","lecz","miasta","d","poczekaj","robota","racja","człowiekiem","wieczorem","zależy","dobranoc","późno","chciałabym","mógłbym","krew","gdybyś","wziąć","lubi","słowo","powinno","zewnątrz","nowe","rodzina","wspaniale","mówiąc","stronie","miesięcy","głowę","robimy","znalazłem","lubisz","mniej","wrócę","wejść","wypadek","pierwsze","szybciej","tydzień","chłopaki","nieważne","pójść","praca","czeka","zobaczymy","taa","szansę","wiedziałam","widział","wody","dawaj","zna","mała","jezu","zrobi","pracować","moi","serca","jakoś","złe","chwila","prawa","sądzisz","według","spotkać","kapitanie","zupełnie","sprawdzić","mogli","ojcem","you","boga","okej","wspólnego","mówiłeś","mieście","robią","chłopak","jechać","prawdopodobnie","doktor","spać","pracuje","zdjęcia","wasza","uwagę","myśleć","mówiłam","znać","t","ciała","mógłbyś","problemy","okay","film","gotowa","tymi","zdjęcie","pogadać","brak","powiedziałaś","wiedzą","dał","małe","pomoże","ponad","mało","kilku","koleś","wkrótce","rękę","razu","mógłby","ostatnie","miasto","zrobiła","przyjaciół","stronę","góry","nazwisko","wami","pa","całym","drogę","wystarczająco","zatrzymać","droga","niemożliwe","jakąś","mike","odejść","broni","zmienić","wszędzie","prosto","rodzice","początku","policji","nagle","drugi","brata","przyjaciel","wielkie","człowieku","choć","samego","muszą","często","dziecka","pomóż","dobrym","kłopoty","nazywam","większość","zacząć","roboty","zaczyna","żaden","pozwolić","matki","miłości","trudno","błąd","drugiej","głowie","dziewczynę","pokaż","córka","godzinę","michael","żadnej","jedynie","szkole","pierwsza","musiałem","wracaj","szkoda","george","siostra","zapomnij","pomyślałem","słyszysz","ponownie","przyszedł","całkowicie","charlie","zamiast","trzymać","musicie","czuje","gówno","trzech","rady","dowiedzieć","jakaś","obiecuję","osób","niestety","zadzwonić","samochodu","czekać","zatem","jakim","miało","piękna","oraz","zostań","rany","jedziemy","dasz","kraju","zrobiłam","zostawić","historia","mimo","zobacz","głupi","nowym","faceta","dawno","pokazać","widzenia","rodzinę","obok","jednej","powie","sami","przykład","tygodniu","chciałeś","dłużej","ruszaj","oboje","dół","najlepszy","wróci","odkąd","musiała","zabawne","górę","frank","łatwo","uważam","będziecie","wieku","mówiła","joe","synu","chłopcy","złego","niczym","męża","sporo","popatrz","inni","szefie","środka","znaleźliśmy","samym","pewnego","pracuję","panno","zajmę","zamierzam","istnieje","uważasz","okazji","moment","takiej","spróbuj","znajdziemy","osobą","nikomu","kupić","sześć","gość","niby","spróbować","póki","cicho","zła","jakiegoś","uh","wezmę","walczyć","wiadomości","prawdziwe","niedługo","ciągu","żonę","tom","fbi","boję","strasznie","wasze","historii","dziewczyną","powinna","nowa","wrócił","mężczyzna","gotowi","głos","około","boli"];
+const FREQ_RANK = new Map(FREQ.map((w, i) => [w, i + 1]));
 
 // ---- src/js/02-words.js ----
 // ===================================================================
@@ -1276,19 +1574,34 @@ const quizResult = (right, sum) => right
   ? [`Tak! ${NUMBERS[sum][0].toUpperCase() + NUMBERS[sum].slice(1)}. Brawo!`, `Yes! ${sum}. Well done!`]
   : [`Nie, to jest ${NUMBERS[sum]}.`, `No, it's ${sum}.`];
 // every Polish sentence the game can show (labels aside)
-function gameTexts() {
-  const out = [], check = t => out.push(t);
+// every Polish sentence the game can show (labels aside), each with who says it
+function gameLines() {
+  const out = [];
   for (const N of Object.values(NPCS)) {
+    const check = t => out.push([t, N.name]);
     for (const key of ["intro", "done", "after", "thanks", "regive"]) (N[key] || []).forEach(l => check(l[0]));
     for (const key of ["remind", "wrong"]) if (N[key]) check(N[key][0]);
     N.receive?.lines.forEach(l => check(l[0]));
     if (N.orders) { N.orders.ok.forEach(l => check(l[0])); for (const id of N.orders.pool) N.orders.ask.forEach(a => check(fillTemplate(a, ITEMS[id])[0])); }
-    if (N.quiz) [...N.quiz.start, ...N.quiz.more].forEach(l => check(l[0]));
+    if (N.quiz) {
+      [...N.quiz.start, ...N.quiz.more].forEach(l => check(l[0]));
+      for (let a = 1; a <= QUIZ_MAX; a++) for (let b = 1; b <= QUIZ_MAX; b++) { check(quizQuestion(a, b)[0]); check(quizResult(true, a + b)[0]); check(quizResult(false, a + b)[0]); }
+    }
+    (N.chats || []).flat().forEach(l => check(l[0]));
   }
-  Object.keys(ITEMS).forEach(id => { check(thisIs(id)[0]); check(ITEMS[id].word); });
-  Object.values(REVIEW_LINES).forEach(l => check(l[0]));
-  for (let a = 1; a <= QUIZ_MAX; a++) for (let b = 1; b <= QUIZ_MAX; b++) { check(quizQuestion(a, b)[0]); check(quizResult(true, a + b)[0]); check(quizResult(false, a + b)[0]); }
+  Object.keys(ITEMS).forEach(id => { out.push([thisIs(id)[0], ""]); out.push([ITEMS[id].word, "a label"]); });
+  Object.values(REVIEW_LINES).forEach(l => out.push([l[0], NPCS.jozef.name]));
   return out;
+}
+const gameTexts = () => gameLines().map(([t]) => t);
+// form -> the people who say it (for the frequency list)
+function wordSources() {
+  const map = new Map();
+  for (const [t, who] of gameLines()) for (const tk of tokenize(t)) if (tk.w) {
+    const k = tk.t.toLowerCase(); if (!map.has(k)) map.set(k, new Set());
+    if (who) map.get(k).add(who);
+  }
+  return map;
 }
 // Words are learned form by form, the way a child picks them up: mam and masz are two
 // separate words with their own colour. A word's key is its lower-case written form.
@@ -1325,7 +1638,7 @@ function normalize(d) {
   }
   if (d.npc && typeof d.npc === "object") for (const id of NPC_ORDER) if (d.npc[id]) {
     const n = d.npc[id];
-    s.npc[id] = { stage: ["new", "active", "done"].includes(n.stage) ? n.stage : "new", order: ITEMS[n.order] ? n.order : null, tmpl: +n.tmpl || 0, thanked: !!n.thanked };
+    s.npc[id] = { stage: ["new", "active", "done"].includes(n.stage) ? n.stage : "new", order: ITEMS[n.order] ? n.order : null, tmpl: +n.tmpl || 0, thanked: !!n.thanked, chat: Math.max(0, +n.chat || 0) };
   }
   s.coins = Math.max(0, +d.coins || 0);
   // the bag replaced carrying one thing in your hands
@@ -1699,7 +2012,8 @@ function talk(id) {
       else if (s.order) lines.push(fillOrder(id));
       else lines.push(newOrder(id));
     } else {
-      lines.push(pick(N.after));
+      if (N.chats) { lines.push(...N.chats[(s.chat || 0) % N.chats.length]); s.chat = (s.chat || 0) + 1; } // a new conversation each visit
+      else lines.push(pick(N.after));
       if (N.music) after.push(() => sfx.tune());
       if (N.review) {
         if (Object.values(st.words).some(r => r.s === 1)) {
@@ -1799,7 +2113,38 @@ function setPrompt(near) {
 // word list (Słownik)
 // ===================================================================
 let vFilter = "all";
+// most common first; words outside the top 1000 after, in alphabetical order
+const rankOf = k => FREQ_RANK.get(k) ?? Infinity;
+const byFrequency = (a, b) => rankOf(a) - rankOf(b) || a.localeCompare(b, "pl");
+let vTab = "mine", fPage = 0, sources = null;
+$("#v-tabs").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  vTab = b.dataset.tab; $$("#v-tabs button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); renderVocab();
+});
+$("#f-pages").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; fPage = +b.dataset.page; renderFreq(); $("#f-list").scrollTop = 0; });
+function renderFreq() {
+  if (!sources) { sources = wordSources(); for (const L of labels) if (L.key) { if (!sources.has(L.key)) sources.set(L.key, new Set()); sources.get(L.key).add("a label"); } }
+  const inGame = w => sources.has(w) && !!lookup(w);
+  $("#f-pages").replaceChildren(...Array.from({ length: Math.ceil(FREQ.length / 100) }, (_, p) => {
+    const n = FREQ.slice(p * 100, p * 100 + 100).filter(inGame).length;
+    return h("button", { type: "button", dataset: { page: String(p) }, "aria-pressed": String(p === fPage), title: `${n} of these 100 are in the game` }, `${p * 100 + 1}–${p * 100 + 100}`);
+  }));
+  const from = fPage * 100, page = FREQ.slice(from, from + 100);
+  const have = page.filter(inGame), known = have.filter(w => status(w) === 2).length, learning = have.filter(w => status(w) === 1).length;
+  $("#f-summary").textContent = `${have.length} of these 100 are in the game. You know ${known} and are learning ${learning}.`;
+  $("#f-list").replaceChildren(...page.map((w, i) => {
+    const there = inGame(w), who = there ? [...sources.get(w)] : [];
+    const where = !there ? "not in the game yet" : who.length ? (who.length > 3 ? `${who.slice(0, 3).join(", ")} +${who.length - 3}` : who.join(", ")) : "in the game";
+    return h("li", { class: "f-row" + (there ? "" : " missing") },
+      h("span", { class: "f-rank" }, String(from + i + 1)),
+      there ? wordBtn(w, "w") : h("span", { class: "f-missing", lang: "pl" }, w),
+      h("span", { class: "f-gloss" }, there ? meaningOf(w).gloss : ""),
+      h("span", { class: "f-where" }, where));
+  }));
+}
 function renderVocab() {
+  $("#v-mine").hidden = vTab !== "mine"; $("#v-freq").hidden = vTab !== "freq";
+  if (vTab === "freq") return renderFreq();
   const c = counts(), q = $("#v-search").value.trim().toLowerCase();
   const bar = $("#v-bar").children, tot = c.total || 1;
   bar[0].style.width = (c.known / tot * 100) + "%"; bar[1].style.width = (c.learning / tot * 100) + "%"; bar[2].style.width = (c.fresh / tot * 100) + "%";
@@ -1807,11 +2152,11 @@ function renderVocab() {
   const met = Object.keys(st.words).filter(k => lookup(k) && ((st.words[k].seen || 0) > 0 || status(k) > 0));
   const list = met.filter(k => vFilter === "all" || String(status(k)) === vFilter)
     .filter(k => !q || k.includes(q) || meaningOf(k).gloss.toLowerCase().includes(q))
-    .sort((a, b) => a.localeCompare(b, "pl"));
+    .sort(byFrequency);
   const ul = $("#v-list");
   ul.replaceChildren(...list.map(l => {
     const s = status(l);
-    return h("li", { class: "v-row" }, wordBtn(displayWord(l), "w"), h("span", { class: "v-gloss" }, meaningOf(l).gloss),
+    return h("li", { class: "v-row" }, wordBtn(displayWord(l), "w"), h("span", { class: "v-gloss" }, FREQ_RANK.has(l) ? h("b", { class: "v-rank", title: "How common it is: 1 is the most common word in Polish" }, `#${FREQ_RANK.get(l)}`) : null, meaningOf(l).gloss),
       h("span", { class: "v-dots", role: "group", "aria-label": `Sort ${l}` }, [0, 1, 2].map(k =>
         h("button", { type: "button", class: "dot", dataset: { s: String(k) }, "aria-pressed": String(s === k), "aria-label": STATUS_NAMES[k], title: STATUS_NAMES[k], onclick: () => setStatus(l, k) }))));
   }));
@@ -1840,7 +2185,7 @@ $$("[data-close]").forEach(b => b.addEventListener("click", () => { const id = b
 // ===================================================================
 let rv = null;
 function openReview(kind) {
-  const deck = shuffle(Object.keys(st.words).filter(k => lookup(k) && (kind === "learning" ? status(k) === 1 : status(k) === 0 && (st.words[k].seen || 0) > 0)));
+  const deck = (Object.keys(st.words).filter(k => lookup(k) && (kind === "learning" ? status(k) === 1 : status(k) === 0 && (st.words[k].seen || 0) > 0))).sort(byFrequency); // most common first
   if (!deck.length) { toast(kind === "learning" ? "No orange words to review yet. Mark some words as Learning first." : "No new words to sort right now."); return; }
   rv = { deck, i: 0, shown: false, kind, known: 0 };
   closeCard(); toggleVocab(false); $("#review").hidden = false; renderReview();
@@ -2182,6 +2527,9 @@ const SIDES = {
   W: { rot: Math.PI / 2, at: (a, d) => [-27 + d, a] },
   E: { rot: -Math.PI / 2, at: (a, d) => [27 - d, a] },
 };
+// the park east of the square, reached by a street through the east row
+const PARK = { x0: 36, x1: 66, z0: -40, z1: 6, gate: [Infinity, -Infinity], pond: { x: 52, z: -20, rx: 7.2, rz: 5.2 } };
+const PARK_GATE_WANT = [-19, -13];
 const SHOP_WANT = { N: [["apteka", -16], ["księgarnia", 16]], S: [["kwiaciarnia", -12], ["poczta", 12]], W: [["piekarnia", -6]], E: [["kawiarnia", 6]] };
 function buildRows() {
   let seed = 11;
@@ -2198,6 +2546,11 @@ function buildRows() {
       best.shop = name; SHOP[name] = { side, a: best.a, w: best.w };
     }
     houses.forEach((hh, i) => {
+      // the east row leaves a gap for the street to the park
+      if (side === "E" && hh.a + hh.w / 2 > PARK_GATE_WANT[0] && hh.a - hh.w / 2 < PARK_GATE_WANT[1]) {
+        PARK.gate[0] = Math.min(PARK.gate[0], hh.a - hh.w / 2); PARK.gate[1] = Math.max(PARK.gate[1], hh.a + hh.w / 2);
+        return;
+      }
       const height = 9 + R() * 5, type = ["tri", "step", "round", "flat", "tri", "round"][Math.floor(R() * 6)];
       const g = makeHouse({ w: hh.w, h: height, d: 9, color: PALETTE[Math.floor(R() * PALETTE.length)], roof: ROOFS[Math.floor(R() * ROOFS.length)], type, shop: hh.shop, R });
       const [x, z] = def.at(hh.a, 0); g.position.set(x, 0, z); g.rotation.y = def.rot; scene.add(g);
@@ -2208,7 +2561,8 @@ function buildRows() {
       }
     });
   }
-  addBox(-40, 40, -40, -27); addBox(-40, 40, 27, 40); addBox(-40, -27, -40, 40); addBox(27, 40, -40, 40);
+  addBox(-36, 36, -40, -27); addBox(-36, 36, 27, 40); addBox(-40, -27, -40, 40);
+  addBox(27, 36, -40, PARK.gate[0]); addBox(27, 36, PARK.gate[1], 40);
   for (const [x, z] of [[-31.5, -31.5], [31.5, -31.5], [-31.5, 31.5], [31.5, 31.5]]) {
     const b = mesh(new THREE.BoxGeometry(9, 12, 9), M(PALETTE[(x + z + 80) % PALETTE.length | 0]), x, 6, z); scene.add(b);
     const r = mesh(new THREE.ConeGeometry(Math.SQRT1_2, 1, 4), M("#9A4A3A")); r.geometry.rotateY(Math.PI / 4); r.scale.set(9.4, 3, 9.4); r.position.set(x, 13.5, z); scene.add(r);
@@ -2219,6 +2573,7 @@ function buildBackdrop() {
   for (let i = 0; i < 34; i++) {
     const ang = R() * Math.PI * 2, dist = 46 + R() * 40, x = Math.cos(ang) * dist, z = Math.sin(ang) * dist;
     if (x > -24 && x < 4 && z < -36 && z > -72) continue;
+    if (x > 28 && x < 74 && z > -48 && z < 14) continue; // the park
     const w = 6 + R() * 8, d = 6 + R() * 8, hgt = 8 + R() * 12;
     const g = new THREE.Group();
     g.add(mesh(new THREE.BoxGeometry(w, hgt, d), M(mats[i % mats.length]), 0, hgt / 2, 0, false));
@@ -2428,7 +2783,7 @@ function buildShops() {
   addWordLabel({ word: "piaskownica", anchor: sb, y: 0.9, max: 8, kind: "small" });
   HOMES.lalka = new THREE.Vector3(14.7, 0.32, 15.4); HOMES.miś = new THREE.Vector3(17.9, 0.3, 12.2); HOMES.latawiec = new THREE.Vector3(18.6, 0.2, 17.0);
   HOMES.piłka = new THREE.Vector3(2.5, 0.28, -19.5); HOMES.okulary = new THREE.Vector3(-2.6, 0.92, 3.9); HOMES.klucze = new THREE.Vector3(-19.6, 0.12, 14.6);
-  buildPainter(); buildPost(); buildBookstand(); buildClothesStall(); buildHopscotch();
+  buildPainter(); buildPost(); buildBookstand(); buildClothesStall(); buildHopscotch(); buildPark();
   HOMES.skakanka = new THREE.Vector3(-1.5, 0.1, 10.5); HOMES.nuty = new THREE.Vector3(-20.6, 0.1, 2.9);
   HOMES.torba = new THREE.Vector3(16.4, 0.25, 17.2); HOMES.kość = new THREE.Vector3(-20.7, 0.12, 20.7); HOMES.pędzel = new THREE.Vector3(-7.9, 0.12, -8.0);
 }
@@ -2486,6 +2841,69 @@ function buildPost() {
   box.add(mesh(new THREE.BoxGeometry(0.5, 0.06, 0.38), M("#A82A24"), 0, 1.44, 0));
   addCircle(p + 5.3, 25.6, 0.35);
   addWordLabel({ word: "skrzynka", anchor: box, y: 1.9, max: 7, kind: "small" });
+}
+function buildPark() {
+  const { x0, x1, z0, z1, gate, pond } = PARK, gm = (gate[0] + gate[1]) / 2;
+  const grass = new THREE.MeshStandardMaterial({ roughness: 1, polygonOffset: true, polygonOffsetFactor: -1, map: canvasTex(256, 256, (g, W, H) => {
+    g.fillStyle = "#6E9A4A"; g.fillRect(0, 0, W, H);
+    const R = rng(77); for (let i = 0; i < 2600; i++) { g.fillStyle = ["#5F8C3F", "#7DAA55", "#6A9447", "#88B463"][i % 4]; g.fillRect(R() * W, R() * H, 2, 4); }
+  }, 8) });
+  const lawn = mesh(new THREE.PlaneGeometry(x1 - x0, z1 - z0), grass, (x0 + x1) / 2, 0.01, (z0 + z1) / 2, false); lawn.rotation.x = -Math.PI / 2; scene.add(lawn);
+  const gravel = new THREE.MeshStandardMaterial({ map: cobbleTex("#D9CBAE", "#B7A889", 31, 6), roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 });
+  for (const [x, z, w, d] of [[(x0 + x1) / 2 - 3, gm, x1 - x0 - 6, 2.6], [44, (z0 + z1) / 2, 2.6, z1 - z0 - 4]]) {
+    const p = mesh(new THREE.PlaneGeometry(w, d), gravel, x, 0.02, z, false); p.rotation.x = -Math.PI / 2; scene.add(p);
+  }
+  // the street from the square
+  const st = mesh(new THREE.PlaneGeometry(10, gate[1] - gate[0]), gravel, 31.5, 0.015, gm, false); st.rotation.x = -Math.PI / 2; scene.add(st);
+  addWordLabel({ word: "ścieżka", pos: new THREE.Vector3(50, 0.6, gm), max: 6, kind: "small" });
+  addWordLabel({ word: "trawa", pos: new THREE.Vector3(40, 0.5, -8), max: 6, kind: "small" });
+  // hedges all round, open where the street comes in
+  const hedge = M("#3F6E35");
+  const hedgeBox = (ax, bx, az, bz) => { scene.add(mesh(new THREE.BoxGeometry(bx - ax, 1.3, bz - az), hedge, (ax + bx) / 2, 0.65, (az + bz) / 2)); addBox(ax, bx, az, bz); };
+  hedgeBox(x0, x0 + 0.8, z0, gate[0]); hedgeBox(x0, x0 + 0.8, gate[1], z1); hedgeBox(x0, x1, z0, z0 + 0.8); hedgeBox(x0, x1, z1 - 0.8, z1); hedgeBox(x1 - 0.8, x1, z0, z1);
+  // the gate sign
+  const post = new THREE.Group(); post.position.set(x0 + 1.4, 0, gate[0] + 0.6); scene.add(post);
+  post.add(mesh(new THREE.CylinderGeometry(0.07, 0.07, 2.4, 8), M(IRON), 0, 1.2, 0));
+  const wood = M("#4A3020");
+  // lettering on the west face, towards the street you arrive by
+  const board = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.5, 1.4), [wood, new THREE.MeshStandardMaterial({ map: signTex("PARK", "#3F6E35", "#FFFFFF") }), wood, wood, wood, wood]);
+  board.position.set(0, 2.2, 0); post.add(board);
+  addWordLabel({ word: "park", pos: new THREE.Vector3(x0 + 1.4, 2.9, gate[0] + 0.6), max: 24, kind: "sign" });
+  // the pond, with ducks
+  const shore = mesh(new THREE.CircleGeometry(1, 40), M("#CDBE95"), pond.x, 0.025, pond.z, false); shore.scale.set(pond.rx + 0.7, pond.rz + 0.7, 1); shore.rotation.x = -Math.PI / 2; scene.add(shore);
+  const water = mesh(new THREE.CircleGeometry(1, 40), new THREE.MeshStandardMaterial({ color: 0x4f97c4, roughness: 0.15, metalness: 0.1 }), pond.x, 0.04, pond.z, false);
+  water.scale.set(pond.rx, pond.rz, 1); water.rotation.x = -Math.PI / 2; scene.add(water);
+  addCircle(pond.x, pond.z, 4.9); addCircle(pond.x - 4.5, pond.z, 4.2); addCircle(pond.x + 4.5, pond.z, 4.2);
+  addWordLabel({ word: "staw", pos: new THREE.Vector3(pond.x, 1.0, pond.z), max: 16 });
+  for (let i = 0; i < 4; i++) {
+    const d = new THREE.Group(), body = mesh(new THREE.SphereGeometry(0.2, 10, 8), M(i ? "#8A6A45" : "#E9E4D6"), 0, 0.12, 0, false);
+    body.scale.set(0.8, 0.6, 1.3); d.add(body);
+    d.add(mesh(new THREE.SphereGeometry(0.11, 8, 6), M(i ? "#2F6B4F" : "#E9E4D6"), 0, 0.3, 0.2, false));
+    const beak = mesh(new THREE.ConeGeometry(0.04, 0.12, 6), M("#E9A23B"), 0, 0.28, 0.34, false); beak.rotation.x = Math.PI / 2; d.add(beak);
+    scene.add(d); ducks.push({ g: d, a: i * 1.6, speed: 0.12 + i * 0.03 });
+  }
+  addWordLabel({ word: "kaczka", anchor: ducks[0].g, y: 0.75, max: 12, kind: "small" });
+  // benches, trees, lamps, bins
+  bench(40.2, -33, Math.PI / 2); bench(47, -13.6, Math.PI); bench(57, -28, 0); bench(60, gm + 2.4, Math.PI);
+  [[40, -37], [48, -37], [56, -37], [63, -37], [63, -27], [62, -9], [63, 2], [54, 2.5], [40.5, 2], [39.5, -26], [48, -31], [58, -32.5], [51, -6], [39.5, -4]]
+    .forEach(([x, z], i) => tree(x, z, 0.9 + (i % 3) * 0.12));
+  [[42.3, gm - 2.2], [56, gm - 2.2], [42.3, -28], [42.3, 0]].forEach(([x, z]) => lamp(x, z));
+  for (const [x, z] of [[45.8, gm + 2], [53, -12.6]]) {
+    const b = new THREE.Group(); b.position.set(x, 0, z); scene.add(b);
+    b.add(mesh(new THREE.CylinderGeometry(0.26, 0.22, 0.75, 12, 1, true), M("#2F5A3A", { ds: true }), 0, 0.38, 0));
+    addCircle(x, z, 0.3); addWordLabel({ word: "kosz", anchor: b, y: 1.1, max: 5, kind: "small" });
+  }
+  HOMES.telefon = new THREE.Vector3(pond.x + 9.0, 0.08, pond.z + 1.6);
+  HOMES.deskorolka = new THREE.Vector3(63.3, 0.08, -10.4);
+}
+const ducks = [];
+function updateDucks(dt) {
+  for (const d of ducks) {
+    d.a += dt * d.speed;
+    const { x, z, rx, rz } = PARK.pond, x1 = x + Math.cos(d.a) * (rx - 1.6), z1 = z + Math.sin(d.a) * (rz - 1.4);
+    d.g.position.set(x1, 0.04 + Math.sin(d.a * 9) * 0.01, z1);
+    d.g.rotation.y = Math.atan2(-Math.sin(d.a) * (rx - 1.6), Math.cos(d.a) * (rz - 1.4));
+  }
 }
 function buildClothesStall() {
   const g = new THREE.Group(); g.position.set(-15.5, 0, -11.2); scene.add(g);
@@ -2672,6 +3090,10 @@ const LOOKS = {
   zuzia: { shirt: "#E86FA0", pants: "#F2EEE6", hair: "#C8913A", pigtails: true, scale: 0.66, skirt: "#E86FA0" },
   staszek: { shirt: "#7A2E2E", pants: "#2C2F3A", hair: "#3B2A20", hat: "cap", hatColor: "#2B2B2B", moustache: "#3B2A20", accordion: true },
   bogdan: { shirt: "#E8E0D0", apron: "#3A6EA5", hair: "#5A4636", moustache: "#5A4636" },
+  ania: { shirt: "#D0605E", pants: "#3C6FB0", hair: "#C8913A", ponytail: true },
+  wieslaw: { shirt: "#4F6B3A", pants: "#3B4232", hair: "#9A9A9A", hat: "cap", hatColor: "#3D5A2E", moustache: "#8A8A8A" },
+  tomek: { shirt: "#E04A4A", pants: "#2C2F3A", hair: "#6B3F1F", hat: "kidcap", hatColor: "#2B2B2B", scale: 0.8 },
+  piotr: { shirt: "#F2F2EE", pants: "#2C3446", hair: "#2B1D14", flowers: true },
   krysia: { shirt: "#8C5A8A", pants: "#4A4A52", hair: "#BDBDBD", hat: "scarf", hatColor: "#3F6FA0", glasses: true, skirt: "#4A3A5A" },
 };
 const npcObjs = {};
@@ -2679,10 +3101,15 @@ function placeNPCs() {
   const b = SHOP.piekarnia.a, c = SHOP.kawiarnia.a, k = SHOP.kwiaciarnia.a;
   const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0],
     ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0],
-    zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0] };
+    zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0],
+    wieslaw: [39.2, (PARK.gate[0] + PARK.gate[1]) / 2 + 2.6], ania: [46.2, -15.0], tomek: [57.5, -5.0], piotr: [42.2, -33.0] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
     const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);
+    if (LOOKS[id]?.flowers) { // Piotr's bouquet for Marta
+      const hand = g.userData.parts.forearms?.[1] ?? g.userData.parts.arms[1];
+      for (let k = 0; k < 3; k++) { const f = itemModel(["róża", "lilia", "stokrotka"][k]); f.position.set(-0.03 + k * 0.03, -0.32, -0.04); f.rotation.x = Math.PI; hand.add(f); }
+    }
     const y = N.cat ? 0.4 : 0;
     g.position.set(x, y, z);
     const base = Math.atan2(0 - x, 8 - z);
@@ -2758,6 +3185,14 @@ function itemModel(id) {
     case "kość":
       add(new THREE.CylinderGeometry(0.025, 0.025, 0.2, 8), "#F2EDE0").rotation.z = Math.PI / 2;
       for (const x of [-0.1, 0.1]) for (const z of [-0.022, 0.022]) add(new THREE.SphereGeometry(0.035, 8, 6), "#F2EDE0", x, 0, z);
+      break;
+    case "telefon":
+      add(new THREE.BoxGeometry(0.09, 0.012, 0.17), "#1E1E22");
+      add(new THREE.BoxGeometry(0.08, 0.004, 0.15), "#4A6FA5", 0, 0.008, 0, { e: 0x20406a, ei: 0.6 });
+      break;
+    case "deskorolka":
+      add(new THREE.BoxGeometry(0.2, 0.02, 0.62), "#C8352E");
+      for (const z of [-0.2, 0.2]) for (const x of [-0.07, 0.07]) add(new THREE.CylinderGeometry(0.03, 0.03, 0.03, 10), "#F2EEE6", x, -0.035, z).rotation.z = Math.PI / 2;
       break;
     case "skakanka":
       add(new THREE.TorusGeometry(0.17, 0.008, 4, 28, Math.PI * 1.6), "#D33A3A").rotation.x = Math.PI / 2;
@@ -2940,7 +3375,7 @@ function collide(p, r) {
       if (d < m && d > 1e-6) { p.x = c.x + dx / d * m; p.z = c.z + dz / d * m; }
     }
   }
-  p.x = clamp(p.x, -26.6, 26.6); p.z = clamp(p.z, -26.6, 26.6);
+  p.x = clamp(p.x, -26.6, PARK.x1 - 0.6); p.z = clamp(p.z, PARK.z0 + 0.6, 26.6); // houses and hedges do the rest
 }
 const keys = new Set();
 const stick = { x: 0, y: 0, id: null };
@@ -3125,10 +3560,14 @@ function drawMinimap() {
   const css = mm.clientWidth; if (!css) return;
   const dpr = Math.min(2, devicePixelRatio || 1), S = Math.round(css * dpr);
   if (mm.width !== S) { mm.width = S; mm.height = S; }
-  const g = mmc, sc = S / 2 / 34, X = x => S / 2 + x * sc, Z = z => S / 2 + z * sc;
+  // centred on you, about 70 m across, so the park shows up as you walk to it
+  const g = mmc, sc = S / 2 / 36, X = x => S / 2 + (x - player.pos.x) * sc, Z = z => S / 2 + (z - player.pos.z) * sc;
   g.clearRect(0, 0, S, S); g.save(); g.beginPath(); g.arc(S / 2, S / 2, S / 2, 0, Math.PI * 2); g.clip();
   g.fillStyle = palette.rim; g.globalAlpha = 0.28; g.fillRect(0, 0, S, S); g.globalAlpha = 1;
   g.fillStyle = palette.glaze; g.fillRect(X(-27), Z(-27), 54 * sc, 54 * sc);
+  g.fillRect(X(27), Z(PARK.gate[0]), 9 * sc, (PARK.gate[1] - PARK.gate[0]) * sc);
+  g.fillStyle = "#7DAA55"; g.fillRect(X(PARK.x0), Z(PARK.z0), (PARK.x1 - PARK.x0) * sc, (PARK.z1 - PARK.z0) * sc);
+  g.beginPath(); g.ellipse(X(PARK.pond.x), Z(PARK.pond.z), PARK.pond.rx * sc, PARK.pond.rz * sc, 0, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
   g.fillStyle = palette["glaze-2"]; g.fillRect(X(-7.2), Z(-14.2), 14.4 * sc, 9.4 * sc); g.fillRect(X(-16.3), Z(1.1), 4.6 * sc, 1.8 * sc);
   g.beginPath(); g.arc(X(0), Z(6), 3.4 * sc, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
   for (const o of Object.values(npcObjs)) {
@@ -3144,6 +3583,7 @@ function drawMinimap() {
 // theme: daytime for light, dusk with lit lamps for dark
 // ===================================================================
 function isDark() { const t = document.documentElement.dataset.theme; return t === "dark" ? true : t === "light" ? false : matchMedia("(prefers-color-scheme: dark)").matches; }
+const sunOffset = new THREE.Vector3(32, 48, 22);
 function applySceneTheme() {
   const dark = isDark();
   skyMat.uniforms.top.value.set(dark ? 0x16224f : 0x5f9ee6);
@@ -3151,7 +3591,7 @@ function applySceneTheme() {
   skyMat.uniforms.bottom.value.set(dark ? 0x3a3550 : 0xb8c4cf);
   scene.fog.color.set(dark ? 0x6a5a78 : 0xdde9f5);
   hemi.color.set(dark ? 0x7d86c4 : 0xcfe3ff); hemi.groundColor.set(dark ? 0x3a2e33 : 0x8c7a5e); hemi.intensity = dark ? 0.9 : 1.5;
-  sun.color.set(dark ? 0xffa36b : 0xfff1d6); sun.intensity = dark ? 1.25 : 2.6; sun.position.set(dark ? -40 : 32, dark ? 22 : 48, dark ? 18 : 22);
+  sun.color.set(dark ? 0xffa36b : 0xfff1d6); sun.intensity = dark ? 1.25 : 2.6; sunOffset.set(dark ? -40 : 32, dark ? 22 : 48, dark ? 18 : 22);
   lampGlass.emissiveIntensity = dark ? 2.2 : 0.15;
   lampLights.forEach(l => (l.intensity = dark ? 7 : 0));
   renderer.toneMappingExposure = dark ? 1.15 : 1.05;
@@ -3244,7 +3684,8 @@ let last = performance.now(), frame = 0, T = 0;
 function loop(now) {
   requestAnimationFrame(loop);
   const dt = Math.min(0.05, (now - last) / 1000); last = now; frame++; T += dt;
-  updatePlayer(dt, T); updateNPCs(dt, T); updateItems(dt, T); updatePigeons(dt, T); updateFountain(dt);
+  updatePlayer(dt, T); updateNPCs(dt, T); updateDucks(dt);
+  sun.target.position.set(player.pos.x, 0, player.pos.z); sun.position.copy(sun.target.position).add(sunOffset); // shadows follow you into the park updateItems(dt, T); updatePigeons(dt, T); updateFountain(dt);
   for (const c of clouds) { c.position.x += dt * 1.2; if (c.position.x > 170) c.position.x = -170; }
   updateCamera(dt, T);
   sky.position.copy(camera.position);
@@ -3274,5 +3715,5 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { modelledPeople: !!PEOPLE, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
+window.__rynek = { modelledPeople: !!PEOPLE, park: PARK, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
 </script>

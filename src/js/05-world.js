@@ -262,6 +262,9 @@ const SIDES = {
   W: { rot: Math.PI / 2, at: (a, d) => [-27 + d, a] },
   E: { rot: -Math.PI / 2, at: (a, d) => [27 - d, a] },
 };
+// the park east of the square, reached by a street through the east row
+const PARK = { x0: 36, x1: 66, z0: -40, z1: 6, gate: [Infinity, -Infinity], pond: { x: 52, z: -20, rx: 7.2, rz: 5.2 } };
+const PARK_GATE_WANT = [-19, -13];
 const SHOP_WANT = { N: [["apteka", -16], ["księgarnia", 16]], S: [["kwiaciarnia", -12], ["poczta", 12]], W: [["piekarnia", -6]], E: [["kawiarnia", 6]] };
 function buildRows() {
   let seed = 11;
@@ -278,6 +281,11 @@ function buildRows() {
       best.shop = name; SHOP[name] = { side, a: best.a, w: best.w };
     }
     houses.forEach((hh, i) => {
+      // the east row leaves a gap for the street to the park
+      if (side === "E" && hh.a + hh.w / 2 > PARK_GATE_WANT[0] && hh.a - hh.w / 2 < PARK_GATE_WANT[1]) {
+        PARK.gate[0] = Math.min(PARK.gate[0], hh.a - hh.w / 2); PARK.gate[1] = Math.max(PARK.gate[1], hh.a + hh.w / 2);
+        return;
+      }
       const height = 9 + R() * 5, type = ["tri", "step", "round", "flat", "tri", "round"][Math.floor(R() * 6)];
       const g = makeHouse({ w: hh.w, h: height, d: 9, color: PALETTE[Math.floor(R() * PALETTE.length)], roof: ROOFS[Math.floor(R() * ROOFS.length)], type, shop: hh.shop, R });
       const [x, z] = def.at(hh.a, 0); g.position.set(x, 0, z); g.rotation.y = def.rot; scene.add(g);
@@ -288,7 +296,8 @@ function buildRows() {
       }
     });
   }
-  addBox(-40, 40, -40, -27); addBox(-40, 40, 27, 40); addBox(-40, -27, -40, 40); addBox(27, 40, -40, 40);
+  addBox(-36, 36, -40, -27); addBox(-36, 36, 27, 40); addBox(-40, -27, -40, 40);
+  addBox(27, 36, -40, PARK.gate[0]); addBox(27, 36, PARK.gate[1], 40);
   for (const [x, z] of [[-31.5, -31.5], [31.5, -31.5], [-31.5, 31.5], [31.5, 31.5]]) {
     const b = mesh(new THREE.BoxGeometry(9, 12, 9), M(PALETTE[(x + z + 80) % PALETTE.length | 0]), x, 6, z); scene.add(b);
     const r = mesh(new THREE.ConeGeometry(Math.SQRT1_2, 1, 4), M("#9A4A3A")); r.geometry.rotateY(Math.PI / 4); r.scale.set(9.4, 3, 9.4); r.position.set(x, 13.5, z); scene.add(r);
@@ -299,6 +308,7 @@ function buildBackdrop() {
   for (let i = 0; i < 34; i++) {
     const ang = R() * Math.PI * 2, dist = 46 + R() * 40, x = Math.cos(ang) * dist, z = Math.sin(ang) * dist;
     if (x > -24 && x < 4 && z < -36 && z > -72) continue;
+    if (x > 28 && x < 74 && z > -48 && z < 14) continue; // the park
     const w = 6 + R() * 8, d = 6 + R() * 8, hgt = 8 + R() * 12;
     const g = new THREE.Group();
     g.add(mesh(new THREE.BoxGeometry(w, hgt, d), M(mats[i % mats.length]), 0, hgt / 2, 0, false));

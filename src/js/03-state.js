@@ -14,7 +14,7 @@ function normalize(d) {
   }
   if (d.npc && typeof d.npc === "object") for (const id of NPC_ORDER) if (d.npc[id]) {
     const n = d.npc[id];
-    s.npc[id] = { stage: ["new", "active", "done"].includes(n.stage) ? n.stage : "new", order: ITEMS[n.order] ? n.order : null, tmpl: +n.tmpl || 0, thanked: !!n.thanked };
+    s.npc[id] = { stage: ["new", "active", "done"].includes(n.stage) ? n.stage : "new", order: ITEMS[n.order] ? n.order : null, tmpl: +n.tmpl || 0, thanked: !!n.thanked, chat: Math.max(0, +n.chat || 0) };
   }
   s.coins = Math.max(0, +d.coins || 0);
   // the bag replaced carrying one thing in your hands

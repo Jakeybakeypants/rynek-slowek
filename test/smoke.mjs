@@ -188,9 +188,26 @@ await press("Escape");
 const xp = await state();
 check(xp.xp > 100 && /Poziom [2-9]/.test(await R(() => document.querySelector("#xp-level").textContent)), `XP adds up and levels rise (${xp.xp} XP)`);
 
+// walk out of the square through the new street and into the park
+await R(() => { const r = window.__rynek; r.player.pos.set(24, 0, (r.park.gate[0] + r.park.gate[1]) / 2); r.cam.yaw = -Math.PI / 2; });
+await page.keyboard.down("ShiftLeft"); await page.keyboard.down("KeyW");
+await page.waitForFunction(() => window.__rynek.player.pos.x > 38, null, { timeout: 90000 }).catch(() => {});
+await page.keyboard.up("KeyW"); await page.keyboard.up("ShiftLeft");
+check((await R(() => window.__rynek.player.pos.x)) > 38, "you can walk from the square into the park");
+
+// Wiesław has a different conversation each time
+const [wx, wz] = await npcAt("wieslaw", 1.6, 0);
+const chat = async () => { await goTo(wx, wz, "Wiesław"); await press(); return (await talkThrough())[0]; };
+const firstW = await chat(), secondW = await chat(), thirdW = await chat();
+check(firstW.startsWith("Dzień dobry") && secondW === "Ludzie nigdy nie słuchają." && thirdW.startsWith("Kiedy byłem młody"), "Wiesław says hello, then something new each visit");
+
 await press("v");
 await page.waitForFunction(() => !document.querySelector("#vocab").hidden);
 check((await R(() => document.querySelectorAll("#v-list .v-row").length)) > 20, "the word list shows the words met so far");
+await page.click('#v-tabs button[data-tab="freq"]');
+check(/^9\d of these 100 are in the game/.test(await R(() => document.querySelector("#f-summary").textContent)), "the Top 1000 tab shows how many of the top 100 the game teaches");
+check((await page.$$("#f-list .f-row")).length === 100, "each page lists 100 words");
+await page.click('#v-tabs button[data-tab="mine"]');
 await shot("4-word-list");
 await press("Escape");
 check((await R(() => document.documentElement.scrollWidth <= innerWidth)), "no sideways scroll");
