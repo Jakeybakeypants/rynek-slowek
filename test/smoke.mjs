@@ -191,6 +191,22 @@ await press("Escape");
 const xp = await state();
 check(xp.xp > 100 && /Poziom [2-9]/.test(await R(() => document.querySelector("#xp-level").textContent)), `XP adds up and levels rise (${xp.xp} XP)`);
 
+// the café terrace: Michał's menu blew away to the fountain; Zbigniew talks about something new each visit
+const [wx2, wz2] = await npcAt("michal", -1.3, 0);
+await goTo(wx2, wz2, "Michał"); await press(); await talkThrough();
+const menu = await R(() => { const h = window.__rynek.HOMES.karta; return [h.x + 1, h.z]; });
+await goTo(menu[0], menu[1], "karta"); await press();
+check((await state()).bag.includes("karta"), "picks up the menu (karta) by the fountain");
+const coinsM = (await state()).coins;
+await goTo(wx2, wz2, "Michał"); await press();
+const thanks = await talkThrough(), sM = await state();
+check(thanks[0] === "Oto karta! Dziękuję bardzo." && sM.npc.michal.stage === "done" && sM.coins === coinsM + 20, "Michał gets his menu back (+20 zł)");
+const [zbx, zbz] = await npcAt("zbigniew", 0, 1.2);
+const chatZ = async () => { await goTo(zbx, zbz, "Zbigniew"); await press(); return (await talkThrough())[0]; };
+const z1 = await chatZ(), z2 = await chatZ();
+check(z1.startsWith("Dzień dobry") && z2 === "Świat się zmienia, a ja nie.", "Zbigniew says hello, then chats");
+await shot("5-terrace");
+
 // walk out of the square through the new street and into the park
 await R(() => { const r = window.__rynek; r.player.pos.set(24, 0, (r.park.gate[0] + r.park.gate[1]) / 2); r.cam.yaw = -Math.PI / 2; });
 await page.keyboard.down("ShiftLeft"); await page.keyboard.down("KeyW");

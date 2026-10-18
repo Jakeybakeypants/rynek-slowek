@@ -45,13 +45,21 @@ The park is east of the square, through the street between the houses: lawns, pa
 | Pani Teresa, Wiesław's wife | bench at the south end, knitting | (none) | chats |
 | Marta | east hedge, late again | (none: she's looking for Piotr) | chats |
 
+The café has a terrace in front of it: a wooden deck edged with flower boxes, umbrella tables, a chalkboard menu and string lights that come on at dusk. Three regulars there talk in the next most common words, roughly ranks 300 to 600.
+
+| Who | Where | Errand | Then |
+| --- | --- | --- | --- |
+| Michał, the waiter | by the café counter | find the menu (`karta`) the wind blew to the fountain | chats |
+| Pan Zbigniew | terrace table, reading the paper | (none) | talks about the old days: `Za moich czasów wszystko było inaczej.` |
+| Kasia | terrace table, with a laptop | (none) | talks about work and her phone |
+
 Repeat orders come in several phrasings that need different cases: `Poproszę gruszkę` (accusative), `Szukam gruszki` (genitive), `Gdzie jest miś?` (nominative). Ewa's paint orders put an adjective in front, so the colour changes too: `Poproszę czerwoną farbę`, `Potrzebuję niebieskiej farby`. Bring the wrong thing and they tell you what it actually is: `Nie, to nie to. To jest cytryna.` Orders favour words you haven't marked green yet.
 
-You carry things in a bag that holds six. Errands, sums, meeting people, meeting new words and sorting them earn XP, shown as `Poziom` (level) at the top of the task panel. Other things: about 800 word forms, numbers from one to ten, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
+You carry things in a bag that holds six. Errands, sums, meeting people, meeting new words and sorting them earn XP, shown as `Poziom` (level) at the top of the task panel. Other things: about 1,100 word forms, numbers from one to ten, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
 
 ## The most common words first
 
-The word list (V) has two tabs. **Your words** lists every word you have met, most common first, with its rank. **Top 1000** is the thousand most common written forms of Polish, in pages of 100: each row shows the rank, the word, what it means, and who says it in the game, or "not in the game yet". Reviews also go most common first. At the moment all of the top 200 are in the game, 297 of the top 300 (the three left out are two swear words and a slangy `tą`), and 421 of the top 1000.
+The word list (V) has two tabs. **Your words** lists every word you have met, most common first, with its rank. **Top 1000** is the thousand most common written forms of Polish, in pages of 100: each row shows the rank, the word, what it means, and who says it in the game, or "not in the game yet". Reviews also go most common first. At the moment all of the top 200 are in the game, 297 of the top 300 (the three left out are two swear words and a slangy `tą`), 473 of the top 500, and 621 of the top 1000. Swear words, violent words and English leftovers in the subtitles (`the`, `sir`) are left out on purpose.
 
 The ranks come from [FrequencyWords](https://github.com/hermitdave/FrequencyWords) by Hermit Dave (Polish, OpenSubtitles 2018, CC BY-SA 4.0), which counts words in film and TV subtitles. That is close to everyday speech, and it counts each written form separately, which suits learning form by form. `tools/frequency.mjs` downloads the list and writes `src/js/01-frequency.js`; don't edit that file by hand.
 

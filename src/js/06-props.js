@@ -86,7 +86,7 @@ function buildShops() {
   counter(25.4, c + 3.1, true, 3.6, "#2F6B4F");
   ["kawa", "herbata", "woda", "sok", "mleko"].forEach((id, i) => { HOMES[id] = new THREE.Vector3(25.4, 1.12, c + 3.1 + (i - 2) * 0.7); });
   addBox(24.9, 25.9, c + 1.3, c + 4.9);
-  table(20.0, c - 3.2, "label"); table(19.6, c + 2.2, true); table(16.8, c - 0.4, true, true);
+  buildTerrace(c);
   const bucket = M("#9AA6AE", { m: 0.4, r: 0.5 });
   ["róża", "lilia", "stokrotka", "orchidea"].forEach((id, i) => {
     const x = k + 1.6 + i * 1.0;
@@ -107,6 +107,67 @@ function buildShops() {
   buildPainter(); buildPost(); buildBookstand(); buildClothesStall(); buildHopscotch(); buildPark();
   HOMES.skakanka = new THREE.Vector3(-1.5, 0.1, 10.5); HOMES.nuty = new THREE.Vector3(-20.6, 0.1, 2.9);
   HOMES.torba = new THREE.Vector3(16.4, 0.25, 17.2); HOMES.kość = new THREE.Vector3(-20.7, 0.12, 20.7); HOMES.pędzel = new THREE.Vector3(-7.9, 0.12, -8.0);
+}
+// the café terrace: a wooden deck in front of the café, edged with planters, with umbrella tables and string lights
+const TERRACE = { x0: 15.2, x1: 23.6 };
+function buildTerrace(c) {
+  const { x0, x1 } = TERRACE, z0 = c - 5.2, z1 = c + 5.2, cx = (x0 + x1) / 2;
+  Object.assign(TERRACE, { z0, z1 });
+  const planks = new THREE.MeshStandardMaterial({ roughness: 0.9, map: canvasTex(256, 256, (g, W, H) => {
+    for (let i = 0; i < 8; i++) { g.fillStyle = ["#A87A4F", "#9C6F46", "#B08356", "#A2744A"][i % 4]; g.fillRect(i * 32, 0, 32, H); g.fillStyle = "rgba(60,35,15,.45)"; g.fillRect(i * 32, 0, 2, H); }
+    g.fillStyle = "rgba(60,35,15,.3)"; for (let i = 0; i < 8; i++) g.fillRect(i * 32 + 2, (i * 97) % H, 30, 2);
+  }, 3) });
+  const deck = mesh(new THREE.BoxGeometry(x1 - x0, 0.06, z1 - z0), planks, cx, 0.03, c, false); scene.add(deck);
+  // planters along the north, south and west edges, with a way in from the square in the middle of the west side
+  const box = M("#7A5236"), soil = M("#4A3424"), leaves = ["#4E8A3E", "#5E9C45"], petals = ["#E25A6B", "#F2C14E", "#F7F3EC", "#B05AA8"];
+  let n = 0;
+  const planter = (x, z, len, alongZ) => {
+    const g = new THREE.Group(); g.position.set(x, 0, z); if (alongZ) g.rotation.y = Math.PI / 2; scene.add(g);
+    g.add(mesh(new THREE.BoxGeometry(len, 0.5, 0.5), box, 0, 0.25, 0));
+    g.add(mesh(new THREE.BoxGeometry(len - 0.08, 0.04, 0.42), soil, 0, 0.5, 0, false));
+    for (let i = 0; i < Math.round(len * 2.2); i++) {
+      const t = -len / 2 + 0.25 + i * (len - 0.5) / Math.max(1, Math.round(len * 2.2) - 1);
+      g.add(mesh(new THREE.IcosahedronGeometry(0.17, 0), M(leaves[i % 2]), t, 0.64, (i % 2 - 0.5) * 0.12));
+      g.add(mesh(new THREE.SphereGeometry(0.06, 6, 5), M(petals[(i + n) % 4]), t + 0.05, 0.8, (i % 2 - 0.5) * 0.12, false));
+    }
+    if (alongZ) addBox(x - 0.28, x + 0.28, z - len / 2, z + len / 2); else addBox(x - len / 2, x + len / 2, z - 0.28, z + 0.28);
+    if (n++ === 0) addWordLabel({ word: "donica", anchor: g, y: 1.15, max: 6, kind: "small" });
+  };
+  planter(x0 + 0.25, (z0 + c - 1.4) / 2, c - 1.4 - z0, true); planter(x0 + 0.25, (c + 1.4 + z1) / 2, z1 - c - 1.4, true);
+  planter((x0 + 0.5 + x1 - 1.2) / 2, z0 + 0.25, x1 - 1.2 - x0 - 0.5, false); planter((x0 + 0.5 + x1 - 1.2) / 2, z1 - 0.25, x1 - 1.2 - x0 - 0.5, false);
+  // tables: two keep their labels from before (parasol, stół)
+  table(17.4, c - 3.0, "label"); table(20.8, c - 3.0, true); table(17.4, c + 3.0, true, true); table(20.8, c + 3.0, true); table(19.1, c, false);
+  const chair = new THREE.Object3D(); chair.position.set(19.1 + 0.78, 0.5, c + 0.33); scene.add(chair);
+  addWordLabel({ word: "krzesło", anchor: chair, y: 0.65, max: 5, kind: "small" });
+  // a chalkboard menu by the way in
+  const mb = new THREE.Group(); mb.position.set(x0 - 0.7, 0, c + 1.9); mb.rotation.y = -Math.PI / 2; scene.add(mb);
+  const chalk = new THREE.MeshStandardMaterial({ roughness: 0.95, map: canvasTex(128, 160, (g, W, H) => {
+    g.fillStyle = "#6E4A2B"; g.fillRect(0, 0, W, H); g.fillStyle = "#26302B"; g.fillRect(8, 8, W - 16, H - 16);
+    g.fillStyle = "#F4F1E6"; g.textAlign = "center"; g.font = "bold 26px sans-serif"; g.fillText("MENU", W / 2, 42);
+    g.font = "16px sans-serif"; ["kawa 8", "herbata 6", "sok 7", "lody 9"].forEach((t, i) => g.fillText(t + " zł", W / 2, 76 + i * 22));
+  }) });
+  for (const [z, r] of [[0.16, -0.2], [-0.16, 0.2]]) {
+    const wood = M(WOOD_D), board = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.85, 0.03), [wood, wood, wood, wood, chalk, chalk]);
+    board.position.set(0, 0.45, z); board.rotation.x = r; board.castShadow = true; mb.add(board);
+  }
+  addCircle(x0 - 0.7, c + 1.9, 0.4);
+  addWordLabel({ word: "menu", anchor: mb, y: 1.2, max: 7, kind: "small" });
+  addWordLabel({ word: "taras", pos: new THREE.Vector3(x0 - 0.2, 2.9, c), max: 22, kind: "sign" });
+  // string lights between four poles; the bulbs glow at dusk like the street lamps
+  const corners = [[x0 + 0.3, z0 + 0.6], [x1 - 0.3, z0 + 0.6], [x1 - 0.3, z1 - 0.6], [x0 + 0.3, z1 - 0.6]];
+  for (const [x, z] of corners) { scene.add(mesh(new THREE.CylinderGeometry(0.05, 0.06, 2.9, 6), M(IRON), x, 1.45, z)); addCircle(x, z, 0.15); }
+  const bulb = new THREE.SphereGeometry(0.06, 6, 5), wire = M("#2A2A2A");
+  for (let i = 0; i < 4; i++) {
+    const [ax, az] = corners[i], [bx, bz] = corners[(i + 1) % 4], len = Math.hypot(bx - ax, bz - az), k = Math.round(len / 0.7);
+    for (let j = 0; j <= k; j++) {
+      const t = j / k, sag = Math.sin(t * Math.PI) * 0.35, x = ax + (bx - ax) * t, z = az + (bz - az) * t;
+      scene.add(mesh(bulb, lampGlass, x, 2.85 - sag - 0.08, z, false));
+      if (j < k) { const w = mesh(new THREE.BoxGeometry(0.015, 0.015, len / k), wire, x + (bx - ax) / k / 2, 2.85 - Math.sin((t + 0.5 / k) * Math.PI) * 0.35, z + (bz - az) / k / 2, false); w.lookAt(x + (bx - ax) / k, w.position.y, z + (bz - az) / k); scene.add(w); }
+    }
+  }
+  const pl = new THREE.PointLight(0xffc873, 0, 12, 1.6); pl.position.set(cx, 2.6, c); scene.add(pl); lampLights.push(pl);
+  addWordLabel({ word: "lampki", pos: new THREE.Vector3(cx, 3.2, z0 + 0.6), max: 9, kind: "small" });
+  HOMES.karta = new THREE.Vector3(4.1, 0.06, 1.9);
 }
 const SURFACE = {};
 const PAINT = { czerwona: "#C8352E", niebieska: "#2F6FD0", żółta: "#F1D034", zielona: "#3F9A4A", biała: "#F7F7F2" };
@@ -416,6 +477,9 @@ const LOOKS = {
   tomek: { shirt: "#E04A4A", pants: "#2C2F3A", hair: "#6B3F1F", hat: "kidcap", hatColor: "#2B2B2B", scale: 0.8 },
   piotr: { shirt: "#F2F2EE", pants: "#2C3446", hair: "#2B1D14", flowers: true },
   teresa: { shirt: "#6A8FB5", pants: "#4A4A52", hair: "#C9C9C9", style: ["hair_short", "hair_bun"], glasses: true, skirt: "#3E4F6A" },
+  michal: { shirt: "#F4F1E6", apron: "#2F6B4F", pants: "#2A2A2A", hair: "#3B2A20" },
+  zbigniew: { shirt: "#8A7356", pants: "#4A4A52", hair: "#D8D8D8", style: ["hair_sides"], moustache: "#D8D8D8", glasses: true, hat: "beret", hatColor: "#3E3A36" },
+  kasia: { shirt: "#3E7CA8", pants: "#2C3446", hair: "#2B1D14", style: ["hair_short"], satchel: "#5A5F6A" },
   marta: { shirt: "#C2456B", pants: "#2C3446", hair: "#7A3B1E", ponytail: true, skirt: "#2C3446", satchel: "#B07A4A" },
   krysia: { shirt: "#8C5A8A", pants: "#4A4A52", hair: "#BDBDBD", hat: "scarf", hatColor: "#3F6FA0", glasses: true, skirt: "#4A3A5A" },
 };
@@ -425,7 +489,8 @@ function placeNPCs() {
   const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0],
     ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0],
     zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0],
-    wieslaw: [39.2, (PARK.gate[0] + PARK.gate[1]) / 2 + 2.6], ania: [46.2, -15.0], tomek: [57.5, -5.0], piotr: [42.2, -33.0], teresa: [57.0, -26.7], marta: [62.2, -22.0] };
+    wieslaw: [39.2, (PARK.gate[0] + PARK.gate[1]) / 2 + 2.6], ania: [46.2, -15.0], tomek: [57.5, -5.0], piotr: [42.2, -33.0], teresa: [57.0, -26.7], marta: [62.2, -22.0],
+    michal: [22.6, c - 1.4], zbigniew: [16.6, c - 4.15], kasia: [22.0, c + 3.9] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
     const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);
@@ -508,6 +573,11 @@ function itemModel(id) {
     case "kość":
       add(new THREE.CylinderGeometry(0.025, 0.025, 0.2, 8), "#F2EDE0").rotation.z = Math.PI / 2;
       for (const x of [-0.1, 0.1]) for (const z of [-0.022, 0.022]) add(new THREE.SphereGeometry(0.035, 8, 6), "#F2EDE0", x, 0, z);
+      break;
+    case "karta":
+      add(new THREE.BoxGeometry(0.22, 0.012, 0.3), "#2F6B4F");
+      add(new THREE.BoxGeometry(0.18, 0.004, 0.25), "#F3EAD3", 0, 0.008, 0);
+      for (let i = 0; i < 4; i++) add(new THREE.BoxGeometry(0.13, 0.003, 0.012), "#6E4A2B", 0, 0.011, -0.08 + i * 0.05);
       break;
     case "telefon":
       add(new THREE.BoxGeometry(0.09, 0.012, 0.17), "#1E1E22");
