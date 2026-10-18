@@ -1,0 +1,47 @@
+﻿Name,Character,Kind,Text,English,ItemPool
+marek_ask_0,marek,ask,"Je voudrais {acc}, s'il te plaît.","I'd like {en}, please.",jabłko gruszka śliwka cytryna marchewka
+marek_ask_1,marek,ask,Je cherche {acc}.,I'm looking for {en}.,jabłko gruszka śliwka cytryna marchewka
+marek_ask_2,marek,ask,"Apporte-moi {acc}, s'il te plaît.","Bring me {en}, please.",jabłko gruszka śliwka cytryna marchewka
+marek_ok_0,marek,ok,C'est exactement ça ! Merci.,Exactly right! Thank you.,jabłko gruszka śliwka cytryna marchewka
+marek_ok_1,marek,ok,Génial !,Great!,jabłko gruszka śliwka cytryna marchewka
+basia_ask_0,basia,ask,"Un client attend. Passe-moi {acc}, s'il te plaît.","A customer is waiting. Pass me {en}, please.",chleb bułka ciastko drożdżówka szarlotka
+basia_ask_1,basia,ask,"Je voudrais {acc}, s'il te plaît.","I'd like {en}, please.",chleb bułka ciastko drożdżówka szarlotka
+basia_ask_2,basia,ask,Je cherche {acc}.,I'm looking for {en}.,chleb bułka ciastko drożdżówka szarlotka
+basia_ok_0,basia,ok,Merci ! Bon appétit !,Thank you! Enjoy!,chleb bułka ciastko drożdżówka szarlotka
+basia_ok_1,basia,ok,"Super, merci !","Great, thanks!",chleb bułka ciastko drożdżówka szarlotka
+ola_ask_0,ola,ask,Un client demande {acc}.,A guest is asking for {en}.,kawa herbata woda sok mleko
+ola_ask_1,ola,ask,"Je voudrais {acc}, s'il te plaît.","I'd like {en}, please.",kawa herbata woda sok mleko
+ola_ask_2,ola,ask,Tu peux me donner {acc} ?,Can you give me {en}?,kawa herbata woda sok mleko
+ola_ok_0,ola,ok,Merci ! C'est parfait.,Thanks! Perfect.,kawa herbata woda sok mleko
+ola_ok_1,ola,ok,Super !,Great!,kawa herbata woda sok mleko
+kuba_ask_0,kuba,ask,Trouve {acc} !,Find {en}!,piłka lalka miś latawiec
+kuba_ask_1,kuba,ask,Où est {nom} ?,Where is {the}?,piłka lalka miś latawiec
+kuba_ask_2,kuba,ask,Je cherche {gen}.,I'm looking for {the}.,piłka lalka miś latawiec
+kuba_ok_0,kuba,ok,Hourra ! Merci !,Hooray! Thank you!,piłka lalka miś latawiec
+kuba_ok_1,kuba,ok,Super !,Great!,piłka lalka miś latawiec
+kuba_ok_2,kuba,ok,Hourra ! À plus !,Hooray! See you!,piłka lalka miś latawiec
+zosia_ask_0,zosia,ask,Une cliente veut {acc}.,A customer wants {en}.,róża lilia stokrotka orchidea
+zosia_ask_1,zosia,ask,"Je voudrais {acc}, s'il te plaît.","I'd like {en}, please.",róża lilia stokrotka orchidea
+zosia_ask_2,zosia,ask,Je cherche {acc}.,I'm looking for {en}.,róża lilia stokrotka orchidea
+zosia_ok_0,zosia,ok,C'est joli ! Merci.,Lovely! Thank you.,róża lilia stokrotka orchidea
+zosia_ok_1,zosia,ok,Génial !,Great!,róża lilia stokrotka orchidea
+ewa_ask_0,ewa,ask,"Je voudrais {acc}, s'il te plaît.","I'd like {en}, please.",czerwona niebieska żółta zielona biała
+ewa_ask_1,ewa,ask,Il me faut {acc}.,I need {en}.,czerwona niebieska żółta zielona biała
+ewa_ask_2,ewa,ask,Je cherche {gen}.,I'm looking for {the}.,czerwona niebieska żółta zielona biała
+ewa_ok_0,ewa,ok,C'est beau ! Merci.,Lovely! Thank you.,czerwona niebieska żółta zielona biała
+ewa_ok_1,ewa,ok,"Parfait ! Maintenant, je peux peindre.",Perfect! Now I can paint.,czerwona niebieska żółta zielona biała
+tadeusz_ask_0,tadeusz,ask,Un client attend {acc}.,A customer is waiting for {en}.,paczka koperta pocztówka
+tadeusz_ask_1,tadeusz,ask,"Je voudrais {acc}, s'il te plaît.","I'd like {en}, please.",paczka koperta pocztówka
+tadeusz_ask_2,tadeusz,ask,Je cherche {acc}.,I'm looking for {en}.,paczka koperta pocztówka
+tadeusz_ok_0,tadeusz,ok,"Super, merci !","Great, thank you!",paczka koperta pocztówka
+tadeusz_ok_1,tadeusz,ok,Bon travail !,Good job!,paczka koperta pocztówka
+halina_ask_0,halina,ask,Une cliente cherche {acc}.,A customer is looking for {en}.,książka mapa gazeta kredka
+halina_ask_1,halina,ask,"Je voudrais {acc}, s'il te plaît.","I'd like {en}, please.",książka mapa gazeta kredka
+halina_ask_2,halina,ask,Où est {nom} ?,Where is {the}?,książka mapa gazeta kredka
+halina_ok_0,halina,ok,Merci ! Super.,Thank you! Great.,książka mapa gazeta kredka
+halina_ok_1,halina,ok,Parfait !,Perfect!,książka mapa gazeta kredka
+bogdan_ask_0,bogdan,ask,"{why} Je voudrais {acc}, s'il te plaît.","{whyEn} I'd like {en}, please.",czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ask_1,bogdan,ask,"{why} Passe-moi {acc}, s'il te plaît.","{whyEn} Pass me {en}, please.",czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ask_2,bogdan,ask,{why} Il me faut {acc}.,{whyEn} I need {en}.,czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ok_0,bogdan,ok,Merci ! Super.,Thank you! Great.,czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ok_1,bogdan,ok,Génial ! Le client est content.,Great! The customer is pleased.,czapka kurtka parasolka rękawiczki koszula sukienka

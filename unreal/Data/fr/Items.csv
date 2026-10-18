@@ -1,0 +1,55 @@
+﻿Name,Word,Lemma,Nominative,Accusative,Genitive,English,EnglishThe,Plural,WhyText,WhyEnglish,StoryCharacter,HomeX,HomeY,HomeZ
+okulary,lunettes,lunettes,les lunettes,des lunettes,les lunettes,the glasses,the glasses,True,,,jozef,-260,390,92
+klucze,clés,clé,les clés,des clés,les clés,the keys,the keys,True,,,zosia,-1960,1460,12
+jabłko,pomme,pomme,la pomme,une pomme,la pomme,an apple,the apple,False,,,,-1660,460,30
+gruszka,poire,poire,la poire,une poire,la poire,a pear,the pear,False,,,,-1540,560,30
+śliwka,prune,prune,la prune,une prune,la prune,a plum,the plum,False,,,,-1420,460,30
+cytryna,citron,citron,le citron,un citron,le citron,a lemon,the lemon,False,,,,-1300,560,30
+marchewka,carotte,carotte,la carotte,une carotte,la carotte,a carrot,the carrot,False,,,,-1180,470,30
+chleb,pain,pain,le pain,un pain,le pain,a loaf of bread,the bread,False,,,,-2550,-400.8,112
+bułka,petit pain,petit pain,le petit pain,un petit pain,le petit pain,a bread roll,the roll,False,,,,-2550,-330.8,112
+ciastko,biscuit,biscuit,le biscuit,un biscuit,le biscuit,a cookie,the cookie,False,,,,-2550,-260.8,112
+drożdżówka,brioche,brioche,la brioche,une brioche,la brioche,a sweet bun,the sweet bun,False,,,,-2550,-190.8,112
+szarlotka,tarte aux pommes,tarte aux pommes,la tarte aux pommes,une tarte aux pommes,la tarte aux pommes,a slice of apple pie,the apple pie,False,,,,-2550,-120.8,112
+kawa,café,café,le café,un café,le café,a coffee,the coffee,False,,,,2540,441.5,112
+herbata,thé,thé,le thé,un thé,le thé,a tea,the tea,False,,,,2540,511.5,112
+woda,eau,eau,l'eau,de l'eau,l'eau,some water,the water,False,,,,2540,581.5,112
+sok,jus,jus,le jus,un jus,le jus,a juice,the juice,False,,,,2540,651.5,112
+mleko,lait,lait,le lait,du lait,le lait,some milk,the milk,False,,,,2540,721.5,112
+piłka,ballon,ballon,le ballon,un ballon,le ballon,the ball,the ball,False,,,,250,-1950,28
+lalka,poupée,poupée,la poupée,une poupée,la poupée,the doll,the doll,False,,,,1470,1540,32
+miś,nounours,nounours,le nounours,un nounours,le nounours,the teddy bear,the teddy bear,False,,,,1790,1220,30
+latawiec,cerf-volant,cerf-volant,le cerf-volant,un cerf-volant,le cerf-volant,the kite,the kite,False,,,,1860,1700,20
+róża,rose,rose,la rose,une rose,la rose,a rose,the rose,False,,,,-917.4,2550,75
+lilia,lys,lys,le lys,un lys,le lys,a lily,the lily,False,,,,-817.4,2550,75
+stokrotka,marguerite,marguerite,la marguerite,une marguerite,la marguerite,a daisy,the daisy,False,,,,-717.4,2550,75
+orchidea,orchidée,orchidée,l'orchidée,une orchidée,l'orchidée,an orchid,the orchid,False,,,,-617.4,2550,75
+pędzel,pinceau,pinceau,le pinceau,un pinceau,le pinceau,the paintbrush,the paintbrush,False,,,ewa,-790,-800,12
+czerwona,rouge,rouge,la peinture rouge,de la peinture rouge,la peinture rouge,red paint,the red paint,False,,,,1120,-90,66
+niebieska,bleue,bleu,la peinture bleue,de la peinture bleue,la peinture bleue,blue paint,the blue paint,False,,,,1190,-90,66
+żółta,jaune,jaune,la peinture jaune,de la peinture jaune,la peinture jaune,yellow paint,the yellow paint,False,,,,1260,-90,66
+zielona,verte,vert,la peinture verte,de la peinture verte,la peinture verte,green paint,the green paint,False,,,,1330,-90,66
+biała,blanche,blanc,la peinture blanche,de la peinture blanche,la peinture blanche,white paint,the white paint,False,,,,1400,-90,66
+list,lettre,lettre,la lettre,une lettre,la lettre,the letter,the letter,False,,,tadeusz,1781.3,2550,112
+paczka,colis,colis,le colis,un colis,le colis,a parcel,the parcel,False,,,,1571.3,2550,112
+koperta,enveloppe,enveloppe,l'enveloppe,une enveloppe,l'enveloppe,an envelope,the envelope,False,,,,1641.3,2550,112
+pocztówka,carte postale,carte postale,la carte postale,une carte postale,la carte postale,a postcard,the postcard,False,,,,1711.3,2550,112
+torba,sac,sac,le sac,un sac,le sac,the bag,the bag,False,,,halina,1640,1720,25
+książka,livre,livre,le livre,un livre,le livre,a book,the book,False,,,,1339.5,-2550,112
+mapa,plan,plan,le plan,un plan,le plan,a map,the map,False,,,,1269.5,-2550,112
+gazeta,journal,journal,le journal,un journal,le journal,a newspaper,the newspaper,False,,,,1199.5,-2550,112
+kredka,crayon,crayon,le crayon,un crayon,le crayon,a crayon,the crayon,False,,,,1129.5,-2550,112
+kość,os,os,l'os,un os,l'os,the bone,the bone,False,,,burek,-2070,2070,12
+skakanka,corde à sauter,corde à sauter,la corde à sauter,une corde à sauter,la corde à sauter,the skipping rope,the skipping rope,False,,,zuzia,-150,1050,10
+nuty,partition,partition,la partition,une partition,la partition,the sheet music,the sheet music,False,,,staszek,-2060,290,10
+czapka,bonnet,bonnet,le bonnet,un bonnet,le bonnet,a woolly hat,the hat,False,Il fait froid.,It's cold.,,-1725,-1120,112
+kurtka,veste,veste,la veste,une veste,la veste,a jacket,the jacket,False,Il y a du vent.,It's windy.,,-1655,-1120,112
+parasolka,parapluie,parapluie,le parapluie,un parapluie,le parapluie,an umbrella,the umbrella,False,Il pleut.,It's raining.,,-1585,-1120,112
+rękawiczki,gants,gant,les gants,des gants,les gants,some gloves,the gloves,True,Il fait très froid.,It's very cold.,,-1515,-1120,112
+koszula,chemise,chemise,la chemise,une chemise,la chemise,a shirt,the shirt,False,Quelqu'un va au travail.,Someone is going to work.,,-1445,-1120,112
+telefon,téléphone,téléphone,le téléphone,un téléphone,le téléphone,the phone,the phone,False,,,ania,6100,-1840,8
+deskorolka,skate,skate,le skate,un skate,le skate,the skateboard,the skateboard,False,,,tomek,6330,-1040,8
+karta,carte,carte,la carte,une carte,la carte,the menu,the menu,False,,,michal,410,190,6
+bilet,ticket,ticket,le ticket,un ticket,le ticket,the ticket,the ticket,False,,,ela,4490,-260,5
+dzwonek,cloche,cloche,la cloche,une cloche,la cloche,the bell,the bell,False,,,dorota,1630,371.5,8
+sukienka,robe,robe,la robe,une robe,la robe,a dress,the dress,False,Quelqu'un va à un mariage.,Someone is going to a wedding.,,-1375,-1120,112
