@@ -1,0 +1,107 @@
+<div id="app">
+  <canvas id="scene" aria-label="The market square, in 3D"></canvas>
+  <div id="labels"></div>
+
+  <header id="hud">
+    <div class="brand glaze"><span class="eye" aria-hidden="true"></span><span class="brand-name">Rynek Słówek</span></div>
+    <div class="hud-right">
+      <button id="counts" class="counts glaze" type="button" aria-label="Open your word list">
+        <span class="cnt" data-s="2" title="Known"><i></i><b id="c-known">0</b></span>
+        <span class="cnt" data-s="1" title="Learning"><i></i><b id="c-learning">0</b></span>
+        <span class="cnt" data-s="0" title="New words you have met"><i></i><b id="c-new">0</b></span>
+      </button>
+      <div class="coins glaze" title="Złoty earned from errands"><span class="coin" aria-hidden="true"></span><b id="coins">0</b>&nbsp;zł</div>
+      <button class="icon-btn glaze" id="btn-vocab" type="button" aria-label="Word list (V)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></button>
+      <button class="icon-btn glaze" id="btn-settings" type="button" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg></button>
+      <button class="icon-btn glaze" id="btn-help" type="button" aria-label="How to play">?</button>
+    </div>
+  </header>
+
+  <aside id="tracker" class="glaze dots" aria-label="Tasks">
+    <h2><span id="tracker-title"></span><small>tasks</small><button id="tracker-toggle" type="button" aria-expanded="false">Show</button></h2>
+    <ul id="tasks"></ul>
+    <p id="unmet"></p>
+  </aside>
+  <canvas id="minimap" aria-hidden="true"></canvas>
+
+  <div id="prompt" class="glaze" hidden></div>
+  <div id="carry" class="glaze" hidden>Carrying <span id="carry-word"></span><button id="btn-drop" class="ghost" type="button">Put back (G)</button></div>
+
+  <section id="dialogue" class="glaze dots" hidden aria-live="polite">
+    <div id="d-tip" hidden>Click a word to see what it means</div>
+    <div class="d-head"><span id="d-name"></span><span id="d-role"></span><span id="d-step"></span></div>
+    <p id="d-line" lang="pl"></p>
+    <p id="d-tr" hidden></p>
+    <div class="d-actions">
+      <button id="d-speak" class="chip-btn" type="button" aria-label="Listen again (R)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>Listen</button>
+      <button id="d-trbtn" class="chip-btn" type="button" aria-pressed="false">English (T)</button>
+      <span class="spacer"></span>
+      <span id="d-extra" class="d-actions" style="margin:0"></span>
+      <button id="d-next" class="primary" type="button">Next</button>
+    </div>
+  </section>
+
+  <div id="card" class="glaze" hidden role="dialog" aria-label="Word details"></div>
+
+  <section id="vocab" class="sheet glaze dots" hidden aria-label="Word list">
+    <div class="sheet-head"><h2><span id="vocab-title"></span><small>your words</small></h2><button class="icon-btn small x" type="button" data-close="vocab" aria-label="Close">×</button></div>
+    <div class="bar" id="v-bar"><span data-s="2"></span><span data-s="1"></span><span data-s="0"></span></div>
+    <p id="v-summary"></p>
+    <div class="filters" id="v-filters">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="0" data-s="0" aria-pressed="false">New</button>
+      <button type="button" data-f="1" data-s="1" aria-pressed="false">Learning</button>
+      <button type="button" data-f="2" data-s="2" aria-pressed="false">Known</button>
+    </div>
+    <input id="v-search" type="search" placeholder="Search Polish or English" aria-label="Search words" autocomplete="off">
+    <ul id="v-list"></ul>
+    <div class="sheet-foot">
+      <button id="v-review" class="primary" type="button">Review learning words</button>
+      <button id="v-review-new" class="chip-btn" type="button">Sort new words</button>
+    </div>
+  </section>
+
+  <section id="review" class="modal glaze dots" hidden aria-label="Review">
+    <div class="r-head"><h2><span id="review-title"></span><small>review</small></h2><span id="r-step"></span><button class="icon-btn small" type="button" data-close="review" aria-label="Close">×</button></div>
+    <div id="r-body"></div>
+  </section>
+
+  <div id="settings" class="pop glaze dots" hidden>
+    <h2>Settings</h2>
+    <label class="tog"><input type="checkbox" id="s-auto"> Read each line aloud</label>
+    <label class="tog"><input type="checkbox" id="s-tr"> Show English under every line</label>
+    <label class="tog"><input type="checkbox" id="s-hide"> Challenge: hide labels of known words</label>
+    <label class="tog"><input type="checkbox" id="s-sfx"> Sound effects</label>
+    <label class="rng">Speech speed <input type="range" id="s-rate" min="0.6" max="1.2" step="0.05"></label>
+    <p id="s-voice" class="muted"></p>
+    <p id="s-sync" class="muted"></p>
+    <button id="s-reset" class="danger" type="button">Reset all progress</button>
+  </div>
+
+  <section id="intro">
+    <div class="intro-card glaze dots">
+      <p class="eyebrow">A walk-around Polish word game</p>
+      <h1>Rynek <span>Słówek</span></h1>
+      <p class="lede">Walk around a Polish market square, talk to the people there and run their errands. Every Polish word is coloured by how well you know it.</p>
+      <ul class="legend">
+        <li data-s="0"><span class="w">jabłko</span><span><b>Purple</b>: new. You haven't met it or sorted it yet.</span></li>
+        <li data-s="1"><span class="w">kawa</span><span><b>Orange</b>: you're learning it.</span></li>
+        <li data-s="2"><span class="w">dzień</span><span><b>Green</b>: you know it.</span></li>
+      </ul>
+      <p class="lede" style="font-size:15px;margin-bottom:12px">Click any word, in a speech bubble or floating over a thing, to see what it means and sort it.</p>
+      <dl class="keys">
+        <div><dt>WASD / arrows</dt><dd>walk (Shift runs)</dd></div>
+        <div><dt>Drag</dt><dd>look around, wheel zooms</dd></div>
+        <div><dt>E or Space</dt><dd>talk, pick up, next line</dd></div>
+        <div><dt>V · G</dt><dd>word list · put item back</dd></div>
+        <div><dt>Phone</dt><dd>left thumb walks, drag to look</dd></div>
+        <div><dt>1 · 2 · 3</dt><dd>sort the open word</dd></div>
+      </dl>
+      <div class="start-row"><button id="start" class="primary" type="button">Start playing</button><p id="intro-progress"></p></div>
+    </div>
+  </section>
+
+  <div id="touch" hidden><div id="stick" aria-label="Walk"><div id="knob"></div></div><button id="act" type="button" disabled>Talk</button></div>
+  <div id="toasts" aria-live="polite"></div>
+  <div id="fatal" hidden></div>
+</div>

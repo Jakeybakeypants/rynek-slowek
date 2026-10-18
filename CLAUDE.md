@@ -1,0 +1,30 @@
+# CLAUDE.md: guidance for sessions working on Rynek Słówek
+
+Read `README.md` first. The game is a single page: `src/` is the source, `dist/` is built from it and committed.
+
+## Rules
+
+- Edit `src/`, never `dist/`. Run `npm run build` after every change and commit `dist/` with it; `npm test` fails when `dist/` is stale.
+- `npm test` must pass before every commit. Run `npm run smoke` (and `npm run smoke -- phone`) after any change to gameplay, layout or the 3D scene. Software rendering in the cloud container runs at about 2 to 4 frames a second, so the smoke test waits on state instead of sleeping; keep it that way.
+- The files in `src/js/` are concatenated into one module script and share one scope. Keep each file valid JavaScript on its own, keep the numeric order meaningful, and don't add `import`/`export` between them.
+- No build tools, frameworks or new runtime dependencies. The only runtime load is `https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js`, pinned. The claude.ai artifact sandbox only allows scripts from cdnjs, jsDelivr, unpkg and a few others, and blocks every other network request, so all other assets are drawn in code (canvas textures, primitive meshes).
+- Put text on screen with `textContent` or the `h()` helper, never `innerHTML` with data.
+- Colours are tokens at the top of `src/head.html`, defined for light and for dark. Purple, orange and green are reserved for word status (`--new`, `--learning`, `--known`); don't use them for anything else in the UI.
+
+## Polish content
+
+- Every Polish word shown anywhere must resolve through `FORMS` or `LEX` in `src/js/01-data.js`; `npm test` checks every line, label and errand. Each new line is a `[Polish, English]` pair.
+- Grammar notes should be short and correct. Name the case and why it's used ("genitive: after bez").
+- Avoid masculine inanimate items whose everyday object form differs from the textbook one (`tulipan`, `pomidor`, `pączek`). Feminine and neuter items, and animate ones like `miś → misia`, are safe.
+- Use the instrumental after `być` with a noun (`Jestem kotem`, `Jestem piekarką`); names stay nominative (`Jestem Ola`).
+
+## Publishing
+
+- The live copy is the claude.ai artifact at https://claude.ai/artifact/RhDfB4eqWVcRcvQUpjFbkv. To update it, read it first with the Artifact tool, then publish `dist/artifact.html` to that `url`, omitting `capabilities` so it keeps `db` + `user`. A publish without the `url` makes a separate artifact and loses the link.
+- Progress is stored per person at `data/users/<id>/progress` in the artifact's database, plus `localStorage` key `rynek-slowek:v1`. Changing the shape of the saved state means updating `normalize()` in `03-state.js` so old saves still load.
+
+## Relationship to other projects
+
+This is a standalone app. It is not connected to Nexus (`Jakeybakeypants/Nexus`). Adding it there would need a new app id and the Nexus owner's approval, following that repo's CLAUDE.md. Never change another of the owner's repositories from here.
+
+Commit messages end with the session's attribution lines. Don't open pull requests unless asked.

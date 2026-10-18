@@ -1,0 +1,128 @@
+// Plays the real page in headless Chromium: starts the game, walks, finishes Józef's
+// errand, delivers Basia's bread to Ola, completes one café order, sorts a word, opens the
+// word list, and fails on any page error. Screenshots land in test/shots/ (git-ignored).
+//
+//   npm install          (once: playwright-core, plus three.js to serve locally)
+//   npm run smoke        (desktop, light)     npm run smoke -- phone   (390×844, dark)
+//
+// Chromium: set CHROMIUM to an executable, or it uses the cloud container's headless shell.
+// The CDN is usually blocked in the container, so three.js is served from node_modules.
+import { chromium } from "playwright-core";
+import { readFileSync, mkdirSync } from "node:fs";
+import { build } from "../build.mjs";
+
+const phone = process.argv[2] === "phone";
+const exe = process.env.CHROMIUM || "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell";
+const shots = new URL("./shots/", import.meta.url).pathname;
+mkdirSync(shots, { recursive: true });
+const page_html = build()["dist/index.html"];
+const three = readFileSync(new URL("../node_modules/three/build/three.module.js", import.meta.url));
+
+const browser = await chromium.launch({ executablePath: exe, args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"] });
+const ctx = await browser.newContext(phone
+  ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, colorScheme: "dark" }
+  : { viewport: { width: 1280, height: 800 }, colorScheme: "light" });
+const page = await ctx.newPage();
+const errors = [];
+page.on("pageerror", e => errors.push(e.message));
+page.on("console", m => { if (m.type() === "error" && !/Failed to load resource/.test(m.text())) errors.push(m.text()); });
+await page.route("**/*", r => {
+  const u = r.request().url();
+  if (u === "https://rynek.test/") return r.fulfill({ contentType: "text/html; charset=utf-8", body: page_html });
+  if (u.includes("three@0.160.0/build/three.module.js")) return r.fulfill({ contentType: "text/javascript", headers: { "access-control-allow-origin": "*" }, body: three });
+  return r.abort(); // fonts and anything else: the page must cope without them
+});
+
+let failures = 0;
+const check = (ok, what) => { console.log((ok ? "  ok  " : "  FAIL ") + what); if (!ok) failures++; };
+const R = (fn, arg) => page.evaluate(fn, arg);
+const shot = name => page.screenshot({ path: `${shots}${phone ? "phone" : "desktop"}-${name}.png` });
+const state = () => R(() => JSON.parse(JSON.stringify(window.__rynek.st)));
+async function goTo(x, z, promptText) {
+  await R(([x, z]) => window.__rynek.player.pos.set(x, 0, z), [x, z]);
+  await page.waitForFunction(t => { const p = document.querySelector("#prompt"); return !p.hidden && p.textContent.includes(t); }, promptText, { timeout: 20000 });
+}
+async function press(key = "e") { await page.keyboard.press(key); await page.waitForTimeout(150); }
+async function talkThrough() {
+  await page.waitForFunction(() => !document.querySelector("#dialogue").hidden, null, { timeout: 15000 });
+  const lines = [];
+  for (let i = 0; i < 20; i++) {
+    if (await R(() => document.querySelector("#dialogue").hidden)) break;
+    lines.push(await R(() => document.querySelector("#d-line").textContent));
+    const action = await page.$("#d-extra button:last-child");
+    if (action) await action.click(); else await page.click("#d-next");
+    await page.waitForTimeout(150);
+  }
+  return lines;
+}
+const npcAt = (id, dx, dz) => R(([id, dx, dz]) => { const o = window.__rynek.npcObjs[id]; return [o.x + dx, o.z + dz]; }, [id, dx, dz]);
+
+await page.goto("https://rynek.test/");
+await page.waitForFunction(() => window.__rynek, null, { timeout: 30000 });
+await page.waitForTimeout(1500);
+check((await R(() => window.__rynek.validateLexicon().missing.length)) === 0, "every word has a dictionary entry");
+await shot("1-intro");
+await page.click("#start");
+await page.waitForFunction(() => document.querySelector("#intro").hidden);
+
+const before = await R(() => window.__rynek.player.pos.z);
+await page.keyboard.down("KeyW"); await page.waitForTimeout(1500); await page.keyboard.up("KeyW");
+check((await R(() => window.__rynek.player.pos.z)) < before - 0.05, "W walks forward");
+
+await goTo(5.2, 12.9, "Józef"); await press();
+await page.waitForFunction(() => !document.querySelector("#dialogue").hidden);
+check((await R(() => document.querySelector("#d-line").textContent)) === "Dzień dobry! Mam na imię Józef.", "Józef greets in Polish");
+await page.click("#d-line .w >> nth=0");
+await page.waitForFunction(() => !document.querySelector("#card").hidden);
+check((await R(() => document.querySelector("#card .c-gloss").textContent)) === "day", "clicking Dzień shows 'day'");
+check(!(await R(() => document.querySelector("#card").textContent.includes("null"))), "word card has no stray text");
+await shot("2-card");
+await press("2");
+check((await R(() => document.querySelector("#d-line .w").dataset.s)) === "1", "pressing 2 turns the word orange");
+await press("Escape");
+await talkThrough();
+check((await state()).npc.jozef.stage === "active", "Józef's errand starts");
+
+await goTo(-2.6, 2.9, "okulary"); await press();
+check((await state()).carry === "okulary", "picks up okulary");
+await goTo(5.2, 12.9, "Józef"); await press();
+const done = await talkThrough();
+const s1 = await state();
+check(done[0] === "Moje okulary! Dziękuję bardzo!" && s1.npc.jozef.stage === "done" && s1.coins === 20, "Józef's errand completes (+20 zł)");
+
+const [bx, bz] = await npcAt("basia", 1.6, 0);
+await goTo(bx, bz, "Basia"); await press(); await talkThrough();
+check((await state()).carry === "chleb", "Basia hands over the bread");
+const [ox, oz] = await npcAt("ola", -1.6, 0);
+await goTo(ox, oz, "Ola"); await press(); await talkThrough();
+const s2 = await state();
+check(s2.npc.basia.stage === "done" && s2.coins === 40 && !s2.carry, "Ola receives the bread (+20 zł)");
+
+await goTo(ox, oz, "Ola"); await press(); await talkThrough();
+const want = (await state()).npc.ola.order;
+check(!!want, `Ola orders something (${want})`);
+const [hx, hz] = await R(id => { const h = window.__rynek.HOMES[id]; return [h.x - 1, h.z]; }, want);
+await R(([x, z]) => window.__rynek.player.pos.set(x, 0, z), [hx, hz]);
+await page.waitForFunction(id => window.__rynek.itemObjs[id].label.btn.classList.contains("near"), want, { timeout: 20000 });
+await press();
+check((await state()).carry === want, `picks up ${want} from the counter`);
+await goTo(ox, oz, "Ola"); await press(); await talkThrough();
+check((await state()).coins === 45, "the café order pays 5 zł");
+await shot("3-after-errands");
+
+await press("v");
+await page.waitForFunction(() => !document.querySelector("#vocab").hidden);
+check((await R(() => document.querySelectorAll("#v-list .v-row").length)) > 20, "the word list shows the words met so far");
+await shot("4-word-list");
+await press("Escape");
+check((await R(() => document.documentElement.scrollWidth <= innerWidth)), "no sideways scroll");
+
+const reload = await state();
+await page.reload();
+await page.waitForFunction(() => window.__rynek, null, { timeout: 30000 });
+check((await state()).coins === reload.coins && (await state()).words["dzień"]?.s === 1, "progress survives a reload");
+
+check(errors.length === 0, "no page errors" + (errors.length ? ": " + errors.join(" | ") : ""));
+await browser.close();
+console.log(failures ? `${failures} check(s) failed` : "all checks passed");
+process.exit(failures ? 1 : 0);

@@ -1,0 +1,2440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.4 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Rynek Słówek</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Baloo+2:wght@600;700;800&display=swap">
+<style>
+/* Layout: the market square fills the screen; glazed-stoneware panels (Bolesławiec white glaze, cobalt rim, peacock-eye dots) float at its edges */
+:root{
+  --glaze:#F6F8FC; --glaze-2:#E6ECF8; --rim:#1F3C91; --ink:#16224B; --ink-2:#4C5A86;
+  --gold:#E9B53B; --on-gold:#2A1D00; --sky:#BFD9F2;
+  --known:#1C8748; --learning:#C95A04; --new:#7638D3;
+  --known-t:#DDF2E4; --learning-t:#FCE6D2; --new-t:#ECE2FB; --on-status:#FFFFFF;
+  --veil:rgba(14,22,52,.42); --shadow:0 12px 32px rgba(18,30,70,.22); --stick:rgba(246,248,252,.55);
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --top:calc(env(safe-area-inset-top, 0px) + 12px);
+  --bottom:calc(env(safe-area-inset-bottom, 0px) + 14px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --glaze:#121A38; --glaze-2:#1B2752; --rim:#9DB8FF; --ink:#EEF2FF; --ink-2:#AEB9DE;
+  --gold:#E9B53B; --on-gold:#2A1D00; --sky:#1B2A5C;
+  --known:#55D68F; --learning:#FFA052; --new:#BE98FF;
+  --known-t:rgba(85,214,143,.16); --learning-t:rgba(255,160,82,.16); --new-t:rgba(190,152,255,.18); --on-status:#0E1533;
+  --veil:rgba(5,9,25,.6); --shadow:0 12px 32px rgba(0,0,0,.45); --stick:rgba(18,26,56,.6); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --glaze:#121A38; --glaze-2:#1B2752; --rim:#9DB8FF; --ink:#EEF2FF; --ink-2:#AEB9DE;
+  --gold:#E9B53B; --on-gold:#2A1D00; --sky:#1B2A5C;
+  --known:#55D68F; --learning:#FFA052; --new:#BE98FF;
+  --known-t:rgba(85,214,143,.16); --learning-t:rgba(255,160,82,.16); --new-t:rgba(190,152,255,.18); --on-status:#0E1533;
+  --veil:rgba(5,9,25,.6); --shadow:0 12px 32px rgba(0,0,0,.45); --stick:rgba(18,26,56,.6); color-scheme:dark;
+}
+html,body{height:100%;overflow:hidden}
+body{background:var(--sky);color:var(--ink);font-family:var(--body);-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit}
+button:focus-visible,input:focus-visible{outline:3px solid var(--rim);outline-offset:2px}
+#app{position:fixed;inset:0;overflow:hidden}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none;cursor:grab}
+#scene.dragging{cursor:grabbing}
+
+/* status colours: purple new, orange learning, green known */
+[data-s="0"]{--c:var(--new);--t:var(--new-t)}
+[data-s="1"]{--c:var(--learning);--t:var(--learning-t)}
+[data-s="2"]{--c:var(--known);--t:var(--known-t)}
+
+.glaze{background:var(--glaze);color:var(--ink);border:2px solid var(--rim);border-radius:16px;box-shadow:var(--shadow);position:relative}
+.dots::before{content:"";position:absolute;left:14px;right:14px;top:7px;height:6px;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle at 3px 3px,var(--rim) 2.1px,transparent 2.7px) 0 0/12px 6px repeat-x}
+.eye{display:inline-block;width:18px;height:18px;border-radius:50%;flex:none;
+  background:radial-gradient(circle,var(--rim) 0 3px,var(--glaze) 3px 5px,var(--rim) 5px 7px,transparent 7.5px)}
+
+/* world labels */
+#labels{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.lbl{position:absolute;left:0;top:0;will-change:transform}
+.wl{pointer-events:auto;font:700 15px/1 var(--body);color:var(--c);background:var(--glaze);border:2px solid var(--c);border-radius:999px;
+  padding:5px 10px 5px 8px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(10,20,50,.28);cursor:pointer;white-space:nowrap;transition:transform .15s}
+.wl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.wl:hover{transform:translateY(-2px)}
+.wl.sign{font:800 14px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;border-radius:8px;padding:6px 10px 4px}
+.wl.small{font-size:13px;padding:3px 8px 3px 6px}
+.wl.near{transform:scale(1.15);box-shadow:0 0 0 4px var(--t),0 6px 16px rgba(10,20,50,.3)}
+.npc-tag{pointer-events:auto;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;padding:0;cursor:pointer}
+.npc-tag .mark{width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--on-gold);font:800 20px/32px var(--display);text-align:center;
+  border:2px solid var(--glaze);box-shadow:0 4px 12px rgba(10,20,50,.3);animation:bob 1.6s ease-in-out infinite}
+.npc-tag .mark:empty{display:none}
+.npc-tag .nm{font:700 13px/1 var(--display);background:var(--rim);color:var(--glaze);padding:5px 10px 3px;border-radius:999px;white-space:nowrap}
+@keyframes bob{50%{transform:translateY(-5px)}}
+
+/* HUD */
+#hud{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none;
+  padding-top:var(--top);padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+#hud>*{pointer-events:auto}
+.brand{display:flex;align-items:center;gap:8px;padding:6px 14px 4px 10px;border-radius:999px;font:800 21px/1 var(--display);color:var(--rim)}
+.hud-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.counts{display:flex;gap:12px;align-items:center;padding:7px 12px;border-radius:999px;cursor:pointer;font:700 15px/1 var(--body)}
+.cnt{display:inline-flex;align-items:center;gap:5px;color:var(--c);font-variant-numeric:tabular-nums}
+.cnt i{width:11px;height:11px;border-radius:50%;background:var(--c)}
+.coins{display:flex;gap:6px;align-items:center;padding:7px 12px;border-radius:999px;font:700 15px/1 var(--body);font-variant-numeric:tabular-nums}
+.coin{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFE9A8,var(--gold) 60%,#B07F12)}
+.icon-btn{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;cursor:pointer;padding:0;font:800 18px/1 var(--display);color:var(--rim)}
+.icon-btn svg{width:20px;height:20px}
+.icon-btn.small{width:32px;height:32px;border:2px solid var(--rim);background:var(--glaze);box-shadow:none}
+
+#tracker{position:absolute;z-index:9;left:max(16px, env(safe-area-inset-left, 0px));top:calc(var(--top) + 54px);width:min(290px, calc(100% - 32px));padding:20px 16px 12px}
+#tracker h2,.sheet h2,.modal h2,.pop h2{margin:0;font:800 19px/1.1 var(--display);color:var(--rim);display:flex;align-items:baseline;gap:8px}
+h2 small{font:400 13px/1 var(--body);color:var(--ink-2)}
+h2 .w{font:inherit}
+#tasks{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px;font-size:14px;line-height:1.35}
+#tasks li{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+#tasks li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-1px)}
+#tasks li.muted{color:var(--ink-2)}
+#tasks li.muted::before{background:var(--ink-2)}
+#unmet{margin:8px 0 0;font-size:13px;color:var(--ink-2)}
+#tracker-toggle{display:none}
+.chip{font:700 14px/1.2 var(--body);color:var(--c);background:var(--t);border:0;border-bottom:2px solid var(--c);border-radius:5px;padding:1px 5px;cursor:pointer}
+
+#minimap{position:absolute;z-index:9;right:max(16px, env(safe-area-inset-right, 0px));top:calc(var(--top) + 56px);width:136px;height:136px;border-radius:50%;
+  border:2px solid var(--rim);box-shadow:var(--shadow);background:var(--glaze)}
+
+#prompt{position:absolute;z-index:11;left:50%;transform:translateX(-50%);bottom:calc(var(--bottom) + 10px);display:flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:999px;font:700 15px/1.2 var(--body);white-space:nowrap}
+kbd{font:800 13px/1 var(--display);background:var(--rim);color:var(--glaze);border-radius:6px;padding:4px 7px 2px}
+#carry{position:absolute;z-index:11;left:max(16px, env(safe-area-inset-left, 0px));bottom:var(--bottom);display:flex;gap:8px;align-items:center;padding:8px 10px 8px 14px;border-radius:999px;font-size:14px}
+.ghost{border:2px solid var(--rim);background:transparent;color:var(--rim);border-radius:999px;padding:5px 10px;font:700 13px/1 var(--body);cursor:pointer}
+
+/* dialogue */
+#dialogue{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:var(--bottom);
+  width:min(780px, calc(100% - 32px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));padding:24px 22px 16px}
+.d-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+#d-name{font:800 20px/1 var(--display);color:var(--rim)}
+#d-role{font-size:14px;color:var(--ink-2)}
+#d-step{margin-left:auto;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+#d-line{font:400 clamp(20px, 2.5vw, 26px)/1.55 var(--body);margin:10px 0 4px;min-width:0}
+.w{font:inherit;font-weight:700;color:var(--c);background:var(--t);border:0;border-bottom:2px solid var(--c);border-radius:5px;padding:0 4px;margin:0 1px;cursor:pointer}
+.w:hover{filter:brightness(1.08);box-shadow:0 0 0 2px var(--t)}
+#d-line .w,#d-line .p{display:inline-block;animation:rise .32s ease-out both;animation-delay:calc(var(--i) * 26ms)}
+#d-line .p{white-space:pre}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}}
+#d-tr{margin:2px 0 6px;color:var(--ink-2);font-size:16px;line-height:1.4}
+#d-tr::before{content:"EN";font:800 11px/1 var(--display);letter-spacing:.08em;background:var(--glaze-2);color:var(--ink-2);border-radius:4px;padding:3px 5px 1px;margin-right:8px;vertical-align:2px}
+.d-actions{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.d-actions .spacer{flex:1}
+.chip-btn{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--rim);background:var(--glaze);color:var(--rim);border-radius:999px;padding:7px 12px;font:700 14px/1 var(--body);cursor:pointer}
+.chip-btn svg{width:16px;height:16px}
+.chip-btn[aria-pressed="true"]{background:var(--rim);color:var(--glaze)}
+.primary{background:var(--rim);color:var(--glaze);font:800 17px/1 var(--display);border:0;border-radius:12px;padding:12px 20px 9px;cursor:pointer}
+.primary:hover{filter:brightness(1.1)}
+#d-tip{position:absolute;left:18px;top:-46px;background:var(--gold);color:var(--on-gold);font:700 14px/1.2 var(--body);padding:9px 12px;border-radius:10px;box-shadow:var(--shadow);animation:bob 1.6s ease-in-out infinite}
+#d-tip::after{content:"";position:absolute;left:26px;bottom:-7px;border:8px solid transparent;border-bottom:0;border-top-color:var(--gold)}
+
+/* word card */
+#card{position:absolute;z-index:45;left:0;top:0;width:min(330px, calc(100vw - 32px));padding:14px 16px}
+.c-top{display:flex;align-items:center;gap:8px}
+.c-word{font:800 30px/1.1 var(--display);color:var(--c);margin-right:auto;overflow-wrap:anywhere}
+.c-form{margin:6px 0 0;font-size:15px;color:var(--ink)}
+.c-form b{font-weight:700}
+.c-pos{margin:6px 0 0;font:700 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.c-gloss{margin:4px 0 0;font:700 19px/1.3 var(--body)}
+.c-phrase{margin:8px 0 0;padding:7px 9px;border-radius:8px;background:var(--glaze-2);font-size:14px}
+.c-note{margin:8px 0 0;font-size:14px;color:var(--ink-2);line-height:1.4}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+.seg button{border:2px solid var(--c);background:var(--glaze);color:var(--c);font:700 14px/1.1 var(--body);border-radius:10px;padding:9px 4px;cursor:pointer;display:flex;gap:5px;justify-content:center;align-items:center}
+.seg button .k{font:800 11px/1 var(--display);border:1.5px solid currentColor;border-radius:4px;padding:2px 4px 0}
+.seg button[aria-pressed="true"]{background:var(--c);color:var(--on-status)}
+.c-meta{margin:8px 0 0;font-size:12px;color:var(--ink-2)}
+
+/* sheets, modals, popovers */
+.sheet{position:absolute;z-index:30;top:var(--top);bottom:var(--bottom);right:max(16px, env(safe-area-inset-right, 0px));width:min(410px, calc(100% - 32px));display:flex;flex-direction:column;gap:10px;padding:22px 18px 16px}
+.sheet-head,.r-head{display:flex;align-items:center;gap:8px}
+.sheet-head h2,.r-head h2{margin-right:auto}
+.bar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:var(--glaze-2)}
+.bar span{background:var(--c);transition:width .3s}
+#v-summary{margin:0;font-size:14px;color:var(--ink-2)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{border:2px solid var(--c, var(--rim));color:var(--c, var(--rim));background:var(--glaze);border-radius:999px;padding:5px 11px;font:700 13px/1 var(--body);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--c, var(--rim));color:var(--on-status)}
+.filters button[data-f="all"][aria-pressed="true"]{color:var(--glaze)}
+#v-search{width:100%;box-sizing:border-box;border:2px solid var(--glaze-2);background:var(--glaze-2);color:var(--ink);border-radius:10px;padding:9px 12px;font:400 15px/1.2 var(--body)}
+#v-list{list-style:none;margin:0;padding:0;overflow:auto;flex:1;min-height:0}
+.v-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:8px 2px;border-bottom:1px solid var(--glaze-2)}
+.v-row .w{font-size:16px;justify-self:start}
+.v-gloss{font-size:14px;color:var(--ink-2);min-width:0;overflow-wrap:anywhere}
+.v-dots{display:flex;gap:5px}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--c);background:transparent;cursor:pointer;padding:0}
+.dot[aria-pressed="true"]{background:var(--c)}
+.v-empty{padding:18px 4px;color:var(--ink-2);font-size:14px;line-height:1.45}
+.sheet-foot{display:flex;gap:8px;flex-wrap:wrap}
+.sheet-foot .primary{font-size:15px;padding:10px 14px 8px}
+
+.modal{position:absolute;z-index:35;left:50%;top:50%;transform:translate(-50%,-50%);width:min(440px, calc(100% - 32px));max-height:calc(100% - 40px);overflow:auto;padding:24px 20px 18px;box-sizing:border-box}
+#r-step{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.r-card{display:grid;justify-items:center;gap:10px;text-align:center;padding:22px 0 8px}
+.r-word{font:800 44px/1.05 var(--display);color:var(--c);overflow-wrap:anywhere}
+.r-gloss{font:700 20px/1.3 var(--body);margin:0}
+.r-pos{font:700 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0}
+.r-note{font-size:14px;color:var(--ink-2);margin:0;max-width:34ch;line-height:1.4}
+.r-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.r-btns button{border:2px solid var(--c);background:var(--glaze);color:var(--c);font:800 16px/1 var(--display);border-radius:12px;padding:11px 16px 8px;cursor:pointer}
+.r-btns button.fill{background:var(--c);color:var(--on-status)}
+
+.pop{position:absolute;z-index:32;right:max(16px, env(safe-area-inset-right, 0px));top:calc(var(--top) + 54px);width:min(330px, calc(100% - 32px));padding:22px 18px 16px;display:grid;gap:10px}
+.tog{display:flex;gap:10px;align-items:center;font-size:15px;cursor:pointer}
+.tog input{width:20px;height:20px;accent-color:var(--rim)}
+.rng{display:grid;gap:6px;font-size:15px}
+.rng input{accent-color:var(--rim)}
+.muted{color:var(--ink-2);font-size:13px;margin:0;line-height:1.4}
+.danger{border:2px solid #C0392B;color:#C0392B;background:transparent;border-radius:10px;padding:8px 12px;font:700 14px/1 var(--body);cursor:pointer;justify-self:start}
+.x{margin-left:auto}
+
+/* intro */
+#intro{position:absolute;inset:0;z-index:50;display:grid;place-items:center;background:linear-gradient(180deg,transparent,var(--veil));
+  padding-top:var(--top);padding-bottom:var(--bottom);padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));box-sizing:border-box}
+.intro-card{width:min(560px, 100%);max-height:100%;overflow:auto;box-sizing:border-box;padding:30px 28px 24px}
+.eyebrow{margin:0;font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.intro-card h1{margin:6px 0 8px;font:800 clamp(44px, 9vw, 64px)/.95 var(--display);color:var(--rim);text-wrap:balance}
+.intro-card h1 span{display:inline-block;color:var(--known);animation:sort 2.6s .5s ease-in-out both}
+@keyframes sort{0%,22%{color:var(--new)}45%,62%{color:var(--learning)}85%,100%{color:var(--known)}}
+.lede{margin:0 0 14px;font-size:17px;line-height:1.5;max-width:46ch}
+.legend{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.legend li{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center;font-size:15px}
+.legend .w{justify-self:start;font-size:18px;cursor:default}
+.legend b{color:var(--c)}
+.keys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px;margin:0 0 16px;font-size:14px}
+.keys div{display:flex;gap:8px;align-items:baseline;min-width:0}
+.keys dt{font:800 13px/1 var(--display);color:var(--rim);white-space:nowrap}
+.keys dd{margin:0;color:var(--ink-2)}
+.start-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#start{font-size:22px;padding:14px 26px 11px}
+#intro-progress{margin:0;font-size:14px;color:var(--ink-2)}
+
+/* touch */
+#touch{position:absolute;left:0;right:0;bottom:0;height:0;z-index:12}
+#stick{position:absolute;left:max(20px, env(safe-area-inset-left, 0px));bottom:calc(var(--bottom) + 8px);width:118px;height:118px;border-radius:50%;
+  background:var(--stick);border:2px solid var(--rim);touch-action:none}
+#knob{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:var(--rim);opacity:.85}
+#act{position:absolute;right:max(20px, env(safe-area-inset-right, 0px));bottom:calc(var(--bottom) + 22px);width:88px;height:88px;border-radius:50%;border:3px solid var(--glaze);
+  background:var(--rim);color:var(--glaze);font:800 17px/1 var(--display);box-shadow:var(--shadow);touch-action:none}
+#act:disabled{opacity:.45}
+body.touch #prompt{bottom:calc(var(--bottom) + 140px)}
+body.touch #carry{bottom:calc(var(--bottom) + 140px)}
+
+#toasts{position:absolute;z-index:60;left:50%;transform:translateX(-50%);top:calc(var(--top) + 54px);display:grid;gap:8px;justify-items:center;width:min(440px, calc(100% - 32px));pointer-events:none}
+.toast{pointer-events:auto;padding:10px 14px;border-radius:12px;font-size:15px;line-height:1.35;display:flex;gap:8px;align-items:center;flex-wrap:wrap;animation:rise .3s ease-out both}
+.toast .acts{display:flex;gap:6px}
+.toast .acts button{border:2px solid var(--c);color:var(--c);background:var(--glaze);border-radius:999px;padding:4px 10px;font:700 13px/1 var(--body);cursor:pointer}
+#fatal{position:absolute;inset:0;z-index:80;display:grid;place-items:center;padding:24px;text-align:center;background:var(--sky);font-size:17px;line-height:1.5}
+
+@media (max-width: 720px){
+  .brand{display:none}
+  #hud{justify-content:flex-end}
+  .hud-right{gap:6px;flex-wrap:nowrap}
+  .counts{gap:7px;padding:7px 9px;font-size:14px}
+  .coins{padding:7px 9px;font-size:14px}
+  .icon-btn{width:34px;height:34px}
+  .icon-btn svg{width:18px;height:18px}
+  #tracker{top:calc(var(--top) + 48px)}
+  #tracker{padding:16px 12px 10px;width:auto;max-width:calc(100% - 140px)}
+  #tracker:not(.open) #tasks,#tracker:not(.open) #unmet{display:none}
+  #tracker-toggle{display:inline;margin-left:auto;border:0;background:none;color:var(--rim);font:800 13px/1 var(--display);cursor:pointer;padding:0}
+  #minimap{width:96px;height:96px;top:calc(var(--top) + 56px)}
+  #dialogue{padding:20px 14px 12px}
+  .legend li{grid-template-columns:96px 1fr}
+  .keys{grid-template-columns:1fr}
+}
+@media (max-height: 520px){ #minimap{display:none} }
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="scene" aria-label="The market square, in 3D"></canvas>
+  <div id="labels"></div>
+
+  <header id="hud">
+    <div class="brand glaze"><span class="eye" aria-hidden="true"></span><span class="brand-name">Rynek Słówek</span></div>
+    <div class="hud-right">
+      <button id="counts" class="counts glaze" type="button" aria-label="Open your word list">
+        <span class="cnt" data-s="2" title="Known"><i></i><b id="c-known">0</b></span>
+        <span class="cnt" data-s="1" title="Learning"><i></i><b id="c-learning">0</b></span>
+        <span class="cnt" data-s="0" title="New words you have met"><i></i><b id="c-new">0</b></span>
+      </button>
+      <div class="coins glaze" title="Złoty earned from errands"><span class="coin" aria-hidden="true"></span><b id="coins">0</b>&nbsp;zł</div>
+      <button class="icon-btn glaze" id="btn-vocab" type="button" aria-label="Word list (V)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></button>
+      <button class="icon-btn glaze" id="btn-settings" type="button" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg></button>
+      <button class="icon-btn glaze" id="btn-help" type="button" aria-label="How to play">?</button>
+    </div>
+  </header>
+
+  <aside id="tracker" class="glaze dots" aria-label="Tasks">
+    <h2><span id="tracker-title"></span><small>tasks</small><button id="tracker-toggle" type="button" aria-expanded="false">Show</button></h2>
+    <ul id="tasks"></ul>
+    <p id="unmet"></p>
+  </aside>
+  <canvas id="minimap" aria-hidden="true"></canvas>
+
+  <div id="prompt" class="glaze" hidden></div>
+  <div id="carry" class="glaze" hidden>Carrying <span id="carry-word"></span><button id="btn-drop" class="ghost" type="button">Put back (G)</button></div>
+
+  <section id="dialogue" class="glaze dots" hidden aria-live="polite">
+    <div id="d-tip" hidden>Click a word to see what it means</div>
+    <div class="d-head"><span id="d-name"></span><span id="d-role"></span><span id="d-step"></span></div>
+    <p id="d-line" lang="pl"></p>
+    <p id="d-tr" hidden></p>
+    <div class="d-actions">
+      <button id="d-speak" class="chip-btn" type="button" aria-label="Listen again (R)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>Listen</button>
+      <button id="d-trbtn" class="chip-btn" type="button" aria-pressed="false">English (T)</button>
+      <span class="spacer"></span>
+      <span id="d-extra" class="d-actions" style="margin:0"></span>
+      <button id="d-next" class="primary" type="button">Next</button>
+    </div>
+  </section>
+
+  <div id="card" class="glaze" hidden role="dialog" aria-label="Word details"></div>
+
+  <section id="vocab" class="sheet glaze dots" hidden aria-label="Word list">
+    <div class="sheet-head"><h2><span id="vocab-title"></span><small>your words</small></h2><button class="icon-btn small x" type="button" data-close="vocab" aria-label="Close">×</button></div>
+    <div class="bar" id="v-bar"><span data-s="2"></span><span data-s="1"></span><span data-s="0"></span></div>
+    <p id="v-summary"></p>
+    <div class="filters" id="v-filters">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="0" data-s="0" aria-pressed="false">New</button>
+      <button type="button" data-f="1" data-s="1" aria-pressed="false">Learning</button>
+      <button type="button" data-f="2" data-s="2" aria-pressed="false">Known</button>
+    </div>
+    <input id="v-search" type="search" placeholder="Search Polish or English" aria-label="Search words" autocomplete="off">
+    <ul id="v-list"></ul>
+    <div class="sheet-foot">
+      <button id="v-review" class="primary" type="button">Review learning words</button>
+      <button id="v-review-new" class="chip-btn" type="button">Sort new words</button>
+    </div>
+  </section>
+
+  <section id="review" class="modal glaze dots" hidden aria-label="Review">
+    <div class="r-head"><h2><span id="review-title"></span><small>review</small></h2><span id="r-step"></span><button class="icon-btn small" type="button" data-close="review" aria-label="Close">×</button></div>
+    <div id="r-body"></div>
+  </section>
+
+  <div id="settings" class="pop glaze dots" hidden>
+    <h2>Settings</h2>
+    <label class="tog"><input type="checkbox" id="s-auto"> Read each line aloud</label>
+    <label class="tog"><input type="checkbox" id="s-tr"> Show English under every line</label>
+    <label class="tog"><input type="checkbox" id="s-hide"> Challenge: hide labels of known words</label>
+    <label class="tog"><input type="checkbox" id="s-sfx"> Sound effects</label>
+    <label class="rng">Speech speed <input type="range" id="s-rate" min="0.6" max="1.2" step="0.05"></label>
+    <p id="s-voice" class="muted"></p>
+    <p id="s-sync" class="muted"></p>
+    <button id="s-reset" class="danger" type="button">Reset all progress</button>
+  </div>
+
+  <section id="intro">
+    <div class="intro-card glaze dots">
+      <p class="eyebrow">A walk-around Polish word game</p>
+      <h1>Rynek <span>Słówek</span></h1>
+      <p class="lede">Walk around a Polish market square, talk to the people there and run their errands. Every Polish word is coloured by how well you know it.</p>
+      <ul class="legend">
+        <li data-s="0"><span class="w">jabłko</span><span><b>Purple</b>: new. You haven't met it or sorted it yet.</span></li>
+        <li data-s="1"><span class="w">kawa</span><span><b>Orange</b>: you're learning it.</span></li>
+        <li data-s="2"><span class="w">dzień</span><span><b>Green</b>: you know it.</span></li>
+      </ul>
+      <p class="lede" style="font-size:15px;margin-bottom:12px">Click any word, in a speech bubble or floating over a thing, to see what it means and sort it.</p>
+      <dl class="keys">
+        <div><dt>WASD / arrows</dt><dd>walk (Shift runs)</dd></div>
+        <div><dt>Drag</dt><dd>look around, wheel zooms</dd></div>
+        <div><dt>E or Space</dt><dd>talk, pick up, next line</dd></div>
+        <div><dt>V · G</dt><dd>word list · put item back</dd></div>
+        <div><dt>Phone</dt><dd>left thumb walks, drag to look</dd></div>
+        <div><dt>1 · 2 · 3</dt><dd>sort the open word</dd></div>
+      </dl>
+      <div class="start-row"><button id="start" class="primary" type="button">Start playing</button><p id="intro-progress"></p></div>
+    </div>
+  </section>
+
+  <div id="touch" hidden><div id="stick" aria-label="Walk"><div id="knob"></div></div><button id="act" type="button" disabled>Talk</button></div>
+  <div id="toasts" aria-live="polite"></div>
+  <div id="fatal" hidden></div>
+</div>
+<script type="module">
+// ---- src/js/01-data.js ----
+// ===================================================================
+// Rynek Słówek: words, people and errands
+// ===================================================================
+
+// lemma -> [English, part of speech, note?]
+const LEX = {
+  "dzień": ["day", "noun · masculine"],
+  "dobry": ["good", "adjective"],
+  "cześć": ["hi; bye (informal)", "greeting"],
+  "dzięki": ["thanks (informal)", "interjection"],
+  "smacznego": ["enjoy your meal!", "interjection", "Said to someone who is about to eat."],
+  "super": ["great!", "interjection"],
+  "hmm": ["hmm", "interjection"],
+  "ojej": ["oh dear!", "interjection"],
+  "hurra": ["hooray!", "interjection"],
+  "miau": ["meow", "interjection"],
+  "mrrr": ["purr", "interjection"],
+  "mniam": ["yum!", "interjection"],
+  "witać": ["to welcome, to greet", "verb"],
+  "mieć": ["to have", "verb", "mam, masz, ma… Also used for age: Mam siedem lat = I'm seven."],
+  "być": ["to be", "verb", "Irregular: jestem, jesteś, jest, są."],
+  "móc": ["can, to be able to", "verb", "mogę, możesz, może."],
+  "chcieć": ["to want", "verb", "chcę, chcesz, chce."],
+  "widzieć": ["to see", "verb"],
+  "znaleźć": ["to find", "verb · perfective"],
+  "szukać": ["to look for", "verb", "Takes the genitive: szukam jabłka."],
+  "dziękować": ["to thank", "verb", "Dziękuję = thank you."],
+  "prosić": ["to ask, to request", "verb", "Proszę = please; here you are; you're welcome. Prosić o + accusative = to ask for."],
+  "poprosić": ["to ask (for)", "verb · perfective", "Poproszę… = I'd like…, please. The polite way to order."],
+  "przynieść": ["to bring", "verb · perfective"],
+  "zanieść": ["to take (somewhere), to carry to", "verb · perfective"],
+  "podać": ["to pass, to hand; to serve", "verb · perfective"],
+  "pomóc": ["to help", "verb · perfective"],
+  "powtórzyć": ["to repeat, to revise", "verb · perfective"],
+  "iść": ["to go (on foot)", "verb"],
+  "spać": ["to sleep", "verb"],
+  "sprzedawać": ["to sell", "verb"],
+  "spaść": ["to fall (down)", "verb · perfective"],
+  "leżeć": ["to lie (be lying)", "verb"],
+  "piec": ["to bake", "verb", "Also a noun: piec = oven."],
+  "czekać": ["to wait", "verb", "Czekać na + accusative = to wait for."],
+  "pracować": ["to work", "verb"],
+  "lubić": ["to like", "verb"],
+  "kopnąć": ["to kick", "verb · perfective"],
+  "zagrać": ["to play (a game)", "verb · perfective"],
+  "zgubić": ["to lose", "verb · perfective"],
+  "otworzyć": ["to open", "verb · perfective"],
+  "na": ["on; at; for", "preposition"],
+  "w": ["in, at", "preposition", "Takes the locative for 'where': w kawiarni = in the café."],
+  "z": ["from, off (+ genitive); with (+ instrumental)", "preposition", "Becomes ze before some consonant clusters: ze straganu."],
+  "bez": ["without", "preposition", "Takes the genitive."],
+  "przy": ["by, next to", "preposition", "Takes the locative."],
+  "do": ["to, into; for", "preposition", "Takes the genitive."],
+  "dla": ["for", "preposition", "Takes the genitive: dla Oli = for Ola."],
+  "od": ["from", "preposition", "Takes the genitive: od Basi = from Basia."],
+  "obok": ["next to", "preposition", "Takes the genitive."],
+  "za": ["for (+ accusative); behind (+ instrumental)", "preposition"],
+  "po": ["after; along; on (a side)", "preposition"],
+  "pod": ["under", "preposition", "Takes the instrumental for 'where': pod ławką."],
+  "o": ["about; for (prosić o = ask for); oh!", "preposition · interjection"],
+  "i": ["and", "conjunction"],
+  "czy": ["question word; or", "particle", "Starts a yes/no question: Czy możesz…? = Can you…? Also 'or' in questions."],
+  "nie": ["no; not", "particle"],
+  "tak": ["yes; so, like this", "particle"],
+  "chyba": ["probably, I think", "particle"],
+  "może": ["maybe", "adverb", "Also 'he / she can', from móc."],
+  "teraz": ["now", "adverb"],
+  "bardzo": ["very; very much", "adverb"],
+  "jeszcze": ["still; yet; more", "adverb"],
+  "trochę": ["a little, a bit", "adverb"],
+  "codziennie": ["every day", "adverb"],
+  "mocno": ["hard, strongly", "adverb"],
+  "razem": ["together", "adverb"],
+  "niestety": ["unfortunately", "adverb"],
+  "dokładnie": ["exactly", "adverb"],
+  "świetnie": ["great, excellent", "adverb"],
+  "idealnie": ["perfect(ly)", "adverb"],
+  "pięknie": ["beautifully; lovely!", "adverb"],
+  "gdzie": ["where", "adverb"],
+  "ja": ["I; me", "pronoun"],
+  "ona": ["she; her; it (feminine)", "pronoun"],
+  "to": ["this, that, it", "pronoun"],
+  "co": ["what", "pronoun"],
+  "ten": ["this (masculine)", "pronoun"],
+  "mój": ["my, mine", "pronoun"],
+  "nasz": ["our", "pronoun"],
+  "wszystko": ["everything", "pronoun"],
+  "jaki": ["what (kind of); what a…!", "pronoun"],
+  "piękny": ["beautiful", "adjective"],
+  "głodny": ["hungry", "adjective"],
+  "pyszny": ["delicious", "adjective"],
+  "świeży": ["fresh", "adjective"],
+  "drugi": ["second; other", "adjective"],
+  "siedem": ["seven", "number"],
+  "imię": ["first name", "noun · neuter"],
+  "miasto": ["town, city", "noun · neuter"],
+  "problem": ["problem", "noun · masculine"],
+  "okulary": ["glasses", "noun · plural only"],
+  "fontanna": ["fountain", "noun · feminine"],
+  "słówko": ["word (a vocabulary word)", "noun · neuter", "A small, friendly form of słowo (word)."],
+  "słownik": ["dictionary; word list", "noun · masculine"],
+  "zadanie": ["task", "noun · neuter"],
+  "powtórka": ["review, revision", "noun · feminine"],
+  "kot": ["cat", "noun · masculine"],
+  "pies": ["dog", "noun · masculine", "Irregular: psa, psem. The e drops out."],
+  "owoc": ["fruit", "noun · masculine"],
+  "warzywo": ["vegetable", "noun · neuter"],
+  "stragan": ["market stall", "noun · masculine"],
+  "ziemia": ["ground; earth", "noun · feminine"],
+  "piekarka": ["baker (a woman)", "noun · feminine"],
+  "chleb": ["bread", "noun · masculine"],
+  "pomoc": ["help", "noun · feminine"],
+  "strona": ["side; page", "noun · feminine"],
+  "rynek": ["market square", "noun · masculine", "The main square of a Polish town. Rynku: the e drops out."],
+  "klient": ["customer (a man)", "noun · masculine"],
+  "klientka": ["customer (a woman)", "noun · feminine"],
+  "gość": ["guest", "noun · masculine"],
+  "rok": ["year", "noun · masculine", "After numbers from 5 up, 'years' is lat: siedem lat."],
+  "ratusz": ["town hall", "noun · masculine"],
+  "kwiat": ["flower", "noun · masculine"],
+  "klucz": ["key", "noun · masculine"],
+  "ławka": ["bench", "noun · feminine"],
+  "jabłko": ["apple", "noun · neuter"],
+  "gruszka": ["pear", "noun · feminine"],
+  "śliwka": ["plum", "noun · feminine"],
+  "cytryna": ["lemon", "noun · feminine"],
+  "marchewka": ["carrot", "noun · feminine"],
+  "bułka": ["bread roll", "noun · feminine"],
+  "ciastko": ["cookie, small cake", "noun · neuter"],
+  "drożdżówka": ["sweet yeast bun", "noun · feminine", "A bakery favourite, often with crumble on top."],
+  "szarlotka": ["apple pie", "noun · feminine"],
+  "kawa": ["coffee", "noun · feminine"],
+  "herbata": ["tea", "noun · feminine", "In Poland often served in a glass, with lemon."],
+  "woda": ["water", "noun · feminine"],
+  "sok": ["juice", "noun · masculine"],
+  "mleko": ["milk", "noun · neuter"],
+  "piłka": ["ball", "noun · feminine"],
+  "lalka": ["doll", "noun · feminine"],
+  "miś": ["teddy bear", "noun · masculine", "Animate, so the object form is misia."],
+  "latawiec": ["kite", "noun · masculine", "Latawca: the e drops out."],
+  "róża": ["rose", "noun · feminine"],
+  "lilia": ["lily", "noun · feminine"],
+  "stokrotka": ["daisy", "noun · feminine"],
+  "orchidea": ["orchid", "noun · feminine"],
+  "piekarnia": ["bakery", "noun · feminine"],
+  "kawiarnia": ["café", "noun · feminine"],
+  "kwiaciarnia": ["flower shop", "noun · feminine"],
+  "warzywniak": ["greengrocer's", "noun · masculine"],
+  "apteka": ["pharmacy", "noun · feminine"],
+  "księgarnia": ["bookshop", "noun · feminine"],
+  "poczta": ["post office", "noun · feminine"],
+  "drzewo": ["tree", "noun · neuter"],
+  "latarnia": ["street lamp", "noun · feminine"],
+  "gołąb": ["pigeon", "noun · masculine"],
+  "kościół": ["church", "noun · masculine"],
+  "parasol": ["umbrella, parasol", "noun · masculine"],
+  "stół": ["table", "noun · masculine"],
+  "piaskownica": ["sandpit", "noun · feminine"],
+  "józef": ["Józef: a man's name (Joseph)", "name"],
+  "filemon": ["Filemon: a cat's name, after the kitten in the cartoon Bonifacy i Filemon", "name"],
+  "marek": ["Marek: a man's name (Mark)", "name"],
+  "basia": ["Basia: a woman's name, short for Barbara", "name"],
+  "ola": ["Ola: a woman's name, short for Aleksandra", "name"],
+  "kuba": ["Kuba: a boy's name, short for Jakub (Jacob)", "name"],
+  "zosia": ["Zosia: a woman's name, short for Zofia (Sophie)", "name"],
+};
+
+// surface form -> [lemma, what this form is]
+const FORMS = {
+  "mam": ["mieć", "I have"], "masz": ["mieć", "you have; also 'here you go'"],
+  "jestem": ["być", "I am"], "jest": ["być", "he / she / it is"], "są": ["być", "they are"],
+  "mogę": ["móc", "I can"], "możesz": ["móc", "you can"],
+  "chcę": ["chcieć", "I want"], "chcesz": ["chcieć", "you want"], "chce": ["chcieć", "he / she wants"],
+  "witaj": ["witać", "command form: welcome!"],
+  "widzę": ["widzieć", "I see"],
+  "szukam": ["szukać", "I'm looking for"],
+  "dziękuję": ["dziękować", "I thank → thank you"],
+  "proszę": ["prosić", "I ask → please"], "prosi": ["prosić", "he / she asks"],
+  "poproszę": ["poprosić", "I'd like…, please (lit. I will ask for)"],
+  "przynieś": ["przynieść", "command form: bring!"],
+  "zanieś": ["zanieść", "command form: take (it) to!"],
+  "podaj": ["podać", "command form: pass!"],
+  "pomóż": ["pomóc", "command form: help!"],
+  "znajdź": ["znaleźć", "command form: find!"],
+  "idę": ["iść", "I'm going"],
+  "sprzedaję": ["sprzedawać", "I sell"],
+  "spadły": ["spaść", "they fell (past tense)"],
+  "leżą": ["leżeć", "they are lying"], "leży": ["leżeć", "it is lying"],
+  "piekę": ["piec", "I bake"],
+  "czeka": ["czekać", "he / she is waiting"],
+  "pracuję": ["pracować", "I work"],
+  "lubisz": ["lubić", "you like"], "lubię": ["lubić", "I like"],
+  "kopnąłem": ["kopnąć", "I kicked (said by a man or boy)"],
+  "zagrajmy": ["zagrać", "let's play"],
+  "zgubiłam": ["zgubić", "I lost (said by a woman)"],
+  "ze": ["z", "z before some consonant clusters"],
+  "mi": ["ja", "to me (dative)"],
+  "ją": ["ona", "her / it (object form)"],
+  "czego": ["co", "genitive: szukać takes the genitive"],
+  "tego": ["to", "genitive: after nie"],
+  "moje": ["mój", "plural (with okulary, klucze)"], "moja": ["mój", "feminine (with piłka)"],
+  "naszym": ["nasz", "locative (with mieście)"],
+  "pyszne": ["pyszny", "neuter (with mleko)"],
+  "drugiej": ["drugi", "locative, feminine (with stronie)"],
+  "mieście": ["miasto", "locative: after w"],
+  "okularów": ["okulary", "genitive: after bez"],
+  "fontannie": ["fontanna", "locative: after przy"],
+  "słówka": ["słówko", "plural"], "słówek": ["słówko", "genitive plural: after nie masz"],
+  "zadania": ["zadanie", "plural"],
+  "powtórki": ["powtórka", "genitive: after do"],
+  "kotem": ["kot", "instrumental: after być, 'I am a…'"],
+  "psem": ["pies", "instrumental: after być"],
+  "owoce": ["owoc", "plural"],
+  "warzywa": ["warzywo", "plural"],
+  "straganu": ["stragan", "genitive: after ze"],
+  "ziemi": ["ziemia", "locative: after na"],
+  "piekarką": ["piekarka", "instrumental: after być, 'I am a…'"],
+  "stronie": ["strona", "locative"],
+  "rynku": ["rynek", "genitive"],
+  "kawiarni": ["kawiarnia", "genitive or locative"],
+  "mlekiem": ["mleko", "instrumental: after z = with"],
+  "lat": ["rok", "genitive plural (irregular): after numbers from 5 up"],
+  "ratuszem": ["ratusz", "instrumental: after za = behind"],
+  "kwiaty": ["kwiat", "plural"],
+  "kwiaciarni": ["kwiaciarnia", "genitive: after nie mogę otworzyć"],
+  "kwiaciarnię": ["kwiaciarnia", "accusative (object form)"],
+  "ławką": ["ławka", "instrumental: after pod"],
+  "oli": ["ola", "genitive: after dla"],
+  "basi": ["basia", "genitive: after od"],
+  "kawę": ["kawa", "accusative (object form)"],
+  "herbatę": ["herbata", "accusative (object form)"],
+};
+
+const PHRASES = [
+  ["dzień dobry", "good morning; hello (formal)"],
+  ["mam na imię", "my name is (lit. 'I have for a name')"],
+  ["dziękuję bardzo", "thank you very much"],
+  ["to nie to", "that's not it"],
+  ["po drugiej stronie", "on the other side"],
+  ["siedem lat", "seven years (old)"],
+  ["z mlekiem", "with milk"],
+  ["idę spać", "I'm off to bed"],
+  ["dokładnie tak", "exactly right"],
+  ["za ratuszem", "behind the town hall"],
+  ["pod ławką", "under a bench"],
+  ["przy fontannie", "by the fountain"],
+  ["prosi o", "asks for"],
+  ["czeka na", "is waiting for"],
+  ["za pomoc", "for the help"],
+].map(([pl, en]) => ({ pl, en, w: pl.split(" ") }));
+
+// things you can pick up
+const ITEMS = {
+  okulary: { acc: "okulary", gen: "okularów", en: "the glasses", the: "the glasses", pl: true, story: "jozef" },
+  klucze: { lemma: "klucz", acc: "klucze", gen: "kluczy", en: "the keys", the: "the keys", pl: true, story: "zosia" },
+  jabłko: { acc: "jabłko", gen: "jabłka", en: "an apple", the: "the apple" },
+  gruszka: { acc: "gruszkę", gen: "gruszki", en: "a pear", the: "the pear" },
+  śliwka: { acc: "śliwkę", gen: "śliwki", en: "a plum", the: "the plum" },
+  cytryna: { acc: "cytrynę", gen: "cytryny", en: "a lemon", the: "the lemon" },
+  marchewka: { acc: "marchewkę", gen: "marchewki", en: "a carrot", the: "the carrot" },
+  chleb: { acc: "chleb", gen: "chleba", en: "a loaf of bread", the: "the bread" },
+  bułka: { acc: "bułkę", gen: "bułki", en: "a bread roll", the: "the roll" },
+  ciastko: { acc: "ciastko", gen: "ciastka", en: "a cookie", the: "the cookie" },
+  drożdżówka: { acc: "drożdżówkę", gen: "drożdżówki", en: "a sweet bun", the: "the sweet bun" },
+  szarlotka: { acc: "szarlotkę", gen: "szarlotki", en: "a slice of apple pie", the: "the apple pie" },
+  kawa: { acc: "kawę", gen: "kawy", en: "a coffee", the: "the coffee" },
+  herbata: { acc: "herbatę", gen: "herbaty", en: "a tea", the: "the tea" },
+  woda: { acc: "wodę", gen: "wody", en: "some water", the: "the water" },
+  sok: { acc: "sok", gen: "soku", en: "a juice", the: "the juice" },
+  mleko: { acc: "mleko", gen: "mleka", en: "some milk", the: "the milk" },
+  piłka: { acc: "piłkę", gen: "piłki", en: "the ball", the: "the ball" },
+  lalka: { acc: "lalkę", gen: "lalki", en: "the doll", the: "the doll" },
+  miś: { acc: "misia", gen: "misia", en: "the teddy bear", the: "the teddy bear" },
+  latawiec: { acc: "latawiec", gen: "latawca", en: "the kite", the: "the kite" },
+  róża: { acc: "różę", gen: "róży", en: "a rose", the: "the rose" },
+  lilia: { acc: "lilię", gen: "lilii", en: "a lily", the: "the lily" },
+  stokrotka: { acc: "stokrotkę", gen: "stokrotki", en: "a daisy", the: "the daisy" },
+  orchidea: { acc: "orchideę", gen: "orchidei", en: "an orchid", the: "the orchid" },
+};
+for (const [id, it] of Object.entries(ITEMS)) {
+  it.id = id; it.word ??= id; it.lemma ??= id;
+  if (it.word !== it.lemma && !FORMS[it.word]) FORMS[it.word] = [it.lemma, "plural"];
+  if (it.acc === it.gen && it.acc !== it.word) FORMS[it.acc] ??= [it.lemma, "accusative = genitive (miś is animate)"];
+  else {
+    if (it.acc !== it.word) FORMS[it.acc] ??= [it.lemma, "accusative (object form)"];
+    if (it.gen !== it.word) FORMS[it.gen] ??= [it.lemma, it.pl ? "genitive plural: after szukać, bez…" : "genitive: after szukać, bez, do…"];
+  }
+}
+const thisIs = id => {
+  const it = ITEMS[id];
+  return it.pl ? [`To są ${it.word}.`, `Those are ${it.the}.`] : [`To jest ${it.word}.`, `That's ${it.en}.`];
+};
+
+// people on the square
+const NPCS = {
+  jozef: {
+    name: "Józef", role: "grandpa by the fountain",
+    intro: [
+      ["Dzień dobry! Mam na imię Józef.", "Good morning! My name is Józef."],
+      ["Witaj w naszym mieście!", "Welcome to our town!"],
+      ["Mam problem. Nie widzę bez okularów.", "I have a problem. I can't see without my glasses."],
+      ["Czy możesz znaleźć moje okulary?", "Can you find my glasses?"],
+      ["Chyba są przy fontannie.", "I think they're by the fountain."],
+    ],
+    quest: { item: "okulary", reward: 20, task: ["Find Józef's", ""] },
+    remind: ["Moje okulary są chyba przy fontannie.", "My glasses are probably by the fountain."],
+    wrong: ["To nie to, czego szukam.", "That's not what I'm looking for."],
+    done: [["Moje okulary! Dziękuję bardzo!", "My glasses! Thank you very much!"], ["Teraz widzę wszystko.", "Now I can see everything."]],
+    after: [["Jaki piękny dzień!", "What a beautiful day!"]],
+    review: true,
+  },
+  filemon: {
+    name: "Filemon", role: "a cat on the town hall steps", cat: true,
+    intro: [
+      ["Miau! Jestem Filemon.", "Meow! I'm Filemon."],
+      ["Jestem bardzo głodny.", "I'm very hungry."],
+      ["Przynieś mi mleko, proszę.", "Bring me some milk, please."],
+      ["Mleko jest w kawiarni.", "The milk is in the café."],
+    ],
+    quest: { item: "mleko", reward: 20, task: ["Bring Filemon", ""] },
+    remind: ["Miau! Gdzie jest mleko?", "Meow! Where's the milk?"],
+    wrong: ["Miau? Nie chcę tego.", "Meow? I don't want that."],
+    done: [["Mniam! Pyszne mleko!", "Yum! Delicious milk!"], ["Teraz idę spać.", "Now I'm off to bed."]],
+    after: [["Mrrr... Jestem kotem, nie psem.", "Purr... I'm a cat, not a dog."]],
+  },
+  marek: {
+    name: "Marek", role: "the greengrocer",
+    intro: [
+      ["Dzień dobry! Jestem Marek.", "Good morning! I'm Marek."],
+      ["Sprzedaję owoce i warzywa.", "I sell fruit and vegetables."],
+      ["Ojej, owoce spadły ze straganu!", "Oh dear, the fruit fell off the stall!"],
+      ["Przynieś mi jabłko, proszę.", "Bring me an apple, please."],
+      ["Owoce leżą na ziemi, obok straganu.", "The fruit is lying on the ground, next to the stall."],
+    ],
+    quest: { item: "jabłko", reward: 20, task: ["Bring Marek", ""] },
+    remind: ["Jabłko leży na ziemi.", "The apple is lying on the ground."],
+    wrong: ["Nie, to nie to.", "No, that's not it."],
+    done: [["Super! Dziękuję!", "Great! Thank you!"], ["Teraz pomóż mi jeszcze trochę.", "Now help me a little more."]],
+    orders: {
+      pool: ["jabłko", "gruszka", "śliwka", "cytryna", "marchewka"],
+      ask: [["Poproszę {acc}.", "I'd like {en}, please."], ["Szukam {gen}.", "I'm looking for {en}."], ["Przynieś mi {acc}, proszę.", "Bring me {en}, please."]],
+      ok: [["Dokładnie tak! Dziękuję.", "Exactly right! Thank you."], ["Świetnie!", "Great!"]],
+    },
+  },
+  basia: {
+    name: "Basia", role: "the baker",
+    intro: [
+      ["Dzień dobry! Mam na imię Basia.", "Good morning! My name is Basia."],
+      ["Jestem piekarką. Codziennie piekę chleb.", "I'm a baker. I bake bread every day."],
+      ["Ola z kawiarni czeka na chleb.", "Ola from the café is waiting for bread."],
+      ["Zanieś ten chleb do kawiarni, proszę.", "Please take this bread to the café."],
+    ],
+    gives: "chleb",
+    quest: { item: "chleb", deliverTo: "ola", reward: 20, task: ["Take", "to Ola at the café"] },
+    remind: ["Kawiarnia jest po drugiej stronie rynku.", "The café is on the other side of the square."],
+    regive: [["Masz, to chleb dla Oli.", "Here, this is the bread for Ola."]],
+    wrong: ["Nie, to nie to.", "No, that's not it."],
+    thanks: [["Dziękuję za pomoc!", "Thanks for the help!"]],
+    orders: {
+      pool: ["chleb", "bułka", "ciastko", "drożdżówka", "szarlotka"],
+      ask: [["Klient czeka. Podaj mi {acc}, proszę.", "A customer is waiting. Pass me {en}, please."], ["Poproszę {acc}.", "I'd like {en}, please."], ["Szukam {gen}.", "I'm looking for {en}."]],
+      ok: [["Dziękuję! Smacznego!", "Thank you! Enjoy!"], ["Super, dzięki!", "Great, thanks!"]],
+    },
+  },
+  ola: {
+    name: "Ola", role: "works at the café",
+    intro: [
+      ["Cześć! Jestem Ola.", "Hi! I'm Ola."],
+      ["Pracuję w kawiarni.", "I work in the café."],
+      ["Lubisz kawę czy herbatę?", "Do you like coffee or tea?"],
+      ["Ja lubię kawę z mlekiem.", "I like coffee with milk."],
+    ],
+    receive: { from: "basia", item: "chleb", lines: [["O, świeży chleb od Basi! Dziękuję!", "Oh, fresh bread from Basia! Thank you!"]] },
+    wrong: ["Hmm, to nie to.", "Hmm, that's not it."],
+    orders: {
+      pool: ["kawa", "herbata", "woda", "sok", "mleko"],
+      ask: [["Gość prosi o {acc}.", "A guest is asking for {en}."], ["Poproszę {acc}.", "I'd like {en}, please."], ["Szukam {gen}.", "I'm looking for {en}."]],
+      ok: [["Dzięki! Idealnie.", "Thanks! Perfect."], ["Super!", "Great!"]],
+    },
+  },
+  kuba: {
+    name: "Kuba", role: "a boy by the sandpit", kid: true,
+    intro: [
+      ["Cześć! Mam na imię Kuba.", "Hi! My name is Kuba."],
+      ["Mam siedem lat.", "I'm seven years old."],
+      ["Gdzie jest moja piłka?", "Where is my ball?"],
+      ["Kopnąłem ją bardzo mocno.", "I kicked it really hard."],
+      ["Chyba jest za ratuszem.", "I think it's behind the town hall."],
+    ],
+    quest: { item: "piłka", reward: 20, task: ["Find Kuba's", ""] },
+    remind: ["Piłka jest chyba za ratuszem.", "The ball is probably behind the town hall."],
+    wrong: ["Nie, nie! To nie to.", "No, no! That's not it."],
+    done: [["Moja piłka! Hurra!", "My ball! Hooray!"], ["Zagrajmy razem!", "Let's play together!"]],
+    orders: {
+      pool: ["piłka", "lalka", "miś", "latawiec"],
+      ask: [["Znajdź {acc}!", "Find {en}!"], ["Gdzie jest {nom}?", "Where is {the}?"], ["Szukam {gen}.", "I'm looking for {the}."]],
+      ok: [["Hurra! Dziękuję!", "Hooray! Thank you!"], ["Super!", "Great!"]],
+    },
+  },
+  zosia: {
+    name: "Zosia", role: "the florist",
+    intro: [
+      ["Dzień dobry! Mam na imię Zosia.", "Good morning! My name is Zosia."],
+      ["Sprzedaję kwiaty.", "I sell flowers."],
+      ["Niestety zgubiłam klucze.", "Unfortunately I've lost my keys."],
+      ["Nie mogę otworzyć kwiaciarni.", "I can't open the flower shop."],
+      ["Może są pod ławką?", "Maybe they're under a bench?"],
+    ],
+    quest: { item: "klucze", reward: 20, task: ["Find Zosia's", ""] },
+    remind: ["Klucze są może pod ławką.", "The keys are maybe under a bench."],
+    wrong: ["Niestety, to nie to.", "Unfortunately, that's not it."],
+    done: [["Moje klucze! Dziękuję!", "My keys! Thank you!"], ["Teraz mogę otworzyć kwiaciarnię.", "Now I can open the flower shop."]],
+    orders: {
+      pool: ["róża", "lilia", "stokrotka", "orchidea"],
+      ask: [["Klientka chce {acc}.", "A customer wants {en}."], ["Poproszę {acc}.", "I'd like {en}, please."], ["Szukam {gen}.", "I'm looking for {en}."]],
+      ok: [["Pięknie! Dziękuję.", "Lovely! Thank you."], ["Świetnie!", "Great!"]],
+    },
+  },
+};
+const REVIEW_LINES = {
+  offer: ["Chcesz powtórzyć słówka?", "Do you want to review your words?"],
+  none: ["Nie masz teraz słówek do powtórki.", "You have no words to review right now."],
+};
+const NPC_ORDER = ["jozef", "filemon", "marek", "basia", "ola", "kuba", "zosia"];
+
+// ---- src/js/02-words.js ----
+// ===================================================================
+// helpers
+// ===================================================================
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") el.className = v;
+    else if (k === "dataset") Object.assign(el.dataset, v);
+    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid);
+  return el;
+}
+function showFatal(msg) { const f = document.getElementById("fatal"); f.textContent = msg; f.hidden = false; }
+const SPEAKER_SVG = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg>';
+const svgSpeaker = () => { const s = document.createElement("span"); s.innerHTML = SPEAKER_SVG; s.style.display = "grid"; return s; };
+
+
+// ===================================================================
+// words
+// ===================================================================
+const STATUS_NAMES = ["New", "Learning", "Known"];
+const WORD_RE = /\p{L}+/gu;
+function lookup(surface) {
+  const k = surface.toLowerCase();
+  if (FORMS[k]) return { lemma: FORMS[k][0], form: FORMS[k][1] };
+  if (LEX[k]) return { lemma: k, form: null };
+  return null;
+}
+function tokenize(text) {
+  const out = []; let last = 0;
+  for (const m of text.matchAll(WORD_RE)) {
+    if (m.index > last) out.push({ t: text.slice(last, m.index) });
+    const info = lookup(m[0]);
+    out.push({ t: m[0], w: true, lemma: info?.lemma ?? null });
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push({ t: text.slice(last) });
+  return out;
+}
+const displayLemma = l => LEX[l]?.[1] === "name" ? l[0].toUpperCase() + l.slice(1) : l;
+function findPhrase(ctx) {
+  if (!ctx) return null;
+  const { words, index } = ctx;
+  for (const p of PHRASES) {
+    const n = p.w.length;
+    for (let s = index - n + 1; s <= index; s++) {
+      if (s < 0 || s + n > words.length) continue;
+      let ok = true;
+      for (let k = 0; k < n; k++) if (words[s + k] !== p.w[k]) { ok = false; break; }
+      if (ok) return p;
+    }
+  }
+  return null;
+}
+function validateLexicon() {
+  const missing = new Set(), check = t => tokenize(t).forEach(tk => { if (tk.w && !tk.lemma) missing.add(tk.t); });
+  const fill = (tpl, it) => tpl.replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.word);
+  for (const N of Object.values(NPCS)) {
+    for (const key of ["intro", "done", "after", "thanks", "regive"]) (N[key] || []).forEach(l => check(l[0]));
+    for (const key of ["remind", "wrong"]) if (N[key]) check(N[key][0]);
+    N.receive?.lines.forEach(l => check(l[0]));
+    if (N.orders) { N.orders.ok.forEach(l => check(l[0])); for (const id of N.orders.pool) N.orders.ask.forEach(a => check(fill(a[0], ITEMS[id]))); }
+  }
+  Object.keys(ITEMS).forEach(id => { check(thisIs(id)[0]); if (!LEX[ITEMS[id].lemma]) missing.add(ITEMS[id].lemma); });
+  Object.values(REVIEW_LINES).forEach(l => check(l[0]));
+  const clashes = Object.keys(FORMS).filter(f => LEX[f]);
+  return { missing: [...missing], clashes };
+}
+
+// ---- src/js/03-state.js ----
+// ===================================================================
+// state + saving (this browser always; the viewer's Claude account when the page can reach it)
+// ===================================================================
+const SAVE_KEY = "rynek-slowek:v1";
+const DEFAULT_SETTINGS = { auto: true, tr: false, hideKnown: false, sfx: true, rate: 0.9 };
+const freshState = () => ({ v: 1, words: {}, npc: {}, coins: 0, carry: null, settings: { ...DEFAULT_SETTINGS }, tips: {}, started: false, updatedAt: 0 });
+function normalize(d) {
+  const s = freshState();
+  if (!d || typeof d !== "object") return s;
+  if (d.words && typeof d.words === "object") for (const [l, r] of Object.entries(d.words)) {
+    if (!LEX[l] || !r || typeof r !== "object") continue;
+    s.words[l] = { s: clamp(Math.round(+r.s || 0), 0, 2), seen: Math.max(0, +r.seen || 0), ok: Math.max(0, +r.ok || 0) };
+  }
+  if (d.npc && typeof d.npc === "object") for (const id of NPC_ORDER) if (d.npc[id]) {
+    const n = d.npc[id];
+    s.npc[id] = { stage: ["new", "active", "done"].includes(n.stage) ? n.stage : "new", order: ITEMS[n.order] ? n.order : null, tmpl: +n.tmpl || 0, thanked: !!n.thanked };
+  }
+  s.coins = Math.max(0, +d.coins || 0);
+  s.carry = ITEMS[d.carry] ? d.carry : null;
+  s.settings = { ...DEFAULT_SETTINGS, ...(d.settings && typeof d.settings === "object" ? d.settings : {}) };
+  s.tips = d.tips && typeof d.tips === "object" ? { ...d.tips } : {};
+  s.started = !!d.started;
+  s.updatedAt = +d.updatedAt || 0;
+  return s;
+}
+function loadLocal() { try { const raw = localStorage.getItem(SAVE_KEY); return raw ? JSON.parse(raw) : null; } catch { return null; } }
+let st = freshState();
+let remote = null, remoteTimer = 0, remoteBusy = false, remoteDirty = false, syncNote = "Progress is saved in this browser.";
+function save() {
+  st.updatedAt = Date.now();
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify(st)); } catch {}
+  if (remote) { remoteDirty = true; clearTimeout(remoteTimer); remoteTimer = setTimeout(flushRemote, 1500); }
+}
+async function flushRemote() {
+  if (!remote || remoteBusy || !remoteDirty) return;
+  remoteBusy = true; remoteDirty = false;
+  try { await remote.set(JSON.parse(JSON.stringify(st))); setSync("Progress is saved to your Claude account."); }
+  catch (e) {
+    if (["invalid_argument", "revoked", "not_granted", "capability_disabled", "capability_removed"].includes(e?.code)) { remote = null; setSync("Progress is saved in this browser only."); }
+    else { remoteDirty = true; setSync("Couldn't reach your account just now. Progress is safe in this browser and will sync again."); }
+  } finally {
+    remoteBusy = false;
+    if (remoteDirty && remote) { clearTimeout(remoteTimer); remoteTimer = setTimeout(flushRemote, 4000); }
+  }
+}
+function setSync(t) { syncNote = t; const el = $("#s-sync"); if (el) el.textContent = t; }
+async function connectRemote() {
+  const c = window.claude;
+  if (!c?.use) return;
+  try {
+    const [db, user] = await Promise.all([c.use("db"), c.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    const ref = db.doc("data/users/" + uid + "/progress");
+    const snap = await ref.get();
+    remote = ref;
+    setSync("Progress is saved to your Claude account.");
+    const theirs = snap.exists ? snap.data() : null;
+    if (theirs && (+theirs.updatedAt || 0) > st.updatedAt) {
+      st = normalize(theirs);
+      try { localStorage.setItem(SAVE_KEY, JSON.stringify(st)); } catch {}
+      afterStateLoaded();
+    } else if (st.updatedAt > 0) { remoteDirty = true; flushRemote(); }
+  } catch { remote = null; }
+}
+
+const rec = l => (st.words[l] ??= { s: 0, seen: 0, ok: 0 });
+const status = l => st.words[l]?.s ?? 0;
+const npcState = id => (st.npc[id] ??= { stage: "new", order: null, tmpl: 0, thanked: false });
+function setStatus(lemma, s) {
+  if (!LEX[lemma]) return;
+  const before = status(lemma);
+  rec(lemma).s = s;
+  save(); refreshWordViews();
+  if (s === 2 && before !== 2) sfx.known(); else sfx.tick();
+}
+function markSeen(lemmas) { for (const l of new Set(lemmas)) if (LEX[l]) rec(l).seen++; save(); refreshCounts(); }
+function counts() {
+  let known = 0, learning = 0, fresh = 0, met = 0;
+  for (const l of Object.keys(LEX)) {
+    const r = st.words[l]; if (!r) continue;
+    if (r.s === 2) known++; else if (r.s === 1) learning++; else if (r.seen > 0) fresh++;
+    if (r.seen > 0 || r.s > 0) met++;
+  }
+  return { known, learning, fresh, met, total: Object.keys(LEX).length };
+}
+function refreshCounts() {
+  const c = counts();
+  $("#c-known").textContent = c.known; $("#c-learning").textContent = c.learning; $("#c-new").textContent = c.fresh;
+  $("#coins").textContent = st.coins;
+}
+function refreshWordViews() {
+  for (const el of $$("[data-lemma]")) el.dataset.s = String(status(el.dataset.lemma));
+  for (const L of labels) if (L.lemma) L.btn.textContent = labelText(L);
+  refreshCounts();
+  if (cardState) renderCard();
+  if (!$("#vocab").hidden) renderVocab();
+}
+
+// ===================================================================
+// sound: speech + little synth effects
+// ===================================================================
+let plVoice = null;
+const canSpeak = "speechSynthesis" in window;
+function loadVoices() {
+  if (!canSpeak) return;
+  const vs = speechSynthesis.getVoices();
+  plVoice = vs.find(v => /^pl(-|_|$)/i.test(v.lang)) || null;
+  const el = $("#s-voice");
+  if (el) el.textContent = !canSpeak ? "This browser can't read text aloud."
+    : plVoice ? `Voice: ${plVoice.name}` : vs.length ? "No Polish voice found on this device, so lines are read with the default voice." : "";
+}
+if (canSpeak) { loadVoices(); speechSynthesis.addEventListener?.("voiceschanged", loadVoices); }
+function speak(text) {
+  if (!canSpeak) return;
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text.replace(/\.\.\./g, "…"));
+    u.lang = "pl-PL"; if (plVoice) u.voice = plVoice; u.rate = st.settings.rate;
+    speechSynthesis.speak(u);
+  } catch {}
+}
+let actx = null;
+function audio() {
+  if (!actx) { try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch { actx = null; } }
+  if (actx?.state === "suspended") actx.resume().catch(() => {});
+  return actx;
+}
+function tone(f, d = 0.12, type = "sine", v = 0.07, when = 0) {
+  if (!st.settings.sfx) return;
+  const a = audio(); if (!a) return;
+  const t0 = a.currentTime + when, o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.setValueAtTime(f, t0);
+  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(v, t0 + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, t0 + d);
+  o.connect(g).connect(a.destination); o.start(t0); o.stop(t0 + d + 0.03);
+}
+const sfx = {
+  pop() { tone(620, 0.09, "triangle"); tone(930, 0.09, "triangle", 0.05, 0.05); },
+  ok() { [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.2, "triangle", 0.06, i * 0.07)); },
+  no() { tone(240, 0.16, "triangle", 0.06); tone(190, 0.2, "triangle", 0.05, 0.1); },
+  tick() { tone(880, 0.05, "square", 0.018); },
+  coin() { tone(1318, 0.08, "square", 0.025); tone(1760, 0.14, "square", 0.025, 0.07); },
+  known() { [784, 988, 1318].forEach((f, i) => tone(f, 0.16, "sine", 0.06, i * 0.05)); },
+  talk() { tone(440, 0.06, "sine", 0.03); },
+};
+
+// ---- src/js/04-ui.js ----
+// ===================================================================
+// word buttons + the word card
+// ===================================================================
+function wordBtn(surface, lemma, cls = "w", ctx = null) {
+  const b = h("button", { class: cls, type: "button", lang: "pl", dataset: { lemma, s: String(status(lemma)) } }, surface);
+  b.addEventListener("click", ev => { ev.stopPropagation(); openCard(surface, b, ctx); });
+  return b;
+}
+let cardState = null;
+const card = $("#card");
+function openCard(surface, anchor, ctx) {
+  const info = lookup(surface);
+  if (!info || !LEX[info.lemma]) return;
+  cardState = { surface, lemma: info.lemma, form: info.form, anchor, ctx };
+  renderCard();
+  card.hidden = false;
+  positionCard(anchor);
+  if (!st.tips.word) { st.tips.word = true; $("#d-tip").hidden = true; save(); }
+}
+function renderCard() {
+  const { surface, lemma, form, ctx } = cardState;
+  const [gloss, pos, note] = LEX[lemma];
+  const r = st.words[lemma] || { seen: 0, ok: 0 }, s = status(lemma), phrase = findPhrase(ctx);
+  card.dataset.s = String(s);
+  card.replaceChildren(...[
+    h("div", { class: "c-top" },
+      h("span", { class: "c-word", lang: "pl" }, surface),
+      h("button", { class: "icon-btn small", type: "button", "aria-label": "Listen", onclick: () => speak(surface) }, svgSpeaker()),
+      h("button", { class: "icon-btn small", type: "button", "aria-label": "Close", onclick: closeCard }, "×")),
+    form ? h("p", { class: "c-form" }, "→ ", h("b", { lang: "pl" }, displayLemma(lemma)), " · ", form) : null,
+    h("p", { class: "c-pos" }, pos),
+    h("p", { class: "c-gloss" }, gloss),
+    phrase ? h("p", { class: "c-phrase" }, h("b", { lang: "pl" }, phrase.pl), " = ", phrase.en) : null,
+    note ? h("p", { class: "c-note" }, note) : null,
+    h("div", { class: "seg", role: "group", "aria-label": "Sort this word" },
+      [0, 1, 2].map(k => h("button", { type: "button", dataset: { s: String(k) }, "aria-pressed": String(s === k), onclick: () => setStatus(lemma, k) },
+        h("span", { class: "k" }, String(k + 1)), STATUS_NAMES[k]))),
+    h("p", { class: "c-meta" }, `Seen ${r.seen || 0}×` + (r.ok ? ` · delivered ${r.ok}×` : ""))].filter(Boolean));
+}
+function positionCard(anchor) {
+  const r = anchor.getBoundingClientRect(), cw = card.offsetWidth, ch = card.offsetHeight;
+  let top = r.top - ch - 10;
+  if (top < 60) top = Math.min(r.bottom + 10, innerHeight - ch - 12);
+  const left = clamp(r.left + r.width / 2 - cw / 2, 16, Math.max(16, innerWidth - cw - 16));
+  card.style.left = left + "px"; card.style.top = Math.max(12, top) + "px";
+}
+function closeCard() { card.hidden = true; cardState = null; }
+document.addEventListener("pointerdown", e => {
+  if (!card.hidden && !card.contains(e.target) && !e.target.closest("[data-lemma]")) closeCard();
+  const pop = $("#settings");
+  if (!pop.hidden && !pop.contains(e.target) && !e.target.closest("#btn-settings")) pop.hidden = true;
+}, true);
+
+// ===================================================================
+// dialogue
+// ===================================================================
+const dlg = { open: false, npc: null, lines: [], i: 0, actions: null, onEnd: null };
+function startDialogue(npcId, lines, opts = {}) {
+  closeCard();
+  Object.assign(dlg, { open: true, npc: npcId, lines, i: 0, actions: opts.actions || null, onEnd: opts.onEnd || null });
+  $("#d-name").textContent = NPCS[npcId].name;
+  $("#d-role").textContent = NPCS[npcId].role;
+  $("#dialogue").hidden = false;
+  $("#d-tip").hidden = !!st.tips.word;
+  updateTouchUI();
+  showLine();
+}
+function showLine() {
+  const [pl, en] = dlg.lines[dlg.i];
+  const toks = tokenize(pl), words = toks.filter(t => t.w).map(t => t.t.toLowerCase());
+  const line = $("#d-line"); line.replaceChildren();
+  let wi = 0;
+  toks.forEach((tk, i) => {
+    const node = tk.w && tk.lemma ? wordBtn(tk.t, tk.lemma, "w", { words, index: wi }) : h("span", { class: "p" }, tk.t);
+    if (tk.w) wi++;
+    node.style.setProperty("--i", i);
+    line.append(node);
+  });
+  markSeen(toks.filter(t => t.lemma).map(t => t.lemma));
+  const tr = $("#d-tr"); tr.textContent = en; tr.hidden = !st.settings.tr && !dlg.trOnce;
+  $("#d-trbtn").setAttribute("aria-pressed", String(!tr.hidden));
+  $("#d-step").textContent = dlg.lines.length > 1 ? `${dlg.i + 1} / ${dlg.lines.length}` : "";
+  const last = dlg.i === dlg.lines.length - 1, extra = $("#d-extra");
+  extra.replaceChildren();
+  if (last && dlg.actions) {
+    dlg.actions.forEach((a, k) => extra.append(h("button", { type: "button", class: k === 0 ? "primary" : "chip-btn", onclick: () => { endDialogue(); a.fn?.(); } }, a.label)));
+    $("#d-next").hidden = true;
+  } else { $("#d-next").hidden = false; $("#d-next").textContent = last ? "Done" : "Next"; }
+  if (st.settings.auto) speak(pl); else sfx.talk();
+}
+function nextLine() { if (dlg.i < dlg.lines.length - 1) { dlg.i++; dlg.trOnce = false; showLine(); } else endDialogue(); }
+function endDialogue() {
+  if (!dlg.open) return;
+  dlg.open = false; dlg.trOnce = false; $("#dialogue").hidden = true; closeCard();
+  if (canSpeak) speechSynthesis.cancel();
+  const cb = dlg.onEnd; dlg.onEnd = null; dlg.npc = null;
+  updateTouchUI(); renderTracker();
+  cb?.();
+}
+function toggleTr() { const tr = $("#d-tr"); tr.hidden = !tr.hidden; dlg.trOnce = !tr.hidden; $("#d-trbtn").setAttribute("aria-pressed", String(!tr.hidden)); }
+$("#d-next").addEventListener("click", nextLine);
+$("#d-trbtn").addEventListener("click", toggleTr);
+$("#d-speak").addEventListener("click", () => dlg.open && speak(dlg.lines[dlg.i][0]));
+
+// ===================================================================
+// errands
+// ===================================================================
+function fillOrder(npcId) {
+  const s = npcState(npcId), it = ITEMS[s.order], tpl = NPCS[npcId].orders.ask[s.tmpl % NPCS[npcId].orders.ask.length];
+  return [tpl[0].replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.word),
+          tpl[1].replace("{en}", it.en).replace("{the}", it.the)];
+}
+function newOrder(npcId) {
+  const N = NPCS[npcId], s = npcState(npcId);
+  const pool = N.orders.pool.filter(id => id !== s.last && (!ITEMS[id].story));
+  const weighted = pool.flatMap(id => Array(status(ITEMS[id].lemma) === 2 ? 1 : 3).fill(id));
+  s.order = pick(weighted); s.last = s.order; s.tmpl = Math.floor(Math.random() * N.orders.ask.length);
+  return fillOrder(npcId);
+}
+function reward(n) { st.coins += n; sfx.coin(); }
+function wordDelivered(id) {
+  const lemma = ITEMS[id].lemma; rec(lemma).ok++;
+  if (status(lemma) === 2) return;
+  const word = ITEMS[id].word;
+  toast(h("span", {}, h("b", { class: "chip", dataset: { lemma, s: String(status(lemma)) } }, word), " delivered. Sort it?"), {
+    actions: [{ label: "Learning", s: 1, fn: () => setStatus(lemma, 1) }, { label: "Known", s: 2, fn: () => setStatus(lemma, 2) }], ms: 6000 });
+}
+function wantedBy(npcId) {
+  const N = NPCS[npcId], s = npcState(npcId);
+  if (N.receive && npcState(N.receive.from).stage === "active") return N.receive.item;
+  if (s.stage === "active" && N.quest && !N.gives) return N.quest.item;
+  if (s.stage === "done" && s.order) return s.order;
+  return null;
+}
+function npcMark(npcId) {
+  const N = NPCS[npcId], s = npcState(npcId), want = wantedBy(npcId);
+  if (st.carry && want === st.carry) return "?";
+  if (s.stage === "new") return "!";
+  if (s.stage === "done" && N.orders && !s.order) return "!";
+  if (N.thanks && s.stage === "done" && !s.thanked) return "!";
+  return "";
+}
+function talk(id) {
+  const N = NPCS[id], s = npcState(id), carry = st.carry, lines = [], after = [];
+  let actions = null;
+  const finishQuest = (qid, Q) => {
+    lines.push(...NPCS[qid].done || []);
+    consumeCarry(); npcState(qid).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
+    after.push(() => { sfx.ok(); toast(`Errand done for ${NPCS[qid].name}. +${Q.reward} zł`); });
+  };
+  if (N.receive && npcState(N.receive.from).stage === "active" && carry === N.receive.item) {
+    if (s.stage === "new") { lines.push(...N.intro); s.stage = "done"; }
+    lines.push(...N.receive.lines);
+    const from = N.receive.from, Q = NPCS[from].quest;
+    consumeCarry(); npcState(from).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
+    after.push(() => { sfx.ok(); toast(`Bread delivered for ${NPCS[from].name}. +${Q.reward} zł`); });
+  } else if (s.stage === "new") {
+    lines.push(...N.intro);
+    if (N.quest) {
+      s.stage = "active";
+      if (N.gives) { giveCarry(N.gives); after.push(() => toast(h("span", {}, "Basia gave you ", wordChip(N.gives), ". Take it to Ola."))); }
+      else if (carry === N.quest.item) finishQuest(id, N.quest);
+    } else s.stage = "done";
+    if (s.stage === "done" && N.orders) lines.push(newOrder(id));
+  } else if (s.stage === "active") {
+    if (N.gives) {
+      if (carry === N.gives) lines.push(N.remind);
+      else { lines.push(...N.regive); giveCarry(N.gives); }
+    } else if (carry === N.quest.item) {
+      finishQuest(id, N.quest);
+      if (N.orders) lines.push(newOrder(id));
+    } else if (carry) { lines.push(N.wrong, thisIs(carry), N.remind); sfx.no(); }
+    else lines.push(N.remind);
+  } else {
+    if (N.thanks && !s.thanked) { lines.push(...N.thanks); s.thanked = true; }
+    if (N.orders) {
+      if (s.order && carry === s.order) {
+        lines.push(pick(N.orders.ok)); consumeCarry(); reward(5); wordDelivered(s.order); s.order = null;
+        after.push(() => sfx.ok());
+        lines.push(newOrder(id));
+      } else if (s.order && carry) { lines.push(N.wrong, thisIs(carry), fillOrder(id)); sfx.no(); }
+      else if (s.order) lines.push(fillOrder(id));
+      else lines.push(newOrder(id));
+    } else {
+      lines.push(...N.after);
+      if (N.review) {
+        if (Object.keys(LEX).some(l => status(l) === 1)) {
+          lines.push(REVIEW_LINES.offer);
+          actions = [{ label: "Review my words", fn: () => openReview("learning") }, { label: "Not now" }];
+        } else lines.push(REVIEW_LINES.none);
+      }
+    }
+  }
+  save(); refreshCounts(); renderTracker();
+  startDialogue(id, lines, { actions, onEnd: () => after.forEach(f => f()) });
+}
+function giveCarry(id) { if (st.carry && st.carry !== id) placeItem(st.carry, true); removeItem(id); st.carry = id; setCarryVisual(); sfx.pop(); }
+function consumeCarry() {
+  const id = st.carry; if (!id) return;
+  st.carry = null; setCarryVisual();
+  if (!ITEMS[id].story) setTimeout(() => placeItem(id, true), 900);
+}
+function pickUp(id) {
+  if (st.carry) placeItem(st.carry, true);
+  removeItem(id); st.carry = id; setCarryVisual(); sfx.pop();
+  markSeen([ITEMS[id].lemma]);
+  save(); renderTracker();
+}
+function putBack() { if (!st.carry) return; const id = st.carry; st.carry = null; placeItem(id, true); setCarryVisual(); sfx.tick(); save(); renderTracker(); }
+$("#btn-drop").addEventListener("click", putBack);
+
+// ===================================================================
+// tracker, HUD, toasts, prompt
+// ===================================================================
+const wordChip = (id) => wordBtn(ITEMS[id].word, ITEMS[id].lemma, "chip");
+function headingWord(sel, word) { const info = lookup(word); $(sel).replaceChildren(wordBtn(word[0].toUpperCase() + word.slice(1), info.lemma, "w")); }
+function renderTracker() {
+  const ul = $("#tasks"); ul.replaceChildren();
+  let n = 0;
+  for (const id of NPC_ORDER) {
+    const N = NPCS[id], s = npcState(id);
+    if (s.stage === "active" && N.quest) { const [a, b] = N.quest.task; ul.append(h("li", {}, a, " ", wordChip(N.quest.item), b ? " " + b : "")); n++; }
+    if (s.stage === "done" && s.order) { ul.append(h("li", {}, wordChip(s.order), ` for ${N.name}`)); n++; }
+  }
+  if (!n) ul.append(h("li", { class: "muted" }, "Talk to someone with a ! over their head."));
+  const unmet = NPC_ORDER.filter(id => npcState(id).stage === "new").map(id => NPCS[id].name);
+  $("#unmet").textContent = unmet.length ? `Not met yet: ${unmet.join(", ")}` : "You've met everyone on the square.";
+  $("#tracker-toggle").textContent = $("#tracker").classList.contains("open") ? "Hide" : `Show ${n || ""}`.trim();
+  for (const o of Object.values(npcObjs)) o.mark.textContent = npcMark(o.id);
+  const cw = $("#carry-word");
+  if (st.carry) { cw.replaceChildren(wordChip(st.carry)); $("#carry").hidden = false; } else $("#carry").hidden = true;
+}
+$("#tracker-toggle").addEventListener("click", () => { const t = $("#tracker"); t.classList.toggle("open"); $("#tracker-toggle").setAttribute("aria-expanded", String(t.classList.contains("open"))); renderTracker(); });
+function toast(content, { actions, ms = 3400 } = {}) {
+  const el = h("div", { class: "toast glaze" }, content);
+  if (actions) el.append(h("span", { class: "acts" }, actions.map(a => h("button", { type: "button", dataset: { s: String(a.s) }, onclick: () => { a.fn(); el.remove(); } }, a.label))));
+  $("#toasts").append(el);
+  while ($("#toasts").children.length > 3) $("#toasts").firstChild.remove();
+  setTimeout(() => el.remove(), ms);
+}
+let promptKey = "";
+function setPrompt(near) {
+  const p = $("#prompt"), act = $("#act");
+  const key = near && !dlg.open && introClosed ? near.kind + near.id : "";
+  if (key === promptKey) return;
+  promptKey = key;
+  if (!key) { p.hidden = true; act.disabled = !dlg.open; act.textContent = dlg.open ? "Next" : "Talk"; return; }
+  const verb = near.kind === "npc" ? "Talk to" : "Pick up";
+  p.replaceChildren(h("kbd", {}, "E"), verb + " ", near.kind === "npc" ? h("b", {}, NPCS[near.id].name) : wordChip(near.id));
+  p.hidden = false; act.disabled = false; act.textContent = near.kind === "npc" ? "Talk" : "Pick up";
+}
+
+// ===================================================================
+// word list (Słownik)
+// ===================================================================
+let vFilter = "all";
+function renderVocab() {
+  const c = counts(), q = $("#v-search").value.trim().toLowerCase();
+  const bar = $("#v-bar").children, tot = c.total || 1;
+  bar[0].style.width = (c.known / tot * 100) + "%"; bar[1].style.width = (c.learning / tot * 100) + "%"; bar[2].style.width = (c.fresh / tot * 100) + "%";
+  $("#v-summary").textContent = `${c.known} known, ${c.learning} learning, ${c.fresh} new. You've met ${c.met} of the ${c.total} words on the square.`;
+  const met = Object.keys(LEX).filter(l => (st.words[l]?.seen || 0) > 0 || status(l) > 0);
+  const list = met.filter(l => vFilter === "all" || String(status(l)) === vFilter)
+    .filter(l => !q || l.includes(q) || LEX[l][0].toLowerCase().includes(q))
+    .sort((a, b) => a.localeCompare(b, "pl"));
+  const ul = $("#v-list");
+  ul.replaceChildren(...list.map(l => {
+    const s = status(l);
+    return h("li", { class: "v-row" }, wordBtn(displayLemma(l), l, "w"), h("span", { class: "v-gloss" }, LEX[l][0]),
+      h("span", { class: "v-dots", role: "group", "aria-label": `Sort ${l}` }, [0, 1, 2].map(k =>
+        h("button", { type: "button", class: "dot", dataset: { s: String(k) }, "aria-pressed": String(s === k), "aria-label": STATUS_NAMES[k], title: STATUS_NAMES[k], onclick: () => setStatus(l, k) }))));
+  }));
+  if (!list.length) ul.append(h("li", { class: "v-empty" }, met.length ? "No words match." : "No words yet. Talk to people on the square and every word they say lands here."));
+  const nl = Object.keys(LEX).filter(l => status(l) === 1).length, nn = c.fresh;
+  $("#v-review").textContent = `Review learning words (${nl})`; $("#v-review").disabled = !nl;
+  $("#v-review-new").textContent = `Sort new words (${nn})`; $("#v-review-new").disabled = !nn;
+}
+function toggleVocab(force) {
+  const v = $("#vocab"), open = force ?? v.hidden;
+  v.hidden = !open; if (open) { renderVocab(); $("#settings").hidden = true; } else closeCard();
+}
+$("#v-filters").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  vFilter = b.dataset.f; $$("#v-filters button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); renderVocab();
+});
+$("#v-search").addEventListener("input", renderVocab);
+$("#v-review").addEventListener("click", () => openReview("learning"));
+$("#v-review-new").addEventListener("click", () => openReview("new"));
+$("#counts").addEventListener("click", () => toggleVocab());
+$("#btn-vocab").addEventListener("click", () => toggleVocab());
+$$("[data-close]").forEach(b => b.addEventListener("click", () => { const id = b.dataset.close; if (id === "vocab") toggleVocab(false); else closeReview(); }));
+
+// ===================================================================
+// review (Powtórka)
+// ===================================================================
+let rv = null;
+function openReview(kind) {
+  const deck = shuffle(Object.keys(LEX).filter(l => kind === "learning" ? status(l) === 1 : status(l) === 0 && (st.words[l]?.seen || 0) > 0));
+  if (!deck.length) { toast(kind === "learning" ? "No orange words to review yet. Mark some words as Learning first." : "No new words to sort right now."); return; }
+  rv = { deck, i: 0, shown: false, kind, known: 0 };
+  closeCard(); toggleVocab(false); $("#review").hidden = false; renderReview();
+}
+function closeReview() { $("#review").hidden = true; rv = null; closeCard(); }
+function renderReview() {
+  const body = $("#r-body");
+  if (rv.i >= rv.deck.length) {
+    $("#r-step").textContent = "";
+    body.replaceChildren(h("div", { class: "r-card" },
+      h("p", { class: "r-gloss" }, "Done!"),
+      h("p", { class: "r-note" }, rv.known ? `${rv.known} ${rv.known === 1 ? "word" : "words"} turned green.` : "Keep going. They'll stick."),
+      h("div", { class: "r-btns", dataset: { s: "2" } }, h("button", { type: "button", class: "fill", onclick: closeReview }, "Back to the square"))));
+    return;
+  }
+  const l = rv.deck[rv.i], [gloss, pos, note] = LEX[l], s = status(l);
+  $("#r-step").textContent = `${rv.i + 1} / ${rv.deck.length}`;
+  const word = h("div", { class: "r-word", dataset: { s: String(s) }, lang: "pl" }, displayLemma(l));
+  const top = [word, h("button", { class: "icon-btn small", type: "button", "aria-label": "Listen", onclick: () => speak(l) }, svgSpeaker())];
+  if (!rv.shown) {
+    body.replaceChildren(h("div", { class: "r-card" }, ...top, h("p", { class: "r-note" }, "Do you remember what it means?"),
+      h("div", { class: "r-btns", dataset: { s: "1" } }, h("button", { type: "button", class: "fill", onclick: revealReview }, "Show meaning"))));
+    speak(l); body.querySelector(".fill")?.focus();
+    return;
+  }
+  const choose = k => { setStatus(l, k); if (k === 2) rv.known++; rv.i++; rv.shown = false; renderReview(); };
+  body.replaceChildren(h("div", { class: "r-card" }, ...top, h("p", { class: "r-pos" }, pos), h("p", { class: "r-gloss" }, gloss), note ? h("p", { class: "r-note" }, note) : null,
+    h("div", { class: "r-btns" },
+      rv.kind === "new" ? h("button", { type: "button", dataset: { s: "0" }, onclick: () => choose(0) }, "Skip") : null,
+      h("button", { type: "button", dataset: { s: "1" }, onclick: () => choose(1) }, rv.kind === "new" ? "Start learning" : "Not yet"),
+      h("button", { type: "button", class: "fill", dataset: { s: "2" }, onclick: () => choose(2) }, "I know it"))));
+  body.querySelector(".fill")?.focus();
+}
+function revealReview() { if (rv && !rv.shown) { rv.shown = true; renderReview(); } }
+
+// ===================================================================
+// settings
+// ===================================================================
+function syncSettingsUI() {
+  $("#s-auto").checked = st.settings.auto; $("#s-tr").checked = st.settings.tr; $("#s-hide").checked = st.settings.hideKnown;
+  $("#s-sfx").checked = st.settings.sfx; $("#s-rate").value = st.settings.rate; setSync(syncNote); loadVoices();
+}
+$("#btn-settings").addEventListener("click", () => { const p = $("#settings"); p.hidden = !p.hidden; if (!p.hidden) { syncSettingsUI(); toggleVocab(false); } });
+for (const [id, key] of [["s-auto", "auto"], ["s-tr", "tr"], ["s-hide", "hideKnown"], ["s-sfx", "sfx"]])
+  $("#" + id).addEventListener("change", e => { st.settings[key] = e.target.checked; save(); if (key === "hideKnown") refreshWordViews(); });
+$("#s-rate").addEventListener("change", e => { st.settings.rate = +e.target.value; save(); speak("Dzień dobry!"); });
+let resetArmed = 0;
+$("#s-reset").addEventListener("click", e => {
+  if (Date.now() - resetArmed > 4000) { resetArmed = Date.now(); e.target.textContent = "Click again to erase everything"; setTimeout(() => { e.target.textContent = "Reset all progress"; }, 4000); return; }
+  resetArmed = 0; e.target.textContent = "Reset all progress";
+  const keep = { ...st.settings };
+  st = freshState(); st.settings = keep; st.started = true; save(); afterStateLoaded(); toast("Progress erased. Every word is purple again.");
+});
+
+// ===================================================================
+// intro
+// ===================================================================
+let introClosed = false;
+function showIntro() {
+  introClosed = false; $("#intro").hidden = false;
+  const c = counts();
+  $("#start").textContent = st.started ? "Back to the square" : "Start playing";
+  $("#intro-progress").textContent = st.started ? `${c.known} known · ${c.learning} learning · ${st.coins} zł` : "";
+  updateTouchUI();
+}
+function closeIntro() {
+  if (introClosed) return;
+  introClosed = true; $("#intro").hidden = true; audio();
+  if (canSpeak) { try { const u = new SpeechSynthesisUtterance(" "); u.volume = 0; speechSynthesis.speak(u); } catch {} }
+  const first = !st.started;
+  st.started = true; save(); updateTouchUI();
+  if (first) setTimeout(() => toast("Józef by the fountain has a ! over his head. Walk up and talk to him."), 600);
+  $("#scene").focus();
+}
+$("#start").addEventListener("click", closeIntro);
+$("#btn-help").addEventListener("click", showIntro);
+
+// ---- src/js/05-world.js ----
+// the 3D engine, pinned; loaded before any world code runs
+let THREE;
+try {
+  THREE = await import("https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js");
+} catch (e) {
+  showFatal("The 3D engine couldn't load. Check your connection and reload the page.");
+  throw e;
+}
+
+// ===================================================================
+// 3D: renderer, sky, light
+// ===================================================================
+const canvas = $("#scene");
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
+} catch (e) {
+  showFatal("This game needs WebGL, which this browser or device has turned off.");
+  throw e;
+}
+const MOBILE = matchMedia("(pointer: coarse)").matches || Math.min(screen.width, screen.height) < 700;
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, MOBILE ? 1.6 : 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+const maxAniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 500);
+
+const skyMat = new THREE.ShaderMaterial({
+  uniforms: { top: { value: new THREE.Color() }, mid: { value: new THREE.Color() }, bottom: { value: new THREE.Color() } },
+  vertexShader: "varying vec3 vP; void main(){ vec4 w = modelMatrix * vec4(position,1.0); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }",
+  fragmentShader: "uniform vec3 top; uniform vec3 mid; uniform vec3 bottom; varying vec3 vP; void main(){ float y = normalize(vP - cameraPosition).y; vec3 c = y > 0.0 ? mix(mid, top, pow(clamp(y,0.0,1.0), 0.6)) : mix(mid, bottom, clamp(-y*5.0,0.0,1.0)); gl_FragColor = vec4(c,1.0);\n#include <colorspace_fragment>\n}",
+  side: THREE.BackSide, depthWrite: false, fog: false, toneMapped: false,
+});
+const sky = new THREE.Mesh(new THREE.SphereGeometry(400, 24, 12), skyMat);
+sky.renderOrder = -1; scene.add(sky);
+scene.fog = new THREE.Fog(0xdde9f5, 70, 260);
+const hemi = new THREE.HemisphereLight(0xcfe3ff, 0x8c7a5e, 1.5);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xfff1d6, 2.6);
+sun.position.set(32, 48, 22);
+sun.castShadow = true;
+sun.shadow.mapSize.set(MOBILE ? 1024 : 2048, MOBILE ? 1024 : 2048);
+Object.assign(sun.shadow.camera, { left: -42, right: 42, top: 42, bottom: -42, near: 1, far: 160 });
+sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.03;
+scene.add(sun); scene.add(sun.target);
+
+// ===================================================================
+// materials + canvas textures
+// ===================================================================
+const matCache = new Map();
+function M(color, o = {}) {
+  const key = color + JSON.stringify(o);
+  if (!matCache.has(key)) matCache.set(key, new THREE.MeshStandardMaterial({
+    color, roughness: o.r ?? 0.85, metalness: o.m ?? 0, flatShading: o.flat ?? true,
+    emissive: o.e ?? 0x000000, emissiveIntensity: o.ei ?? 1, transparent: !!o.t, opacity: o.o ?? 1, side: o.ds ? THREE.DoubleSide : THREE.FrontSide,
+  }));
+  return matCache.get(key);
+}
+function mesh(geo, mat, x = 0, y = 0, z = 0, cast = true) {
+  const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = cast; m.receiveShadow = true; return m;
+}
+function canvasTex(w, h, draw, repeat) {
+  const c = document.createElement("canvas"); c.width = w; c.height = h;
+  draw(c.getContext("2d"), w, h);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = maxAniso;
+  if (repeat) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(repeat, repeat); }
+  return t;
+}
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const rr = (g, x, y, w, h, r) => { if (g.roundRect) { g.beginPath(); g.roundRect(x, y, w, h, r); g.fill(); } else g.fillRect(x, y, w, h); };
+function cobbleTex(base, gap, seed, repeat) {
+  const R = rng(seed);
+  return canvasTex(512, 512, (g, W, H) => {
+    g.fillStyle = gap; g.fillRect(0, 0, W, H);
+    const c = new THREE.Color(base);
+    for (let row = 0, y = 0; y < H; row++, y += 24) {
+      for (let x = -16 + (row % 2) * 16; x < W; x += 32) {
+        const k = 0.86 + R() * 0.24, t = c.clone().multiplyScalar(k);
+        g.fillStyle = "#" + t.getHexString(); rr(g, x + 2 + R() * 2, y + 2 + R() * 2, 27, 19, 7);
+        g.fillStyle = "rgba(255,255,255,.10)"; rr(g, x + 5, y + 4, 18, 4, 2);
+      }
+    }
+  }, repeat);
+}
+function facadeTex(w, h, color, kind, R) {
+  const ppm = 36;
+  return canvasTex(Math.round(w * ppm), Math.round(h * ppm), (g, W, H) => {
+    const X = m => m * ppm, Y = m => m * ppm;
+    g.fillStyle = color; g.fillRect(0, 0, W, H);
+    for (let i = 0; i < W * H / 90; i++) { g.fillStyle = R() < 0.5 ? "rgba(255,255,255,.05)" : "rgba(0,0,0,.05)"; g.fillRect(R() * W, R() * H, 2, 2); }
+    const gf = kind === "civic" ? 4.2 : 3.6;
+    g.fillStyle = "rgba(40,30,20,.10)"; g.fillRect(0, H - Y(gf), W, Y(gf));
+    g.fillStyle = "rgba(255,255,255,.55)"; g.fillRect(0, H - Y(gf) - Y(0.14), W, Y(0.16));
+    const floors = Math.max(1, Math.floor((h - gf - 0.6) / 2.8)), fh = (h - gf - 0.6) / floors;
+    const cols = kind === "civic" ? 5 : Math.max(2, Math.round(w / 1.9));
+    const shutters = kind !== "civic" && R() < 0.35, boxes = kind !== "civic" && R() < 0.55;
+    const win = (cx, top, ww, wh, arch) => {
+      g.fillStyle = "#F7F3EA"; g.fillRect(X(cx - ww / 2 - 0.09), Y(top - 0.09), X(ww + 0.18), Y(wh + 0.18));
+      if (arch) { g.beginPath(); g.arc(X(cx), Y(top), X(ww / 2 + 0.09), Math.PI, 0); g.fill(); }
+      const grd = g.createLinearGradient(0, Y(top), 0, Y(top + wh)); grd.addColorStop(0, "#4A6189"); grd.addColorStop(1, "#22324F");
+      g.fillStyle = grd; g.fillRect(X(cx - ww / 2), Y(top), X(ww), Y(wh));
+      if (arch) { g.beginPath(); g.arc(X(cx), Y(top), X(ww / 2), Math.PI, 0); g.fill(); }
+      g.fillStyle = "#F7F3EA"; g.fillRect(X(cx - 0.03), Y(top), X(0.06), Y(wh)); g.fillRect(X(cx - ww / 2), Y(top + wh * 0.4), X(ww), Y(0.05));
+      g.fillStyle = "rgba(255,255,255,.16)"; g.beginPath(); g.moveTo(X(cx - ww / 2), Y(top + wh * 0.7)); g.lineTo(X(cx - ww * 0.05), Y(top)); g.lineTo(X(cx + ww * 0.2), Y(top)); g.lineTo(X(cx - ww / 2), Y(top + wh)); g.closePath(); g.fill();
+    };
+    for (let f = 0; f < floors; f++) {
+      const top = 0.6 + f * fh + fh * 0.24, wh = fh * 0.56;
+      for (let i = 0; i < cols; i++) {
+        const cx = (i + 0.5) * w / cols, ww = Math.min(0.95, w / cols * 0.5);
+        win(cx, top, ww, wh, kind === "civic");
+        if (shutters) { g.fillStyle = "#3E6B4A"; g.fillRect(X(cx - ww / 2 - 0.32), Y(top), X(0.22), Y(wh)); g.fillRect(X(cx + ww / 2 + 0.1), Y(top), X(0.22), Y(wh)); }
+        g.fillStyle = "rgba(255,255,255,.5)"; g.fillRect(X(cx - ww / 2 - 0.16), Y(top - 0.24), X(ww + 0.32), Y(0.09));
+        if (boxes && f === floors - 1) {
+          g.fillStyle = "#6B4A2E"; g.fillRect(X(cx - ww / 2 - 0.05), Y(top + wh + 0.06), X(ww + 0.1), Y(0.16));
+          for (let k = 0; k < 5; k++) { g.fillStyle = ["#D84A4A", "#F2C14E", "#E86FA0"][k % 3]; g.beginPath(); g.arc(X(cx - ww / 2 + (k + 0.5) * ww / 5), Y(top + wh + 0.04), X(0.08), 0, Math.PI * 2); g.fill(); }
+        }
+      }
+      if (f > 0) { g.fillStyle = "rgba(0,0,0,.06)"; g.fillRect(0, Y(0.6 + f * fh) - 1, W, 2); }
+    }
+    const dw = kind === "civic" ? 2.0 : 1.25, dh = kind === "civic" ? 3.3 : 2.5, dcx = w / 2;
+    g.fillStyle = "#EFE6D2"; g.beginPath(); g.moveTo(X(dcx - dw / 2 - 0.15), H); g.lineTo(X(dcx - dw / 2 - 0.15), H - Y(dh - dw / 2)); g.arc(X(dcx), H - Y(dh - dw / 2), X(dw / 2 + 0.15), Math.PI, 0); g.lineTo(X(dcx + dw / 2 + 0.15), H); g.fill();
+    g.fillStyle = "#5B3A24"; g.beginPath(); g.moveTo(X(dcx - dw / 2), H); g.lineTo(X(dcx - dw / 2), H - Y(dh - dw / 2)); g.arc(X(dcx), H - Y(dh - dw / 2), X(dw / 2), Math.PI, 0); g.lineTo(X(dcx + dw / 2), H); g.fill();
+    g.fillStyle = "rgba(0,0,0,.25)"; g.fillRect(X(dcx - 0.02), H - Y(dh - dw / 2), X(0.04), Y(dh - dw / 2));
+    const sw = kind === "shop" ? 1.5 : 0.9, sh = kind === "shop" ? 1.9 : 1.4;
+    for (const side of [-1, 1]) {
+      const cx = dcx + side * (dw / 2 + 0.45 + sw / 2);
+      if (cx - sw / 2 < 0.25 || cx + sw / 2 > w - 0.25) continue;
+      win(cx, h - gf + 0.85, sw, sh, kind === "civic");
+    }
+  });
+}
+function signTex(text, bg = "#2F4A3A", fg = "#F4E3B5") {
+  const tex = canvasTex(512, 96, () => {});
+  const draw = () => {
+    const g = tex.image.getContext("2d");
+    g.fillStyle = bg; g.fillRect(0, 0, 512, 96);
+    g.strokeStyle = fg; g.lineWidth = 4; g.strokeRect(8, 8, 496, 80);
+    g.fillStyle = fg; g.textAlign = "center"; g.textBaseline = "middle";
+    g.font = `800 ${text.length > 9 ? 46 : 54}px "Baloo 2", "Trebuchet MS", sans-serif`;
+    g.fillText(text, 256, 52);
+    tex.needsUpdate = true;
+  };
+  draw(); signRedraws.push(draw);
+  return tex;
+}
+const signRedraws = [];
+document.fonts?.ready.then(() => signRedraws.forEach(f => f()));
+const stripeTex = (a, b) => canvasTex(128, 32, (g) => { for (let i = 0; i < 8; i++) { g.fillStyle = i % 2 ? b : a; g.fillRect(i * 16, 0, 16, 32); } });
+
+// ===================================================================
+// world bookkeeping: colliders, occluders, labels, interactables
+// ===================================================================
+const boxColliders = [], circleColliders = [], occluders = [], clickables = [];
+const addBox = (x0, x1, z0, z1) => boxColliders.push({ x0, x1, z0, z1 });
+const addCircle = (x, z, r) => circleColliders.push({ x, z, r });
+const addOccluder = obj => { obj.updateMatrixWorld(true); occluders.push(new THREE.Box3().setFromObject(obj)); };
+const labels = [];
+const labelLayer = $("#labels");
+function labelText(L) { return L.lemma && st.settings.hideKnown && status(L.lemma) === 2 ? "?" : L.word; }
+function addWordLabel({ word, lemma, anchor, pos, y = 0, max = 10, kind = "", near = null }) {
+  lemma ??= lookup(word)?.lemma;
+  const L = { word, lemma, anchor, pos, y, max, shown: false, occ: false, slot: labels.length % 4, near };
+  const btn = h("button", { class: "wl " + kind, type: "button", lang: "pl", dataset: { lemma, s: String(status(lemma)) } });
+  btn.addEventListener("click", ev => { ev.stopPropagation(); openCard(word, btn, null); });
+  L.btn = btn; btn.textContent = labelText(L);
+  L.el = h("div", { class: "lbl", hidden: true }, btn);
+  labelLayer.append(L.el); labels.push(L);
+  return L;
+}
+const PALETTE = ["#E9B44C", "#E5826B", "#9FC5B8", "#8DB3D9", "#F2E3C6", "#C9A3D4", "#D96C5F", "#A7C77E", "#F0C9A0", "#E8D27A", "#B7D3E8", "#F3B7A1"];
+const ROOFS = ["#A84B32", "#8E3B2A", "#B9603F", "#9A4A3A", "#5B6577"];
+const SHOP = {};
+const HOMES = {};
+
+// ===================================================================
+// ground
+// ===================================================================
+function buildGround() {
+  const ground = mesh(new THREE.PlaneGeometry(240, 240), new THREE.MeshStandardMaterial({ map: cobbleTex("#B9AE9C", "#7C7365", 3, 30), roughness: 0.95 }), 0, 0, 0, false);
+  ground.rotation.x = -Math.PI / 2; scene.add(ground);
+  const ring = mesh(new THREE.RingGeometry(3.4, 7.2, 56), new THREE.MeshStandardMaterial({ map: cobbleTex("#D8CDB8", "#958B7B", 5, 3), roughness: 0.95, polygonOffset: true, polygonOffsetFactor: -1 }), 0, 0.005, 6, false);
+  ring.rotation.x = -Math.PI / 2; scene.add(ring);
+  const slab = new THREE.MeshStandardMaterial({ map: cobbleTex("#9D9384", "#6A6256", 9, 4), roughness: 0.95, polygonOffset: true, polygonOffsetFactor: -1 });
+  for (const [x, z, w, d] of [[0, -25.8, 54, 2.4], [0, 25.8, 54, 2.4], [-25.8, 0, 2.4, 49.2], [25.8, 0, 2.4, 49.2]]) {
+    const s = mesh(new THREE.PlaneGeometry(w, d), slab, x, 0.006, z, false); s.rotation.x = -Math.PI / 2; scene.add(s);
+  }
+}
+
+// ===================================================================
+// houses
+// ===================================================================
+const triShape = (w, ht) => { const s = new THREE.Shape(); s.moveTo(-w / 2, 0); s.lineTo(w / 2, 0); s.lineTo(0, ht); s.closePath(); return s; };
+function stepShape(w) {
+  const hw = w / 2, top = w * 0.14, hs = w * 0.17, steps = 3, dx = (hw - top) / steps, P = [[hw, 0]];
+  let x = hw, y = 0;
+  for (let i = 0; i < steps; i++) { y += hs; P.push([x, y]); x -= dx; P.push([x, y]); }
+  y += hs; P.push([x, y]);
+  const s = new THREE.Shape(); s.moveTo(-hw, 0);
+  for (const p of P) s.lineTo(p[0], p[1]);
+  for (const p of P.slice().reverse()) s.lineTo(-p[0], p[1]);
+  return s;
+}
+function roundShape(w) {
+  const hw = w / 2, s = new THREE.Shape();
+  s.moveTo(-hw, 0); s.lineTo(hw, 0); s.lineTo(hw, w * 0.12);
+  s.quadraticCurveTo(hw, w * 0.34, hw * 0.5, w * 0.36); s.lineTo(hw * 0.5, w * 0.52);
+  s.quadraticCurveTo(hw * 0.45, w * 0.72, 0, w * 0.74); s.quadraticCurveTo(-hw * 0.45, w * 0.72, -hw * 0.5, w * 0.52);
+  s.lineTo(-hw * 0.5, w * 0.36); s.quadraticCurveTo(-hw, w * 0.34, -hw, w * 0.12); s.closePath();
+  return s;
+}
+function makeHouse({ w, h, d, color, roof, type, shop, R }) {
+  const g = new THREE.Group(), wall = M(color);
+  const facade = new THREE.MeshStandardMaterial({ map: facadeTex(w, h, color, shop ? "shop" : "house", R), roughness: 0.95 });
+  const walls = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), [wall, wall, wall, wall, facade, wall]);
+  walls.position.set(0, h / 2, -d / 2); walls.castShadow = walls.receiveShadow = true; g.add(walls); g.userData.walls = walls;
+  g.add(mesh(new THREE.BoxGeometry(w + 0.25, 0.28, 0.4), M("#F3EDE1"), 0, h - 0.12, 0.06));
+  const roofMat = M(roof);
+  if (type === "flat") {
+    g.add(mesh(new THREE.BoxGeometry(w, 1.1, 0.4), wall, 0, h + 0.55, -0.2));
+    const n = Math.max(3, Math.round(w / 1.1));
+    for (let i = 0; i < n; i++) g.add(mesh(new THREE.BoxGeometry(0.45, 0.5, 0.4), wall, -w / 2 + (i + 0.5) * w / n, h + 1.35, -0.2));
+    const rp = new THREE.Mesh(new THREE.ExtrudeGeometry(triShape(w * 0.98, 1.6), { depth: d - 0.6, bevelEnabled: false }), [wall, roofMat]);
+    rp.position.set(0, h, -d); rp.castShadow = true; g.add(rp);
+  } else {
+    const rh = type === "tri" ? w * 0.55 : w * 0.42;
+    const rp = new THREE.Mesh(new THREE.ExtrudeGeometry(triShape(w, rh), { depth: d, bevelEnabled: false }), [wall, roofMat]);
+    rp.position.set(0, h, -d); rp.castShadow = true; rp.receiveShadow = true; g.add(rp);
+    if (type !== "tri") {
+      const orn = mesh(new THREE.ExtrudeGeometry(type === "step" ? stepShape(w) : roundShape(w), { depth: 0.4, bevelEnabled: false }), wall, 0, h, -0.4);
+      g.add(orn);
+    }
+    g.add(mesh(new THREE.CircleGeometry(Math.min(0.42, w * 0.07), 20), M("#2A3A5C"), 0, h + rh * 0.36, 0.02, false));
+  }
+  if (shop) {
+    const bw = Math.min(w - 0.8, 3.8), wood = M("#4A3020");
+    g.add(new THREE.Mesh(new THREE.BoxGeometry(bw, 0.62, 0.12), [wood, wood, wood, wood, new THREE.MeshStandardMaterial({ map: signTex(shop.toUpperCase()), roughness: 0.8 }), wood]));
+    g.children.at(-1).position.set(0, 3.5, 0.08);
+    const awn = SHOP_AWNINGS[shop];
+    if (awn) {
+      const am = new THREE.MeshStandardMaterial({ map: stripeTex(awn[0], awn[1]), roughness: 0.9 });
+      const a = mesh(new THREE.BoxGeometry(Math.min(w - 0.4, 4.8), 0.06, 1.4), [M(awn[0]), M(awn[0]), am, am, am, am], 0, 2.78, 0.62);
+      a.rotation.x = 0.36; g.add(a);
+    }
+  }
+  return g;
+}
+const SHOP_AWNINGS = { piekarnia: ["#C8452F", "#F6EFE3"], kawiarnia: ["#2F6B4F", "#F3EAD3"], kwiaciarnia: ["#D8668E", "#FBEFF3"], apteka: ["#3A7F7A", "#EEF6F4"] };
+const SIDES = {
+  N: { rot: 0, at: (a, d) => [a, -27 + d] },
+  S: { rot: Math.PI, at: (a, d) => [a, 27 - d] },
+  W: { rot: Math.PI / 2, at: (a, d) => [-27 + d, a] },
+  E: { rot: -Math.PI / 2, at: (a, d) => [27 - d, a] },
+};
+const SHOP_WANT = { N: [["apteka", -16], ["księgarnia", 16]], S: [["kwiaciarnia", -12], ["poczta", 12]], W: [["piekarnia", -6]], E: [["kawiarnia", 6]] };
+function buildRows() {
+  let seed = 11;
+  for (const [side, def] of Object.entries(SIDES)) {
+    const R = rng(seed += 17), ws = [];
+    let sum = 0;
+    while (sum < 54 - 7.6) { const w = 5.2 + R() * 2.4; ws.push(w); sum += w; }
+    const rest = 54 - sum; if (rest < 4.6) ws[ws.length - 1] += rest; else ws.push(rest);
+    let a0 = -27;
+    const houses = ws.map(w => { const c = a0 + w / 2; a0 += w; return { w, a: c }; });
+    for (const [name, target] of SHOP_WANT[side]) {
+      let best = null;
+      for (const hh of houses) if (!hh.shop && (!best || Math.abs(hh.a - target) < Math.abs(best.a - target))) best = hh;
+      best.shop = name; SHOP[name] = { side, a: best.a, w: best.w };
+    }
+    houses.forEach((hh, i) => {
+      const height = 9 + R() * 5, type = ["tri", "step", "round", "flat", "tri", "round"][Math.floor(R() * 6)];
+      const g = makeHouse({ w: hh.w, h: height, d: 9, color: PALETTE[Math.floor(R() * PALETTE.length)], roof: ROOFS[Math.floor(R() * ROOFS.length)], type, shop: hh.shop, R });
+      const [x, z] = def.at(hh.a, 0); g.position.set(x, 0, z); g.rotation.y = def.rot; scene.add(g);
+      addOccluder(g.userData.walls);
+      if (hh.shop) {
+        const [sx, sz] = def.at(hh.a, 0.3);
+        addWordLabel({ word: hh.shop, pos: new THREE.Vector3(sx, 4.15, sz), max: 26, kind: "sign" });
+      }
+    });
+  }
+  addBox(-40, 40, -40, -27); addBox(-40, 40, 27, 40); addBox(-40, -27, -40, 40); addBox(27, 40, -40, 40);
+  for (const [x, z] of [[-31.5, -31.5], [31.5, -31.5], [-31.5, 31.5], [31.5, 31.5]]) {
+    const b = mesh(new THREE.BoxGeometry(9, 12, 9), M(PALETTE[(x + z + 80) % PALETTE.length | 0]), x, 6, z); scene.add(b);
+    const r = mesh(new THREE.ConeGeometry(Math.SQRT1_2, 1, 4), M("#9A4A3A")); r.geometry.rotateY(Math.PI / 4); r.scale.set(9.4, 3, 9.4); r.position.set(x, 13.5, z); scene.add(r);
+  }
+}
+function buildBackdrop() {
+  const R = rng(99), mats = ["#C9B9A3", "#B8C3CC", "#D3B9A8", "#C2C9B4", "#D8CFC0"];
+  for (let i = 0; i < 34; i++) {
+    const ang = R() * Math.PI * 2, dist = 46 + R() * 40, x = Math.cos(ang) * dist, z = Math.sin(ang) * dist;
+    if (x > -24 && x < 4 && z < -36 && z > -72) continue;
+    const w = 6 + R() * 8, d = 6 + R() * 8, hgt = 8 + R() * 12;
+    const g = new THREE.Group();
+    g.add(mesh(new THREE.BoxGeometry(w, hgt, d), M(mats[i % mats.length]), 0, hgt / 2, 0, false));
+    const rp = new THREE.Mesh(new THREE.ExtrudeGeometry(triShape(w, w * 0.45), { depth: d, bevelEnabled: false }), [M(mats[i % mats.length]), M(ROOFS[i % 4])]);
+    rp.position.set(0, hgt, -d / 2); g.add(rp);
+    g.position.set(x, 0, z); g.rotation.y = R() * Math.PI; scene.add(g);
+  }
+}
+
+// ===================================================================
+// landmarks
+// ===================================================================
+function buildRatusz() {
+  const g = new THREE.Group(); g.position.set(0, 0, -9.5); scene.add(g);
+  const w = 14, ht = 8, d = 9, cream = "#F1E4C8", wall = M(cream);
+  const hall = new THREE.Mesh(new THREE.BoxGeometry(w, ht, d), [wall, wall, wall, wall, new THREE.MeshStandardMaterial({ map: facadeTex(w, ht, cream, "civic", rng(5)), roughness: 0.95 }), wall]);
+  hall.position.y = ht / 2; hall.castShadow = hall.receiveShadow = true; g.add(hall);
+  g.add(mesh(new THREE.BoxGeometry(w + 0.3, 0.3, d + 0.3), M("#E2D3B2"), 0, ht, 0));
+  const roof = mesh(new THREE.ConeGeometry(Math.SQRT1_2, 1, 4), M("#9C4430")); roof.geometry.rotateY(Math.PI / 4); roof.scale.set(w + 0.4, 3.4, d + 0.4); roof.position.y = ht + 1.85; g.add(roof);
+  const tw = M("#EBDDBD"), tx = -3.5, tz = 0.4;
+  const tower = mesh(new THREE.BoxGeometry(3.6, 21, 3.6), tw, tx, 10.5, tz); g.add(tower);
+  const clock = new THREE.MeshStandardMaterial({ map: canvasTex(128, 128, (c) => {
+    c.fillStyle = "#F7F1E1"; c.beginPath(); c.arc(64, 64, 60, 0, Math.PI * 2); c.fill();
+    c.strokeStyle = "#1F3C91"; c.lineWidth = 6; c.stroke();
+    c.fillStyle = "#1F3C91"; for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2; c.fillRect(64 + Math.cos(a) * 48 - 3, 64 + Math.sin(a) * 48 - 3, 6, 6); }
+    c.strokeStyle = "#1A1A1A"; c.lineCap = "round"; c.lineWidth = 6; c.beginPath(); c.moveTo(64, 64); c.lineTo(64, 30); c.stroke();
+    c.lineWidth = 5; c.beginPath(); c.moveTo(64, 64); c.lineTo(92, 74); c.stroke();
+  }), roughness: 0.6 });
+  for (let k = 0; k < 4; k++) {
+    const f = new THREE.Mesh(new THREE.CircleGeometry(1.25, 28), clock), a = k * Math.PI / 2;
+    f.position.set(tx + Math.sin(a) * 1.82, 16.5, tz + Math.cos(a) * 1.82); f.rotation.y = a; g.add(f);
+  }
+  for (let k = 0; k < 4; k++) { const a = k * Math.PI / 2; const wnd = mesh(new THREE.BoxGeometry(0.7, 1.6, 0.05), M("#2A3A5C"), tx + Math.sin(a) * 1.82, 12.5, tz + Math.cos(a) * 1.82, false); wnd.rotation.y = a; g.add(wnd); }
+  g.add(mesh(new THREE.BoxGeometry(4.4, 0.4, 4.4), M("#E2D3B2"), tx, 21.2, tz));
+  g.add(mesh(new THREE.BoxGeometry(2.6, 2.4, 2.6), tw, tx, 22.6, tz));
+  g.add(mesh(new THREE.ConeGeometry(1.8, 1.4, 8), M("#5E9E86"), tx, 24.5, tz));
+  g.add(mesh(new THREE.CylinderGeometry(0.7, 0.9, 1.4, 8), M("#5E9E86"), tx, 25.9, tz));
+  g.add(mesh(new THREE.ConeGeometry(1.1, 6.5, 8), M("#5E9E86"), tx, 29.8, tz));
+  g.add(mesh(new THREE.SphereGeometry(0.28, 10, 8), M("#E9B53B", { m: 0.6, r: 0.3 }), tx, 33.2, tz));
+  const stone = M("#D9D0BE");
+  g.add(mesh(new THREE.BoxGeometry(6.4, 0.2, 1.4), stone, 0, 0.1, d / 2 + 0.7));
+  g.add(mesh(new THREE.BoxGeometry(5.6, 0.4, 0.7), stone, 0, 0.2, d / 2 + 0.35));
+  const wood = M("#4A3020");
+  const board = new THREE.Mesh(new THREE.BoxGeometry(3.4, 0.6, 0.12), [wood, wood, wood, wood, new THREE.MeshStandardMaterial({ map: signTex("RATUSZ", "#1F3C91", "#F4E3B5") }), wood]);
+  board.position.set(0, 5.2, d / 2 + 0.07); g.add(board);
+  addWordLabel({ word: "ratusz", pos: new THREE.Vector3(0, 5.9, -9.5 + d / 2 + 0.3), max: 30, kind: "sign" });
+  addOccluder(hall); addOccluder(tower);
+  addBox(-7.2, 7.2, -14.2, -4.8); addBox(-3.2, 3.2, -4.8, -3.9);
+}
+function buildChurch() {
+  const g = new THREE.Group(); g.position.set(-10, 0, -44); scene.add(g);
+  const brick = M("#A44D36"), roof = M("#4E3B33"), cop = M("#4F8A72");
+  g.add(mesh(new THREE.BoxGeometry(9, 18, 26), brick, 0, 9, -13));
+  const rp = new THREE.Mesh(new THREE.ExtrudeGeometry(triShape(9, 6), { depth: 26, bevelEnabled: false }), [brick, roof]); rp.position.set(0, 18, -26); g.add(rp);
+  g.add(mesh(new THREE.BoxGeometry(5, 34, 5), brick, -4.2, 17, 0));
+  g.add(mesh(new THREE.ConeGeometry(3.4, 12, 8), cop, -4.2, 40, 0));
+  for (const [dx, dz] of [[-2.2, -2.2], [2.2, -2.2], [-2.2, 2.2], [2.2, 2.2]]) g.add(mesh(new THREE.ConeGeometry(0.55, 4, 6), cop, -4.2 + dx, 36, dz));
+  g.add(mesh(new THREE.SphereGeometry(0.5, 10, 8), M("#E9B53B", { m: 0.6, r: 0.3 }), -4.2, 46.4, 0));
+  g.add(mesh(new THREE.BoxGeometry(4.4, 28, 4.4), brick, 4, 14, 0));
+  const dome = mesh(new THREE.SphereGeometry(2.4, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), cop, 4, 28, 0); g.add(dome);
+  g.add(mesh(new THREE.ConeGeometry(0.7, 4, 8), cop, 4, 32, 0));
+  for (const x of [-4.2, 4]) for (const y of [12, 22]) g.add(mesh(new THREE.BoxGeometry(0.9, 3.2, 0.1), M("#2A3A5C"), x, y, 2.55, false));
+  addWordLabel({ word: "kościół", pos: new THREE.Vector3(-14.2, 48, -44), max: 140 });
+}
+const lampGlass = new THREE.MeshStandardMaterial({ color: 0xfff4d6, emissive: 0xffc873, emissiveIntensity: 0.15, roughness: 0.4 });
+const lampLights = [];
+function buildFountain() {
+  const g = new THREE.Group(); g.position.set(0, 0, 6); scene.add(g);
+  const stone = M("#D9D2C3"), dark = M("#BDB4A3");
+  g.add(mesh(new THREE.CylinderGeometry(3.3, 3.45, 0.6, 40, 1, true), M("#D2C9B8", { ds: true }), 0, 0.3, 0));
+  const rim = mesh(new THREE.TorusGeometry(3.3, 0.2, 8, 48), stone, 0, 0.62, 0); rim.rotation.x = Math.PI / 2; g.add(rim);
+  const water = new THREE.MeshStandardMaterial({ color: 0x5fa8d3, roughness: 0.15, metalness: 0.1, transparent: true, opacity: 0.88 });
+  const pool = mesh(new THREE.CircleGeometry(3.3, 40), water, 0, 0.46, 0, false); pool.rotation.x = -Math.PI / 2; g.add(pool);
+  g.add(mesh(new THREE.CylinderGeometry(0.45, 0.65, 1.7, 12), dark, 0, 1.1, 0));
+  g.add(mesh(new THREE.CylinderGeometry(1.25, 0.5, 0.4, 20), stone, 0, 1.95, 0));
+  const bowlW = mesh(new THREE.CircleGeometry(1.15, 20), water, 0, 2.13, 0, false); bowlW.rotation.x = -Math.PI / 2; g.add(bowlW);
+  g.add(mesh(new THREE.CylinderGeometry(0.18, 0.26, 0.5, 10), dark, 0, 2.4, 0));
+  g.add(mesh(new THREE.SphereGeometry(0.22, 10, 8), stone, 0, 2.7, 0));
+  const N = 180, pos = new Float32Array(N * 3), drops = [];
+  for (let i = 0; i < N; i++) drops.push({ a: Math.random() * Math.PI * 2, p: Math.random(), outer: i % 3 !== 0 });
+  const geo = new THREE.BufferGeometry(); geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  const pts = new THREE.Points(geo, new THREE.PointsMaterial({ color: 0xd8efff, size: 0.09, transparent: true, opacity: 0.85 }));
+  g.add(pts);
+  fountain = { geo, pos, drops };
+  addWordLabel({ word: "fontanna", anchor: g, y: 3.3, max: 15 });
+  addCircle(0, 6, 3.55);
+}
+let fountain = null;
+function updateFountain(dt) {
+  if (!fountain) return;
+  const { pos, drops, geo } = fountain;
+  drops.forEach((d, i) => {
+    d.p = (d.p + dt / (d.outer ? 0.9 : 0.75)) % 1;
+    let x, y, z;
+    if (d.outer) { const t = d.p * 0.9, r = 1.2 + 1.7 * t; x = Math.cos(d.a) * r; z = Math.sin(d.a) * r; y = 2.1 + 1.6 * t - 4.9 * t * t; if (y < 0.46) y = 0.46; }
+    else { const t = d.p * 0.75, r = 1.3 * t; x = Math.cos(d.a) * r; z = Math.sin(d.a) * r; y = 2.85 + 2.4 * t - 4.9 * t * t; if (y < 2.13) y = 2.13; }
+    pos[i * 3] = x; pos[i * 3 + 1] = y; pos[i * 3 + 2] = z;
+  });
+  geo.attributes.position.needsUpdate = true;
+}
+
+// ---- src/js/06-props.js ----
+// ===================================================================
+// props around the square
+// ===================================================================
+const WOOD = "#9A6A3E", WOOD_D = "#6E4A2B", IRON = "#2D3A33";
+function bench(x, z, rot) {
+  const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = rot; scene.add(g);
+  for (let i = 0; i < 3; i++) g.add(mesh(new THREE.BoxGeometry(1.8, 0.05, 0.14), M(WOOD), 0, 0.46, -0.16 + i * 0.16));
+  for (let i = 0; i < 2; i++) g.add(mesh(new THREE.BoxGeometry(1.8, 0.12, 0.04), M(WOOD), 0, 0.68 + i * 0.18, -0.26));
+  for (const s of [-0.75, 0.75]) { g.add(mesh(new THREE.BoxGeometry(0.06, 0.46, 0.46), M(IRON), s, 0.23, 0)); g.add(mesh(new THREE.BoxGeometry(0.06, 0.5, 0.05), M(IRON), s, 0.7, -0.26)); }
+  const c = Math.cos(rot), s = Math.sin(rot);
+  addCircle(x + c * 0.5, z - s * 0.5, 0.45); addCircle(x - c * 0.5, z + s * 0.5, 0.45);
+  addWordLabel({ word: "ławka", anchor: g, y: 1.25, max: 6, kind: "small" });
+}
+function tree(x, z, k = 1) {
+  const g = new THREE.Group(); g.position.set(x, 0, z); g.scale.setScalar(k); scene.add(g);
+  g.add(mesh(new THREE.CylinderGeometry(0.17, 0.26, 2.4, 7), M("#6B4A30"), 0, 1.2, 0));
+  const greens = ["#4E8A3E", "#5E9C45", "#447A36"];
+  [[0, 3.1, 0, 1.5], [0.6, 3.8, 0.3, 1.1], [-0.5, 4.2, -0.2, 0.95], [0.1, 4.8, 0.1, 0.75]].forEach(([a, b, c, r], i) =>
+    g.add(mesh(new THREE.IcosahedronGeometry(r, 0), M(greens[i % 3]), a, b, c)));
+  addCircle(x, z, 0.45 * k);
+  addWordLabel({ word: "drzewo", anchor: g, y: 5.9, max: 8, kind: "small" });
+}
+function lamp(x, z) {
+  const g = new THREE.Group(); g.position.set(x, 0, z); scene.add(g);
+  g.add(mesh(new THREE.CylinderGeometry(0.16, 0.2, 0.3, 8), M(IRON), 0, 0.15, 0));
+  g.add(mesh(new THREE.CylinderGeometry(0.06, 0.08, 3.3, 8), M(IRON), 0, 1.8, 0));
+  g.add(mesh(new THREE.BoxGeometry(0.34, 0.48, 0.34), lampGlass, 0, 3.65, 0, false));
+  g.add(mesh(new THREE.ConeGeometry(0.3, 0.26, 4), M(IRON), 0, 4.0, 0));
+  const pl = new THREE.PointLight(0xffc873, 0, 11, 1.6); pl.position.set(0, 3.5, 0); g.add(pl); lampLights.push(pl);
+  addCircle(x, z, 0.25);
+  addWordLabel({ word: "latarnia", anchor: g, y: 4.5, max: 5, kind: "small" });
+}
+function table(x, z, umbrella, labelTable) {
+  const g = new THREE.Group(); g.position.set(x, 0, z); scene.add(g);
+  g.add(mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.05, 16), M("#F2EEE6"), 0, 0.76, 0));
+  g.add(mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.74, 8), M(IRON), 0, 0.38, 0));
+  for (const a of [0.4, 0.4 + Math.PI]) {
+    const ch = new THREE.Group(); ch.position.set(Math.cos(a) * 0.85, 0, Math.sin(a) * 0.85); ch.rotation.y = -a + Math.PI / 2;
+    ch.add(mesh(new THREE.BoxGeometry(0.42, 0.05, 0.42), M("#B84A3A"), 0, 0.46, 0));
+    ch.add(mesh(new THREE.BoxGeometry(0.42, 0.42, 0.04), M("#B84A3A"), 0, 0.7, 0.2));
+    for (const [dx, dz] of [[-0.18, -0.18], [0.18, -0.18], [-0.18, 0.18], [0.18, 0.18]]) ch.add(mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.46, 5), M(IRON), dx, 0.23, dz));
+    g.add(ch);
+  }
+  if (umbrella) {
+    g.add(mesh(new THREE.CylinderGeometry(0.035, 0.035, 2.4, 6), M("#E8E2D6"), 0, 1.2, 0));
+    const um = new THREE.MeshStandardMaterial({ map: stripeTex("#F3EAD3", "#2F6B4F"), roughness: 0.9, side: THREE.DoubleSide });
+    g.add(mesh(new THREE.ConeGeometry(1.7, 0.6, 8, 1, true), um, 0, 2.4, 0));
+    if (umbrella === "label") addWordLabel({ word: "parasol", anchor: g, y: 3.05, max: 8, kind: "small" });
+  }
+  if (labelTable) addWordLabel({ word: "stół", anchor: g, y: 1.25, max: 6, kind: "small" });
+  addCircle(x, z, 0.95);
+}
+function counter(cx, cz, alongZ, len, color) {
+  const g = new THREE.Group(); g.position.set(cx, 0, cz); if (alongZ) g.rotation.y = Math.PI / 2; scene.add(g);
+  g.add(mesh(new THREE.BoxGeometry(len, 0.08, 0.9), M(WOOD), 0, 0.92, 0));
+  g.add(mesh(new THREE.BoxGeometry(len - 0.1, 0.84, 0.8), M(color), 0, 0.46, 0));
+  return g;
+}
+function buildStall() {
+  const g = new THREE.Group(); g.position.set(-14, 0, 2); scene.add(g);
+  g.add(mesh(new THREE.BoxGeometry(4.4, 0.1, 1.6), M(WOOD), 0, 0.92, 0));
+  g.add(mesh(new THREE.BoxGeometry(4.3, 0.8, 0.08), M(WOOD_D), 0, 0.5, 0.78));
+  for (const [dx, dz] of [[-2.15, -0.75], [2.15, -0.75], [-2.15, 0.75], [2.15, 0.75]]) g.add(mesh(new THREE.CylinderGeometry(0.06, 0.06, 2.6, 6), M(WOOD_D), dx, 1.3, dz));
+  const awn = mesh(new THREE.BoxGeometry(4.9, 0.06, 2.3), new THREE.MeshStandardMaterial({ map: stripeTex("#3F8F4F", "#F4F1E6"), roughness: 0.9 }), 0, 2.62, 0.1);
+  awn.rotation.x = 0.16; g.add(awn);
+  const fruit = ["#C8352E", "#C9CC4A", "#4B2463", "#F1D034", "#EE7A22", "#6EA33F"];
+  for (let c = 0; c < 4; c++) {
+    g.add(mesh(new THREE.BoxGeometry(0.9, 0.26, 0.7), M("#C79A62"), -1.6 + c * 1.07, 1.1, -0.2));
+    for (let k = 0; k < 7; k++) g.add(mesh(new THREE.SphereGeometry(0.1, 8, 6), M(fruit[(c + k) % fruit.length]), -1.6 + c * 1.07 + (k % 4 - 1.5) * 0.18, 1.28 + (k > 3 ? 0.06 : 0), -0.2 + (k > 3 ? 0.12 : -0.12), false));
+  }
+  const wood = M("#4A3020");
+  const board = new THREE.Mesh(new THREE.BoxGeometry(3, 0.48, 0.1), [wood, wood, wood, wood, new THREE.MeshStandardMaterial({ map: signTex("WARZYWNIAK", "#3F8F4F", "#FFFFFF") }), wood]);
+  board.position.set(0, 2.3, 1.22); g.add(board);
+  addWordLabel({ word: "warzywniak", pos: new THREE.Vector3(-14, 3.05, 3.3), max: 26, kind: "sign" });
+  addWordLabel({ word: "stragan", pos: new THREE.Vector3(-16.6, 1.5, 2.9), max: 7, kind: "small" });
+  addBox(-16.3, -11.7, 1.1, 2.9);
+  [["jabłko", -16.6, 4.6], ["gruszka", -15.4, 5.6], ["śliwka", -14.2, 4.6], ["cytryna", -13.0, 5.6], ["marchewka", -11.8, 4.7]]
+    .forEach(([id, x, z]) => { HOMES[id] = new THREE.Vector3(x, 0.3, z); });
+}
+function buildShops() {
+  const b = SHOP.piekarnia.a, c = SHOP.kawiarnia.a, k = SHOP.kwiaciarnia.a;
+  counter(-25.5, b + 3.0, true, 3.6, "#F0E2C8");
+  ["chleb", "bułka", "ciastko", "drożdżówka", "szarlotka"].forEach((id, i) => { HOMES[id] = new THREE.Vector3(-25.5, 1.12, b + 3.0 + (i - 2) * 0.7); });
+  addBox(-26.0, -25.0, b + 1.2, b + 4.8);
+  counter(25.4, c + 3.1, true, 3.6, "#2F6B4F");
+  ["kawa", "herbata", "woda", "sok", "mleko"].forEach((id, i) => { HOMES[id] = new THREE.Vector3(25.4, 1.12, c + 3.1 + (i - 2) * 0.7); });
+  addBox(24.9, 25.9, c + 1.3, c + 4.9);
+  table(20.0, c - 3.2, "label"); table(19.6, c + 2.2, true); table(16.8, c - 0.4, true, true);
+  const bucket = M("#9AA6AE", { m: 0.4, r: 0.5 });
+  ["róża", "lilia", "stokrotka", "orchidea"].forEach((id, i) => {
+    const x = k + 1.6 + i * 1.0;
+    scene.add(mesh(new THREE.CylinderGeometry(0.28, 0.22, 0.46, 12), bucket, x, 0.23, 25.5));
+    HOMES[id] = new THREE.Vector3(x, 0.75, 25.5);
+  });
+  for (const [dx, col] of [[-2.4, "#E25A6B"], [-3.4, "#F2C14E"]]) {
+    scene.add(mesh(new THREE.CylinderGeometry(0.28, 0.22, 0.46, 12), bucket, k + dx, 0.23, 25.5));
+    for (let f = 0; f < 6; f++) scene.add(mesh(new THREE.SphereGeometry(0.09, 8, 6), M(col), k + dx + Math.cos(f) * 0.14, 0.62 + (f % 2) * 0.1, 25.5 + Math.sin(f) * 0.14, false));
+  }
+  addBox(k + 1.2, k + 5.0, 25.2, 25.9); addBox(k - 3.8, k - 2.0, 25.2, 25.9);
+  const sb = new THREE.Group(); sb.position.set(15.5, 0, 14.5); scene.add(sb);
+  sb.add(mesh(new THREE.BoxGeometry(3.4, 0.06, 3.4), M("#E9D39A"), 0, 0.12, 0, false));
+  for (const [x, z, w, d] of [[0, -1.75, 3.6, 0.15], [0, 1.75, 3.6, 0.15], [-1.75, 0, 0.15, 3.6], [1.75, 0, 0.15, 3.6]]) sb.add(mesh(new THREE.BoxGeometry(w, 0.3, d), M(WOOD), x, 0.15, z));
+  addWordLabel({ word: "piaskownica", anchor: sb, y: 0.9, max: 8, kind: "small" });
+  HOMES.lalka = new THREE.Vector3(14.7, 0.32, 15.4); HOMES.miś = new THREE.Vector3(17.9, 0.3, 12.2); HOMES.latawiec = new THREE.Vector3(18.6, 0.2, 17.0);
+  HOMES.piłka = new THREE.Vector3(2.5, 0.28, -19.5); HOMES.okulary = new THREE.Vector3(-2.6, 0.92, 3.9); HOMES.klucze = new THREE.Vector3(-19.6, 0.12, 14.6);
+}
+function buildProps() {
+  bench(6.9, 11.3, -2.4); bench(-6.9, 11.3, 2.4); bench(9.6, -1.6, -0.5); bench(-9.6, -1.6, 0.5); bench(-19.6, 14.6, Math.PI / 2); bench(20.2, 11.4, -Math.PI / 2);
+  [[-21.5, 21.5, 1.1], [-8.5, 22, 0.95], [8.5, 22, 1], [21.5, 21.2, 1.1], [-21.5, -19, 1.15], [21.5, -19, 1.05], [-11, -20.5, 0.9], [11, -20.5, 0.95], [-21.5, 2, 1], [22, 17, 0.9]]
+    .forEach(([x, z, k]) => tree(x, z, k));
+  [[-9.5, 7.5], [9.5, 7.5], [-3.8, 14.8], [3.8, 14.8], [-17, -3.5], [17, -3.5], [-15, 18.5], [15, 19.5], [-9, -16], [9, -16]].forEach(([x, z]) => lamp(x, z));
+}
+function buildClouds() {
+  const R = rng(42), mat = M("#FFFFFF", { e: 0xffffff, ei: 0.25, r: 1 });
+  for (let i = 0; i < 9; i++) {
+    const g = new THREE.Group();
+    for (let k = 0; k < 4; k++) g.add(mesh(new THREE.IcosahedronGeometry(3 + R() * 3, 0), mat, k * 3.5 - 5, R() * 1.5, R() * 3, false));
+    g.position.set(-150 + R() * 300, 55 + R() * 25, -150 + R() * 300); g.scale.y = 0.55; scene.add(g); clouds.push(g);
+  }
+}
+const clouds = [];
+
+// ===================================================================
+// people
+// ===================================================================
+function makePerson(o) {
+  const g = new THREE.Group(), body = new THREE.Group(); g.add(body);
+  const skin = M(o.skin ?? "#EBC09C"), shirt = M(o.shirt), pants = M(o.pants ?? "#3B4252"), hair = M(o.hair ?? "#3B2A20"), shoe = M("#2B2B2B");
+  body.add(mesh(new THREE.CapsuleGeometry(0.27, 0.5, 4, 10), shirt, 0, 1.08, 0));
+  const legs = [-1, 1].map(s => { const p = new THREE.Group(); p.position.set(0.12 * s, 0.78, 0); p.add(mesh(new THREE.CylinderGeometry(0.095, 0.085, 0.72, 8), pants, 0, -0.36, 0)); p.add(mesh(new THREE.BoxGeometry(0.15, 0.08, 0.26), shoe, 0, -0.74, 0.04)); g.add(p); return p; });
+  const arms = [-1, 1].map(s => { const p = new THREE.Group(); p.position.set(0.34 * s, 1.36, 0); p.add(mesh(new THREE.CylinderGeometry(0.075, 0.065, 0.58, 8), shirt, 0, -0.29, 0)); p.add(mesh(new THREE.SphereGeometry(0.08, 8, 6), skin, 0, -0.6, 0)); body.add(p); return p; });
+  const head = new THREE.Group(); head.position.y = 1.66; body.add(head);
+  head.add(mesh(new THREE.SphereGeometry(0.21, 16, 12), skin));
+  for (const s of [-1, 1]) head.add(mesh(new THREE.SphereGeometry(0.028, 6, 5), M("#1A1A1A"), 0.075 * s, 0.03, 0.185, false));
+  const mouth = mesh(new THREE.TorusGeometry(0.045, 0.012, 4, 10, Math.PI), M("#7A2E2E"), 0, -0.07, 0.19, false); mouth.rotation.z = Math.PI; head.add(mouth);
+  if (!o.bald) { const hr = mesh(new THREE.SphereGeometry(0.225, 16, 10, 0, Math.PI * 2, 0, Math.PI * 0.52), hair); hr.rotation.x = -0.3; head.add(hr); }
+  if (o.apron) body.add(mesh(new THREE.BoxGeometry(0.44, 0.62, 0.04), M(o.apron), 0, 0.95, 0.27));
+  if (o.moustache) head.add(mesh(new THREE.BoxGeometry(0.15, 0.035, 0.04), M(o.moustache), 0, -0.04, 0.2, false));
+  if (o.hat === "toque") { head.add(mesh(new THREE.CylinderGeometry(0.17, 0.15, 0.18, 12), M("#FFFFFF"), 0, 0.22, 0)); const t = mesh(new THREE.SphereGeometry(0.21, 12, 8), M("#FFFFFF"), 0, 0.33, 0); t.scale.y = 0.6; head.add(t); }
+  if (o.hat === "cap") { head.add(mesh(new THREE.CylinderGeometry(0.235, 0.235, 0.08, 14), M(o.hatColor), 0, 0.17, -0.01)); head.add(mesh(new THREE.BoxGeometry(0.22, 0.03, 0.14), M(o.hatColor), 0, 0.15, 0.2)); }
+  if (o.hat === "kidcap") { const c = mesh(new THREE.SphereGeometry(0.228, 14, 8, 0, Math.PI * 2, 0, Math.PI * 0.45), M(o.hatColor)); head.add(c); head.add(mesh(new THREE.BoxGeometry(0.2, 0.025, 0.16), M(o.hatColor), 0, 0.12, -0.25)); }
+  if (o.hat === "scarf") { const c = mesh(new THREE.SphereGeometry(0.235, 14, 10, 0, Math.PI * 2, 0, Math.PI * 0.6), M(o.hatColor)); c.rotation.x = -0.5; head.add(c); head.add(mesh(new THREE.SphereGeometry(0.05, 8, 6), M(o.hatColor), 0, -0.2, 0.12)); }
+  if (o.ponytail) head.add(mesh(new THREE.SphereGeometry(0.1, 10, 8), hair, 0, 0.02, -0.24));
+  if (o.flower) head.add(mesh(new THREE.SphereGeometry(0.05, 8, 6), M(o.flower), 0.17, 0.12, 0.06, false));
+  if (o.cane) arms[1].add(mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.95, 6), M("#6B4A30"), 0, -0.6, 0.06));
+  if (o.backpack) body.add(mesh(new THREE.BoxGeometry(0.38, 0.44, 0.18), M(o.backpack), 0, 1.12, -0.3));
+  const specs = new THREE.Group(); specs.visible = false; head.add(specs);
+  for (const s of [-1, 1]) specs.add(mesh(new THREE.TorusGeometry(0.05, 0.012, 6, 14), M("#222222"), 0.075 * s, 0.03, 0.2, false));
+  g.scale.setScalar(o.scale ?? 1);
+  g.userData.parts = { body, legs, arms, head, specs };
+  return g;
+}
+function makeCat() {
+  const g = new THREE.Group(), fur = M("#8E98A4"), white = M("#F2F2F2");
+  const body = mesh(new THREE.SphereGeometry(0.3, 12, 10), fur, 0, 0.3, 0); body.scale.set(0.8, 0.72, 1.25); g.add(body);
+  g.add(mesh(new THREE.SphereGeometry(0.16, 10, 8), white, 0, 0.32, 0.26));
+  const head = new THREE.Group(); head.position.set(0, 0.56, 0.32); g.add(head);
+  head.add(mesh(new THREE.SphereGeometry(0.2, 12, 10), fur));
+  for (const s of [-1, 1]) { const e = mesh(new THREE.ConeGeometry(0.07, 0.15, 4), fur, 0.11 * s, 0.18, 0); e.rotation.z = -0.25 * s; head.add(e); head.add(mesh(new THREE.SphereGeometry(0.03, 6, 5), M("#7BC86C", { e: 0x2a5a20, ei: 0.4 }), 0.075 * s, 0.03, 0.17, false)); }
+  head.add(mesh(new THREE.SphereGeometry(0.025, 6, 5), M("#E58A9A"), 0, -0.03, 0.2, false));
+  const tail = new THREE.Group(); tail.position.set(0, 0.32, -0.34); g.add(tail);
+  for (let i = 0; i < 6; i++) tail.add(mesh(new THREE.SphereGeometry(0.055 - i * 0.004, 6, 5), fur, 0, i * 0.07, -i * 0.04));
+  for (const [x, z] of [[-0.12, 0.2], [0.12, 0.2], [-0.12, -0.2], [0.12, -0.2]]) g.add(mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.16, 6), fur, x, 0.08, z));
+  g.userData.parts = { head, tail };
+  return g;
+}
+const LOOKS = {
+  jozef: { shirt: "#7A6A55", pants: "#4A4A52", hair: "#E6E6E6", hat: "cap", hatColor: "#5B5141", moustache: "#EDEDED", cane: true, skin: "#E8B896" },
+  marek: { shirt: "#E8E0D0", apron: "#3F8F4F", hair: "#2B1D14", moustache: "#2B1D14" },
+  basia: { shirt: "#F7F3EC", apron: "#EADFCF", hair: "#8A4B2A", hat: "toque", pants: "#6B4B3A" },
+  ola: { shirt: "#E05A47", apron: "#2E2E2E", hair: "#C8913A", ponytail: true, pants: "#2C3446" },
+  kuba: { shirt: "#F2C230", pants: "#3C6FB0", hair: "#6B3F1F", hat: "kidcap", hatColor: "#D33A3A", scale: 0.68 },
+  zosia: { shirt: "#4BA3A0", pants: "#3B4252", hair: "#4A2B1A", hat: "scarf", hatColor: "#C83C3C", flower: "#F2C14E" },
+};
+const npcObjs = {};
+function placeNPCs() {
+  const b = SHOP.piekarnia.a, c = SHOP.kawiarnia.a, k = SHOP.kwiaciarnia.a;
+  const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0] };
+  for (const id of NPC_ORDER) {
+    const [x, z] = spots[id], N = NPCS[id];
+    const g = N.cat ? makeCat() : makePerson(LOOKS[id]);
+    const y = N.cat ? 0.4 : 0;
+    g.position.set(x, y, z);
+    const base = Math.atan2(0 - x, 8 - z);
+    g.rotation.y = base; scene.add(g);
+    g.userData.target = { kind: "npc", id }; clickables.push(g);
+    const mark = h("span", { class: "mark" }), btn = h("button", { class: "npc-tag", type: "button", "aria-label": `${N.name}, ${N.role}` }, mark, h("span", { class: "nm" }, N.name));
+    btn.addEventListener("click", ev => { ev.stopPropagation(); tryInteract({ kind: "npc", id }); });
+    const el = h("div", { class: "lbl", hidden: true }, btn); labelLayer.append(el);
+    const L = { anchor: g, y: N.cat ? 1.25 : 2.3 * (LOOKS[id]?.scale ?? 1), max: 34, el, btn, shown: false, occ: false, slot: labels.length % 4 };
+    labels.push(L);
+    npcObjs[id] = { id, group: g, parts: g.userData.parts, x, z, base, heading: base, phase: Math.random() * 10, mark, cat: !!N.cat, kid: !!N.kid };
+    addCircle(x, z, N.cat ? 0.4 : 0.45);
+  }
+}
+
+// ===================================================================
+// items
+// ===================================================================
+function itemModel(id) {
+  const g = new THREE.Group();
+  const add = (geo, color, x = 0, y = 0, z = 0, o) => { const m = mesh(geo, M(color, o), x, y, z, false); g.add(m); return m; };
+  const stem = (y, hgt = 0.08) => add(new THREE.CylinderGeometry(0.012, 0.012, hgt, 5), "#5A3B1E", 0, y, 0);
+  const flowerStem = () => add(new THREE.CylinderGeometry(0.015, 0.015, 0.5, 5), "#4E8A3E", 0, 0.05, 0);
+  switch (id) {
+    case "jabłko": add(new THREE.SphereGeometry(0.14, 14, 10), "#C8352E"); stem(0.16); add(new THREE.SphereGeometry(0.05, 8, 6), "#4E9A3A", 0.05, 0.17, 0).scale.set(1, 0.35, 0.6); break;
+    case "gruszka": add(new THREE.SphereGeometry(0.13, 14, 10), "#C9CC4A"); add(new THREE.SphereGeometry(0.085, 12, 9), "#C9CC4A", 0, 0.13, 0); stem(0.25); break;
+    case "śliwka": add(new THREE.SphereGeometry(0.1, 14, 10), "#4B2463").scale.set(1, 1.15, 0.9); stem(0.13, 0.06); break;
+    case "cytryna": add(new THREE.SphereGeometry(0.1, 14, 10), "#F1D034").scale.set(1.35, 1, 1); for (const s of [-1, 1]) add(new THREE.ConeGeometry(0.03, 0.05, 8), "#F1D034", s * 0.145, 0, 0).rotation.z = -s * Math.PI / 2; break;
+    case "marchewka": add(new THREE.ConeGeometry(0.065, 0.36, 10), "#EE7A22").rotation.z = -Math.PI / 2; for (const a of [-0.4, 0, 0.4]) { const l = add(new THREE.ConeGeometry(0.02, 0.16, 5), "#4E9A3A", -0.24, a * 0.1, 0); l.rotation.z = Math.PI / 2 + a; } break;
+    case "chleb": { const b = add(new THREE.CapsuleGeometry(0.12, 0.22, 4, 10), "#B77A3E"); b.rotation.z = Math.PI / 2; b.scale.set(0.8, 1, 1); for (let i = -1; i <= 1; i++) add(new THREE.BoxGeometry(0.02, 0.012, 0.16), "#E3B77E", i * 0.09, 0.1, 0).rotation.y = 0.5; } break;
+    case "bułka": add(new THREE.SphereGeometry(0.11, 12, 8), "#D9A35E").scale.set(1.2, 0.7, 1); add(new THREE.BoxGeometry(0.16, 0.012, 0.02), "#F0D2A0", 0, 0.075, 0); break;
+    case "ciastko": for (let i = 0; i < 2; i++) { add(new THREE.CylinderGeometry(0.1, 0.1, 0.035, 14), "#D6A867", 0, i * 0.04, 0); for (let k = 0; k < 4; k++) add(new THREE.SphereGeometry(0.014, 5, 4), "#4A2C1A", Math.cos(k * 1.7) * 0.06, i * 0.04 + 0.02, Math.sin(k * 1.7) * 0.06); } break;
+    case "drożdżówka": add(new THREE.CylinderGeometry(0.13, 0.12, 0.07, 16), "#E0A956"); add(new THREE.CylinderGeometry(0.09, 0.09, 0.02, 16), "#F7EFE0", 0, 0.045, 0); for (let k = 0; k < 8; k++) add(new THREE.BoxGeometry(0.02, 0.02, 0.02), "#F3D9A8", Math.cos(k) * 0.1, 0.05, Math.sin(k) * 0.1); break;
+    case "szarlotka": add(new THREE.CylinderGeometry(0.17, 0.17, 0.1, 16, 1, false, 0, 1.1), "#E2B46A"); add(new THREE.CylinderGeometry(0.171, 0.171, 0.03, 16, 1, false, 0, 1.1), "#F6E7C8", 0, 0.065, 0); add(new THREE.CylinderGeometry(0.2, 0.2, 0.01, 18), "#FFFFFF", 0, -0.055, 0); break;
+    case "kawa": add(new THREE.CylinderGeometry(0.13, 0.13, 0.015, 18), "#FFFFFF", 0, -0.06, 0); add(new THREE.CylinderGeometry(0.075, 0.06, 0.11, 14), "#FFFFFF"); add(new THREE.CylinderGeometry(0.068, 0.068, 0.01, 14), "#5A3820", 0, 0.05, 0); add(new THREE.TorusGeometry(0.035, 0.012, 6, 10), "#FFFFFF", 0.09, 0, 0); break;
+    case "herbata": add(new THREE.CylinderGeometry(0.065, 0.06, 0.16, 14), "#C77C2B", 0, 0, 0, { t: true, o: 0.8, r: 0.2 }); add(new THREE.CylinderGeometry(0.07, 0.07, 0.1, 14, 1, true), "#B8BEC4", 0, -0.03, 0, { m: 0.7, r: 0.3, ds: true }); add(new THREE.CylinderGeometry(0.05, 0.05, 0.01, 12), "#F1D034", 0, 0.085, 0); break;
+    case "woda": add(new THREE.CylinderGeometry(0.06, 0.06, 0.22, 12), "#8CC8EE", 0, 0, 0, { t: true, o: 0.75, r: 0.15 }); add(new THREE.CylinderGeometry(0.025, 0.05, 0.06, 10), "#8CC8EE", 0, 0.14, 0, { t: true, o: 0.75 }); add(new THREE.CylinderGeometry(0.027, 0.027, 0.03, 10), "#2F6FD0", 0, 0.185, 0); break;
+    case "sok": add(new THREE.CylinderGeometry(0.06, 0.05, 0.17, 14), "#F59A1E", 0, 0, 0, { t: true, o: 0.9, r: 0.2 }); add(new THREE.CylinderGeometry(0.008, 0.008, 0.16, 5), "#E04A4A", 0.02, 0.1, 0).rotation.z = 0.2; break;
+    case "mleko": add(new THREE.CylinderGeometry(0.07, 0.07, 0.2, 14), "#FAFAFA"); add(new THREE.CylinderGeometry(0.035, 0.065, 0.07, 12), "#FAFAFA", 0, 0.135, 0); add(new THREE.CylinderGeometry(0.037, 0.037, 0.03, 12), "#2F6FD0", 0, 0.18, 0); add(new THREE.BoxGeometry(0.1, 0.06, 0.01), "#2F6FD0", 0, 0, 0.07); break;
+    case "piłka": add(new THREE.SphereGeometry(0.17, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2), "#D33A3A"); add(new THREE.SphereGeometry(0.17, 16, 12, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), "#FFFFFF"); add(new THREE.TorusGeometry(0.17, 0.012, 6, 24), "#F2C230").rotation.x = Math.PI / 2; break;
+    case "lalka": add(new THREE.ConeGeometry(0.1, 0.22, 10), "#E86FA0", 0, -0.02, 0); add(new THREE.SphereGeometry(0.06, 10, 8), "#F1C7A5", 0, 0.14, 0); add(new THREE.SphereGeometry(0.065, 10, 8, 0, Math.PI * 2, 0, Math.PI * 0.55), "#F2C14E", 0, 0.15, -0.005); break;
+    case "miś": { const f = "#9B6A3E"; add(new THREE.SphereGeometry(0.12, 10, 8), f, 0, 0, 0); add(new THREE.SphereGeometry(0.09, 10, 8), f, 0, 0.17, 0); for (const s of [-1, 1]) { add(new THREE.SphereGeometry(0.035, 6, 5), f, s * 0.065, 0.25, 0); add(new THREE.SphereGeometry(0.045, 6, 5), f, s * 0.12, 0.02, 0.03); add(new THREE.SphereGeometry(0.045, 6, 5), f, s * 0.07, -0.1, 0.05); } add(new THREE.SphereGeometry(0.04, 6, 5), "#E8C9A0", 0, 0.155, 0.075); add(new THREE.SphereGeometry(0.014, 5, 4), "#1A1A1A", 0, 0.17, 0.11); } break;
+    case "latawiec": { const s = new THREE.Shape(); s.moveTo(0, 0.26); s.lineTo(0.17, 0); s.lineTo(0, -0.34); s.lineTo(-0.17, 0); s.closePath(); const k = add(new THREE.ShapeGeometry(s), "#E04A4A", 0, 0, 0, { ds: true }); k.rotation.x = -Math.PI / 2 + 0.3; add(new THREE.BoxGeometry(0.34, 0.01, 0.01), "#F2C230", 0, 0.01, 0); for (let i = 0; i < 4; i++) add(new THREE.BoxGeometry(0.04, 0.01, 0.025), ["#F2C230", "#2F6FD0"][i % 2], 0.02 * (i % 2), 0, 0.38 + i * 0.1); } break;
+    case "róża": flowerStem(); add(new THREE.SphereGeometry(0.07, 10, 8), "#C8253A", 0, 0.32, 0).scale.set(1, 1.1, 1); add(new THREE.SphereGeometry(0.04, 6, 5), "#4E8A3E", 0.04, 0.12, 0).scale.set(1.6, 0.4, 0.8); break;
+    case "lilia": flowerStem(); for (let i = 0; i < 6; i++) { const p = add(new THREE.ConeGeometry(0.03, 0.14, 5), "#FBF7EE", Math.cos(i) * 0.05, 0.34, Math.sin(i) * 0.05); p.rotation.set(Math.sin(i) * 0.9, 0, -Math.cos(i) * 0.9); } add(new THREE.SphereGeometry(0.02, 6, 5), "#EE7A22", 0, 0.34, 0); break;
+    case "stokrotka": flowerStem(); for (let i = 0; i < 10; i++) add(new THREE.BoxGeometry(0.09, 0.01, 0.025), "#FFFFFF", Math.cos(i / 10 * Math.PI * 2) * 0.05, 0.31, Math.sin(i / 10 * Math.PI * 2) * 0.05).rotation.y = -i / 10 * Math.PI * 2; add(new THREE.CylinderGeometry(0.03, 0.03, 0.02, 10), "#F2C230", 0, 0.315, 0); break;
+    case "orchidea": flowerStem(); for (let i = 0; i < 3; i++) add(new THREE.SphereGeometry(0.05, 8, 6), "#C04FA8", 0.03 * (i - 1), 0.22 + i * 0.07, 0.05).scale.set(1.3, 1, 0.4); break;
+    case "okulary": for (const s of [-1, 1]) { add(new THREE.TorusGeometry(0.06, 0.012, 6, 16), "#2A2A2A", s * 0.075, 0, 0); add(new THREE.BoxGeometry(0.01, 0.01, 0.15), "#2A2A2A", s * 0.135, 0, -0.07); } add(new THREE.BoxGeometry(0.04, 0.01, 0.01), "#2A2A2A", 0, 0.02, 0); break;
+    case "klucze": add(new THREE.TorusGeometry(0.05, 0.01, 6, 14), "#C9A227", 0, 0, 0, { m: 0.7, r: 0.3 }).rotation.x = Math.PI / 2; for (const a of [0.4, -0.5]) { const k = new THREE.Group(); k.rotation.y = a; k.add(mesh(new THREE.BoxGeometry(0.16, 0.012, 0.02), M("#C9A227", { m: 0.7, r: 0.3 }), 0.12, 0, 0, false)); k.add(mesh(new THREE.BoxGeometry(0.03, 0.012, 0.05), M("#C9A227", { m: 0.7, r: 0.3 }), 0.18, 0, 0.02, false)); g.add(k); } break;
+  }
+  return g;
+}
+const ITEM_SCALE = { piłka: 1.2, róża: 1.25, lilia: 1.25, stokrotka: 1.25, orchidea: 1.25, okulary: 1.6, klucze: 1.6 };
+const itemObjs = {};
+const ringMat = new THREE.MeshBasicMaterial({ color: 0xe9b53b, transparent: true, opacity: 0.55, depthWrite: false, side: THREE.DoubleSide });
+function placeItems() {
+  for (const id of Object.keys(ITEMS)) {
+    const home = HOMES[id], g = new THREE.Group();
+    const model = itemModel(id); model.scale.setScalar(ITEM_SCALE[id] ?? 1.5); g.add(model);
+    const ring = new THREE.Mesh(new THREE.RingGeometry(0.26, 0.34, 28), ringMat); ring.rotation.x = -Math.PI / 2;
+    const surface = home.y < 0.5 ? 0.02 : home.y > 1 ? 0.97 : id === "okulary" ? 0.84 : 0.48;
+    ring.position.y = surface - home.y;
+    g.add(ring);
+    g.position.copy(home); scene.add(g);
+    g.userData.target = { kind: "item", id }; clickables.push(g);
+    const L = addWordLabel({ word: ITEMS[id].word, lemma: ITEMS[id].lemma, anchor: g, y: 0.55, max: 15 });
+    itemObjs[id] = { id, group: g, model, ring, label: L, available: true, phase: Math.random() * 6, pop: 1 };
+  }
+}
+function placeItem(id, animate) { const o = itemObjs[id]; if (!o) return; o.available = true; o.group.visible = true; o.group.position.copy(HOMES[id]); o.pop = animate ? 0 : 1; }
+function removeItem(id) { const o = itemObjs[id]; if (!o) return; o.available = false; o.group.visible = false; }
+let carryMesh = null;
+function setCarryVisual() {
+  if (carryMesh) { player.group.remove(carryMesh); carryMesh = null; }
+  if (st.carry) { carryMesh = itemModel(st.carry); carryMesh.scale.setScalar((ITEM_SCALE[st.carry] ?? 1.5) * 0.85); carryMesh.position.set(0, 1.15, 0.42); player.group.add(carryMesh); }
+  renderTracker();
+}
+function syncWorldFromState() {
+  for (const id of Object.keys(ITEMS)) {
+    const story = ITEMS[id].story, gone = story && npcState(story).stage === "done";
+    if (gone || st.carry === id) removeItem(id); else placeItem(id, false);
+  }
+  const o = npcObjs.jozef; if (o) o.parts.specs.visible = npcState("jozef").stage === "done";
+  setCarryVisual();
+}
+
+// ===================================================================
+// pigeons (gołębie)
+// ===================================================================
+const pigeons = [];
+let pigeonLabel = null;
+function buildPigeons() {
+  for (let i = 0; i < 8; i++) {
+    const g = new THREE.Group(), grey = M("#8C93A3"), dark = M("#5E6577");
+    const b = mesh(new THREE.SphereGeometry(0.12, 10, 8), grey, 0, 0.16, 0, false); b.scale.set(0.85, 0.8, 1.3); g.add(b);
+    const head = new THREE.Group(); head.position.set(0, 0.28, 0.12); g.add(head);
+    head.add(mesh(new THREE.SphereGeometry(0.065, 8, 6), dark, 0, 0, 0, false));
+    const beak = mesh(new THREE.ConeGeometry(0.018, 0.05, 5), M("#E2B44A"), 0, -0.005, 0.07, false); beak.rotation.x = Math.PI / 2; head.add(beak);
+    const wings = [-1, 1].map(s => { const w = mesh(new THREE.BoxGeometry(0.2, 0.02, 0.18), dark, s * 0.1, 0.2, -0.02, false); g.add(w); return w; });
+    g.add(mesh(new THREE.BoxGeometry(0.08, 0.02, 0.12), dark, 0, 0.17, -0.18, false));
+    const a = Math.random() * Math.PI * 2, r = 4.5 + Math.random() * 3.5;
+    g.position.set(Math.cos(a) * r, 0, 6 + Math.sin(a) * r); g.rotation.y = Math.random() * 6; scene.add(g);
+    pigeons.push({ g, head, wings, state: "idle", t: Math.random() * 3, from: new THREE.Vector3(), to: new THREE.Vector3(), dur: 1 });
+  }
+  pigeonLabel = addWordLabel({ word: "gołąb", anchor: pigeons[0].g, y: 0.6, max: 7, kind: "small" });
+}
+function updatePigeons(dt, T) {
+  let nearest = null, nd = 99;
+  for (const p of pigeons) {
+    const dx = p.g.position.x - player.pos.x, dz = p.g.position.z - player.pos.z, d = Math.hypot(dx, dz);
+    if (p.state === "idle") {
+      p.t -= dt; p.head.position.y = 0.28 - Math.max(0, Math.sin(T * 6 + p.t * 3)) * 0.07;
+      if (d < 2.3) {
+        const a = Math.random() * Math.PI * 2, r = 4.5 + Math.random() * 4;
+        p.from.copy(p.g.position); p.to.set(Math.cos(a) * r, 0, 6 + Math.sin(a) * r); p.state = "fly"; p.t = 0; p.dur = 1.4 + Math.random() * 0.6;
+        p.g.rotation.y = Math.atan2(p.to.x - p.from.x, p.to.z - p.from.z);
+      } else if (p.t < 0) { p.t = 1.5 + Math.random() * 3; p.g.rotation.y += (Math.random() - 0.5) * 1.6; const s = 0.25; p.g.position.x += Math.sin(p.g.rotation.y) * s; p.g.position.z += Math.cos(p.g.rotation.y) * s; if (Math.hypot(p.g.position.x, p.g.position.z - 6) < 3.8) p.g.position.z += 0.4; }
+    } else {
+      p.t += dt; const k = Math.min(1, p.t / p.dur);
+      p.g.position.lerpVectors(p.from, p.to, k); p.g.position.y = Math.sin(k * Math.PI) * 2.6;
+      const flap = Math.sin(T * 30) * 0.9; p.wings[0].rotation.z = flap; p.wings[1].rotation.z = -flap;
+      if (k >= 1) { p.state = "idle"; p.t = 2; p.wings.forEach(w => (w.rotation.z = 0)); p.g.position.y = 0; }
+    }
+    if (d < nd) { nd = d; nearest = p; }
+  }
+  if (pigeonLabel && nearest) pigeonLabel.anchor = nearest.g;
+}
+
+// ---- src/js/07-loop.js ----
+// ===================================================================
+// player + camera
+// ===================================================================
+const player = { pos: new THREE.Vector3(0, 0, 19.5), heading: Math.PI, speed: 0, phase: 0, group: null, parts: null };
+const cam = { yaw: 0, pitch: 0.42, dist: 8.5, cur: 8.5, target: new THREE.Vector3(0, 1.5, 19.5) };
+function buildPlayer() {
+  player.group = makePerson({ shirt: "#2B4FB8", pants: "#2C2F3A", hair: "#3B2A20", backpack: "#E9B53B", skin: "#E8B896" });
+  player.parts = player.group.userData.parts;
+  scene.add(player.group);
+}
+const angLerp = (a, b, t) => { let d = (b - a) % (Math.PI * 2); if (d > Math.PI) d -= Math.PI * 2; if (d < -Math.PI) d += Math.PI * 2; return a + d * t; };
+function collide(p, r) {
+  for (let pass = 0; pass < 2; pass++) {
+    for (const b of boxColliders) {
+      const cx = clamp(p.x, b.x0, b.x1), cz = clamp(p.z, b.z0, b.z1), dx = p.x - cx, dz = p.z - cz, d2 = dx * dx + dz * dz;
+      if (d2 >= r * r) continue;
+      if (d2 > 1e-8) { const d = Math.sqrt(d2); p.x += dx / d * (r - d); p.z += dz / d * (r - d); }
+      else {
+        const m = Math.min(p.x - b.x0, b.x1 - p.x, p.z - b.z0, b.z1 - p.z);
+        if (m === p.x - b.x0) p.x = b.x0 - r; else if (m === b.x1 - p.x) p.x = b.x1 + r; else if (m === p.z - b.z0) p.z = b.z0 - r; else p.z = b.z1 + r;
+      }
+    }
+    for (const c of circleColliders) {
+      const dx = p.x - c.x, dz = p.z - c.z, d = Math.hypot(dx, dz), m = r + c.r;
+      if (d < m && d > 1e-6) { p.x = c.x + dx / d * m; p.z = c.z + dz / d * m; }
+    }
+  }
+  p.x = clamp(p.x, -26.6, 26.6); p.z = clamp(p.z, -26.6, 26.6);
+}
+const keys = new Set();
+const stick = { x: 0, y: 0, id: null };
+const movementBlocked = () => dlg.open || !introClosed || !$("#review").hidden;
+function updatePlayer(dt, T) {
+  let ix = 0, iz = 0;
+  if (!movementBlocked()) {
+    if (keys.has("KeyA") || keys.has("ArrowLeft")) ix -= 1;
+    if (keys.has("KeyD") || keys.has("ArrowRight")) ix += 1;
+    if (keys.has("KeyW") || keys.has("ArrowUp")) iz += 1;
+    if (keys.has("KeyS") || keys.has("ArrowDown")) iz -= 1;
+    ix += stick.x; iz -= stick.y;
+  }
+  const len = Math.hypot(ix, iz);
+  if (len > 1) { ix /= len; iz /= len; }
+  const run = keys.has("ShiftLeft") || keys.has("ShiftRight") || Math.hypot(stick.x, stick.y) > 0.92;
+  const target = len > 0.05 ? (run ? 7.2 : 4.3) * Math.min(1, len) : 0;
+  player.speed += (target - player.speed) * (1 - Math.exp(-dt * 10));
+  if (len > 0.05) {
+    const fx = -Math.sin(cam.yaw), fz = -Math.cos(cam.yaw), rx = Math.cos(cam.yaw), rz = -Math.sin(cam.yaw);
+    const mx = fx * iz + rx * ix, mz = fz * iz + rz * ix, ml = Math.hypot(mx, mz) || 1;
+    player.pos.x += mx / ml * player.speed * dt; player.pos.z += mz / ml * player.speed * dt;
+    player.heading = angLerp(player.heading, Math.atan2(mx, mz), 1 - Math.exp(-dt * 12));
+  } else if (dlg.open && npcObjs[dlg.npc]) {
+    const o = npcObjs[dlg.npc]; player.heading = angLerp(player.heading, Math.atan2(o.x - player.pos.x, o.z - player.pos.z), 1 - Math.exp(-dt * 6));
+  }
+  collide(player.pos, 0.4);
+  player.group.position.copy(player.pos); player.group.rotation.y = player.heading;
+  const p = player.parts, k = clamp(player.speed / 4.3, 0, 1.6);
+  player.phase += dt * (3 + player.speed * 2);
+  const sw = Math.sin(player.phase) * 0.6 * Math.min(1, k);
+  p.legs[0].rotation.x = sw; p.legs[1].rotation.x = -sw;
+  p.arms[0].rotation.x = st.carry ? -1.1 : -sw * 0.8; p.arms[1].rotation.x = st.carry ? -1.1 : sw * 0.8;
+  p.body.position.y = Math.abs(Math.sin(player.phase)) * 0.05 * Math.min(1, k) + Math.sin(T * 1.6) * 0.004;
+}
+const ray = new THREE.Ray(), hit = new THREE.Vector3(), tmp = new THREE.Vector3(), off = new THREE.Vector3();
+function updateCamera(dt, T) {
+  if (!introClosed) {
+    cam.yaw += dt * 0.06;
+    tmp.set(0, 4, 4);
+    cam.target.lerp(tmp, 1 - Math.exp(-dt * 2));
+    off.set(Math.sin(cam.yaw) * Math.cos(0.38), Math.sin(0.38), Math.cos(cam.yaw) * Math.cos(0.38));
+    camera.position.copy(cam.target).addScaledVector(off, 26);
+    camera.lookAt(cam.target);
+    return;
+  }
+  const o = dlg.open && npcObjs[dlg.npc];
+  if (o) tmp.set((player.pos.x + o.x) / 2, 1.4, (player.pos.z + o.z) / 2); else tmp.set(player.pos.x, 1.5, player.pos.z);
+  cam.target.lerp(tmp, 1 - Math.exp(-dt * 8));
+  cam.cur += ((o ? 6 : cam.dist) - cam.cur) * (1 - Math.exp(-dt * 4));
+  off.set(Math.sin(cam.yaw) * Math.cos(cam.pitch), Math.sin(cam.pitch), Math.cos(cam.yaw) * Math.cos(cam.pitch));
+  let d = cam.cur;
+  ray.origin.copy(cam.target); ray.direction.copy(off);
+  for (const b of occluders) if (ray.intersectBox(b, hit)) { const hd = hit.distanceTo(cam.target); if (hd < d) d = Math.max(1.6, hd - 0.4); }
+  camera.position.copy(cam.target).addScaledVector(off, d);
+  if (camera.position.y < 0.4) camera.position.y = 0.4;
+  camera.lookAt(cam.target);
+}
+
+// ===================================================================
+// NPCs + items animation, interaction
+// ===================================================================
+function updateNPCs(dt, T) {
+  for (const o of Object.values(npcObjs)) {
+    const dx = player.pos.x - o.x, dz = player.pos.z - o.z, d = Math.hypot(dx, dz), talking = dlg.open && dlg.npc === o.id;
+    const want = d < 5 || talking ? Math.atan2(dx, dz) : o.base;
+    o.heading = angLerp(o.heading, want, 1 - Math.exp(-dt * 4)); o.group.rotation.y = o.heading;
+    const tt = T + o.phase, p = o.parts;
+    if (o.cat) {
+      const asleep = npcState("filemon").stage === "done" && !talking;
+      p.tail.rotation.y = Math.sin(tt * (asleep ? 0.8 : 2.2)) * 0.5;
+      p.head.rotation.x = asleep ? 0.45 : Math.sin(tt * 0.7) * 0.08;
+      continue;
+    }
+    p.body.position.y = Math.sin(tt * 1.8) * 0.008;
+    p.head.rotation.y = Math.sin(tt * 0.5) * 0.15;
+    if (talking) { p.arms[1].rotation.x = -0.5 + Math.sin(T * 5) * 0.25; p.arms[0].rotation.x = Math.sin(T * 3) * 0.1; }
+    else if (o.id === "marek" && Math.sin(tt * 0.4) > 0.93) { p.arms[1].rotation.x = -2.6; p.arms[1].rotation.z = Math.sin(T * 9) * 0.3; }
+    else { p.arms[0].rotation.x = Math.sin(tt * 1.2) * 0.05; p.arms[1].rotation.x = -Math.sin(tt * 1.2) * 0.05; p.arms[1].rotation.z = 0; }
+    if (o.kid) o.group.position.y = Math.abs(Math.sin(tt * 3.2)) * (talking ? 0 : 0.06);
+  }
+}
+function updateItems(dt, T) {
+  for (const o of Object.values(itemObjs)) {
+    if (!o.available) continue;
+    o.pop = Math.min(1, o.pop + dt * 3);
+    const s = o.pop < 1 ? 1 + Math.sin(o.pop * Math.PI) * 0.35 : 1;
+    o.model.scale.setScalar((ITEM_SCALE[o.id] ?? 1.5) * Math.min(1, o.pop * 1.4) * s);
+    o.model.position.y = Math.sin(T * 2.2 + o.phase) * 0.04;
+    o.model.rotation.y += dt * 0.6;
+    o.ring.material.opacity = 0.35 + Math.sin(T * 3) * 0.15;
+  }
+}
+let near = null;
+function findNear() {
+  let best = null, bd = 99;
+  for (const o of Object.values(npcObjs)) { const d = Math.hypot(o.x - player.pos.x, o.z - player.pos.z); if (d < 2.7 && d < bd) { bd = d; best = { kind: "npc", id: o.id }; } }
+  for (const o of Object.values(itemObjs)) {
+    if (!o.available) continue;
+    const d = Math.hypot(o.group.position.x - player.pos.x, o.group.position.z - player.pos.z);
+    if (d < 1.6 && d - 0.6 < bd) { bd = d - 0.6; best = { kind: "item", id: o.id }; }
+  }
+  return best;
+}
+function updateInteract() {
+  const n = introClosed && !movementBlocked() ? findNear() : null;
+  if (near?.kind === "item" && (n?.id !== near.id)) itemObjs[near.id]?.label.btn.classList.remove("near");
+  if (n?.kind === "item") itemObjs[n.id].label.btn.classList.add("near");
+  near = n; setPrompt(n);
+}
+function interact() {
+  if (!introClosed) return closeIntro();
+  if (dlg.open) return nextLine();
+  if (!$("#review").hidden) return revealReview();
+  if (near) tryInteract(near);
+}
+function tryInteract(t) {
+  if (!introClosed || dlg.open) return;
+  const pos = t.kind === "npc" ? new THREE.Vector3(npcObjs[t.id].x, 0, npcObjs[t.id].z) : itemObjs[t.id].group.position;
+  const d = Math.hypot(pos.x - player.pos.x, pos.z - player.pos.z);
+  if (d > (t.kind === "npc" ? 3.2 : 2.2)) { toast(t.kind === "npc" ? `Walk closer to talk to ${NPCS[t.id].name}.` : "Walk closer to pick that up."); return; }
+  if (t.kind === "npc") talk(t.id); else if (itemObjs[t.id].available) pickUp(t.id);
+}
+
+// ===================================================================
+// world labels
+// ===================================================================
+const lv = new THREE.Vector3();
+function updateLabels(frame) {
+  const W = innerWidth, H = innerHeight, cp = camera.position;
+  for (const L of labels) {
+    let show = true;
+    if (L.anchor) { if (!L.anchor.visible) show = false; else { L.anchor.getWorldPosition(lv); lv.y += L.y; } } else lv.copy(L.pos);
+    const d = show ? Math.hypot(lv.x - player.pos.x, lv.z - player.pos.z) : 0;
+    if (show && (d > L.max || !introClosed && L.max < 30)) show = false;
+    if (show) {
+      const cd = lv.distanceTo(cp);
+      if ((frame & 3) === L.slot || !L.shown) {
+        ray.origin.copy(cp); ray.direction.copy(lv).sub(cp).normalize(); L.occ = false;
+        for (const b of occluders) if (ray.intersectBox(b, hit) && hit.distanceTo(cp) < cd - 0.6) { L.occ = true; break; }
+      }
+      if (L.occ) show = false;
+    }
+    if (show) { lv.project(camera); if (lv.z > 1 || lv.z < -1) show = false; }
+    if (!show) { if (L.shown) { L.el.hidden = true; L.shown = false; } continue; }
+    if (!L.shown) { L.el.hidden = false; L.shown = true; if (L.lemma && d < 6 && !L.met) { L.met = true; markSeen([L.lemma]); } }
+    else if (L.lemma && !L.met && d < 6) { L.met = true; markSeen([L.lemma]); }
+    const x = (lv.x * 0.5 + 0.5) * W, y = (-lv.y * 0.5 + 0.5) * H;
+    L.el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) translate(-50%,-100%)`;
+    L.el.style.opacity = Math.min(1, (L.max - d) / 2.5).toFixed(2);
+    L.el.style.zIndex = String(2000 - Math.round(d * 10));
+  }
+}
+
+// ===================================================================
+// minimap
+// ===================================================================
+const mm = $("#minimap"), mmc = mm.getContext("2d");
+let palette = {};
+function readPalette() { const cs = getComputedStyle(document.documentElement); for (const k of ["glaze", "glaze-2", "rim", "ink", "ink-2", "gold"]) palette[k] = cs.getPropertyValue("--" + k).trim(); }
+function drawMinimap() {
+  const css = mm.clientWidth; if (!css) return;
+  const dpr = Math.min(2, devicePixelRatio || 1), S = Math.round(css * dpr);
+  if (mm.width !== S) { mm.width = S; mm.height = S; }
+  const g = mmc, sc = S / 2 / 34, X = x => S / 2 + x * sc, Z = z => S / 2 + z * sc;
+  g.clearRect(0, 0, S, S); g.save(); g.beginPath(); g.arc(S / 2, S / 2, S / 2, 0, Math.PI * 2); g.clip();
+  g.fillStyle = palette.rim; g.globalAlpha = 0.28; g.fillRect(0, 0, S, S); g.globalAlpha = 1;
+  g.fillStyle = palette.glaze; g.fillRect(X(-27), Z(-27), 54 * sc, 54 * sc);
+  g.fillStyle = palette["glaze-2"]; g.fillRect(X(-7.2), Z(-14.2), 14.4 * sc, 9.4 * sc); g.fillRect(X(-16.3), Z(1.1), 4.6 * sc, 1.8 * sc);
+  g.beginPath(); g.arc(X(0), Z(6), 3.4 * sc, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
+  for (const o of Object.values(npcObjs)) {
+    const m = o.mark.textContent;
+    g.beginPath(); g.arc(X(o.x), Z(o.z), (m ? 3.4 : 2.4) * dpr, 0, Math.PI * 2); g.fillStyle = m ? palette.gold : palette["ink-2"]; g.fill();
+  }
+  g.save(); g.translate(X(player.pos.x), Z(player.pos.z)); g.rotate(-player.heading + Math.PI);
+  g.beginPath(); g.moveTo(0, -6 * dpr); g.lineTo(4.5 * dpr, 4.5 * dpr); g.lineTo(0, 2 * dpr); g.lineTo(-4.5 * dpr, 4.5 * dpr); g.closePath(); g.fillStyle = palette.rim; g.fill();
+  g.restore(); g.restore();
+}
+
+// ===================================================================
+// theme: daytime for light, dusk with lit lamps for dark
+// ===================================================================
+function isDark() { const t = document.documentElement.dataset.theme; return t === "dark" ? true : t === "light" ? false : matchMedia("(prefers-color-scheme: dark)").matches; }
+function applySceneTheme() {
+  const dark = isDark();
+  skyMat.uniforms.top.value.set(dark ? 0x16224f : 0x5f9ee6);
+  skyMat.uniforms.mid.value.set(dark ? 0xe39066 : 0xdcebf8);
+  skyMat.uniforms.bottom.value.set(dark ? 0x3a3550 : 0xb8c4cf);
+  scene.fog.color.set(dark ? 0x6a5a78 : 0xdde9f5);
+  hemi.color.set(dark ? 0x7d86c4 : 0xcfe3ff); hemi.groundColor.set(dark ? 0x3a2e33 : 0x8c7a5e); hemi.intensity = dark ? 0.9 : 1.5;
+  sun.color.set(dark ? 0xffa36b : 0xfff1d6); sun.intensity = dark ? 1.25 : 2.6; sun.position.set(dark ? -40 : 32, dark ? 22 : 48, dark ? 18 : 22);
+  lampGlass.emissiveIntensity = dark ? 2.2 : 0.15;
+  lampLights.forEach(l => (l.intensity = dark ? 7 : 0));
+  renderer.toneMappingExposure = dark ? 1.15 : 1.05;
+  readPalette();
+}
+new MutationObserver(applySceneTheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", applySceneTheme);
+
+// ===================================================================
+// input
+// ===================================================================
+addEventListener("keydown", e => {
+  if (e.target.matches?.("input, textarea, select")) { if (e.key === "Escape") e.target.blur(); return; }
+  const k = e.key.toLowerCase();
+  if (k === "escape") {
+    if (!card.hidden) closeCard(); else if (!$("#review").hidden) closeReview(); else if (!$("#settings").hidden) $("#settings").hidden = true;
+    else if (!$("#vocab").hidden) toggleVocab(false); else if (dlg.open) endDialogue();
+    return;
+  }
+  if (cardState && ["1", "2", "3"].includes(k)) { setStatus(cardState.lemma, +k - 1); return; }
+  const onButton = !!e.target.closest?.("button");
+  if (k === "e" || ((k === " " || k === "enter") && !onButton)) { e.preventDefault(); if (!e.repeat) interact(); return; }
+  if (!introClosed) return;
+  if (k === "v") { toggleVocab(); return; }
+  if (k === "g") { putBack(); return; }
+  if (dlg.open && k === "t") { toggleTr(); return; }
+  if (dlg.open && k === "r") { speak(dlg.lines[dlg.i][0]); return; }
+  if (e.code.startsWith("Arrow")) e.preventDefault();
+  keys.add(e.code);
+});
+addEventListener("keyup", e => keys.delete(e.code));
+addEventListener("blur", () => keys.clear());
+let drag = null;
+canvas.addEventListener("pointerdown", e => {
+  if (e.pointerType === "touch") document.body.classList.add("touch");
+  updateTouchUI();
+  drag = { id: e.pointerId, x: e.clientX, y: e.clientY, moved: 0 };
+  canvas.setPointerCapture(e.pointerId); canvas.classList.add("dragging");
+});
+canvas.addEventListener("pointermove", e => {
+  if (!drag || e.pointerId !== drag.id) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY; drag.moved += Math.abs(dx) + Math.abs(dy);
+  if (!introClosed) return;
+  const k = e.pointerType === "touch" ? 0.008 : 0.006;
+  cam.yaw -= dx * k; cam.pitch = clamp(cam.pitch + dy * k * 0.8, 0.12, 1.2);
+});
+const endDrag = e => {
+  if (!drag || e.pointerId !== drag.id) return;
+  const tap = drag.moved < 8; drag = null; canvas.classList.remove("dragging");
+  if (tap && introClosed && !dlg.open) {
+    const rc = new THREE.Raycaster(), ndc = new THREE.Vector2(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+    rc.setFromCamera(ndc, camera);
+    const hits = rc.intersectObjects(clickables.filter(c => c.visible), true);
+    for (const hh of hits) { let o = hh.object; while (o && !o.userData.target) o = o.parent; if (o) { tryInteract(o.userData.target); break; } }
+  }
+};
+canvas.addEventListener("pointerup", endDrag); canvas.addEventListener("pointercancel", endDrag);
+canvas.addEventListener("wheel", e => { e.preventDefault(); cam.dist = clamp(cam.dist + e.deltaY * 0.01, 4, 15); }, { passive: false });
+const stickEl = $("#stick"), knob = $("#knob");
+stickEl.addEventListener("pointerdown", e => { stick.id = e.pointerId; stickEl.setPointerCapture(e.pointerId); moveStick(e); });
+stickEl.addEventListener("pointermove", e => { if (e.pointerId === stick.id) moveStick(e); });
+const stopStick = e => { if (e.pointerId !== stick.id) return; stick.id = null; stick.x = stick.y = 0; knob.style.transform = ""; };
+stickEl.addEventListener("pointerup", stopStick); stickEl.addEventListener("pointercancel", stopStick);
+function moveStick(e) {
+  const r = stickEl.getBoundingClientRect(), R = r.width / 2;
+  let dx = e.clientX - (r.left + R), dy = e.clientY - (r.top + R); const d = Math.hypot(dx, dy);
+  if (d > R) { dx *= R / d; dy *= R / d; }
+  stick.x = dx / R; stick.y = dy / R; knob.style.transform = `translate(${dx * 0.6}px, ${dy * 0.6}px)`;
+}
+$("#act").addEventListener("click", interact);
+function updateTouchUI() {
+  const touch = document.body.classList.contains("touch") || MOBILE;
+  if (touch) document.body.classList.add("touch");
+  $("#touch").hidden = !touch || !introClosed;
+  $("#stick").hidden = dlg.open;
+  promptKey = "~"; setPrompt(near);
+}
+
+// ===================================================================
+// loop + boot
+// ===================================================================
+function resize() {
+  const w = innerWidth, hh = innerHeight;
+  renderer.setSize(w, hh, false); camera.aspect = w / hh; camera.updateProjectionMatrix();
+}
+addEventListener("resize", resize);
+let last = performance.now(), frame = 0, T = 0;
+function loop(now) {
+  requestAnimationFrame(loop);
+  const dt = Math.min(0.05, (now - last) / 1000); last = now; frame++; T += dt;
+  updatePlayer(dt, T); updateNPCs(dt, T); updateItems(dt, T); updatePigeons(dt, T); updateFountain(dt);
+  for (const c of clouds) { c.position.x += dt * 1.2; if (c.position.x > 170) c.position.x = -170; }
+  updateCamera(dt, T);
+  sky.position.copy(camera.position);
+  renderer.render(scene, camera);
+  updateLabels(frame); updateInteract();
+  if (frame % 6 === 0) drawMinimap();
+}
+function afterStateLoaded() {
+  syncWorldFromState(); syncSettingsUI(); refreshWordViews(); renderTracker(); refreshCounts();
+  if (!introClosed) showIntro();
+}
+function boot(hot) {
+  st = normalize(loadLocal());
+  headingWord("#tracker-title", "zadania"); headingWord("#vocab-title", "słownik"); headingWord("#review-title", "powtórka");
+  buildGround(); buildRows(); buildBackdrop(); buildRatusz(); buildChurch(); buildFountain(); buildStall(); buildShops(); buildProps(); buildClouds();
+  buildPlayer(); placeNPCs(); placeItems(); buildPigeons();
+  if (hot && typeof hot.px === "number") { player.pos.set(hot.px, 0, hot.pz); cam.yaw = hot.yaw ?? 0; player.heading = hot.heading ?? Math.PI; }
+  cam.target.set(0, 4, 4);
+  applySceneTheme(); resize(); afterStateLoaded(); setSync(syncNote);
+  requestAnimationFrame(t => { last = t; loop(t); });
+  connectRemote();
+  try { window.claude?.hot?.snapshot?.(() => ({ px: player.pos.x, pz: player.pos.z, yaw: cam.yaw, heading: player.heading })); } catch {}
+}
+let booted = false;
+const bootOnce = data => { if (booted) return; booted = true; boot(data || {}); };
+try {
+  if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
+  else bootOnce(window.claude?.hot?.data ?? {});
+} catch { bootOnce({}); }
+window.__rynek = { get st() { return st; }, validateLexicon, talk, player, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
+</script>
+</body>
+</html>

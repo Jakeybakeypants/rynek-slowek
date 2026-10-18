@@ -1,0 +1,19 @@
+{
+  "name": "rynek-slowek",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A 3D Polish market square where you learn words by talking to people and running their errands.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node build.mjs --check && node --test test/*.test.mjs",
+    "smoke": "node test/smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.48.2",
+    "three": "0.160.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

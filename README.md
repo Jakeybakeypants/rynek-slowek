@@ -1,0 +1,89 @@
+# Rynek Słówek
+
+A 3D Polish market square where you learn words by talking to people and running their errands. Every Polish word in the game, in speech or on a label over a thing, is coloured by how well you know it, the way Language Reactor does it:
+
+| Colour | Meaning |
+| --- | --- |
+| Purple | New: you haven't met it, or haven't sorted it yet. Every word starts here. |
+| Orange | You're learning it. |
+| Green | You know it. |
+
+Click any word to see what it means, which dictionary form it comes from (`gruszkę → gruszka`, object form), any phrase it belongs to (`dzień dobry`), and to sort it with 1, 2 or 3. The colour changes everywhere at once.
+
+**Play it:** <https://claude.ai/artifact/RhDfB4eqWVcRcvQUpjFbkv> (private to the owner unless shared), or open `dist/index.html` from this repo.
+
+## What's on the square
+
+Seven people, each with an errand told in Polish:
+
+| Who | Where | Errand | Then |
+| --- | --- | --- | --- |
+| Józef | bench by the fountain | find his glasses (`okulary`) | offers to review your orange words |
+| Filemon, a cat | town hall steps | bring milk (`mleko`) | sleeps |
+| Marek | fruit stall | bring an apple (`jabłko`) | fruit and vegetable orders |
+| Basia | bakery | take bread (`chleb`) to Ola | bakery orders |
+| Ola | café | (receives Basia's bread) | drink orders |
+| Kuba | sandpit | find his ball (`piłka`) behind the town hall | toy orders |
+| Zosia | flower shop | find her keys (`klucze`) under a bench | flower orders |
+
+Repeat orders come in several phrasings that need different cases: `Poproszę gruszkę` (accusative), `Szukam gruszki` (genitive), `Gdzie jest miś?` (nominative). Bring the wrong thing and they tell you what it actually is: `Nie, to nie to. To jest cytryna.` Orders favour words you haven't marked green yet.
+
+Other things: about 160 words, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
+
+## Controls
+
+| Keys | Does |
+| --- | --- |
+| WASD or arrows | walk (Shift runs) |
+| Drag, wheel | look around, zoom |
+| E or Space | talk, pick up, next line |
+| 1 · 2 · 3 | sort the open word: new, learning, known |
+| T · R | show English for the line · hear it again |
+| V · G | word list · put the carried item back |
+| Esc | close whatever is open |
+
+On a phone: the left joystick walks, drag to look, the round button talks.
+
+## Saving
+
+Progress (word colours, errands, coins, settings) is always saved in the browser. When the page runs as a claude.ai artifact it is also saved to the viewer's own Claude account, in the artifact's private per-person storage (`data/users/<id>/progress`), so it follows you between devices. Nobody else, including the artifact's owner, can read another person's progress.
+
+## Working on it
+
+Plain HTML, CSS and JavaScript with no framework. three.js 0.160.0 is loaded from jsDelivr at run time.
+
+```
+src/head.html     <title>, fonts, all the CSS (colour tokens at the top, light and dark)
+src/body.html     the HUD, dialogue box, word card, word list, review, settings, intro
+src/js/           one module script, split into files that share a single scope:
+  01-data.js        the dictionary (LEX), word forms (FORMS), phrases, items, people and their lines
+  02-words.js       small DOM helpers, tokenizing, lookups, the lexicon check
+  03-state.js       state, saving, speech and sound effects
+  04-ui.js          word card, dialogue, errand logic, tasks, word list, review, settings, intro
+  05-world.js       renderer, sky, textures, houses, town hall, church, fountain
+  06-props.js       stall, shops, benches, trees, lamps, people, items, pigeons
+  07-loop.js        player, camera, labels, minimap, input, the game loop, start-up
+build.mjs         joins src/ into dist/index.html (a full page) and dist/artifact.html (for claude.ai)
+test/             lexicon and build checks (npm test), browser smoke test (npm run smoke)
+```
+
+```sh
+npm run build       # rebuild dist/ after any change in src/ (dist/ is committed)
+npm test            # dist/ is up to date, every word has an entry, data is consistent
+npm install         # once, for the smoke test (playwright-core, three)
+npm run smoke       # plays the game in headless Chromium; add "-- phone" for phone size, dark mode
+```
+
+To run it locally, serve the folder (`python3 -m http.server -d dist`) and open the address it prints, or open `dist/index.html` directly.
+
+### Adding words, people or errands
+
+Everything Polish lives in `src/js/01-data.js`:
+
+- `LEX` maps a lemma to its English, part of speech and an optional note.
+- `FORMS` maps an inflected form to its lemma and a short description of the form. Item forms (accusative and genitive) are filled in automatically from `ITEMS`.
+- `PHRASES` are multi-word expressions shown on the word card.
+- `ITEMS` are things you can pick up. Each needs its accusative, genitive and English, plus a model in `itemModel()` and a home position in `HOMES` (`06-props.js`).
+- `NPCS` holds each person's lines as `[Polish, English]` pairs.
+
+`npm test` fails if any word on screen has no dictionary entry. Avoid masculine inanimate items such as `tulipan`, where everyday Polish often uses a different object form than the textbook one.
