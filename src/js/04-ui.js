@@ -315,7 +315,7 @@ function setPrompt(near) {
 // word list (Słownik)
 // ===================================================================
 let vFilter = "all";
-// most common first; words outside the top 2000 after, in alphabetical order
+// most common first; words outside the top 3000 after, in alphabetical order
 const rankOf = k => FREQ_RANK.get(k) ?? Infinity;
 const byFrequency = (a, b) => rankOf(a) - rankOf(b) || a.localeCompare(b, "pl");
 let vTab = "mine", fPage = 0, sources = null;
