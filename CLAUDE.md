@@ -24,6 +24,8 @@ Read `README.md` first. The game is a single page: `src/` is the source, `dist/`
 
 ## Publishing
 
+- How a round lands (the owner's choice): work on a `claude/...` branch, push it, then open a pull request into `main` describing what changed and how it was tested. Don't push to `main` directly. The owner merges on GitHub or asks you to merge it through GitHub; the repo deletes merged branches by itself. Don't open another pull request while one is still open unless asked.
+- Update the live copy after the pull request is merged, from `main`, so the game always matches `main`.
 - The live copy is the claude.ai artifact at https://claude.ai/artifact/RhDfB4eqWVcRcvQUpjFbkv. To update it, read it first with the Artifact tool, then publish `dist/artifact.html` to that `url`, omitting `capabilities` so it keeps `db` + `user`. A publish without the `url` makes a separate artifact and loses the link.
 - Progress is stored per person at `data/users/<id>/progress` in the artifact's database, plus `localStorage` key `rynek-slowek:v1`. Changing the shape of the saved state means updating `normalize()` in `03-state.js` so old saves still load.
 
@@ -31,4 +33,4 @@ Read `README.md` first. The game is a single page: `src/` is the source, `dist/`
 
 This is a standalone app. It is not connected to Nexus (`Jakeybakeypants/Nexus`). Adding it there would need a new app id and the Nexus owner's approval, following that repo's CLAUDE.md. Never change another of the owner's repositories from here.
 
-Commit messages end with the session's attribution lines. Don't open pull requests unless asked.
+Commit messages end with the session's attribution lines.
