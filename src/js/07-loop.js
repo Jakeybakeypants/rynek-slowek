@@ -218,6 +218,8 @@ function drawMinimap() {
   g.fillStyle = palette.glaze; g.fillRect(X(-27), Z(-27), 54 * sc, 54 * sc);
   g.fillRect(X(27), Z(PARK.gate[0]), 9 * sc, (PARK.gate[1] - PARK.gate[0]) * sc);
   g.fillStyle = "#7DAA55"; g.fillRect(X(PARK.x0), Z(PARK.z0), (PARK.x1 - PARK.x0) * sc, (PARK.z1 - PARK.z0) * sc);
+  g.fillStyle = "#C9C2B4"; g.fillRect(X(PARK.x0), Z(BUS_STOP.z0), (PARK.x1 - PARK.x0) * sc, (BUS_STOP.z1 - BUS_STOP.z0) * sc);
+  g.fillStyle = "#6E7074"; g.fillRect(X(PARK.x0), Z(BUS_STOP.z1), (PARK.x1 - PARK.x0) * sc, 7 * sc);
   g.beginPath(); g.ellipse(X(PARK.pond.x), Z(PARK.pond.z), PARK.pond.rx * sc, PARK.pond.rz * sc, 0, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
   g.fillStyle = palette["glaze-2"]; g.fillRect(X(-7.2), Z(-14.2), 14.4 * sc, 9.4 * sc); g.fillRect(X(-16.3), Z(1.1), 4.6 * sc, 1.8 * sc);
   g.beginPath(); g.arc(X(0), Z(6), 3.4 * sc, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
@@ -335,8 +337,9 @@ let last = performance.now(), frame = 0, T = 0;
 function loop(now) {
   requestAnimationFrame(loop);
   const dt = Math.min(0.05, (now - last) / 1000); last = now; frame++; T += dt;
-  updatePlayer(dt, T); updateNPCs(dt, T); updateDucks(dt);
-  sun.target.position.set(player.pos.x, 0, player.pos.z); sun.position.copy(sun.target.position).add(sunOffset); // shadows follow you into the park updateItems(dt, T); updatePigeons(dt, T); updateFountain(dt);
+  updatePlayer(dt, T); updateNPCs(dt, T); updateDucks(dt); updateBus(dt);
+  updateItems(dt, T); updatePigeons(dt, T); updateFountain(dt);
+  sun.target.position.set(player.pos.x, 0, player.pos.z); sun.position.copy(sun.target.position).add(sunOffset); // shadows follow you into the park
   for (const c of clouds) { c.position.x += dt * 1.2; if (c.position.x > 170) c.position.x = -170; }
   updateCamera(dt, T);
   sky.position.copy(camera.position);
@@ -366,4 +369,4 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { modelledPeople: !!PEOPLE, park: PARK, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
+window.__rynek = { modelledPeople: !!PEOPLE, park: PARK, busStop: BUS_STOP, get bus() { return bus; }, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };

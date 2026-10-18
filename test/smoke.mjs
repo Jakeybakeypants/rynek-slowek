@@ -220,6 +220,21 @@ const chat = async () => { await goTo(wx, wz, "Wiesław"); await press(); return
 const firstW = await chat(), secondW = await chat(), thirdW = await chat();
 check(firstW.startsWith("Dzień dobry") && secondW === "Ludzie nigdy nie słuchają." && thirdW.startsWith("Kiedy byłem młody"), "Wiesław says hello, then something new each visit");
 
+// the bus stop beyond the park: Ela lost her ticket on the park path; a bus comes by
+const [ex, ez] = await npcAt("ela", 0, 1.4);
+await goTo(ex, ez, "Ela"); await press(); await talkThrough();
+const tk = await R(() => { const h = window.__rynek.HOMES.bilet; return [h.x + 1, h.z]; });
+await goTo(tk[0], tk[1], "bilet"); await press();
+check((await state()).bag.includes("bilet"), "picks up Ela's ticket (bilet) on the park path");
+const coinsE = (await state()).coins;
+await goTo(ex, ez, "Ela"); await press();
+const thanksE = await talkThrough(), sE = await state();
+check(thanksE[0] === "Mój bilet! Dziękuję!" && sE.npc.ela.stage === "done" && sE.coins === coinsE + 20, "Ela gets her ticket back (+20 zł)");
+await R(() => { const b = window.__rynek.bus; b.pts[0][0] = 70; b.pause = 0.01; });
+await page.waitForFunction(() => window.__rynek.bus.wait > 0, null, { timeout: 240000 }).catch(() => {});
+check(await R(() => { const b = window.__rynek.bus; return b.wait > 0 && b.g.visible && Math.abs(b.g.position.x - window.__rynek.busStop.x) < 1; }), "the bus pulls in at the stop");
+await shot("6-bus-stop");
+
 await press("v");
 await page.waitForFunction(() => !document.querySelector("#vocab").hidden);
 check((await R(() => document.querySelectorAll("#v-list .v-row").length)) > 20, "the word list shows the words met so far");
