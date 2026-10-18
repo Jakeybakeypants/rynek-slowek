@@ -48,7 +48,7 @@ L10N.${lang} = () => {
 ${block("LEX", LEX)}
 // written form -> [dictionary form, what this form is]
 ${block("FORMS", FORMS)}
-const PHRASES = ${J(g.phrases)}.map(([pl, en]) => ({ pl, en, w: pl.toLowerCase().match(LANGS.${lang}.words ?? /\p{L}+/gu) }));
+const PHRASES = ${J(g.phrases)}.map(([pl, en]) => ({ pl, en, w: pl.toLowerCase().match(LANGS.${lang}.words ?? /\\p{L}+/gu) }));
 // items: word is the label; ind / nom / acc / gen are the noun phrases the lines and orders use
 ${block("ITEMS", ITEMS)}
 const thisIs = id => {
