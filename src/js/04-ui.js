@@ -315,7 +315,7 @@ function setPrompt(near) {
 // word list (Słownik)
 // ===================================================================
 let vFilter = "all";
-// most common first; words outside the top 1000 after, in alphabetical order
+// most common first; words outside the top 2000 after, in alphabetical order
 const rankOf = k => FREQ_RANK.get(k) ?? Infinity;
 const byFrequency = (a, b) => rankOf(a) - rankOf(b) || a.localeCompare(b, "pl");
 let vTab = "mine", fPage = 0, sources = null;
@@ -331,6 +331,7 @@ function renderFreq() {
     const n = FREQ.slice(p * 100, p * 100 + 100).filter(inGame).length;
     return h("button", { type: "button", dataset: { page: String(p) }, "aria-pressed": String(p === fPage), title: `${n} of these 100 are in the game` }, `${p * 100 + 1}–${p * 100 + 100}`);
   }));
+  $("#f-pages").children[fPage]?.scrollIntoView({ block: "nearest", inline: "nearest" });
   const from = fPage * 100, page = FREQ.slice(from, from + 100);
   const have = page.filter(inGame), known = have.filter(w => status(w) === 2).length, learning = have.filter(w => status(w) === 1).length;
   $("#f-summary").textContent = `${have.length} of these 100 are in the game. You know ${known} and are learning ${learning}.`;

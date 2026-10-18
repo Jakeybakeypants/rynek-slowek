@@ -120,6 +120,8 @@ kbd{font:800 13px/1 var(--display);background:var(--rim);color:var(--glaze);bord
 .ghost{border:2px solid var(--rim);background:transparent;color:var(--rim);border-radius:999px;padding:5px 10px;font:700 13px/1 var(--body);cursor:pointer}
 
 /* dialogue */
+/* panels with an explicit width keep their padding and border inside it, or they spill off a phone screen */
+#dialogue,#card,#tracker,.sheet,.pop{box-sizing:border-box}
 #dialogue{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:var(--bottom);
   width:min(780px, calc(100% - 32px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));padding:24px 22px 16px}
 .d-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
@@ -178,8 +180,8 @@ kbd{font:800 13px/1 var(--display);background:var(--rim);color:var(--glaze);bord
 .v-row .w{font-size:16px;justify-self:start}
 .v-rank{font:700 11px/1 var(--body);color:var(--ink-2);background:var(--glaze-2);border-radius:4px;padding:2px 4px;margin-right:6px;font-variant-numeric:tabular-nums}
 .v-pane{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
-.pager{gap:4px}
-.pager button{padding:4px 7px;font-size:12px}
+.pager{gap:4px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.pager button{padding:4px 7px;font-size:12px;flex:none}
 #f-summary{margin:0;font-size:14px}
 #f-list{list-style:none;margin:0;padding:0;overflow:auto;flex:1;min-height:0}
 .f-row{display:grid;grid-template-columns:34px auto minmax(0,1fr);gap:2px 10px;align-items:baseline;padding:7px 2px;border-bottom:1px solid var(--glaze-2)}

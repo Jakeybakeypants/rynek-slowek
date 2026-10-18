@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Writes src/js/01-frequency.js: the 1,000 most common Polish word forms, most common first.
+// Writes src/js/01-frequency.js: the 2,000 most common Polish word forms, most common first.
 // Source: FrequencyWords by Hermit Dave, built from OpenSubtitles 2018 (film and TV subtitles),
 // https://github.com/hermitdave/FrequencyWords, content licensed CC BY-SA 4.0.
 // Subtitles rank everyday spoken forms, which suits a game where each written form is its own word.
@@ -9,7 +9,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
 const SOURCE = "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/pl/pl_50k.txt";
-const TOP = 1000;
+const TOP = 2000;
 const text = process.argv[2] ? readFileSync(process.argv[2], "utf8") : await (await fetch(SOURCE)).text();
 const words = [];
 for (const line of text.split("\n")) {
