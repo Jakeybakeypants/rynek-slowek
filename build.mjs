@@ -8,7 +8,7 @@
 //
 //   node build.mjs           write dist/
 //   node build.mjs --check   exit 1 if dist/ is out of date with src/
-import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -22,7 +22,10 @@ const RESET = ":root{color-scheme:light;padding-top:env(safe-area-inset-top,0px)
 export function build() {
   const head = read("src/head.html").trimEnd();
   const body = read("src/body.html").trimEnd();
-  const js = readdirSync(join(ROOT, "src/js")).filter(f => f.endsWith(".js")).sort()
+  // the people model from Blender (blender/people.py), embedded so the page stays one file
+  const glb = join(ROOT, "assets/people.glb");
+  const model = `// ---- assets/people.glb ----\nconst PEOPLE_GLB = "${existsSync(glb) ? readFileSync(glb).toString("base64") : ""}";\n`;
+  const js = model + "\n" + readdirSync(join(ROOT, "src/js")).filter(f => f.endsWith(".js")).sort()
     .map(f => `// ---- src/js/${f} ----\n` + read("src/js/" + f).trim() + "\n").join("\n");
   const script = `<script type="module">\n${js}</script>`;
   const artifact = `${head}\n${body}\n${script}\n`;

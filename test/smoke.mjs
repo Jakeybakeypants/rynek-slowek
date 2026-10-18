@@ -18,7 +18,7 @@ const exe = process.env.CHROMIUM || "/opt/pw-browsers/chromium_headless_shell-11
 const shots = new URL("./shots/", import.meta.url).pathname;
 mkdirSync(shots, { recursive: true });
 const page_html = build()["dist/index.html"];
-const three = readFileSync(new URL("../node_modules/three/build/three.module.js", import.meta.url));
+const threeFile = path => readFileSync(new URL("../node_modules/three/" + path, import.meta.url));
 
 const browser = await chromium.launch({ executablePath: exe, args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"] });
 const ctx = await browser.newContext(phone
@@ -31,7 +31,8 @@ page.on("console", m => { if (m.type() === "error" && !/Failed to load resource/
 await page.route("**/*", r => {
   const u = r.request().url();
   if (u === "https://rynek.test/") return r.fulfill({ contentType: "text/html; charset=utf-8", body: page_html });
-  if (u.includes("three@0.160.0/build/three.module.js")) return r.fulfill({ contentType: "text/javascript", headers: { "access-control-allow-origin": "*" }, body: three });
+  const three = u.match(/three@0\.160\.0\/(.*)$/); // three.js and its glTF loader
+  if (three) return r.fulfill({ contentType: "text/javascript", headers: { "access-control-allow-origin": "*" }, body: threeFile(three[1]) });
   return r.abort(); // fonts and anything else: the page must cope without them
 });
 
@@ -63,6 +64,7 @@ await page.goto("https://rynek.test/");
 await page.waitForFunction(() => window.__rynek, null, { timeout: 30000 });
 await page.waitForTimeout(1500);
 check((await R(() => window.__rynek.validateLexicon().missing.length)) === 0, "every word has a dictionary entry");
+check(await R(() => window.__rynek.modelledPeople), "the people come from the Blender model");
 await shot("1-intro");
 await page.click("#start");
 await page.waitForFunction(() => document.querySelector("#intro").hidden);

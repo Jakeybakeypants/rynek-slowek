@@ -71,6 +71,7 @@ src/js/           one module script, split into files that share a single scope:
   05-world.js       renderer, sky, textures, houses, town hall, church, fountain
   06-props.js       stall, shops, benches, trees, lamps, people, items, pigeons
   07-loop.js        player, camera, labels, minimap, input, the game loop, start-up
+blender/people.py builds the people in Blender: writes assets/people.glb (used by the game) and assets/people.blend
 build.mjs         joins src/ into dist/index.html (a full page) and dist/artifact.html (for claude.ai)
 test/             lexicon and build checks (npm test), browser smoke test (npm run smoke)
 ```
@@ -81,6 +82,17 @@ npm test            # dist/ is up to date, every word has an entry, data is cons
 npm install         # once, for the smoke test (playwright-core, three)
 npm run smoke       # plays the game in headless Chromium; add "-- phone" for phone size, dark mode
 ```
+
+### The people (Blender)
+
+Everyone on the square is one model, `assets/people.glb`, built by `blender/people.py`. It holds every hairstyle, hat and prop; each character in `LOOKS` (`06-props.js`) picks which pieces to wear and their colours. The build embeds the model in the page, so the game is still one file. If the model ever fails to load, the game falls back to drawing simple people itself.
+
+```sh
+pip install bpy     # once: Blender as a Python module (or run the script inside Blender)
+npm run models      # rebuild assets/people.glb and assets/people.blend, then npm run build
+```
+
+To shape people by hand, open `assets/people.blend` in Blender, edit, and export with File > Export > glTF 2.0 (.glb) over `assets/people.glb`. Keep the object and material names: the game looks them up. After hand edits, stop running `npm run models`, since it rebuilds both files from scratch. The walking, waving and talking are animated in `07-loop.js` by turning the named joints (`arm_l`, `forearm_l`, `leg_l`, `shin_l`, `head`, `torso`).
 
 To run it locally, serve the folder (`python3 -m http.server -d dist`) and open the address it prints, or open `dist/index.html` directly.
 

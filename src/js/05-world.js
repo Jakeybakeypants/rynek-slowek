@@ -7,6 +7,13 @@ try {
   showFatal("The 3D engine couldn't load. Check your connection and reload the page.");
   throw e;
 }
+// the people modelled in Blender; without it the game draws simpler people itself
+let PEOPLE = null;
+if (PEOPLE_GLB) try {
+  const { GLTFLoader } = await import("https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js");
+  const bin = Uint8Array.from(atob(PEOPLE_GLB), c => c.charCodeAt(0));
+  PEOPLE = (await new GLTFLoader().parseAsync(bin.buffer, "")).scene.getObjectByName("Person");
+} catch (e) { console.warn("Using simple people: the model didn't load.", e); }
 
 // ===================================================================
 // 3D: renderer, sky, light

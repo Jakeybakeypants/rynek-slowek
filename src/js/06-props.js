@@ -217,7 +217,53 @@ const clouds = [];
 // ===================================================================
 // people
 // ===================================================================
+// the pieces a person can wear; node names come from blender/people.py
+const PIECES = ["hair_short", "hair_bun", "hair_ponytail", "hair_pigtails", "hair_sides", "moustache", "glasses",
+  "hat_toque", "hat_cap", "hat_kidcap", "hat_beret", "hat_scarf", "apron", "skirt", "backpack", "satchel", "cane", "accordion"];
+const pieceOf = name => PIECES.find(p => name === p || name.startsWith(p + "_"));
+const personMats = new Map();
+function personFromModel(o) {
+  const g = new THREE.Group(), model = PEOPLE.clone(true);
+  g.add(model);
+  const colors = {
+    skin: o.skin ?? "#EBC09C", shirt: o.shirt, pants: o.pants ?? "#3B4252", hair: o.hair ?? "#3B2A20", hat: o.hatColor ?? "#5B5141",
+    apron: o.apron ?? "#F4EFE6", skirt: o.skirt ?? "#6B4B3A", bag: o.backpack ?? o.satchel ?? "#7A4E2D",
+  };
+  const wear = new Set(o.style ?? ["hair_short"]);
+  if (o.ponytail) wear.add("hair_ponytail");
+  if (o.pigtails) wear.add("hair_pigtails");
+  if (o.hat) wear.add("hat_" + o.hat);
+  for (const k of ["moustache", "glasses", "apron", "skirt", "backpack", "satchel", "cane", "accordion"]) if (o[k]) wear.add(k);
+  const hidden = [];
+  model.traverse(n => {
+    const piece = pieceOf(n.name);
+    if (piece && !wear.has(piece) && piece !== "glasses") hidden.push(n);
+    if (!n.isMesh) return;
+    n.castShadow = true; n.receiveShadow = true;
+    const c = colors[n.material.name];
+    if (c) {
+      const key = n.material.name + c;
+      if (!personMats.has(key)) personMats.set(key, new THREE.MeshStandardMaterial({ color: c, roughness: 0.8 }));
+      n.material = personMats.get(key);
+    }
+  });
+  hidden.forEach(n => (n.visible = false));
+  const get = name => model.getObjectByName(name);
+  // glasses go in one group so Józef can put his on when they're found
+  const head = get("head"), specs = new THREE.Group();
+  head.add(specs);
+  ["glasses_l", "glasses_r", "glasses_bridge"].map(get).forEach(n => specs.add(n));
+  specs.visible = !!o.glasses;
+  g.scale.setScalar(o.scale ?? 1);
+  g.userData.parts = {
+    body: get("torso"), bodyY: get("torso").position.y, head, specs,
+    legs: [get("leg_r"), get("leg_l")], shins: [get("shin_r"), get("shin_l")],
+    arms: [get("arm_r"), get("arm_l")], forearms: [get("forearm_r"), get("forearm_l")],
+  };
+  return g;
+}
 function makePerson(o) {
+  if (PEOPLE) return personFromModel(o);
   const g = new THREE.Group(), body = new THREE.Group(); g.add(body);
   const skin = M(o.skin ?? "#EBC09C"), shirt = M(o.shirt), pants = M(o.pants ?? "#3B4252"), hair = M(o.hair ?? "#3B2A20"), shoe = M("#2B2B2B");
   body.add(mesh(new THREE.CapsuleGeometry(0.27, 0.5, 4, 10), shirt, 0, 1.08, 0));
@@ -290,19 +336,19 @@ function makeCat() {
   return g;
 }
 const LOOKS = {
-  jozef: { shirt: "#7A6A55", pants: "#4A4A52", hair: "#E6E6E6", hat: "cap", hatColor: "#5B5141", moustache: "#EDEDED", cane: true, skin: "#E8B896" },
+  jozef: { shirt: "#7A6A55", pants: "#4A4A52", hair: "#E6E6E6", style: ["hair_sides"], hat: "cap", hatColor: "#5B5141", moustache: "#EDEDED", cane: true, skin: "#E8B896" },
   marek: { shirt: "#E8E0D0", apron: "#3F8F4F", hair: "#2B1D14", moustache: "#2B1D14" },
-  basia: { shirt: "#F7F3EC", apron: "#EADFCF", hair: "#8A4B2A", hat: "toque", pants: "#6B4B3A" },
+  basia: { shirt: "#F7F3EC", apron: "#EADFCF", hair: "#8A4B2A", hat: "toque", hatColor: "#FFFFFF", pants: "#D9C7B4", skirt: "#E9DFD0" },
   ola: { shirt: "#E05A47", apron: "#2E2E2E", hair: "#C8913A", ponytail: true, pants: "#2C3446" },
   kuba: { shirt: "#F2C230", pants: "#3C6FB0", hair: "#6B3F1F", hat: "kidcap", hatColor: "#D33A3A", scale: 0.68 },
-  zosia: { shirt: "#4BA3A0", pants: "#3B4252", hair: "#4A2B1A", hat: "scarf", hatColor: "#C83C3C", flower: "#F2C14E" },
+  zosia: { shirt: "#4BA3A0", pants: "#3B4252", hair: "#4A2B1A", hat: "scarf", hatColor: "#C83C3C", skirt: "#2F7A77" },
   ewa: { shirt: "#3E6FA8", apron: "#F4EFE6", hair: "#2B1D14", hat: "beret", hatColor: "#B23A3A", pants: "#2C3446" },
   tadeusz: { shirt: "#2F4E8C", pants: "#2C3446", hair: "#5A4636", hat: "cap", hatColor: "#2F4E8C", moustache: "#5A4636", satchel: "#7A4E2D" },
-  halina: { shirt: "#B5654A", pants: "#4A4A52", hair: "#9A9A9A", ponytail: true, glasses: true },
-  zuzia: { shirt: "#E86FA0", pants: "#2C3446", hair: "#C8913A", pigtails: true, scale: 0.66 },
+  halina: { shirt: "#B5654A", pants: "#4A4A52", hair: "#9A9A9A", style: ["hair_short", "hair_bun"], glasses: true, skirt: "#5A4A42" },
+  zuzia: { shirt: "#E86FA0", pants: "#F2EEE6", hair: "#C8913A", pigtails: true, scale: 0.66, skirt: "#E86FA0" },
   staszek: { shirt: "#7A2E2E", pants: "#2C2F3A", hair: "#3B2A20", hat: "cap", hatColor: "#2B2B2B", moustache: "#3B2A20", accordion: true },
   bogdan: { shirt: "#E8E0D0", apron: "#3A6EA5", hair: "#5A4636", moustache: "#5A4636" },
-  krysia: { shirt: "#8C5A8A", pants: "#4A4A52", hair: "#BDBDBD", hat: "scarf", hatColor: "#3F6FA0", glasses: true },
+  krysia: { shirt: "#8C5A8A", pants: "#4A4A52", hair: "#BDBDBD", hat: "scarf", hatColor: "#3F6FA0", glasses: true, skirt: "#4A3A5A" },
 };
 const npcObjs = {};
 function placeNPCs() {

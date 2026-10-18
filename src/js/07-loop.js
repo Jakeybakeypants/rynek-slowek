@@ -60,7 +60,14 @@ function updatePlayer(dt, T) {
   const sw = Math.sin(player.phase) * 0.6 * Math.min(1, k);
   p.legs[0].rotation.x = sw; p.legs[1].rotation.x = -sw;
   p.arms[0].rotation.x = st.carry ? -1.1 : -sw * 0.8; p.arms[1].rotation.x = st.carry ? -1.1 : sw * 0.8;
-  p.body.position.y = Math.abs(Math.sin(player.phase)) * 0.05 * Math.min(1, k) + Math.sin(T * 1.6) * 0.004;
+  p.body.position.y = (p.bodyY ?? 0) + Math.abs(Math.sin(player.phase)) * 0.05 * Math.min(1, k) + Math.sin(T * 1.6) * 0.004;
+  if (p.shins) {
+    // knees bend as each foot swings through; elbows stay a little bent
+    const w = Math.min(1, k);
+    p.shins[0].rotation.x = Math.max(0, Math.sin(player.phase - 1.3)) * 1.0 * w;
+    p.shins[1].rotation.x = Math.max(0, Math.sin(player.phase - 1.3 + Math.PI)) * 1.0 * w;
+    for (const f of p.forearms) f.rotation.x = st.carry ? -0.6 : -0.15 - 0.35 * w;
+  }
 }
 const ray = new THREE.Ray(), hit = new THREE.Vector3(), tmp = new THREE.Vector3(), off = new THREE.Vector3();
 function updateCamera(dt, T) {
@@ -107,11 +114,17 @@ function updateNPCs(dt, T) {
       p.head.rotation.x = asleep ? 0.45 : Math.sin(tt * 0.7) * 0.08;
       continue;
     }
-    p.body.position.y = Math.sin(tt * 1.8) * 0.008;
+    p.body.position.y = (p.bodyY ?? 0) + Math.sin(tt * 1.8) * 0.008;
     p.head.rotation.y = Math.sin(tt * 0.5) * 0.15;
+    const waving = o.id === "marek" && Math.sin(tt * 0.4) > 0.93;
     if (talking) { p.arms[1].rotation.x = -0.5 + Math.sin(T * 5) * 0.25; p.arms[0].rotation.x = Math.sin(T * 3) * 0.1; }
-    else if (o.id === "marek" && Math.sin(tt * 0.4) > 0.93) { p.arms[1].rotation.x = -2.6; p.arms[1].rotation.z = Math.sin(T * 9) * 0.3; }
+    else if (waving) { p.arms[1].rotation.x = -2.6; p.arms[1].rotation.z = Math.sin(T * 9) * 0.3; }
     else { p.arms[0].rotation.x = Math.sin(tt * 1.2) * 0.05; p.arms[1].rotation.x = -Math.sin(tt * 1.2) * 0.05; p.arms[1].rotation.z = 0; }
+    if (p.forearms) {
+      p.forearms[1].rotation.x = talking ? -0.7 + Math.sin(T * 4) * 0.3 : waving ? -0.5 : -0.15;
+      p.forearms[0].rotation.x = o.id === "staszek" || talking ? -0.9 : -0.15; // Staszek holds his accordion
+      if (o.id === "staszek") p.arms[0].rotation.x = p.arms[1].rotation.x = -0.35;
+    }
     if (o.kid) o.group.position.y = Math.abs(Math.sin(tt * 3.2)) * (talking ? 0 : 0.06);
   }
 }
@@ -344,4 +357,4 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
+window.__rynek = { modelledPeople: !!PEOPLE, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
