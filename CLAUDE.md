@@ -5,7 +5,7 @@ Read `README.md` first. The game is a single page: `src/` is the source, `dist/`
 ## Rules
 
 - Edit `src/`, never `dist/`. Run `npm run build` after every change and commit `dist/` with it; `npm test` fails when `dist/` is stale.
-- `npm test` must pass before every commit. Run `npm run smoke` (and `npm run smoke -- phone`, `-- de`, `-- es`) after any change to gameplay, layout or the 3D scene. Software rendering in the cloud container runs at about 2 to 4 frames a second, so the smoke test waits on state instead of sleeping; keep it that way.
+- `npm test` must pass before every commit. Run `npm run smoke` (and `npm run smoke -- phone`, `-- de`, `-- es`, `-- fr`) after any change to gameplay, layout or the 3D scene. Software rendering in the cloud container runs at about 2 to 4 frames a second, so the smoke test waits on state instead of sleeping; keep it that way.
 - The files in `src/js/` are concatenated into one module script and share one scope. Keep each file valid JavaScript on its own, keep the numeric order meaningful, and don't add `import`/`export` between them.
 - No build tools, frameworks or new runtime dependencies. The only runtime load is `https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js`, pinned. The claude.ai artifact sandbox only allows scripts from cdnjs, jsDelivr, unpkg and a few others, and blocks every other network request, so all other assets are drawn in code (canvas textures, primitive meshes).
 - People come from `assets/people.glb`, built by `blender/people.py` (`npm run models`, needs `pip install bpy`). `build.mjs` embeds it as base64. Keep the node and material names the script documents; `personFromModel()` in `06-props.js` depends on them. The page's import map lets three.js add-ons (the glTF loader) import `three`; keep it pinned to the same version. If the owner edits `people.blend` by hand, don't rerun the script over their work.
@@ -24,11 +24,12 @@ Read `README.md` first. The game is a single page: `src/` is the source, `dist/`
 
 ## Other languages
 
-- German (`01-data-de.js`) and Spanish (`01-data-es.js`) have the same shape as the Polish file, with the same people, items and errands; ids stay Polish. The same rules apply: every word resolves through that file's `FORMS` or `LEX`, status belongs to each written form, prefer the language's own top 3000.
+- German (`01-data-de.js`), Spanish (`01-data-es.js`) and French (`01-data-fr.js`) have the same shape as the Polish file, with the same people, items and errands; ids stay Polish. The same rules apply: every word resolves through that file's `FORMS` or `LEX`, status belongs to each written form, prefer the language's own top 3000.
 - Scene code writes labels and signs in Polish and passes them through `tr()`; a new label or sign needs an entry in each other language's `LABELS`, or `npm test` fails. Interface words a language changes go in its `UI`.
 - A new character, item or errand needs lines in every language. Each language saves separately (`rynek-slowek:v1` for Polish, `rynek-slowek:v1:<lang>` and the `progress-<lang>` document for the others).
-- `tools/translate/` holds the scripts and briefs that made German and Spanish; use them for French. Once a language has landed, edit its data file by hand; `convert.mjs` would overwrite those edits.
+- `tools/translate/` holds the scripts and briefs that made German, Spanish and French; use them for any new language. Once a language has landed, edit its data file by hand; `convert.mjs` would overwrite those edits.
 - Never give the player a grammatical gender in any language; characters use their own.
+- French splits words as its frequency list does (`LANGS.fr.words` in `00-lang.js`): elisions stand alone (`c'`, `qu'`), hyphenated words stay whole (`peut-être`). Write French with the straight apostrophe and `œ` (`sœur`, not `soeur`).
 
 ## Unreal Engine export
 
