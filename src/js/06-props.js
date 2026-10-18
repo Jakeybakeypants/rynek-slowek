@@ -415,6 +415,8 @@ const LOOKS = {
   wieslaw: { shirt: "#4F6B3A", pants: "#3B4232", hair: "#9A9A9A", hat: "cap", hatColor: "#3D5A2E", moustache: "#8A8A8A" },
   tomek: { shirt: "#E04A4A", pants: "#2C2F3A", hair: "#6B3F1F", hat: "kidcap", hatColor: "#2B2B2B", scale: 0.8 },
   piotr: { shirt: "#F2F2EE", pants: "#2C3446", hair: "#2B1D14", flowers: true },
+  teresa: { shirt: "#6A8FB5", pants: "#4A4A52", hair: "#C9C9C9", style: ["hair_short", "hair_bun"], glasses: true, skirt: "#3E4F6A" },
+  marta: { shirt: "#C2456B", pants: "#2C3446", hair: "#7A3B1E", ponytail: true, skirt: "#2C3446", satchel: "#B07A4A" },
   krysia: { shirt: "#8C5A8A", pants: "#4A4A52", hair: "#BDBDBD", hat: "scarf", hatColor: "#3F6FA0", glasses: true, skirt: "#4A3A5A" },
 };
 const npcObjs = {};
@@ -423,7 +425,7 @@ function placeNPCs() {
   const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0],
     ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0],
     zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0],
-    wieslaw: [39.2, (PARK.gate[0] + PARK.gate[1]) / 2 + 2.6], ania: [46.2, -15.0], tomek: [57.5, -5.0], piotr: [42.2, -33.0] };
+    wieslaw: [39.2, (PARK.gate[0] + PARK.gate[1]) / 2 + 2.6], ania: [46.2, -15.0], tomek: [57.5, -5.0], piotr: [42.2, -33.0], teresa: [57.0, -26.7], marta: [62.2, -22.0] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
     const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);

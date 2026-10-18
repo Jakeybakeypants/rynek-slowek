@@ -70,8 +70,11 @@ await page.click("#start");
 await page.waitForFunction(() => document.querySelector("#intro").hidden);
 
 const before = await R(() => window.__rynek.player.pos.z);
-await page.keyboard.down("KeyW"); await page.waitForTimeout(1500); await page.keyboard.up("KeyW");
-check((await R(() => window.__rynek.player.pos.z)) < before - 0.05, "W walks forward");
+await page.keyboard.down("KeyW");
+// hold W until the player has moved (software rendering can take a while to draw the first frames)
+const walked = await page.waitForFunction(z => window.__rynek.player.pos.z < z - 0.05, before, { timeout: 30000 }).then(() => true, () => false);
+await page.keyboard.up("KeyW");
+check(walked, "W walks forward");
 
 await goTo(5.2, 12.9, "Józef"); await press();
 await page.waitForFunction(() => !document.querySelector("#dialogue").hidden);
@@ -205,7 +208,7 @@ await press("v");
 await page.waitForFunction(() => !document.querySelector("#vocab").hidden);
 check((await R(() => document.querySelectorAll("#v-list .v-row").length)) > 20, "the word list shows the words met so far");
 await page.click('#v-tabs button[data-tab="freq"]');
-check(/^9\d of these 100 are in the game/.test(await R(() => document.querySelector("#f-summary").textContent)), "the Top 1000 tab shows how many of the top 100 the game teaches");
+check(/^(9\d|100) of these 100 are in the game/.test(await R(() => document.querySelector("#f-summary").textContent)), "the Top 1000 tab shows how many of the top 100 the game teaches");
 check((await page.$$("#f-list .f-row")).length === 100, "each page lists 100 words");
 await page.click('#v-tabs button[data-tab="mine"]');
 await shot("4-word-list");
