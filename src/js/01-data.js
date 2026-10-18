@@ -268,6 +268,7 @@ const LEX = {
   "córka": ["daughter", "noun · feminine"],
   "duży": ["big", "adjective"],
   "rodzina": ["family", "noun · feminine"],
+  "poziom": ["level", "noun · masculine"],
   "zuzia": ["Zuzia: a girl's name, short for Zuzanna (Susanna)", "name"],
   "staszek": ["Staszek: a man's name, short for Stanisław (Stanley)", "name"],
   "bogdan": ["Bogdan: a man's name", "name"],

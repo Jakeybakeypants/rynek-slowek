@@ -106,7 +106,23 @@ h2 .w{font:inherit}
 #prompt{position:absolute;z-index:11;left:50%;transform:translateX(-50%);bottom:calc(var(--bottom) + 10px);display:flex;align-items:center;gap:8px;
   padding:8px 14px;border-radius:999px;font:700 15px/1.2 var(--body);white-space:nowrap}
 kbd{font:800 13px/1 var(--display);background:var(--rim);color:var(--glaze);border-radius:6px;padding:4px 7px 2px}
-#carry{position:absolute;z-index:11;left:max(16px, env(safe-area-inset-left, 0px));bottom:var(--bottom);display:flex;gap:8px;align-items:center;padding:8px 10px 8px 14px;border-radius:999px;font-size:14px}
+#bagbar{position:absolute;z-index:11;left:max(16px, env(safe-area-inset-left, 0px));bottom:var(--bottom);display:flex;gap:6px;align-items:center;padding:6px 12px 6px 14px;border-radius:999px;font:700 14px/1 var(--body);cursor:pointer}
+#bagbar .bag-name{font:800 15px/1 var(--display);color:var(--rim);margin-right:2px}
+#bag-slots{display:flex;gap:2px}
+#bag-slots img{width:30px;height:30px;border-radius:8px;background:var(--glaze-2)}
+#bag-count{color:var(--ink-2);font-variant-numeric:tabular-nums;margin-left:2px}
+#bag{top:auto;right:auto;left:max(16px, env(safe-area-inset-left, 0px));bottom:calc(var(--bottom) + 58px)}
+#bag-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.slot{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 6px;border-radius:12px;background:var(--glaze-2);min-width:0}
+.slot img{width:44px;height:44px}
+.slot.empty{justify-content:center;min-height:72px;color:var(--ink-2);font-size:13px;background:transparent;border:2px dashed var(--glaze-2)}
+#d-leave{padding:5px 11px;font-size:13px}
+#xp{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:13px}
+#xp-level{font:800 15px/1 var(--display);color:var(--rim);white-space:nowrap}
+#xp-level .w{font:inherit}
+.xpbar{flex:1;height:10px;border-radius:999px;background:var(--glaze-2);overflow:hidden;min-width:40px}
+.xpbar i{display:block;height:100%;width:0;background:var(--gold);border-radius:999px;transition:width .4s}
+#xp-num{color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
 .ghost{border:2px solid var(--rim);background:transparent;color:var(--rim);border-radius:999px;padding:5px 10px;font:700 13px/1 var(--body);cursor:pointer}
 
 /* dialogue */
@@ -223,8 +239,9 @@ kbd{font:800 13px/1 var(--display);background:var(--rim);color:var(--glaze);bord
 #act{position:absolute;right:max(20px, env(safe-area-inset-right, 0px));bottom:calc(var(--bottom) + 22px);width:88px;height:88px;border-radius:50%;border:3px solid var(--glaze);
   background:var(--rim);color:var(--glaze);font:800 17px/1 var(--display);box-shadow:var(--shadow);touch-action:none}
 #act:disabled{opacity:.45}
-body.touch #prompt{bottom:calc(var(--bottom) + 140px)}
-body.touch #carry{bottom:calc(var(--bottom) + 140px)}
+body.touch #prompt{bottom:calc(var(--bottom) + 200px)}
+body.touch #bagbar{bottom:calc(var(--bottom) + 140px)}
+body.touch #bag{bottom:calc(var(--bottom) + 196px)}
 
 #toasts{position:absolute;z-index:60;left:50%;transform:translateX(-50%);top:calc(var(--top) + 54px);display:grid;gap:8px;justify-items:center;width:min(440px, calc(100% - 32px));pointer-events:none}
 .toast{pointer-events:auto;padding:10px 14px;border-radius:12px;font-size:15px;line-height:1.35;display:flex;gap:8px;align-items:center;flex-wrap:wrap;animation:rise .3s ease-out both}
@@ -243,6 +260,7 @@ body.touch #carry{bottom:calc(var(--bottom) + 140px)}
   #tracker{top:calc(var(--top) + 48px)}
   #tracker{padding:16px 12px 10px;width:auto;max-width:calc(100% - 140px)}
   #tracker:not(.open) #tasks,#tracker:not(.open) #unmet{display:none}
+  #xp-num{display:none}
   #tracker-toggle{display:inline;margin-left:auto;border:0;background:none;color:var(--rim);font:800 13px/1 var(--display);cursor:pointer;padding:0}
   #minimap{width:96px;height:96px;top:calc(var(--top) + 56px)}
   #dialogue{padding:20px 14px 12px}
@@ -276,6 +294,7 @@ body.touch #carry{bottom:calc(var(--bottom) + 140px)}
   </header>
 
   <aside id="tracker" class="glaze dots" aria-label="Tasks">
+    <div id="xp" title="Experience: errands, sums, meeting people and sorting words"><span id="xp-level"></span><span class="xpbar"><i id="xp-fill"></i></span><span id="xp-num"></span></div>
     <h2><span id="tracker-title"></span><small>tasks</small><button id="tracker-toggle" type="button" aria-expanded="false">Show</button></h2>
     <ul id="tasks"></ul>
     <p id="unmet"></p>
@@ -283,11 +302,16 @@ body.touch #carry{bottom:calc(var(--bottom) + 140px)}
   <canvas id="minimap" aria-hidden="true"></canvas>
 
   <div id="prompt" class="glaze" hidden></div>
-  <div id="carry" class="glaze" hidden>Carrying <span id="carry-word"></span><button id="btn-drop" class="ghost" type="button">Put back (G)</button></div>
+  <button id="bagbar" class="glaze" type="button" hidden aria-label="Open your bag (I)"><span class="bag-name">Bag</span><span id="bag-slots"></span><span id="bag-count"></span></button>
+  <section id="bag" class="pop glaze dots" hidden aria-label="Your bag">
+    <h2><span id="bag-title"></span><small>your bag</small><button class="icon-btn small x" type="button" data-close="bag" aria-label="Close">×</button></h2>
+    <ul id="bag-list"></ul>
+    <p class="muted">Holds six things. People take what they need from it when you talk to them. G puts back the last thing you picked up.</p>
+  </section>
 
   <section id="dialogue" class="glaze dots" hidden aria-live="polite">
     <div id="d-tip" hidden>Click a word to see what it means</div>
-    <div class="d-head"><span id="d-name"></span><span id="d-role"></span><span id="d-step"></span></div>
+    <div class="d-head"><span id="d-name"></span><span id="d-role"></span><span id="d-step"></span><button id="d-leave" class="chip-btn" type="button" aria-label="Leave the conversation (Esc)">Leave</button></div>
     <p id="d-line" lang="pl"></p>
     <p id="d-tr" hidden></p>
     <div class="d-actions">
@@ -638,6 +662,7 @@ const LEX = {
   "córka": ["daughter", "noun · feminine"],
   "duży": ["big", "adjective"],
   "rodzina": ["family", "noun · feminine"],
+  "poziom": ["level", "noun · masculine"],
   "zuzia": ["Zuzia: a girl's name, short for Zuzanna (Susanna)", "name"],
   "staszek": ["Staszek: a man's name, short for Stanisław (Stanley)", "name"],
   "bogdan": ["Bogdan: a man's name", "name"],
@@ -1297,20 +1322,23 @@ function validateLexicon() {
 // ===================================================================
 const SAVE_KEY = "rynek-slowek:v1";
 const DEFAULT_SETTINGS = { auto: true, tr: false, hideKnown: false, sfx: true, rate: 0.9 };
-const freshState = () => ({ v: 1, words: {}, npc: {}, coins: 0, carry: null, settings: { ...DEFAULT_SETTINGS }, tips: {}, started: false, updatedAt: 0 });
+const freshState = () => ({ v: 1, words: {}, npc: {}, coins: 0, bag: [], xp: 0, settings: { ...DEFAULT_SETTINGS }, tips: {}, started: false, updatedAt: 0 });
 function normalize(d) {
   const s = freshState();
   if (!d || typeof d !== "object") return s;
   if (d.words && typeof d.words === "object") for (const [l, r] of Object.entries(d.words)) {
     if (!lookup(l) || !r || typeof r !== "object") continue;
-    s.words[l] = { s: clamp(Math.round(+r.s || 0), 0, 2), seen: Math.max(0, +r.seen || 0), ok: Math.max(0, +r.ok || 0) };
+    const status = clamp(Math.round(+r.s || 0), 0, 2);
+    s.words[l] = { s: status, seen: Math.max(0, +r.seen || 0), ok: Math.max(0, +r.ok || 0), max: clamp(Math.round(+r.max || 0), status, 2) };
   }
   if (d.npc && typeof d.npc === "object") for (const id of NPC_ORDER) if (d.npc[id]) {
     const n = d.npc[id];
     s.npc[id] = { stage: ["new", "active", "done"].includes(n.stage) ? n.stage : "new", order: ITEMS[n.order] ? n.order : null, tmpl: +n.tmpl || 0, thanked: !!n.thanked };
   }
   s.coins = Math.max(0, +d.coins || 0);
-  s.carry = ITEMS[d.carry] ? d.carry : null;
+  // the bag replaced carrying one thing in your hands
+  s.bag = (Array.isArray(d.bag) ? d.bag : d.carry ? [d.carry] : []).filter((id, i, a) => ITEMS[id] && a.indexOf(id) === i).slice(0, BAG_SIZE);
+  s.xp = Math.max(0, +d.xp || 0);
   s.settings = { ...DEFAULT_SETTINGS, ...(d.settings && typeof d.settings === "object" ? d.settings : {}) };
   s.tips = d.tips && typeof d.tips === "object" ? { ...d.tips } : {};
   s.started = !!d.started;
@@ -1359,17 +1387,37 @@ async function connectRemote() {
   } catch { remote = null; }
 }
 
+const BAG_SIZE = 6;
+// XP: errands and sums pay the same as their coins; sorting a form pays once per step it climbs
+const XP_FOR_STATUS = [0, 2, 5];
+const xpNeed = level => 100 + (level - 1) * 50;
+function levelOf(xp) { let level = 1; while (xp >= xpNeed(level)) { xp -= xpNeed(level); level++; } return { level, into: xp, need: xpNeed(level) }; }
+function gainXP(n) {
+  if (!n) return;
+  const before = levelOf(st.xp).level;
+  st.xp += n;
+  const now = levelOf(st.xp).level;
+  renderXP();
+  if (now > before) { sfx.ok(); toast(h("span", {}, "Level up! ", h("b", {}, `Poziom ${now}`))); }
+}
 const rec = l => (st.words[l] ??= { s: 0, seen: 0, ok: 0 });
 const status = l => st.words[l]?.s ?? 0;
 const npcState = id => (st.npc[id] ??= { stage: "new", order: null, tmpl: 0, thanked: false });
 function setStatus(key, s) {
   if (!lookup(key)) return;
   const before = status(key);
-  rec(key).s = s;
+  const r = rec(key);
+  r.s = s;
+  if (s > (r.max || 0)) { gainXP(XP_FOR_STATUS[s] - XP_FOR_STATUS[r.max || 0]); r.max = s; }
   save(); refreshWordViews();
   if (s === 2 && before !== 2) sfx.known(); else sfx.tick();
 }
-function markSeen(keys) { for (const k of new Set(keys)) if (lookup(k)) rec(k).seen++; save(); refreshCounts(); }
+function markSeen(keys) {
+  let fresh = 0;
+  for (const k of new Set(keys)) if (lookup(k)) { if (!rec(k).seen) fresh++; rec(k).seen++; }
+  if (fresh) gainXP(fresh); // a new word met: 1 XP
+  save(); refreshCounts();
+}
 let totalWords = 0; // every distinct form on the square, counted once the labels exist
 function counts() {
   let known = 0, learning = 0, fresh = 0, met = 0;
@@ -1550,6 +1598,7 @@ function endDialogue() {
 }
 function toggleTr() { const tr = $("#d-tr"); tr.hidden = !tr.hidden; dlg.trOnce = !tr.hidden; $("#d-trbtn").setAttribute("aria-pressed", String(!tr.hidden)); }
 $("#d-next").addEventListener("click", nextLine);
+$("#d-leave").addEventListener("click", endDialogue);
 $("#d-trbtn").addEventListener("click", toggleTr);
 $("#d-speak").addEventListener("click", () => dlg.open && speak(dlg.lines[dlg.i][0]));
 
@@ -1567,7 +1616,7 @@ function newOrder(npcId) {
   s.order = pick(weighted); s.last = s.order; s.tmpl = Math.floor(Math.random() * N.orders.ask.length);
   return fillOrder(npcId);
 }
-function reward(n) { st.coins += n; sfx.coin(); }
+function reward(n) { st.coins += n; gainXP(n); sfx.coin(); }
 function wordDelivered(id) {
   const key = ITEMS[id].word; rec(key).ok++;
   if (status(key) === 2) return;
@@ -1584,7 +1633,7 @@ function wantedBy(npcId) {
 }
 function npcMark(npcId) {
   const N = NPCS[npcId], s = npcState(npcId), want = wantedBy(npcId);
-  if (st.carry && want.includes(st.carry)) return "?";
+  if (st.bag.some(id => want.includes(id))) return "?";
   if (s.stage === "new") return "!";
   if (s.stage === "done" && N.orders && !s.order) return "!";
   if (s.stage === "done" && N.quiz) return "!";
@@ -1608,11 +1657,13 @@ function quizTurn(id, lead = []) {
   return { lines: [...lead, quizQuestion(a, b)], actions };
 }
 function talk(id) {
-  const N = NPCS[id], s = npcState(id), carry = st.carry, lines = [], after = [];
+  const N = NPCS[id], s = npcState(id), lines = [], after = [];
+  const has = item => st.bag.includes(item), other = st.bag.at(-1); // the last thing you picked up, for "that's not it"
+  if (s.stage === "new") gainXP(5); // meeting someone
   let actions = null;
   const finishQuest = (qid, Q) => {
     lines.push(...NPCS[qid].done || []);
-    consumeCarry(); npcState(qid).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
+    consume(Q.item); npcState(qid).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
     after.push(() => { sfx.ok(); toast(`Errand done for ${NPCS[qid].name}. +${Q.reward} zł`); });
   };
   const followUp = () => {
@@ -1620,39 +1671,39 @@ function talk(id) {
     if (N.quiz) { const q = quizTurn(id); lines.push(...q.lines); actions = q.actions; }
     if (N.music) after.push(() => sfx.tune());
   };
-  if (N.receive && npcState(N.receive.from).stage === "active" && carry === N.receive.item) {
+  if (N.receive && npcState(N.receive.from).stage === "active" && has(N.receive.item)) {
     // meeting someone for the first time with their delivery in hand: say hello, and keep their own errand open
     if (s.stage === "new") { lines.push(...N.intro); s.stage = N.quest ? "active" : "done"; }
     lines.push(...N.receive.lines);
     const from = N.receive.from, Q = NPCS[from].quest;
-    consumeCarry(); npcState(from).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
+    consume(N.receive.item); npcState(from).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
     after.push(() => { sfx.ok(); toast(`Delivered for ${NPCS[from].name}. +${Q.reward} zł`); });
   } else if (s.stage === "new") {
     lines.push(...N.intro);
     if (N.quest) {
       s.stage = "active";
       if (N.gives) { giveCarry(N.gives); after.push(() => toast(h("span", {}, `${N.name} gave you `, wordChip(N.gives), `. Take it to ${NPCS[N.quest.deliverTo].name}.`))); }
-      else if (carry === N.quest.item) finishQuest(id, N.quest);
+      else if (has(N.quest.item)) finishQuest(id, N.quest);
     } else s.stage = "done";
     if (s.stage === "done") followUp();
   } else if (s.stage === "active") {
     if (N.gives) {
-      if (carry === N.gives) lines.push(N.remind);
+      if (has(N.gives)) lines.push(N.remind);
       else { lines.push(...N.regive); giveCarry(N.gives); }
-    } else if (carry === N.quest.item) {
+    } else if (has(N.quest.item)) {
       finishQuest(id, N.quest);
       followUp();
-    } else if (carry) { lines.push(N.wrong, thisIs(carry), N.remind); sfx.no(); }
+    } else if (other) { lines.push(N.wrong, thisIs(other), N.remind); sfx.no(); }
     else lines.push(N.remind);
   } else {
     if (N.thanks && !s.thanked) { lines.push(...N.thanks); s.thanked = true; }
     if (N.quiz) { const q = quizTurn(id, [pick(N.quiz.start)]); lines.push(...q.lines); actions = q.actions; }
     else if (N.orders) {
-      if (s.order && carry === s.order) {
-        lines.push(pick(N.orders.ok)); consumeCarry(); reward(5); wordDelivered(s.order); s.order = null;
+      if (s.order && has(s.order)) {
+        lines.push(pick(N.orders.ok)); consume(s.order); reward(5); wordDelivered(s.order); s.order = null;
         after.push(() => sfx.ok());
         lines.push(newOrder(id));
-      } else if (s.order && carry) { lines.push(N.wrong, thisIs(carry), fillOrder(id)); sfx.no(); }
+      } else if (s.order && other) { lines.push(N.wrong, thisIs(other), fillOrder(id)); sfx.no(); }
       else if (s.order) lines.push(fillOrder(id));
       else lines.push(newOrder(id));
     } else {
@@ -1669,20 +1720,46 @@ function talk(id) {
   save(); refreshCounts(); renderTracker();
   startDialogue(id, lines, { actions, onEnd: () => after.forEach(f => f()) });
 }
-function giveCarry(id) { if (st.carry && st.carry !== id) placeItem(st.carry, true); removeItem(id); st.carry = id; setCarryVisual(); sfx.pop(); }
-function consumeCarry() {
-  const id = st.carry; if (!id) return;
-  st.carry = null; setCarryVisual();
+// the bag (torba): up to BAG_SIZE things; people take what they need when you talk to them
+function giveCarry(id) {
+  if (st.bag.includes(id)) return;
+  if (st.bag.length >= BAG_SIZE) { const out = st.bag.shift(); placeItem(out, true); toast(`Your bag was full, so ${ITEMS[out].word} went back.`); }
+  st.bag.push(id); removeItem(id); setCarryVisual(); sfx.pop();
+}
+function consume(id) {
+  const i = st.bag.indexOf(id); if (i < 0) return;
+  st.bag.splice(i, 1); setCarryVisual();
   if (!ITEMS[id].story) setTimeout(() => placeItem(id, true), 900);
 }
 function pickUp(id) {
-  if (st.carry) placeItem(st.carry, true);
-  removeItem(id); st.carry = id; setCarryVisual(); sfx.pop();
+  if (st.bag.length >= BAG_SIZE) { sfx.no(); toast("Your bag is full. Put something back first (press I)."); return; }
+  removeItem(id); st.bag.push(id); setCarryVisual(); sfx.pop();
   markSeen([ITEMS[id].word]);
   save(); renderTracker();
 }
-function putBack() { if (!st.carry) return; const id = st.carry; st.carry = null; placeItem(id, true); setCarryVisual(); sfx.tick(); save(); renderTracker(); }
-$("#btn-drop").addEventListener("click", putBack);
+function putBack(id = st.bag.at(-1)) {
+  const i = st.bag.indexOf(id); if (i < 0) return;
+  st.bag.splice(i, 1); placeItem(id, true); setCarryVisual(); sfx.tick(); save(); renderTracker();
+}
+function renderBag() {
+  $("#bag-slots").replaceChildren(...st.bag.map(id => h("img", { src: itemThumb(id), alt: ITEMS[id].word, width: "30", height: "30" })));
+  $("#bag-count").textContent = `${st.bag.length}/${BAG_SIZE}`;
+  $("#bagbar").hidden = !introClosed;
+  $("#bag-list").replaceChildren(...Array.from({ length: BAG_SIZE }, (_, i) => {
+    const id = st.bag[i];
+    return id
+      ? h("li", { class: "slot" }, h("img", { src: itemThumb(id), alt: "", width: "44", height: "44" }), wordChip(id), h("button", { type: "button", class: "ghost", onclick: () => putBack(id) }, "Put back"))
+      : h("li", { class: "slot empty" }, h("span", {}, "empty"));
+  }));
+}
+function toggleBag(force) { const b = $("#bag"), open = force ?? b.hidden; b.hidden = !open; if (open) { renderBag(); $("#settings").hidden = true; } }
+$("#bagbar").addEventListener("click", () => toggleBag());
+function renderXP() {
+  const { level, into, need } = levelOf(st.xp);
+  $("#xp-level").replaceChildren(wordBtn("Poziom", "w"), ` ${level}`);
+  $("#xp-fill").style.width = (into / need * 100).toFixed(1) + "%";
+  $("#xp-num").textContent = `${into} / ${need} XP`;
+}
 
 // ===================================================================
 // tracker, HUD, toasts, prompt
@@ -1704,8 +1781,7 @@ function renderTracker() {
   $("#tracker-toggle").textContent = $("#tracker").classList.contains("open") ? "Hide" : `Show ${n || ""}`.trim();
   for (const o of Object.values(npcObjs)) o.mark.textContent = npcMark(o.id);
   if (npcObjs.jozef) npcObjs.jozef.parts.specs.visible = npcState("jozef").stage === "done"; // he wears them once found
-  const cw = $("#carry-word");
-  if (st.carry) { cw.replaceChildren(wordChip(st.carry)); $("#carry").hidden = false; } else $("#carry").hidden = true;
+  renderBag(); renderXP();
 }
 $("#tracker-toggle").addEventListener("click", () => { const t = $("#tracker"); t.classList.toggle("open"); $("#tracker-toggle").setAttribute("aria-expanded", String(t.classList.contains("open"))); renderTracker(); });
 function toast(content, { actions, ms = 3400 } = {}) {
@@ -1765,7 +1841,7 @@ $("#v-review").addEventListener("click", () => openReview("learning"));
 $("#v-review-new").addEventListener("click", () => openReview("new"));
 $("#counts").addEventListener("click", () => toggleVocab());
 $("#btn-vocab").addEventListener("click", () => toggleVocab());
-$$("[data-close]").forEach(b => b.addEventListener("click", () => { const id = b.dataset.close; if (id === "vocab") toggleVocab(false); else closeReview(); }));
+$$("[data-close]").forEach(b => b.addEventListener("click", () => { const id = b.dataset.close; if (id === "vocab") toggleVocab(false); else if (id === "bag") toggleBag(false); else closeReview(); }));
 
 // ===================================================================
 // review (Powtórka)
@@ -1843,7 +1919,7 @@ function closeIntro() {
   introClosed = true; $("#intro").hidden = true; audio();
   if (canSpeak) { try { const u = new SpeechSynthesisUtterance(" "); u.volume = 0; speechSynthesis.speak(u); } catch {} }
   const first = !st.started;
-  st.started = true; save(); updateTouchUI();
+  st.started = true; save(); updateTouchUI(); renderBag();
   if (first) setTimeout(() => toast("Józef by the fountain has a ! over his head. Walk up and talk to him."), 600);
   $("#scene").focus();
 }
@@ -2762,16 +2838,41 @@ function placeItems() {
 }
 function placeItem(id, animate) { const o = itemObjs[id]; if (!o) return; o.available = true; o.group.visible = true; o.group.position.copy(HOMES[id]); o.pop = animate ? 0 : 1; }
 function removeItem(id) { const o = itemObjs[id]; if (!o) return; o.available = false; o.group.visible = false; }
+// small pictures of items for the bag, rendered once each
+let thumbKit = null;
+const thumbs = {};
+function itemThumb(id) {
+  if (id in thumbs) return thumbs[id];
+  try {
+    if (!thumbKit) {
+      const r = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true });
+      r.setSize(96, 96, false);
+      const sc = new THREE.Scene(), sun = new THREE.DirectionalLight(0xffffff, 2.2);
+      sun.position.set(1, 2, 2); sc.add(sun, new THREE.HemisphereLight(0xffffff, 0x8c7a5e, 1.6));
+      thumbKit = { r, sc, cam: new THREE.PerspectiveCamera(30, 1, 0.01, 20) };
+    }
+    const { r, sc, cam } = thumbKit, m = itemModel(id), holder = new THREE.Group();
+    holder.add(m); holder.rotation.set(0.45, -0.6, 0); sc.add(holder);
+    const box = new THREE.Box3().setFromObject(holder), size = box.getSize(new THREE.Vector3()).length() || 1;
+    holder.position.sub(box.getCenter(new THREE.Vector3()));
+    cam.position.set(0, 0, size * 1.9); cam.lookAt(0, 0, 0);
+    r.render(sc, cam);
+    thumbs[id] = r.domElement.toDataURL("image/png");
+    sc.remove(holder);
+  } catch { thumbs[id] = ""; }
+  return thumbs[id];
+}
 let carryMesh = null;
 function setCarryVisual() {
   if (carryMesh) { player.group.remove(carryMesh); carryMesh = null; }
-  if (st.carry) { carryMesh = itemModel(st.carry); carryMesh.scale.setScalar((ITEM_SCALE[st.carry] ?? 1.5) * 0.85); carryMesh.position.set(0, 1.15, 0.42); player.group.add(carryMesh); }
+  const held = st.bag.at(-1); // you hold the last thing you picked up; the rest are in the bag
+  if (held) { carryMesh = itemModel(held); carryMesh.scale.setScalar((ITEM_SCALE[held] ?? 1.5) * 0.85); carryMesh.position.set(0, 1.15, 0.42); player.group.add(carryMesh); }
   renderTracker();
 }
 function syncWorldFromState() {
   for (const id of Object.keys(ITEMS)) {
     const story = ITEMS[id].story, gone = story && npcState(story).stage === "done";
-    if (gone || st.carry === id) removeItem(id); else placeItem(id, false);
+    if (gone || st.bag.includes(id)) removeItem(id); else placeItem(id, false);
   }
   const o = npcObjs.jozef; if (o) o.parts.specs.visible = npcState("jozef").stage === "done";
   setCarryVisual();
@@ -2880,14 +2981,15 @@ function updatePlayer(dt, T) {
   player.phase += dt * (3 + player.speed * 2);
   const sw = Math.sin(player.phase) * 0.6 * Math.min(1, k);
   p.legs[0].rotation.x = sw; p.legs[1].rotation.x = -sw;
-  p.arms[0].rotation.x = st.carry ? -1.1 : -sw * 0.8; p.arms[1].rotation.x = st.carry ? -1.1 : sw * 0.8;
+  const holding = st.bag.length > 0;
+  p.arms[0].rotation.x = holding ? -1.1 : -sw * 0.8; p.arms[1].rotation.x = holding ? -1.1 : sw * 0.8;
   p.body.position.y = (p.bodyY ?? 0) + Math.abs(Math.sin(player.phase)) * 0.05 * Math.min(1, k) + Math.sin(T * 1.6) * 0.004;
   if (p.shins) {
     // knees bend as each foot swings through; elbows stay a little bent
     const w = Math.min(1, k);
     p.shins[0].rotation.x = Math.max(0, Math.sin(player.phase - 1.3)) * 1.0 * w;
     p.shins[1].rotation.x = Math.max(0, Math.sin(player.phase - 1.3 + Math.PI)) * 1.0 * w;
-    for (const f of p.forearms) f.rotation.x = st.carry ? -0.6 : -0.15 - 0.35 * w;
+    for (const f of p.forearms) f.rotation.x = holding ? -0.6 : -0.15 - 0.35 * w;
   }
 }
 const ray = new THREE.Ray(), hit = new THREE.Vector3(), tmp = new THREE.Vector3(), off = new THREE.Vector3();
@@ -3074,6 +3176,7 @@ addEventListener("keydown", e => {
   const k = e.key.toLowerCase();
   if (k === "escape") {
     if (!card.hidden) closeCard(); else if (!$("#review").hidden) closeReview(); else if (!$("#settings").hidden) $("#settings").hidden = true;
+    else if (!$("#bag").hidden) toggleBag(false);
     else if (!$("#vocab").hidden) toggleVocab(false); else if (dlg.open) endDialogue();
     return;
   }
@@ -3083,6 +3186,7 @@ addEventListener("keydown", e => {
   if (!introClosed) return;
   if (k === "v") { toggleVocab(); return; }
   if (k === "g") { putBack(); return; }
+  if (k === "i" || k === "b") { toggleBag(); return; }
   if (dlg.open && k === "t") { toggleTr(); return; }
   if (dlg.open && k === "r") { speak(dlg.lines[dlg.i][0]); return; }
   if (e.code.startsWith("Arrow")) e.preventDefault();
@@ -3162,7 +3266,7 @@ function afterStateLoaded() {
 }
 function boot(hot) {
   st = normalize(loadLocal());
-  headingWord("#tracker-title", "zadania"); headingWord("#vocab-title", "słownik"); headingWord("#review-title", "powtórka");
+  headingWord("#tracker-title", "zadania"); headingWord("#vocab-title", "słownik"); headingWord("#review-title", "powtórka"); headingWord("#bag-title", "torba");
   buildGround(); buildRows(); buildBackdrop(); buildRatusz(); buildChurch(); buildFountain(); buildStall(); buildShops(); buildProps(); buildClouds();
   buildPlayer(); placeNPCs(); placeItems(); buildPigeons();
   if (hot && typeof hot.px === "number") { player.pos.set(hot.px, 0, hot.pz); cam.yaw = hot.yaw ?? 0; player.heading = hot.heading ?? Math.PI; }

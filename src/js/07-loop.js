@@ -59,14 +59,15 @@ function updatePlayer(dt, T) {
   player.phase += dt * (3 + player.speed * 2);
   const sw = Math.sin(player.phase) * 0.6 * Math.min(1, k);
   p.legs[0].rotation.x = sw; p.legs[1].rotation.x = -sw;
-  p.arms[0].rotation.x = st.carry ? -1.1 : -sw * 0.8; p.arms[1].rotation.x = st.carry ? -1.1 : sw * 0.8;
+  const holding = st.bag.length > 0;
+  p.arms[0].rotation.x = holding ? -1.1 : -sw * 0.8; p.arms[1].rotation.x = holding ? -1.1 : sw * 0.8;
   p.body.position.y = (p.bodyY ?? 0) + Math.abs(Math.sin(player.phase)) * 0.05 * Math.min(1, k) + Math.sin(T * 1.6) * 0.004;
   if (p.shins) {
     // knees bend as each foot swings through; elbows stay a little bent
     const w = Math.min(1, k);
     p.shins[0].rotation.x = Math.max(0, Math.sin(player.phase - 1.3)) * 1.0 * w;
     p.shins[1].rotation.x = Math.max(0, Math.sin(player.phase - 1.3 + Math.PI)) * 1.0 * w;
-    for (const f of p.forearms) f.rotation.x = st.carry ? -0.6 : -0.15 - 0.35 * w;
+    for (const f of p.forearms) f.rotation.x = holding ? -0.6 : -0.15 - 0.35 * w;
   }
 }
 const ray = new THREE.Ray(), hit = new THREE.Vector3(), tmp = new THREE.Vector3(), off = new THREE.Vector3();
@@ -253,6 +254,7 @@ addEventListener("keydown", e => {
   const k = e.key.toLowerCase();
   if (k === "escape") {
     if (!card.hidden) closeCard(); else if (!$("#review").hidden) closeReview(); else if (!$("#settings").hidden) $("#settings").hidden = true;
+    else if (!$("#bag").hidden) toggleBag(false);
     else if (!$("#vocab").hidden) toggleVocab(false); else if (dlg.open) endDialogue();
     return;
   }
@@ -262,6 +264,7 @@ addEventListener("keydown", e => {
   if (!introClosed) return;
   if (k === "v") { toggleVocab(); return; }
   if (k === "g") { putBack(); return; }
+  if (k === "i" || k === "b") { toggleBag(); return; }
   if (dlg.open && k === "t") { toggleTr(); return; }
   if (dlg.open && k === "r") { speak(dlg.lines[dlg.i][0]); return; }
   if (e.code.startsWith("Arrow")) e.preventDefault();
@@ -341,7 +344,7 @@ function afterStateLoaded() {
 }
 function boot(hot) {
   st = normalize(loadLocal());
-  headingWord("#tracker-title", "zadania"); headingWord("#vocab-title", "słownik"); headingWord("#review-title", "powtórka");
+  headingWord("#tracker-title", "zadania"); headingWord("#vocab-title", "słownik"); headingWord("#review-title", "powtórka"); headingWord("#bag-title", "torba");
   buildGround(); buildRows(); buildBackdrop(); buildRatusz(); buildChurch(); buildFountain(); buildStall(); buildShops(); buildProps(); buildClouds();
   buildPlayer(); placeNPCs(); placeItems(); buildPigeons();
   if (hot && typeof hot.px === "number") { player.pos.set(hot.px, 0, hot.pz); cam.yaw = hot.yaw ?? 0; player.heading = hot.heading ?? Math.PI; }

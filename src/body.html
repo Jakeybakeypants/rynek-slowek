@@ -20,6 +20,7 @@
   </header>
 
   <aside id="tracker" class="glaze dots" aria-label="Tasks">
+    <div id="xp" title="Experience: errands, sums, meeting people and sorting words"><span id="xp-level"></span><span class="xpbar"><i id="xp-fill"></i></span><span id="xp-num"></span></div>
     <h2><span id="tracker-title"></span><small>tasks</small><button id="tracker-toggle" type="button" aria-expanded="false">Show</button></h2>
     <ul id="tasks"></ul>
     <p id="unmet"></p>
@@ -27,11 +28,16 @@
   <canvas id="minimap" aria-hidden="true"></canvas>
 
   <div id="prompt" class="glaze" hidden></div>
-  <div id="carry" class="glaze" hidden>Carrying <span id="carry-word"></span><button id="btn-drop" class="ghost" type="button">Put back (G)</button></div>
+  <button id="bagbar" class="glaze" type="button" hidden aria-label="Open your bag (I)"><span class="bag-name">Bag</span><span id="bag-slots"></span><span id="bag-count"></span></button>
+  <section id="bag" class="pop glaze dots" hidden aria-label="Your bag">
+    <h2><span id="bag-title"></span><small>your bag</small><button class="icon-btn small x" type="button" data-close="bag" aria-label="Close">×</button></h2>
+    <ul id="bag-list"></ul>
+    <p class="muted">Holds six things. People take what they need from it when you talk to them. G puts back the last thing you picked up.</p>
+  </section>
 
   <section id="dialogue" class="glaze dots" hidden aria-live="polite">
     <div id="d-tip" hidden>Click a word to see what it means</div>
-    <div class="d-head"><span id="d-name"></span><span id="d-role"></span><span id="d-step"></span></div>
+    <div class="d-head"><span id="d-name"></span><span id="d-role"></span><span id="d-step"></span><button id="d-leave" class="chip-btn" type="button" aria-label="Leave the conversation (Esc)">Leave</button></div>
     <p id="d-line" lang="pl"></p>
     <p id="d-tr" hidden></p>
     <div class="d-actions">

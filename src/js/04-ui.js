@@ -105,6 +105,7 @@ function endDialogue() {
 }
 function toggleTr() { const tr = $("#d-tr"); tr.hidden = !tr.hidden; dlg.trOnce = !tr.hidden; $("#d-trbtn").setAttribute("aria-pressed", String(!tr.hidden)); }
 $("#d-next").addEventListener("click", nextLine);
+$("#d-leave").addEventListener("click", endDialogue);
 $("#d-trbtn").addEventListener("click", toggleTr);
 $("#d-speak").addEventListener("click", () => dlg.open && speak(dlg.lines[dlg.i][0]));
 
@@ -122,7 +123,7 @@ function newOrder(npcId) {
   s.order = pick(weighted); s.last = s.order; s.tmpl = Math.floor(Math.random() * N.orders.ask.length);
   return fillOrder(npcId);
 }
-function reward(n) { st.coins += n; sfx.coin(); }
+function reward(n) { st.coins += n; gainXP(n); sfx.coin(); }
 function wordDelivered(id) {
   const key = ITEMS[id].word; rec(key).ok++;
   if (status(key) === 2) return;
@@ -139,7 +140,7 @@ function wantedBy(npcId) {
 }
 function npcMark(npcId) {
   const N = NPCS[npcId], s = npcState(npcId), want = wantedBy(npcId);
-  if (st.carry && want.includes(st.carry)) return "?";
+  if (st.bag.some(id => want.includes(id))) return "?";
   if (s.stage === "new") return "!";
   if (s.stage === "done" && N.orders && !s.order) return "!";
   if (s.stage === "done" && N.quiz) return "!";
@@ -163,11 +164,13 @@ function quizTurn(id, lead = []) {
   return { lines: [...lead, quizQuestion(a, b)], actions };
 }
 function talk(id) {
-  const N = NPCS[id], s = npcState(id), carry = st.carry, lines = [], after = [];
+  const N = NPCS[id], s = npcState(id), lines = [], after = [];
+  const has = item => st.bag.includes(item), other = st.bag.at(-1); // the last thing you picked up, for "that's not it"
+  if (s.stage === "new") gainXP(5); // meeting someone
   let actions = null;
   const finishQuest = (qid, Q) => {
     lines.push(...NPCS[qid].done || []);
-    consumeCarry(); npcState(qid).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
+    consume(Q.item); npcState(qid).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
     after.push(() => { sfx.ok(); toast(`Errand done for ${NPCS[qid].name}. +${Q.reward} zł`); });
   };
   const followUp = () => {
@@ -175,39 +178,39 @@ function talk(id) {
     if (N.quiz) { const q = quizTurn(id); lines.push(...q.lines); actions = q.actions; }
     if (N.music) after.push(() => sfx.tune());
   };
-  if (N.receive && npcState(N.receive.from).stage === "active" && carry === N.receive.item) {
+  if (N.receive && npcState(N.receive.from).stage === "active" && has(N.receive.item)) {
     // meeting someone for the first time with their delivery in hand: say hello, and keep their own errand open
     if (s.stage === "new") { lines.push(...N.intro); s.stage = N.quest ? "active" : "done"; }
     lines.push(...N.receive.lines);
     const from = N.receive.from, Q = NPCS[from].quest;
-    consumeCarry(); npcState(from).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
+    consume(N.receive.item); npcState(from).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
     after.push(() => { sfx.ok(); toast(`Delivered for ${NPCS[from].name}. +${Q.reward} zł`); });
   } else if (s.stage === "new") {
     lines.push(...N.intro);
     if (N.quest) {
       s.stage = "active";
       if (N.gives) { giveCarry(N.gives); after.push(() => toast(h("span", {}, `${N.name} gave you `, wordChip(N.gives), `. Take it to ${NPCS[N.quest.deliverTo].name}.`))); }
-      else if (carry === N.quest.item) finishQuest(id, N.quest);
+      else if (has(N.quest.item)) finishQuest(id, N.quest);
     } else s.stage = "done";
     if (s.stage === "done") followUp();
   } else if (s.stage === "active") {
     if (N.gives) {
-      if (carry === N.gives) lines.push(N.remind);
+      if (has(N.gives)) lines.push(N.remind);
       else { lines.push(...N.regive); giveCarry(N.gives); }
-    } else if (carry === N.quest.item) {
+    } else if (has(N.quest.item)) {
       finishQuest(id, N.quest);
       followUp();
-    } else if (carry) { lines.push(N.wrong, thisIs(carry), N.remind); sfx.no(); }
+    } else if (other) { lines.push(N.wrong, thisIs(other), N.remind); sfx.no(); }
     else lines.push(N.remind);
   } else {
     if (N.thanks && !s.thanked) { lines.push(...N.thanks); s.thanked = true; }
     if (N.quiz) { const q = quizTurn(id, [pick(N.quiz.start)]); lines.push(...q.lines); actions = q.actions; }
     else if (N.orders) {
-      if (s.order && carry === s.order) {
-        lines.push(pick(N.orders.ok)); consumeCarry(); reward(5); wordDelivered(s.order); s.order = null;
+      if (s.order && has(s.order)) {
+        lines.push(pick(N.orders.ok)); consume(s.order); reward(5); wordDelivered(s.order); s.order = null;
         after.push(() => sfx.ok());
         lines.push(newOrder(id));
-      } else if (s.order && carry) { lines.push(N.wrong, thisIs(carry), fillOrder(id)); sfx.no(); }
+      } else if (s.order && other) { lines.push(N.wrong, thisIs(other), fillOrder(id)); sfx.no(); }
       else if (s.order) lines.push(fillOrder(id));
       else lines.push(newOrder(id));
     } else {
@@ -224,20 +227,46 @@ function talk(id) {
   save(); refreshCounts(); renderTracker();
   startDialogue(id, lines, { actions, onEnd: () => after.forEach(f => f()) });
 }
-function giveCarry(id) { if (st.carry && st.carry !== id) placeItem(st.carry, true); removeItem(id); st.carry = id; setCarryVisual(); sfx.pop(); }
-function consumeCarry() {
-  const id = st.carry; if (!id) return;
-  st.carry = null; setCarryVisual();
+// the bag (torba): up to BAG_SIZE things; people take what they need when you talk to them
+function giveCarry(id) {
+  if (st.bag.includes(id)) return;
+  if (st.bag.length >= BAG_SIZE) { const out = st.bag.shift(); placeItem(out, true); toast(`Your bag was full, so ${ITEMS[out].word} went back.`); }
+  st.bag.push(id); removeItem(id); setCarryVisual(); sfx.pop();
+}
+function consume(id) {
+  const i = st.bag.indexOf(id); if (i < 0) return;
+  st.bag.splice(i, 1); setCarryVisual();
   if (!ITEMS[id].story) setTimeout(() => placeItem(id, true), 900);
 }
 function pickUp(id) {
-  if (st.carry) placeItem(st.carry, true);
-  removeItem(id); st.carry = id; setCarryVisual(); sfx.pop();
+  if (st.bag.length >= BAG_SIZE) { sfx.no(); toast("Your bag is full. Put something back first (press I)."); return; }
+  removeItem(id); st.bag.push(id); setCarryVisual(); sfx.pop();
   markSeen([ITEMS[id].word]);
   save(); renderTracker();
 }
-function putBack() { if (!st.carry) return; const id = st.carry; st.carry = null; placeItem(id, true); setCarryVisual(); sfx.tick(); save(); renderTracker(); }
-$("#btn-drop").addEventListener("click", putBack);
+function putBack(id = st.bag.at(-1)) {
+  const i = st.bag.indexOf(id); if (i < 0) return;
+  st.bag.splice(i, 1); placeItem(id, true); setCarryVisual(); sfx.tick(); save(); renderTracker();
+}
+function renderBag() {
+  $("#bag-slots").replaceChildren(...st.bag.map(id => h("img", { src: itemThumb(id), alt: ITEMS[id].word, width: "30", height: "30" })));
+  $("#bag-count").textContent = `${st.bag.length}/${BAG_SIZE}`;
+  $("#bagbar").hidden = !introClosed;
+  $("#bag-list").replaceChildren(...Array.from({ length: BAG_SIZE }, (_, i) => {
+    const id = st.bag[i];
+    return id
+      ? h("li", { class: "slot" }, h("img", { src: itemThumb(id), alt: "", width: "44", height: "44" }), wordChip(id), h("button", { type: "button", class: "ghost", onclick: () => putBack(id) }, "Put back"))
+      : h("li", { class: "slot empty" }, h("span", {}, "empty"));
+  }));
+}
+function toggleBag(force) { const b = $("#bag"), open = force ?? b.hidden; b.hidden = !open; if (open) { renderBag(); $("#settings").hidden = true; } }
+$("#bagbar").addEventListener("click", () => toggleBag());
+function renderXP() {
+  const { level, into, need } = levelOf(st.xp);
+  $("#xp-level").replaceChildren(wordBtn("Poziom", "w"), ` ${level}`);
+  $("#xp-fill").style.width = (into / need * 100).toFixed(1) + "%";
+  $("#xp-num").textContent = `${into} / ${need} XP`;
+}
 
 // ===================================================================
 // tracker, HUD, toasts, prompt
@@ -259,8 +288,7 @@ function renderTracker() {
   $("#tracker-toggle").textContent = $("#tracker").classList.contains("open") ? "Hide" : `Show ${n || ""}`.trim();
   for (const o of Object.values(npcObjs)) o.mark.textContent = npcMark(o.id);
   if (npcObjs.jozef) npcObjs.jozef.parts.specs.visible = npcState("jozef").stage === "done"; // he wears them once found
-  const cw = $("#carry-word");
-  if (st.carry) { cw.replaceChildren(wordChip(st.carry)); $("#carry").hidden = false; } else $("#carry").hidden = true;
+  renderBag(); renderXP();
 }
 $("#tracker-toggle").addEventListener("click", () => { const t = $("#tracker"); t.classList.toggle("open"); $("#tracker-toggle").setAttribute("aria-expanded", String(t.classList.contains("open"))); renderTracker(); });
 function toast(content, { actions, ms = 3400 } = {}) {
@@ -320,7 +348,7 @@ $("#v-review").addEventListener("click", () => openReview("learning"));
 $("#v-review-new").addEventListener("click", () => openReview("new"));
 $("#counts").addEventListener("click", () => toggleVocab());
 $("#btn-vocab").addEventListener("click", () => toggleVocab());
-$$("[data-close]").forEach(b => b.addEventListener("click", () => { const id = b.dataset.close; if (id === "vocab") toggleVocab(false); else closeReview(); }));
+$$("[data-close]").forEach(b => b.addEventListener("click", () => { const id = b.dataset.close; if (id === "vocab") toggleVocab(false); else if (id === "bag") toggleBag(false); else closeReview(); }));
 
 // ===================================================================
 // review (Powtórka)
@@ -398,7 +426,7 @@ function closeIntro() {
   introClosed = true; $("#intro").hidden = true; audio();
   if (canSpeak) { try { const u = new SpeechSynthesisUtterance(" "); u.volume = 0; speechSynthesis.speak(u); } catch {} }
   const first = !st.started;
-  st.started = true; save(); updateTouchUI();
+  st.started = true; save(); updateTouchUI(); renderBag();
   if (first) setTimeout(() => toast("Józef by the fountain has a ! over his head. Walk up and talk to him."), 600);
   $("#scene").focus();
 }

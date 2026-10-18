@@ -3,20 +3,23 @@
 // ===================================================================
 const SAVE_KEY = "rynek-slowek:v1";
 const DEFAULT_SETTINGS = { auto: true, tr: false, hideKnown: false, sfx: true, rate: 0.9 };
-const freshState = () => ({ v: 1, words: {}, npc: {}, coins: 0, carry: null, settings: { ...DEFAULT_SETTINGS }, tips: {}, started: false, updatedAt: 0 });
+const freshState = () => ({ v: 1, words: {}, npc: {}, coins: 0, bag: [], xp: 0, settings: { ...DEFAULT_SETTINGS }, tips: {}, started: false, updatedAt: 0 });
 function normalize(d) {
   const s = freshState();
   if (!d || typeof d !== "object") return s;
   if (d.words && typeof d.words === "object") for (const [l, r] of Object.entries(d.words)) {
     if (!lookup(l) || !r || typeof r !== "object") continue;
-    s.words[l] = { s: clamp(Math.round(+r.s || 0), 0, 2), seen: Math.max(0, +r.seen || 0), ok: Math.max(0, +r.ok || 0) };
+    const status = clamp(Math.round(+r.s || 0), 0, 2);
+    s.words[l] = { s: status, seen: Math.max(0, +r.seen || 0), ok: Math.max(0, +r.ok || 0), max: clamp(Math.round(+r.max || 0), status, 2) };
   }
   if (d.npc && typeof d.npc === "object") for (const id of NPC_ORDER) if (d.npc[id]) {
     const n = d.npc[id];
     s.npc[id] = { stage: ["new", "active", "done"].includes(n.stage) ? n.stage : "new", order: ITEMS[n.order] ? n.order : null, tmpl: +n.tmpl || 0, thanked: !!n.thanked };
   }
   s.coins = Math.max(0, +d.coins || 0);
-  s.carry = ITEMS[d.carry] ? d.carry : null;
+  // the bag replaced carrying one thing in your hands
+  s.bag = (Array.isArray(d.bag) ? d.bag : d.carry ? [d.carry] : []).filter((id, i, a) => ITEMS[id] && a.indexOf(id) === i).slice(0, BAG_SIZE);
+  s.xp = Math.max(0, +d.xp || 0);
   s.settings = { ...DEFAULT_SETTINGS, ...(d.settings && typeof d.settings === "object" ? d.settings : {}) };
   s.tips = d.tips && typeof d.tips === "object" ? { ...d.tips } : {};
   s.started = !!d.started;
@@ -65,17 +68,37 @@ async function connectRemote() {
   } catch { remote = null; }
 }
 
+const BAG_SIZE = 6;
+// XP: errands and sums pay the same as their coins; sorting a form pays once per step it climbs
+const XP_FOR_STATUS = [0, 2, 5];
+const xpNeed = level => 100 + (level - 1) * 50;
+function levelOf(xp) { let level = 1; while (xp >= xpNeed(level)) { xp -= xpNeed(level); level++; } return { level, into: xp, need: xpNeed(level) }; }
+function gainXP(n) {
+  if (!n) return;
+  const before = levelOf(st.xp).level;
+  st.xp += n;
+  const now = levelOf(st.xp).level;
+  renderXP();
+  if (now > before) { sfx.ok(); toast(h("span", {}, "Level up! ", h("b", {}, `Poziom ${now}`))); }
+}
 const rec = l => (st.words[l] ??= { s: 0, seen: 0, ok: 0 });
 const status = l => st.words[l]?.s ?? 0;
 const npcState = id => (st.npc[id] ??= { stage: "new", order: null, tmpl: 0, thanked: false });
 function setStatus(key, s) {
   if (!lookup(key)) return;
   const before = status(key);
-  rec(key).s = s;
+  const r = rec(key);
+  r.s = s;
+  if (s > (r.max || 0)) { gainXP(XP_FOR_STATUS[s] - XP_FOR_STATUS[r.max || 0]); r.max = s; }
   save(); refreshWordViews();
   if (s === 2 && before !== 2) sfx.known(); else sfx.tick();
 }
-function markSeen(keys) { for (const k of new Set(keys)) if (lookup(k)) rec(k).seen++; save(); refreshCounts(); }
+function markSeen(keys) {
+  let fresh = 0;
+  for (const k of new Set(keys)) if (lookup(k)) { if (!rec(k).seen) fresh++; rec(k).seen++; }
+  if (fresh) gainXP(fresh); // a new word met: 1 XP
+  save(); refreshCounts();
+}
 let totalWords = 0; // every distinct form on the square, counted once the labels exist
 function counts() {
   let known = 0, learning = 0, fresh = 0, met = 0;

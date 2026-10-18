@@ -506,16 +506,41 @@ function placeItems() {
 }
 function placeItem(id, animate) { const o = itemObjs[id]; if (!o) return; o.available = true; o.group.visible = true; o.group.position.copy(HOMES[id]); o.pop = animate ? 0 : 1; }
 function removeItem(id) { const o = itemObjs[id]; if (!o) return; o.available = false; o.group.visible = false; }
+// small pictures of items for the bag, rendered once each
+let thumbKit = null;
+const thumbs = {};
+function itemThumb(id) {
+  if (id in thumbs) return thumbs[id];
+  try {
+    if (!thumbKit) {
+      const r = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true });
+      r.setSize(96, 96, false);
+      const sc = new THREE.Scene(), sun = new THREE.DirectionalLight(0xffffff, 2.2);
+      sun.position.set(1, 2, 2); sc.add(sun, new THREE.HemisphereLight(0xffffff, 0x8c7a5e, 1.6));
+      thumbKit = { r, sc, cam: new THREE.PerspectiveCamera(30, 1, 0.01, 20) };
+    }
+    const { r, sc, cam } = thumbKit, m = itemModel(id), holder = new THREE.Group();
+    holder.add(m); holder.rotation.set(0.45, -0.6, 0); sc.add(holder);
+    const box = new THREE.Box3().setFromObject(holder), size = box.getSize(new THREE.Vector3()).length() || 1;
+    holder.position.sub(box.getCenter(new THREE.Vector3()));
+    cam.position.set(0, 0, size * 1.9); cam.lookAt(0, 0, 0);
+    r.render(sc, cam);
+    thumbs[id] = r.domElement.toDataURL("image/png");
+    sc.remove(holder);
+  } catch { thumbs[id] = ""; }
+  return thumbs[id];
+}
 let carryMesh = null;
 function setCarryVisual() {
   if (carryMesh) { player.group.remove(carryMesh); carryMesh = null; }
-  if (st.carry) { carryMesh = itemModel(st.carry); carryMesh.scale.setScalar((ITEM_SCALE[st.carry] ?? 1.5) * 0.85); carryMesh.position.set(0, 1.15, 0.42); player.group.add(carryMesh); }
+  const held = st.bag.at(-1); // you hold the last thing you picked up; the rest are in the bag
+  if (held) { carryMesh = itemModel(held); carryMesh.scale.setScalar((ITEM_SCALE[held] ?? 1.5) * 0.85); carryMesh.position.set(0, 1.15, 0.42); player.group.add(carryMesh); }
   renderTracker();
 }
 function syncWorldFromState() {
   for (const id of Object.keys(ITEMS)) {
     const story = ITEMS[id].story, gone = story && npcState(story).stage === "done";
-    if (gone || st.carry === id) removeItem(id); else placeItem(id, false);
+    if (gone || st.bag.includes(id)) removeItem(id); else placeItem(id, false);
   }
   const o = npcObjs.jozef; if (o) o.parts.specs.visible = npcState("jozef").stage === "done";
   setCarryVisual();

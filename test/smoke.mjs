@@ -88,7 +88,7 @@ await talkThrough();
 check((await state()).npc.jozef.stage === "active", "Józef's errand starts");
 
 await goTo(-2.6, 2.9, "okulary"); await press();
-check((await state()).carry === "okulary", "picks up okulary");
+check((await state()).bag.includes("okulary"), "picks up okulary");
 await goTo(5.2, 12.9, "Józef"); await press();
 const done = await talkThrough();
 const s1 = await state();
@@ -97,19 +97,19 @@ check(done[0] === "Moje okulary! Dziękuję bardzo!" && s1.npc.jozef.stage === "
 // Tadeusz's letter goes to Józef, who already has an errand of his own
 const [tx, tz] = await npcAt("tadeusz", 0, -1.6);
 await goTo(tx, tz, "Tadeusz"); await press(); await talkThrough();
-check((await state()).carry === "list", "Tadeusz hands over a letter for Józef");
+check((await state()).bag.includes("list"), "Tadeusz hands over a letter for Józef");
 await goTo(5.2, 12.9, "Józef"); await press();
 const letter = await talkThrough();
 const sL = await state();
-check(letter[0] === "List dla mnie? Od mojej wnuczki!" && sL.npc.tadeusz.stage === "done" && sL.coins === 40 && !sL.carry, "Józef receives the letter (+20 zł)");
+check(letter[0] === "List dla mnie? Od mojej wnuczki!" && sL.npc.tadeusz.stage === "done" && sL.coins === 40 && !sL.bag.length, "Józef receives the letter (+20 zł)");
 
 const [bx, bz] = await npcAt("basia", 1.6, 0);
 await goTo(bx, bz, "Basia"); await press(); await talkThrough();
-check((await state()).carry === "chleb", "Basia hands over the bread");
+check((await state()).bag.includes("chleb"), "Basia hands over the bread");
 const [ox, oz] = await npcAt("ola", -1.6, 0);
 await goTo(ox, oz, "Ola"); await press(); await talkThrough();
 const s2 = await state();
-check(s2.npc.basia.stage === "done" && s2.coins === 60 && !s2.carry, "Ola receives the bread (+20 zł)");
+check(s2.npc.basia.stage === "done" && s2.coins === 60 && !s2.bag.length, "Ola receives the bread (+20 zł)");
 
 await goTo(ox, oz, "Ola"); await press(); await talkThrough();
 const want = (await state()).npc.ola.order;
@@ -118,7 +118,7 @@ const [hx, hz] = await R(id => { const h = window.__rynek.HOMES[id]; return [h.x
 await R(([x, z]) => window.__rynek.player.pos.set(x, 0, z), [hx, hz]);
 await page.waitForFunction(id => window.__rynek.itemObjs[id].label.btn.classList.contains("near"), want, { timeout: 20000 });
 await press();
-check((await state()).carry === want, `picks up ${want} from the counter`);
+check((await state()).bag.includes(want), `picks up ${want} from the counter`);
 await goTo(ox, oz, "Ola"); await press(); await talkThrough();
 check((await state()).coins === 65, "the café order pays 5 zł");
 await shot("3-after-errands");
@@ -133,7 +133,7 @@ const [cx, cz] = await R(id => { const h = window.__rynek.HOMES[id]; return [h.x
 await R(([x, z]) => window.__rynek.player.pos.set(x, 0, z), [cx, cz]);
 await page.waitForFunction(id => window.__rynek.itemObjs[id].label.btn.classList.contains("near"), bOrder, { timeout: 20000 });
 await press();
-check((await state()).carry === bOrder, `picks up ${bOrder} from the clothes stall`);
+check((await state()).bag.includes(bOrder), `picks up ${bOrder} from the clothes stall`);
 await goTo(gx, gz, "Bogdan"); await press(); await talkThrough();
 check((await state()).coins === 70, "Bogdan's order pays 5 zł");
 
@@ -142,7 +142,7 @@ const [zx, zz] = await npcAt("zuzia", 1.4, 0);
 await goTo(zx, zz, "Zuzia"); await press(); await talkThrough();
 const sk = await R(() => { const h = window.__rynek.HOMES.skakanka; return [h.x, h.z + 1]; });
 await goTo(sk[0], sk[1], "skakanka"); await press();
-check((await state()).carry === "skakanka", "picks up skakanka");
+check((await state()).bag.includes("skakanka"), "picks up skakanka");
 await goTo(zx, zz, "Zuzia"); await press();
 await page.waitForFunction(() => !document.querySelector("#dialogue").hidden);
 for (let i = 0; i < 6 && !(await page.$("#d-extra .answer")); i++) { await page.click("#d-next"); await page.waitForTimeout(200); }
@@ -160,6 +160,33 @@ for (let i = 0; i < 8 && !(await R(() => document.querySelector("#dialogue").hid
   await page.waitForTimeout(200);
 }
 check(await R(() => document.querySelector("#dialogue").hidden), "That's enough ends the sums");
+
+// leave a conversation halfway: Marek's errand still starts
+const [mx, mz] = await npcAt("marek", 1.6, 0); // from the side away from the fruit
+await goTo(mx, mz, "Marek"); await press();
+await page.waitForFunction(() => !document.querySelector("#dialogue").hidden);
+await page.click("#d-next");
+await page.click("#d-leave");
+check(await R(() => document.querySelector("#dialogue").hidden), "Leave closes the conversation mid-way");
+check((await state()).npc.marek.stage === "active", "leaving early still starts Marek's errand");
+
+// the bag holds more than one thing, and things can go back
+for (const id of ["gruszka", "śliwka"]) {
+  const [ix, iz] = await R(id => { const h = window.__rynek.HOMES[id]; return [h.x, h.z + 1]; }, id);
+  await R(([x, z]) => window.__rynek.player.pos.set(x, 0, z), [ix, iz]);
+  await page.waitForFunction(id => window.__rynek.itemObjs[id].label.btn.classList.contains("near"), id, { timeout: 20000 });
+  await press();
+}
+check(JSON.stringify((await state()).bag) === JSON.stringify(["gruszka", "śliwka"]), "the bag holds gruszka and śliwka together");
+await press("i");
+await page.waitForFunction(() => !document.querySelector("#bag").hidden);
+check((await page.$$("#bag-list .slot:not(.empty)")).length === 2, "the bag shows two things and four empty slots");
+await shot("6-bag");
+await page.click("#bag-list .slot button.ghost");
+check(JSON.stringify((await state()).bag) === JSON.stringify(["śliwka"]), "Put back returns gruszka to the stall");
+await press("Escape");
+const xp = await state();
+check(xp.xp > 100 && /Poziom [2-9]/.test(await R(() => document.querySelector("#xp-level").textContent)), `XP adds up and levels rise (${xp.xp} XP)`);
 
 await press("v");
 await page.waitForFunction(() => !document.querySelector("#vocab").hidden);

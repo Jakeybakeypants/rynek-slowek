@@ -36,7 +36,7 @@ Fifteen characters, each with an errand told in Polish:
 
 Repeat orders come in several phrasings that need different cases: `Poproszę gruszkę` (accusative), `Szukam gruszki` (genitive), `Gdzie jest miś?` (nominative). Ewa's paint orders put an adjective in front, so the colour changes too: `Poproszę czerwoną farbę`, `Potrzebuję niebieskiej farby`. Bring the wrong thing and they tell you what it actually is: `Nie, to nie to. To jest cytryna.` Orders favour words you haven't marked green yet.
 
-Other things: about 270 words, numbers from one to ten, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
+You carry things in a bag that holds six. Errands, sums, meeting people, meeting new words and sorting them earn XP, shown as `Poziom` (level) at the top of the task panel. Other things: about 270 words, numbers from one to ten, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
 
 ## Controls
 
@@ -47,8 +47,9 @@ Other things: about 270 words, numbers from one to ten, a word list (V) with a r
 | E or Space | talk, pick up, next line |
 | 1 · 2 · 3 | sort the open word: new, learning, known |
 | T · R | show English for the line · hear it again |
-| V · G | word list · put the carried item back |
-| Esc | close whatever is open |
+| V · I | word list · your bag (`torba`) |
+| G | put back the last thing you picked up |
+| Esc | leave a conversation, or close whatever is open (there's also a Leave button) |
 
 On a phone: the left joystick walks, drag to look, the round button talks.
 
