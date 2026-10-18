@@ -21,9 +21,12 @@ const lists = {};
 for (const lang of LANGS) {
   const text = process.argv[2] ? readFileSync(`${process.argv[2]}/${lang}_50k.txt`, "utf8") : await (await fetch(SOURCE(lang))).text();
   const words = [], seen = new Set();
+  // French subtitles often type œ as oe (coeur, soeur); keep only the proper spelling when the list has both
+  const all = new Set(text.split("\n").map(l => l.split(" ")[0]?.trim().toLowerCase()));
+  const dup = w => lang === "fr" && w.includes("oe") && all.has(w.replaceAll("oe", "œ"));
   for (const line of text.split("\n")) {
     const w = line.split(" ")[0]?.trim().toLowerCase();
-    if (!w || !(WORD[lang] ?? /^\p{L}+$/u).test(w) || SKIP[lang].has(w) || seen.has(w)) continue;
+    if (!w || !(WORD[lang] ?? /^\p{L}+$/u).test(w) || SKIP[lang].has(w) || dup(w) || seen.has(w)) continue;
     seen.add(w); words.push(w);
     if (words.length === TOP) break;
   }
