@@ -1,0 +1,55 @@
+﻿Name,Word,Lemma,Nominative,Accusative,Genitive,English,EnglishThe,Plural,WhyText,WhyEnglish,StoryCharacter,HomeX,HomeY,HomeZ
+okulary,Brille,brille,die Brille,eine Brille,die Brille,the glasses,the glasses,False,,,jozef,-260,390,92
+klucze,Schlüssel,schlüssel,die Schlüssel,Schlüssel,die Schlüssel,the keys,the keys,True,,,zosia,-1960,1460,12
+jabłko,Apfel,apfel,der Apfel,einen Apfel,den Apfel,an apple,the apple,False,,,,-1660,460,30
+gruszka,Birne,birne,die Birne,eine Birne,die Birne,a pear,the pear,False,,,,-1540,560,30
+śliwka,Pflaume,pflaume,die Pflaume,eine Pflaume,die Pflaume,a plum,the plum,False,,,,-1420,460,30
+cytryna,Zitrone,zitrone,die Zitrone,eine Zitrone,die Zitrone,a lemon,the lemon,False,,,,-1300,560,30
+marchewka,Karotte,karotte,die Karotte,eine Karotte,die Karotte,a carrot,the carrot,False,,,,-1180,470,30
+chleb,Brot,brot,das Brot,ein Brot,das Brot,a loaf of bread,the bread,False,,,,-2550,-400.8,112
+bułka,Brötchen,brötchen,das Brötchen,ein Brötchen,das Brötchen,a bread roll,the roll,False,,,,-2550,-330.8,112
+ciastko,Keks,keks,der Keks,einen Keks,den Keks,a cookie,the cookie,False,,,,-2550,-260.8,112
+drożdżówka,Hefezopf,hefezopf,der Hefezopf,einen Hefezopf,den Hefezopf,a sweet bun,the sweet bun,False,,,,-2550,-190.8,112
+szarlotka,Apfelkuchen,apfelkuchen,der Apfelkuchen,einen Apfelkuchen,den Apfelkuchen,a slice of apple pie,the apple pie,False,,,,-2550,-120.8,112
+kawa,Kaffee,kaffee,der Kaffee,einen Kaffee,den Kaffee,a coffee,the coffee,False,,,,2540,441.5,112
+herbata,Tee,tee,der Tee,einen Tee,den Tee,a tea,the tea,False,,,,2540,511.5,112
+woda,Wasser,wasser,das Wasser,Wasser,das Wasser,some water,the water,False,,,,2540,581.5,112
+sok,Saft,saft,der Saft,einen Saft,den Saft,a juice,the juice,False,,,,2540,651.5,112
+mleko,Milch,milch,die Milch,Milch,die Milch,some milk,the milk,False,,,,2540,721.5,112
+piłka,Ball,ball,der Ball,einen Ball,den Ball,the ball,the ball,False,,,,250,-1950,28
+lalka,Puppe,puppe,die Puppe,eine Puppe,die Puppe,the doll,the doll,False,,,,1470,1540,32
+miś,Teddy,teddy,der Teddy,einen Teddy,den Teddy,the teddy bear,the teddy bear,False,,,,1790,1220,30
+latawiec,Drachen,drachen,der Drachen,einen Drachen,den Drachen,the kite,the kite,False,,,,1860,1700,20
+róża,Rose,rose,die Rose,eine Rose,die Rose,a rose,the rose,False,,,,-917.4,2550,75
+lilia,Lilie,lilie,die Lilie,eine Lilie,die Lilie,a lily,the lily,False,,,,-817.4,2550,75
+stokrotka,Gänseblümchen,gänseblümchen,das Gänseblümchen,ein Gänseblümchen,das Gänseblümchen,a daisy,the daisy,False,,,,-717.4,2550,75
+orchidea,Orchidee,orchidee,die Orchidee,eine Orchidee,die Orchidee,an orchid,the orchid,False,,,,-617.4,2550,75
+pędzel,Pinsel,pinsel,der Pinsel,einen Pinsel,den Pinsel,the paintbrush,the paintbrush,False,,,ewa,-790,-800,12
+czerwona,rot,farbe,die rote Farbe,rote Farbe,die rote Farbe,red paint,the red paint,False,,,,1120,-90,66
+niebieska,blau,farbe,die blaue Farbe,blaue Farbe,die blaue Farbe,blue paint,the blue paint,False,,,,1190,-90,66
+żółta,gelb,farbe,die gelbe Farbe,gelbe Farbe,die gelbe Farbe,yellow paint,the yellow paint,False,,,,1260,-90,66
+zielona,grün,farbe,die grüne Farbe,grüne Farbe,die grüne Farbe,green paint,the green paint,False,,,,1330,-90,66
+biała,weiß,farbe,die weiße Farbe,weiße Farbe,die weiße Farbe,white paint,the white paint,False,,,,1400,-90,66
+list,Brief,brief,der Brief,einen Brief,den Brief,the letter,the letter,False,,,tadeusz,1781.3,2550,112
+paczka,Paket,paket,das Paket,ein Paket,das Paket,a parcel,the parcel,False,,,,1571.3,2550,112
+koperta,Umschlag,umschlag,der Umschlag,einen Umschlag,den Umschlag,an envelope,the envelope,False,,,,1641.3,2550,112
+pocztówka,Postkarte,postkarte,die Postkarte,eine Postkarte,die Postkarte,a postcard,the postcard,False,,,,1711.3,2550,112
+torba,Tasche,tasche,die Tasche,eine Tasche,die Tasche,the bag,the bag,False,,,halina,1640,1720,25
+książka,Buch,buch,das Buch,ein Buch,das Buch,a book,the book,False,,,,1339.5,-2550,112
+mapa,Stadtplan,stadtplan,der Stadtplan,einen Stadtplan,den Stadtplan,a map,the map,False,,,,1269.5,-2550,112
+gazeta,Zeitung,zeitung,die Zeitung,eine Zeitung,die Zeitung,a newspaper,the newspaper,False,,,,1199.5,-2550,112
+kredka,Buntstift,buntstift,der Buntstift,einen Buntstift,den Buntstift,a crayon,the crayon,False,,,,1129.5,-2550,112
+kość,Knochen,knochen,der Knochen,einen Knochen,den Knochen,the bone,the bone,False,,,burek,-2070,2070,12
+skakanka,Springseil,springseil,das Springseil,ein Springseil,das Springseil,the skipping rope,the skipping rope,False,,,zuzia,-150,1050,10
+nuty,Noten,note,die Noten,Noten,die Noten,the sheet music,the sheet music,True,,,staszek,-2060,290,10
+czapka,Mütze,mütze,die Mütze,eine Mütze,die Mütze,a woolly hat,the hat,False,Es ist kalt.,It's cold.,,-1725,-1120,112
+kurtka,Jacke,jacke,die Jacke,eine Jacke,die Jacke,a jacket,the jacket,False,Es ist windig.,It's windy.,,-1655,-1120,112
+parasolka,Regenschirm,regenschirm,der Regenschirm,einen Regenschirm,den Regenschirm,an umbrella,the umbrella,False,Es regnet.,It's raining.,,-1585,-1120,112
+rękawiczki,Handschuhe,handschuh,die Handschuhe,Handschuhe,die Handschuhe,some gloves,the gloves,True,Es ist sehr kalt.,It's very cold.,,-1515,-1120,112
+koszula,Hemd,hemd,das Hemd,ein Hemd,das Hemd,a shirt,the shirt,False,Jemand geht zur Arbeit.,Someone is going to work.,,-1445,-1120,112
+telefon,Handy,handy,das Handy,ein Handy,das Handy,the phone,the phone,False,,,ania,6100,-1840,8
+deskorolka,Skateboard,skateboard,das Skateboard,ein Skateboard,das Skateboard,the skateboard,the skateboard,False,,,tomek,6330,-1040,8
+karta,Speisekarte,speisekarte,die Speisekarte,eine Speisekarte,die Speisekarte,the menu,the menu,False,,,michal,410,190,6
+bilet,Fahrkarte,fahrkarte,die Fahrkarte,eine Fahrkarte,die Fahrkarte,the ticket,the ticket,False,,,ela,4490,-260,5
+dzwonek,Glocke,glocke,die Glocke,eine Glocke,die Glocke,the bell,the bell,False,,,dorota,1630,371.5,8
+sukienka,Kleid,kleid,das Kleid,ein Kleid,das Kleid,a dress,the dress,False,Jemand geht zu einer Hochzeit.,Someone is going to a wedding.,,-1375,-1120,112

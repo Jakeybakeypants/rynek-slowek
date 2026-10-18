@@ -19,8 +19,8 @@ Pick the language you're learning in Settings: Polish (the original), German or 
 | Language | Top 1000 | Top 2000 | Top 3000 | Word forms |
 | --- | --- | --- | --- | --- |
 | Polish | 940 | 1,738 | 2,380 | about 3,200 |
-| German | DE1 | DE2 | DE3 | DEF |
-| Spanish | ES1 | ES2 | ES3 | ESF |
+| German | 951 | 1,819 | 2,650 | about 3,500 |
+| Spanish | 952 | 1,850 | 2,712 | about 3,700 |
 
 French is next. `tools/translate/README.md` explains how a language is added.
 

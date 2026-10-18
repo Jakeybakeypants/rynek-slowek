@@ -1,0 +1,55 @@
+﻿Name,Word,Lemma,Nominative,Accusative,Genitive,English,EnglishThe,Plural,WhyText,WhyEnglish,StoryCharacter,HomeX,HomeY,HomeZ
+okulary,gafas,gafas,las gafas,unas gafas,las gafas,the glasses,the glasses,True,,,jozef,-260,390,92
+klucze,llaves,llave,las llaves,unas llaves,las llaves,the keys,the keys,True,,,zosia,-1960,1460,12
+jabłko,manzana,manzana,la manzana,una manzana,la manzana,an apple,the apple,False,,,,-1660,460,30
+gruszka,pera,pera,la pera,una pera,la pera,a pear,the pear,False,,,,-1540,560,30
+śliwka,ciruela,ciruela,la ciruela,una ciruela,la ciruela,a plum,the plum,False,,,,-1420,460,30
+cytryna,limón,limón,el limón,un limón,el limón,a lemon,the lemon,False,,,,-1300,560,30
+marchewka,zanahoria,zanahoria,la zanahoria,una zanahoria,la zanahoria,a carrot,the carrot,False,,,,-1180,470,30
+chleb,pan,pan,el pan,un pan,el pan,a loaf of bread,the bread,False,,,,-2550,-400.8,112
+bułka,panecillo,panecillo,el panecillo,un panecillo,el panecillo,a bread roll,the roll,False,,,,-2550,-330.8,112
+ciastko,galleta,galleta,la galleta,una galleta,la galleta,a cookie,the cookie,False,,,,-2550,-260.8,112
+drożdżówka,bollo,bollo,el bollo,un bollo,el bollo,a sweet bun,the sweet bun,False,,,,-2550,-190.8,112
+szarlotka,tarta,tarta,la tarta de manzana,una tarta de manzana,la tarta de manzana,a slice of apple pie,the apple pie,False,,,,-2550,-120.8,112
+kawa,café,café,el café,un café,el café,a coffee,the coffee,False,,,,2540,441.5,112
+herbata,té,té,el té,un té,el té,a tea,the tea,False,,,,2540,511.5,112
+woda,agua,agua,el agua,agua,el agua,some water,the water,False,,,,2540,581.5,112
+sok,zumo,zumo,el zumo,un zumo,el zumo,a juice,the juice,False,,,,2540,651.5,112
+mleko,leche,leche,la leche,leche,la leche,some milk,the milk,False,,,,2540,721.5,112
+piłka,pelota,pelota,la pelota,una pelota,la pelota,the ball,the ball,False,,,,250,-1950,28
+lalka,muñeca,muñeca,la muñeca,una muñeca,la muñeca,the doll,the doll,False,,,,1470,1540,32
+miś,osito,osito,el osito,un osito,el osito,the teddy bear,the teddy bear,False,,,,1790,1220,30
+latawiec,cometa,cometa,la cometa,una cometa,la cometa,the kite,the kite,False,,,,1860,1700,20
+róża,rosa,rosa,la rosa,una rosa,la rosa,a rose,the rose,False,,,,-917.4,2550,75
+lilia,lirio,lirio,el lirio,un lirio,el lirio,a lily,the lily,False,,,,-817.4,2550,75
+stokrotka,margarita,margarita,la margarita,una margarita,la margarita,a daisy,the daisy,False,,,,-717.4,2550,75
+orchidea,orquídea,orquídea,la orquídea,una orquídea,la orquídea,an orchid,the orchid,False,,,,-617.4,2550,75
+pędzel,pincel,pincel,el pincel,un pincel,el pincel,the paintbrush,the paintbrush,False,,,ewa,-790,-800,12
+czerwona,roja,pintura,la pintura roja,pintura roja,la pintura roja,red paint,the red paint,False,,,,1120,-90,66
+niebieska,azul,pintura,la pintura azul,pintura azul,la pintura azul,blue paint,the blue paint,False,,,,1190,-90,66
+żółta,amarilla,pintura,la pintura amarilla,pintura amarilla,la pintura amarilla,yellow paint,the yellow paint,False,,,,1260,-90,66
+zielona,verde,pintura,la pintura verde,pintura verde,la pintura verde,green paint,the green paint,False,,,,1330,-90,66
+biała,blanca,pintura,la pintura blanca,pintura blanca,la pintura blanca,white paint,the white paint,False,,,,1400,-90,66
+list,carta,carta,la carta,una carta,la carta,the letter,the letter,False,,,tadeusz,1781.3,2550,112
+paczka,paquete,paquete,el paquete,un paquete,el paquete,a parcel,the parcel,False,,,,1571.3,2550,112
+koperta,sobre,sobre,el sobre,un sobre,el sobre,an envelope,the envelope,False,,,,1641.3,2550,112
+pocztówka,postal,postal,la postal,una postal,la postal,a postcard,the postcard,False,,,,1711.3,2550,112
+torba,bolsa,bolsa,la bolsa,una bolsa,la bolsa,the bag,the bag,False,,,halina,1640,1720,25
+książka,libro,libro,el libro,un libro,el libro,a book,the book,False,,,,1339.5,-2550,112
+mapa,mapa,mapa,el mapa,un mapa,el mapa,a map,the map,False,,,,1269.5,-2550,112
+gazeta,periódico,periódico,el periódico,un periódico,el periódico,a newspaper,the newspaper,False,,,,1199.5,-2550,112
+kredka,cera,cera,la cera,una cera,la cera,a crayon,the crayon,False,,,,1129.5,-2550,112
+kość,hueso,hueso,el hueso,un hueso,el hueso,the bone,the bone,False,,,burek,-2070,2070,12
+skakanka,comba,comba,la comba,una comba,la comba,the skipping rope,the skipping rope,False,,,zuzia,-150,1050,10
+nuty,partitura,partitura,la partitura,una partitura,la partitura,the sheet music,the sheet music,False,,,staszek,-2060,290,10
+czapka,gorro,gorro,el gorro,un gorro,el gorro,a woolly hat,the hat,False,Hace frío.,It's cold.,,-1725,-1120,112
+kurtka,chaqueta,chaqueta,la chaqueta,una chaqueta,la chaqueta,a jacket,the jacket,False,Hace viento.,It's windy.,,-1655,-1120,112
+parasolka,paraguas,paraguas,el paraguas,un paraguas,el paraguas,an umbrella,the umbrella,False,Está lloviendo.,It's raining.,,-1585,-1120,112
+rękawiczki,guantes,guante,los guantes,unos guantes,los guantes,some gloves,the gloves,True,Hace mucho frío.,It's very cold.,,-1515,-1120,112
+koszula,camisa,camisa,la camisa,una camisa,la camisa,a shirt,the shirt,False,Alguien va a trabajar.,Someone is going to work.,,-1445,-1120,112
+telefon,teléfono,teléfono,el teléfono,un teléfono,el teléfono,the phone,the phone,False,,,ania,6100,-1840,8
+deskorolka,monopatín,monopatín,el monopatín,un monopatín,el monopatín,the skateboard,the skateboard,False,,,tomek,6330,-1040,8
+karta,menú,menú,el menú,un menú,el menú,the menu,the menu,False,,,michal,410,190,6
+bilet,billete,billete,el billete,un billete,el billete,the ticket,the ticket,False,,,ela,4490,-260,5
+dzwonek,campana,campana,la campana,una campana,la campana,the bell,the bell,False,,,dorota,1630,371.5,8
+sukienka,vestido,vestido,el vestido,un vestido,el vestido,a dress,the dress,False,Alguien va a una boda.,Someone is going to a wedding.,,-1375,-1120,112

@@ -1,0 +1,47 @@
+﻿Name,Character,Kind,Text,English,ItemPool
+marek_ask_0,marek,ask,"Quería {acc}, por favor.","I'd like {en}, please.",jabłko gruszka śliwka cytryna marchewka
+marek_ask_1,marek,ask,Busco {acc}.,I'm looking for {en}.,jabłko gruszka śliwka cytryna marchewka
+marek_ask_2,marek,ask,"Tráeme {acc}, por favor.","Bring me {en}, please.",jabłko gruszka śliwka cytryna marchewka
+marek_ok_0,marek,ok,¡Exactamente! Gracias.,Exactly right! Thank you.,jabłko gruszka śliwka cytryna marchewka
+marek_ok_1,marek,ok,¡Muy bien!,Very good!,jabłko gruszka śliwka cytryna marchewka
+basia_ask_0,basia,ask,"Hay un cliente esperando. Pásame {acc}, por favor.","A customer is waiting. Pass me {en}, please.",chleb bułka ciastko drożdżówka szarlotka
+basia_ask_1,basia,ask,"Quería {acc}, por favor.","I'd like {en}, please.",chleb bułka ciastko drożdżówka szarlotka
+basia_ask_2,basia,ask,¿Me das {acc}?,Can you give me {en}?,chleb bułka ciastko drożdżówka szarlotka
+basia_ok_0,basia,ok,¡Gracias! ¡Que aproveche!,Thank you! Enjoy!,chleb bułka ciastko drożdżówka szarlotka
+basia_ok_1,basia,ok,"¡Genial, gracias!","Great, thanks!",chleb bułka ciastko drożdżówka szarlotka
+ola_ask_0,ola,ask,Un cliente pide {acc}.,A customer is asking for {en}.,kawa herbata woda sok mleko
+ola_ask_1,ola,ask,"¿Me pones {acc}, por favor?","Can I have {en}, please?",kawa herbata woda sok mleko
+ola_ask_2,ola,ask,¿Dónde está {nom}?,Where is {the}?,kawa herbata woda sok mleko
+ola_ok_0,ola,ok,¡Gracias! Perfecto.,Thanks! Perfect.,kawa herbata woda sok mleko
+ola_ok_1,ola,ok,¡Estupendo!,Great!,kawa herbata woda sok mleko
+kuba_ask_0,kuba,ask,¡Busca {acc}!,Find {en}!,piłka lalka miś latawiec
+kuba_ask_1,kuba,ask,¿Dónde está {nom}?,Where is {the}?,piłka lalka miś latawiec
+kuba_ask_2,kuba,ask,¿Has visto {gen}?,Have you seen {the}?,piłka lalka miś latawiec
+kuba_ok_0,kuba,ok,¡Bien! ¡Gracias!,Hooray! Thank you!,piłka lalka miś latawiec
+kuba_ok_1,kuba,ok,¡Qué guay!,Cool!,piłka lalka miś latawiec
+kuba_ok_2,kuba,ok,¡Bien! ¡Hasta luego!,Hooray! See you!,piłka lalka miś latawiec
+zosia_ask_0,zosia,ask,Una clienta quiere {acc}.,A customer wants {en}.,róża lilia stokrotka orchidea
+zosia_ask_1,zosia,ask,"Quería {acc}, por favor.","I'd like {en}, please.",róża lilia stokrotka orchidea
+zosia_ask_2,zosia,ask,Busco {acc}.,I'm looking for {en}.,róża lilia stokrotka orchidea
+zosia_ok_0,zosia,ok,¡Qué bonita! Gracias.,How pretty! Thank you.,róża lilia stokrotka orchidea
+zosia_ok_1,zosia,ok,¡Estupendo!,Great!,róża lilia stokrotka orchidea
+ewa_ask_0,ewa,ask,"Quería {acc}, por favor.","I'd like {en}, please.",czerwona niebieska żółta zielona biała
+ewa_ask_1,ewa,ask,Necesito {acc}.,I need {en}.,czerwona niebieska żółta zielona biała
+ewa_ask_2,ewa,ask,¿Me pasas {gen}?,Can you pass me {the}?,czerwona niebieska żółta zielona biała
+ewa_ok_0,ewa,ok,¡Precioso! Gracias.,Lovely! Thank you.,czerwona niebieska żółta zielona biała
+ewa_ok_1,ewa,ok,¡Perfecto! Ahora puedo pintar.,Perfect! Now I can paint.,czerwona niebieska żółta zielona biała
+tadeusz_ask_0,tadeusz,ask,Un cliente está esperando {acc}.,A customer is waiting for {en}.,paczka koperta pocztówka
+tadeusz_ask_1,tadeusz,ask,"Quería {acc}, por favor.","I'd like {en}, please.",paczka koperta pocztówka
+tadeusz_ask_2,tadeusz,ask,¿Dónde está {nom}?,Where is {the}?,paczka koperta pocztówka
+tadeusz_ok_0,tadeusz,ok,"¡Muy bien, gracias!","Very good, thank you!",paczka koperta pocztówka
+tadeusz_ok_1,tadeusz,ok,¡Buen trabajo!,Good job!,paczka koperta pocztówka
+halina_ask_0,halina,ask,Una clienta busca {acc}.,A customer is looking for {en}.,książka mapa gazeta kredka
+halina_ask_1,halina,ask,"¿Me das {acc}, por favor?","Can you give me {en}, please?",książka mapa gazeta kredka
+halina_ask_2,halina,ask,¿Dónde está {nom}?,Where is {the}?,książka mapa gazeta kredka
+halina_ok_0,halina,ok,¡Gracias! Muy bien.,Thank you! Very good.,książka mapa gazeta kredka
+halina_ok_1,halina,ok,¡Perfecto!,Perfect!,książka mapa gazeta kredka
+bogdan_ask_0,bogdan,ask,"{why} Quería {acc}, por favor.","{whyEn} I'd like {en}, please.",czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ask_1,bogdan,ask,"{why} Pásame {acc}, por favor.","{whyEn} Pass me {en}, please.",czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ask_2,bogdan,ask,{why} Necesito {acc}.,{whyEn} I need {en}.,czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ok_0,bogdan,ok,¡Gracias! Estupendo.,Thank you! Great.,czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ok_1,bogdan,ok,¡Genial! El cliente está contento.,Great! The customer is pleased.,czapka kurtka parasolka rękawiczki koszula sukienka
