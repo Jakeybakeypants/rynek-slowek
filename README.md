@@ -21,7 +21,7 @@ Pick the language you're learning in Settings: Polish (the original), German, Sp
 | Polish | 940 | 1,738 | 2,380 | about 3,200 |
 | German | 951 | 1,819 | 2,650 | about 3,500 |
 | Spanish | 952 | 1,850 | 2,712 | about 3,700 |
-| French | 952 | 1,835 | 2,668 | about FRF |
+| French | 952 | 1,835 | 2,668 | about 3,400 |
 
 `tools/translate/README.md` explains how a language is added.
 

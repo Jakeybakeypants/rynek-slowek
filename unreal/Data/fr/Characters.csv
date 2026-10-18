@@ -1,0 +1,32 @@
+﻿Name,DisplayName,Role,Kind,X,Y,Z,Yaw,Scale,Shirt,Pants,Hair,HairStyle,Hat,HatColor,Moustache,Glasses,Apron,Skirt,Bag,BagColor,Prop,QuestItem,QuestReward,ReceivesFrom,ReceivesItem,HasOrders,HasQuiz,HasMusic,ChatCount
+jozef,Joseph,grandpa by the fountain,adult,520,1100,0,210,1,#7A6A55,#4A4A52,#E6E6E6,hair_sides,cap,#5B5141,#EDEDED,False,,,,,cane,okulary,20,tadeusz,list,False,False,False,0
+filemon,Philémon,a cat on the town hall steps,cat,240,-445,0,100.9,1,,,,,,,,False,,,,,,mleko,20,,,False,False,False,0
+marek,Marc,the greengrocer,adult,-1090,220,0,28,1,#E8E0D0,,#2B1D14,,,,#2B1D14,False,#3F8F4F,,,,,jabłko,20,,,True,False,False,0
+basia,Babette,the baker,adult,-2490,-620.8,0,29.7,1,#F7F3EC,#D9C7B4,#8A4B2A,,toque,#FFFFFF,,False,#EADFCF,#E9DFD0,,,,chleb,20,,,True,False,False,0
+ola,Lola,works at the café,adult,2500,211.5,0,166.8,1,#E05A47,#2C3446,#C8913A,hair_ponytail,,,,False,#2E2E2E,,,,,,0,basia,chleb,True,False,False,0
+kuba,Jacob,a boy by the sandpit,child,1240,1280,0,201.2,0.68,#F2C230,#3C6FB0,#6B3F1F,,kidcap,#D33A3A,,False,,,,,,piłka,20,,,True,False,False,0
+zosia,Sophie,the florist,adult,-1137.4,2500,0,303.8,1,#4BA3A0,#3B4252,#4A2B1A,,scarf,#C83C3C,,False,,#2F7A77,,,,klucze,20,,,True,False,False,0
+ewa,Ève,a painter at her easel,adult,1200,45,0,147.8,1,#3E6FA8,#2C3446,#2B1D14,,beret,#B23A3A,,False,#F4EFE6,,,,,pędzel,20,,,True,False,False,0
+tadeusz,Théo,the postman,adult,1356.3,2500,0,231.4,1,#2F4E8C,#2C3446,#5A4636,,cap,#2F4E8C,#5A4636,False,,,satchel,#7A4E2D,,list,20,,,True,False,False,0
+halina,Hélène,the bookseller,adult,1554.5,-2500,0,115.2,1,#B5654A,#4A4A52,#9A9A9A,hair_short hair_bun,,,,True,,#5A4A42,,,,torba,20,,,True,False,False,0
+burek,Médor,a dog by the trees,dog,-1700,2100,0,322.6,1,,,,,,,,False,,,,,,kość,20,,,False,False,False,0
+zuzia,Suzie,a girl playing hopscotch,child,-470,2100,0,289.9,0.66,#E86FA0,#F2EEE6,#C8913A,hair_pigtails,,,,False,,#E86FA0,,,,skakanka,20,,,False,True,False,0
+staszek,Stéphane,an accordion player,adult,-880,-420,0,54.2,1,#7A2E2E,#2C2F3A,#3B2A20,,cap,#2B2B2B,#3B2A20,False,,,,,accordion,nuty,20,,,False,False,True,0
+bogdan,Bernard,sells clothes,adult,-1240,-1160,0,57.7,1,#E8E0D0,,#5A4636,,,,#5A4636,False,#3A6EA5,,,,,,0,,,True,False,False,0
+krysia,Christine,a grandma feeding the pigeons,adult,-520,1100,0,330,1,#8C5A8A,#4A4A52,#BDBDBD,,scarf,#3F6FA0,,True,,#4A3A5A,,,,bułka,20,,,False,False,False,0
+ania,Annie,a student by the pond,adult,4620,-1500,0,153.5,1,#D0605E,#3C6FB0,#C8913A,hair_ponytail,,,,False,,,,,,telefon,20,,,False,False,False,90
+wieslaw,Gilbert,the park keeper,adult,3920,-1183,0,153.2,1,#4F6B3A,#3B4232,#9A9A9A,,cap,#3D5A2E,#8A8A8A,False,,,,,,,0,,,False,False,False,97
+tomek,Thomas,"a boy with a skateboard, usually",child,5750,-500,0,167.3,0.8,#E04A4A,#2C2F3A,#6B3F1F,,kidcap,#2B2B2B,,False,,,,,,deskorolka,20,,,False,False,False,82
+piotr,Pierre,waiting with flowers,adult,4220,-3300,0,135.8,1,#F2F2EE,#2C3446,#2B1D14,,,,,False,,,,,flowers,,0,,,False,False,False,97
+teresa,Thérèse,knitting on a bench,adult,5700,-2670,0,148.7,1,#6A8FB5,#4A4A52,#C9C9C9,hair_short hair_bun,,,,True,,#3E4F6A,,,,,0,,,False,False,False,89
+marta,Marthe,running late,adult,6220,-2200,0,154.3,1,#C2456B,#2C3446,#7A3B1E,hair_ponytail,,,,False,,#2C3446,satchel,#B07A4A,,,0,,,False,False,False,73
+michal,Michel,the waiter on the café terrace,adult,2280,-88.5,0,158.7,1,#F4F1E6,#2A2A2A,#3B2A20,,,,,False,#2F6B4F,,,,,karta,20,,,False,False,False,96
+zbigniew,Gérard,reading the paper on the terrace,adult,1660,-143.5,0,150.4,1,#8A7356,#4A4A52,#D8D8D8,hair_sides,beret,#3E3A36,#D8D8D8,True,,,,,,,0,,,False,False,False,120
+kasia,Catherine,working at a terrace table,adult,2200,661.5,0,176.4,1,#3E7CA8,#2C3446,#2B1D14,hair_short,,,,False,,,satchel,#5A5F6A,,,0,,,False,False,False,128
+roman,Romain,a bus driver on his break,adult,5960,920,0,181.2,1,#5B7FA8,#2C3446,#5A4636,,cap,#2F4E8C,#5A4636,False,,,,,,,0,,,False,False,False,105
+ela,Élodie,late for work,adult,5040,900,0,181.1,1,#B5654A,#2C3446,#C8913A,hair_short hair_bun,,,,False,,#3B3F4A,satchel,#2B2B2B,,bilet,20,,,False,False,False,103
+bartek,Baptiste,on his way to football training,child,5320,870,0,180.8,0.9,#F2C230,#2C2F3A,#6B3F1F,,,,,False,,,backpack,#2F6FD0,,,0,,,False,False,False,96
+dorota,Dominique,a teacher at the school,adult,5660,3150,0,202.5,1,#8C3A5A,#2C3446,#5A3A28,hair_short hair_bun,,,,True,,#3B3F4A,,,,dzwonek,20,,,False,False,False,82
+jerzy,Georges,the school caretaker,adult,6360,2020,0,190.9,1,#5A6B7A,#3B4232,#BDBDBD,,cap,#3A5A7A,#BDBDBD,False,#3A5A7A,,,,,,0,,,False,False,False,74
+hania,Léa,a girl who loves science,child,6390,2560,0,195.4,0.68,#6FBF8F,#3C6FB0,#C8913A,hair_pigtails,,,,False,,#3C6FB0,backpack,#E86FA0,,,0,,,False,False,False,71
+kacper,Gaspard,a boy at break time,child,5120,2360,0,196.9,0.72,#2F6FD0,#2C2F3A,#3B2A20,,,,,False,,,backpack,#F2C230,,,0,,,False,False,False,75
