@@ -242,7 +242,7 @@ function buildPark() {
   // hedges all round, open where the street comes in
   const hedge = M("#3F6E35");
   const hedgeBox = (ax, bx, az, bz) => { scene.add(mesh(new THREE.BoxGeometry(bx - ax, 1.3, bz - az), hedge, (ax + bx) / 2, 0.65, (az + bz) / 2)); addBox(ax, bx, az, bz); };
-  hedgeBox(x0, x0 + 0.8, z0, gate[0]); hedgeBox(x0, x0 + 0.8, gate[1], z1); hedgeBox(x0, x1, z0, z0 + 0.8); hedgeBox(x0, 42.6, z1 - 0.8, z1); hedgeBox(45.4, x1, z1 - 0.8, z1); // the gap leads out to the bus stop hedgeBox(x1 - 0.8, x1, z0, z1);
+  hedgeBox(x0, x0 + 0.8, z0, gate[0]); hedgeBox(x0, x0 + 0.8, gate[1], z1); hedgeBox(x0, x1, z0, z0 + 0.8); hedgeBox(x0, 42.6, z1 - 0.8, z1); hedgeBox(45.4, x1, z1 - 0.8, z1); hedgeBox(x1 - 0.8, x1, z0, z1); // the gap in the south hedge leads out to the bus stop
   // the gate sign
   const post = new THREE.Group(); post.position.set(x0 + 1.4, 0, gate[0] + 0.6); scene.add(post);
   post.add(mesh(new THREE.CylinderGeometry(0.07, 0.07, 2.4, 8), M(IRON), 0, 1.2, 0));
@@ -301,14 +301,22 @@ function buildBusStop() {
   // a lawn across the road, east of the side road
   const far = mesh(new THREE.PlaneGeometry(110, 30), new THREE.MeshStandardMaterial({ color: 0x6e9a4a, roughness: 1, polygonOffset: true, polygonOffsetFactor: -1 }), x0 + 7 + 55, 0.012, z1 + 7.2 + 15, false);
   far.rotation.x = -Math.PI / 2; scene.add(far);
-  [[50, z1 + 10], [58, z1 + 11.5], [66, z1 + 10.5], [74, z1 + 12]].forEach(([x, z], i) => tree(x, z, 1 + (i % 2) * 0.15));
+  [[72, z1 + 10], [78, z1 + 13.5], [84, z1 + 10.5], [90, z1 + 12]].forEach(([x, z], i) => tree(x, z, 1 + (i % 2) * 0.15));
   addWordLabel({ word: "chodnik", pos: new THREE.Vector3(40.5, 0.6, z0 + 2.4), max: 6, kind: "small" });
   addWordLabel({ word: "ulica", pos: new THREE.Vector3(46, 0.6, z1 + 3.6), max: 12, kind: "small" });
   // a railing along the kerb, so people wait on the pavement
-  for (let x = x0 + 0.8; x <= x1 - 0.8; x += 2.4) scene.add(mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.9, 6), M(IRON), x, 0.45, z1 - 0.15));
-  scene.add(mesh(new THREE.BoxGeometry(x1 - x0 - 1.6, 0.06, 0.06), M(IRON), (x0 + x1) / 2, 0.9, z1 - 0.15));
-  scene.add(mesh(new THREE.BoxGeometry(x1 - x0 - 1.6, 0.04, 0.04), M(IRON), (x0 + x1) / 2, 0.5, z1 - 0.15));
-  addBox(x0, x1, z1 - 0.35, z1 + 12);
+  // a railing along the kerb, open where the zebra crossing leads over to the school
+  const [cx0, cx1] = SCHOOL.crossing;
+  for (const [a, b] of [[x0 + 0.8, cx0], [cx1, x1 - 0.8]]) {
+    for (let x = a; x <= b + 0.01; x += (b - a) / Math.max(1, Math.round((b - a) / 2.4))) scene.add(mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.9, 6), M(IRON), x, 0.45, z1 - 0.15));
+    scene.add(mesh(new THREE.BoxGeometry(b - a, 0.06, 0.06), M(IRON), (a + b) / 2, 0.9, z1 - 0.15));
+    scene.add(mesh(new THREE.BoxGeometry(b - a, 0.04, 0.04), M(IRON), (a + b) / 2, 0.5, z1 - 0.15));
+  }
+  // you can only cross the road on the crossing
+  addBox(x0, cx0, z1 - 0.35, SCHOOL.z0); addBox(cx1, x1, z1 - 0.35, SCHOOL.z0);
+  const zebra = new THREE.MeshStandardMaterial({ color: 0xf2f2ea, roughness: 0.8, polygonOffset: true, polygonOffsetFactor: -4 });
+  for (let z = z1 + 0.5; z < SCHOOL.z0 - 0.3; z += 1.0) { const st = mesh(new THREE.PlaneGeometry(cx1 - cx0 - 0.2, 0.5), zebra, (cx0 + cx1) / 2, 0.025, z, false); st.rotation.x = -Math.PI / 2; scene.add(st); }
+  addWordLabel({ word: "przejście", pos: new THREE.Vector3((cx0 + cx1) / 2, 0.6, z1 + 3.6), max: 9, kind: "small" });
   // the shelter: glass back and sides, a roof, a bench, the timetable
   const g = new THREE.Group(); g.position.set(sx, 0, z0 + 1.5); scene.add(g);
   const glass = new THREE.MeshStandardMaterial({ color: 0xbfdcec, roughness: 0.1, metalness: 0.1, transparent: true, opacity: 0.35, side: THREE.DoubleSide });
@@ -346,6 +354,7 @@ function buildBusStop() {
   // a gap in the park's south hedge where the path comes out (see buildPark)
   HOMES.bilet = new THREE.Vector3(44.9, 0.05, -2.6);
   bus = makeBus();
+  buildSchool();
 }
 function makeBus() {
   const g = new THREE.Group(); scene.add(g);
@@ -379,6 +388,10 @@ function updateBus(dt) {
   const [ax, az] = b.pts[b.seg], [bx, bz] = b.pts[b.seg + 1], len = Math.hypot(bx - ax, bz - az);
   // slow down for the stop
   const left = (1 - b.t) * len;
+  // wait for anyone on the zebra crossing in front of the bus
+  const p = player.pos, [c0, c1] = SCHOOL.crossing, front = b.g.position.x - 5.3;
+  if (b.seg === 0 && b.g.visible && p.x > c0 - 0.5 && p.x < c1 + 0.5 && p.z > BUS_STOP.z1 && p.z < SCHOOL.z0 && front > p.x && front - p.x < 9) { b.speed = 0; b.held = true; return; }
+  b.held = false;
   const want = b.seg === 0 ? Math.max(1.2, Math.min(11, left * 0.5)) : Math.min(11, b.speed + dt * 2.5);
   b.speed += (want - b.speed) * Math.min(1, dt * 2);
   b.t += b.speed * dt / len;
@@ -391,6 +404,68 @@ function updateBus(dt) {
   const [px, pz] = b.pts[b.seg], [qx, qz] = b.pts[b.seg + 1];
   b.g.position.set(px + (qx - px) * b.t, 0, pz + (qz - pz) * b.t);
   b.g.rotation.y = Math.atan2(qz - pz, -(qx - px)); // the bus's front is its -x end
+}
+
+// the school, across the road from the bus stop: a fenced yard with a small pitch, and the school building
+const SCHOOL = { x0: 44, x1: 66, z0: BUS_STOP.z1 + 7.2, z1: BUS_STOP.z1 + 21, crossing: [59.8, 62.8] };
+function buildSchool() {
+  const { x0, x1, z0, z1, crossing: [c0, c1] } = SCHOOL;
+  // the yard: asphalt, with a painted pitch
+  const yard = mesh(new THREE.PlaneGeometry(x1 - x0, z1 - z0), new THREE.MeshStandardMaterial({ map: cobbleTex("#B9B4AA", "#A39E94", 53, 8), roughness: 1, polygonOffset: true, polygonOffsetFactor: -3 }), (x0 + x1) / 2, 0.02, (z0 + z1) / 2, false);
+  yard.rotation.x = -Math.PI / 2; scene.add(yard);
+  const px0 = 46.5, px1 = 59, pz0 = z0 + 2.2, pz1 = z0 + 9.2, line = M("#F2F2EA");
+  const paint = (x, z, w, d) => { const l = mesh(new THREE.PlaneGeometry(w, d), line, x, 0.03, z, false); l.rotation.x = -Math.PI / 2; scene.add(l); };
+  paint((px0 + px1) / 2, pz0, px1 - px0, 0.08); paint((px0 + px1) / 2, pz1, px1 - px0, 0.08); paint(px0, (pz0 + pz1) / 2, 0.08, pz1 - pz0); paint(px1, (pz0 + pz1) / 2, 0.08, pz1 - pz0); paint((px0 + px1) / 2, (pz0 + pz1) / 2, 0.08, pz1 - pz0);
+  // two small goals
+  for (const [x, dir] of [[px0 + 0.3, 1], [px1 - 0.3, -1]]) {
+    const g = new THREE.Group(); g.position.set(x, 0, (pz0 + pz1) / 2); scene.add(g);
+    const white = M("#F4F4F0");
+    for (const z of [-1.1, 1.1]) g.add(mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.2, 6), white, 0, 0.6, z));
+    const bar = mesh(new THREE.CylinderGeometry(0.04, 0.04, 2.2, 6), white, 0, 1.2, 0); bar.rotation.x = Math.PI / 2; g.add(bar);
+    const net = mesh(new THREE.BoxGeometry(0.7, 1.2, 2.2), new THREE.MeshStandardMaterial({ color: 0xffffff, transparent: true, opacity: 0.25, side: THREE.DoubleSide }), -dir * 0.35, 0.6, 0, false); g.add(net);
+    addBox(x - 0.75 * (dir > 0 ? 1 : 0), x + 0.75 * (dir < 0 ? 1 : 0), (pz0 + pz1) / 2 - 1.15, (pz0 + pz1) / 2 + 1.15);
+    if (dir > 0) addWordLabel({ word: "bramka", anchor: g, y: 1.7, max: 8, kind: "small" });
+  }
+  // a fence round the yard, with a gate opposite the crossing
+  const fence = M("#3E6B4A"), rail = (a, b, z) => { scene.add(mesh(new THREE.BoxGeometry(b - a, 0.05, 0.05), fence, (a + b) / 2, 1.0, z)); scene.add(mesh(new THREE.BoxGeometry(b - a, 0.05, 0.05), fence, (a + b) / 2, 0.35, z)); for (let x = a; x <= b + 0.01; x += 0.25) scene.add(mesh(new THREE.BoxGeometry(0.03, 1.05, 0.03), fence, x, 0.53, z, false)); };
+  rail(x0, c0, z0 + 0.1); rail(c1, x1, z0 + 0.1);
+  const side = mesh(new THREE.BoxGeometry(0.05, 1.05, z1 - z0), fence, x0, 0.53, (z0 + z1) / 2); scene.add(side);
+  addBox(x0 - 0.3, x0 + 0.15, z0, z1 + 1);
+  addWordLabel({ word: "płot", pos: new THREE.Vector3(x0 + 3, 1.5, z0 + 0.1), max: 7, kind: "small" });
+  // the school building
+  const bw = 20, bh = 9.5, bd = 8, bx = (x0 + x1) / 2, bz = z1 + bd / 2;
+  const cream = "#EBD9A7", wall = M(cream), front = new THREE.MeshStandardMaterial({ map: facadeTex(bw, bh, cream, "school", rng(31)), roughness: 0.95 });
+  const hall = new THREE.Mesh(new THREE.BoxGeometry(bw, bh, bd), [wall, wall, wall, wall, wall, front]);
+  // the -z face, with the windows and door, looks onto the yard
+  hall.position.set(bx, bh / 2, bz); hall.castShadow = hall.receiveShadow = true; scene.add(hall);
+  scene.add(mesh(new THREE.BoxGeometry(bw + 0.4, 0.4, bd + 0.4), M("#C9B88A"), bx, bh + 0.2, bz));
+  addBox(bx - bw / 2, bx + bw / 2, z1, z1 + bd + 2);
+  const wood = M("#2F4E8C");
+  const sign = new THREE.Mesh(new THREE.BoxGeometry(7, 0.8, 0.12), [wood, wood, wood, wood, wood, new THREE.MeshStandardMaterial({ map: signTex("SZKOŁA PODSTAWOWA NR 3", "#2F4E8C", "#FFFFFF") })]);
+  sign.position.set(bx, 4.75, z1 - 0.08); scene.add(sign);
+  addWordLabel({ word: "szkoła", pos: new THREE.Vector3(bx, 5.9, z1 - 0.2), max: 30, kind: "sign" });
+  // a flag on the front: white over red
+  const fp = new THREE.Group(); fp.position.set(bx + 6, 7.5, z1 - 0.2); scene.add(fp);
+  const pole = mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.8, 6), M("#9AA6AE"), 0, 0, -0.5); pole.rotation.x = -0.9; fp.add(pole);
+  const flag = new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, roughness: 0.9, map: canvasTex(64, 40, (g, W, H) => { g.fillStyle = "#F7F7F2"; g.fillRect(0, 0, W, H / 2); g.fillStyle = "#D4213D"; g.fillRect(0, H / 2, W, H / 2); }) });
+  const fl = mesh(new THREE.PlaneGeometry(1.0, 0.62), flag, 0.5, 0.35, -1.05, false); fp.add(fl);
+  addWordLabel({ word: "flaga", anchor: fp, y: 1.1, max: 14, kind: "small" });
+  // a bike rack, benches, a couple of trees
+  const rack = new THREE.Group(); rack.position.set(63.2, 0, z1 - 1.2); scene.add(rack);
+  rack.add(mesh(new THREE.BoxGeometry(3.2, 0.05, 0.05), M(IRON), 0, 0.55, 0));
+  [["#D33A3A", -1], ["#2F6FD0", 0], ["#F2C230", 1]].forEach(([col, i]) => {
+    const b = new THREE.Group(); b.position.set(i * 1.0, 0, 0.1); b.rotation.y = Math.PI / 2; rack.add(b);
+    const tyre = new THREE.TorusGeometry(0.3, 0.035, 6, 16);
+    for (const z of [-0.5, 0.5]) { const t = mesh(tyre, M("#1E1E22"), 0, 0.33, z); t.rotation.y = Math.PI / 2; b.add(t); }
+    const frame = mesh(new THREE.BoxGeometry(0.05, 0.05, 0.95), M(col), 0, 0.55, 0); frame.rotation.x = 0.15; b.add(frame);
+    b.add(mesh(new THREE.BoxGeometry(0.05, 0.4, 0.05), M(col), 0, 0.55, 0.35));
+    b.add(mesh(new THREE.BoxGeometry(0.4, 0.04, 0.04), M("#2A2A2A"), 0, 0.78, 0.42));
+    if (i === 0) addWordLabel({ word: "rower", anchor: b, y: 1.2, max: 7, kind: "small" });
+  });
+  addBox(61.4, 65, z1 - 1.8, z1 - 0.6);
+  bench(65.2, z0 + 7, -Math.PI / 2); bench(45.3, z0 + 11.5, Math.PI / 2);
+  tree(45.6, z0 + 1.6, 0.9); tree(64.8, z0 + 1.6, 0.85);
+  HOMES.dzwonek = new THREE.Vector3(TERRACE.x0 + 1.1, 0.08, SHOP.kawiarnia.a + 1.0);
 }
 const ducks = [];
 function updateDucks(dt) {
@@ -597,6 +672,10 @@ const LOOKS = {
   roman: { shirt: "#5B7FA8", pants: "#2C3446", hair: "#5A4636", hat: "cap", hatColor: "#2F4E8C", moustache: "#5A4636" },
   ela: { shirt: "#B5654A", pants: "#2C3446", hair: "#C8913A", style: ["hair_short", "hair_bun"], satchel: "#2B2B2B", skirt: "#3B3F4A" },
   bartek: { shirt: "#F2C230", pants: "#2C2F3A", hair: "#6B3F1F", backpack: "#2F6FD0", scale: 0.9 },
+  dorota: { shirt: "#8C3A5A", pants: "#2C3446", hair: "#5A3A28", style: ["hair_short", "hair_bun"], glasses: true, skirt: "#3B3F4A" },
+  jerzy: { shirt: "#5A6B7A", apron: "#3A5A7A", pants: "#3B4232", hair: "#BDBDBD", moustache: "#BDBDBD", hat: "cap", hatColor: "#3A5A7A" },
+  hania: { shirt: "#6FBF8F", pants: "#3C6FB0", hair: "#C8913A", pigtails: true, scale: 0.68, skirt: "#3C6FB0", backpack: "#E86FA0" },
+  kacper: { shirt: "#2F6FD0", pants: "#2C2F3A", hair: "#3B2A20", scale: 0.72, backpack: "#F2C230" },
   marta: { shirt: "#C2456B", pants: "#2C3446", hair: "#7A3B1E", ponytail: true, skirt: "#2C3446", satchel: "#B07A4A" },
   krysia: { shirt: "#8C5A8A", pants: "#4A4A52", hair: "#BDBDBD", hat: "scarf", hatColor: "#3F6FA0", glasses: true, skirt: "#4A3A5A" },
 };
@@ -608,7 +687,8 @@ function placeNPCs() {
     zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0],
     wieslaw: [39.2, (PARK.gate[0] + PARK.gate[1]) / 2 + 2.6], ania: [46.2, -15.0], tomek: [57.5, -5.0], piotr: [42.2, -33.0], teresa: [57.0, -26.7], marta: [62.2, -22.0],
     michal: [22.8, c - 3.6], zbigniew: [16.6, c - 4.15], kasia: [22.0, c + 3.9],
-    roman: [59.6, BUS_STOP.z0 + 3.2], ela: [50.4, BUS_STOP.z0 + 3.0], bartek: [53.2, BUS_STOP.z0 + 2.7] };
+    roman: [59.6, BUS_STOP.z0 + 3.2], ela: [50.4, BUS_STOP.z0 + 3.0], bartek: [53.2, BUS_STOP.z0 + 2.7],
+    dorota: [56.6, SCHOOL.z1 - 0.9], jerzy: [63.6, SCHOOL.z0 + 1.6], hania: [63.9, SCHOOL.z0 + 7.0], kacper: [51.2, SCHOOL.z0 + 5.0] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
     const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);
@@ -692,6 +772,12 @@ function itemModel(id) {
       add(new THREE.CylinderGeometry(0.025, 0.025, 0.2, 8), "#F2EDE0").rotation.z = Math.PI / 2;
       for (const x of [-0.1, 0.1]) for (const z of [-0.022, 0.022]) add(new THREE.SphereGeometry(0.035, 8, 6), "#F2EDE0", x, 0, z);
       break;
+    case "dzwonek": {
+      const brass = { m: 0.6, r: 0.35 };
+      g.add(mesh(new THREE.CylinderGeometry(0.035, 0.08, 0.1, 12, 1, true), M("#C9A23B", { ...brass, ds: true }), 0, 0.05, 0, false));
+      g.add(mesh(new THREE.CylinderGeometry(0.02, 0.025, 0.12, 8), M("#6E4A2B"), 0, 0.16, 0, false));
+      break;
+    }
     case "bilet":
       add(new THREE.BoxGeometry(0.16, 0.006, 0.08), "#F2EEE6");
       add(new THREE.BoxGeometry(0.16, 0.007, 0.022), "#2F4E8C", 0, 0.001, -0.025);

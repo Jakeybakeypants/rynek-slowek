@@ -309,7 +309,7 @@ function buildBackdrop() {
     const ang = R() * Math.PI * 2, dist = 46 + R() * 40, x = Math.cos(ang) * dist, z = Math.sin(ang) * dist;
     if (x > -24 && x < 4 && z < -36 && z > -72) continue;
     if (x > 28 && x < 74 && z > -48 && z < 14) continue; // the park
-    if (x > 30 && z > 2 && z < 22) continue; // the road past the bus stop
+    if (x > 30 && z > 2 && z < 50) continue; // the road past the bus stop, and the school
     if (x > 30 && x < 50 && z > 2) continue; // the side road the bus turns into
     const w = 6 + R() * 8, d = 6 + R() * 8, hgt = 8 + R() * 12;
     const g = new THREE.Group();

@@ -235,6 +235,28 @@ await page.waitForFunction(() => window.__rynek.bus.wait > 0, null, { timeout: 2
 check(await R(() => { const b = window.__rynek.bus; return b.wait > 0 && b.g.visible && Math.abs(b.g.position.x - window.__rynek.busStop.x) < 1; }), "the bus pulls in at the stop");
 await shot("6-bus-stop");
 
+// the school across the road: walk over the zebra crossing into the yard; the bus waits for you on it
+await R(() => { const r = window.__rynek, s = r.school; r.player.pos.set((s.crossing[0] + s.crossing[1]) / 2, 0, r.busStop.z1 - 0.8); r.cam.yaw = Math.PI; });
+await page.keyboard.down("KeyW");
+const crossed = await page.waitForFunction(() => window.__rynek.player.pos.z > window.__rynek.school.z0 + 1, null, { timeout: 90000 }).then(() => true, () => false);
+await page.keyboard.up("KeyW");
+check(crossed, "you can cross the road on the zebra crossing into the school yard");
+await R(() => { const r = window.__rynek, s = r.school, b = r.bus; r.player.pos.set((s.crossing[0] + s.crossing[1]) / 2, 0, r.busStop.z1 + 3.2); b.pause = 0; b.wait = 0; b.seg = 0; b.g.visible = true; b.t = (b.pts[0][0] - (s.crossing[1] + 10)) / (b.pts[0][0] - b.pts[1][0]); b.speed = 8; });
+await page.waitForFunction(() => window.__rynek.bus.held, null, { timeout: 60000 }).catch(() => {});
+check(await R(() => window.__rynek.bus.held && window.__rynek.bus.g.position.x - 5.3 > window.__rynek.player.pos.x), "the bus waits while you're on the crossing");
+// Mrs Dorota lost the school bell; it's on the café terrace
+const [dx, dz] = await npcAt("dorota", 0, -1.4);
+await goTo(dx, dz, "Dorota"); await press(); await talkThrough();
+const bell = await R(() => { const h = window.__rynek.HOMES.dzwonek; return [h.x + 1, h.z]; });
+await goTo(bell[0], bell[1], "dzwonek"); await press();
+check((await state()).bag.includes("dzwonek"), "picks up the school bell (dzwonek) on the café terrace");
+const coinsD = (await state()).coins;
+await goTo(dx, dz, "Dorota"); await press();
+const thanksD = await talkThrough(), sD = await state();
+check(thanksD[0] === "Mój dzwonek! Dziękuję!" && sD.npc.dorota.stage === "done" && sD.coins === coinsD + 20, "Mrs Dorota gets her bell back (+20 zł)");
+await R(() => { const r = window.__rynek; r.player.pos.set(r.npcObjs.kacper.x, 0, r.npcObjs.kacper.z - 4); r.cam.yaw = Math.PI; });
+await shot("7-school");
+
 await press("v");
 await page.waitForFunction(() => !document.querySelector("#vocab").hidden);
 check((await R(() => document.querySelectorAll("#v-list .v-row").length)) > 20, "the word list shows the words met so far");

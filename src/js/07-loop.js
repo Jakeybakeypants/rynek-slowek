@@ -26,7 +26,7 @@ function collide(p, r) {
       if (d < m && d > 1e-6) { p.x = c.x + dx / d * m; p.z = c.z + dz / d * m; }
     }
   }
-  p.x = clamp(p.x, -26.6, PARK.x1 - 0.6); p.z = clamp(p.z, PARK.z0 + 0.6, 26.6); // houses and hedges do the rest
+  p.x = clamp(p.x, -26.6, PARK.x1 - 0.6); p.z = clamp(p.z, PARK.z0 + 0.6, p.x > SCHOOL.x0 ? SCHOOL.z1 - 0.6 : 26.6); // houses, hedges and fences do the rest
 }
 const keys = new Set();
 const stick = { x: 0, y: 0, id: null };
@@ -220,6 +220,8 @@ function drawMinimap() {
   g.fillStyle = "#7DAA55"; g.fillRect(X(PARK.x0), Z(PARK.z0), (PARK.x1 - PARK.x0) * sc, (PARK.z1 - PARK.z0) * sc);
   g.fillStyle = "#C9C2B4"; g.fillRect(X(PARK.x0), Z(BUS_STOP.z0), (PARK.x1 - PARK.x0) * sc, (BUS_STOP.z1 - BUS_STOP.z0) * sc);
   g.fillStyle = "#6E7074"; g.fillRect(X(PARK.x0), Z(BUS_STOP.z1), (PARK.x1 - PARK.x0) * sc, 7 * sc);
+  g.fillStyle = "#B9B4AA"; g.fillRect(X(SCHOOL.x0), Z(SCHOOL.z0), (SCHOOL.x1 - SCHOOL.x0) * sc, (SCHOOL.z1 - SCHOOL.z0) * sc);
+  g.fillStyle = "#EBD9A7"; g.fillRect(X(SCHOOL.x0 + 1), Z(SCHOOL.z1), 20 * sc, 8 * sc);
   g.beginPath(); g.ellipse(X(PARK.pond.x), Z(PARK.pond.z), PARK.pond.rx * sc, PARK.pond.rz * sc, 0, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
   g.fillStyle = palette["glaze-2"]; g.fillRect(X(-7.2), Z(-14.2), 14.4 * sc, 9.4 * sc); g.fillRect(X(-16.3), Z(1.1), 4.6 * sc, 1.8 * sc);
   g.beginPath(); g.arc(X(0), Z(6), 3.4 * sc, 0, Math.PI * 2); g.fillStyle = "#5FA8D3"; g.fill();
@@ -369,4 +371,4 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { modelledPeople: !!PEOPLE, park: PARK, busStop: BUS_STOP, get bus() { return bus; }, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
+window.__rynek = { modelledPeople: !!PEOPLE, park: PARK, busStop: BUS_STOP, school: SCHOOL, get bus() { return bus; }, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
