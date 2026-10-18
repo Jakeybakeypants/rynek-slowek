@@ -46,7 +46,9 @@ function tokenize(text) {
   if (last < text.length) out.push({ t: text.slice(last) });
   return out;
 }
-const displayLemma = l => LEX[l]?.[1] === "name" ? l[0].toUpperCase() + l.slice(1) : l;
+// names are written with a capital; so are nouns in languages that capitalise them (German)
+const capitalised = l => LEX[l]?.[1] === "name" || (UI.capitaliseNouns && LEX[l]?.[1]?.startsWith("noun"));
+const displayLemma = l => capitalised(l) ? l[0].toUpperCase() + l.slice(1) : l;
 function findPhrase(ctx) {
   if (!ctx) return null;
   const { words, index } = ctx;
@@ -68,10 +70,8 @@ function fillTemplate([pl, en], it) {
 }
 // Zuzia's sums: a + b with a, b from 1 to 5, so every answer is a number word from 2 to 10
 const QUIZ_MAX = 5;
-const quizQuestion = (a, b) => [`Ile to jest ${NUMBERS[a]} plus ${NUMBERS[b]}?`, `What's ${a} plus ${b}?`];
-const quizResult = (right, sum) => right
-  ? [`Tak! ${NUMBERS[sum][0].toUpperCase() + NUMBERS[sum].slice(1)}. Brawo!`, `Yes! ${sum}. Well done!`]
-  : [`Nie, to jest ${NUMBERS[sum]}.`, `No, it's ${sum}.`];
+const quizQuestion = (a, b) => QUIZ.question(a, b);
+const quizResult = (right, sum) => QUIZ.result(right, sum);
 // every Polish sentence the game can show (labels aside)
 // every Polish sentence the game can show (labels aside), each with who says it
 function gameLines() {
@@ -110,7 +110,7 @@ function meaningOf(key) {
   const info = lookup(key), [gloss, pos, note] = LEX[info.lemma];
   return { gloss: info.form ? `${gloss} · ${info.form}` : gloss, pos, note, lemma: info.lemma };
 }
-const displayWord = key => LEX[lookup(key)?.lemma]?.[1] === "name" ? key[0].toUpperCase() + key.slice(1) : key;
+const displayWord = key => capitalised(lookup(key)?.lemma) ? key[0].toUpperCase() + key.slice(1) : key;
 function gameWords() { const set = new Set(); for (const t of gameTexts()) for (const tk of tokenize(t)) if (tk.w) set.add(keyOf(tk.t)); return set; }
 function validateLexicon() {
   const missing = new Set();

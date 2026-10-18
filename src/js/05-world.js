@@ -141,6 +141,7 @@ function facadeTex(w, h, color, kind, R) {
   });
 }
 function signTex(text, bg = "#2F4A3A", fg = "#F4E3B5") {
+  text = tr(text);
   const tex = canvasTex(512, 96, () => {});
   const draw = () => {
     const g = tex.image.getContext("2d");
@@ -169,9 +170,10 @@ const labels = [];
 const labelLayer = $("#labels");
 function labelText(L) { return L.key && st.settings.hideKnown && status(L.key) === 2 ? "?" : L.word; }
 function addWordLabel({ word, anchor, pos, y = 0, max = 10, kind = "", near = null }) {
+  word = tr(word);
   const key = keyOf(word);
   const L = { word, key, anchor, pos, y, max, shown: false, occ: false, slot: labels.length % 4, near };
-  const btn = h("button", { class: "wl " + kind, type: "button", lang: "pl", dataset: { key, s: String(status(key)) } });
+  const btn = h("button", { class: "wl " + kind, type: "button", lang: LANG, dataset: { key, s: String(status(key)) } });
   btn.addEventListener("click", ev => { ev.stopPropagation(); openCard(word, btn, null); });
   L.btn = btn; btn.textContent = labelText(L);
   L.el = h("div", { class: "lbl", hidden: true }, btn);

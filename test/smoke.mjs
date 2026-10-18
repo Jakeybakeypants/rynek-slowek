@@ -1,11 +1,13 @@
 // Plays the real page in headless Chromium: starts the game, walks, finishes Józef's
 // errand, takes Tadeusz's letter to Józef, delivers Basia's bread to Ola, completes a café
 // order and one of Bogdan's, answers one of Zuzia's sums, sorts a word, opens the word list,
-// and fails on any page error.
+// and fails on any page error. With a language code it plays the same opening in that
+// language instead: Józef's errand, the word list, a reload.
 // Screenshots land in test/shots/ (git-ignored).
 //
 //   npm install          (once: playwright-core, plus three.js to serve locally)
 //   npm run smoke        (desktop, light)     npm run smoke -- phone   (390×844, dark)
+//   npm run smoke -- de  (German; also es, or phone de)
 //
 // Chromium: set CHROMIUM to an executable, or it uses the cloud container's headless shell.
 // The CDN is usually blocked in the container, so three.js is served from node_modules.
@@ -13,7 +15,8 @@ import { chromium } from "playwright-core";
 import { readFileSync, mkdirSync } from "node:fs";
 import { build } from "../build.mjs";
 
-const phone = process.argv[2] === "phone";
+const phone = process.argv.includes("phone");
+const lang = process.argv.slice(2).find(a => a !== "phone" && a !== "pl");
 const exe = process.env.CHROMIUM || "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell";
 const shots = new URL("./shots/", import.meta.url).pathname;
 mkdirSync(shots, { recursive: true });
@@ -39,7 +42,7 @@ await page.route("**/*", r => {
 let failures = 0;
 const check = (ok, what) => { console.log((ok ? "  ok  " : "  FAIL ") + what); if (!ok) failures++; };
 const R = (fn, arg) => page.evaluate(fn, arg);
-const shot = name => page.screenshot({ path: `${shots}${phone ? "phone" : "desktop"}-${name}.png` });
+const shot = name => page.screenshot({ path: `${shots}${phone ? "phone" : "desktop"}${lang ? "-" + lang : ""}-${name}.png` });
 const state = () => R(() => JSON.parse(JSON.stringify(window.__rynek.st)));
 async function goTo(x, z, promptText) {
   await R(([x, z]) => window.__rynek.player.pos.set(x, 0, z), [x, z]);
@@ -60,9 +63,10 @@ async function talkThrough() {
 }
 const npcAt = (id, dx, dz) => R(([id, dx, dz]) => { const o = window.__rynek.npcObjs[id]; return [o.x + dx, o.z + dz]; }, [id, dx, dz]);
 
-await page.goto("https://rynek.test/");
+await page.goto("https://rynek.test/" + (lang ? "#lang=" + lang : ""));
 await page.waitForFunction(() => window.__rynek, null, { timeout: 30000 });
 await page.waitForTimeout(1500);
+if (lang) check((await R(() => window.__rynek.LANG)) === lang, `the game loads in ${lang}`);
 check((await R(() => window.__rynek.validateLexicon().missing.length)) === 0, "every word has a dictionary entry");
 check(await R(() => window.__rynek.modelledPeople), "the people come from the Blender model");
 await shot("1-intro");
@@ -75,6 +79,7 @@ await page.keyboard.down("KeyW");
 const walked = await page.waitForFunction(z => window.__rynek.player.pos.z < z - 0.05, before, { timeout: 30000 }).then(() => true, () => false);
 await page.keyboard.up("KeyW");
 check(walked, "W walks forward");
+if (lang) await otherLanguage();
 
 await goTo(5.2, 12.9, "Józef"); await press();
 await page.waitForFunction(() => !document.querySelector("#dialogue").hidden);
@@ -277,3 +282,42 @@ check(errors.length === 0, "no page errors" + (errors.length ? ": " + errors.joi
 await browser.close();
 console.log(failures ? `${failures} check(s) failed` : "all checks passed");
 process.exit(failures ? 1 : 0);
+
+// the same opening in another language: the people, items and errands are the same, the words are not
+async function otherLanguage() {
+  const L = await R(() => { const r = window.__rynek, J = r.NPCS.jozef; return { name: J.name, hello: J.intro[0][0], done: J.done[0][0], item: r.ITEMS.okulary.word }; });
+  await goTo(5.2, 12.9, L.name); await press();
+  await page.waitForFunction(() => !document.querySelector("#dialogue").hidden);
+  check((await R(() => document.querySelector("#d-line").textContent)) === L.hello, `${L.name} greets: ${L.hello}`);
+  check((await R(() => document.querySelector("#d-line").lang)) === lang, "the line is marked as " + lang);
+  await page.click("#d-line .w >> nth=0");
+  await page.waitForFunction(() => !document.querySelector("#card").hidden);
+  const gloss = await R(() => document.querySelector("#card .c-gloss").textContent);
+  check(gloss && !gloss.includes("null") && !gloss.includes("undefined"), `clicking the first word explains it ("${gloss}")`);
+  await shot("2-card");
+  await press("Escape");
+  await talkThrough();
+  check((await state()).npc.jozef.stage === "active", `${L.name}'s errand starts`);
+  await goTo(-2.6, 2.9, L.item); await press();
+  check((await state()).bag.includes("okulary"), `picks up ${L.item}`);
+  await goTo(5.2, 12.9, L.name); await press();
+  const done = await talkThrough(), s1 = await state();
+  check(done[0] === L.done && s1.npc.jozef.stage === "done" && s1.coins === 20, `${L.name}'s errand completes`);
+  await press("v");
+  await page.waitForFunction(() => !document.querySelector("#vocab").hidden);
+  check((await R(() => document.querySelectorAll("#v-list .v-row").length)) > 5, "the word list shows the words met so far");
+  await page.click('#v-tabs button[data-tab="freq"]');
+  const summary = await R(() => document.querySelector("#f-summary").textContent);
+  check(/^\d+ of these 100 are in the game/.test(summary), "the Top 3000 tab works: " + summary);
+  await shot("4-word-list");
+  await press("Escape");
+  check((await R(() => document.documentElement.scrollWidth <= innerWidth)), "no sideways scroll");
+  await page.reload();
+  await page.waitForFunction(() => window.__rynek, null, { timeout: 30000 });
+  const after = await state();
+  check(after.coins === 20 && (await R(() => window.__rynek.LANG)) === lang, "progress and language survive a reload");
+  check(errors.length === 0, "no page errors" + (errors.length ? ": " + errors.join(" | ") : ""));
+  await browser.close();
+  console.log(failures ? `${failures} check(s) failed` : "all checks passed");
+  process.exit(failures ? 1 : 0);
+}
