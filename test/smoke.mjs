@@ -192,7 +192,7 @@ const xp = await state();
 check(xp.xp > 100 && /Poziom [2-9]/.test(await R(() => document.querySelector("#xp-level").textContent)), `XP adds up and levels rise (${xp.xp} XP)`);
 
 // the café terrace: Michał's menu blew away to the fountain; Zbigniew talks about something new each visit
-const [wx2, wz2] = await npcAt("michal", -1.3, 0);
+const [wx2, wz2] = await npcAt("michal", -1.2, 0);
 await goTo(wx2, wz2, "Michał"); await press(); await talkThrough();
 const menu = await R(() => { const h = window.__rynek.HOMES.karta; return [h.x + 1, h.z]; });
 await goTo(menu[0], menu[1], "karta"); await press();

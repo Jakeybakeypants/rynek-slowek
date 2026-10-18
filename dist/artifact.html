@@ -3857,7 +3857,7 @@ function placeNPCs() {
     ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0],
     zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0],
     wieslaw: [39.2, (PARK.gate[0] + PARK.gate[1]) / 2 + 2.6], ania: [46.2, -15.0], tomek: [57.5, -5.0], piotr: [42.2, -33.0], teresa: [57.0, -26.7], marta: [62.2, -22.0],
-    michal: [22.6, c - 1.4], zbigniew: [16.6, c - 4.15], kasia: [22.0, c + 3.9] };
+    michal: [22.8, c - 3.6], zbigniew: [16.6, c - 4.15], kasia: [22.0, c + 3.9] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
     const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);
