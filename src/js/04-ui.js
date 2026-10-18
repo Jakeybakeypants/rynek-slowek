@@ -4,7 +4,7 @@
 // ===================================================================
 function wordBtn(surface, cls = "w", ctx = null) {
   const key = keyOf(surface);
-  const b = h("button", { class: cls, type: "button", lang: "pl", dataset: { key, s: String(status(key)) } }, surface);
+  const b = h("button", { class: cls, type: "button", lang: LANG, dataset: { key, s: String(status(key)) } }, surface);
   b.addEventListener("click", ev => { ev.stopPropagation(); openCard(surface, b, ctx); });
   return b;
 }
@@ -26,13 +26,13 @@ function renderCard() {
   card.dataset.s = String(s);
   card.replaceChildren(...[
     h("div", { class: "c-top" },
-      h("span", { class: "c-word", lang: "pl" }, surface),
+      h("span", { class: "c-word", lang: LANG }, surface),
       h("button", { class: "icon-btn small", type: "button", "aria-label": "Listen", onclick: () => speak(surface) }, svgSpeaker()),
       h("button", { class: "icon-btn small", type: "button", "aria-label": "Close", onclick: closeCard }, "×")),
-    form ? h("p", { class: "c-form" }, "→ ", h("b", { lang: "pl" }, displayLemma(lemma)), " · ", form) : null,
+    form ? h("p", { class: "c-form" }, "→ ", h("b", { lang: LANG }, displayLemma(lemma)), " · ", form) : null,
     h("p", { class: "c-pos" }, pos),
     h("p", { class: "c-gloss" }, gloss),
-    phrase ? h("p", { class: "c-phrase" }, h("b", { lang: "pl" }, phrase.pl), " = ", phrase.en) : null,
+    phrase ? h("p", { class: "c-phrase" }, h("b", { lang: LANG }, phrase.pl), " = ", phrase.en) : null,
     note ? h("p", { class: "c-note" }, note) : null,
     h("div", { class: "seg", role: "group", "aria-label": "Sort this word" },
       [0, 1, 2].map(k => h("button", { type: "button", dataset: { s: String(k) }, "aria-pressed": String(s === k), onclick: () => setStatus(key, k) },
@@ -87,7 +87,7 @@ function showLine() {
   if (last && dlg.actions) {
     dlg.actions.forEach((a, k) => extra.append(h("button", {
       type: "button", class: a.word ? "w answer" : k === 0 ? "primary" : "chip-btn",
-      lang: a.word ? "pl" : null, dataset: a.word ? { key: a.word, s: String(status(a.word)) } : null,
+      lang: a.word ? LANG : null, dataset: a.word ? { key: a.word, s: String(status(a.word)) } : null,
       onclick: () => { endDialogue(); a.fn?.(); },
     }, a.label)));
     $("#d-next").hidden = true;
@@ -171,7 +171,7 @@ function talk(id) {
   const finishQuest = (qid, Q) => {
     lines.push(...NPCS[qid].done || []);
     consume(Q.item); npcState(qid).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
-    after.push(() => { sfx.ok(); toast(`Errand done for ${NPCS[qid].name}. +${Q.reward} zł`); });
+    after.push(() => { sfx.ok(); toast(`Errand done for ${NPCS[qid].name}. +${Q.reward} ${CURRENCY}`); });
   };
   const followUp = () => {
     if (N.orders) lines.push(newOrder(id));
@@ -184,7 +184,7 @@ function talk(id) {
     lines.push(...N.receive.lines);
     const from = N.receive.from, Q = NPCS[from].quest;
     consume(N.receive.item); npcState(from).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
-    after.push(() => { sfx.ok(); toast(`Delivered for ${NPCS[from].name}. +${Q.reward} zł`); });
+    after.push(() => { sfx.ok(); toast(`Delivered for ${NPCS[from].name}. +${Q.reward} ${CURRENCY}`); });
   } else if (s.stage === "new") {
     lines.push(...N.intro);
     if (N.quest) {
@@ -264,7 +264,7 @@ function toggleBag(force) { const b = $("#bag"), open = force ?? b.hidden; b.hid
 $("#bagbar").addEventListener("click", () => toggleBag());
 function renderXP() {
   const { level, into, need } = levelOf(st.xp);
-  $("#xp-level").replaceChildren(wordBtn("Poziom", "w"), ` ${level}`);
+  $("#xp-level").replaceChildren(wordBtn(UI.level[0].toUpperCase() + UI.level.slice(1), "w"), ` ${level}`);
   $("#xp-fill").style.width = (into / need * 100).toFixed(1) + "%";
   $("#xp-num").textContent = `${into} / ${need} XP`;
 }
@@ -340,7 +340,7 @@ function renderFreq() {
     const where = !there ? "not in the game yet" : who.length ? (who.length > 3 ? `${who.slice(0, 3).join(", ")} +${who.length - 3}` : who.join(", ")) : "in the game";
     return h("li", { class: "f-row" + (there ? "" : " missing") },
       h("span", { class: "f-rank" }, String(from + i + 1)),
-      there ? wordBtn(w, "w") : h("span", { class: "f-missing", lang: "pl" }, w),
+      there ? wordBtn(w, "w") : h("span", { class: "f-missing", lang: LANG }, w),
       h("span", { class: "f-gloss" }, there ? meaningOf(w).gloss : ""),
       h("span", { class: "f-where" }, where));
   }));
@@ -406,7 +406,7 @@ function renderReview() {
   }
   const l = rv.deck[rv.i], { gloss, pos, note } = meaningOf(l), s = status(l);
   $("#r-step").textContent = `${rv.i + 1} / ${rv.deck.length}`;
-  const word = h("div", { class: "r-word", dataset: { s: String(s) }, lang: "pl" }, displayWord(l));
+  const word = h("div", { class: "r-word", dataset: { s: String(s) }, lang: LANG }, displayWord(l));
   const top = [word, h("button", { class: "icon-btn small", type: "button", "aria-label": "Listen", onclick: () => speak(l) }, svgSpeaker())];
   if (!rv.shown) {
     body.replaceChildren(h("div", { class: "r-card" }, ...top, h("p", { class: "r-note" }, "Do you remember what it means?"),
@@ -434,7 +434,23 @@ function syncSettingsUI() {
 $("#btn-settings").addEventListener("click", () => { const p = $("#settings"); p.hidden = !p.hidden; if (!p.hidden) { syncSettingsUI(); toggleVocab(false); } });
 for (const [id, key] of [["s-auto", "auto"], ["s-tr", "tr"], ["s-hide", "hideKnown"], ["s-sfx", "sfx"]])
   $("#" + id).addEventListener("change", e => { st.settings[key] = e.target.checked; save(); if (key === "hideKnown") refreshWordViews(); });
-$("#s-rate").addEventListener("change", e => { st.settings.rate = +e.target.value; save(); speak("Dzień dobry!"); });
+// the language: every text outside the people's lines that names it, and the switcher
+function applyLanguageText() {
+  const name = LANGS[LANG].name;
+  document.documentElement.lang = "en";
+  $$(".lang-name").forEach(el => (el.textContent = name));
+  $("#d-line").lang = LANG; $("#currency").textContent = CURRENCY;
+  $("#coins-box").title = `${LANGS[LANG].money[0].toUpperCase() + LANGS[LANG].money.slice(1)} earned from errands`;
+  $("#v-search").placeholder = `Search ${name} or English`;
+  UI.examples.forEach((w, i) => { const el = $("#ex-" + i); el.textContent = w; el.lang = LANG; });
+  $("#s-lang").replaceChildren(...Object.entries(LANGS).map(([code, l]) => h("option", { value: code, selected: code === LANG }, `${l.name} (${l.native})`)));
+}
+$("#s-lang").addEventListener("change", e => {
+  try { localStorage.setItem(LANG_KEY, e.target.value); } catch {}
+  location.hash = "lang=" + e.target.value;
+  location.reload();
+});
+$("#s-rate").addEventListener("change", e => { st.settings.rate = +e.target.value; save(); speak(UI.hello); });
 let resetArmed = 0;
 $("#s-reset").addEventListener("click", e => {
   if (Date.now() - resetArmed > 4000) { resetArmed = Date.now(); e.target.textContent = "Click again to erase everything"; setTimeout(() => { e.target.textContent = "Reset all progress"; }, 4000); return; }
@@ -451,7 +467,7 @@ function showIntro() {
   introClosed = false; $("#intro").hidden = false;
   const c = counts();
   $("#start").textContent = st.started ? "Back to the square" : "Start playing";
-  $("#intro-progress").textContent = st.started ? `${c.known} known · ${c.learning} learning · ${st.coins} zł` : "";
+  $("#intro-progress").textContent = st.started ? `${c.known} known · ${c.learning} learning · ${st.coins} ${CURRENCY}` : "";
   updateTouchUI();
 }
 function closeIntro() {
@@ -460,7 +476,7 @@ function closeIntro() {
   if (canSpeak) { try { const u = new SpeechSynthesisUtterance(" "); u.volume = 0; speechSynthesis.speak(u); } catch {} }
   const first = !st.started;
   st.started = true; save(); updateTouchUI(); renderBag();
-  if (first) setTimeout(() => toast("Józef by the fountain has a ! over his head. Walk up and talk to him."), 600);
+  if (first) setTimeout(() => toast(`${NPCS.jozef.name} by the fountain has a ! over his head. Walk up and talk to him.`), 600);
   $("#scene").focus();
 }
 $("#start").addEventListener("click", closeIntro);

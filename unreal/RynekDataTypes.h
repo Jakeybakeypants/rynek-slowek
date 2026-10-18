@@ -1,4 +1,4 @@
-// Row structs for the Data Tables exported by tools/export-unreal.mjs (unreal/Data/*.csv).
+// Row structs for the Data Tables exported by tools/export-unreal.mjs (unreal/Data/<language>/*.csv).
 // Each field name matches a CSV column, so Unreal can import the files as Data Tables.
 // Copy this file into your C++ project's Source/<Project>/ folder and rename the
 // RYNEK_API macro to your module's (for example MYGAME_API) if you use these types from
@@ -50,7 +50,7 @@ USTRUCT(BlueprintType)
 struct FRynekPhrase : public FTableRowBase
 {
 	GENERATED_BODY()
-	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Polish;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Text;           // in the language being learned
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString English;
 };
 
@@ -109,19 +109,19 @@ struct FRynekDialogueLine : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Section;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) int32 Conversation = 0;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) int32 Line = 0;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Polish;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Text;           // in the language being learned
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString English;
 };
 
-// Shop orders. "ask" lines are templates: {acc}, {gen}, {nom}, {why} take the item's Polish forms
-// (Items.Accusative, Genitive, Nominative, WhyPolish); {en}, {the}, {whyEn} its English.
+// Shop orders. "ask" lines are templates: {acc}, {gen}, {nom}, {why} take the item's forms in the
+// language being learned (Items.Accusative, Genitive, Nominative, WhyText); {en}, {the}, {whyEn} its English.
 USTRUCT(BlueprintType)
 struct FRynekOrderLine : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Character;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Kind;          // ask or ok
-	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Polish;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Text;           // in the language being learned
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString English;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString ItemPool;      // space-separated item row names
 };
@@ -138,7 +138,7 @@ struct FRynekItem : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString English;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString EnglishThe;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) bool Plural = false;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString WhyPolish;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString WhyText;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString WhyEnglish;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString StoryCharacter; // whose errand it belongs to
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) float HomeX = 0;      // where it waits to be picked up

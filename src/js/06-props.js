@@ -143,8 +143,8 @@ function buildTerrace(c) {
   const mb = new THREE.Group(); mb.position.set(x0 - 0.7, 0, c + 1.9); mb.rotation.y = -Math.PI / 2; scene.add(mb);
   const chalk = new THREE.MeshStandardMaterial({ roughness: 0.95, map: canvasTex(128, 160, (g, W, H) => {
     g.fillStyle = "#6E4A2B"; g.fillRect(0, 0, W, H); g.fillStyle = "#26302B"; g.fillRect(8, 8, W - 16, H - 16);
-    g.fillStyle = "#F4F1E6"; g.textAlign = "center"; g.font = "bold 26px sans-serif"; g.fillText("MENU", W / 2, 42);
-    g.font = "16px sans-serif"; ["kawa 8", "herbata 6", "sok 7", "lody 9"].forEach((t, i) => g.fillText(t + " zł", W / 2, 76 + i * 22));
+    g.fillStyle = "#F4F1E6"; g.textAlign = "center"; g.font = "bold 26px sans-serif"; g.fillText(tr("MENU"), W / 2, 42);
+    g.font = "16px sans-serif"; [["kawa", 8], ["herbata", 6], ["sok", 7], ["lody", 9]].forEach(([w, n], i) => g.fillText(`${tr(w)} ${n} ${CURRENCY}`, W / 2, 76 + i * 22));
   }) });
   for (const [z, r] of [[0.16, -0.2], [-0.16, 0.2]]) {
     const wood = M(WOOD_D), board = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.85, 0.03), [wood, wood, wood, wood, chalk, chalk]);
@@ -332,7 +332,7 @@ function buildBusStop() {
   for (const x of [-1.55, 0.75]) g.add(mesh(new THREE.BoxGeometry(0.06, 0.46, 0.4), M(IRON), x, 0.23, 0.3));
   const table = new THREE.MeshStandardMaterial({ roughness: 0.9, map: canvasTex(128, 160, (c, W, H) => {
     c.fillStyle = "#F7F5EE"; c.fillRect(0, 0, W, H); c.fillStyle = "#2F4E8C"; c.fillRect(0, 0, W, 30);
-    c.fillStyle = "#FFFFFF"; c.font = "bold 18px sans-serif"; c.textAlign = "center"; c.fillText("LINIA 7", W / 2, 22);
+    c.fillStyle = "#FFFFFF"; c.font = "bold 18px sans-serif"; c.textAlign = "center"; c.fillText(tr("LINIA 7"), W / 2, 22);
     c.fillStyle = "#2A2A2A"; c.font = "14px monospace"; c.textAlign = "left";
     ["06  15 35 55", "07  15 35 55", "08  15 45", "09  15 45", "10  15 45", "11  15 45"].forEach((t, i) => c.fillText(t, 10, 54 + i * 18));
   }) });

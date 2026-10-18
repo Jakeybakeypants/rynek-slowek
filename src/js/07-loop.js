@@ -355,7 +355,8 @@ function afterStateLoaded() {
 }
 function boot(hot) {
   st = normalize(loadLocal());
-  headingWord("#tracker-title", "zadania"); headingWord("#vocab-title", "słownik"); headingWord("#review-title", "powtórka"); headingWord("#bag-title", "torba");
+  headingWord("#tracker-title", UI.headings.tasks); headingWord("#vocab-title", UI.headings.vocab); headingWord("#review-title", UI.headings.review); headingWord("#bag-title", UI.headings.bag);
+  applyLanguageText();
   buildGround(); buildRows(); buildBackdrop(); buildRatusz(); buildChurch(); buildFountain(); buildStall(); buildShops(); buildProps(); buildClouds();
   buildPlayer(); placeNPCs(); placeItems(); buildPigeons();
   if (hot && typeof hot.px === "number") { player.pos.set(hot.px, 0, hot.pz); cam.yaw = hot.yaw ?? 0; player.heading = hot.heading ?? Math.PI; }
@@ -371,4 +372,4 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { modelledPeople: !!PEOPLE, park: PARK, busStop: BUS_STOP, school: SCHOOL, get bus() { return bus; }, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES, LOOKS, labels, NPCS, ITEMS, LEX, FORMS, PHRASES, FREQ, REVIEW_LINES, gameWords }; // tests and tools/export-unreal.mjs read these
+window.__rynek = { LANG, LANGS, modelledPeople: !!PEOPLE, park: PARK, busStop: BUS_STOP, school: SCHOOL, get bus() { return bus; }, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES, LOOKS, labels, NPCS, ITEMS, LEX, FORMS, PHRASES, FREQ, REVIEW_LINES, gameWords }; // tests and tools/export-unreal.mjs read these

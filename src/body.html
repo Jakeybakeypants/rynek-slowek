@@ -12,7 +12,7 @@
         <span class="cnt" data-s="1" title="Learning"><i></i><b id="c-learning">0</b></span>
         <span class="cnt" data-s="0" title="New words you have met"><i></i><b id="c-new">0</b></span>
       </button>
-      <div class="coins glaze" title="Złoty earned from errands"><span class="coin" aria-hidden="true"></span><b id="coins">0</b>&nbsp;zł</div>
+      <div class="coins glaze" id="coins-box" title="Money earned from errands"><span class="coin" aria-hidden="true"></span><b id="coins">0</b>&nbsp;<span id="currency">zł</span></div>
       <button class="icon-btn glaze" id="btn-vocab" type="button" aria-label="Word list (V)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></button>
       <button class="icon-btn glaze" id="btn-settings" type="button" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg></button>
       <button class="icon-btn glaze" id="btn-help" type="button" aria-label="How to play">?</button>
@@ -38,7 +38,7 @@
   <section id="dialogue" class="glaze dots" hidden aria-live="polite">
     <div id="d-tip" hidden>Click a word to see what it means</div>
     <div class="d-head"><span id="d-name"></span><span id="d-role"></span><span id="d-step"></span><button id="d-leave" class="chip-btn" type="button" aria-label="Leave the conversation (Esc)">Leave</button></div>
-    <p id="d-line" lang="pl"></p>
+    <p id="d-line"></p>
     <p id="d-tr" hidden></p>
     <div class="d-actions">
       <button id="d-speak" class="chip-btn" type="button" aria-label="Listen again (R)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>Listen</button>
@@ -66,7 +66,7 @@
         <button type="button" data-f="1" data-s="1" aria-pressed="false">Learning</button>
         <button type="button" data-f="2" data-s="2" aria-pressed="false">Known</button>
       </div>
-      <input id="v-search" type="search" placeholder="Search Polish or English" aria-label="Search words" autocomplete="off">
+      <input id="v-search" type="search" placeholder="Search" aria-label="Search words" autocomplete="off">
       <ul id="v-list"></ul>
       <div class="sheet-foot">
         <button id="v-review" class="primary" type="button">Review learning words</button>
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div id="v-freq" class="v-pane" hidden>
-      <p class="muted">The 3,000 most common words in spoken Polish, most common first. Each form counts on its own, as it does in the game.</p>
+      <p class="muted">The 3,000 most common words in spoken <span class="lang-name">Polish</span>, most common first. Each form counts on its own, as it does in the game.</p>
       <div class="filters pager" id="f-pages"></div>
       <p id="f-summary"></p>
       <ol id="f-list"></ol>
@@ -96,18 +96,20 @@
     <label class="rng">Speech speed <input type="range" id="s-rate" min="0.6" max="1.2" step="0.05"></label>
     <p id="s-voice" class="muted"></p>
     <p id="s-sync" class="muted"></p>
+    <label class="rng">Language you're learning <select id="s-lang"></select></label>
+    <p class="muted">Each language keeps its own progress. Changing it restarts the game.</p>
     <button id="s-reset" class="danger" type="button">Reset all progress</button>
   </div>
 
   <section id="intro">
     <div class="intro-card glaze dots">
-      <p class="eyebrow">A walk-around Polish word game</p>
+      <p class="eyebrow">A walk-around <span class="lang-name">Polish</span> word game</p>
       <h1>Rynek <span>Słówek</span></h1>
-      <p class="lede">Walk around a Polish market square, talk to the people there and run their errands. Every Polish word is coloured by how well you know it.</p>
+      <p class="lede">Walk around a market square, talk to the people there and run their errands. Every <span class="lang-name">Polish</span> word is coloured by how well you know it.</p>
       <ul class="legend">
-        <li data-s="0"><span class="w">jabłko</span><span><b>Purple</b>: new. You haven't met it or sorted it yet.</span></li>
-        <li data-s="1"><span class="w">kawa</span><span><b>Orange</b>: you're learning it.</span></li>
-        <li data-s="2"><span class="w">dzień</span><span><b>Green</b>: you know it.</span></li>
+        <li data-s="0"><span class="w" id="ex-0">jabłko</span><span><b>Purple</b>: new. You haven't met it or sorted it yet.</span></li>
+        <li data-s="1"><span class="w" id="ex-1">kawa</span><span><b>Orange</b>: you're learning it.</span></li>
+        <li data-s="2"><span class="w" id="ex-2">dzień</span><span><b>Green</b>: you know it.</span></li>
       </ul>
       <p class="lede" style="font-size:15px;margin-bottom:12px">Click any word, in a speech bubble or floating over a thing, to see what it means and sort it.</p>
       <dl class="keys">

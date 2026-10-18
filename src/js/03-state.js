@@ -1,7 +1,8 @@
 // ===================================================================
 // state + saving (this browser always; the viewer's Claude account when the page can reach it)
 // ===================================================================
-const SAVE_KEY = "rynek-slowek:v1";
+// each language keeps its own progress; Polish keeps the original key so old saves still load
+const SAVE_KEY = LANG === "pl" ? "rynek-slowek:v1" : `rynek-slowek:v1:${LANG}`;
 const DEFAULT_SETTINGS = { auto: true, tr: false, hideKnown: false, sfx: true, rate: 0.9 };
 const freshState = () => ({ v: 1, words: {}, npc: {}, coins: 0, bag: [], xp: 0, settings: { ...DEFAULT_SETTINGS }, tips: {}, started: false, updatedAt: 0 });
 function normalize(d) {
@@ -55,7 +56,7 @@ async function connectRemote() {
     if (!db || !user) return;
     const uid = await user.id();
     if (!uid) return;
-    const ref = db.doc("data/users/" + uid + "/progress");
+    const ref = db.doc("data/users/" + uid + (LANG === "pl" ? "/progress" : `/progress-${LANG}`));
     const snap = await ref.get();
     remote = ref;
     setSync("Progress is saved to your Claude account.");
@@ -79,7 +80,7 @@ function gainXP(n) {
   st.xp += n;
   const now = levelOf(st.xp).level;
   renderXP();
-  if (now > before) { sfx.ok(); toast(h("span", {}, "Level up! ", h("b", {}, `Poziom ${now}`))); }
+  if (now > before) { sfx.ok(); toast(h("span", {}, "Level up! ", h("b", {}, `${UI.level[0].toUpperCase() + UI.level.slice(1)} ${now}`))); }
 }
 const rec = l => (st.words[l] ??= { s: 0, seen: 0, ok: 0 });
 const status = l => st.words[l]?.s ?? 0;
@@ -131,10 +132,10 @@ const canSpeak = "speechSynthesis" in window;
 function loadVoices() {
   if (!canSpeak) return;
   const vs = speechSynthesis.getVoices();
-  plVoice = vs.find(v => /^pl(-|_|$)/i.test(v.lang)) || null;
+  plVoice = vs.find(v => new RegExp(`^${LANG}(-|_|$)`, "i").test(v.lang)) || null;
   const el = $("#s-voice");
   if (el) el.textContent = !canSpeak ? "This browser can't read text aloud."
-    : plVoice ? `Voice: ${plVoice.name}` : vs.length ? "No Polish voice found on this device, so lines are read with the default voice." : "";
+    : plVoice ? `Voice: ${plVoice.name}` : vs.length ? `No ${LANGS[LANG].name} voice found on this device, so lines are read with the default voice.` : "";
 }
 if (canSpeak) { loadVoices(); speechSynthesis.addEventListener?.("voiceschanged", loadVoices); }
 function speak(text) {
@@ -142,7 +143,7 @@ function speak(text) {
   try {
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text.replace(/\.\.\./g, "…"));
-    u.lang = "pl-PL"; if (plVoice) u.voice = plVoice; u.rate = st.settings.rate;
+    u.lang = LANGS[LANG].speech; if (plVoice) u.voice = plVoice; u.rate = st.settings.rate;
     speechSynthesis.speak(u);
   } catch {}
 }

@@ -1,4 +1,8 @@
 // ===================================================================
+// Polish
+// ===================================================================
+L10N.pl = () => {
+// ===================================================================
 // Rynek Słówek: words, people and errands
 // ===================================================================
 
@@ -5105,4 +5109,20 @@ const REVIEW_LINES = {
   offer: ["Chcesz powtórzyć słówka?", "Do you want to review your words?"],
   none: ["Nie masz teraz słówek do powtórki.", "You have no words to review right now."],
 };
-const NPC_ORDER = ["jozef", "filemon", "marek", "basia", "ola", "kuba", "zosia", "ewa", "tadeusz", "halina", "burek", "zuzia", "staszek", "bogdan", "krysia", "ania", "wieslaw", "tomek", "piotr", "teresa", "marta", "michal", "zbigniew", "kasia", "roman", "ela", "bartek", "dorota", "jerzy", "hania", "kacper"];
+
+// what the game itself says, outside the people's lines
+const QUIZ = {
+  question: (a, b) => [`Ile to jest ${NUMBERS[a]} plus ${NUMBERS[b]}?`, `What's ${a} plus ${b}?`],
+  result: (right, sum) => right
+    ? [`Tak! ${NUMBERS[sum][0].toUpperCase() + NUMBERS[sum].slice(1)}. Brawo!`, `Yes! ${sum}. Well done!`]
+    : [`Nie, to jest ${NUMBERS[sum]}.`, `No, it's ${sum}.`],
+};
+// UI words are Polish words too, coloured and clickable: they need entries in LEX or FORMS
+const UI = {
+  headings: { tasks: "zadania", vocab: "słownik", review: "powtórka", bag: "torba" },
+  level: "poziom", hello: "Dzień dobry!", examples: ["jabłko", "kawa", "dzień"], place: "market square",
+};
+// labels and signs are written in Polish in the scene code; other languages translate them here
+const LABELS = {};
+return { LEX, FORMS, PHRASES, ITEMS, NPCS, NUMBERS, REVIEW_LINES, thisIs, QUIZ, UI, LABELS };
+};
