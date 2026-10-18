@@ -28,7 +28,7 @@ const svgSpeaker = () => { const s = document.createElement("span"); s.innerHTML
 // words
 // ===================================================================
 const STATUS_NAMES = ["New", "Learning", "Known"];
-const WORD_RE = /\p{L}+/gu;
+const WORD_RE = LANGS[LANG].words ?? /\p{L}+/gu;
 function lookup(surface) {
   const k = surface.toLowerCase();
   if (FORMS[k]) return { lemma: FORMS[k][0], form: FORMS[k][1] };
