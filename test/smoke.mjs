@@ -7,7 +7,7 @@
 //
 //   npm install          (once: playwright-core, plus three.js to serve locally)
 //   npm run smoke        (desktop, light)     npm run smoke -- phone   (390×844, dark)
-//   npm run smoke -- de  (German; also es, or phone de)
+//   npm run smoke -- de  (German; also es, fr, or phone de)
 //
 // Chromium: set CHROMIUM to an executable, or it uses the cloud container's headless shell.
 // The CDN is usually blocked in the container, so three.js is served from node_modules.

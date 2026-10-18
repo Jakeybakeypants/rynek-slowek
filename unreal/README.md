@@ -1,6 +1,6 @@
 # Rynek Słówek data for Unreal Engine
 
-`Data/` holds the game's content as Data Table files, made by `npm run export:unreal` from the web version (`src/`), one folder per language: `Data/pl/` (Polish), `Data/de/` (German), `Data/es/` (Spanish). Every folder has the same tables with the same columns, so a game can swap language by pointing at another folder. Re-run it after changing the game, so Unreal gets the latest words and lines (`npm run export:unreal -- de` does one language).
+`Data/` holds the game's content as Data Table files, made by `npm run export:unreal` from the web version (`src/`), one folder per language: `Data/pl/` (Polish), `Data/de/` (German), `Data/es/` (Spanish), `Data/fr/` (French). Every folder has the same tables with the same columns, so a game can swap language by pointing at another folder. Re-run it after changing the game, so Unreal gets the latest words and lines (`npm run export:unreal -- de` does one language).
 
 | File | Row name | What's in it | Struct |
 | --- | --- | --- | --- |
