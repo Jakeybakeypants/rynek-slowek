@@ -14,7 +14,7 @@ Each written form is its own word, the way a child learns them: `mam` and `masz`
 
 ## What's on the square
 
-Fifteen characters on the square, each with an errand told in Polish, six more in the park, three on the café terrace and three at the bus stop:
+Fifteen characters on the square, each with an errand told in Polish, six more in the park, three on the café terrace, three at the bus stop and four at the school:
 
 | Who | Where | Errand | Then |
 | --- | --- | --- | --- |
@@ -61,13 +61,22 @@ At the south end of the park, a gap in the hedge leads out to a bus stop: a pave
 | Ela | by the shelter, late for work | find her ticket (`bilet`), dropped on the park path | phone calls, her family, her boss |
 | Bartek | in the shelter | (none: he's off to football training) | school, his team, his new boots |
 
+Across the road from the bus stop there is a zebra crossing (`przejście`); the bus waits while you are on it. It leads into the yard of a primary school: a fenced asphalt yard with a small pitch and two goals, a bike rack, benches, and the school building with its sign and a white-and-red flag. The people there bring in classroom Polish (`Otwórz zeszyt`, `Patrzcie na tablicę!`) and more of the top 2000.
+
+| Who | Where | Errand | Then |
+| --- | --- | --- | --- |
+| Pani Dorota, a teacher | by the school door | find the school bell (`dzwonek`), left on the café terrace | lessons, rules, her pupils |
+| Pan Jerzy, the caretaker | by the gate | (none) | keys, rules, safety, telling Kacper off |
+| Hania | by the bench | (none) | science, animals, ducks, her flat |
+| Kacper | on the pitch | (none) | kings, football, pocket money, deals with Mum |
+
 Repeat orders come in several phrasings that need different cases: `Poproszę gruszkę` (accusative), `Szukam gruszki` (genitive), `Gdzie jest miś?` (nominative). Ewa's paint orders put an adjective in front, so the colour changes too: `Poproszę czerwoną farbę`, `Potrzebuję niebieskiej farby`. Bring the wrong thing and they tell you what it actually is: `Nie, to nie to. To jest cytryna.` Orders favour words you haven't marked green yet.
 
-You carry things in a bag that holds six. Errands, sums, meeting people, meeting new words and sorting them earn XP, shown as `Poziom` (level) at the top of the task panel. Other things: about 2,200 word forms, numbers from one to ten, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
+You carry things in a bag that holds six. Errands, sums, meeting people, meeting new words and sorting them earn XP, shown as `Poziom` (level) at the top of the task panel. Other things: about 2,500 word forms, numbers from one to ten, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
 
 ## The most common words first
 
-The word list (V) has two tabs. **Your words** lists every word you have met, most common first, with its rank. **Top 2000** is the two thousand most common written forms of Polish, in pages of 100 (pick a page from the row of ranges, which scrolls sideways): each row shows the rank, the word, what it means, and who says it in the game, or "not in the game yet". Reviews also go most common first. At the moment all of the top 200 are in the game, 298 of the top 300 (the two left out are swear words), 487 of the top 500, 935 of the top 1000 and 1,544 of the top 2000. Swear words, violent words, English names and leftovers in the subtitles (`the`, `sir`, `john`, `napisy`) are left out on purpose, so the counts can't quite reach the top.
+The word list (V) has two tabs. **Your words** lists every word you have met, most common first, with its rank. **Top 2000** is the two thousand most common written forms of Polish, in pages of 100 (pick a page from the row of ranges, which scrolls sideways): each row shows the rank, the word, what it means, and who says it in the game, or "not in the game yet". Reviews also go most common first. At the moment all of the top 200 are in the game, 298 of the top 300 (the two left out are swear words), 488 of the top 500, 937 of the top 1000 and 1,732 of the top 2000. Swear words, violent words, English names and leftovers in the subtitles (`the`, `sir`, `john`, `napisy`) are left out on purpose, so the counts can't quite reach the top.
 
 The ranks come from [FrequencyWords](https://github.com/hermitdave/FrequencyWords) by Hermit Dave (Polish, OpenSubtitles 2018, CC BY-SA 4.0), which counts words in film and TV subtitles. That is close to everyday speech, and it counts each written form separately, which suits learning form by form. `tools/frequency.mjs` downloads the list and writes `src/js/01-frequency.js`; don't edit that file by hand.
 
