@@ -1,0 +1,2053 @@
+﻿Name,Character,Section,Conversation,Line,Text,English
+jozef_intro_0_0,jozef,intro,0,0,Dzień dobry! Mam na imię Józef.,Good morning! My name is Józef.
+jozef_intro_0_1,jozef,intro,0,1,Witaj w naszym mieście!,Welcome to our town!
+jozef_intro_0_2,jozef,intro,0,2,Mam problem. Nie widzę bez okularów.,I have a problem. I can't see without my glasses.
+jozef_intro_0_3,jozef,intro,0,3,Czy możesz znaleźć moje okulary?,Can you find my glasses?
+jozef_intro_0_4,jozef,intro,0,4,Chyba są przy fontannie.,I think they're by the fountain.
+jozef_done_0_0,jozef,done,0,0,Moje okulary! Dziękuję bardzo!,My glasses! Thank you very much!
+jozef_done_0_1,jozef,done,0,1,Teraz widzę wszystko.,Now I can see everything.
+jozef_after_0_0,jozef,after,0,0,Jaki piękny dzień!,What a beautiful day!
+jozef_after_0_1,jozef,after,0,1,Lubię ten rynek.,I like this square.
+jozef_after_0_2,jozef,after,0,2,Moja wnuczka mieszka w Krakowie.,My granddaughter lives in Kraków.
+jozef_remind_0_0,jozef,remind,0,0,Moje okulary są chyba przy fontannie.,My glasses are probably by the fountain.
+jozef_wrong_0_0,jozef,wrong,0,0,"To nie to, czego szukam.",That's not what I'm looking for.
+jozef_receive_0_0,jozef,receive,0,0,List dla mnie? Od mojej wnuczki!,A letter for me? From my granddaughter!
+jozef_receive_0_1,jozef,receive,0,1,Dziękuję bardzo!,Thank you very much!
+filemon_intro_0_0,filemon,intro,0,0,Miau! Jestem Filemon.,Meow! I'm Filemon.
+filemon_intro_0_1,filemon,intro,0,1,Jestem bardzo głodny.,I'm very hungry.
+filemon_intro_0_2,filemon,intro,0,2,"Przynieś mi mleko, proszę.","Bring me some milk, please."
+filemon_intro_0_3,filemon,intro,0,3,Mleko jest w kawiarni.,The milk is in the café.
+filemon_done_0_0,filemon,done,0,0,Mniam! Pyszne mleko!,Yum! Delicious milk!
+filemon_done_0_1,filemon,done,0,1,Teraz idę spać.,Now I'm off to bed.
+filemon_after_0_0,filemon,after,0,0,"Mrrr... Jestem kotem, nie psem.","Purr... I'm a cat, not a dog."
+filemon_after_0_1,filemon,after,0,1,Miau! Burek jest moim przyjacielem.,Meow! Burek is my friend.
+filemon_remind_0_0,filemon,remind,0,0,Miau! Gdzie jest mleko?,Meow! Where's the milk?
+filemon_wrong_0_0,filemon,wrong,0,0,Miau? Nie chcę tego.,Meow? I don't want that.
+marek_intro_0_0,marek,intro,0,0,Dzień dobry! Jestem Marek.,Good morning! I'm Marek.
+marek_intro_0_1,marek,intro,0,1,Sprzedaję owoce i warzywa.,I sell fruit and vegetables.
+marek_intro_0_2,marek,intro,0,2,"Ojej, owoce spadły ze straganu!","Oh dear, the fruit fell off the stall!"
+marek_intro_0_3,marek,intro,0,3,"Przynieś mi jabłko, proszę.","Bring me an apple, please."
+marek_intro_0_4,marek,intro,0,4,"Owoce leżą na ziemi, obok straganu.","The fruit is lying on the ground, next to the stall."
+marek_done_0_0,marek,done,0,0,Super! Dziękuję!,Great! Thank you!
+marek_done_0_1,marek,done,0,1,Teraz pomóż mi jeszcze trochę.,Now help me a little more.
+marek_remind_0_0,marek,remind,0,0,Jabłko leży na ziemi.,The apple is lying on the ground.
+marek_wrong_0_0,marek,wrong,0,0,"Nie, to nie to.","No, that's not it."
+basia_intro_0_0,basia,intro,0,0,Dzień dobry! Mam na imię Basia.,Good morning! My name is Basia.
+basia_intro_0_1,basia,intro,0,1,Jestem piekarką. Codziennie piekę chleb.,I'm a baker. I bake bread every day.
+basia_intro_0_2,basia,intro,0,2,Ola z kawiarni czeka na chleb.,Ola from the café is waiting for bread.
+basia_intro_0_3,basia,intro,0,3,"Zanieś ten chleb do kawiarni, proszę.",Please take this bread to the café.
+basia_thanks_0_0,basia,thanks,0,0,Dziękuję za pomoc!,Thanks for the help!
+basia_regive_0_0,basia,regive,0,0,"Masz, to chleb dla Oli.","Here, this is the bread for Ola."
+basia_remind_0_0,basia,remind,0,0,Kawiarnia jest po drugiej stronie rynku.,The café is on the other side of the square.
+basia_wrong_0_0,basia,wrong,0,0,"Nie, to nie to.","No, that's not it."
+ola_intro_0_0,ola,intro,0,0,Cześć! Jestem Ola.,Hi! I'm Ola.
+ola_intro_0_1,ola,intro,0,1,Pracuję w kawiarni.,I work in the café.
+ola_intro_0_2,ola,intro,0,2,Lubisz kawę czy herbatę?,Do you like coffee or tea?
+ola_intro_0_3,ola,intro,0,3,Ja lubię kawę z mlekiem.,I like coffee with milk.
+ola_wrong_0_0,ola,wrong,0,0,"Hmm, to nie to.","Hmm, that's not it."
+ola_receive_0_0,ola,receive,0,0,"O, świeży chleb od Basi! Dziękuję!","Oh, fresh bread from Basia! Thank you!"
+kuba_intro_0_0,kuba,intro,0,0,Cześć! Mam na imię Kuba.,Hi! My name is Kuba.
+kuba_intro_0_1,kuba,intro,0,1,Mam siedem lat.,I'm seven years old.
+kuba_intro_0_2,kuba,intro,0,2,Gdzie jest moja piłka?,Where is my ball?
+kuba_intro_0_3,kuba,intro,0,3,Kopnąłem ją bardzo mocno.,I kicked it really hard.
+kuba_intro_0_4,kuba,intro,0,4,Chyba jest za ratuszem.,I think it's behind the town hall.
+kuba_done_0_0,kuba,done,0,0,Moja piłka! Hurra!,My ball! Hooray!
+kuba_done_0_1,kuba,done,0,1,Zagrajmy razem!,Let's play together!
+kuba_remind_0_0,kuba,remind,0,0,Piłka jest chyba za ratuszem.,The ball is probably behind the town hall.
+kuba_wrong_0_0,kuba,wrong,0,0,"Nie, nie! To nie to.","No, no! That's not it."
+zosia_intro_0_0,zosia,intro,0,0,Dzień dobry! Mam na imię Zosia.,Good morning! My name is Zosia.
+zosia_intro_0_1,zosia,intro,0,1,Sprzedaję kwiaty.,I sell flowers.
+zosia_intro_0_2,zosia,intro,0,2,Niestety zgubiłam klucze.,Unfortunately I've lost my keys.
+zosia_intro_0_3,zosia,intro,0,3,Nie mogę otworzyć kwiaciarni.,I can't open the flower shop.
+zosia_intro_0_4,zosia,intro,0,4,Może są pod ławką?,Maybe they're under a bench?
+zosia_done_0_0,zosia,done,0,0,Moje klucze! Dziękuję!,My keys! Thank you!
+zosia_done_0_1,zosia,done,0,1,Teraz mogę otworzyć kwiaciarnię.,Now I can open the flower shop.
+zosia_remind_0_0,zosia,remind,0,0,Klucze są może pod ławką.,The keys are maybe under a bench.
+zosia_wrong_0_0,zosia,wrong,0,0,"Niestety, to nie to.","Unfortunately, that's not it."
+ewa_intro_0_0,ewa,intro,0,0,Dzień dobry! Mam na imię Ewa.,Good morning! My name is Ewa.
+ewa_intro_0_1,ewa,intro,0,1,Jestem malarką. Maluję rynek.,I'm a painter. I'm painting the square.
+ewa_intro_0_2,ewa,intro,0,2,"Niebo jest niebieskie, a słońce jest żółte.",The sky is blue and the sun is yellow.
+ewa_intro_0_3,ewa,intro,0,3,Ale zgubiłam pędzel! Nie mogę malować.,But I've lost my brush! I can't paint.
+ewa_intro_0_4,ewa,intro,0,4,Chyba jest przy ratuszu.,I think it's by the town hall.
+ewa_done_0_0,ewa,done,0,0,Mój pędzel! Dziękuję!,My brush! Thank you!
+ewa_done_0_1,ewa,done,0,1,Teraz potrzebuję farby.,Now I need paint.
+ewa_remind_0_0,ewa,remind,0,0,Mój pędzel jest chyba przy ratuszu.,My brush is probably by the town hall.
+ewa_wrong_0_0,ewa,wrong,0,0,"Ojej, to nie to.","Oh dear, that's not it."
+tadeusz_intro_0_0,tadeusz,intro,0,0,Dzień dobry! Mam na imię Tadeusz.,Good morning! My name is Tadeusz.
+tadeusz_intro_0_1,tadeusz,intro,0,1,Jestem listonoszem. Pracuję na poczcie.,I'm a postman. I work at the post office.
+tadeusz_intro_0_2,tadeusz,intro,0,2,Mam list dla Józefa.,I have a letter for Józef.
+tadeusz_intro_0_3,tadeusz,intro,0,3,"Zanieś mu ten list, proszę.",Please take him this letter.
+tadeusz_intro_0_4,tadeusz,intro,0,4,Józef jest przy fontannie.,Józef is by the fountain.
+tadeusz_thanks_0_0,tadeusz,thanks,0,0,Dobra robota! Dziękuję.,Good job! Thank you.
+tadeusz_regive_0_0,tadeusz,regive,0,0,"Masz, to list dla Józefa.","Here, this is the letter for Józef."
+tadeusz_remind_0_0,tadeusz,remind,0,0,Józef jest przy fontannie.,Józef is by the fountain.
+tadeusz_wrong_0_0,tadeusz,wrong,0,0,"Nie, to nie to.","No, that's not it."
+halina_intro_0_0,halina,intro,0,0,Dzień dobry! Mam na imię Halina.,Good morning! My name is Halina.
+halina_intro_0_1,halina,intro,0,1,Pracuję w księgarni. Bardzo lubię czytać.,I work in the bookshop. I really like reading.
+halina_intro_0_2,halina,intro,0,2,Zgubiłam torbę z książkami.,I've lost my bag of books.
+halina_intro_0_3,halina,intro,0,3,Byłam rano przy piaskownicy.,I was by the sandpit this morning.
+halina_intro_0_4,halina,intro,0,4,Może tam jest?,Maybe it's there?
+halina_done_0_0,halina,done,0,0,Moja torba! Dziękuję!,My bag! Thank you!
+halina_done_0_1,halina,done,0,1,Książki są w środku. Super!,The books are inside. Great!
+halina_remind_0_0,halina,remind,0,0,Moja torba jest chyba przy piaskownicy.,My bag is probably by the sandpit.
+halina_wrong_0_0,halina,wrong,0,0,"Hmm, to nie to.","Hmm, that's not it."
+burek_intro_0_0,burek,intro,0,0,"Hau, hau! Jestem Burek.","Woof, woof! I'm Burek."
+burek_intro_0_1,burek,intro,0,1,"Jestem psem, nie kotem.","I'm a dog, not a cat."
+burek_intro_0_2,burek,intro,0,2,Gdzie jest moja kość?,Where's my bone?
+burek_intro_0_3,burek,intro,0,3,Chyba jest pod drzewem.,I think it's under a tree.
+burek_done_0_0,burek,done,0,0,"Hau, hau! Moja kość!","Woof, woof! My bone!"
+burek_done_0_1,burek,done,0,1,Teraz jestem szczęśliwy.,Now I'm happy.
+burek_after_0_0,burek,after,0,0,Hau! Lubię Filemona.,Woof! I like Filemon.
+burek_after_0_1,burek,after,0,1,"Hau, hau! Chodźmy na spacer!","Woof, woof! Let's go for a walk!"
+burek_after_0_2,burek,after,0,2,Hau! Do widzenia!,Woof! Goodbye!
+burek_remind_0_0,burek,remind,0,0,Hau! Moja kość jest pod drzewem.,Woof! My bone is under a tree.
+burek_wrong_0_0,burek,wrong,0,0,Hau? Nie chcę tego.,Woof? I don't want that.
+zuzia_intro_0_0,zuzia,intro,0,0,Cześć! Mam na imię Zuzia.,Hi! My name is Zuzia.
+zuzia_intro_0_1,zuzia,intro,0,1,Lubię liczyć!,I like counting!
+zuzia_intro_0_2,zuzia,intro,0,2,"Jeden, dwa, trzy, cztery, pięć!","One, two, three, four, five!"
+zuzia_intro_0_3,zuzia,intro,0,3,Ale zgubiłam skakankę.,But I've lost my skipping rope.
+zuzia_intro_0_4,zuzia,intro,0,4,Chyba jest obok fontanny.,I think it's next to the fountain.
+zuzia_done_0_0,zuzia,done,0,0,Moja skakanka! Dziękuję!,My skipping rope! Thank you!
+zuzia_done_0_1,zuzia,done,0,1,Teraz policzmy razem!,Now let's count together!
+zuzia_remind_0_0,zuzia,remind,0,0,Moja skakanka jest chyba obok fontanny.,My skipping rope is probably next to the fountain.
+zuzia_wrong_0_0,zuzia,wrong,0,0,"Nie, nie! To nie to.","No, no! That's not it."
+zuzia_quiz_start_0_0,zuzia,quiz_start,0,0,Policzmy!,Let's count!
+zuzia_quiz_start_0_1,zuzia,quiz_start,0,1,Zagadka!,A riddle!
+zuzia_quiz_more_0_0,zuzia,quiz_more,0,0,Jeszcze raz!,One more time!
+zuzia_quiz_more_0_1,zuzia,quiz_more,0,1,Następna zagadka!,Next riddle!
+staszek_intro_0_0,staszek,intro,0,0,Dzień dobry! Jestem Staszek.,Good morning! I'm Staszek.
+staszek_intro_0_1,staszek,intro,0,1,Jestem muzykiem. Gram na akordeonie.,I'm a musician. I play the accordion.
+staszek_intro_0_2,staszek,intro,0,2,Wiatr porwał moje nuty!,The wind blew my sheet music away!
+staszek_intro_0_3,staszek,intro,0,3,Bez nut nie mogę grać.,I can't play without my music.
+staszek_intro_0_4,staszek,intro,0,4,Chyba są przy drzewie.,I think it's by a tree.
+staszek_done_0_0,staszek,done,0,0,Moje nuty! Dziękuję!,My music! Thank you!
+staszek_done_0_1,staszek,done,0,1,Teraz zagram piosenkę.,Now I'll play a song.
+staszek_after_0_0,staszek,after,0,0,Lubisz muzykę?,Do you like music?
+staszek_after_0_1,staszek,after,0,1,Gram na akordeonie.,I play the accordion.
+staszek_after_0_2,staszek,after,0,2,Zaśpiewajmy razem!,Let's sing together!
+staszek_after_0_3,staszek,after,0,3,Ta piosenka jest bardzo stara.,This song is very old.
+staszek_remind_0_0,staszek,remind,0,0,Moje nuty są chyba przy drzewie.,My sheet music is probably by a tree.
+staszek_wrong_0_0,staszek,wrong,0,0,"Hmm, to nie to.","Hmm, that's not it."
+bogdan_intro_0_0,bogdan,intro,0,0,Dzień dobry! Jestem Bogdan.,Good morning! I'm Bogdan.
+bogdan_intro_0_1,bogdan,intro,0,1,Sprzedaję ubrania.,I sell clothes.
+bogdan_intro_0_2,bogdan,intro,0,2,Dzisiaj jest zimno i pada deszcz.,"It's cold today, and it's raining."
+bogdan_intro_0_3,bogdan,intro,0,3,Wszyscy chcą ciepłe ubrania!,Everyone wants warm clothes!
+bogdan_intro_0_4,bogdan,intro,0,4,"Pomóż mi, proszę.","Help me, please."
+bogdan_wrong_0_0,bogdan,wrong,0,0,"Nie, to nie to.","No, that's not it."
+krysia_intro_0_0,krysia,intro,0,0,Dzień dobry! Jestem babcia Krysia.,Good morning! I'm Grandma Krysia.
+krysia_intro_0_1,krysia,intro,0,1,Karmię gołębie.,I'm feeding the pigeons.
+krysia_intro_0_2,krysia,intro,0,2,Ale nie mam już chleba.,But I have no more bread.
+krysia_intro_0_3,krysia,intro,0,3,Gołębie są głodne.,The pigeons are hungry.
+krysia_intro_0_4,krysia,intro,0,4,"Przynieś mi bułkę z piekarni, proszę.","Bring me a roll from the bakery, please."
+krysia_done_0_0,krysia,done,0,0,"Dziękuję, kochanie!","Thank you, dear!"
+krysia_done_0_1,krysia,done,0,1,Gołębie są szczęśliwe.,The pigeons are happy.
+krysia_after_0_0,krysia,after,0,0,Józef to mój brat.,Józef is my brother.
+krysia_after_0_1,krysia,after,0,1,Kuba to mój wnuk.,Kuba is my grandson.
+krysia_after_0_2,krysia,after,0,2,Basia to moja córka.,Basia is my daughter.
+krysia_after_0_3,krysia,after,0,3,Mam dużą rodzinę.,I have a big family.
+krysia_remind_0_0,krysia,remind,0,0,Bułki są w piekarni.,The rolls are in the bakery.
+krysia_wrong_0_0,krysia,wrong,0,0,"Nie, kochanie, to nie to.","No, dear, that's not it."
+ania_intro_0_0,ania,intro,0,0,Hej! Jestem Ania.,Hey! I'm Ania.
+ania_intro_0_1,ania,intro,0,1,"Przepraszam, czy możesz mi pomóc?","Sorry, can you help me?"
+ania_intro_0_2,ania,intro,0,2,"Nie wiem, gdzie jest mój telefon.",I don't know where my phone is.
+ania_intro_0_3,ania,intro,0,3,"Byłam tu rano, a teraz go nie ma.","I was here this morning, and now it's gone."
+ania_intro_0_4,ania,intro,0,4,Może jest gdzieś przy stawie?,Maybe it's somewhere by the pond?
+ania_done_0_0,ania,done,0,0,Naprawdę? Mój telefon! Dziękuję!,Really? My phone! Thank you!
+ania_done_0_1,ania,done,0,1,Jesteś super!,You're great!
+ania_remind_0_0,ania,remind,0,0,Mój telefon jest chyba przy stawie.,My phone is probably by the pond.
+ania_wrong_0_0,ania,wrong,0,0,"Nie, to nie to.","No, that's not it."
+ania_chat_0_0,ania,chat,0,0,Jak się masz?,How are you?
+ania_chat_0_1,ania,chat,0,1,Ja dobrze. A ty?,I'm fine. And you?
+ania_chat_1_0,ania,chat,1,0,Co robisz dzisiaj?,What are you doing today?
+ania_chat_1_1,ania,chat,1,1,Ja muszę się uczyć.,I have to study.
+ania_chat_1_2,ania,chat,1,2,Jutro mam egzamin.,I have an exam tomorrow.
+ania_chat_2_0,ania,chat,2,0,Wiesz co? Lubię ten park.,You know what? I like this park.
+ania_chat_2_1,ania,chat,2,1,Tu jest tak cicho.,It's so quiet here.
+ania_chat_3_0,ania,chat,3,0,"Myślę, że będzie padać.",I think it's going to rain.
+ania_chat_3_1,ania,chat,3,1,"Dobrze, że mam parasolkę.",Good thing I have an umbrella.
+ania_chat_4_0,ania,chat,4,0,Dlaczego wszyscy tak szybko chodzą?,Why does everyone walk so fast?
+ania_chat_4_1,ania,chat,4,1,Nie rozumiem.,I don't understand.
+ania_chat_5_0,ania,chat,5,0,Miło cię widzieć!,Nice to see you!
+ania_chat_5_1,ania,chat,5,1,"Jeśli chcesz, mogę ci pomóc.","If you want, I can help you."
+ania_chat_6_0,ania,chat,6,0,Co się stało?,What happened?
+ania_chat_6_1,ania,chat,6,1,Po prostu jestem zmęczona.,I'm just tired.
+ania_chat_7_0,ania,chat,7,0,Dziś jest piękny dzień.,It's a beautiful day today.
+ania_chat_7_1,ania,chat,7,1,Potem idę do kina.,Later I'm going to the cinema.
+ania_chat_8_0,ania,chat,8,0,Musisz to zobaczyć!,You have to see this!
+ania_chat_8_1,ania,chat,8,1,Kaczki mają małe dzieci.,The ducks have little ones.
+ania_chat_9_0,ania,chat,9,0,Chcę być lekarką.,I want to be a doctor.
+ania_chat_9_1,ania,chat,9,1,"Oczywiście, to trudne.","Of course, it's hard."
+ania_chat_10_0,ania,chat,10,0,Kupię sobie lody.,I'll buy myself an ice cream.
+ania_chat_10_1,ania,chat,10,1,Mam coś dla ciebie!,I've got something for you!
+ania_chat_11_0,ania,chat,11,0,Właśnie o tym myślę.,That's just what I'm thinking about.
+ania_chat_11_1,ania,chat,11,1,O czym myślisz?,What are you thinking about?
+ania_chat_12_0,ania,chat,12,0,Kawa albo herbata?,Coffee or tea?
+ania_chat_12_1,ania,chat,12,1,Ja zawsze piję kawę przed egzaminem.,I always drink coffee before an exam.
+ania_chat_13_0,ania,chat,13,0,Co dalej?,What next?
+ania_chat_13_1,ania,chat,13,1,"Nie wiem, co chcę robić w życiu.",I don't know what I want to do in life.
+ania_chat_14_0,ania,chat,14,0,To jest mój pierwszy egzamin.,This is my first exam.
+ania_chat_14_1,ania,chat,14,1,Nie jest źle!,It's not bad!
+ania_chat_15_0,ania,chat,15,0,Zrobię to później.,I'll do it later.
+ania_chat_15_1,ania,chat,15,1,"Teraz jest zbyt ładnie, żeby się uczyć.",It's too nice now to study.
+ania_chat_16_0,ania,chat,16,0,"Lubię ten park, ponieważ jest tu cicho.",I like this park because it's quiet here.
+ania_chat_16_1,ania,chat,16,1,Lubię go coraz bardziej.,I like it more and more.
+ania_chat_17_0,ania,chat,17,0,Co mówisz? Nie słyszę.,What are you saying? I can't hear.
+ania_chat_18_0,ania,chat,18,0,"Zanim pójdę, muszę zadzwonić do mamy.","Before I go, I have to call Mum."
+ania_chat_18_1,ania,chat,18,1,"Nadal nie wiem, co jej powiem.",I still don't know what I'll tell her.
+ania_chat_19_0,ania,chat,19,0,"Możesz mi powiedzieć, która jest godzina?",Can you tell me what time it is?
+ania_chat_20_0,ania,chat,20,0,Co jest w twoim plecaku?,What's in your backpack?
+ania_chat_21_0,ania,chat,21,0,Potrzebuję twojej pomocy.,I need your help.
+ania_chat_21_1,ania,chat,21,1,Dzięki tobie mam telefon!,Thanks to you I have my phone!
+ania_chat_22_0,ania,chat,22,0,Muszę już iść. Na razie!,I have to go now. See you!
+ania_chat_23_0,ania,chat,23,0,Zwykle uczę się w bibliotece.,I usually study in the library.
+ania_chat_23_1,ania,chat,23,1,Ale dziś jest za ładnie.,But today it's too nice.
+ania_chat_24_0,ania,chat,24,0,Na egzaminie było mnóstwo pytań.,There were loads of questions in the exam.
+ania_chat_24_1,ania,chat,24,1,Odpowiedź na pierwsze pytanie była prosta.,The answer to the first question was simple.
+ania_chat_25_0,ania,chat,25,0,Szczerze? Nienawidzę matematyki.,Honestly? I hate maths.
+ania_chat_25_1,ania,chat,25,1,Ale uwielbiam historię.,But I love history.
+ania_chat_26_0,ania,chat,26,0,Próbuję zrozumieć ten tekst.,I'm trying to understand this text.
+ania_chat_26_1,ania,chat,26,1,"Staram się, ale to trudne.","I'm trying, but it's hard."
+ania_chat_27_0,ania,chat,27,0,Mam małe mieszkanie blisko parku.,I have a small flat near the park.
+ania_chat_27_1,ania,chat,27,1,Mieszkam tam z przyjaciółmi.,I live there with friends.
+ania_chat_28_0,ania,chat,28,0,W weekend jadę do rodziców.,At the weekend I'm going to my parents'.
+ania_chat_28_1,ania,chat,28,1,Wolę herbatę niż kawę.,I prefer tea to coffee.
+ania_chat_29_0,ania,chat,29,0,W przyszłości chcę pracować w szpitalu.,In the future I want to work in a hospital.
+ania_chat_29_1,ania,chat,29,1,Moja przyszłość? Zobaczymy.,My future? We'll see.
+ania_chat_30_0,ania,chat,30,0,"Słyszałam, że Piotr ma pierścionek!",I heard Piotr has a ring!
+ania_chat_30_1,ania,chat,30,1,To wspaniałe!,That's wonderful!
+ania_chat_31_0,ania,chat,31,0,Mój brat ma nowe auto.,My brother has a new car.
+ania_chat_31_1,ania,chat,31,1,"Jeździ nim wszędzie, nawet do sklepu.","He drives it everywhere, even to the shop."
+ania_chat_31_2,ania,chat,31,2,Ja nie mam auta.,I don't have a car.
+ania_chat_32_0,ania,chat,32,0,"Wiadomo, że kawa pomaga w nauce.",Everyone knows coffee helps with studying.
+ania_chat_32_1,ania,chat,32,1,To zdecydowanie najlepszy park w mieście.,This is definitely the best park in town.
+ania_chat_33_0,ania,chat,33,0,"Pomyślałam, że pójdę dziś na spacer.",I thought I'd go for a walk today.
+ania_chat_33_1,ania,chat,33,1,Pójdziesz ze mną do kina?,Will you come to the cinema with me?
+ania_chat_33_2,ania,chat,33,2,Spotkamy się jutro?,Shall we meet tomorrow?
+ania_chat_34_0,ania,chat,34,0,"Potrafię dużo rzeczy, ale nie potrafię gotować.","I can do lots of things, but I can't cook."
+ania_chat_35_0,ania,chat,35,0,"Idź tędy, tak jest szybciej.","Go this way, it's quicker."
+ania_chat_35_1,ania,chat,35,1,Masz ochotę na lody?,Do you fancy an ice cream?
+ania_chat_36_0,ania,chat,36,0,Moja siostra wyszła za mąż w zeszłym roku.,My sister got married last year.
+ania_chat_36_1,ania,chat,36,1,Ślub był piękny.,The wedding was beautiful.
+ania_chat_37_0,ania,chat,37,0,To był długi dzień.,It's been a long day.
+ania_chat_37_1,ania,chat,37,1,Idę do łóżka.,I'm off to bed.
+ania_chat_38_0,ania,chat,38,0,"Pomogę ci, jeśli chcesz.",I'll help you if you like.
+ania_chat_38_1,ania,chat,38,1,To miłe z twojej strony.,That's kind of you.
+ania_chat_39_0,ania,chat,39,0,Tomek próbuje jeździć szybciej.,Tomek is trying to ride faster.
+ania_chat_39_1,ania,chat,39,1,Mamy dziś dużo słońca.,We've got lots of sunshine today.
+ania_chat_39_2,ania,chat,39,2,To świetne!,That's great!
+ania_chat_40_0,ania,chat,40,0,Studia to ciężkie życie.,Uni is a hard life.
+ania_chat_40_1,ania,chat,40,1,Ale niezbyt długie: trzy lata.,But not too long: three years.
+ania_chat_41_0,ania,chat,41,0,Uczę się hiszpańskiego. Każdy język jest trudny.,I'm learning Spanish. Every language is hard.
+ania_chat_42_0,ania,chat,42,0,W wakacje chcę wyjechać nad morze.,In the holidays I want to go away to the seaside.
+ania_chat_42_1,ania,chat,42,1,Spędzić tydzień na plaży!,Spend a week on the beach!
+ania_chat_43_0,ania,chat,43,0,Pociąg odjeżdża ze stacji o ósmej.,The train leaves the station at eight.
+ania_chat_43_1,ania,chat,43,1,Pojadę z przyjaciółką.,I'll go with a friend.
+ania_chat_44_0,ania,chat,44,0,Moja przyjaciółka pochodzi z Krakowa.,My friend comes from Kraków.
+ania_chat_44_1,ania,chat,44,1,"Znam jedną osobę, która mówi po chińsku.",I know one person who speaks Chinese.
+ania_chat_45_0,ania,chat,45,0,Mam ledwo czas na jedzenie.,I barely have time to eat.
+ania_chat_45_1,ania,chat,45,1,Szukam jakiejś pracy na wakacje.,I'm looking for some work for the holidays.
+ania_chat_46_0,ania,chat,46,0,Muszę oddać pracę do jutra.,I have to hand in my essay by tomorrow.
+ania_chat_46_1,ania,chat,46,1,Zacznę zaraz po kawie.,I'll start right after my coffee.
+ania_chat_47_0,ania,chat,47,0,Nie mam pamięci do imion.,I've no memory for names.
+ania_chat_47_1,ania,chat,47,1,Chcę odwiedzić siostrę w weekend.,I want to visit my sister at the weekend.
+ania_chat_48_0,ania,chat,48,0,Lubię wychodzić wieczorem do klubu.,I like going out to a club in the evening.
+ania_chat_48_1,ania,chat,48,1,Ale nie dziś.,But not today.
+ania_chat_49_0,ania,chat,49,0,Na niebie nie ma ani jednej chmury.,There isn't a single cloud in the sky.
+ania_chat_49_1,ania,chat,49,1,Świeże powietrze dobrze mi robi.,Fresh air does me good.
+ania_chat_49_2,ania,chat,49,2,Niebo jest dziś takie czyste!,The sky is so clear today!
+ania_chat_50_0,ania,chat,50,0,Próbowałam już trzy razy.,I've already tried three times.
+ania_chat_50_1,ania,chat,50,1,Normalnie jem obiad o drugiej.,Normally I have lunch at two.
+ania_chat_51_0,ania,chat,51,0,"To oczywiste, prawda?","That's obvious, isn't it?"
+ania_chat_51_1,ania,chat,51,1,Myślę podobnie.,I think the same.
+ania_chat_52_0,ania,chat,52,0,Życzę ci miłego dnia!,I wish you a nice day!
+ania_chat_52_1,ania,chat,52,1,Mieszkam niedaleko.,I live nearby.
+ania_chat_53_0,ania,chat,53,0,Najszybciej dojdziesz tędy.,The quickest way is this way.
+ania_chat_53_1,ania,chat,53,1,"Nie wierz we wszystko, co piszą.",Don't believe everything they write.
+ania_chat_54_0,ania,chat,54,0,Chcę obejrzeć ten film.,I want to watch that film.
+ania_chat_54_1,ania,chat,54,1,Bardzo mi się podobało.,I liked it a lot.
+wieslaw_intro_0_0,wieslaw,intro,0,0,Dzień dobry! Jestem pan Wiesław.,Good morning! I'm Mr Wiesław.
+wieslaw_intro_0_1,wieslaw,intro,0,1,Pracuję w parku.,I work in the park.
+wieslaw_intro_0_2,wieslaw,intro,0,2,Wszystko w porządku?,Is everything all right?
+wieslaw_chat_0_0,wieslaw,chat,0,0,Ludzie nigdy nie słuchają.,People never listen.
+wieslaw_chat_1_0,wieslaw,chat,1,0,"Kiedy byłem młody, tu nie było parku.","When I was young, there was no park here."
+wieslaw_chat_1_1,wieslaw,chat,1,1,Było tu tylko pole.,There was only a field here.
+wieslaw_chat_2_0,wieslaw,chat,2,0,Znasz Piotra? On czeka na Martę.,Do you know Piotr? He's waiting for Marta.
+wieslaw_chat_3_0,wieslaw,chat,3,0,Nie ma problemu.,No problem.
+wieslaw_chat_3_1,wieslaw,chat,3,1,Zawsze możesz mnie zapytać.,You can always ask me.
+wieslaw_chat_4_0,wieslaw,chat,4,0,Kto to był?,Who was that?
+wieslaw_chat_4_1,wieslaw,chat,4,1,Nie wiem. Nikt tu nie przychodzi.,I don't know. Nobody comes here.
+wieslaw_chat_5_0,wieslaw,chat,5,0,Idę przez park do domu.,I'm walking home through the park.
+wieslaw_chat_6_0,wieslaw,chat,6,0,Trzeba zawsze mówić prawdę.,You should always tell the truth.
+wieslaw_chat_7_0,wieslaw,chat,7,0,"Przykro mi, nie wiem.","I'm sorry, I don't know."
+wieslaw_chat_8_0,wieslaw,chat,8,0,Często jestem tu sam.,I'm often here alone.
+wieslaw_chat_8_1,wieslaw,chat,8,1,Ale lepiej późno niż nigdy.,But better late than never.
+wieslaw_chat_9_0,wieslaw,chat,9,0,Ich dzieci zawsze tu grają.,Their children always play here.
+wieslaw_chat_9_1,wieslaw,chat,9,1,"Jesteśmy w parku, więc to normalne.","We're in a park, so that's normal."
+wieslaw_chat_10_0,wieslaw,chat,10,0,Całe życie pracuję w tym parku.,I've worked in this park all my life.
+wieslaw_chat_10_1,wieslaw,chat,10,1,Pracuję tu jako ogrodnik.,I work here as a gardener.
+wieslaw_chat_11_0,wieslaw,chat,11,0,Kiedyś było tu więcej ludzi.,There used to be more people here.
+wieslaw_chat_11_1,wieslaw,chat,11,1,"Cóż, takie jest życie.","Well, that's life."
+wieslaw_chat_12_0,wieslaw,chat,12,0,"Mój Boże, jak ten czas leci!","My God, how time flies!"
+wieslaw_chat_12_1,wieslaw,chat,12,1,Jestem już stary.,I'm old now.
+wieslaw_chat_13_0,wieslaw,chat,13,0,Ta pani na ławce to moja żona.,The lady on the bench is my wife.
+wieslaw_chat_13_1,wieslaw,chat,13,1,Moja żona zawsze ma rację.,My wife is always right.
+wieslaw_chat_14_0,wieslaw,chat,14,0,Czemu pytasz?,Why do you ask?
+wieslaw_chat_14_1,wieslaw,chat,14,1,Szukasz czegoś?,Are you looking for something?
+wieslaw_chat_15_0,wieslaw,chat,15,0,Dawno temu tu był las.,Long ago there was a forest here.
+wieslaw_chat_15_1,wieslaw,chat,15,1,Tu były kiedyś róże.,There used to be roses here.
+wieslaw_chat_16_0,wieslaw,chat,16,0,To jest dobre miejsce na spacer.,This is a good place for a walk.
+wieslaw_chat_16_1,wieslaw,chat,16,1,Można tu siedzieć cały dzień.,You can sit here all day.
+wieslaw_chat_17_0,wieslaw,chat,17,0,Te kaczki są bardzo mądre.,These ducks are very clever.
+wieslaw_chat_17_1,wieslaw,chat,17,1,"Dzieci mogą tu grać, ale nie w stawie!","Children can play here, but not in the pond!"
+wieslaw_chat_18_0,wieslaw,chat,18,0,Zaraz będzie padać.,It's about to rain.
+wieslaw_chat_18_1,wieslaw,chat,18,1,A wcześniej było tak ładnie!,And earlier it was so nice!
+wieslaw_chat_19_0,wieslaw,chat,19,0,"Tyle lat, a ja wciąż tu jestem.","So many years, and I'm still here."
+wieslaw_chat_19_1,wieslaw,chat,19,1,"Kim jest ten chłopiec? A, to Tomek.","Who's that boy? Oh, it's Tomek."
+wieslaw_chat_20_0,wieslaw,chat,20,0,"Mój dom jest tam, za parkiem.","My house is over there, past the park."
+wieslaw_chat_20_1,wieslaw,chat,20,1,Tu będą nowe drzewa.,There will be new trees here.
+wieslaw_chat_21_0,wieslaw,chat,21,0,Wszystkie drzewa tu znam.,I know all the trees here.
+wieslaw_chat_22_0,wieslaw,chat,22,0,"Wydaje mi się, że Piotr jest smutny.",It seems to me that Piotr is sad.
+wieslaw_chat_22_1,wieslaw,chat,22,1,Żyje się tylko raz.,You only live once.
+wieslaw_chat_23_0,wieslaw,chat,23,0,"Mamy dużo czasu, prawda?","We have lots of time, right?"
+wieslaw_chat_23_1,wieslaw,chat,23,1,"Dobrze, dobrze. Do widzenia!","All right, all right. Goodbye!"
+wieslaw_chat_24_0,wieslaw,chat,24,0,"Tereso, gdzie byłaś?","Teresa, where were you?"
+wieslaw_chat_24_1,wieslaw,chat,24,1,"Powiedziałaś, że będziesz na ławce.",You said you'd be on the bench.
+wieslaw_chat_25_0,wieslaw,chat,25,0,Teresa pyta: chciałeś herbaty?,Teresa asks: did you want some tea?
+wieslaw_chat_25_1,wieslaw,chat,25,1,A ja zawsze chcę kawy.,And I always want coffee.
+wieslaw_chat_26_0,wieslaw,chat,26,0,Mówię jej: powinnaś więcej odpoczywać.,I tell her: you should rest more.
+wieslaw_chat_26_1,wieslaw,chat,26,1,"Bądź cicho, Tereso, kaczki śpią.","Be quiet, Teresa, the ducks are asleep."
+wieslaw_chat_27_0,wieslaw,chat,27,0,Pracuję tu od początku.,I've worked here since the beginning.
+wieslaw_chat_27_1,wieslaw,chat,27,1,"Mam sporo pracy: liście, trawa, kosze.","I have quite a lot of work: leaves, grass, bins."
+wieslaw_chat_28_0,wieslaw,chat,28,0,Wszędzie są liście!,There are leaves everywhere!
+wieslaw_chat_28_1,wieslaw,chat,28,1,Nagle zaczęło padać.,Suddenly it started to rain.
+wieslaw_chat_29_0,wieslaw,chat,29,0,Mój ojciec też był ogrodnikiem.,My father was a gardener too.
+wieslaw_chat_29_1,wieslaw,chat,29,1,Pracowałem z ojcem w tym parku.,I worked with my father in this park.
+wieslaw_chat_30_0,wieslaw,chat,30,0,Musiałem dziś wcześnie wstać.,I had to get up early today.
+wieslaw_chat_30_1,wieslaw,chat,30,1,"Wracaj do domu, mówi żona.","Come home, my wife says."
+wieslaw_chat_31_0,wieslaw,chat,31,0,Wstawaj! mówi żona o szóstej rano.,Get up! my wife says at six in the morning.
+wieslaw_chat_32_0,wieslaw,chat,32,0,Słyszałeś? pyta Teresa.,Did you hear? Teresa asks.
+wieslaw_chat_32_1,wieslaw,chat,32,1,Nic nie słyszałem.,I didn't hear anything.
+wieslaw_chat_33_0,wieslaw,chat,33,0,"Powoli, powoli.","Slowly, slowly."
+wieslaw_chat_33_1,wieslaw,chat,33,1,"Kolejny dzień, kolejne liście.","Another day, more leaves."
+wieslaw_chat_34_0,wieslaw,chat,34,0,W pobliżu jest sklep z narzędziami.,There's a tool shop nearby.
+wieslaw_chat_34_1,wieslaw,chat,34,1,Muszę naprawić tę ławkę.,I have to fix this bench.
+wieslaw_chat_34_2,wieslaw,chat,34,2,Ta ławka stoi tu od dawna.,This bench has been here for ages.
+wieslaw_chat_35_0,wieslaw,chat,35,0,"Kiedy pada, praca idzie wolno.","When it rains, the work goes slowly."
+wieslaw_chat_36_0,wieslaw,chat,36,0,Mam pięćdziesiąt drzew i tysiące liści.,I have fifty trees and thousands of leaves.
+wieslaw_chat_37_0,wieslaw,chat,37,0,"Ostrożnie, tu jest mokro!","Careful, it's wet here!"
+wieslaw_chat_38_0,wieslaw,chat,38,0,Teresa jest moją żoną od czterdziestu lat.,Teresa has been my wife for forty years.
+wieslaw_chat_38_1,wieslaw,chat,38,1,Z żoną zawsze jemy obiad o drugiej.,My wife and I always have lunch at two.
+wieslaw_chat_39_0,wieslaw,chat,39,0,Spokoju! Kaczki śpią.,Quiet! The ducks are asleep.
+wieslaw_chat_39_1,wieslaw,chat,39,1,Moje nogi już nie są młode.,My legs aren't young any more.
+wieslaw_chat_40_0,wieslaw,chat,40,0,Nigdzie nie jest tak ładnie jak tu.,Nowhere is as nice as here.
+wieslaw_chat_40_1,wieslaw,chat,40,1,Wokół stawu rosną kwiaty.,Flowers grow around the pond.
+wieslaw_chat_41_0,wieslaw,chat,41,0,"Powiedzmy, że lubię swoją pracę.",Let's say I like my job.
+wieslaw_chat_41_1,wieslaw,chat,41,1,Tu znajdziesz spokój.,You'll find peace here.
+wieslaw_chat_42_0,wieslaw,chat,42,0,Rozmawiałem dziś z Piotrem.,I talked to Piotr today.
+wieslaw_chat_42_1,wieslaw,chat,42,1,Znam tego chłopca od małego.,I've known that boy since he was little.
+wieslaw_chat_43_0,wieslaw,chat,43,0,Tomek chciałby mieć psa.,Tomek would like to have a dog.
+wieslaw_chat_43_1,wieslaw,chat,43,1,Byłby z niego dobry ogrodnik.,He'd make a good gardener.
+wieslaw_chat_44_0,wieslaw,chat,44,0,"Chodź bliżej, coś ci pokażę.","Come closer, I'll show you something."
+wieslaw_chat_44_1,wieslaw,chat,44,1,Koło stawu jest ławka.,There's a bench by the pond.
+wieslaw_chat_45_0,wieslaw,chat,45,0,Kopię ziemię pod nowe drzewo.,I'm digging the ground for a new tree.
+wieslaw_chat_45_1,wieslaw,chat,45,1,Pomiędzy drzewami jest ścieżka.,There's a path between the trees.
+wieslaw_chat_46_0,wieslaw,chat,46,0,"Ja zostaję tutaj, a ty?","I'm staying here, and you?"
+wieslaw_chat_46_1,wieslaw,chat,46,1,Przed naszym domem rośnie drzewo.,There's a tree growing in front of our house.
+wieslaw_chat_47_0,wieslaw,chat,47,0,"Wiosną sadzę kwiaty, jesienią zbieram liście.","In spring I plant flowers, in autumn I gather leaves."
+wieslaw_chat_47_1,wieslaw,chat,47,1,Było warte tej pracy.,It was worth the work.
+wieslaw_chat_48_0,wieslaw,chat,48,0,Cały ten teren to park.,All this land is the park.
+wieslaw_chat_48_1,wieslaw,chat,48,1,"Dotąd jest park, a dalej ulica.","The park goes up to here, then there's the street."
+wieslaw_chat_49_0,wieslaw,chat,49,0,Kiedyś miałem konia.,I once had a horse.
+wieslaw_chat_49_1,wieslaw,chat,49,1,Mój wujek też był ogrodnikiem.,My uncle was a gardener too.
+wieslaw_chat_50_0,wieslaw,chat,50,0,Robiłem to przez całe życie.,I've done this all my life.
+wieslaw_chat_50_1,wieslaw,chat,50,1,"Ryby w stawie? Są, ale małe.","Fish in the pond? There are, but they're small."
+wieslaw_chat_51_0,wieslaw,chat,51,0,Wiatr nadchodzi z południa.,The wind is coming from the south.
+wieslaw_chat_51_1,wieslaw,chat,51,1,W południe jem kanapkę.,At noon I eat a sandwich.
+wieslaw_chat_52_0,wieslaw,chat,52,0,Głęboko w ziemi są korzenie.,Deep in the soil are the roots.
+wieslaw_chat_52_1,wieslaw,chat,52,1,Słyszysz ten dźwięk? To dzięcioł.,Do you hear that sound? It's a woodpecker.
+wieslaw_chat_53_0,wieslaw,chat,53,0,Cisza i spokój. Tego mi trzeba.,Peace and quiet. That's what I need.
+wieslaw_chat_53_1,wieslaw,chat,53,1,Grabie wypadły mi z ręki.,The rake fell out of my hand.
+wieslaw_chat_54_0,wieslaw,chat,54,0,Mam stare spodnie do pracy.,I have old trousers for work.
+wieslaw_chat_54_1,wieslaw,chat,54,1,Pracujemy razem z żoną od lat.,My wife and I have worked together for years.
+wieslaw_chat_55_0,wieslaw,chat,55,0,"Kolejna jesień, kolejne liście.","Another autumn, more leaves."
+wieslaw_chat_55_1,wieslaw,chat,55,1,Podlewam kwiaty wodą ze stawu.,I water the flowers with water from the pond.
+wieslaw_chat_56_0,wieslaw,chat,56,0,Wszystko jest czysto i ładnie.,Everything's clean and nice.
+wieslaw_chat_56_1,wieslaw,chat,56,1,Kwiaty są ładne w tym roku.,The flowers are pretty this year.
+wieslaw_chat_56_2,wieslaw,chat,56,2,Pomimo deszczu pracuję.,"Despite the rain, I'm working."
+wieslaw_chat_57_0,wieslaw,chat,57,0,Tomek pomógł mi z liśćmi.,Tomek helped me with the leaves.
+wieslaw_chat_57_1,wieslaw,chat,57,1,Tomek zobaczył rybę w stawie.,Tomek saw a fish in the pond.
+wieslaw_chat_58_0,wieslaw,chat,58,0,Pojawił się nowy ptak w parku.,A new bird has turned up in the park.
+wieslaw_chat_58_1,wieslaw,chat,58,1,Nad głową latają ptaki.,Birds are flying overhead.
+wieslaw_chat_59_0,wieslaw,chat,59,0,Poszedłem rano do sklepu.,I went to the shop this morning.
+wieslaw_chat_59_1,wieslaw,chat,59,1,Kupię żonie kwiaty.,I'll buy my wife some flowers.
+wieslaw_chat_60_0,wieslaw,chat,60,0,Kiedyś była tu łódź na stawie.,There used to be a boat on the pond.
+wieslaw_chat_60_1,wieslaw,chat,60,1,Mogłoby dzisiaj nie padać.,It could do without raining today.
+wieslaw_chat_61_0,wieslaw,chat,61,0,Teresa pyta: co robiłeś cały dzień?,Teresa asks: what have you been doing all day?
+wieslaw_chat_61_1,wieslaw,chat,61,1,"Wróciłeś, Wiesiu! mówi, kiedy wracam.","You're back, Wiesiu! she says when I come home."
+tomek_intro_0_0,tomek,intro,0,0,Hej! Jestem Tomek.,Hey! I'm Tomek.
+tomek_intro_0_1,tomek,intro,0,1,"No, to jest trochę głupie...","Well, this is a bit silly..."
+tomek_intro_0_2,tomek,intro,0,2,Ktoś zabrał moją deskorolkę!,Someone took my skateboard!
+tomek_intro_0_3,tomek,intro,0,3,Może jest za drzewem?,Maybe it's behind a tree?
+tomek_done_0_0,tomek,done,0,0,Jest! Dzięki!,There it is! Thanks!
+tomek_done_0_1,tomek,done,0,1,Jesteś naprawdę w porządku.,You're really all right.
+tomek_remind_0_0,tomek,remind,0,0,Moja deskorolka jest chyba za drzewem.,My skateboard is probably behind a tree.
+tomek_wrong_0_0,tomek,wrong,0,0,"Nie, to nie to.","No, that's not it."
+tomek_chat_0_0,tomek,chat,0,0,Co jest? Wszystko dobrze?,What's up? All good?
+tomek_chat_1_0,tomek,chat,1,0,"Mój ojciec mówi, że to niebezpieczne.",My dad says it's dangerous.
+tomek_chat_1_1,tomek,chat,1,1,Ale on nic nie wie.,But he doesn't know anything.
+tomek_chat_2_0,tomek,chat,2,0,Ja też tak myślę!,I think so too!
+tomek_chat_3_0,tomek,chat,3,0,Chodź tutaj! Coś ci pokażę.,Come here! I'll show you something.
+tomek_chat_4_0,tomek,chat,4,0,Jutro idę do szkoły.,Tomorrow I'm going to school.
+tomek_chat_4_1,tomek,chat,4,1,Nie chcę!,I don't want to!
+tomek_chat_5_0,tomek,chat,5,0,"Nie mogę, bo mama czeka.","I can't, because Mum's waiting."
+tomek_chat_5_1,tomek,chat,5,1,"Mamo, jeszcze pięć minut!","Mum, five more minutes!"
+tomek_chat_6_0,tomek,chat,6,0,Daj mi chwilę!,Give me a moment!
+tomek_chat_6_1,tomek,chat,6,1,Chcę więcej czasu!,I want more time!
+tomek_chat_7_0,tomek,chat,7,0,"Możemy grać razem, jeśli chcesz.","We can play together, if you want."
+tomek_chat_8_0,tomek,chat,8,0,Jasne! Będę tu jutro.,Sure! I'll be here tomorrow.
+tomek_chat_9_0,tomek,chat,9,0,Co się dzieje?,What's going on?
+tomek_chat_9_1,tomek,chat,9,1,Idź tam i zobacz!,Go over there and see!
+tomek_chat_10_0,tomek,chat,10,0,Przestań! To nie jest śmieszne.,Stop it! That's not funny.
+tomek_chat_10_1,tomek,chat,10,1,Chciałem tylko grać.,I only wanted to play.
+tomek_chat_11_0,tomek,chat,11,0,Widziałem dużą rybę w stawie!,I saw a big fish in the pond!
+tomek_chat_11_1,tomek,chat,11,1,Mówię prawdę!,I'm telling the truth!
+tomek_chat_12_0,tomek,chat,12,0,"Jak to wygląda? Super, prawda?","How does it look? Great, right?"
+tomek_chat_12_1,tomek,chat,12,1,Już prawie umiem!,I almost know how!
+tomek_chat_13_0,tomek,chat,13,0,Co to znaczy?,What does that mean?
+tomek_chat_14_0,tomek,chat,14,0,"Nie mam ani psa, ani kota.",I have neither a dog nor a cat.
+tomek_chat_15_0,tomek,chat,15,0,Mogę iść z tobą?,Can I go with you?
+tomek_chat_15_1,tomek,chat,15,1,Albo chodź ze mną!,Or come with me!
+tomek_chat_16_0,tomek,chat,16,0,Zaraz wracam!,I'll be right back!
+tomek_chat_16_1,tomek,chat,16,1,"Tato, czekaj na mnie!","Dad, wait for me!"
+tomek_chat_17_0,tomek,chat,17,0,Za kilka dni mam urodziny!,It's my birthday in a few days!
+tomek_chat_17_1,tomek,chat,17,1,Chcę mieć psa.,I want to have a dog.
+tomek_chat_18_0,tomek,chat,18,0,Każdy dzień jest dobry na deskorolkę.,Every day is a good day for skateboarding.
+tomek_chat_18_1,tomek,chat,18,1,Chcesz iść z nami?,Do you want to come with us?
+tomek_chat_19_0,tomek,chat,19,0,Na kogo czekasz?,Who are you waiting for?
+tomek_chat_19_1,tomek,chat,19,1,Mam dość! Koniec! Idę do domu.,I've had enough! That's it! I'm going home.
+tomek_chat_20_0,tomek,chat,20,0,"Ok, ok. Więc co teraz?","OK, OK. So what now?"
+tomek_chat_20_1,tomek,chat,20,1,Mama na nas czeka.,Mum's waiting for us.
+tomek_chat_21_0,tomek,chat,21,0,"Spoko, nic się nie stało.","No worries, nothing happened."
+tomek_chat_21_1,tomek,chat,21,1,"Fajnie, że jesteś!",Cool that you're here!
+tomek_chat_22_0,tomek,chat,22,0,Mój tata ma samolot!,My dad has a plane!
+tomek_chat_22_1,tomek,chat,22,1,"Nie, żartuję.","No, I'm joking."
+tomek_chat_22_2,tomek,chat,22,2,Żartujesz?,Are you joking?
+tomek_chat_23_0,tomek,chat,23,0,"Chodźcie, chłopaki!","Come on, guys!"
+tomek_chat_23_1,tomek,chat,23,1,Dajcie mi piłkę!,Give me the ball!
+tomek_chat_23_2,tomek,chat,23,2,Stój! Nie tędy!,Stop! Not that way!
+tomek_chat_24_0,tomek,chat,24,0,"Zobaczysz, jestem najlepszy!","You'll see, I'm the best!"
+tomek_chat_24_1,tomek,chat,24,1,Wreszcie nie ma szkoły!,No school at last!
+tomek_chat_25_0,tomek,chat,25,0,Jutro jedziemy nad morze.,Tomorrow we're going to the seaside.
+tomek_chat_25_1,tomek,chat,25,1,Wrócimy w niedzielę.,We'll be back on Sunday.
+tomek_chat_26_0,tomek,chat,26,0,"Mama mówi, że jestem jeszcze dzieckiem.",Mum says I'm still a child.
+tomek_chat_26_1,tomek,chat,26,1,Nieprawda!,Not true!
+tomek_chat_27_0,tomek,chat,27,0,"Przysięgam, to nie ja!","I swear, it wasn't me!"
+tomek_chat_27_1,tomek,chat,27,1,"Uspokój się, tato!","Calm down, Dad!"
+tomek_chat_28_0,tomek,chat,28,0,Gry na komputerze są niesamowite!,Computer games are amazing!
+tomek_chat_28_1,tomek,chat,28,1,Mam nową grę!,I've got a new game!
+tomek_chat_29_0,tomek,chat,29,0,"Chcę mieć psa, ale tata nie pozwoli.","I want a dog, but Dad won't let me."
+tomek_chat_30_0,tomek,chat,30,0,Mój dziadek jest bardzo wysoki.,My grandad is very tall.
+tomek_chat_31_0,tomek,chat,31,0,"Usiądź tu, obok mnie.","Sit here, next to me."
+tomek_chat_31_1,tomek,chat,31,1,Nauczyć się jeździć na desce? To proste!,Learn to ride a board? It's easy!
+tomek_chat_32_0,tomek,chat,32,0,Chcesz zjeść kanapkę?,Do you want to eat a sandwich?
+tomek_chat_32_1,tomek,chat,32,1,Chcę jeść! Jestem głodny jak wilk.,I want to eat! I'm as hungry as a wolf.
+tomek_chat_33_0,tomek,chat,33,0,Dziewczynka z mojej klasy ma kota.,A girl in my class has a cat.
+tomek_chat_33_1,tomek,chat,33,1,Moja mama pracuje w biurze.,My mum works in an office.
+tomek_chat_34_0,tomek,chat,34,0,Mam wielką ochotę na lody.,I really fancy an ice cream.
+tomek_chat_35_0,tomek,chat,35,0,"Wujku, chodź zobaczyć!","Uncle, come and see!"
+tomek_chat_35_1,tomek,chat,35,1,"Tatusiu, kupisz mi lody?","Daddy, will you buy me an ice cream?"
+tomek_chat_35_2,tomek,chat,35,2,Tatuś obiecał mi rower.,Daddy promised me a bike.
+tomek_chat_36_0,tomek,chat,36,0,Kompletnie zapomniałem o lekcjach!,I completely forgot about my homework!
+tomek_chat_37_0,tomek,chat,37,0,"Mama mówi, że jestem słodki. Fuj!",Mum says I'm sweet. Yuck!
+tomek_chat_37_1,tomek,chat,37,1,Słodkie są tylko cukierki!,Only sweets are sweet!
+tomek_chat_38_0,tomek,chat,38,0,"Wyluzuj, tata, nic mi nie jest.","Chill, Dad, I'm fine."
+tomek_chat_39_0,tomek,chat,39,0,"Udawać, że śpię? Umiem!",Pretend I'm asleep? I can do that!
+tomek_chat_39_1,tomek,chat,39,1,Umiesz jeździć na desce?,Can you ride a board?
+tomek_chat_40_0,tomek,chat,40,0,Czekajcie na mnie!,Wait for me!
+tomek_chat_40_1,tomek,chat,40,1,Pospiesz się!,Hurry up!
+tomek_chat_41_0,tomek,chat,41,0,Mam w plecaku pełno cukierków.,I've got loads of sweets in my backpack.
+tomek_chat_42_0,tomek,chat,42,0,Gwiazdy są tak wysoko!,The stars are so high up!
+tomek_chat_43_0,tomek,chat,43,0,Bolą mnie kolana.,My knees hurt.
+tomek_chat_43_1,tomek,chat,43,1,Nos mi zmarzł!,My nose is frozen!
+tomek_chat_44_0,tomek,chat,44,0,Myję zęby dwa razy dziennie.,I brush my teeth twice a day.
+tomek_chat_45_0,tomek,chat,45,0,Mój brat nienawidzi szpinaku.,My brother hates spinach.
+tomek_chat_45_1,tomek,chat,45,1,Mój brat jest większy ode mnie.,My brother is bigger than me.
+tomek_chat_46_0,tomek,chat,46,0,Zejdź z drzewa! krzyczy mama.,Get down from that tree! Mum shouts.
+piotr_intro_0_0,piotr,intro,0,0,Cześć. Jestem Piotr.,Hi. I'm Piotr.
+piotr_intro_0_1,piotr,intro,0,1,Czekam na Martę.,I'm waiting for Marta.
+piotr_intro_0_2,piotr,intro,0,2,Ona zawsze się spóźnia.,She's always late.
+piotr_chat_0_0,piotr,chat,0,0,"Kocham ją, wiesz?","I love her, you know?"
+piotr_chat_1_0,piotr,chat,1,0,"Myślisz, że ona przyjdzie?",Do you think she'll come?
+piotr_chat_1_1,piotr,chat,1,1,Mam nadzieję.,I hope so.
+piotr_chat_2_0,piotr,chat,2,0,Gdzie ona jest? Już jest późno.,Where is she? It's late already.
+piotr_chat_3_0,piotr,chat,3,0,Kupiłem jej kwiaty.,I bought her flowers.
+piotr_chat_3_1,piotr,chat,3,1,Czy to dobry pomysł?,Is that a good idea?
+piotr_chat_4_0,piotr,chat,4,0,"Przepraszam, nie mam czasu.","Sorry, I don't have time."
+piotr_chat_4_1,piotr,chat,4,1,Muszę na nią czekać.,I have to wait for her.
+piotr_chat_5_0,piotr,chat,5,0,"Nawet nie wiem, co jej powiem.",I don't even know what I'll say to her.
+piotr_chat_6_0,piotr,chat,6,0,Ona jest taka piękna.,She's so beautiful.
+piotr_chat_6_1,piotr,chat,6,1,"Zrobię wszystko, żeby była szczęśliwa.",I'll do anything to make her happy.
+piotr_chat_7_0,piotr,chat,7,0,Ona jest moją dziewczyną.,She's my girlfriend.
+piotr_chat_7_1,piotr,chat,7,1,"Musimy porozmawiać, gdy przyjdzie.",We have to talk when she comes.
+piotr_chat_8_0,piotr,chat,8,0,Który kwiat lubisz?,Which flower do you like?
+piotr_chat_8_1,piotr,chat,8,1,Nie chodzi o kwiaty.,It's not about the flowers.
+piotr_chat_9_0,piotr,chat,9,0,Będziesz tu jutro?,Will you be here tomorrow?
+piotr_chat_9_1,piotr,chat,9,1,Może ona przyjdzie jutro.,Maybe she'll come tomorrow.
+piotr_chat_10_0,piotr,chat,10,0,Czy to twój plecak?,Is that your backpack?
+piotr_chat_10_1,piotr,chat,10,1,Jej brat ma taki sam.,Her brother has the same one.
+piotr_chat_11_0,piotr,chat,11,0,Jej rodzice są bardzo mili.,Her parents are very nice.
+piotr_chat_11_1,piotr,chat,11,1,To jego problem.,That's his problem.
+piotr_chat_12_0,piotr,chat,12,0,"Myślałem, że ona już nie przyjdzie.",I thought she wasn't coming anymore.
+piotr_chat_12_1,piotr,chat,12,1,Czekam tu już długo.,I've been waiting here a long time.
+piotr_chat_13_0,piotr,chat,13,0,"Miałem dla niej list, ale go zgubiłem.","I had a letter for her, but I lost it."
+piotr_chat_13_1,piotr,chat,13,1,"Musi być jakiś sposób, żeby ją przeprosić.",There must be some way to say sorry to her.
+piotr_chat_14_0,piotr,chat,14,0,Chciałbym z nią zostać na zawsze.,I'd like to stay with her for ever.
+piotr_chat_14_1,piotr,chat,14,1,"Gdyby nie ona, byłbym sam.","If it weren't for her, I'd be alone."
+piotr_chat_15_0,piotr,chat,15,0,"Czuję, że to miłość mojego życia.",I feel that this is the love of my life.
+piotr_chat_15_1,piotr,chat,15,1,Kocham ją bardziej niż siebie.,I love her more than myself.
+piotr_chat_16_0,piotr,chat,16,0,Czy masz kogoś?,Do you have someone?
+piotr_chat_16_1,piotr,chat,16,1,Pieniądze nie są ważne.,Money isn't important.
+piotr_chat_17_0,piotr,chat,17,0,Twoja torba jest ładna. Czy to twoje?,Your bag is nice. Is that yours?
+piotr_chat_18_0,piotr,chat,18,0,Który z tych kwiatów ona lubi?,Which of these flowers does she like?
+piotr_chat_18_1,piotr,chat,18,1,"Powiedz mi, co mam zrobić.",Tell me what I should do.
+piotr_chat_19_0,piotr,chat,19,0,"Co się stanie, jeśli ona nie przyjdzie?",What will happen if she doesn't come?
+piotr_chat_19_1,piotr,chat,19,1,"Nie, ona na pewno przyjdzie.","No, she'll definitely come."
+piotr_chat_20_0,piotr,chat,20,0,"Chcę tylko wiedzieć, gdzie ona jest.",I just want to know where she is.
+piotr_chat_20_1,piotr,chat,20,1,"Czekam, aż ona przyjdzie.",I'm waiting until she comes.
+piotr_chat_21_0,piotr,chat,21,0,Nigdy nie widziałem nikogo takiego jak ona.,I've never seen anyone like her.
+piotr_chat_22_0,piotr,chat,22,0,"Obiecuję, że będę na nią czekał.",I promise I'll wait for her.
+piotr_chat_22_1,piotr,chat,22,1,Mógłbym tu czekać cały dzień.,I could wait here all day.
+piotr_chat_23_0,piotr,chat,23,0,"Muszę się dowiedzieć, czy ona mnie kocha.",I have to find out if she loves me.
+piotr_chat_24_0,piotr,chat,24,0,Mam w kieszeni pierścionek.,I have a ring in my pocket.
+piotr_chat_24_1,piotr,chat,24,1,"Pomyślałem, że kwiaty to dobry pomysł.",I thought flowers were a good idea.
+piotr_chat_25_0,piotr,chat,25,0,"Mogłem kupić róże, ale kupiłem tulipany.","I could have bought roses, but I bought tulips."
+piotr_chat_26_0,piotr,chat,26,0,Kocham ją z całego serca.,I love her with all my heart.
+piotr_chat_26_1,piotr,chat,26,1,To prawdziwe uczucie.,It's a real feeling.
+piotr_chat_26_2,piotr,chat,26,2,"Kocham ją taką, jaka jest.",I love her just as she is.
+piotr_chat_27_0,piotr,chat,27,0,Spotkać ją to było szczęście.,Meeting her was luck.
+piotr_chat_27_1,piotr,chat,27,1,Nigdy nie spotkałem takiej dziewczyny.,I've never met a girl like her.
+piotr_chat_28_0,piotr,chat,28,0,Mam tylko jedną szansę.,I only have one chance.
+piotr_chat_28_1,piotr,chat,28,1,Dziewczynę jak Marta spotyka się raz w życiu.,You meet a girl like Marta once in a lifetime.
+piotr_chat_29_0,piotr,chat,29,0,Boję się trochę matki Marty.,I'm a bit scared of Marta's mother.
+piotr_chat_30_0,piotr,chat,30,0,"Zamiast czekać, mogę do niej zadzwonić.","Instead of waiting, I could phone her."
+piotr_chat_30_1,piotr,chat,30,1,Ale nie chcę stąd odejść.,But I don't want to leave here.
+piotr_chat_31_0,piotr,chat,31,0,Piosenki o miłości są najlepsze.,Songs about love are the best.
+piotr_chat_32_0,piotr,chat,32,0,Myśl o niej nie daje mi spokoju.,The thought of her gives me no peace.
+piotr_chat_32_1,piotr,chat,32,1,Z pewnością przyjdzie.,She'll certainly come.
+piotr_chat_33_0,piotr,chat,33,0,"Najlepiej będzie, jak po prostu powiem prawdę.",It'll be best if I just tell the truth.
+piotr_chat_33_1,piotr,chat,33,1,Wszystko dobrze wyjdzie.,Everything will turn out fine.
+piotr_chat_34_0,piotr,chat,34,0,"Chcę, żeby była moją żoną.",I want her to be my wife.
+piotr_chat_34_1,piotr,chat,34,1,Mam zamiar ją zapytać dzisiaj.,I intend to ask her today.
+piotr_chat_34_2,piotr,chat,34,2,"Jestem pewny, że to dobry pomysł.",I'm sure it's a good idea.
+piotr_chat_35_0,piotr,chat,35,0,"Jej włosy, jej oczy, jej usta...","Her hair, her eyes, her lips..."
+piotr_chat_35_1,piotr,chat,35,1,W jej oczach widzę przyszłość.,In her eyes I see the future.
+piotr_chat_35_2,piotr,chat,35,2,Nie mogę oderwać od niej oczu.,I can't take my eyes off her.
+piotr_chat_36_0,piotr,chat,36,0,Kochasz kogoś?,Do you love someone?
+piotr_chat_36_1,piotr,chat,36,1,Pomyśl o tym.,Think about it.
+piotr_chat_37_0,piotr,chat,37,0,Kolację zrobię sam.,I'll make dinner myself.
+piotr_chat_37_1,piotr,chat,37,1,Muszę się przygotować.,I have to get ready.
+piotr_chat_38_0,piotr,chat,38,0,"Doceniam, że ze mną rozmawiasz.",I appreciate you talking to me.
+piotr_chat_38_1,piotr,chat,38,1,Podjąłem decyzję.,I've made a decision.
+piotr_chat_39_0,piotr,chat,39,0,"Wątpię, czy ona wie.",I doubt she knows.
+piotr_chat_39_1,piotr,chat,39,1,Spodoba jej się?,Will she like it?
+piotr_chat_39_2,piotr,chat,39,2,To będzie niespodzianka.,It'll be a surprise.
+piotr_chat_40_0,piotr,chat,40,0,Nie mogę się doczekać.,I can't wait.
+piotr_chat_40_1,piotr,chat,40,1,Czułem to od pierwszego dnia.,I've felt it since the first day.
+piotr_chat_41_0,piotr,chat,41,0,Szczególnie lubię jej śmiech.,I especially like her laugh.
+piotr_chat_41_1,piotr,chat,41,1,"Kiedy zobaczyłem ją pierwszy raz, wiedziałem.","When I saw her for the first time, I knew."
+piotr_chat_42_0,piotr,chat,42,0,Małżeństwo to poważna sprawa.,Marriage is a serious matter.
+piotr_chat_42_1,piotr,chat,42,1,Jestem z niej dumny.,I'm proud of her.
+piotr_chat_43_0,piotr,chat,43,0,Wszystko pójdzie dobrze.,Everything will go well.
+piotr_chat_43_1,piotr,chat,43,1,Chcę usłyszeć jej głos.,I want to hear her voice.
+piotr_chat_44_0,piotr,chat,44,0,Próbowałem do niej zadzwonić.,I tried to call her.
+piotr_chat_44_1,piotr,chat,44,1,Dałem jej kwiaty też wczoraj.,I gave her flowers yesterday too.
+piotr_chat_45_0,piotr,chat,45,0,"Mój ojciec myślał, że będę lekarzem.",My father thought I'd be a doctor.
+piotr_chat_46_0,piotr,chat,46,0,Ufam jej.,I trust her.
+piotr_chat_46_1,piotr,chat,46,1,Trzeba ufać ludziom.,You have to trust people.
+piotr_chat_47_0,piotr,chat,47,0,"Gdybyśmy byli razem, byłoby pięknie.","If we were together, it would be wonderful."
+piotr_chat_47_1,piotr,chat,47,1,"Porozmawiamy, gdy przyjdzie.",We'll talk when she comes.
+piotr_chat_48_0,piotr,chat,48,0,"Muszę się upewnić, że pierścionek jest w kieszeni.",I have to make sure the ring is in my pocket.
+piotr_chat_48_1,piotr,chat,48,1,Trudno ukryć pierścionek.,It's hard to hide a ring.
+piotr_chat_49_0,piotr,chat,49,0,Poznałem ją w pociągu.,I met her on a train.
+piotr_chat_49_1,piotr,chat,49,1,Mam w sercu tylko ją.,There's only her in my heart.
+piotr_chat_50_0,piotr,chat,50,0,"Tęsknię za nią, kiedy jej nie ma.",I miss her when she's not here.
+piotr_chat_50_1,piotr,chat,50,1,Wspomnienia z naszej pierwszej randki są piękne.,The memories of our first date are beautiful.
+piotr_chat_51_0,piotr,chat,51,0,Zostawię jej list na ławce.,I'll leave her a letter on the bench.
+piotr_chat_51_1,piotr,chat,51,1,Mogłaby już być tutaj.,She could be here by now.
+piotr_chat_52_0,piotr,chat,52,0,Jej uśmiech to wszystko.,Her smile is everything.
+piotr_chat_52_1,piotr,chat,52,1,Bez nadziei nie ma życia.,Without hope there's no life.
+piotr_chat_52_2,piotr,chat,52,2,Miejmy nadzieję!,Let's hope!
+piotr_chat_53_0,piotr,chat,53,0,"Kochana, gdzie jesteś?","Darling, where are you?"
+piotr_chat_53_1,piotr,chat,53,1,Kupiłem też wino na kolację.,I bought wine for dinner too.
+piotr_chat_54_0,piotr,chat,54,0,Najgorsze jest czekanie.,The worst thing is the waiting.
+piotr_chat_54_1,piotr,chat,54,1,Strach przed odpowiedzią jest okropny.,The fear of the answer is awful.
+piotr_chat_54_2,piotr,chat,54,2,Ze strachu nie mogę jeść.,I'm too scared to eat.
+piotr_chat_55_0,piotr,chat,55,0,Jestem szczery: boję się.,I'll be honest: I'm scared.
+piotr_chat_55_1,piotr,chat,55,1,Oby powiedziała tak!,I hope she says yes!
+piotr_chat_56_0,piotr,chat,56,0,"Przypuszczam, że już wie.",I suppose she already knows.
+piotr_chat_56_1,piotr,chat,56,1,"Żałuję, że nie zapytałem wcześniej.",I regret not asking sooner.
+piotr_chat_57_0,piotr,chat,57,0,Taka para jak my zdarza się rzadko.,A couple like us is rare.
+piotr_chat_57_1,piotr,chat,57,1,Pragnę tylko jej szczęścia.,All I want is her happiness.
+piotr_chat_58_0,piotr,chat,58,0,Żonaty? Jeszcze nie!,Married? Not yet!
+piotr_chat_58_1,piotr,chat,58,1,Planuję już datę ślubu.,I'm already planning the wedding date.
+piotr_chat_59_0,piotr,chat,59,0,Nie mam wątpliwości.,I have no doubts.
+piotr_chat_59_1,piotr,chat,59,1,Nie zmienię decyzji.,I won't change my mind.
+piotr_chat_60_0,piotr,chat,60,0,Chcę sprawić jej radość.,I want to make her happy.
+piotr_chat_60_1,piotr,chat,60,1,"Zastanawiałem się, co powiedzieć.",I was wondering what to say.
+piotr_chat_60_2,piotr,chat,60,2,Zobaczy pierścionek i co powie?,"She'll see the ring, and what will she say?"
+teresa_intro_0_0,teresa,intro,0,0,Dzień dobry. Mam na imię Teresa.,Good morning. My name is Teresa.
+teresa_intro_0_1,teresa,intro,0,1,"Znasz mojego męża, pana Wiesława?","Do you know my husband, Mr Wiesław?"
+teresa_intro_0_2,teresa,intro,0,2,"On tu pracuje, a ja tu siedzę.","He works here, and I sit here."
+teresa_chat_0_0,teresa,chat,0,0,Widzisz tę kaczkę?,Do you see that duck?
+teresa_chat_0_1,teresa,chat,0,1,Ona tu mieszka od roku.,She's lived here for a year.
+teresa_chat_0_2,teresa,chat,0,2,Daję im chleb.,I give them bread.
+teresa_chat_1_0,teresa,chat,1,0,Nasze dzieci mieszkają daleko.,Our children live far away.
+teresa_chat_1_1,teresa,chat,1,1,Dzwonią do nas tylko kilka razy w roku.,They only phone us a few times a year.
+teresa_chat_1_2,teresa,chat,1,2,Myślę o nich cały czas.,I think about them all the time.
+teresa_chat_2_0,teresa,chat,2,0,Wiele rzeczy się zmienia.,Many things change.
+teresa_chat_2_1,teresa,chat,2,1,Ale park jest taki sam.,But the park stays the same.
+teresa_chat_3_0,teresa,chat,3,0,"Słuchaj, ten sweter jest dla mojego wnuka.","Listen, this jumper is for my grandson."
+teresa_chat_4_0,teresa,chat,4,0,"Ciągle zapominam, gdzie są moje okulary.",I keep forgetting where my glasses are.
+teresa_chat_4_1,teresa,chat,4,1,"A, mam je!","Oh, I've got them!"
+teresa_chat_5_0,teresa,chat,5,0,Posłuchaj: nigdy nie jest za późno.,Listen: it's never too late.
+teresa_chat_6_0,teresa,chat,6,0,"Spójrz, jak te dzieci się bawią!",Look how those children are playing!
+teresa_chat_6_1,teresa,chat,6,1,Jakie to piękne!,How lovely that is!
+teresa_chat_7_0,teresa,chat,7,0,Nad stawem jest taki spokój.,It's so peaceful by the pond.
+teresa_chat_7_1,teresa,chat,7,1,Będziemy tu do wieczora.,We'll be here until evening.
+teresa_chat_8_0,teresa,chat,8,0,Wszystkich tu znam.,I know everyone here.
+teresa_chat_8_1,teresa,chat,8,1,Ta pani z psem jest bardzo miła.,The lady with the dog is very nice.
+teresa_chat_9_0,teresa,chat,9,0,Jakieś dziecko tam płacze.,Some child is crying over there.
+teresa_chat_9_1,teresa,chat,9,1,Nie lubię być sama.,I don't like being alone.
+teresa_chat_10_0,teresa,chat,10,0,U nas w domu zawsze jest kawa.,At our place there's always coffee.
+teresa_chat_10_1,teresa,chat,10,1,Co dzisiaj? To samo co zawsze.,What today? The same as always.
+teresa_chat_11_0,teresa,chat,11,0,Panie Wiesławie! Gdzie on jest?,Mr Wiesław! Where is he?
+teresa_chat_11_1,teresa,chat,11,1,"Tak mówię do męża, kiedy jestem zła.",That's what I call my husband when I'm cross.
+teresa_chat_12_0,teresa,chat,12,0,Mój mąż ma swoje zdanie o wszystkim.,My husband has his own opinion about everything.
+teresa_chat_12_1,teresa,chat,12,1,Co on robi? Co on o tym myśli? Nie wiem.,What's he doing? What does he think about it? I don't know.
+teresa_chat_13_0,teresa,chat,13,0,"Dobrze by było, gdyby nie padało.",It'd be good if it didn't rain.
+teresa_chat_14_0,teresa,chat,14,0,"Dzieci, mówię wam: uwaga na kaczki!","Children, I'm telling you: mind the ducks!"
+teresa_chat_14_1,teresa,chat,14,1,Nie ma was w domu cały dzień!,You're out of the house all day!
+teresa_chat_15_0,teresa,chat,15,0,Piotr i Marta? Oni są razem od szkoły.,Piotr and Marta? They've been together since school.
+teresa_chat_15_1,teresa,chat,15,1,"Wszyscy wiemy, że on ją kocha.",We all know he loves her.
+teresa_chat_15_2,teresa,chat,15,2,Przecież to widać!,Anyone can see it!
+teresa_chat_16_0,teresa,chat,16,0,Mówię do męża: gdzie byłeś cały dzień?,I say to my husband: where have you been all day?
+teresa_chat_16_1,teresa,chat,16,1,"A on: w parku, jak zawsze.","And he says: in the park, as always."
+teresa_chat_17_0,teresa,chat,17,0,"Wiesiu, zrobiłeś zakupy?","Wiesiu, did you do the shopping?"
+teresa_chat_17_1,teresa,chat,17,1,"Nie? Mówiłeś, że zrobisz!",No? You said you would!
+teresa_chat_18_0,teresa,chat,18,0,"Powinieneś więcej odpoczywać, mówię mu.","You should rest more, I tell him."
+teresa_chat_18_1,teresa,chat,18,1,Ale on mnie nie słucha.,But he doesn't listen to me.
+teresa_chat_19_0,teresa,chat,19,0,Widziałeś moje okulary? Pytam go codziennie.,Have you seen my glasses? I ask him every day.
+teresa_chat_20_0,teresa,chat,20,0,Raz w życiu mu powiedziałam: miałeś rację.,Once in my life I told him: you were right.
+teresa_chat_21_0,teresa,chat,21,0,"Wiesiu, co powiedziałeś?","Wiesiu, what did you say?"
+teresa_chat_21_1,teresa,chat,21,1,"Wiesiu, mógłbyś mi pomóc?","Wiesiu, could you help me?"
+teresa_chat_22_0,teresa,chat,22,0,"Gdybyś mniej pracował, byłbyś mniej zmęczony, mówię mu.","If you worked less, you'd be less tired, I tell him."
+teresa_chat_22_1,teresa,chat,22,1,"Chcę, żebyś był zdrowy.",I want you to be healthy.
+teresa_chat_23_0,teresa,chat,23,0,"Chciałabym, byś więcej odpoczywał, Wiesiu.","I'd like you to rest more, Wiesiu."
+teresa_chat_24_0,teresa,chat,24,0,Mąż mówi o swojej pracy cały dzień.,My husband talks about his work all day.
+teresa_chat_24_1,teresa,chat,24,1,"Mąż wrócił? Nie, jeszcze pracuje.","Is my husband back? No, he's still working."
+teresa_chat_25_0,teresa,chat,25,0,Cała rodzina przyjeżdża w niedzielę!,The whole family is coming on Sunday!
+teresa_chat_25_1,teresa,chat,25,1,Moja córka powinna częściej dzwonić.,My daughter should phone more often.
+teresa_chat_26_0,teresa,chat,26,0,"Dzieci, idę z wami!","Children, I'm coming with you!"
+teresa_chat_27_0,teresa,chat,27,0,"Jestem jego żoną, a on moim mężem.","I'm his wife, and he's my husband."
+teresa_chat_27_1,teresa,chat,27,1,Zawsze robił wszystko dla rodziny.,He always did everything for the family.
+teresa_chat_28_0,teresa,chat,28,0,Jedzenie to dla mnie miłość.,Food is love to me.
+teresa_chat_28_1,teresa,chat,28,1,W niedzielę przygotuję dużo jedzenia.,On Sunday I'll make lots of food.
+teresa_chat_29_0,teresa,chat,29,0,W kuchni to ja jestem szefem!,"In the kitchen, I'm the boss!"
+teresa_chat_30_0,teresa,chat,30,0,Mam córkę i syna.,I have a daughter and a son.
+teresa_chat_30_1,teresa,chat,30,1,"Z córką rozmawiam co tydzień, a z synem rzadko.","I talk to my daughter every week, and rarely to my son."
+teresa_chat_31_0,teresa,chat,31,0,Jutro są imieniny mojej siostry.,Tomorrow is my sister's name day.
+teresa_chat_31_1,teresa,chat,31,1,Obie moje siostry są starsze.,Both my sisters are older.
+teresa_chat_32_0,teresa,chat,32,0,Zdrowie jest najważniejsze.,Health is the most important thing.
+teresa_chat_32_1,teresa,chat,32,1,Ilu mam wnuków? Pięciu!,How many grandchildren do I have? Five!
+teresa_chat_32_2,teresa,chat,32,2,"Mam też małego wnuka, Kubę.","I also have a little grandson, Kuba."
+teresa_chat_33_0,teresa,chat,33,0,Bądź dobrej myśli!,Look on the bright side!
+teresa_chat_33_1,teresa,chat,33,1,W telewizji nic nie ma.,There's nothing on TV.
+teresa_chat_34_0,teresa,chat,34,0,"Moje okulary? Na dole, w torbie!","My glasses? At the bottom, in my bag!"
+teresa_chat_34_1,teresa,chat,34,1,Albo gdzieś indziej.,Or somewhere else.
+teresa_chat_35_0,teresa,chat,35,0,"Wiesiu, zabierz parasol!","Wiesiu, take an umbrella!"
+teresa_chat_35_1,teresa,chat,35,1,Mąż zawsze bierze parasol.,My husband always takes an umbrella.
+teresa_chat_35_2,teresa,chat,35,2,"Mąż trzyma parasol, a ja torbę.",My husband holds the umbrella and I hold the bag.
+teresa_chat_36_0,teresa,chat,36,0,Każda kobieta ma swoje sekrety.,Every woman has her secrets.
+teresa_chat_36_1,teresa,chat,36,1,"Zastanawiam się, co zrobić na obiad.",I'm wondering what to make for lunch.
+teresa_chat_37_0,teresa,chat,37,0,Warto tu przychodzić.,It's worth coming here.
+teresa_chat_37_1,teresa,chat,37,1,Ależ ten czas leci!,"My, how time flies!"
+teresa_chat_38_0,teresa,chat,38,0,Mąż nic nie widzi bez okularów.,My husband can't see anything without his glasses.
+teresa_chat_38_1,teresa,chat,38,1,Mój mąż jest wspaniały.,My husband is wonderful.
+teresa_chat_39_0,teresa,chat,39,0,Mam tę samą torbę od lat.,I've had the same bag for years.
+teresa_chat_39_1,teresa,chat,39,1,Mam małą prośbę: posiedź ze mną.,I have a small favour to ask: sit with me a while.
+teresa_chat_40_0,teresa,chat,40,0,Mąż wyszedł rano i jeszcze nie wrócił.,My husband left in the morning and hasn't come back yet.
+teresa_chat_40_1,teresa,chat,40,1,W naszej rodzinie wszyscy lubią kawę.,In our family everyone likes coffee.
+teresa_chat_41_0,teresa,chat,41,0,Kocham święta.,I love the holidays.
+teresa_chat_41_1,teresa,chat,41,1,Każde dziecko jest inne.,Every child is different.
+teresa_chat_42_0,teresa,chat,42,0,Mogłaś zadzwonić! mówię do córki.,You could have phoned! I tell my daughter.
+teresa_chat_42_1,teresa,chat,42,1,Mąż wszystko potrafi naprawić.,My husband can fix anything.
+teresa_chat_43_0,teresa,chat,43,0,Kwiaty wyglądają pięknie.,The flowers look beautiful.
+teresa_chat_43_1,teresa,chat,43,1,Kaczki żyją tu cały rok.,The ducks live here all year round.
+teresa_chat_43_2,teresa,chat,43,2,W lecie jest dużo światła.,In summer there's lots of light.
+teresa_chat_44_0,teresa,chat,44,0,Od rana do wieczora siedzę tu z drutami.,From morning till evening I sit here with my knitting needles.
+teresa_chat_45_0,teresa,chat,45,0,Biorę leki na ciśnienie.,I take medicine for my blood pressure.
+teresa_chat_45_1,teresa,chat,45,1,Dużo zdrowia!,Good health to you!
+teresa_chat_46_0,teresa,chat,46,0,Lubię nosić kapelusz.,I like wearing a hat.
+teresa_chat_46_1,teresa,chat,46,1,Mąż nosi okulary tylko do czytania.,My husband only wears glasses for reading.
+teresa_chat_47_0,teresa,chat,47,0,Mamy w piwnicy dużo słoików.,We have lots of jars in the cellar.
+teresa_chat_47_1,teresa,chat,47,1,Nie lubię wyrzucać starych rzeczy.,I don't like throwing old things away.
+teresa_chat_48_0,teresa,chat,48,0,Do świąt jeszcze daleko.,Christmas is still a long way off.
+teresa_chat_48_1,teresa,chat,48,1,"Robiła to moja matka, a teraz ja.","My mother used to do it, and now I do."
+teresa_chat_49_0,teresa,chat,49,0,W kuchni potrzebna jest cierpliwość.,In the kitchen you need patience.
+teresa_chat_49_1,teresa,chat,49,1,Po kolacji gramy w karty.,After dinner we play cards.
+teresa_chat_50_0,teresa,chat,50,0,Jeszcze troszkę i kończę ten sweter.,Just a tiny bit more and I'll finish this jumper.
+teresa_chat_50_1,teresa,chat,50,1,Odrobinę cukru do herbaty?,A little sugar in your tea?
+teresa_chat_51_0,teresa,chat,51,0,Matce zawdzięczam wszystko.,I owe my mother everything.
+teresa_chat_51_1,teresa,chat,51,1,Byliście już w nowej restauracji? pytam dzieci.,Have you been to the new restaurant yet? I ask my children.
+teresa_chat_52_0,teresa,chat,52,0,Mam zaszczyt znać wszystkich w parku.,I have the honour of knowing everyone in the park.
+teresa_chat_52_1,teresa,chat,52,1,Mąż jest odpowiedzialny za cały park.,My husband is responsible for the whole park.
+teresa_chat_53_0,teresa,chat,53,0,"Cudowne kwiaty, prawda?","Wonderful flowers, aren't they?"
+teresa_chat_53_1,teresa,chat,53,1,W małym domu jest ciepło.,It's warm in a small house.
+teresa_chat_54_0,teresa,chat,54,0,Musiałeś tak długo? pytam męża.,Did you have to take so long? I ask my husband.
+teresa_chat_54_1,teresa,chat,54,1,Dałeś kaczkom chleb? Dobrze.,Did you give the ducks bread? Good.
+teresa_chat_55_0,teresa,chat,55,0,Mąż skończył pracę o piątej.,My husband finished work at five.
+teresa_chat_55_1,teresa,chat,55,1,Mąż rozmawiał z Piotrem.,My husband talked to Piotr.
+teresa_chat_56_0,teresa,chat,56,0,"Biedny Piotr, czeka tyle!","Poor Piotr, he's waiting so long!"
+teresa_chat_56_1,teresa,chat,56,1,Kocham tego mężczyznę od lat.,I've loved that man for years.
+teresa_chat_57_0,teresa,chat,57,0,Moje okulary są w sypialni!,My glasses are in the bedroom!
+teresa_chat_57_1,teresa,chat,57,1,"Nie mam już tylu włosów, co kiedyś.",I don't have as much hair as I used to.
+teresa_chat_58_0,teresa,chat,58,0,Mój mąż to święty człowiek.,My husband's a saint.
+teresa_chat_58_1,teresa,chat,58,1,Mąż zawsze jest u mojego boku.,My husband's always at my side.
+teresa_chat_59_0,teresa,chat,59,0,Piękne chwile z rodziną.,Lovely moments with the family.
+teresa_chat_59_1,teresa,chat,59,1,Myślę o różnych rzeczach.,I think about all sorts of things.
+teresa_chat_60_0,teresa,chat,60,0,Z naszymi wnukami nigdy nie jest nudno.,It's never boring with our grandchildren.
+teresa_chat_60_1,teresa,chat,60,1,Nie mam wolnych rąk.,My hands are full.
+teresa_chat_61_0,teresa,chat,61,0,Do wieczoru!,See you this evening!
+michal_intro_0_0,michal,intro,0,0,"Witam! Jestem Michał, kelner.","Welcome! I'm Michał, the waiter."
+michal_intro_0_1,michal,intro,0,1,Mam problem: wiatr zabrał kartę.,I have a problem: the wind took the menu.
+michal_intro_0_2,michal,intro,0,2,Chyba jest gdzieś przy fontannie.,I think it's somewhere by the fountain.
+michal_done_0_0,michal,done,0,0,Oto karta! Dziękuję bardzo.,Here's the menu! Thank you very much.
+michal_done_0_1,michal,done,0,1,Co mogę ci dać? Pierwsza kawa jest gratis.,What can I give you? The first coffee is on the house.
+michal_remind_0_0,michal,remind,0,0,Karta jest chyba przy fontannie.,The menu is probably by the fountain.
+michal_wrong_0_0,michal,wrong,0,0,"Nie, to nie to.","No, that's not it."
+michal_chat_0_0,michal,chat,0,0,Co podać?,What can I get you?
+michal_chat_0_1,michal,chat,0,1,"Kawa, herbata lub coś innego?","Coffee, tea or something else?"
+michal_chat_0_2,michal,chat,0,2,Mały czy duży?,Small or large?
+michal_chat_1_0,michal,chat,1,0,"Najpierw kawa, potem praca.","Coffee first, then work."
+michal_chat_2_0,michal,chat,2,0,Podoba ci się nasza kawiarnia?,Do you like our café?
+michal_chat_2_1,michal,chat,2,1,W naszej kawiarni jest najlepsza kawa w mieście.,Our café has the best coffee in town.
+michal_chat_3_0,michal,chat,3,0,Pracuję tu od dwóch lat.,I've worked here for two years.
+michal_chat_3_1,michal,chat,3,1,Mój tata też był kelnerem.,My dad was a waiter too.
+michal_chat_4_0,michal,chat,4,0,Podczas pracy nie mam czasu na nic.,At work I have no time for anything.
+michal_chat_4_1,michal,chat,4,1,W tej chwili też nie!,Not right now either!
+michal_chat_5_0,michal,chat,5,0,"Wybacz, mam dużo pracy.","Sorry, I've got a lot of work."
+michal_chat_5_1,michal,chat,5,1,Powinienem już wracać do pracy.,I should get back to work.
+michal_chat_6_0,michal,chat,6,0,Wiecie co? Macie dziś szczęście: jest słońce.,"You know what, everyone? You're in luck today: it's sunny."
+michal_chat_6_1,michal,chat,6,1,Jesteście tu pierwszy raz?,Is this your first time here?
+michal_chat_7_0,michal,chat,7,0,A wy? Co dla was?,And you lot? What can I get you?
+michal_chat_8_0,michal,chat,8,0,Chcę mieć kiedyś swój lokal.,One day I want my own place.
+michal_chat_8_1,michal,chat,8,1,Chcemy też mieć więcej stolików na tarasie.,We also want more tables on the terrace.
+michal_chat_9_0,michal,chat,9,0,"Możliwe, że dziś będzie dużo ludzi.",There may be lots of people today.
+michal_chat_9_1,michal,chat,9,1,Nie ma już miejsca!,There's no room left!
+michal_chat_10_0,michal,chat,10,0,"Trzymaj, to dla ciebie.","Here, this is for you."
+michal_chat_10_1,michal,chat,10,1,"Weź ciastko, wystarczy dla wszystkich.","Take a biscuit, there's enough for everyone."
+michal_chat_11_0,michal,chat,11,0,"Spokojnie, nie ma pośpiechu.","Relax, there's no rush."
+michal_chat_11_1,michal,chat,11,1,"Nie martw się, kawa zaraz będzie.","Don't worry, the coffee's coming."
+michal_chat_12_0,michal,chat,12,0,Dam ci jedną radę: pij herbatę.,I'll give you one piece of advice: drink tea.
+michal_chat_12_1,michal,chat,12,1,Jedno pytanie: z cukrem czy bez?,One question: with sugar or without?
+michal_chat_13_0,michal,chat,13,0,"Jeżeli chcesz, możesz tu siedzieć cały dzień.","If you like, you can sit here all day."
+michal_chat_13_1,michal,chat,13,1,"Skoro już tu jesteś, zostań na kawę!","Since you're here, stay for a coffee!"
+michal_chat_14_0,michal,chat,14,0,"Zamknij drzwi, proszę. Jest zimno.","Close the door, please. It's cold."
+michal_chat_15_0,michal,chat,15,0,Czasem pracuję do późnej nocy.,Sometimes I work until late at night.
+michal_chat_15_1,michal,chat,15,1,W wolnym czasie czytam.,In my free time I read.
+michal_chat_16_0,michal,chat,16,0,"Ludzie, którzy tu przychodzą, są bardzo mili.",The people who come here are very nice.
+michal_chat_16_1,michal,chat,16,1,Nie ma żadnych problemów.,There are no problems at all.
+michal_chat_17_0,michal,chat,17,0,"Co panu podać, panie Zbigniewie?","What can I get you, Mr Zbigniew?"
+michal_chat_17_1,michal,chat,17,1,Zrobiłem dla pana kawę.,"I've made you a coffee, sir."
+michal_chat_18_0,michal,chat,18,0,"Słyszałem, że Piotr czeka na Martę.",I heard that Piotr is waiting for Marta.
+michal_chat_18_1,michal,chat,18,1,Moja dziewczyna pracuje w kwiaciarni.,My girlfriend works at the flower shop.
+michal_chat_19_0,michal,chat,19,0,"Powiedziałem szefowi, że chcę wolny dzień.",I told my boss I want a day off.
+michal_chat_19_1,michal,chat,19,1,Mamy nowy ekspres do kawy. Mamy także lody.,We have a new coffee machine. We also have ice cream.
+michal_chat_20_0,michal,chat,20,0,"Wiedziałem, że wrócisz!",I knew you'd come back!
+michal_chat_20_1,michal,chat,20,1,Weź cokolwiek chcesz.,Have whatever you like.
+michal_chat_21_0,michal,chat,21,0,"Panowie, co podać?","Gentlemen, what can I get you?"
+michal_chat_21_1,michal,chat,21,1,Możecie usiąść tutaj.,You can sit here.
+michal_chat_22_0,michal,chat,22,0,"Przepraszam panią, ten stolik jest zajęty.","Excuse me, madam, this table is taken."
+michal_chat_23_0,michal,chat,23,0,Chcecie coś jeszcze?,Do you want anything else?
+michal_chat_23_1,michal,chat,23,1,Będziecie tu jutro?,Will you all be here tomorrow?
+michal_chat_24_0,michal,chat,24,0,Potrzebujemy więcej mleka.,We need more milk.
+michal_chat_24_1,michal,chat,24,1,Zaraz wrócę.,I'll be right back.
+michal_chat_25_0,michal,chat,25,0,Zrobimy dziś coś nowego: kawę z lodami.,Today we'll make something new: coffee with ice cream.
+michal_chat_25_1,michal,chat,25,1,Robię najlepszą kawę w mieście.,I make the best coffee in town.
+michal_chat_26_0,michal,chat,26,0,W sierpniu jadę w góry.,In August I'm going to the mountains.
+michal_chat_26_1,michal,chat,26,1,Idę na górę po cukier.,I'm going upstairs for the sugar.
+michal_chat_27_0,michal,chat,27,0,Toaleta? Na dół i w lewo.,The toilet? Downstairs and to the left.
+michal_chat_28_0,michal,chat,28,0,Ile kosztuje kawa? Zależy: mała czy duża.,How much is a coffee? It depends: small or large.
+michal_chat_28_1,michal,chat,28,1,"Moment, proszę!","Just a moment, please!"
+michal_chat_29_0,michal,chat,29,0,Moje nazwisko jest trudne: Grzegorzewski.,My surname is hard: Grzegorzewski.
+michal_chat_29_1,michal,chat,29,1,Ta kawa nazywa się latte.,This coffee is called a latte.
+michal_chat_30_0,michal,chat,30,0,"Rób, co chcesz, ale nie pij za dużo kawy!","Do what you like, but don't drink too much coffee!"
+michal_chat_31_0,michal,chat,31,0,"Możesz wejść do środka, jeśli jest zimno.",You can come inside if it's cold.
+michal_chat_31_1,michal,chat,31,1,Na zewnątrz jest ładniej.,It's nicer outside.
+michal_chat_31_2,michal,chat,31,2,"Wspaniale, że jesteś!",Great that you're here!
+michal_chat_32_0,michal,chat,32,0,"Wasza kawa, proszę.","Your coffee, everyone."
+michal_chat_32_1,michal,chat,32,1,Wasze zamówienie jest gotowe!,Your order is ready!
+michal_chat_33_0,michal,chat,33,0,Witamy! Stolik dla dwóch osób?,Welcome! A table for two?
+michal_chat_33_1,michal,chat,33,1,"Śmiało, usiądź!","Go ahead, sit down!"
+michal_chat_34_0,michal,chat,34,0,"Chwileczkę, proszę.","Just a moment, please."
+michal_chat_34_1,michal,chat,34,1,Chwilkę!,One moment!
+michal_chat_35_0,michal,chat,35,0,"Piwo? Nie, tu nie ma piwa.","Beer? No, there's no beer here."
+michal_chat_35_1,michal,chat,35,1,Tylko kawa i herbata.,Only coffee and tea.
+michal_chat_36_0,michal,chat,36,0,Kawałek ciasta do kawy?,A piece of cake with your coffee?
+michal_chat_36_1,michal,chat,36,1,Ta kawa pasuje do ciastka.,This coffee goes with the biscuit.
+michal_chat_37_0,michal,chat,37,0,Miłego dnia!,Have a nice day!
+michal_chat_37_1,michal,chat,37,1,Dziękujemy i zapraszamy ponownie!,"Thank you, and do come again!"
+michal_chat_37_2,michal,chat,37,2,Widzimy się jutro!,See you tomorrow!
+michal_chat_38_0,michal,chat,38,0,"Przepraszam, brakuje cukru.","Sorry, we're out of sugar."
+michal_chat_38_1,michal,chat,38,1,Nic nie szkodzi!,No harm done!
+michal_chat_39_0,michal,chat,39,0,Lunch? Mamy kanapki od dwunastej.,Lunch? We have sandwiches from twelve.
+michal_chat_39_1,michal,chat,39,1,Kawiarnia kończy pracę o szóstej.,The café closes at six.
+michal_chat_40_0,michal,chat,40,0,Za tydzień jest przyjęcie w kawiarni.,There's a party in the café in a week.
+michal_chat_40_1,michal,chat,40,1,Zespół gra na tarasie w sobotę.,A band is playing on the terrace on Saturday.
+michal_chat_41_0,michal,chat,41,0,Gości jest dziś mnóstwo.,There are loads of guests today.
+michal_chat_41_1,michal,chat,41,1,Wszystkie stoliki są pełne.,All the tables are full.
+michal_chat_42_0,michal,chat,42,0,"Kolego, co podać?","What can I get you, mate?"
+michal_chat_42_1,michal,chat,42,1,"Wejdź, proszę! Siadaj!","Come in, please! Have a seat!"
+michal_chat_43_0,michal,chat,43,0,"Słuchajcie, mamy nową kawę!","Listen, everyone, we've got a new coffee!"
+michal_chat_43_1,michal,chat,43,1,To nowy rodzaj kawy.,It's a new kind of coffee.
+michal_chat_44_0,michal,chat,44,0,Robicie coś wieczorem? Jest koncert.,Are you doing anything this evening? There's a concert.
+michal_chat_45_0,michal,chat,45,0,Dostałem napiwek!,I got a tip!
+michal_chat_45_1,michal,chat,45,1,"Mój szef jest w porządku, zwłaszcza rano.","My boss is all right, especially in the mornings."
+michal_chat_46_0,michal,chat,46,0,Okno jest otwarte. Zamknąć?,The window's open. Shall I close it?
+michal_chat_46_1,michal,chat,46,1,Wewnątrz jest ciepło.,It's warm inside.
+michal_chat_47_0,michal,chat,47,0,Duży wybór kawy!,A big choice of coffee!
+michal_chat_47_1,michal,chat,47,1,"Trudno wybrać, prawda?","Hard to choose, isn't it?"
+michal_chat_47_2,michal,chat,47,2,Mamy małe i duże kawy.,We have small and large coffees.
+michal_chat_48_0,michal,chat,48,0,Wspaniała pogoda dziś!,Wonderful weather today!
+michal_chat_48_1,michal,chat,48,1,"Widzicie? Mówiłem, że będzie słońce!",See? I said it would be sunny!
+michal_chat_49_0,michal,chat,49,0,Doskonale!,Excellent!
+michal_chat_49_1,michal,chat,49,1,Każdą kawę robię z sercem.,I make every coffee with love.
+michal_chat_50_0,michal,chat,50,0,Chcę mieć własny lokal.,I want my own place.
+michal_chat_50_1,michal,chat,50,1,Niektóre ciastka są bez cukru.,Some of the biscuits have no sugar.
+michal_chat_51_0,michal,chat,51,0,Chcesz inną kawę?,Would you like a different coffee?
+michal_chat_51_1,michal,chat,51,1,Do waszej kawy mamy ciastka.,We have biscuits to go with your coffee.
+michal_chat_52_0,michal,chat,52,0,Parasol nie jest dziś potrzebny.,You won't need an umbrella today.
+michal_chat_52_1,michal,chat,52,1,Twoi przyjaciele już są!,Your friends are already here!
+michal_chat_53_0,michal,chat,53,0,W kawiarni pracuje dużo kobiet.,Lots of women work in the café.
+michal_chat_53_1,michal,chat,53,1,"Mój ulubiony kolor? Czarny, jak kawa.","My favourite colour? Black, like coffee."
+michal_chat_54_0,michal,chat,54,0,Kawa na wynos czy na miejscu?,Coffee to take away or to have here?
+michal_chat_54_1,michal,chat,54,1,Co wybierasz?,What will you have?
+michal_chat_55_0,michal,chat,55,0,"Rachunek, proszę?","The bill, please?"
+michal_chat_55_1,michal,chat,55,1,Płaci pan kartą czy gotówką?,"Are you paying by card or in cash, sir?"
+michal_chat_55_2,michal,chat,55,2,Cenę kawy znam na pamięć.,I know the price of the coffee by heart.
+michal_chat_56_0,michal,chat,56,0,"Proszę, połóż to tutaj.",Please put it down here.
+michal_chat_56_1,michal,chat,56,1,"Podejdź do baru, proszę.","Come up to the bar, please."
+michal_chat_56_2,michal,chat,56,2,Gdzie mam postawić kawę?,Where shall I put the coffee?
+michal_chat_57_0,michal,chat,57,0,Sprzedać kawiarnię? Nigdy!,Sell the café? Never!
+michal_chat_57_1,michal,chat,57,1,Mamy najlepszych klientów.,We have the best customers.
+michal_chat_58_0,michal,chat,58,0,Mamy nowych klientów każdego dnia.,We get new customers every day.
+michal_chat_58_1,michal,chat,58,1,Każdego klienta witam z uśmiechem.,I greet every customer with a smile.
+michal_chat_59_0,michal,chat,59,0,Witajcie! Zapraszam do środka.,"Welcome, everyone! Do come inside."
+michal_chat_59_1,michal,chat,59,1,Wszyscy mnie tu znają.,Everyone knows me here.
+michal_chat_60_0,michal,chat,60,0,"Za darmo? Nie, ale tanio.","For free? No, but cheap."
+michal_chat_60_1,michal,chat,60,1,Napić się czegoś?,Would you like something to drink?
+michal_chat_61_0,michal,chat,61,0,Prysznic po pracy to najlepsza rzecz.,A shower after work is the best thing.
+michal_chat_61_1,michal,chat,61,1,Ten ekspres to drogi sprzęt.,This coffee machine is expensive kit.
+michal_chat_62_0,michal,chat,62,0,Znam gitarzystę z tego zespołu.,I know the guitarist from that band.
+michal_chat_62_1,michal,chat,62,1,Ich koncert jest pełen energii.,Their concert is full of energy.
+michal_chat_63_0,michal,chat,63,0,Klucz do łazienki jest przy barze.,The bathroom key is by the bar.
+michal_chat_63_1,michal,chat,63,1,Z przyjemnością!,With pleasure!
+michal_chat_64_0,michal,chat,64,0,"Gratuluję, Kasiu! Nowa praca!","Congratulations, Kasia! A new job!"
+michal_chat_64_1,michal,chat,64,1,Nawzajem!,Same to you!
+michal_chat_65_0,michal,chat,65,0,Dosłownie wszyscy tu przychodzą.,Literally everyone comes here.
+michal_chat_65_1,michal,chat,65,1,"Faktycznie, pada.","Indeed, it's raining."
+michal_chat_66_0,michal,chat,66,0,"Jeśli zechcesz, mamy też herbatę.","If you'd like, we also have tea."
+michal_chat_66_1,michal,chat,66,1,Kolejną kawę?,Another coffee?
+michal_chat_67_0,michal,chat,67,0,Mamy kawę na każdą okazję.,We have coffee for every occasion.
+michal_chat_67_1,michal,chat,67,1,Daj mi uśmiech w zamian.,Give me a smile in return.
+michal_chat_68_0,michal,chat,68,0,Muszę przyjąć zamówienie.,I have to take an order.
+michal_chat_68_1,michal,chat,68,1,Przed chwilą tu był.,He was here a moment ago.
+michal_chat_69_0,michal,chat,69,0,Mam dużo własnych pomysłów.,I have lots of my own ideas.
+zbigniew_intro_0_0,zbigniew,intro,0,0,Dzień dobry. Jestem pan Zbigniew.,Good morning. I'm Mr Zbigniew.
+zbigniew_intro_0_1,zbigniew,intro,0,1,Codziennie czytam tu gazetę.,I read the paper here every day.
+zbigniew_intro_0_2,zbigniew,intro,0,2,Co nowego na świecie? Zaraz zobaczymy.,What's new in the world? We'll see in a moment.
+zbigniew_chat_0_0,zbigniew,chat,0,0,"Świat się zmienia, a ja nie.","The world changes, but I don't."
+zbigniew_chat_0_1,zbigniew,chat,0,1,Lata lecą.,The years fly by.
+zbigniew_chat_1_0,zbigniew,chat,1,0,Ta kawiarnia była kiedyś mojego ojca.,This café used to be my father's.
+zbigniew_chat_1_1,zbigniew,chat,1,1,Mój ojciec musiał dużo pracować.,My father had to work a lot.
+zbigniew_chat_1_2,zbigniew,chat,1,2,"Mówił, że kawa to życie.",He used to say coffee is life.
+zbigniew_chat_2_0,zbigniew,chat,2,0,Moja matka zawsze mówiła: najpierw praca.,My mother always said: work first.
+zbigniew_chat_3_0,zbigniew,chat,3,0,"Pamiętasz, jaka była wczoraj pogoda?",Do you remember what the weather was like yesterday?
+zbigniew_chat_3_1,zbigniew,chat,3,1,"Mówiłem ci, że będzie padać!",I told you it would rain!
+zbigniew_chat_4_0,zbigniew,chat,4,0,"Piszą, że jutro będzie ładnie.",They write that it'll be nice tomorrow.
+zbigniew_chat_4_1,zbigniew,chat,4,1,Nie wierzę.,I don't believe it.
+zbigniew_chat_4_2,zbigniew,chat,4,2,"Wygląda, jakby miało padać.",It looks as if it's going to rain.
+zbigniew_chat_5_0,zbigniew,chat,5,0,W ogóle nic nie rozumiem z tej gazety.,I don't understand anything at all in this paper.
+zbigniew_chat_5_1,zbigniew,chat,5,1,Rozumiesz coś z tego?,Do you understand any of it?
+zbigniew_chat_6_0,zbigniew,chat,6,0,Poważnie? Tak piszą.,Seriously? That's what they write.
+zbigniew_chat_6_1,zbigniew,chat,6,1,"Sądzę, że to prawda. Ale nie jestem pewien.",I think it's true. But I'm not sure.
+zbigniew_chat_7_0,zbigniew,chat,7,0,Właściwie to lubię być sam.,"Actually, I like being alone."
+zbigniew_chat_7_1,zbigniew,chat,7,1,Nikt nie został. Tylko ja.,Nobody stayed. Only me.
+zbigniew_chat_8_0,zbigniew,chat,8,0,Moja żona miała dobre serce.,My wife had a good heart.
+zbigniew_chat_8_1,zbigniew,chat,8,1,To była dobra kobieta.,She was a good woman.
+zbigniew_chat_9_0,zbigniew,chat,9,0,Kiedyś byli tu ze mną moi przyjaciele.,My friends used to be here with me.
+zbigniew_chat_9_1,zbigniew,chat,9,1,Za moich czasów wszystko było inaczej.,In my day everything was different.
+zbigniew_chat_9_2,zbigniew,chat,9,2,"Inne czasy, inni ludzie.","Other times, other people."
+zbigniew_chat_10_0,zbigniew,chat,10,0,"Między nami mówiąc, kawa tu jest za słaba.","Between you and me, the coffee here is too weak."
+zbigniew_chat_10_1,zbigniew,chat,10,1,Przynajmniej jest gorąca.,At least it's hot.
+zbigniew_chat_11_0,zbigniew,chat,11,0,Ten facet w gazecie mówi głupoty.,This guy in the paper talks nonsense.
+zbigniew_chat_11_1,zbigniew,chat,11,1,Nie znam tego człowieka.,I don't know the man.
+zbigniew_chat_12_0,zbigniew,chat,12,0,Ile kosztuje teraz samochód?,How much does a car cost now?
+zbigniew_chat_12_1,zbigniew,chat,12,1,Ten samochód jest za drogi.,That car's too expensive.
+zbigniew_chat_12_2,zbigniew,chat,12,2,Nie mam pieniędzy na samochód.,I don't have money for a car.
+zbigniew_chat_13_0,zbigniew,chat,13,0,Czyli co? Nic nowego.,So what? Nothing new.
+zbigniew_chat_13_1,zbigniew,chat,13,1,Dopiero teraz to rozumiem.,Only now do I understand it.
+zbigniew_chat_14_0,zbigniew,chat,14,0,"Patrz, jak ten czas szybko leci.",Look how fast time flies.
+zbigniew_chat_14_1,zbigniew,chat,14,1,Każdy dzień jest inny.,Every day is different.
+zbigniew_chat_15_0,zbigniew,chat,15,0,To nie moja wina.,It's not my fault.
+zbigniew_chat_15_1,zbigniew,chat,15,1,Kto to zrobił?,Who did this?
+zbigniew_chat_16_0,zbigniew,chat,16,0,Raczej nie lubię nowych rzeczy.,I don't really like new things.
+zbigniew_chat_16_1,zbigniew,chat,16,1,Wcale nie jestem stary!,I'm not old at all!
+zbigniew_chat_17_0,zbigniew,chat,17,0,Ostatnio ciężko mi chodzić.,Lately it's hard for me to walk.
+zbigniew_chat_17_1,zbigniew,chat,17,1,Ale mam prawo do kawy!,But I have a right to my coffee!
+zbigniew_chat_18_0,zbigniew,chat,18,0,Mam dwie córki i jednego syna.,I have two daughters and one son.
+zbigniew_chat_18_1,zbigniew,chat,18,1,Moja rodzina mieszka poza miastem.,My family lives outside the town.
+zbigniew_chat_18_2,zbigniew,chat,18,2,Rzadko z nimi rozmawiam.,I rarely talk to them.
+zbigniew_chat_19_0,zbigniew,chat,19,0,Nie mam tu rodziny.,I have no family here.
+zbigniew_chat_19_1,zbigniew,chat,19,1,Ale mam tu swoje miejsce.,But I have my place here.
+zbigniew_chat_20_0,zbigniew,chat,20,0,W tym miejscu był kiedyś sklep.,There used to be a shop on this spot.
+zbigniew_chat_20_1,zbigniew,chat,20,1,"Stolik, przy którym siedzę, jest mój.",The table I sit at is mine.
+zbigniew_chat_20_2,zbigniew,chat,20,2,Każdy siedzi przy swoim stoliku.,Everyone sits at their own table.
+zbigniew_chat_21_0,zbigniew,chat,21,0,"To jest człowiek, którego znam od lat.",That's a man I've known for years.
+zbigniew_chat_21_1,zbigniew,chat,21,1,Z takim kelnerem to przyjemność.,"With a waiter like that, it's a pleasure."
+zbigniew_chat_22_0,zbigniew,chat,22,0,Michał powinien mieć swój lokal.,Michał should have his own place.
+zbigniew_chat_22_1,zbigniew,chat,22,1,Jednak lubię tę kawiarnię.,"Still, I like this café."
+zbigniew_chat_23_0,zbigniew,chat,23,0,"Gdybym wiedział wtedy to, co wiem teraz!",If only I'd known then what I know now!
+zbigniew_chat_24_0,zbigniew,chat,24,0,"Będę tu siedział, dopóki nie zamkną.",I'll sit here until they close.
+zbigniew_chat_24_1,zbigniew,chat,24,1,To moja sprawa.,That's my business.
+zbigniew_chat_25_0,zbigniew,chat,25,0,"Pamiętam ten park, kiedy był mały.",I remember this park when it was small.
+zbigniew_chat_25_1,zbigniew,chat,25,1,Kiedyś byliśmy młodzi.,We were young once.
+zbigniew_chat_26_0,zbigniew,chat,26,0,W moim wieku trzeba odpoczywać.,At my age you have to rest.
+zbigniew_chat_26_1,zbigniew,chat,26,1,Mężczyzna powinien pić kawę bez cukru.,A man should drink coffee without sugar.
+zbigniew_chat_27_0,zbigniew,chat,27,0,Straciłem żonę wiele lat temu.,I lost my wife many years ago.
+zbigniew_chat_27_1,zbigniew,chat,27,1,Takich ludzi już nie ma.,There are no people like that any more.
+zbigniew_chat_28_0,zbigniew,chat,28,0,Czytam gazetę od początku do końca.,I read the paper from beginning to end.
+zbigniew_chat_28_1,zbigniew,chat,28,1,Kawa oraz gazeta: to moje śniadanie.,Coffee and the paper: that's my breakfast.
+zbigniew_chat_29_0,zbigniew,chat,29,0,Tymi rękami zbudowałem dom.,I built a house with these hands.
+zbigniew_chat_29_1,zbigniew,chat,29,1,Mam dobrą głowę do liczb.,I have a good head for numbers.
+zbigniew_chat_30_0,zbigniew,chat,30,0,"Syn ma swojego psa, a ja swoją gazetę.","My son has his dog, and I have my paper."
+zbigniew_chat_30_1,zbigniew,chat,30,1,W portfelu mam zdjęcia swoich wnuków.,I have photos of my grandchildren in my wallet.
+zbigniew_chat_31_0,zbigniew,chat,31,0,Moje dzieci mieszkają w innym mieście.,My children live in another town.
+zbigniew_chat_31_1,zbigniew,chat,31,1,"Ludzi, których znam, jest coraz mniej.",There are fewer and fewer people I know.
+zbigniew_chat_32_0,zbigniew,chat,32,0,"Policja stoi przy ratuszu. Ciekawe, dlaczego.",The police are standing by the town hall. I wonder why.
+zbigniew_chat_32_1,zbigniew,chat,32,1,W gazecie piszą dużo o policji.,The paper writes a lot about the police.
+zbigniew_chat_33_0,zbigniew,chat,33,0,Dłużej nie mogę siedzieć. Plecy!,I can't sit any longer. My back!
+zbigniew_chat_33_1,zbigniew,chat,33,1,"Ciało jest stare, ale głowa młoda.","The body is old, but the head is young."
+zbigniew_chat_33_2,zbigniew,chat,33,2,Spacer jest dobry dla ciała i dla głowy.,A walk is good for body and mind.
+zbigniew_chat_34_0,zbigniew,chat,34,0,Michał to dobry chłopak.,Michał is a good lad.
+zbigniew_chat_34_1,zbigniew,chat,34,1,Złego słowa o nim nie powiem.,I won't say a bad word about him.
+zbigniew_chat_34_2,zbigniew,chat,34,2,Michał jest dobrym człowiekiem.,Michał is a good person.
+zbigniew_chat_35_0,zbigniew,chat,35,0,"Złe wiadomości w gazecie, jak zawsze.","Bad news in the paper, as always."
+zbigniew_chat_35_1,zbigniew,chat,35,1,To artykuł o człowieku z naszego miasta.,It's an article about a man from our town.
+zbigniew_chat_36_0,zbigniew,chat,36,0,Nasza gazeta istnieje od stu lat.,Our paper has existed for a hundred years.
+zbigniew_chat_36_1,zbigniew,chat,36,1,Lubię książki o historii.,I like books about history.
+zbigniew_chat_37_0,zbigniew,chat,37,0,Nowym ludziom zawsze mówię dzień dobry.,I always say good morning to new people.
+zbigniew_chat_37_1,zbigniew,chat,37,1,Siedzę zawsze przy tym samym stoliku.,I always sit at the same table.
+zbigniew_chat_38_0,zbigniew,chat,38,0,Znam swoje prawa!,I know my rights!
+zbigniew_chat_39_0,zbigniew,chat,39,0,W latach sześćdziesiątych tu był sklep.,In the sixties there was a shop here.
+zbigniew_chat_39_1,zbigniew,chat,39,1,Przyszedłem tu pierwszy raz jako dziecko.,I first came here as a child.
+zbigniew_chat_40_0,zbigniew,chat,40,0,"Pamiętaj: najpierw myśl, potem mów.","Remember: think first, then speak."
+zbigniew_chat_41_0,zbigniew,chat,41,0,Mój syn mieszka w budynku obok banku.,My son lives in the building next to the bank.
+zbigniew_chat_42_0,zbigniew,chat,42,0,Kiedyś chciałem mieć statek.,I once wanted to have a ship.
+zbigniew_chat_42_1,zbigniew,chat,42,1,Lubię rozmawiać o przeszłości.,I like talking about the past.
+zbigniew_chat_43_0,zbigniew,chat,43,0,Wszystko się zmieniło.,Everything has changed.
+zbigniew_chat_43_1,zbigniew,chat,43,1,Ten widok jest piękny.,This view is beautiful.
+zbigniew_chat_43_2,zbigniew,chat,43,2,To fakt.,It's a fact.
+zbigniew_chat_44_0,zbigniew,chat,44,0,"Mówili mi, że jestem za stary na kawę.",They told me I'm too old for coffee.
+zbigniew_chat_44_1,zbigniew,chat,44,1,Kiedyś było lepiej. A może gorzej?,It used to be better. Or maybe worse?
+zbigniew_chat_45_0,zbigniew,chat,45,0,"W imieniu wszystkich gości dziękuję, Michał!","On behalf of all the guests, thank you, Michał!"
+zbigniew_chat_45_1,zbigniew,chat,45,1,Michał jest najlepszym kelnerem.,Michał is the best waiter.
+zbigniew_chat_46_0,zbigniew,chat,46,0,Ojcu mówiłem zawsze prawdę.,I always told my father the truth.
+zbigniew_chat_46_1,zbigniew,chat,46,1,Mój ojciec żył dziewięćdziesiąt lat.,My father lived to ninety.
+zbigniew_chat_47_0,zbigniew,chat,47,0,"Państwo, rząd, prezydent... same problemy.","The state, the government, the president... the same old problems."
+zbigniew_chat_47_1,zbigniew,chat,47,1,Nie rozmawiam z nikim o polityce.,I don't talk to anyone about politics.
+zbigniew_chat_48_0,zbigniew,chat,48,0,"Raport w gazecie mówi, że będzie gorąco.",A report in the paper says it'll be hot.
+zbigniew_chat_48_1,zbigniew,chat,48,1,Zapewne będzie padać.,It'll probably rain.
+zbigniew_chat_49_0,zbigniew,chat,49,0,"Podróż autobusem? Nie, wolę iść pieszo.","A trip by bus? No, I prefer to walk."
+zbigniew_chat_50_0,zbigniew,chat,50,0,"Zostałem sam, ale nie jestem smutny.","I've been left alone, but I'm not sad."
+zbigniew_chat_50_1,zbigniew,chat,50,1,Kochałem tylko jedną kobietę.,I only ever loved one woman.
+zbigniew_chat_51_0,zbigniew,chat,51,0,Z moimi przyjaciółmi graliśmy w karty.,My friends and I used to play cards.
+zbigniew_chat_51_1,zbigniew,chat,51,1,Różne rzeczy piszą w gazecie.,They write all sorts of things in the paper.
+zbigniew_chat_52_0,zbigniew,chat,52,0,"Krok po kroku, powoli.","Step by step, slowly."
+zbigniew_chat_52_1,zbigniew,chat,52,1,Niektórzy ludzie nie czytają gazet.,Some people don't read the papers.
+zbigniew_chat_52_2,zbigniew,chat,52,2,Niewiele osób czyta dziś gazety.,Not many people read papers today.
+zbigniew_chat_53_0,zbigniew,chat,53,0,Tacy są młodzi ludzie.,That's what young people are like.
+zbigniew_chat_53_1,zbigniew,chat,53,1,Z bratem gram w szachy.,I play chess with my brother.
+zbigniew_chat_54_0,zbigniew,chat,54,0,"Mój dom jest daleko, a stamtąd widać góry.","My house is far away, and you can see the mountains from there."
+zbigniew_chat_55_0,zbigniew,chat,55,0,To nie ma sensu.,That makes no sense.
+zbigniew_chat_55_1,zbigniew,chat,55,1,Sens życia? Kawa!,The meaning of life? Coffee!
+zbigniew_chat_55_2,zbigniew,chat,55,2,To nie ma znaczenia.,It doesn't matter.
+zbigniew_chat_56_0,zbigniew,chat,56,0,Jaka różnica?,What's the difference?
+zbigniew_chat_56_1,zbigniew,chat,56,1,Jedyny problem: kawa jest za słaba.,The only problem: the coffee's too weak.
+zbigniew_chat_57_0,zbigniew,chat,57,0,"Gazeta w rękach, kawa na stole.","The paper in my hands, coffee on the table."
+zbigniew_chat_57_1,zbigniew,chat,57,1,Ten park przypomina mi dzieciństwo.,This park reminds me of my childhood.
+zbigniew_chat_58_0,zbigniew,chat,58,0,Dobrych ludzi jest więcej niż złych.,There are more good people than bad.
+zbigniew_chat_58_1,zbigniew,chat,58,1,Mój brat stracił pracę.,My brother lost his job.
+zbigniew_chat_59_0,zbigniew,chat,59,0,Kiedyś pisałem listy do żony.,I used to write letters to my wife.
+zbigniew_chat_59_1,zbigniew,chat,59,1,Jestem nieco zmęczony.,I'm a little tired.
+zbigniew_chat_60_0,zbigniew,chat,60,0,Za moich czasów ludzie znacznie więcej czytali.,In my day people read much more.
+zbigniew_chat_60_1,zbigniew,chat,60,1,Mój ojciec znał każdego w mieście.,My father knew everyone in town.
+zbigniew_chat_61_0,zbigniew,chat,61,0,Starego człowieka nikt nie słucha.,Nobody listens to an old man.
+zbigniew_chat_61_1,zbigniew,chat,61,1,Mam stary zegarek po ojcu.,I have my father's old watch.
+zbigniew_chat_62_0,zbigniew,chat,62,0,W czasach mojej młodości nie było telefonów.,When I was young there were no phones.
+zbigniew_chat_62_1,zbigniew,chat,62,1,Byłem wtedy małym chłopcem.,I was a small boy then.
+zbigniew_chat_63_0,zbigniew,chat,63,0,Co niedzielę chodziłem do kościoła.,I used to go to church every Sunday.
+zbigniew_chat_64_0,zbigniew,chat,64,0,Ten artykuł dotyczy naszego parku.,This article is about our park.
+zbigniew_chat_64_1,zbigniew,chat,64,1,Moim zdaniem kawa była kiedyś lepsza.,In my opinion coffee used to be better.
+zbigniew_chat_65_0,zbigniew,chat,65,0,Poprzednio był tu inny kelner.,Previously there was a different waiter here.
+zbigniew_chat_65_1,zbigniew,chat,65,1,Pamiętam tamtego kelnera.,I remember that waiter.
+zbigniew_chat_66_0,zbigniew,chat,66,0,Doświadczenie to najlepszy nauczyciel.,Experience is the best teacher.
+zbigniew_chat_66_1,zbigniew,chat,66,1,Nic nie trwa wiecznie.,Nothing lasts for ever.
+zbigniew_chat_67_0,zbigniew,chat,67,0,Setki ludzi przychodziły tu kiedyś.,Hundreds of people used to come here.
+zbigniew_chat_67_1,zbigniew,chat,67,1,Dużo się tu działo.,A lot went on here.
+zbigniew_chat_68_0,zbigniew,chat,68,0,Królowa przyjechała kiedyś do Polski.,The queen once came to Poland.
+zbigniew_chat_68_1,zbigniew,chat,68,1,Widziałem królową w telewizji.,I saw the queen on TV.
+zbigniew_chat_69_0,zbigniew,chat,69,0,Jestem wdzięczny za każdy dzień.,I'm grateful for every day.
+zbigniew_chat_69_1,zbigniew,chat,69,1,Ludzie zostawiają śmieci w parku.,People leave rubbish in the park.
+zbigniew_chat_70_0,zbigniew,chat,70,0,W moim wieku wszystko to ryzyko.,At my age everything's a risk.
+zbigniew_chat_70_1,zbigniew,chat,70,1,"Wydawało mi się, że widziałem Józefa.",I thought I saw Józef.
+zbigniew_chat_71_0,zbigniew,chat,71,0,Moi dwaj synowie mieszkają za granicą.,My two sons live abroad.
+zbigniew_chat_71_1,zbigniew,chat,71,1,W ważnych sprawach pytam syna.,On important matters I ask my son.
+zbigniew_chat_72_0,zbigniew,chat,72,0,Zeszłej zimy było bardzo zimno.,Last winter it was very cold.
+zbigniew_chat_73_0,zbigniew,chat,73,0,Profesorze! Tak mnie kiedyś nazywali.,Professor! That's what they used to call me.
+zbigniew_chat_73_1,zbigniew,chat,73,1,Mało ludzi pamięta te czasy.,Few people remember those times.
+zbigniew_chat_74_0,zbigniew,chat,74,0,Ten kamień przy fontannie jest stary jak ja.,That stone by the fountain is as old as me.
+zbigniew_chat_74_1,zbigniew,chat,74,1,Świat bez gazet? Niedobrze.,A world without newspapers? Not good.
+zbigniew_chat_75_0,zbigniew,chat,75,0,Moja żona odeszła dziesięć lat temu.,My wife passed away ten years ago.
+zbigniew_chat_75_1,zbigniew,chat,75,1,Mój ojciec kochał ten park.,My father loved this park.
+zbigniew_chat_76_0,zbigniew,chat,76,0,"Będąc młodym, dużo pracowałem.","When I was young, I worked a lot."
+zbigniew_chat_76_1,zbigniew,chat,76,1,"Ludzie, z którymi pracowałem, już są na emeryturze.",The people I worked with are already retired.
+zbigniew_chat_77_0,zbigniew,chat,77,0,Bycia starym trzeba się nauczyć.,You have to learn how to be old.
+zbigniew_chat_77_1,zbigniew,chat,77,1,To poważne sprawy.,These are serious matters.
+zbigniew_chat_78_0,zbigniew,chat,78,0,Doprawdy?,Really?
+zbigniew_chat_78_1,zbigniew,chat,78,1,W rzeczywistości jest inaczej.,In reality it's different.
+zbigniew_chat_79_0,zbigniew,chat,79,0,"Sądziłem, że to będzie łatwe.",I thought it would be easy.
+zbigniew_chat_79_1,zbigniew,chat,79,1,Bywało gorsze.,It's been worse.
+zbigniew_chat_80_0,zbigniew,chat,80,0,Ojciec trzymał mnie za rękę w tym parku.,My father held my hand in this park.
+zbigniew_chat_80_1,zbigniew,chat,80,1,Chcę tu pozostać.,I want to stay here.
+zbigniew_chat_81_0,zbigniew,chat,81,0,"Mając tyle lat, mogę mówić, co chcę.","At my age, I can say what I like."
+zbigniew_chat_81_1,zbigniew,chat,81,1,Słowo mężczyzny!,A man's word!
+zbigniew_chat_82_0,zbigniew,chat,82,0,Mogę ci opowiedzieć o tym parku.,I can tell you about this park.
+zbigniew_chat_82_1,zbigniew,chat,82,1,Park wyglądał kiedyś inaczej.,The park used to look different.
+zbigniew_chat_83_0,zbigniew,chat,83,0,Wolności nie można kupić.,You can't buy freedom.
+kasia_intro_0_0,kasia,intro,0,0,Cześć! Jestem Kasia.,Hi! I'm Kasia.
+kasia_intro_0_1,kasia,intro,0,1,"Pracuję tu, bo w domu jest za cicho.",I work here because it's too quiet at home.
+kasia_intro_0_2,kasia,intro,0,2,W moim pokoju nie mogę myśleć.,I can't think in my room.
+kasia_chat_0_0,kasia,chat,0,0,"Halo? Tak, to ja.","Hello? Yes, it's me."
+kasia_chat_0_1,kasia,chat,0,1,"Nie, nie mogę teraz rozmawiać.","No, I can't talk now."
+kasia_chat_1_0,kasia,chat,1,0,Dostałam wiadomość od szefa.,I got a message from my boss.
+kasia_chat_1_1,kasia,chat,1,1,"Chce, żebym jutro przyszła wcześniej.",He wants me to come in earlier tomorrow.
+kasia_chat_1_2,kasia,chat,1,2,Z jakiego powodu?,For what reason?
+kasia_chat_2_0,kasia,chat,2,0,Jaki jest twój numer?,What's your number?
+kasia_chat_3_0,kasia,chat,3,0,Mam pytanie: czy ta kawa jest z mlekiem?,I have a question: does this coffee have milk in it?
+kasia_chat_3_1,kasia,chat,3,1,Jaką kawę lubisz?,What kind of coffee do you like?
+kasia_chat_4_0,kasia,chat,4,0,"Mój plan na dziś: praca, kawa, praca.","My plan for today: work, coffee, work."
+kasia_chat_4_1,kasia,chat,4,1,Mam dziś ważne sprawy.,I have important things to do today.
+kasia_chat_5_0,kasia,chat,5,0,"Myślałam, że skończę wcześniej.",I thought I'd finish earlier.
+kasia_chat_5_1,kasia,chat,5,1,"Chciałam iść do kina, ale nie mam czasu.","I wanted to go to the cinema, but I don't have time."
+kasia_chat_6_0,kasia,chat,6,0,Miałam wczoraj ciężki dzień.,I had a hard day yesterday.
+kasia_chat_6_1,kasia,chat,6,1,Pracowałam całą noc.,I worked all night.
+kasia_chat_7_0,kasia,chat,7,0,Ten komputer w ogóle nie działa!,This computer doesn't work at all!
+kasia_chat_7_1,kasia,chat,7,1,To dziwne. Znów to samo!,That's odd. The same thing again!
+kasia_chat_7_2,kasia,chat,7,2,Nie da się!,It can't be done!
+kasia_chat_8_0,kasia,chat,8,0,Brzmi dobrze!,Sounds good!
+kasia_chat_9_0,kasia,chat,9,0,"Cieszę się, że cię widzę.",I'm glad to see you.
+kasia_chat_9_1,kasia,chat,9,1,Wyglądasz dobrze dzisiaj!,You look good today!
+kasia_chat_10_0,kasia,chat,10,0,Miło cię poznać.,Nice to meet you.
+kasia_chat_10_1,kasia,chat,10,1,Co u ciebie? Bo u mnie całkiem dobrze.,How are you? I'm doing pretty well.
+kasia_chat_11_0,kasia,chat,11,0,Czujesz to? Ktoś piecze chleb.,Can you smell that? Someone's baking bread.
+kasia_chat_12_0,kasia,chat,12,0,"Nie mam pojęcia, która jest godzina.",I have no idea what time it is.
+kasia_chat_12_1,kasia,chat,12,1,Pracuję już dwie godziny.,I've been working for two hours already.
+kasia_chat_12_2,kasia,chat,12,2,Jeszcze parę minut.,A few more minutes.
+kasia_chat_13_0,kasia,chat,13,0,Udało się! Skończyłam!,I did it! I've finished!
+kasia_chat_13_1,kasia,chat,13,1,W końcu piątek!,Friday at last!
+kasia_chat_14_0,kasia,chat,14,0,Nie jestem pewna.,I'm not sure.
+kasia_chat_14_1,kasia,chat,14,1,"Zdaję sobie sprawę, że dużo pracuję.",I realise I work a lot.
+kasia_chat_15_0,kasia,chat,15,0,Ta praca jest jak gra.,This job is like a game.
+kasia_chat_15_1,kasia,chat,15,1,Każdego dnia to samo.,The same thing every day.
+kasia_chat_15_2,kasia,chat,15,2,Ale z każdym dniem jest lepiej.,But it gets better every day.
+kasia_chat_16_0,kasia,chat,16,0,"Mówią, że Michał chce mieć swój lokal.",They say Michał wants his own place.
+kasia_chat_16_1,kasia,chat,16,1,"Dziewczyna, o której mówię, to Ola.",The girl I'm talking about is Ola.
+kasia_chat_17_0,kasia,chat,17,0,Piszę teksty. Szukam dobrego słowa.,I write texts. I'm looking for the right word.
+kasia_chat_17_1,kasia,chat,17,1,Co to oznacza po polsku?,What does that mean in Polish?
+kasia_chat_18_0,kasia,chat,18,0,"Zostaw to, ja to zrobię.","Leave it, I'll do it."
+kasia_chat_18_1,kasia,chat,18,1,Zrób mi przysługę i nic nie mów.,Do me a favour and don't say anything.
+kasia_chat_19_0,kasia,chat,19,0,Muszę wrócić do pracy.,I have to get back to work.
+kasia_chat_19_1,kasia,chat,19,1,Jedna kawa to za mało. Każdy potrzebuje kawy.,One coffee isn't enough. Everyone needs coffee.
+kasia_chat_20_0,kasia,chat,20,0,Pomóc ci w czymś?,Can I help you with something?
+kasia_chat_20_1,kasia,chat,20,1,Dokąd idziesz?,Where are you going?
+kasia_chat_20_2,kasia,chat,20,2,Idziemy na lody?,Shall we go for ice cream?
+kasia_chat_21_0,kasia,chat,21,0,Kobiety w mojej pracy są super.,The women at my work are great.
+kasia_chat_21_1,kasia,chat,21,1,Dziewczyny z pracy idą dziś do kina.,The girls from work are going to the cinema today.
+kasia_chat_22_0,kasia,chat,22,0,Wielu ludzi pracuje w domu.,Lots of people work from home.
+kasia_chat_22_1,kasia,chat,22,1,"Dla innych to nic, dla mnie dużo.","For others it's nothing, for me it's a lot."
+kasia_chat_23_0,kasia,chat,23,0,Mam zimne ręce.,My hands are cold.
+kasia_chat_23_1,kasia,chat,23,1,Bolą mnie oczy od komputera.,My eyes hurt from the computer.
+kasia_chat_24_0,kasia,chat,24,0,"Byłoby miło, gdybym miała więcej czasu.",It would be nice if I had more time.
+kasia_chat_24_1,kasia,chat,24,1,Chętnie bym poszła na spacer.,I'd happily go for a walk.
+kasia_chat_25_0,kasia,chat,25,0,Moja siostra została w domu.,My sister stayed at home.
+kasia_chat_25_1,kasia,chat,25,1,Nie mogła przyjść.,She couldn't come.
+kasia_chat_25_2,kasia,chat,25,2,"Mama powiedziała, że mam za dużo pracy.",Mum said I have too much work.
+kasia_chat_26_0,kasia,chat,26,0,Chcę dostać nową pracę.,I want to get a new job.
+kasia_chat_26_1,kasia,chat,26,1,Nie potrzebuję niczego więcej.,I don't need anything else.
+kasia_chat_27_0,kasia,chat,27,0,"To jest kawa, którą lubię.",This is the coffee I like.
+kasia_chat_27_1,kasia,chat,27,1,Lubię twoją torbę. Czy to od twojego taty?,I like your bag. Is it from your dad?
+kasia_chat_28_0,kasia,chat,28,0,Zawsze mam komputer ze sobą.,I always have my computer with me.
+kasia_chat_28_1,kasia,chat,28,1,We wtorek mam wolne.,I'm off on Tuesday.
+kasia_chat_29_0,kasia,chat,29,0,Powinniśmy kiedyś pójść razem na kawę.,We should go for a coffee together some time.
+kasia_chat_30_0,kasia,chat,30,0,Muszę sprawdzić wiadomości.,I have to check my messages.
+kasia_chat_30_1,kasia,chat,30,1,Szef dał mi nowy projekt.,My boss gave me a new project.
+kasia_chat_31_0,kasia,chat,31,0,Mam spotkanie za godzinę.,I have a meeting in an hour.
+kasia_chat_31_1,kasia,chat,31,1,Pracuję od kilku godzin bez przerwy.,I've been working for several hours without a break.
+kasia_chat_32_0,kasia,chat,32,0,Zrobiłam błąd w tekście.,I made a mistake in the text.
+kasia_chat_32_1,kasia,chat,32,1,Nieważne. Muszę zacząć od nowa.,Never mind. I have to start over.
+kasia_chat_33_0,kasia,chat,33,0,Mam dużo roboty.,I've got loads of work.
+kasia_chat_33_1,kasia,chat,33,1,To niemożliwe!,That's impossible!
+kasia_chat_33_2,kasia,chat,33,2,Jedynie kawa mi pomoże.,Only coffee will help me.
+kasia_chat_34_0,kasia,chat,34,0,Zgadza się!,That's right!
+kasia_chat_34_1,kasia,chat,34,1,Mam ponownie ten sam problem.,I have the same problem again.
+kasia_chat_35_0,kasia,chat,35,0,Całkowicie zapomniałam o spotkaniu!,I completely forgot about the meeting!
+kasia_chat_36_0,kasia,chat,36,0,Słyszysz? Ktoś gra na gitarze.,Can you hear? Someone's playing the guitar.
+kasia_chat_37_0,kasia,chat,37,0,Na przykład: kawa z mlekiem albo bez.,For example: coffee with milk or without.
+kasia_chat_37_1,kasia,chat,37,1,Ja również lubię herbatę.,I like tea too.
+kasia_chat_38_0,kasia,chat,38,0,Wiadomość od mamy: wróci wieczorem.,A message from Mum: she'll be back this evening.
+kasia_chat_39_0,kasia,chat,39,0,"Póki mam kawę, mogę pracować.","As long as I have coffee, I can work."
+kasia_chat_39_1,kasia,chat,39,1,Zamierzam skończyć to dzisiaj.,I intend to finish it today.
+kasia_chat_40_0,kasia,chat,40,0,"Uważam, że to dobry pomysł.",I think it's a good idea.
+kasia_chat_40_1,kasia,chat,40,1,"A ty, co uważasz?","And you, what do you think?"
+kasia_chat_40_2,kasia,chat,40,2,"Sądzisz, że zdążę?",Do you think I'll make it?
+kasia_chat_41_0,kasia,chat,41,0,Brak czasu to mój problem.,Lack of time is my problem.
+kasia_chat_41_1,kasia,chat,41,1,Zajmę się tym jutro.,I'll deal with it tomorrow.
+kasia_chat_41_2,kasia,chat,41,2,Wezmę jeszcze jedną kawę.,I'll have one more coffee.
+kasia_chat_42_0,kasia,chat,42,0,W ciągu godziny skończę.,I'll finish within an hour.
+kasia_chat_42_1,kasia,chat,42,1,"Niby mam wolne, a pracuję.","Supposedly I'm off, but I'm working."
+kasia_chat_43_0,kasia,chat,43,0,Pewnego dnia będę mieć swoją firmę.,One day I'll have my own company.
+kasia_chat_43_1,kasia,chat,43,1,"Nowa praca, nowe życie!","New job, new life!"
+kasia_chat_44_0,kasia,chat,44,0,Wszystko mam w jednym komputerze.,I have everything on one computer.
+kasia_chat_44_1,kasia,chat,44,1,Nie martw się niczym.,Don't worry about anything.
+kasia_chat_45_0,kasia,chat,45,0,Potrzebuję twojej rady.,I need your advice.
+kasia_chat_45_1,kasia,chat,45,1,Znasz tego faceta z gazetą? To pan Zbigniew.,Do you know that guy with the newspaper? That's Mr Zbigniew.
+kasia_chat_46_0,kasia,chat,46,0,Nie lubię chodzić do biura.,I don't like going to the office.
+kasia_chat_46_1,kasia,chat,46,1,Szukam informacji o nowym projekcie.,I'm looking for information about the new project.
+kasia_chat_47_0,kasia,chat,47,0,Mam wszystkie informacje w komputerze.,I have all the information on my computer.
+kasia_chat_47_1,kasia,chat,47,1,Muszę wysłać list do firmy.,I have to send a letter to the company.
+kasia_chat_48_0,kasia,chat,48,0,Zadzwoń do mnie później!,Call me later!
+kasia_chat_48_1,kasia,chat,48,1,Jaki jest twój adres?,What's your address?
+kasia_chat_49_0,kasia,chat,49,0,Moja grupa w pracy jest bardzo dobra.,My group at work is very good.
+kasia_chat_49_1,kasia,chat,49,1,Mamy dziś dwie rozmowy z klientami.,We have two talks with clients today.
+kasia_chat_49_2,kasia,chat,49,2,Rozmowę z szefem mam jutro.,I have a talk with my boss tomorrow.
+kasia_chat_50_0,kasia,chat,50,0,"Obawiam się, że nie zdążę.",I'm afraid I won't make it.
+kasia_chat_50_1,kasia,chat,50,1,Dwa ostatnie tygodnie były straszne.,The last two weeks were awful.
+kasia_chat_51_0,kasia,chat,51,0,Pracuję tu od pięciu tygodni.,I've been working here for five weeks.
+kasia_chat_51_1,kasia,chat,51,1,W sumie lubię swoją pracę.,"All in all, I like my job."
+kasia_chat_52_0,kasia,chat,52,0,W zasadzie skończyłam.,"Basically, I've finished."
+kasia_chat_52_1,kasia,chat,52,1,"Nie mam pojęcia, jak to wyjaśnić.",I have no idea how to explain it.
+kasia_chat_53_0,kasia,chat,53,0,Potrzebuję lepszego komputera.,I need a better computer.
+kasia_chat_53_1,kasia,chat,53,1,"Ten jest lepszy, ale drogi.","This one is better, but expensive."
+kasia_chat_54_0,kasia,chat,54,0,Jasna sprawa!,Of course!
+kasia_chat_54_1,kasia,chat,54,1,Sprawdź swoje wiadomości!,Check your messages!
+kasia_chat_54_2,kasia,chat,54,2,Sprawdzę to.,I'll check it.
+kasia_chat_55_0,kasia,chat,55,0,Interesuje mnie zdrowie i sport.,I'm interested in health and sport.
+kasia_chat_55_1,kasia,chat,55,1,Mój cel na ten rok: mniej pracy.,My goal for this year: less work.
+kasia_chat_56_0,kasia,chat,56,0,Dziwnie się czuję bez kawy.,I feel strange without coffee.
+kasia_chat_56_1,kasia,chat,56,1,"Rzeczywiście, to dobra kawa.","Indeed, it's good coffee."
+kasia_chat_57_0,kasia,chat,57,0,"Zaczynam o dziewiątej, kończę o piątej.",I start at nine and finish at five.
+kasia_chat_57_1,kasia,chat,57,1,Wychodzę o piątej.,I leave at five.
+kasia_chat_58_0,kasia,chat,58,0,To był żart!,It was a joke!
+kasia_chat_58_1,kasia,chat,58,1,Komu to wysłać? Szefowi czy całej grupie?,Who should I send it to? My boss or the whole group?
+kasia_chat_59_0,kasia,chat,59,0,Pracujesz gdzieś?,Do you work somewhere?
+kasia_chat_59_1,kasia,chat,59,1,"Zobaczę, czy mam czas.",I'll see if I have time.
+kasia_chat_60_0,kasia,chat,60,0,Nie mam wyboru.,I have no choice.
+kasia_chat_60_1,kasia,chat,60,1,Pracowałam nad tym trzy miesiące.,I worked on it for three months.
+kasia_chat_60_2,kasia,chat,60,2,W ostatniej chwili skończyłam!,I finished at the last moment!
+kasia_chat_61_0,kasia,chat,61,0,Jakiego rodzaju kawę lubisz?,What kind of coffee do you like?
+kasia_chat_61_1,kasia,chat,61,1,Świetna kawa!,Great coffee!
+kasia_chat_62_0,kasia,chat,62,0,Pracuję z innymi ludźmi.,I work with other people.
+kasia_chat_62_1,kasia,chat,62,1,Chcę mieć własną firmę.,I want my own company.
+kasia_chat_63_0,kasia,chat,63,0,W tym momencie jestem zajęta.,At the moment I'm busy.
+kasia_chat_63_1,kasia,chat,63,1,To zajmie chwilę.,This'll take a moment.
+kasia_chat_64_0,kasia,chat,64,0,To nic nie zmieni.,That won't change anything.
+kasia_chat_64_1,kasia,chat,64,1,Mam listę rzeczy do zrobienia.,I have a to-do list.
+kasia_chat_65_0,kasia,chat,65,0,Szukam słów.,I'm searching for words.
+kasia_chat_65_1,kasia,chat,65,1,Zazwyczaj piję dwie kawy.,I usually drink two coffees.
+kasia_chat_65_2,kasia,chat,65,2,Piję ostatnią kawę dzisiaj.,I'm drinking my last coffee for today.
+kasia_chat_66_0,kasia,chat,66,0,Poradzę sobie.,I'll manage.
+kasia_chat_66_1,kasia,chat,66,1,"Z innej strony, jutro mam wolne.","On the other hand, I'm off tomorrow."
+kasia_chat_67_0,kasia,chat,67,0,W pracy są duże zmiany.,There are big changes at work.
+kasia_chat_67_1,kasia,chat,67,1,W nowej pracy wszystko będzie inaczej.,In the new job everything will be different.
+kasia_chat_67_2,kasia,chat,67,2,Nowy system jest okropny.,The new system is awful.
+kasia_chat_68_0,kasia,chat,68,0,Mam dziś trzy spotkania.,I have three meetings today.
+kasia_chat_68_1,kasia,chat,68,1,Znowu ktoś dzwoni!,Someone's calling again!
+kasia_chat_69_0,kasia,chat,69,0,W tej sytuacji nic nie zrobię.,In this situation I can't do anything.
+kasia_chat_69_1,kasia,chat,69,1,"Wszystko, co potrzebne, mam w torbie.",Everything I need is in my bag.
+kasia_chat_70_0,kasia,chat,70,0,Muszę wysłać dokumenty do szefa.,I have to send the documents to my boss.
+kasia_chat_70_1,kasia,chat,70,1,Szef wysłał mi wiadomość.,My boss sent me a message.
+kasia_chat_71_0,kasia,chat,71,0,"Kod do drzwi? Zero, zero, siedem.","The door code? Zero, zero, seven."
+kasia_chat_72_0,kasia,chat,72,0,Ten proces jest za długi.,This process is too long.
+kasia_chat_72_1,kasia,chat,72,1,Wymaga to dużo pracy.,It takes a lot of work.
+kasia_chat_73_0,kasia,chat,73,0,Kontrolować wszystko? Nie da się.,Control everything? It can't be done.
+kasia_chat_73_1,kasia,chat,73,1,Zaczniemy projekt w poniedziałek.,We'll start the project on Monday.
+kasia_chat_74_0,kasia,chat,74,0,"Wyszło lepiej, niż myślałam.",It turned out better than I thought.
+kasia_chat_74_1,kasia,chat,74,1,Szef zmienił plan.,My boss changed the plan.
+kasia_chat_74_2,kasia,chat,74,2,Nie ma innego planu.,There's no other plan.
+kasia_chat_75_0,kasia,chat,75,0,Biznes to nie wszystko.,Business isn't everything.
+kasia_chat_75_1,kasia,chat,75,1,Szukają nowych ludzi w mojej firmie.,They're looking for new people at my company.
+kasia_chat_76_0,kasia,chat,76,0,"Potrzebuję spokoju, żeby się skupić.",I need peace and quiet to concentrate.
+kasia_chat_76_1,kasia,chat,76,1,Muszę to skończyć do końca tygodnia.,I have to finish this by the end of the week.
+kasia_chat_77_0,kasia,chat,77,0,Pracuję głównie w domu albo tu.,I work mainly at home or here.
+kasia_chat_77_1,kasia,chat,77,1,Mieszkasz w okolicy?,Do you live around here?
+kasia_chat_78_0,kasia,chat,78,0,Patrzysz na mój komputer? Nic ciekawego.,Looking at my computer? Nothing interesting.
+kasia_chat_78_1,kasia,chat,78,1,Interesujące! Opowiedz mi więcej.,Interesting! Tell me more.
+kasia_chat_79_0,kasia,chat,79,0,Sukces to dużo pracy i trochę szczęścia.,Success is a lot of work and a bit of luck.
+kasia_chat_79_1,kasia,chat,79,1,Przyda mi się więcej czasu.,More time would come in handy.
+kasia_chat_80_0,kasia,chat,80,0,"Zakładam, że szef wie.",I assume the boss knows.
+kasia_chat_80_1,kasia,chat,80,1,Szczegóły wyślę ci później.,I'll send you the details later.
+kasia_chat_81_0,kasia,chat,81,0,Praktycznie mieszkam w tej kawiarni.,I practically live in this café.
+kasia_chat_81_1,kasia,chat,81,1,Specjalnie przyszłam wcześniej.,I came early on purpose.
+kasia_chat_82_0,kasia,chat,82,0,To była pomyłka.,It was a mistake.
+kasia_chat_82_1,kasia,chat,82,1,Oficjalnie mam dziś wolne.,"Officially, I'm off today."
+kasia_chat_83_0,kasia,chat,83,0,Obecnie pracuję nad nową stroną.,At the moment I'm working on a new website.
+kasia_chat_83_1,kasia,chat,83,1,Rozwiązanie jest proste.,The solution is simple.
+kasia_chat_84_0,kasia,chat,84,0,Kurs angielskiego zaczyna się w październiku.,The English course starts in October.
+kasia_chat_85_0,kasia,chat,85,0,Pracuję na własnym komputerze.,I work on my own computer.
+kasia_chat_85_1,kasia,chat,85,1,W trakcie pracy piję kawę.,I drink coffee while I work.
+kasia_chat_86_0,kasia,chat,86,0,Z tym problemem nic nie zrobię.,I can't do anything about this problem.
+kasia_chat_86_1,kasia,chat,86,1,Rozumiem twoją sytuację.,I understand your situation.
+kasia_chat_87_0,kasia,chat,87,0,W pewnym momencie komputer przestał działać.,At one point the computer stopped working.
+kasia_chat_87_1,kasia,chat,87,1,To kwestia czasu.,It's a matter of time.
+kasia_chat_88_0,kasia,chat,88,0,Z wielu powodów lubię tę pracę.,I like this job for many reasons.
+kasia_chat_88_1,kasia,chat,88,1,Moja praca polega na pisaniu.,My job is about writing.
+kasia_chat_89_0,kasia,chat,89,0,Mam nagranie ze spotkania.,I have a recording of the meeting.
+kasia_chat_89_1,kasia,chat,89,1,Szef pisze do mnie codziennie.,My boss writes to me every day.
+kasia_chat_90_0,kasia,chat,90,0,Nie mam sieci!,I've got no signal!
+kasia_chat_90_1,kasia,chat,90,1,To jest skomplikowane.,It's complicated.
+kasia_chat_90_2,kasia,chat,90,2,W pewnym sensie tak.,"In a way, yes."
+kasia_chat_91_0,kasia,chat,91,0,W tym miesiącu mam dużo pracy.,I have a lot of work this month.
+kasia_chat_91_1,kasia,chat,91,1,Zapłacę kartą.,I'll pay by card.
+kasia_chat_92_0,kasia,chat,92,0,Każdy używa telefonu.,Everyone uses a phone.
+kasia_chat_92_1,kasia,chat,92,1,"Szef sądzi, że zdążę.",My boss thinks I'll make it.
+roman_intro_0_0,roman,intro,0,0,Dzień dobry! Nazywam się Roman.,Good morning! My name is Roman.
+roman_intro_0_1,roman,intro,0,1,Jestem kierowcą autobusu.,I'm a bus driver.
+roman_intro_0_2,roman,intro,0,2,Mam teraz pół godziny przerwy.,I've got half an hour's break now.
+roman_chat_0_0,roman,chat,0,0,Autobus jedzie prosto do centrum miasta.,The bus goes straight to the town centre.
+roman_chat_0_1,roman,chat,0,1,A potem z powrotem.,And then back again.
+roman_chat_1_0,roman,chat,1,0,Jeżdżę tu ponad dwadzieścia lat.,I've been driving here for over twenty years.
+roman_chat_1_1,roman,chat,1,1,"Nie jest łatwo, ale lubię to.","It isn't easy, but I like it."
+roman_chat_2_0,roman,chat,2,0,Według rozkładu autobus jest za pięć minut.,"According to the timetable, the bus is in five minutes."
+roman_chat_2_1,roman,chat,2,1,Ale prawdopodobnie się spóźni.,But it'll probably be late.
+roman_chat_3_0,roman,chat,3,0,Na drodze był wypadek.,There was an accident on the road.
+roman_chat_3_1,roman,chat,3,1,"Nic się nie stało, na szczęście.","Nobody was hurt, luckily."
+roman_chat_4_0,roman,chat,4,0,Pracuję sześć dni w tygodniu.,I work six days a week.
+roman_chat_4_1,roman,chat,4,1,Czasami nawet siedem!,Sometimes even seven!
+roman_chat_5_0,roman,chat,5,0,Pierwsze autobusy jeżdżą o piątej rano.,The first buses run at five in the morning.
+roman_chat_5_1,roman,chat,5,1,Ostatni autobus jest o północy.,The last bus is at midnight.
+roman_chat_6_0,roman,chat,6,0,Wkrótce będę na emeryturze.,Soon I'll be retired.
+roman_chat_6_1,roman,chat,6,1,"Niedługo, niedługo.","Before long, before long."
+roman_chat_7_0,roman,chat,7,0,"Ludzie chcą jechać szybciej, ale ja jadę spokojnie.","People want to go faster, but I drive calmly."
+roman_chat_8_0,roman,chat,8,0,Mój dom jest blisko przystanku.,My house is close to the stop.
+roman_chat_9_0,roman,chat,9,0,Byłem kierowcą w całym kraju.,I've been a driver all over the country.
+roman_chat_9_1,roman,chat,9,1,Widziałem pół świata!,I've seen half the world!
+roman_chat_10_0,roman,chat,10,0,Najbardziej lubię jechać rano.,I like driving in the morning best.
+roman_chat_10_1,roman,chat,10,1,Wieczorem jest za dużo samochodów.,In the evening there are too many cars.
+roman_chat_11_0,roman,chat,11,0,Mam tydzień urlopu w sierpniu.,I have a week off in August.
+roman_chat_12_0,roman,chat,12,0,Około dziesięciu osób jeździ ze mną codziennie.,About ten people ride with me every day.
+roman_chat_12_1,roman,chat,12,1,Znam ich wszystkich.,I know them all.
+roman_chat_13_0,roman,chat,13,0,"Uważaj, autobus jedzie!","Careful, the bus is coming!"
+roman_chat_14_0,roman,chat,14,0,Mój syn też chce być kierowcą.,My son wants to be a driver too.
+roman_chat_14_1,roman,chat,14,1,Mówię mu: to nie jest łatwa praca.,I tell him: it's not an easy job.
+roman_chat_15_0,roman,chat,15,0,Muszę zatrzymać autobus na każdym przystanku.,I have to stop the bus at every stop.
+roman_chat_15_1,roman,chat,15,1,Należy kupić bilet przed jazdą.,You have to buy a ticket before the ride.
+roman_chat_16_0,roman,chat,16,0,"Kiedykolwiek chcesz, możesz jechać ze mną.","Whenever you like, you can ride with me."
+roman_chat_17_0,roman,chat,17,0,Nie obchodzi mnie pogoda. Jeżdżę zawsze.,I don't care about the weather. I always drive.
+roman_chat_17_1,roman,chat,17,1,"To zależy od dnia, ile jest ludzi.",How many people there are depends on the day.
+roman_chat_18_0,roman,chat,18,0,"Zupełnie zapomniałem, która jest godzina!",I completely forgot what time it is!
+roman_chat_19_0,roman,chat,19,0,Mieliśmy kiedyś stary autobus.,We used to have an old bus.
+roman_chat_19_1,roman,chat,19,1,Był wielki i głośny.,It was huge and loud.
+roman_chat_20_0,roman,chat,20,0,"Część ludzi wysiada tutaj, a część jedzie dalej.","Some people get off here, and some go on."
+roman_chat_21_0,roman,chat,21,0,"Chociaż jestem zmęczony, jestem szczęśliwy.","Though I'm tired, I'm happy."
+roman_chat_21_1,roman,chat,21,1,"Chciałbym odpocząć, lecz nie mogę.","I'd like to rest, but I can't."
+roman_chat_22_0,roman,chat,22,0,Muszę już wracać. Do zobaczenia!,I have to get back now. See you!
+roman_chat_23_0,roman,chat,23,0,Jedziemy dalej!,Let's keep going!
+roman_chat_23_1,roman,chat,23,1,Ludzie krzyczą: ruszaj!,People shout: get going!
+roman_chat_24_0,roman,chat,24,0,Za pierwszym razem od razu wiedziałem: to praca dla mnie.,"The first time, I knew straight away: this job is for me."
+roman_chat_25_0,roman,chat,25,0,Znalazłem w autobusie telefon.,I found a phone on the bus.
+roman_chat_25_1,roman,chat,25,1,Raz znaleźliśmy w autobusie psa!,Once we found a dog on the bus!
+roman_chat_25_2,roman,chat,25,2,"Jeśli coś zgubisz, znajdziemy to.","If you lose something, we'll find it."
+roman_chat_26_0,roman,chat,26,0,Za kilka miesięcy mam urlop.,I have a holiday in a few months.
+roman_chat_26_1,roman,chat,26,1,Autobus jest wystarczająco duży dla wszystkich.,The bus is big enough for everyone.
+roman_chat_27_0,roman,chat,27,0,Drogę znam na pamięć.,I know the road by heart.
+roman_chat_27_1,roman,chat,27,1,Ostatnie autobusy są puste.,The last buses are empty.
+roman_chat_28_0,roman,chat,28,0,"Poczekaj chwilę, zaraz jedzie następny.","Wait a moment, the next one's coming soon."
+roman_chat_28_1,roman,chat,28,1,To nie powinno trwać długo.,It shouldn't take long.
+roman_chat_29_0,roman,chat,29,0,"Dzieci, musicie usiąść!","Children, you have to sit down!"
+roman_chat_30_0,roman,chat,30,0,Robią remont na drodze.,They're doing roadworks.
+roman_chat_30_1,roman,chat,30,1,Trzech kierowców jest dziś chorych.,Three drivers are off sick today.
+roman_chat_31_0,roman,chat,31,0,"Mój syn i córka wiedzą, że tata dużo pracuje.",My son and daughter know their dad works a lot.
+roman_chat_31_1,roman,chat,31,1,Samochodu nie mam. Po co?,I don't have a car. What for?
+roman_chat_32_0,roman,chat,32,0,Ktoś mógłby mi pomóc?,Could someone help me?
+roman_chat_32_1,roman,chat,32,1,Kto zostanie kierowcą po mnie?,Who will be the driver after me?
+roman_chat_33_0,roman,chat,33,0,Do odjazdu zostało pięć minut.,There are five minutes left until we leave.
+roman_chat_33_1,roman,chat,33,1,Nie mam żadnego problemu z ludźmi.,I don't have any problem with people.
+roman_chat_34_0,roman,chat,34,0,Jakim autobusem jedziesz?,Which bus are you taking?
+roman_chat_35_0,roman,chat,35,0,Następnym razem pojedziesz ze mną.,Next time you'll ride with me.
+roman_chat_35_1,roman,chat,35,1,Powodzenia!,Good luck!
+roman_chat_36_0,roman,chat,36,0,Na tej ulicy jest dużo ruchu.,There's a lot of traffic on this street.
+roman_chat_36_1,roman,chat,36,1,Jedź wolniej! mówię do kierowców.,Drive slower! I tell the drivers.
+roman_chat_37_0,roman,chat,37,0,Zatrzymaj autobus! krzyczy ktoś.,Stop the bus! someone shouts.
+roman_chat_37_1,roman,chat,37,1,Autobus staje tutaj.,The bus stops here.
+roman_chat_38_0,roman,chat,38,0,Druga linia jedzie przez centrum.,Line two goes through the centre.
+roman_chat_38_1,roman,chat,38,1,Ta droga prowadzi do centrum.,This road leads to the centre.
+roman_chat_39_0,roman,chat,39,0,Od wypadku jeżdżę ostrożnie.,Since the accident I drive carefully.
+roman_chat_40_0,roman,chat,40,0,W samochodzie słucham radia.,In the car I listen to the radio.
+roman_chat_40_1,roman,chat,40,1,Przystanek jest sto metrów stąd.,The stop is a hundred metres from here.
+roman_chat_41_0,roman,chat,41,0,W którym kierunku jedziesz?,Which way are you going?
+roman_chat_41_1,roman,chat,41,1,Dobry sen to podstawa.,Good sleep is the key.
+roman_chat_42_0,roman,chat,42,0,Autobus wraca o szóstej.,The bus comes back at six.
+roman_chat_42_1,roman,chat,42,1,"Mówimy po polsku, ale ludzie są z całego świata.","We speak Polish, but people come from all over the world."
+roman_chat_43_0,roman,chat,43,0,Każdy pasażer liczy się dla mnie.,Every passenger counts for me.
+roman_chat_43_1,roman,chat,43,1,Mój kolega dzwonił. Jest chory.,My colleague called. He's ill.
+roman_chat_44_0,roman,chat,44,0,Wyjście jest z przodu i z tyłu.,The exit is at the front and the back.
+roman_chat_44_1,roman,chat,44,1,"Wyjścia nie ma, trzeba czekać.","There's no way out, you have to wait."
+roman_chat_45_0,roman,chat,45,0,Biorę urlop w sierpniu.,I'm taking my holiday in August.
+roman_chat_45_1,roman,chat,45,1,Pora na kawę!,Time for coffee!
+roman_chat_45_2,roman,chat,45,2,Tuż za rogiem jest piekarnia.,Just round the corner there's a bakery.
+roman_chat_46_0,roman,chat,46,0,Czerwone światło! Stop.,Red light! Stop.
+roman_chat_46_1,roman,chat,46,1,Zaraz zacznie padać.,It's going to start raining any minute.
+roman_chat_47_0,roman,chat,47,0,Robię swoją robotę.,I do my job.
+roman_chat_47_1,roman,chat,47,1,Dojedziemy do celu na czas.,We'll get there on time.
+roman_chat_48_0,roman,chat,48,0,To jest ostatnia przerwa dzisiaj.,This is the last break today.
+roman_chat_48_1,roman,chat,48,1,Dwie minuty i jedziemy!,Two minutes and we're off!
+roman_chat_49_0,roman,chat,49,0,Ktoś zostawił w autobusie parasol.,Someone left an umbrella on the bus.
+roman_chat_49_1,roman,chat,49,1,Ludzie powinni mieć bilety.,People should have tickets.
+roman_chat_50_0,roman,chat,50,0,Trzeba brać życie na spokojnie.,You have to take life easy.
+roman_chat_50_1,roman,chat,50,1,"To nie przypadek, że tu pracuję.",It's no accident that I work here.
+roman_chat_51_0,roman,chat,51,0,Akurat jedzie autobus!,"Here comes the bus, just in time!"
+roman_chat_51_1,roman,chat,51,1,"Nic dziwnego, że jest korek.",No wonder there's a traffic jam.
+roman_chat_52_0,roman,chat,52,0,Ludzie przyjeżdżają z daleka.,People come from far away.
+roman_chat_52_1,roman,chat,52,1,Następnego dnia znowu jadę.,The next day I drive again.
+roman_chat_53_0,roman,chat,53,0,"Punkt ósma, jedziemy.","Eight o'clock sharp, we go."
+roman_chat_53_1,roman,chat,53,1,W każdym przypadku jestem na czas.,I'm on time in every case.
+roman_chat_54_0,roman,chat,54,0,"Wsiadaj, jedziemy!","Get on, we're off!"
+roman_chat_54_1,roman,chat,54,1,Jadę tą drogą od lat.,I've driven this road for years.
+roman_chat_55_0,roman,chat,55,0,Czterech pasażerów czeka na przystanku.,Four passengers are waiting at the stop.
+roman_chat_55_1,roman,chat,55,1,Czekają na mnie.,They're waiting for me.
+roman_chat_56_0,roman,chat,56,0,Wracamy do zajezdni o północy.,We go back to the depot at midnight.
+roman_chat_56_1,roman,chat,56,1,Ruszamy za minutę.,We set off in a minute.
+roman_chat_57_0,roman,chat,57,0,Bezpiecznie dojedziemy.,We'll get there safely.
+roman_chat_57_1,roman,chat,57,1,Autobus jest bezpieczny.,The bus is safe.
+roman_chat_58_0,roman,chat,58,0,Lot? Nigdy w życiu. Wolę autobus.,A flight? Never in my life. I prefer the bus.
+roman_chat_58_1,roman,chat,58,1,"Z samolotu wszystko jest małe, mówi syn.","From a plane everything looks small, my son says."
+roman_chat_59_0,roman,chat,59,0,"Mój wóz jest stary, ale dobry.","My vehicle's old, but good."
+roman_chat_59_1,roman,chat,59,1,"Patrzę na drogę jednym okiem, a na ludzi drugim.",I watch the road with one eye and the people with the other.
+roman_chat_60_0,roman,chat,60,0,"Po lewej stronie jest szkoła, po prawej park.","On the left is the school, on the right the park."
+roman_chat_60_1,roman,chat,60,1,Przystanek znajduje się przy parku.,The stop is next to the park.
+roman_chat_61_0,roman,chat,61,0,Zbliża się zima.,Winter's coming.
+roman_chat_61_1,roman,chat,61,1,Okres świąt to dużo pracy.,The holiday season is a lot of work.
+roman_chat_62_0,roman,chat,62,0,"Jeśli pozwolisz, opowiem ci historię.","If you'll let me, I'll tell you a story."
+roman_chat_63_0,roman,chat,63,0,Paru pasażerów zapomniało biletów.,A couple of passengers forgot their tickets.
+roman_chat_63_1,roman,chat,63,1,Rozkład jazdy zmienia się w wakacje.,The timetable changes in the holidays.
+roman_chat_64_0,roman,chat,64,0,Każdy kierowca dostaje przerwę.,Every driver gets a break.
+roman_chat_64_1,roman,chat,64,1,Nie możemy cofnąć czasu.,We can't turn back time.
+roman_chat_65_0,roman,chat,65,0,Prędzej czy później autobus przyjedzie.,Sooner or later the bus will come.
+roman_chat_65_1,roman,chat,65,1,Dookoła miasta jedzie się godzinę.,It takes an hour to go round the town.
+roman_chat_66_0,roman,chat,66,0,Musimy dotrzeć na czas.,We have to get there on time.
+roman_chat_66_1,roman,chat,66,1,Mamy dobre połączenie do centrum.,There's a good connection to the centre.
+roman_chat_67_0,roman,chat,67,0,Do ostatniego przystanku!,To the last stop!
+roman_chat_67_1,roman,chat,67,1,W wielu miejscach są korki.,There are traffic jams in lots of places.
+roman_chat_68_0,roman,chat,68,0,Wróciłem wczoraj z urlopu.,I came back from holiday yesterday.
+roman_chat_68_1,roman,chat,68,1,Ludzie zawsze znajdą miejsce.,People always find a seat.
+roman_chat_69_0,roman,chat,69,0,Jadę samochodem tylko w niedzielę.,I only drive a car on Sundays.
+roman_chat_69_1,roman,chat,69,1,Czekamy jeszcze minutę.,We'll wait one more minute.
+ela_intro_0_0,ela,intro,0,0,Dzień dobry! Jestem Ela.,Good morning! I'm Ela.
+ela_intro_0_1,ela,intro,0,1,Nie mogę znaleźć biletu!,I can't find my ticket!
+ela_intro_0_2,ela,intro,0,2,"Chyba zgubiłam go w parku, na ścieżce.","I think I lost it in the park, on the path."
+ela_intro_0_3,ela,intro,0,3,Mam ważne spotkanie za pół godziny.,I have an important meeting in half an hour.
+ela_done_0_0,ela,done,0,0,Mój bilet! Dziękuję!,My ticket! Thank you!
+ela_done_0_1,ela,done,0,1,Teraz jestem gotowa.,Now I'm ready.
+ela_remind_0_0,ela,remind,0,0,"Mój bilet jest chyba w parku, na ścieżce.","My ticket is probably in the park, on the path."
+ela_wrong_0_0,ela,wrong,0,0,"Nie, to nie to.","No, that's not it."
+ela_chat_0_0,ela,chat,0,0,"Słucham? Tak, szefie, już jadę!","Hello? Yes, boss, I'm on my way!"
+ela_chat_1_0,ela,chat,1,0,Widziałam ten film wczoraj.,I saw that film yesterday.
+ela_chat_1_1,ela,chat,1,1,Był świetny!,It was great!
+ela_chat_2_0,ela,chat,2,0,Powinnam była wyjść wcześniej.,I should have left earlier.
+ela_chat_2_1,ela,chat,2,1,"Mówiłam mężowi, że się spóźnię.",I told my husband I'd be late.
+ela_chat_3_0,ela,chat,3,0,"Wiedziałam, że tak będzie!",I knew it would be like this!
+ela_chat_4_0,ela,chat,4,0,Zrobiłam dzieciom śniadanie i wyszłam.,I made the children breakfast and left.
+ela_chat_5_0,ela,chat,5,0,"Chciałabym mieć samochód, ale nie mam.","I'd like to have a car, but I don't."
+ela_chat_6_0,ela,chat,6,0,"Pa, skarbie! Do zobaczenia wieczorem!","Bye, darling! See you this evening!"
+ela_chat_6_1,ela,chat,6,1,To był mój syn.,That was my son.
+ela_chat_7_0,ela,chat,7,0,Mam dużo spraw na głowie.,I have a lot on my mind.
+ela_chat_8_0,ela,chat,8,0,Moja córka chciała iść ze mną.,My daughter wanted to come with me.
+ela_chat_8_1,ela,chat,8,1,Ale musiała iść do szkoły.,But she had to go to school.
+ela_chat_9_0,ela,chat,9,0,Ten autobus zawsze jest pełny.,This bus is always full.
+ela_chat_9_1,ela,chat,9,1,Większość ludzi jedzie do pracy.,Most people are going to work.
+ela_chat_10_0,ela,chat,10,0,W pracy mam same problemy.,At work I've got nothing but problems.
+ela_chat_10_1,ela,chat,10,1,Ale jakoś to będzie.,But it'll be all right somehow.
+ela_chat_11_0,ela,chat,11,0,Nie chcę o tym myśleć. Zmieńmy temat.,I don't want to think about it. Let's change the subject.
+ela_chat_11_1,ela,chat,11,1,"To zabawne, prawda?","That's funny, isn't it?"
+ela_chat_12_0,ela,chat,12,0,Muszę iść do lekarza.,I have to go to the doctor.
+ela_chat_12_1,ela,chat,12,1,Boli mnie głowa.,I've got a headache.
+ela_chat_13_0,ela,chat,13,0,Powiedziałam szefowi prawdę.,I told my boss the truth.
+ela_chat_13_1,ela,chat,13,1,"Nie mogę uwierzyć, że już piątek!",I can't believe it's Friday already!
+ela_chat_14_0,ela,chat,14,0,"Boję się, że nie zdążę.",I'm afraid I won't make it in time.
+ela_chat_14_1,ela,chat,14,1,Ile to trwa? Mniej więcej pół godziny.,How long does it take? About half an hour.
+ela_chat_15_0,ela,chat,15,0,Muszę natychmiast zadzwonić do szefa.,I have to phone my boss right now.
+ela_chat_16_0,ela,chat,16,0,Córka zrobiła mi kanapkę.,My daughter made me a sandwich.
+ela_chat_16_1,ela,chat,16,1,Dziecka nie można zostawić samego.,You can't leave a child on their own.
+ela_chat_17_0,ela,chat,17,0,Muszę kupić jakąś kawę.,I have to buy some coffee.
+ela_chat_17_1,ela,chat,17,1,Jakaś pani pytała o autobus.,Some lady was asking about the bus.
+ela_chat_18_0,ela,chat,18,0,Chcę być kimś w życiu.,I want to be someone in life.
+ela_chat_18_1,ela,chat,18,1,Jednej rzeczy nie rozumiem: dlaczego zawsze pada w poniedziałek?,One thing I don't understand: why does it always rain on Mondays?
+ela_chat_19_0,ela,chat,19,0,"Pozwól, że zadzwonię.",Let me make a call.
+ela_chat_19_1,ela,chat,19,1,Szef nie chce mi pozwolić pracować w domu.,My boss won't let me work from home.
+ela_chat_20_0,ela,chat,20,0,Dasz radę! mówię sobie.,You can do it! I tell myself.
+ela_chat_20_1,ela,chat,20,1,"Rany, ale późno!","Gosh, it's late!"
+ela_chat_21_0,ela,chat,21,0,"Zwróć uwagę na rozkład, czasem się zmienia.","Pay attention to the timetable, it sometimes changes."
+ela_chat_21_1,ela,chat,21,1,"Sami nie wiedzą, kiedy przyjdzie autobus.",Even they don't know when the bus will come.
+ela_chat_22_0,ela,chat,22,0,"Powie mi ktoś, która jest godzina?",Will someone tell me what time it is?
+ela_chat_22_1,ela,chat,22,1,Co powiesz na kawę po pracy?,How about a coffee after work?
+ela_chat_23_0,ela,chat,23,0,Lubię twoich przyjaciół z parku.,I like your friends from the park.
+ela_chat_23_1,ela,chat,23,1,Babcia naszych dzieci mieszka tu blisko.,Our children's grandma lives close by.
+ela_chat_23_2,ela,chat,23,2,Naszą córkę wszyscy lubią.,Everyone likes our daughter.
+ela_chat_24_0,ela,chat,24,0,"Panie doktorze, boli mnie głowa, powiem mu.","Doctor, I've got a headache, I'll tell him."
+ela_chat_24_1,ela,chat,24,1,"Pani doktor mówi, że muszę odpoczywać.",The doctor says I need to rest.
+ela_chat_25_0,ela,chat,25,0,Mój syn czuje się dziś źle.,My son isn't feeling well today.
+ela_chat_25_1,ela,chat,25,1,Nie mam żadnej przerwy w pracy.,I don't get any break at work.
+ela_chat_25_2,ela,chat,25,2,Potrzebujesz pomocy?,Do you need help?
+ela_chat_26_0,ela,chat,26,0,"Dzięki Bogu, mam bilet.","Thank God, I have my ticket."
+ela_chat_27_0,ela,chat,27,0,Mąż mówi mi: miałaś rację.,My husband tells me: you were right.
+ela_chat_27_1,ela,chat,27,1,To rzadkie!,That's rare!
+ela_chat_28_0,ela,chat,28,0,Syn pyta: zrobiłaś mi kanapkę?,My son asks: did you make me a sandwich?
+ela_chat_28_1,ela,chat,28,1,"Córka mówi: mówiłaś, że wrócisz wcześniej!",My daughter says: you said you'd be back earlier!
+ela_chat_29_0,ela,chat,29,0,Mogłam wziąć taksówkę.,I could have taken a taxi.
+ela_chat_29_1,ela,chat,29,1,Muszę złapać autobus!,I have to catch the bus!
+ela_chat_30_0,ela,chat,30,0,"Jestem kobietą, która nie ma czasu.",I'm a woman with no time.
+ela_chat_30_1,ela,chat,30,1,Znajdę czas na kawę. Może.,I'll find time for a coffee. Maybe.
+ela_chat_31_0,ela,chat,31,0,"Po pracy jadę do szpitala, do mamy.","After work I'm going to the hospital, to see Mum."
+ela_chat_31_1,ela,chat,31,1,Martwię się o mamę.,I'm worried about Mum.
+ela_chat_31_2,ela,chat,31,2,Mamie kupiłam kwiaty.,I bought Mum some flowers.
+ela_chat_32_0,ela,chat,32,0,Ból głowy już minął.,My headache's gone.
+ela_chat_32_1,ela,chat,32,1,"Minęło pięć minut, a autobusu nie ma.",Five minutes have gone by and there's no bus.
+ela_chat_33_0,ela,chat,33,0,Mam dwoje dzieci.,I have two children.
+ela_chat_33_1,ela,chat,33,1,Z dziećmi nigdy nie jest nudno.,It's never boring with children.
+ela_chat_33_2,ela,chat,33,2,Dzieci potrzebują dużo miłości.,Children need a lot of love.
+ela_chat_34_0,ela,chat,34,0,"Mąż się martwi, kiedy się spóźniam.",My husband worries when I'm late.
+ela_chat_34_1,ela,chat,34,1,Kocham swoją matkę.,I love my mother.
+ela_chat_35_0,ela,chat,35,0,Dosyć! Mam dosyć czekania!,Enough! I've had enough of waiting!
+ela_chat_35_1,ela,chat,35,1,"Uwierz mi, to nie jest łatwe.","Believe me, it isn't easy."
+ela_chat_36_0,ela,chat,36,0,Wierzysz w szczęście?,Do you believe in luck?
+ela_chat_36_1,ela,chat,36,1,Cieszę się życiem.,I enjoy life.
+ela_chat_37_0,ela,chat,37,0,Pozwolę sobie usiąść na chwilę.,I'll allow myself to sit down for a moment.
+ela_chat_37_1,ela,chat,37,1,Musiałam wstać o piątej.,I had to get up at five.
+ela_chat_38_0,ela,chat,38,0,Kiedy to się skończy?,When will it end?
+ela_chat_38_1,ela,chat,38,1,Muszę komuś to powiedzieć!,I have to tell someone!
+ela_chat_39_0,ela,chat,39,0,"Weekend z rodziną to najlepsze, co jest.",A weekend with the family is the best thing there is.
+ela_chat_39_1,ela,chat,39,1,"Ludzie myślą, że mam łatwo.",People think I have it easy.
+ela_chat_40_0,ela,chat,40,0,Mój mąż wychodzi do pracy o siódmej.,My husband leaves for work at seven.
+ela_chat_40_1,ela,chat,40,1,Dzieci jeszcze są w łóżku.,The children are still in bed.
+ela_chat_41_0,ela,chat,41,0,Mąż wszystko znajdzie.,My husband can find anything.
+ela_chat_41_1,ela,chat,41,1,Córka znalazła mój telefon.,My daughter found my phone.
+ela_chat_41_2,ela,chat,41,2,Wczoraj znalazłam w torbie stary bilet.,Yesterday I found an old ticket in my bag.
+ela_chat_42_0,ela,chat,42,0,Jak wyglądam? Dobrze?,How do I look? All right?
+ela_chat_42_1,ela,chat,42,1,Mama dała mi ten parasol.,Mum gave me this umbrella.
+ela_chat_43_0,ela,chat,43,0,Najważniejszą rzeczą jest rodzina.,The most important thing is family.
+ela_chat_43_1,ela,chat,43,1,Mama wróciła ze szpitala.,Mum came back from the hospital.
+ela_chat_44_0,ela,chat,44,0,Chcę ci podziękować!,I want to thank you!
+ela_chat_44_1,ela,chat,44,1,Korki są okropne.,The traffic jams are awful.
+ela_chat_45_0,ela,chat,45,0,Żadna praca nie jest łatwa.,No job is easy.
+ela_chat_45_1,ela,chat,45,1,Nie ma potrzeby się martwić.,There's no need to worry.
+ela_chat_45_2,ela,chat,45,2,Trzeba zachować spokój.,You have to keep calm.
+ela_chat_46_0,ela,chat,46,0,Coś się musiało stać.,Something must have happened.
+ela_chat_46_1,ela,chat,46,1,Droga do pracy zajmuje godzinę.,The journey to work takes an hour.
+ela_chat_47_0,ela,chat,47,0,Moje dzieci chodzą na zajęcia z pływania.,My children go to swimming lessons.
+ela_chat_47_1,ela,chat,47,1,Potrwa to jeszcze chwilę.,It'll take a bit longer.
+ela_chat_48_0,ela,chat,48,0,Ledwo żyję!,I'm barely alive!
+ela_chat_48_1,ela,chat,48,1,Nie mam już sił.,I've got no strength left.
+ela_chat_49_0,ela,chat,49,0,Bierzesz parasol? pyta mąż.,Are you taking an umbrella? my husband asks.
+ela_chat_49_1,ela,chat,49,1,Wiedziałaś o tym? pyta mąż.,Did you know about this? my husband asks.
+ela_chat_50_0,ela,chat,50,0,W niedzielę odwiedzam tatę.,On Sunday I visit Dad.
+ela_chat_50_1,ela,chat,50,1,Z tatą zawsze się śmiejemy.,Dad and I always laugh.
+ela_chat_51_0,ela,chat,51,0,Moja córka boi się psów.,My daughter's afraid of dogs.
+ela_chat_51_1,ela,chat,51,1,"Czułam, że coś się stanie.",I felt something was going to happen.
+ela_chat_52_0,ela,chat,52,0,Koleżanka zostawiła mi wiadomość.,A friend left me a message.
+ela_chat_52_1,ela,chat,52,1,Rozmawiałam z szefem. Jest dobrze.,I talked to my boss. It's fine.
+ela_chat_53_0,ela,chat,53,0,Mieszkamy w mieszkaniu na czwartym piętrze.,We live in a flat on the fourth floor.
+ela_chat_53_1,ela,chat,53,1,W sklepie obok domu jest wszystko.,The shop next to home has everything.
+ela_chat_54_0,ela,chat,54,0,Dzwonię do męża.,I'm calling my husband.
+ela_chat_54_1,ela,chat,54,1,"Dzwoń, jak będziesz w domu!",Call when you're home!
+ela_chat_55_0,ela,chat,55,0,"Mężczyźni nigdy nie słuchają, mówi moja mama.","Men never listen, my mum says."
+ela_chat_56_0,ela,chat,56,0,"Miały być dwa autobusy, a nie ma żadnego!","There were supposed to be two buses, and there isn't one!"
+ela_chat_56_1,ela,chat,56,1,Połowa ludzi w autobusie śpi.,Half the people on the bus are asleep.
+ela_chat_57_0,ela,chat,57,0,"Jestem połowę dnia w pracy, połowę w domu.",I spend half the day at work and half at home.
+ela_chat_57_1,ela,chat,57,1,Zrobione! Wszystko na dziś.,Done! That's everything for today.
+ela_chat_58_0,ela,chat,58,0,Najmniej lubię poniedziałki.,I like Mondays least.
+ela_chat_58_1,ela,chat,58,1,Okropnie zimno dziś!,It's awfully cold today!
+ela_chat_59_0,ela,chat,59,0,Chciałabyś kawy? pytam koleżankę.,Would you like a coffee? I ask my friend.
+ela_chat_59_1,ela,chat,59,1,"Przyszłaś! mówi szefowa, kiedy się spóźniam.",You came! my boss says when I'm late.
+ela_chat_60_0,ela,chat,60,0,Dziewczyn w mojej pracy jest dużo.,There are lots of girls at my work.
+ela_chat_60_1,ela,chat,60,1,"Zapytaj Romana, on wie wszystko.","Ask Roman, he knows everything."
+ela_chat_61_0,ela,chat,61,0,Wpaść do ciebie wieczorem?,Shall I drop in on you this evening?
+ela_chat_61_1,ela,chat,61,1,Muszę kupić synowi nowe spodnie.,I have to buy my son new trousers.
+ela_chat_62_0,ela,chat,62,0,"Przygotuj się, mówię sobie każdego ranka.","Get ready, I tell myself every morning."
+ela_chat_63_0,ela,chat,63,0,Szef zadzwonił o szóstej.,My boss called at six.
+ela_chat_63_1,ela,chat,63,1,Córka skończyła szkołę o pierwszej.,My daughter finished school at one.
+ela_chat_64_0,ela,chat,64,0,Bez bólu głowy jest lepiej.,It's better without a headache.
+ela_chat_64_1,ela,chat,64,1,Nie mogę znieść korków.,I can't stand traffic jams.
+ela_chat_65_0,ela,chat,65,0,Zdążyłam cudem!,I made it by a miracle!
+ela_chat_65_1,ela,chat,65,1,Nic mi nie przyszło do głowy.,Nothing came to mind.
+ela_chat_66_0,ela,chat,66,0,Ta rozmowa jest ważna.,This conversation is important.
+ela_chat_66_1,ela,chat,66,1,Z pracą jest ciężko.,Work is hard.
+ela_chat_66_2,ela,chat,66,2,Porozmawiam z szefem.,I'll talk to my boss.
+ela_chat_67_0,ela,chat,67,0,W filmie wszystko jest łatwe.,In films everything's easy.
+bartek_intro_0_0,bartek,intro,0,0,Siema! Jestem Bartek.,Hey! I'm Bartek.
+bartek_intro_0_1,bartek,intro,0,1,Czekam na autobus. Jadę na trening.,I'm waiting for the bus. I'm going to training.
+bartek_intro_0_2,bartek,intro,0,2,Gram w piłkę nożną.,I play football.
+bartek_chat_0_0,bartek,chat,0,0,Chłopaki z drużyny już są na boisku.,The guys from the team are already at the pitch.
+bartek_chat_0_1,bartek,chat,0,1,Muszą na mnie poczekać!,They'll have to wait for me!
+bartek_chat_1_0,bartek,chat,1,0,Serio? Nieźle!,Seriously? Not bad!
+bartek_chat_2_0,bartek,chat,2,0,"Okej, okej, rozumiem.","OK, OK, I get it."
+bartek_chat_3_0,bartek,chat,3,0,Ten koleś z mojej szkoły jest najlepszy.,That guy from my school is the best.
+bartek_chat_4_0,bartek,chat,4,0,"Popatrz, mam nowe buty!","Look, I've got new boots!"
+bartek_chat_4_1,bartek,chat,4,1,"Wielkie, prawda?","Huge, right?"
+bartek_chat_5_0,bartek,chat,5,0,Pokaż mi swoje zdjęcia!,Show me your photos!
+bartek_chat_5_1,bartek,chat,5,1,To moje ulubione zdjęcie.,This is my favourite photo.
+bartek_chat_6_0,bartek,chat,6,0,W szkole mam kłopoty z matematyką.,At school I'm having trouble with maths.
+bartek_chat_6_1,bartek,chat,6,1,"Szkoda, że nie lubię liczyć.",Shame I don't like counting.
+bartek_chat_7_0,bartek,chat,7,0,Zapomnij o tym!,Forget about it!
+bartek_chat_8_0,bartek,chat,8,0,"Dawaj, spróbuj!","Go on, try it!"
+bartek_chat_8_1,bartek,chat,8,1,To łatwe.,It's easy.
+bartek_chat_9_0,bartek,chat,9,0,Jutro gramy mecz.,Tomorrow we're playing a match.
+bartek_chat_9_1,bartek,chat,9,1,Strasznie się cieszę!,I'm really excited!
+bartek_chat_10_0,bartek,chat,10,0,"Tata mówi: synu, najpierw szkoła.","Dad says: son, school comes first."
+bartek_chat_11_0,bartek,chat,11,0,"Chłopcy z drużyny mówią, że jestem gotowy.",The boys on the team say I'm ready.
+bartek_chat_11_1,bartek,chat,11,1,Mam dużo przyjaciół w drużynie.,I have lots of friends on the team.
+bartek_chat_12_0,bartek,chat,12,0,Czekam też na brata.,I'm waiting for my brother too.
+bartek_chat_12_1,bartek,chat,12,1,"Zaczekaj, już jedzie!","Wait, here it comes!"
+bartek_chat_13_0,bartek,chat,13,0,Co robimy po treningu?,What are we doing after training?
+bartek_chat_13_1,bartek,chat,13,1,Może pójdziemy na pizzę?,Maybe we'll go for pizza?
+bartek_chat_14_0,bartek,chat,14,0,Dziś mama ma urodziny.,It's Mum's birthday today.
+bartek_chat_14_1,bartek,chat,14,1,Powiem jej: wszystkiego najlepszego!,I'll tell her: happy birthday!
+bartek_chat_15_0,bartek,chat,15,0,Za dziesięć minut zaczyna się trening.,Training starts in ten minutes.
+bartek_chat_16_0,bartek,chat,16,0,"Nie wiem, jak to zrobić.",I don't know how to do it.
+bartek_chat_16_1,bartek,chat,16,1,Może jakoś się uda.,Maybe it'll work out somehow.
+bartek_chat_17_0,bartek,chat,17,0,"Oni mieli wygrać, ale przegrali.","They were supposed to win, but they lost."
+bartek_chat_18_0,bartek,chat,18,0,"Nikomu nie mów, ale lubię tańczyć.","Don't tell anyone, but I like dancing."
+bartek_chat_19_0,bartek,chat,19,0,"Dobranoc! A nie, jest rano. Cześć!","Good night! Oh no, it's morning. Bye!"
+bartek_chat_20_0,bartek,chat,20,0,Mogli grać lepiej.,They could have played better.
+bartek_chat_20_1,bartek,chat,20,1,Walczyć do końca! Tak mówi trener.,Fight to the end! That's what the coach says.
+bartek_chat_21_0,bartek,chat,21,0,Daj rękę!,Give me your hand!
+bartek_chat_21_1,bartek,chat,21,1,Gotowi? Start!,Ready? Go!
+bartek_chat_22_0,bartek,chat,22,0,Trener zna wszystkich w mieście.,The coach knows everyone in town.
+bartek_chat_22_1,bartek,chat,22,1,Widział ktoś mój telefon?,Has anyone seen my phone?
+bartek_chat_23_0,bartek,chat,23,0,Chcę być dobrym piłkarzem.,I want to be a good footballer.
+bartek_chat_23_1,bartek,chat,23,1,Przeciwko nam gra najlepsza drużyna.,We're playing against the best team.
+bartek_chat_24_0,bartek,chat,24,0,W którą stronę jedzie autobus?,Which way does the bus go?
+bartek_chat_24_1,bartek,chat,24,1,Z której strony przyjedzie?,Which side will it come from?
+bartek_chat_25_0,bartek,chat,25,0,Z okazji urodzin mama dostanie kwiaty.,Mum's getting flowers for her birthday.
+bartek_chat_25_1,bartek,chat,25,1,Szukam jakiegoś dobrego filmu.,I'm looking for a good film.
+bartek_chat_26_0,bartek,chat,26,0,"Bracie, chodź tu!","Bro, come here!"
+bartek_chat_26_1,bartek,chat,26,1,Niezły mecz wczoraj!,Not a bad match yesterday!
+bartek_chat_26_2,bartek,chat,26,2,Niezła gra!,Nice play!
+bartek_chat_27_0,bartek,chat,27,0,Masz niezłe buty.,You've got decent shoes.
+bartek_chat_27_1,bartek,chat,27,1,Mój brat dostał nowy telefon.,My brother got a new phone.
+bartek_chat_28_0,bartek,chat,28,0,Zaczął padać deszcz.,It started raining.
+bartek_chat_28_1,bartek,chat,28,1,Trener mówi: gramy dalej!,The coach says: we play on!
+bartek_chat_29_0,bartek,chat,29,0,"Dziesięć sekund do końca, a ja strzelam gola!","Ten seconds to go, and I score a goal!"
+bartek_chat_30_0,bartek,chat,30,0,Nie jestem już dzieciak!,I'm not a kid any more!
+bartek_chat_30_1,bartek,chat,30,1,Dzieciaki z mojej szkoły są fajne.,The kids at my school are cool.
+bartek_chat_31_0,bartek,chat,31,0,Nasi grają dziś mecz w telewizji!,Our team is playing on TV today!
+bartek_chat_31_1,bartek,chat,31,1,Chcieli mnie w pierwszej drużynie!,They wanted me in the first team!
+bartek_chat_32_0,bartek,chat,32,0,Musieli czekać na mnie.,They had to wait for me.
+bartek_chat_32_1,bartek,chat,32,1,"Powiedzieli mi, że jestem w drużynie!",They told me I'm on the team!
+bartek_chat_33_0,bartek,chat,33,0,Moja szkoła jest wielka.,My school is huge.
+bartek_chat_33_1,bartek,chat,33,1,Piłka to dla mnie dużo zabawy.,Football is a lot of fun for me.
+bartek_chat_34_0,bartek,chat,34,0,Przejść na drugą stronę? Uważaj na samochody!,Cross to the other side? Watch out for cars!
+bartek_chat_35_0,bartek,chat,35,0,"Mam dziś trening, a jutro test z angielskiego.",I've got training today and an English test tomorrow.
+bartek_chat_35_1,bartek,chat,35,1,Nic nie zrozumiałem na lekcji.,I didn't understand anything in the lesson.
+bartek_chat_36_0,bartek,chat,36,0,Chłopaka z drużyny nie ma. Jest chory.,One of the lads from the team isn't here. He's ill.
+bartek_chat_37_0,bartek,chat,37,0,Strzelić gola? Spróbuję!,Score a goal? I'll try!
+bartek_chat_37_1,bartek,chat,37,1,Zostanę piłkarzem.,I'll become a footballer.
+bartek_chat_37_2,bartek,chat,37,2,Zostaniesz moim kibicem?,Will you be my fan?
+bartek_chat_38_0,bartek,chat,38,0,Gratulacje dla drużyny!,Congratulations to the team!
+bartek_chat_38_1,bartek,chat,38,1,Trener dziękuje wszystkim chłopakom.,The coach thanks all the lads.
+bartek_chat_39_0,bartek,chat,39,0,Jak się nazywasz?,What's your name?
+bartek_chat_39_1,bartek,chat,39,1,Potrafisz grać w piłkę?,Can you play football?
+bartek_chat_39_2,bartek,chat,39,2,Boisz się psów?,Are you scared of dogs?
+bartek_chat_40_0,bartek,chat,40,0,Damy radę!,We can do it!
+bartek_chat_40_1,bartek,chat,40,1,Mamy duże szanse!,We've got a good chance!
+bartek_chat_41_0,bartek,chat,41,0,Chcę zrobić coś wielkiego.,I want to do something big.
+bartek_chat_41_1,bartek,chat,41,1,Chcę grać na wielkim stadionie.,I want to play in a big stadium.
+bartek_chat_42_0,bartek,chat,42,0,Obaj z bratem gramy w piłkę.,My brother and I both play football.
+bartek_chat_42_1,bartek,chat,42,1,"Nie ma co gadać, gramy!","Enough talk, let's play!"
+bartek_chat_43_0,bartek,chat,43,0,Zimą trenujemy na sali.,In winter we train indoors.
+bartek_chat_43_1,bartek,chat,43,1,Skończyłem szkołę o drugiej.,I finished school at two.
+bartek_chat_44_0,bartek,chat,44,0,Szukamy nowego bramkarza.,We're looking for a new goalkeeper.
+bartek_chat_44_1,bartek,chat,44,1,Drugiego gola strzelił mój brat.,My brother scored the second goal.
+bartek_chat_45_0,bartek,chat,45,0,Co oni zrobili?,What have they done?
+bartek_chat_45_1,bartek,chat,45,1,Wrócimy jutro!,We'll be back tomorrow!
+bartek_chat_46_0,bartek,chat,46,0,Trener mówi: najważniejsze jest zachowanie na boisku.,The coach says: the most important thing is how you behave on the pitch.
+bartek_chat_46_1,bartek,chat,46,1,Pokonać tę drużynę? Damy radę!,Beat that team? We can do it!
+bartek_chat_47_0,bartek,chat,47,0,Nagrodę dostaje najlepszy piłkarz.,The best footballer gets a prize.
+bartek_chat_47_1,bartek,chat,47,1,Dali mi medal!,They gave me a medal!
+bartek_chat_48_0,bartek,chat,48,0,Uderzyłem się w nogę.,I hit my leg.
+bartek_chat_48_1,bartek,chat,48,1,Grasz w piłkę?,Do you play football?
+bartek_chat_49_0,bartek,chat,49,0,W grze liczy się drużyna.,In the game it's the team that counts.
+bartek_chat_49_1,bartek,chat,49,1,Jestem chłopakiem z boiska.,I'm a lad from the pitch.
+bartek_chat_50_0,bartek,chat,50,0,Strzelaj!,Shoot!
+bartek_chat_50_1,bartek,chat,50,1,Zaczynasz ty czy ja?,Are you starting or me?
+bartek_chat_51_0,bartek,chat,51,0,Usłyszałem gwizdek i pobiegłem.,I heard the whistle and ran.
+bartek_chat_51_1,bartek,chat,51,1,Zacznij od rozgrzewki!,Start with a warm-up!
+bartek_chat_52_0,bartek,chat,52,0,"Żebyście wiedzieli, jestem najlepszy!","Just so you all know, I'm the best!"
+bartek_chat_52_1,bartek,chat,52,1,Nie mylisz się!,You're not wrong!
+bartek_chat_53_0,bartek,chat,53,0,Bzdury! Wygramy!,Nonsense! We'll win!
+bartek_chat_53_1,bartek,chat,53,1,Moi bracia też grają.,My brothers play too.
+bartek_chat_54_0,bartek,chat,54,0,Przyjdź na mecz w sobotę!,Come to the match on Saturday!
+bartek_chat_54_1,bartek,chat,54,1,Przyjdziesz?,Will you come?
+bartek_chat_54_2,bartek,chat,54,2,Trzymasz kciuki?,Are you keeping your fingers crossed?
+bartek_chat_55_0,bartek,chat,55,0,Widzieliście mojego gola?,Did you all see my goal?
+bartek_chat_55_1,bartek,chat,55,1,Strzeliłem gola w drugiej połowie.,I scored in the second half.
+bartek_chat_56_0,bartek,chat,56,0,Mam siłę jak lew.,I'm as strong as a lion.
+bartek_chat_56_1,bartek,chat,56,1,Co ty gadasz?,What are you on about?
+bartek_chat_57_0,bartek,chat,57,0,Straciliśmy piłkę!,We've lost the ball!
+bartek_chat_57_1,bartek,chat,57,1,Muszę bronić bramki.,I have to defend the goal.
+bartek_chat_58_0,bartek,chat,58,0,Nie miałem szansy.,I didn't get a chance.
+bartek_chat_58_1,bartek,chat,58,1,Pogadamy po meczu.,We'll talk after the match.
+bartek_chat_59_0,bartek,chat,59,0,Moje marzenia? Grać w reprezentacji.,My dreams? To play for the national team.
+bartek_chat_59_1,bartek,chat,59,1,Nazywają mnie Rakieta.,They call me the Rocket.
+bartek_chat_60_0,bartek,chat,60,0,Większe boisko? Super!,A bigger pitch? Great!
+dorota_intro_0_0,dorota,intro,0,0,"Dzień dobry! Jestem pani Dorota, nauczycielka.","Good morning! I'm Mrs Dorota, a teacher."
+dorota_intro_0_1,dorota,intro,0,1,Mam problem: zgubiłam dzwonek.,I have a problem: I've lost the bell.
+dorota_intro_0_2,dorota,intro,0,2,"Bez dzwonka dzieci nie wiedzą, kiedy jest przerwa.",Without the bell the children don't know when it's break time.
+dorota_intro_0_3,dorota,intro,0,3,"Byłam rano w kawiarni, na tarasie. Może tam?","I was at the café this morning, on the terrace. Maybe it's there?"
+dorota_done_0_0,dorota,done,0,0,Mój dzwonek! Dziękuję!,My bell! Thank you!
+dorota_done_0_1,dorota,done,0,1,"Dzieci, przerwa!","Children, break time!"
+dorota_remind_0_0,dorota,remind,0,0,Mój dzwonek jest chyba na tarasie kawiarni.,My bell is probably on the café terrace.
+dorota_wrong_0_0,dorota,wrong,0,0,"Nie, to nie to.","No, that's not it."
+dorota_chat_0_0,dorota,chat,0,0,"Dzieci, patrzcie na tablicę!","Children, look at the board!"
+dorota_chat_0_1,dorota,chat,0,1,"Spójrzcie, to jest mapa Polski.","Look, this is a map of Poland."
+dorota_chat_1_0,dorota,chat,1,0,Przestańcie rozmawiać!,Stop talking!
+dorota_chat_1_1,dorota,chat,1,1,"Kacper, odłóż telefon!","Kacper, put your phone down!"
+dorota_chat_2_0,dorota,chat,2,0,Zaczynamy lekcję!,Let's start the lesson!
+dorota_chat_2_1,dorota,chat,2,1,Otwórz zeszyt i napisz datę.,Open your notebook and write the date.
+dorota_chat_3_0,dorota,chat,3,0,Jakie macie pytania?,What questions do you have?
+dorota_chat_3_1,dorota,chat,3,1,Kto zna odpowiedzi?,Who knows the answers?
+dorota_chat_3_2,dorota,chat,3,2,Proszę o chwilę uwagi!,"Your attention for a moment, please!"
+dorota_chat_4_0,dorota,chat,4,0,Co myślicie o tej książce?,What do you think of this book?
+dorota_chat_4_1,dorota,chat,4,1,Z jakiej książki są te pytania?,Which book are these questions from?
+dorota_chat_5_0,dorota,chat,5,0,"Idźcie na boisko, ale powoli!","Go out to the pitch, but slowly!"
+dorota_chat_5_1,dorota,chat,5,1,Ze względu na pogodę gramy dziś w sali.,Because of the weather we're playing indoors today.
+dorota_chat_6_0,dorota,chat,6,0,W szkole są zasady.,There are rules at school.
+dorota_chat_6_1,dorota,chat,6,1,Zasady są dla bezpieczeństwa dzieci.,The rules are for the children's safety.
+dorota_chat_7_0,dorota,chat,7,0,Wyniki testu są bardzo dobre.,The test results are very good.
+dorota_chat_7_1,dorota,chat,7,1,Jestem z nich dumna.,I'm proud of them.
+dorota_chat_8_0,dorota,chat,8,0,Uczę w tej szkole od piętnastu lat.,I've taught at this school for fifteen years.
+dorota_chat_8_1,dorota,chat,8,1,Pracowałam z matką w jednej szkole.,I worked with my mother at the same school.
+dorota_chat_9_0,dorota,chat,9,0,Każdy uczeń jest inny.,Every pupil is different.
+dorota_chat_9_1,dorota,chat,9,1,Każdej klasie daję te same zadania.,I give every class the same exercises.
+dorota_chat_9_2,dorota,chat,9,2,Każde dziecko ma duże możliwości.,Every child has great potential.
+dorota_chat_10_0,dorota,chat,10,0,"Dyrektor chce, abym uczyła też historii.",The head wants me to teach history too.
+dorota_chat_10_1,dorota,chat,10,1,"Dyrektor uważa, że to dobry pomysł.",The head thinks it's a good idea.
+dorota_chat_10_2,dorota,chat,10,2,Dyrektor jest miłym mężczyzną.,The head is a nice man.
+dorota_chat_11_0,dorota,chat,11,0,Kacper ma lepsze oceny niż w zeszłym roku.,Kacper has better marks than last year.
+dorota_chat_11_1,dorota,chat,11,1,Kacper zostaje dziś po lekcjach.,Kacper is staying after school today.
+dorota_chat_12_0,dorota,chat,12,0,Reszta klasy jest już na boisku.,The rest of the class is already on the pitch.
+dorota_chat_12_1,dorota,chat,12,1,Resztę lekcji zrobimy jutro.,We'll do the rest of the lesson tomorrow.
+dorota_chat_13_0,dorota,chat,13,0,Dzisiaj mówimy o historii polskiego króla.,Today we're talking about the story of a Polish king.
+dorota_chat_13_1,dorota,chat,13,1,Król mieszkał w dużym zamku.,The king lived in a big castle.
+dorota_chat_14_0,dorota,chat,14,0,"Owszem, to trudne, ale możliwe.","Indeed, it's hard, but possible."
+dorota_chat_14_1,dorota,chat,14,1,Nauczyciel musi mieć dużo siły.,A teacher needs a lot of strength.
+dorota_chat_15_0,dorota,chat,15,0,Najwyraźniej ktoś znowu zostawił otwarte okno.,Apparently someone left the window open again.
+dorota_chat_16_0,dorota,chat,16,0,Zadanie domowe na jutro: strona dwadzieścia.,Homework for tomorrow: page twenty.
+dorota_chat_16_1,dorota,chat,16,1,Bierz książkę i siadaj.,Take your book and sit down.
+dorota_chat_17_0,dorota,chat,17,0,"Kacper, oddaj Hani jej długopis!","Kacper, give Hania back her pen!"
+dorota_chat_17_1,dorota,chat,17,1,"Kacper, wyjdź na chwilę.","Kacper, step outside for a moment."
+dorota_chat_18_0,dorota,chat,18,0,"Zaufaj mi, to łatwe.","Trust me, it's easy."
+dorota_chat_18_1,dorota,chat,18,1,Dzieci muszą mi zaufać.,The children have to trust me.
+dorota_chat_19_0,dorota,chat,19,0,"Chciałaś coś powiedzieć, Haniu?","Did you want to say something, Hania?"
+dorota_chat_19_1,dorota,chat,19,1,"Haniu, mogłabyś mi pomóc?","Hania, could you help me?"
+dorota_chat_19_2,dorota,chat,19,2,"Widziałaś to, Haniu? Kacper znowu śpi!","Did you see that, Hania? Kacper's asleep again!"
+dorota_chat_20_0,dorota,chat,20,0,"O co chodziło, Kacper?","What was that about, Kacper?"
+dorota_chat_20_1,dorota,chat,20,1,"Mówię do Kacpra: chcę, abyś czytał więcej.",I tell Kacper: I want you to read more.
+dorota_chat_21_0,dorota,chat,21,0,Rodzice muszą odebrać dzieci o czwartej.,Parents have to pick the children up at four.
+dorota_chat_21_1,dorota,chat,21,1,Mam kontakt z rodzicami każdego ucznia.,I keep in touch with every pupil's parents.
+dorota_chat_22_0,dorota,chat,22,0,Jestem uczciwa wobec wszystkich dzieci.,I'm fair to all the children.
+dorota_chat_22_1,dorota,chat,22,1,Znam nazwiska wszystkich uczniów.,I know all the pupils' surnames.
+dorota_chat_23_0,dorota,chat,23,0,W klasie mam dwadzieścia cztery osoby.,I have twenty-four people in my class.
+dorota_chat_23_1,dorota,chat,23,1,Dzielę klasę na dwie grupy.,I split the class into two groups.
+dorota_chat_24_0,dorota,chat,24,0,Moim celem jest dobra szkoła.,My aim is a good school.
+dorota_chat_24_1,dorota,chat,24,1,Uczenie sprawia mi radość.,Teaching gives me joy.
+dorota_chat_25_0,dorota,chat,25,0,W pierwszym dniu szkoły dzieci płaczą.,On the first day of school the children cry.
+dorota_chat_25_1,dorota,chat,25,1,W ostatnich latach wszystkie dzieci mają telefony.,In recent years all the children have had phones.
+dorota_chat_26_0,dorota,chat,26,0,"Dyrektor chciałby, byśmy mieli nowe komputery.",The head would like us to have new computers.
+dorota_chat_26_1,dorota,chat,26,1,Dzieci bawią się swoimi zabawkami.,The children play with their toys.
+dorota_chat_27_0,dorota,chat,27,0,Dzieci pomogły mi odnaleźć klucze.,The children helped me find my keys.
+dorota_chat_28_0,dorota,chat,28,0,"Dziewczynki, siadajcie!","Girls, sit down!"
+dorota_chat_28_1,dorota,chat,28,1,Zadać pytanie może każdy.,Anyone can ask a question.
+dorota_chat_29_0,dorota,chat,29,0,"Odpowiedz na pytanie, Kacper.","Answer the question, Kacper."
+dorota_chat_29_1,dorota,chat,29,1,Kto chce odpowiedzieć?,Who wants to answer?
+dorota_chat_30_0,dorota,chat,30,0,Powtarzam: zeszyty na ławki!,I repeat: notebooks on the desks!
+dorota_chat_30_1,dorota,chat,30,1,Nie mam zamiaru krzyczeć.,I have no intention of shouting.
+dorota_chat_31_0,dorota,chat,31,0,"Wszyscy mają zadanie, z wyjątkiem Hani.","Everyone has homework, except Hania."
+dorota_chat_31_1,dorota,chat,31,1,Uczę dzieci szacunku.,I teach children respect.
+dorota_chat_32_0,dorota,chat,32,0,Każdy ma swoją rolę w klasie.,Everyone has their role in the class.
+dorota_chat_32_1,dorota,chat,32,1,Jutro przyniosę mapę świata.,Tomorrow I'll bring a map of the world.
+dorota_chat_33_0,dorota,chat,33,0,Napisane jest na tablicy.,It's written on the board.
+dorota_chat_33_1,dorota,chat,33,1,Kto napisał to wypracowanie? Jest świetne!,Who wrote this essay? It's great!
+dorota_chat_34_0,dorota,chat,34,0,Hania zasługuje na piątkę!,Hania deserves top marks!
+dorota_chat_34_1,dorota,chat,34,1,Jutro będziemy kontynuować.,Tomorrow we'll carry on.
+dorota_chat_35_0,dorota,chat,35,0,Chcę wam przedstawić nowego ucznia.,I want to introduce a new pupil to you.
+dorota_chat_35_1,dorota,chat,35,1,W klasie mam dwunastu chłopców.,I have twelve boys in my class.
+dorota_chat_36_0,dorota,chat,36,0,Mam dla was niespodziankę: zajęcia w lesie!,I have a surprise for you: a lesson in the woods!
+dorota_chat_36_1,dorota,chat,36,1,Czy znacie tę piosenkę?,Do you know this song?
+dorota_chat_37_0,dorota,chat,37,0,"Odsuń krzesło, Kacper.","Move your chair back, Kacper."
+dorota_chat_37_1,dorota,chat,37,1,Jasno i prosto: bez telefonów na lekcji.,Clear and simple: no phones in class.
+dorota_chat_38_0,dorota,chat,38,0,"Najpierw czytamy, następnie piszemy.","First we read, then we write."
+dorota_chat_38_1,dorota,chat,38,1,Uczymy się poprzez zabawę.,We learn through play.
+dorota_chat_39_0,dorota,chat,39,0,Proszę przekazać rodzicom.,Please pass this on to your parents.
+dorota_chat_39_1,dorota,chat,39,1,Czekam na waszą pracę domową.,I'm waiting for your homework.
+dorota_chat_40_0,dorota,chat,40,0,Na lekcji nie wolno używać telefonów.,You mustn't use phones in class.
+dorota_chat_40_1,dorota,chat,40,1,Dzieci powinny czytać.,Children should read.
+dorota_chat_40_2,dorota,chat,40,2,Powinniście więcej czytać.,You should all read more.
+dorota_chat_41_0,dorota,chat,41,0,To nie jest konieczne.,It's not necessary.
+dorota_chat_41_1,dorota,chat,41,1,Pogoda nie pozwala grać na boisku.,The weather won't let us play on the pitch.
+dorota_chat_42_0,dorota,chat,42,0,Nie pamiętam imienia tego ucznia.,I can't remember that pupil's name.
+dorota_chat_42_1,dorota,chat,42,1,Uczyłam kiedyś w małej wsi.,I used to teach in a small village.
+dorota_chat_43_0,dorota,chat,43,0,Musimy zakończyć lekcję.,We have to finish the lesson.
+dorota_chat_43_1,dorota,chat,43,1,Zajmiemy się tym jutro.,We'll deal with it tomorrow.
+dorota_chat_44_0,dorota,chat,44,0,"Zajmij miejsce, Haniu.","Take a seat, Hania."
+dorota_chat_44_1,dorota,chat,44,1,"Pozwólcie, że coś powiem.",Let me say something.
+dorota_chat_45_0,dorota,chat,45,0,Dziewczynki mogły wyjść wcześniej.,The girls were allowed to leave early.
+dorota_chat_45_1,dorota,chat,45,1,W waszym wieku chciałam być aktorką.,At your age I wanted to be an actress.
+dorota_chat_46_0,dorota,chat,46,0,Mamy dziś lekcję sztuki.,We have an art lesson today.
+jerzy_intro_0_0,jerzy,intro,0,0,"Dzień dobry. Jestem pan Jerzy, woźny.","Good morning. I'm Mr Jerzy, the caretaker."
+jerzy_intro_0_1,jerzy,intro,0,1,Pilnuję szkoły od rana do wieczora.,I look after the school from morning till evening.
+jerzy_intro_0_2,jerzy,intro,0,2,Uwaga na przejściu!,Careful on the crossing!
+jerzy_chat_0_0,jerzy,chat,0,0,Mam klucze do każdej sali.,I have keys to every room.
+jerzy_chat_0_1,jerzy,chat,0,1,Mam dostęp do każdego miejsca w szkole.,I have access to every place in the school.
+jerzy_chat_1_0,jerzy,chat,1,0,"Dzieci, nie biegać po korytarzu!","Children, no running in the corridor!"
+jerzy_chat_1_1,jerzy,chat,1,1,Nie uciekać z lekcji!,No skipping lessons!
+jerzy_chat_2_0,jerzy,chat,2,0,Pilnuję ich bezpieczeństwa.,I look after their safety.
+jerzy_chat_2_1,jerzy,chat,2,1,Trudno utrzymać porządek.,It's hard to keep order.
+jerzy_chat_3_0,jerzy,chat,3,0,"Na górze jest pracownia, na dole szatnia.","Upstairs there's a classroom for science, downstairs the cloakroom."
+jerzy_chat_3_1,jerzy,chat,3,1,Laboratorium jest na pierwszym piętrze.,The lab is on the first floor.
+jerzy_chat_4_0,jerzy,chat,4,0,Co się tu wydarzyło?,What happened here?
+jerzy_chat_4_1,jerzy,chat,4,1,"Ktokolwiek to zrobił, musi się przyznać.",Whoever did it has to own up.
+jerzy_chat_5_0,jerzy,chat,5,0,W tej szkole uczyło się tysięcy dzieci.,Thousands of children have studied at this school.
+jerzy_chat_6_0,jerzy,chat,6,0,Przede mną woźnym był mój ojciec.,"Before me, my father was the caretaker."
+jerzy_chat_6_1,jerzy,chat,6,1,Na tym miejscu stał kiedyś stary dom.,An old house used to stand on this spot.
+jerzy_chat_7_0,jerzy,chat,7,0,Dzieci potrafią wszystko zniszczyć!,Children can wreck anything!
+jerzy_chat_7_1,jerzy,chat,7,1,Rower zostaw przy płocie.,Leave your bike by the fence.
+jerzy_chat_8_0,jerzy,chat,8,0,W okolicy szkoły trzeba jeździć wolno.,Around the school you have to drive slowly.
+jerzy_chat_8_1,jerzy,chat,8,1,"Ten znak mówi: uwaga, dzieci!","This sign says: watch out, children!"
+jerzy_chat_9_0,jerzy,chat,9,0,"Zdaje się, że będzie padać.",It looks like it's going to rain.
+jerzy_chat_10_0,jerzy,chat,10,0,"Puść piłkę, Kacper!","Let go of the ball, Kacper!"
+jerzy_chat_10_1,jerzy,chat,10,1,Rzuć mi klucze!,Throw me the keys!
+jerzy_chat_11_0,jerzy,chat,11,0,"Zgodnie z zasadami, dzieci nie mogą wychodzić same.","According to the rules, children can't go out on their own."
+jerzy_chat_11_1,jerzy,chat,11,1,Nie wolno opuścić szkoły bez pozwolenia.,You can't leave school without permission.
+jerzy_chat_12_0,jerzy,chat,12,0,"Żegnaj, lato! Szkoła się zaczyna.","Goodbye, summer! School is starting."
+jerzy_chat_13_0,jerzy,chat,13,0,Mój los? Pracować tu do końca.,My fate? To work here to the end.
+jerzy_chat_13_1,jerzy,chat,13,1,Bycie woźnym to dobra praca.,Being a caretaker is a good job.
+jerzy_chat_14_0,jerzy,chat,14,0,Mamy dziś w szkole ważnego gościa.,We have an important guest at school today.
+jerzy_chat_14_1,jerzy,chat,14,1,Dyrektor potrzebował mojej pomocy.,The head needed my help.
+jerzy_chat_15_0,jerzy,chat,15,0,"Przyszedłeś wcześnie, Kacper!","You've come early, Kacper!"
+jerzy_chat_15_1,jerzy,chat,15,1,"Wiedziałeś o tym, Kacper?","Did you know about this, Kacper?"
+jerzy_chat_15_2,jerzy,chat,15,2,Mogłeś mi powiedzieć!,You could have told me!
+jerzy_chat_16_0,jerzy,chat,16,0,"Znalazłeś swój plecak, Kacper?","Did you find your backpack, Kacper?"
+jerzy_chat_16_1,jerzy,chat,16,1,Kacper znalazł mój klucz.,Kacper found my key.
+jerzy_chat_17_0,jerzy,chat,17,0,Muszę załatwić nowe klucze.,I have to sort out new keys.
+jerzy_chat_17_1,jerzy,chat,17,1,Ktoś wziął moje klucze!,Someone's taken my keys!
+jerzy_chat_18_0,jerzy,chat,18,0,Dzwonek to sygnał: przerwa!,The bell is the signal: break time!
+jerzy_chat_18_1,jerzy,chat,18,1,O tej porze dzieci idą do domu.,At this time the children go home.
+jerzy_chat_19_0,jerzy,chat,19,0,Jedno jest pewne: dzieci kochają przerwę.,One thing's for sure: kids love break time.
+jerzy_chat_19_1,jerzy,chat,19,1,To mogło być gorzej.,It could have been worse.
+jerzy_chat_20_0,jerzy,chat,20,0,Zajmę się tą sprawą.,I'll deal with this matter.
+jerzy_chat_20_1,jerzy,chat,20,1,"To nie twój interes, Kacper!","That's none of your business, Kacper!"
+jerzy_chat_21_0,jerzy,chat,21,0,Chłopcy znaleźli piłkę w krzakach.,The boys found the ball in the bushes.
+jerzy_chat_21_1,jerzy,chat,21,1,Dyrektor poszedł do domu.,The head has gone home.
+jerzy_chat_22_0,jerzy,chat,22,0,"Nie jestem złym człowiekiem, tylko surowym.","I'm not a bad man, just a strict one."
+jerzy_chat_23_0,jerzy,chat,23,0,Na dachu jest dziura. Muszę ją naprawić.,There's a hole in the roof. I have to fix it.
+jerzy_chat_24_0,jerzy,chat,24,0,Drzwi są zamknięte od ósmej wieczorem.,The doors are locked from eight in the evening.
+jerzy_chat_24_1,jerzy,chat,24,1,Nikt nie wchodzi bez pozwolenia.,Nobody comes in without permission.
+jerzy_chat_25_0,jerzy,chat,25,0,"Obudź się, Kacper!","Wake up, Kacper!"
+jerzy_chat_25_1,jerzy,chat,25,1,Nie dotykaj tego!,Don't touch that!
+jerzy_chat_26_0,jerzy,chat,26,0,"Zabierzcie swoje rzeczy, dzieci!","Take your things, children!"
+jerzy_chat_26_1,jerzy,chat,26,1,Zabieraj ten rower stąd!,Take that bike away from here!
+jerzy_chat_27_0,jerzy,chat,27,0,Wszedł tu wczoraj pies!,A dog got in here yesterday!
+jerzy_chat_27_1,jerzy,chat,27,1,Stała tu kiedyś drewniana szkoła.,A wooden school used to stand here.
+jerzy_chat_28_0,jerzy,chat,28,0,Trzeba położyć rzeczy na miejsce.,You have to put things back in their place.
+jerzy_chat_28_1,jerzy,chat,28,1,Przenieść te ławki? Sam nie dam rady.,Move these benches? I can't manage on my own.
+jerzy_chat_29_0,jerzy,chat,29,0,Muszę wykonać dużo pracy przed zimą.,I have to get a lot of work done before winter.
+jerzy_chat_29_1,jerzy,chat,29,1,Czekałem na nowe drzwi trzy miesiące.,I waited three months for new doors.
+jerzy_chat_30_0,jerzy,chat,30,0,Brakowało mi tylko jednego klucza.,I was only missing one key.
+jerzy_chat_30_1,jerzy,chat,30,1,"Nie stój za drzwiami, Kacper!","Don't stand behind the door, Kacper!"
+jerzy_chat_31_0,jerzy,chat,31,0,"Dyrektor prosił, żebym naprawił okno.",The head asked me to fix the window.
+jerzy_chat_31_1,jerzy,chat,31,1,Poprosił mnie też o nowe zamki.,He also asked me for new locks.
+jerzy_chat_32_0,jerzy,chat,32,0,Niemal wszystko w tej szkole naprawiłem.,I've repaired almost everything in this school.
+jerzy_chat_32_1,jerzy,chat,32,1,Tylu dzieci jeszcze nie było!,There have never been so many children!
+jerzy_chat_33_0,jerzy,chat,33,0,Starym ludziom ciężko jest wejść po schodach.,It's hard for old people to climb the stairs.
+jerzy_chat_33_1,jerzy,chat,33,1,Miejsc w szkole brakuje.,There aren't enough places in the school.
+jerzy_chat_34_0,jerzy,chat,34,0,Wszelkie problemy zgłaszać do mnie.,Report any problems to me.
+jerzy_chat_34_1,jerzy,chat,34,1,Załatwię to jutro.,I'll sort it out tomorrow.
+jerzy_chat_35_0,jerzy,chat,35,0,"Szukałem cię wszędzie, Kacper!","I've been looking for you everywhere, Kacper!"
+jerzy_chat_35_1,jerzy,chat,35,1,Chłopcy zabrali piłkę do domu.,The boys took the ball home.
+jerzy_chat_36_0,jerzy,chat,36,0,"Co się zdarzyło? Nic, wszystko gra.","What happened? Nothing, everything's fine."
+jerzy_chat_36_1,jerzy,chat,36,1,Bez zasad nie ma szkoły.,Without rules there's no school.
+jerzy_chat_37_0,jerzy,chat,37,0,Macham ręką do dzieci rano.,I wave to the children in the morning.
+jerzy_chat_37_1,jerzy,chat,37,1,Kacper to dobry dzieciak.,Kacper's a good kid.
+jerzy_chat_38_0,jerzy,chat,38,0,Dzwonek! Skończyło się!,The bell! It's over!
+hania_intro_0_0,hania,intro,0,0,Cześć! Jestem Hania.,Hi! I'm Hania.
+hania_intro_0_1,hania,intro,0,1,Chodzę do trzeciej klasy.,I'm in year three.
+hania_intro_0_2,hania,intro,0,2,Najbardziej lubię przyrodę.,I like nature studies best.
+hania_chat_0_0,hania,chat,0,0,"Wiesz, jak działa mózg?",Do you know how the brain works?
+hania_chat_0_1,hania,chat,0,1,W mózgu jest wiele milionów komórek.,There are many millions of cells in the brain.
+hania_chat_1_0,hania,chat,1,0,Chcę robić badania w laboratorium.,I want to do research in a lab.
+hania_chat_1_1,hania,chat,1,1,Chcę mieć własne laboratorium!,I want my own lab!
+hania_chat_2_0,hania,chat,2,0,"Pani Dorota mówi, że mam dobry umysł.",Mrs Dorota says I have a good mind.
+hania_chat_2_1,hania,chat,2,1,"Nie jestem głupia, jestem mądra!","I'm not silly, I'm clever!"
+hania_chat_3_0,hania,chat,3,0,Czy psy mają uczucia?,Do dogs have feelings?
+hania_chat_3_1,hania,chat,3,1,"Myślę, że tak.",I think so.
+hania_chat_4_0,hania,chat,4,0,Chcę chronić zwierzęta.,I want to protect animals.
+hania_chat_4_1,hania,chat,4,1,Chcę uratować świat.,I want to save the world.
+hania_chat_4_2,hania,chat,4,2,Kaczki potrzebują ochrony.,Ducks need protecting.
+hania_chat_5_0,hania,chat,5,0,Zbieram dane o kaczkach.,I'm collecting data on ducks.
+hania_chat_5_1,hania,chat,5,1,Mam dużo danych!,I've got lots of data!
+hania_chat_5_2,hania,chat,5,2,"To jest dowód, że kaczki są mądre.",This is proof that ducks are clever.
+hania_chat_6_0,hania,chat,6,0,"Chcę udowodnić, że kaczki myślą.",I want to prove that ducks think.
+hania_chat_6_1,hania,chat,6,1,Widzę ślady kaczek w błocie!,I can see duck tracks in the mud!
+hania_chat_7_0,hania,chat,7,0,"Wow! Patrz, motyl!","Wow! Look, a butterfly!"
+hania_chat_8_0,hania,chat,8,0,"Na huśtawce czuję się, jakbym latała!",On the swing I feel as if I were flying!
+hania_chat_9_0,hania,chat,9,0,Mama mówi: co ty wyprawiasz?,Mum says: what are you up to?
+hania_chat_10_0,hania,chat,10,0,Moja mama pracuje w hotelu.,My mum works in a hotel.
+hania_chat_10_1,hania,chat,10,1,Z okna mieszkania widzę szkołę.,I can see the school from the window of our flat.
+hania_chat_11_0,hania,chat,11,0,Nie mam własnego pokoju. Mam pokój z siostrą.,I don't have my own room. I share a room with my sister.
+hania_chat_11_1,hania,chat,11,1,Mam dwie siostry. Obu bardzo lubię.,I have two sisters. I like them both a lot.
+hania_chat_12_0,hania,chat,12,0,Moja wysokość? Sto trzydzieści centymetrów!,My height? A hundred and thirty centimetres!
+hania_chat_13_0,hania,chat,13,0,Lubię oglądać filmy o zwierzętach.,I like watching films about animals.
+hania_chat_13_1,hania,chat,13,1,Moje jedyne marzenie to pies.,My only dream is a dog.
+hania_chat_14_0,hania,chat,14,0,Mieszkam na tamtej ulicy.,I live on that street over there.
+hania_chat_14_1,hania,chat,14,1,Nie wolno mi chodzić samej.,I'm not allowed to go on my own.
+hania_chat_15_0,hania,chat,15,0,Ola mnie pyta: słyszałaś? Jutro nie ma lekcji!,Ola asks me: did you hear? There are no lessons tomorrow!
+hania_chat_15_1,hania,chat,15,1,Nie ma w tym ani słowa prawdy!,There isn't a word of truth in it!
+hania_chat_16_0,hania,chat,16,0,Pomożesz mi z zadaniem?,Will you help me with my homework?
+hania_chat_16_1,hania,chat,16,1,Mogę użyć twojego długopisu?,Can I use your pen?
+hania_chat_17_0,hania,chat,17,0,W szkole uczymy się różnych rzeczy.,At school we learn all sorts of things.
+hania_chat_17_1,hania,chat,17,1,Siedzę w drugim rzędzie.,I sit in the second row.
+hania_chat_18_0,hania,chat,18,0,W tej części parku jest dużo kaczek.,There are lots of ducks in this part of the park.
+hania_chat_19_0,hania,chat,19,0,"Pani mówi, żebyśmy byli cicho.",Miss says we should be quiet.
+hania_chat_19_1,hania,chat,19,1,Kacper woli piłkę niż książki.,Kacper prefers football to books.
+hania_chat_20_0,hania,chat,20,0,Mogłabym tu siedzieć cały dzień.,I could sit here all day.
+hania_chat_20_1,hania,chat,20,1,Muszę oddać książkę do biblioteki.,I have to take a book back to the library.
+hania_chat_21_0,hania,chat,21,0,Mam farbę na twarzy!,I've got paint on my face!
+hania_chat_21_1,hania,chat,21,1,Zostały mi tylko dwie kredki.,I've only got two crayons left.
+hania_chat_22_0,hania,chat,22,0,"Pani Dorota widziała, jak Kacper śpi na lekcji!",Mrs Dorota saw Kacper sleeping in class!
+hania_chat_22_1,hania,chat,22,1,"Odejdź, Kacper! Przeszkadzasz.","Go away, Kacper! You're bothering me."
+hania_chat_23_0,hania,chat,23,0,Myślisz o jakimś zwierzęciu?,Are you thinking of an animal?
+hania_chat_24_0,hania,chat,24,0,Ryby oddychają pod wodą.,Fish breathe underwater.
+hania_chat_24_1,hania,chat,24,1,Wstrzymaj oddech!,Hold your breath!
+hania_chat_25_0,hania,chat,25,0,Ludzkie ciało ma ponad dwieście kości.,The human body has over two hundred bones.
+hania_chat_25_1,hania,chat,25,1,W ciele człowieka jest dużo wody.,There's a lot of water in the human body.
+hania_chat_26_0,hania,chat,26,0,Palców mam dziesięć.,I have ten fingers.
+hania_chat_26_1,hania,chat,26,1,Stopy mam małe.,My feet are small.
+hania_chat_26_2,hania,chat,26,2,Od stóp do głowy!,From head to toe!
+hania_chat_27_0,hania,chat,27,0,Ramię mnie boli od plecaka.,My shoulder hurts from my backpack.
+hania_chat_28_0,hania,chat,28,0,"Kaczka nie ma ust, ma dziób.","A duck doesn't have lips, it has a beak."
+hania_chat_29_0,hania,chat,29,0,Planety krążą wokół słońca.,The planets go round the sun.
+hania_chat_29_1,hania,chat,29,1,"Istnieją ryby, które latają!",There are fish that fly!
+hania_chat_30_0,hania,chat,30,0,"To łatwiej, niż myślisz!",It's easier than you think!
+hania_chat_30_1,hania,chat,30,1,Zapach kwiatów jest piękny.,The smell of the flowers is lovely.
+hania_chat_31_0,hania,chat,31,0,Nie ma tu żadnej tajemnicy.,There's no secret here.
+hania_chat_31_1,hania,chat,31,1,Złota rybka? Mam!,A goldfish? I have one!
+hania_chat_32_0,hania,chat,32,0,Chcę stworzyć własną grę.,I want to create my own game.
+hania_chat_32_1,hania,chat,32,1,"Gdziekolwiek idę, biorę książkę.","Wherever I go, I take a book."
+hania_chat_33_0,hania,chat,33,0,Mój tata jest silny jak niedźwiedź.,My dad is as strong as a bear.
+hania_chat_33_1,hania,chat,33,1,"Dziecko jest małe, ale ono dużo wie.","A child is small, but it knows a lot."
+hania_chat_34_0,hania,chat,34,0,Dowiem się wszystkiego o kaczkach!,I'll find out everything about ducks!
+hania_chat_34_1,hania,chat,34,1,Dowiemy się w laboratorium.,We'll find out in the lab.
+hania_chat_35_0,hania,chat,35,0,To jest prawdą!,It's true!
+hania_chat_35_1,hania,chat,35,1,"Kacper nie wierzy, że kaczki myślą.",Kacper doesn't believe ducks think.
+hania_chat_36_0,hania,chat,36,0,Mam dużo zdjęć kaczek.,I have lots of photos of ducks.
+hania_chat_36_1,hania,chat,36,1,Mój eksperyment zadziała!,My experiment will work!
+hania_chat_37_0,hania,chat,37,0,Kacper wpadł do kałuży!,Kacper fell into a puddle!
+hania_chat_37_1,hania,chat,37,1,Oddam ci jutro długopis.,I'll give you your pen back tomorrow.
+kacper_intro_0_0,kacper,intro,0,0,"Siema, jestem Kacper.","Hi, I'm Kacper."
+kacper_intro_0_1,kacper,intro,0,1,Mam teraz przerwę. Gramy w piłkę.,I've got a break now. We're playing football.
+kacper_intro_0_2,kacper,intro,0,2,"Lubię historię, zwłaszcza o królach.","I like history, especially about kings."
+kacper_chat_0_0,kacper,chat,0,0,Król mieszkał w zamku na górze.,The king lived in a castle on the hill.
+kacper_chat_0_1,kacper,chat,0,1,Byłem królem w szkolnym przedstawieniu!,I was the king in the school play!
+kacper_chat_0_2,kacper,chat,0,2,Chcę być prawdziwym królem!,I want to be a real king!
+kacper_chat_1_0,kacper,chat,1,0,Chcę zdobyć złoty medal.,I want to win a gold medal.
+kacper_chat_1_1,kacper,chat,1,1,Biorę udział w meczu szkolnym.,I'm taking part in the school match.
+kacper_chat_2_0,kacper,chat,2,0,Nie ma mowy! Nie idę do domu.,No way! I'm not going home.
+kacper_chat_2_1,kacper,chat,2,1,"Moja mama twierdzi, że jestem leniwy.",My mum claims I'm lazy.
+kacper_chat_3_0,kacper,chat,3,0,Mój tata jest kierowcą.,My dad's a driver.
+kacper_chat_3_1,kacper,chat,3,1,Jest jedynym kierowcą w rodzinie.,He's the only driver in the family.
+kacper_chat_3_2,kacper,chat,3,2,Mój tata jest fajnym facetem.,My dad's a cool guy.
+kacper_chat_4_0,kacper,chat,4,0,Lubię program o zwierzętach w telewizji.,I like a programme about animals on TV.
+kacper_chat_5_0,kacper,chat,5,0,Gram w stylu Lewandowskiego!,I play in Lewandowski's style!
+kacper_chat_5_1,kacper,chat,5,1,"Mam szybkie ruchy, jak kot.","I've got quick moves, like a cat."
+kacper_chat_6_0,kacper,chat,6,0,Kto chce grać przeciw nam?,Who wants to play against us?
+kacper_chat_6_1,kacper,chat,6,1,Wśród chłopaków jestem najszybszy.,Among the boys I'm the fastest.
+kacper_chat_7_0,kacper,chat,7,0,"Dostaniesz ode mnie cukierka, jak nie powiesz pani.",You'll get a sweet from me if you don't tell Miss.
+kacper_chat_7_1,kacper,chat,7,1,Dostanę piątkę z historii!,I'll get top marks in history!
+kacper_chat_8_0,kacper,chat,8,0,Muszę zapłacić za obiad w stołówce.,I have to pay for lunch in the canteen.
+kacper_chat_8_1,kacper,chat,8,1,Nie mam kasy.,I've got no cash.
+kacper_chat_8_2,kacper,chat,8,2,Zostawiłem kasę w domu.,I left my money at home.
+kacper_chat_9_0,kacper,chat,9,0,Mam przyjaciela w drużynie Bartka.,I have a friend on Bartek's team.
+kacper_chat_9_1,kacper,chat,9,1,"Przyjacielu, pomóż mi!","Buddy, help me!"
+kacper_chat_9_2,kacper,chat,9,2,Chciałbyś grać z nami? pytam Bartka.,Would you like to play with us? I ask Bartek.
+kacper_chat_10_0,kacper,chat,10,0,Dziś na lekcji mieliśmy test.,We had a test in class today.
+kacper_chat_10_1,kacper,chat,10,1,Poszło dobrze!,It went well!
+kacper_chat_11_0,kacper,chat,11,0,Kot chciał uciec z klasy!,The cat wanted to escape from the classroom!
+kacper_chat_12_0,kacper,chat,12,0,Mam nowy rower.,I've got a new bike.
+kacper_chat_12_1,kacper,chat,12,1,Jeżdżę nim do szkoły.,I ride it to school.
+kacper_chat_13_0,kacper,chat,13,0,Teraz moja kolej!,Now it's my turn!
+kacper_chat_13_1,kacper,chat,13,1,"Naprzód, chłopaki!","Forward, lads!"
+kacper_chat_14_0,kacper,chat,14,0,Chcę się pozbyć zadania domowego.,I want to get rid of my homework.
+kacper_chat_14_1,kacper,chat,14,1,"Mam z mamą umowę: najpierw lekcje, potem gry.","I have a deal with Mum: homework first, then games."
+kacper_chat_14_2,kacper,chat,14,2,Zgoda? Zgoda!,Deal? Deal!
+kacper_chat_15_0,kacper,chat,15,0,Nie mamy szans z tamtą drużyną.,We have no chance against that team.
+kacper_chat_15_1,kacper,chat,15,1,Żadne zadanie nie jest za trudne!,No task is too hard!
+kacper_chat_16_0,kacper,chat,16,0,Mam milion pomysłów!,I've got a million ideas!
+kacper_chat_16_1,kacper,chat,16,1,Nie mam nic do powiedzenia.,I've got nothing to say.
+kacper_chat_17_0,kacper,chat,17,0,Mojemu tacie to nie przeszkadza.,My dad doesn't mind.
+kacper_chat_17_1,kacper,chat,17,1,"Jak mama się dowie, będzie źle.","If Mum finds out, it'll be bad."
+kacper_chat_18_0,kacper,chat,18,0,"Muszę przekonać mamę, że potrzebuję psa.",I have to convince Mum that I need a dog.
+kacper_chat_18_1,kacper,chat,18,1,"Gdybym miał psa, miałbym przyjaciela.","If I had a dog, I'd have a friend."
+kacper_chat_19_0,kacper,chat,19,0,Kto miałby czas na lekcje?,Who would have time for homework?
+kacper_chat_19_1,kacper,chat,19,1,Tata próbował mi pomóc z matematyką.,Dad tried to help me with maths.
+kacper_chat_20_0,kacper,chat,20,0,Piłka była na linii!,The ball was on the line!
+kacper_chat_20_1,kacper,chat,20,1,Na ostatnim meczu strzeliłem gola.,At the last match I scored a goal.
+kacper_chat_21_0,kacper,chat,21,0,Muszę odzyskać moją piłkę.,I have to get my ball back.
+kacper_chat_21_1,kacper,chat,21,1,Zabiorę piłkę do domu.,I'll take the ball home.
+kacper_chat_22_0,kacper,chat,22,0,Mój dziadek pracował na statku.,My grandad worked on a ship.
+kacper_chat_22_1,kacper,chat,22,1,Drugie śniadanie mam w plecaku.,I've got my packed lunch in my backpack.
+kacper_chat_23_0,kacper,chat,23,0,"Panie Jerzy, mogę iść z panem?","Mr Jerzy, can I go with you?"
+kacper_chat_23_1,kacper,chat,23,1,Jestem gotów!,I'm ready!
+kacper_chat_24_0,kacper,chat,24,0,"Hej, żyjesz?","Hey, are you alive?"
+kacper_chat_25_0,kacper,chat,25,0,"Zauważyłem, że pani Dorota się śmieje.",I noticed Mrs Dorota laughing.
+kacper_chat_25_1,kacper,chat,25,1,Słyszał ktoś dzwonek?,Did anyone hear the bell?
+kacper_chat_26_0,kacper,chat,26,0,Tata kupił mi nową piłkę.,Dad bought me a new ball.
+kacper_chat_26_1,kacper,chat,26,1,Pokażę to swojemu tacie.,I'll show it to my dad.
+kacper_chat_27_0,kacper,chat,27,0,Przeżyć dzień bez telefonu? Nie da się!,Get through a day without a phone? Impossible!
+kacper_chat_28_0,kacper,chat,28,0,Chcę mieć miecz jak król.,I want a sword like a king.
+kacper_chat_28_1,kacper,chat,28,1,Książę mieszkał w zamku z królową.,The prince lived in the castle with the queen.
+kacper_chat_29_0,kacper,chat,29,0,Zrobią z nas mistrzów!,They'll make champions of us!
+kacper_chat_29_1,kacper,chat,29,1,"Mam poczucie humoru, mówi mama.","I've got a sense of humour, Mum says."
+kacper_chat_30_0,kacper,chat,30,0,"Wolałbym grać, niż się uczyć.",I'd rather play than study.
+kacper_chat_30_1,kacper,chat,30,1,Nie ma wielkiej różnicy.,There's no big difference.
+kacper_chat_31_0,kacper,chat,31,0,Znasz kawał o kaczce?,Do you know the joke about the duck?
+kacper_chat_31_1,kacper,chat,31,1,"Wstyd mi, że zapomniałem zeszytu.",I'm ashamed I forgot my notebook.
+kacper_chat_32_0,kacper,chat,32,0,Wziąłem piłkę ze sobą.,I brought the ball with me.
+kacper_chat_32_1,kacper,chat,32,1,Pani pyta: zapomniałeś zeszytu?,Miss asks: did you forget your notebook?
+kacper_chat_33_0,kacper,chat,33,0,Mogliśmy wygrać!,We could have won!
+kacper_chat_33_1,kacper,chat,33,1,Musieliśmy biec do autobusu.,We had to run for the bus.
+kacper_chat_33_2,kacper,chat,33,2,Spotkaliśmy Bartka w autobusie.,We met Bartek on the bus.
+kacper_chat_34_0,kacper,chat,34,0,Goście z innej szkoły grają z nami.,Visitors from another school are playing us.
+kacper_chat_34_1,kacper,chat,34,1,Odpowiada mi ta drużyna.,This team suits me.
+kacper_chat_35_0,kacper,chat,35,0,Muszę wyciągnąć piłkę spod ławki.,I have to get the ball out from under the bench.
+kacper_chat_35_1,kacper,chat,35,1,Dajesz radę?,Are you managing?
+kacper_chat_36_0,kacper,chat,36,0,Jakich gier nie lubię? Żadnych!,Which games don't I like? None!
+kacper_chat_36_1,kacper,chat,36,1,Tracę kontrolę nad piłką!,I'm losing control of the ball!
+kacper_chat_37_0,kacper,chat,37,0,Pełni energii wybiegamy na boisko!,"Full of energy, we run out onto the pitch!"
+kacper_chat_37_1,kacper,chat,37,1,Wszyscy widzieli mojego gola!,Everyone saw my goal!
+kacper_chat_38_0,kacper,chat,38,0,Zacząłem czytać o królach.,I've started reading about kings.
+kacper_chat_38_1,kacper,chat,38,1,Słuchasz mnie?,Are you listening to me?
+kacper_chat_39_0,kacper,chat,39,0,Mama da mi forsę na lody.,Mum will give me some cash for ice cream.
+kacper_chat_39_1,kacper,chat,39,1,"Chcę być prawdziwym królem, a nie królem z bajki.","I want to be a real king, not a fairy-tale one."
+kacper_chat_39_2,kacper,chat,39,2,Mam prawdziwego przyjaciela: Bartka.,I have a true friend: Bartek.
+marta_intro_0_0,marta,intro,0,0,Cześć! Jestem Marta.,Hi! I'm Marta.
+marta_intro_0_1,marta,intro,0,1,Czy widzisz gdzieś Piotra?,Can you see Piotr anywhere?
+marta_intro_0_2,marta,intro,0,2,Znowu jestem spóźniona.,I'm late again.
+marta_intro_0_3,marta,intro,0,3,On pewnie na mnie czeka.,He's probably waiting for me.
+marta_chat_0_0,marta,chat,0,0,Co u ciebie słychać?,How are things with you?
+marta_chat_1_0,marta,chat,1,0,"Nie mów mu, że tu jestem!",Don't tell him I'm here!
+marta_chat_1_1,marta,chat,1,1,Niech to będzie nasz sekret.,Let it be our secret.
+marta_chat_2_0,marta,chat,2,0,Piotr to dobry człowiek.,Piotr is a good person.
+marta_chat_2_1,marta,chat,2,1,Dlatego go kocham.,That's why I love him.
+marta_chat_3_0,marta,chat,3,0,Znam go od szkoły.,I've known him since school.
+marta_chat_3_1,marta,chat,3,1,Wtedy był bardzo cichy.,Back then he was very quiet.
+marta_chat_4_0,marta,chat,4,0,Skąd jesteś?,Where are you from?
+marta_chat_4_1,marta,chat,4,1,Ja jestem stąd.,I'm from here.
+marta_chat_5_0,marta,chat,5,0,W tej torbie mam prezent dla niego.,I've got a present for him in this bag.
+marta_chat_5_1,marta,chat,5,1,Ale nic mu nie mów!,But don't tell him anything!
+marta_chat_6_0,marta,chat,6,0,"Powiedział, że ma dla mnie coś ważnego.",He said he has something important for me.
+marta_chat_6_1,marta,chat,6,1,Chciał mi coś powiedzieć.,He wanted to tell me something.
+marta_chat_7_0,marta,chat,7,0,"Przyszłam tu, aby go zobaczyć.",I came here to see him.
+marta_chat_7_1,marta,chat,7,1,My zawsze tu przychodzimy.,We always come here.
+marta_chat_8_0,marta,chat,8,0,"Są rzeczy, które trudno powiedzieć.",There are things that are hard to say.
+marta_chat_9_0,marta,chat,9,0,Często o nim myślę.,I often think about him.
+marta_chat_9_1,marta,chat,9,1,Nam jest dobrze razem.,We're happy together.
+marta_chat_10_0,marta,chat,10,0,Niech czeka. To mu dobrze zrobi!,Let him wait. It'll do him good!
+marta_chat_10_1,marta,chat,10,1,Nie mógł na mnie poczekać?,Couldn't he wait for me?
+marta_chat_11_0,marta,chat,11,0,Każdy ma swoją historię.,Everyone has their own story.
+marta_chat_12_0,marta,chat,12,0,Piotr miał rację: ten park jest piękny.,Piotr was right: this park is beautiful.
+marta_chat_12_1,marta,chat,12,1,"Dobrze, już idę do niego.","All right, I'm going to him now."
+marta_chat_13_0,marta,chat,13,0,W tej sprawie muszę z nim pogadać.,I need to have a chat with him about this.
+marta_chat_13_1,marta,chat,13,1,Mamy dużo wspólnego.,We have a lot in common.
+marta_chat_14_0,marta,chat,14,0,"Jego twarz, jego głos... kocham to.","His face, his voice... I love it."
+marta_chat_14_1,marta,chat,14,1,Oboje lubimy kino.,We both like the cinema.
+marta_chat_15_0,marta,chat,15,0,"Odkąd go znam, jestem szczęśliwa.","Ever since I've known him, I've been happy."
+marta_chat_15_1,marta,chat,15,1,Piotr jest najważniejszą osobą w moim życiu.,Piotr is the most important person in my life.
+marta_chat_16_0,marta,chat,16,0,"Mimo wszystko, on zawsze czeka.","Despite everything, he always waits."
+marta_chat_16_1,marta,chat,16,1,Piotr przyszedł wcześniej niż ja. Jak zawsze.,Piotr came earlier than me. As always.
+marta_chat_17_0,marta,chat,17,0,"Choć jestem spóźniona, jestem szczęśliwa.","Though I'm late, I'm happy."
+marta_chat_17_1,marta,chat,17,1,Ten prezent jest ode mnie.,This present is from me.
+marta_chat_18_0,marta,chat,18,0,Zatem idę. Trzymaj kciuki!,"Right then, I'm off. Keep your fingers crossed!"
+marta_chat_19_0,marta,chat,19,0,Rozmawialiśmy wczoraj przez telefon.,We talked on the phone yesterday.
+marta_chat_19_1,marta,chat,19,1,Znamy się od lat.,We've known each other for years.
+marta_chat_20_0,marta,chat,20,0,"Wiedziała o tym cała rodzina, oprócz mnie!","The whole family knew about it, except me!"
+marta_chat_20_1,marta,chat,20,1,Moi rodzice wiedzieli wcześniej niż ja!,My parents knew before I did!
+marta_chat_21_0,marta,chat,21,0,"Mam wrażenie, że coś się dzieje.",I have the feeling something's going on.
+marta_chat_21_1,marta,chat,21,1,Podobno ma coś w kieszeni.,Apparently he's got something in his pocket.
+marta_chat_21_2,marta,chat,21,2,"Zobaczmy, co on powie.",Let's see what he says.
+marta_chat_22_0,marta,chat,22,0,Osobiście lubię niespodzianki.,"Personally, I like surprises."
+marta_chat_23_0,marta,chat,23,0,Z mamą rozmawiam codziennie.,I talk to my mum every day.
+marta_chat_23_1,marta,chat,23,1,Mój tata jest lekarzem w szpitalu.,My dad's a doctor at the hospital.
+marta_chat_24_0,marta,chat,24,0,Szczęścia nie można kupić.,You can't buy happiness.
+marta_chat_24_1,marta,chat,24,1,"Piotr jest jedyną osobą, która mnie rozumie.",Piotr is the only person who understands me.
+marta_chat_25_0,marta,chat,25,0,Jesteśmy razem od liceum.,We've been together since secondary school.
+marta_chat_25_1,marta,chat,25,1,Zrobiliśmy razem mnóstwo rzeczy.,We've done loads of things together.
+marta_chat_26_0,marta,chat,26,0,W sobotę idziemy na imprezę.,On Saturday we're going to a party.
+marta_chat_26_1,marta,chat,26,1,Pierwszą randkę mieliśmy w kinie.,Our first date was at the cinema.
+marta_chat_27_0,marta,chat,27,0,Piotr jest trochę szalony.,Piotr's a bit crazy.
+marta_chat_27_1,marta,chat,27,1,Absolutnie się z tobą zgadzam!,I absolutely agree with you!
+marta_chat_28_0,marta,chat,28,0,Co zamierzasz robić w weekend?,What are you planning to do at the weekend?
+marta_chat_28_1,marta,chat,28,1,Mamy wielkie plany.,We have big plans.
+marta_chat_29_0,marta,chat,29,0,Nasza miłość jest prawdziwa.,Our love is real.
+marta_chat_29_1,marta,chat,29,1,"Jedyna rzecz, której chcę, to być z nim.",The only thing I want is to be with him.
+marta_chat_30_0,marta,chat,30,0,Zróbmy to razem!,Let's do it together!
+marta_chat_30_1,marta,chat,30,1,Cudownie!,Wonderful!
+marta_chat_31_0,marta,chat,31,0,Widzieliśmy ten film razem.,We saw that film together.
+marta_chat_31_1,marta,chat,31,1,Powiem mu wprost.,I'll tell him straight.
+marta_chat_32_0,marta,chat,32,0,Piotr jest równie spóźniony jak ja!,Piotr's just as late as me!
+marta_chat_32_1,marta,chat,32,1,Inna dziewczyna? Nigdy!,Another girl? Never!
+marta_chat_33_0,marta,chat,33,0,Zaczęła się wiosna i jestem zakochana.,Spring has begun and I'm in love.
+marta_chat_34_0,marta,chat,34,0,Pracuję w restauracji w weekendy.,I work in a restaurant at weekends.
+marta_chat_34_1,marta,chat,34,1,"Kiedy byłam mała, mama pracowała w barze.","When I was little, Mum worked in a bar."
+marta_chat_35_0,marta,chat,35,0,"Przyjdę za chwilę, Piotrze!","I'll be there in a moment, Piotr!"
+marta_chat_35_1,marta,chat,35,1,"Długa historia, dlaczego się spóźniłam.",It's a long story why I'm late.
+marta_chat_36_0,marta,chat,36,0,"Okazało się, że autobus nie przyjechał.",It turned out the bus didn't come.
+marta_chat_36_1,marta,chat,36,1,"Wyglądało na to, że będzie padać.",It looked as if it was going to rain.
+marta_chat_37_0,marta,chat,37,0,Moja siostra dostała od chłopaka pierścionek!,My sister got a ring from her boyfriend!
+marta_chat_38_0,marta,chat,38,0,"Jestem trochę chora, ale przyszłam.","I'm a bit ill, but I came."
+marta_chat_39_0,marta,chat,39,0,Wolność? Dla mnie to podróże.,Freedom? For me it's travelling.
+marta_chat_39_1,marta,chat,39,1,W podróży czuję się wolna.,When I'm travelling I feel free.
+marta_chat_40_0,marta,chat,40,0,Uwielbiam muzykę. Słucham muzyki cały dzień.,I love music. I listen to music all day.
+marta_chat_41_0,marta,chat,41,0,Nareszcie jestem!,I'm here at last!
+marta_chat_41_1,marta,chat,41,1,"Przystojny jest, prawda?","He's handsome, isn't he?"
+marta_chat_42_0,marta,chat,42,0,Jestem pełna energii!,I'm full of energy!
+marta_chat_42_1,marta,chat,42,1,"Wybaczcie, że jestem spóźniona!","Forgive me for being late, everyone!"
+marta_chat_43_0,marta,chat,43,0,Chcieliśmy jechać nad morze.,We wanted to go to the seaside.
+marta_chat_43_1,marta,chat,43,1,Pojedziemy w sierpniu.,We'll go in August.
+marta_chat_44_0,marta,chat,44,0,Łączy nas miłość.,Love brings us together.
+marta_chat_44_1,marta,chat,44,1,Rozmawiamy codziennie.,We talk every day.
+marta_chat_45_0,marta,chat,45,0,Poznaliśmy się przypadkiem.,We met by chance.
+marta_chat_45_1,marta,chat,45,1,Niedawno wróciłam z wakacji.,I came back from holiday recently.
+marta_chat_46_0,marta,chat,46,0,Chcę mieć prawdziwą rodzinę.,I want a real family.
+review_offer,jozef,review_offer,0,0,Chcesz powtórzyć słówka?,Do you want to review your words?
+review_none,jozef,review_none,0,0,Nie masz teraz słówek do powtórki.,You have no words to review right now.

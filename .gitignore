@@ -1,4 +1,4 @@
 node_modules/
 test/shots/
 *.blend1
-translate-work/
+/translate-work

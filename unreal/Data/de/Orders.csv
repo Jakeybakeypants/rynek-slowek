@@ -1,0 +1,47 @@
+﻿Name,Character,Kind,Text,English,ItemPool
+marek_ask_0,marek,ask,"Ich hätte gern {acc}, bitte.","I'd like {en}, please.",jabłko gruszka śliwka cytryna marchewka
+marek_ask_1,marek,ask,Hast du noch {acc}?,Do you have {en} left?,jabłko gruszka śliwka cytryna marchewka
+marek_ask_2,marek,ask,Bring mir bitte {acc}.,"Bring me {en}, please.",jabłko gruszka śliwka cytryna marchewka
+marek_ok_0,marek,ok,Genau so! Danke.,Exactly right! Thank you.,jabłko gruszka śliwka cytryna marchewka
+marek_ok_1,marek,ok,Toll!,Great!,jabłko gruszka śliwka cytryna marchewka
+basia_ask_0,basia,ask,Ein Kunde wartet. Gib mir bitte {acc}.,"A customer is waiting. Pass me {en}, please.",chleb bułka ciastko drożdżówka szarlotka
+basia_ask_1,basia,ask,Ich hätte gern {acc}.,I'd like {en}.,chleb bułka ciastko drożdżówka szarlotka
+basia_ask_2,basia,ask,"Ich möchte {acc}, bitte.","I'd like {en}, please.",chleb bułka ciastko drożdżówka szarlotka
+basia_ok_0,basia,ok,Danke! Guten Appetit!,Thank you! Enjoy!,chleb bułka ciastko drożdżówka szarlotka
+basia_ok_1,basia,ok,"Super, danke!","Great, thanks!",chleb bułka ciastko drożdżówka szarlotka
+ola_ask_0,ola,ask,Ein Gast möchte {acc}.,A guest would like {en}.,kawa herbata woda sok mleko
+ola_ask_1,ola,ask,"Ich hätte gern {acc}, bitte.","I'd like {en}, please.",kawa herbata woda sok mleko
+ola_ask_2,ola,ask,Bringst du mir {acc}?,Will you bring me {en}?,kawa herbata woda sok mleko
+ola_ok_0,ola,ok,Danke! Perfekt.,Thanks! Perfect.,kawa herbata woda sok mleko
+ola_ok_1,ola,ok,Super!,Great!,kawa herbata woda sok mleko
+kuba_ask_0,kuba,ask,Such {gen}!,Find {the}!,piłka lalka miś latawiec
+kuba_ask_1,kuba,ask,Wo ist {nom}?,Where is {the}?,piłka lalka miś latawiec
+kuba_ask_2,kuba,ask,Ich suche {gen}.,I'm looking for {the}.,piłka lalka miś latawiec
+kuba_ok_0,kuba,ok,Hurra! Danke!,Hooray! Thank you!,piłka lalka miś latawiec
+kuba_ok_1,kuba,ok,Super!,Great!,piłka lalka miś latawiec
+kuba_ok_2,kuba,ok,Hurra! Bis später!,Hooray! See you later!,piłka lalka miś latawiec
+zosia_ask_0,zosia,ask,Eine Kundin will {acc}.,A customer wants {en}.,róża lilia stokrotka orchidea
+zosia_ask_1,zosia,ask,"Ich hätte gern {acc}, bitte.","I'd like {en}, please.",róża lilia stokrotka orchidea
+zosia_ask_2,zosia,ask,Ich suche {acc}.,I'm looking for {en}.,róża lilia stokrotka orchidea
+zosia_ok_0,zosia,ok,Wie schön! Danke.,Lovely! Thank you.,róża lilia stokrotka orchidea
+zosia_ok_1,zosia,ok,Prima!,Great!,róża lilia stokrotka orchidea
+ewa_ask_0,ewa,ask,"Ich hätte gern {acc}, bitte.","I'd like {en}, please.",czerwona niebieska żółta zielona biała
+ewa_ask_1,ewa,ask,Ich brauche {acc}.,I need {en}.,czerwona niebieska żółta zielona biała
+ewa_ask_2,ewa,ask,Hast du {acc} für mich?,Do you have {en} for me?,czerwona niebieska żółta zielona biała
+ewa_ok_0,ewa,ok,Wunderbar! Danke.,Wonderful! Thank you.,czerwona niebieska żółta zielona biała
+ewa_ok_1,ewa,ok,Perfekt! Jetzt kann ich malen.,Perfect! Now I can paint.,czerwona niebieska żółta zielona biała
+tadeusz_ask_0,tadeusz,ask,Ein Kunde wartet auf {acc}.,A customer is waiting for {en}.,paczka koperta pocztówka
+tadeusz_ask_1,tadeusz,ask,"Ich hätte gern {acc}, bitte.","I'd like {en}, please.",paczka koperta pocztówka
+tadeusz_ask_2,tadeusz,ask,Ich brauche {acc}.,I need {en}.,paczka koperta pocztówka
+tadeusz_ok_0,tadeusz,ok,"Toll, danke!","Great, thank you!",paczka koperta pocztówka
+tadeusz_ok_1,tadeusz,ok,Gut gemacht!,Well done!,paczka koperta pocztówka
+halina_ask_0,halina,ask,Eine Kundin sucht {acc}.,A customer is looking for {en}.,książka mapa gazeta kredka
+halina_ask_1,halina,ask,"Ich hätte gern {acc}, bitte.","I'd like {en}, please.",książka mapa gazeta kredka
+halina_ask_2,halina,ask,Wo ist {nom}?,Where is {the}?,książka mapa gazeta kredka
+halina_ok_0,halina,ok,Danke! Prima.,Thank you! Great.,książka mapa gazeta kredka
+halina_ok_1,halina,ok,Perfekt!,Perfect!,książka mapa gazeta kredka
+bogdan_ask_0,bogdan,ask,{why} Ich hätte gern {acc}.,{whyEn} I'd like {en}.,czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ask_1,bogdan,ask,{why} Gib mir bitte {acc}.,"{whyEn} Pass me {en}, please.",czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ask_2,bogdan,ask,{why} Ich brauche {acc}.,{whyEn} I need {en}.,czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ok_0,bogdan,ok,Danke! Sehr gut.,Thank you! Very good.,czapka kurtka parasolka rękawiczki koszula sukienka
+bogdan_ok_1,bogdan,ok,Super! Der Kunde ist zufrieden.,Great! The customer is pleased.,czapka kurtka parasolka rękawiczki koszula sukienka

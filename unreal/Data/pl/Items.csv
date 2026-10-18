@@ -1,0 +1,55 @@
+﻿Name,Word,Lemma,Nominative,Accusative,Genitive,English,EnglishThe,Plural,WhyText,WhyEnglish,StoryCharacter,HomeX,HomeY,HomeZ
+okulary,okulary,okulary,okulary,okulary,okularów,the glasses,the glasses,True,,,jozef,-260,390,92
+klucze,klucze,klucz,klucze,klucze,kluczy,the keys,the keys,True,,,zosia,-1960,1460,12
+jabłko,jabłko,jabłko,jabłko,jabłko,jabłka,an apple,the apple,False,,,,-1660,460,30
+gruszka,gruszka,gruszka,gruszka,gruszkę,gruszki,a pear,the pear,False,,,,-1540,560,30
+śliwka,śliwka,śliwka,śliwka,śliwkę,śliwki,a plum,the plum,False,,,,-1420,460,30
+cytryna,cytryna,cytryna,cytryna,cytrynę,cytryny,a lemon,the lemon,False,,,,-1300,560,30
+marchewka,marchewka,marchewka,marchewka,marchewkę,marchewki,a carrot,the carrot,False,,,,-1180,470,30
+chleb,chleb,chleb,chleb,chleb,chleba,a loaf of bread,the bread,False,,,,-2550,-400.8,112
+bułka,bułka,bułka,bułka,bułkę,bułki,a bread roll,the roll,False,,,,-2550,-330.8,112
+ciastko,ciastko,ciastko,ciastko,ciastko,ciastka,a cookie,the cookie,False,,,,-2550,-260.8,112
+drożdżówka,drożdżówka,drożdżówka,drożdżówka,drożdżówkę,drożdżówki,a sweet bun,the sweet bun,False,,,,-2550,-190.8,112
+szarlotka,szarlotka,szarlotka,szarlotka,szarlotkę,szarlotki,a slice of apple pie,the apple pie,False,,,,-2550,-120.8,112
+kawa,kawa,kawa,kawa,kawę,kawy,a coffee,the coffee,False,,,,2540,441.5,112
+herbata,herbata,herbata,herbata,herbatę,herbaty,a tea,the tea,False,,,,2540,511.5,112
+woda,woda,woda,woda,wodę,wody,some water,the water,False,,,,2540,581.5,112
+sok,sok,sok,sok,sok,soku,a juice,the juice,False,,,,2540,651.5,112
+mleko,mleko,mleko,mleko,mleko,mleka,some milk,the milk,False,,,,2540,721.5,112
+piłka,piłka,piłka,piłka,piłkę,piłki,the ball,the ball,False,,,,250,-1950,28
+lalka,lalka,lalka,lalka,lalkę,lalki,the doll,the doll,False,,,,1470,1540,32
+miś,miś,miś,miś,misia,misia,the teddy bear,the teddy bear,False,,,,1790,1220,30
+latawiec,latawiec,latawiec,latawiec,latawiec,latawca,the kite,the kite,False,,,,1860,1700,20
+róża,róża,róża,róża,różę,róży,a rose,the rose,False,,,,-917.4,2550,75
+lilia,lilia,lilia,lilia,lilię,lilii,a lily,the lily,False,,,,-817.4,2550,75
+stokrotka,stokrotka,stokrotka,stokrotka,stokrotkę,stokrotki,a daisy,the daisy,False,,,,-717.4,2550,75
+orchidea,orchidea,orchidea,orchidea,orchideę,orchidei,an orchid,the orchid,False,,,,-617.4,2550,75
+pędzel,pędzel,pędzel,pędzel,pędzel,pędzla,the paintbrush,the paintbrush,False,,,ewa,-790,-800,12
+czerwona,czerwona,czerwony,czerwona farba,czerwoną farbę,czerwonej farby,red paint,the red paint,False,,,,1120,-90,66
+niebieska,niebieska,niebieski,niebieska farba,niebieską farbę,niebieskiej farby,blue paint,the blue paint,False,,,,1190,-90,66
+żółta,żółta,żółty,żółta farba,żółtą farbę,żółtej farby,yellow paint,the yellow paint,False,,,,1260,-90,66
+zielona,zielona,zielony,zielona farba,zieloną farbę,zielonej farby,green paint,the green paint,False,,,,1330,-90,66
+biała,biała,biały,biała farba,białą farbę,białej farby,white paint,the white paint,False,,,,1400,-90,66
+list,list,list,list,list,listu,the letter,the letter,False,,,tadeusz,1781.3,2550,112
+paczka,paczka,paczka,paczka,paczkę,paczki,a parcel,the parcel,False,,,,1571.3,2550,112
+koperta,koperta,koperta,koperta,kopertę,koperty,an envelope,the envelope,False,,,,1641.3,2550,112
+pocztówka,pocztówka,pocztówka,pocztówka,pocztówkę,pocztówki,a postcard,the postcard,False,,,,1711.3,2550,112
+torba,torba,torba,torba,torbę,torby,the bag,the bag,False,,,halina,1640,1720,25
+książka,książka,książka,książka,książkę,książki,a book,the book,False,,,,1339.5,-2550,112
+mapa,mapa,mapa,mapa,mapę,mapy,a map,the map,False,,,,1269.5,-2550,112
+gazeta,gazeta,gazeta,gazeta,gazetę,gazety,a newspaper,the newspaper,False,,,,1199.5,-2550,112
+kredka,kredka,kredka,kredka,kredkę,kredki,a crayon,the crayon,False,,,,1129.5,-2550,112
+kość,kość,kość,kość,kość,kości,the bone,the bone,False,,,burek,-2070,2070,12
+skakanka,skakanka,skakanka,skakanka,skakankę,skakanki,the skipping rope,the skipping rope,False,,,zuzia,-150,1050,10
+nuty,nuty,nuty,nuty,nuty,nut,the sheet music,the sheet music,True,,,staszek,-2060,290,10
+czapka,czapka,czapka,czapka,czapkę,czapki,a woolly hat,the hat,False,Jest zimno.,It's cold.,,-1725,-1120,112
+kurtka,kurtka,kurtka,kurtka,kurtkę,kurtki,a jacket,the jacket,False,Wieje wiatr.,It's windy.,,-1655,-1120,112
+parasolka,parasolka,parasolka,parasolka,parasolkę,parasolki,an umbrella,the umbrella,False,Pada deszcz.,It's raining.,,-1585,-1120,112
+rękawiczki,rękawiczki,rękawiczki,rękawiczki,rękawiczki,rękawiczek,some gloves,the gloves,True,Jest bardzo zimno.,It's very cold.,,-1515,-1120,112
+koszula,koszula,koszula,koszula,koszulę,koszuli,a shirt,the shirt,False,Ktoś idzie do pracy.,Someone is going to work.,,-1445,-1120,112
+telefon,telefon,telefon,telefon,telefon,telefonu,the phone,the phone,False,,,ania,6100,-1840,8
+deskorolka,deskorolka,deskorolka,deskorolka,deskorolkę,deskorolki,the skateboard,the skateboard,False,,,tomek,6330,-1040,8
+karta,karta,karta,karta,kartę,karty,the menu,the menu,False,,,michal,410,190,6
+bilet,bilet,bilet,bilet,bilet,biletu,the ticket,the ticket,False,,,ela,4490,-260,5
+dzwonek,dzwonek,dzwonek,dzwonek,dzwonek,dzwonka,the bell,the bell,False,,,dorota,1630,371.5,8
+sukienka,sukienka,sukienka,sukienka,sukienkę,sukienki,a dress,the dress,False,Ktoś idzie na wesele.,Someone is going to a wedding.,,-1375,-1120,112

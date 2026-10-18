@@ -1,0 +1,2187 @@
+﻿Name,Lemma,Form,FrequencyRank
+mam,mieć,I have,34
+masz,mieć,you have; also 'here you go',49
+jestem,być,I am,30
+jest,być,he / she / it is,10
+są,być,they are,55
+mogę,móc,I can,52
+możesz,móc,you can,88
+chcę,chcieć,I want,71
+chcesz,chcieć,you want,80
+chce,chcieć,he / she wants,129
+witaj,witać,command form: welcome!,575
+widzę,widzieć,I see,293
+szukam,szukać,I'm looking for,1125
+dziękuję,dziękować,I thank → thank you,95
+proszę,prosić,I ask → please,53
+prosi,prosić,he / she asks,0
+poproszę,poprosić,"I'd like…, please (lit. I will ask for)",1379
+przynieś,przynieść,command form: bring!,1784
+zanieś,zanieść,command form: take (it) to!,0
+podaj,podać,command form: pass!,1546
+pomóż,pomóc,command form: help!,845
+znajdź,znaleźć,command form: find!,1452
+idę,iść,I'm going,439
+sprzedaję,sprzedawać,I sell,0
+spadły,spaść,they fell (past tense),0
+leżą,leżeć,they are lying,0
+leży,leżeć,it is lying,1721
+piekę,piec,I bake,0
+czeka,czekać,he / she is waiting,739
+pracuję,pracować,I work,956
+lubisz,lubić,you like,727
+lubię,lubić,I like,375
+kopnąłem,kopnąć,I kicked (said by a man or boy),0
+zagrajmy,zagrać,let's play,0
+zgubiłam,zgubić,I lost (said by a woman),0
+ze,z,z before some consonant clusters,63
+mi,ja,to me (dative),18
+ją,ona,her / it (object form),70
+czego,co,genitive: szukać takes the genitive,140
+tego,to,genitive: after nie,22
+moje,mój,"plural (with okulary, klucze)",120
+moja,mój,feminine (with piłka),110
+naszym,nasz,locative (with mieście),564
+pyszne,pyszny,neuter (with mleko),0
+drugiej,drugi,"locative, feminine (with stronie)",859
+mieście,miasto,locative: after w,771
+okularów,okulary,genitive: after bez,0
+fontannie,fontanna,locative: after przy,0
+słówka,słówko,plural,0
+słówek,słówko,genitive plural: after nie masz,0
+zadania,zadanie,plural,0
+powtórki,powtórka,genitive: after do,0
+kotem,kot,"instrumental: after być, 'I am a…'",0
+psem,pies,instrumental: after być,0
+owoce,owoc,plural,0
+warzywa,warzywo,plural,0
+straganu,stragan,genitive: after ze,0
+ziemi,ziemia,locative: after na,604
+piekarką,piekarka,"instrumental: after być, 'I am a…'",0
+stronie,strona,locative,722
+rynku,rynek,genitive,0
+kawiarni,kawiarnia,genitive or locative,0
+mlekiem,mleko,instrumental: after z = with,0
+lat,rok,genitive plural (irregular): after numbers from 5 up,127
+ratuszem,ratusz,instrumental: after za = behind,0
+kwiaty,kwiat,plural,2115
+kwiaciarni,kwiaciarnia,genitive: after nie mogę otworzyć,0
+kwiaciarnię,kwiaciarnia,accusative (object form),0
+ławką,ławka,instrumental: after pod,0
+oli,ola,genitive: after dla,0
+basi,basia,genitive: after od,0
+kawę,kawa,accusative (object form),1463
+herbatę,herbata,accusative (object form),0
+malarką,malarka,"instrumental: after być, 'I am a…'",0
+maluję,malować,"I paint, I'm painting",0
+niebieskie,niebieski,neuter (with niebo),0
+żółte,żółty,neuter (with słońce),0
+czerwona,czerwony,feminine (with farba),0
+czerwoną,czerwony,"accusative, feminine (with farbę)",0
+czerwonej,czerwony,"genitive, feminine (with farby)",0
+niebieska,niebieski,feminine (with farba),0
+niebieską,niebieski,"accusative, feminine (with farbę)",0
+niebieskiej,niebieski,"genitive, feminine (with farby)",0
+żółta,żółty,feminine (with farba),0
+żółtą,żółty,"accusative, feminine (with farbę)",0
+żółtej,żółty,"genitive, feminine (with farby)",0
+zielona,zielony,feminine (with farba),0
+zieloną,zielony,"accusative, feminine (with farbę)",0
+zielonej,zielony,"genitive, feminine (with farby)",0
+biała,biały,feminine (with farba),0
+białą,biały,"accusative, feminine (with farbę)",0
+białej,biały,"genitive, feminine (with farby)",0
+farbę,farba,accusative (object form),0
+farby,farba,"genitive: after potrzebować, szukać",0
+potrzebuję,potrzebować,I need,301
+ratuszu,ratusz,locative: after przy,0
+listonoszem,listonosz,"instrumental: after być, 'I am a…'",0
+poczcie,poczta,locative: after na (t changes to c),0
+józefa,józef,genitive: after dla,0
+mu,on,to him (dative),91
+dobra,dobry,feminine (with robota),89
+widzenia,widzenie,genitive: after do,917
+mnie,ja,me (genitive: after dla),17
+mojej,mój,"genitive, feminine (with wnuczki)",214
+wnuczki,wnuczka,genitive: after od,0
+księgarni,księgarnia,locative: after w,0
+książkami,książka,instrumental plural: after z = with,0
+książki,książka,plural; also the genitive singular,1458
+byłam,być,I was (said by a woman),367
+środku,środek,locative: w środku = inside,679
+szuka,szukać,he / she is looking for,1554
+piaskownicy,piaskownica,locative: after przy,0
+drzewem,drzewo,instrumental: after pod,0
+filemona,filemon,"accusative: an animal, so it ends in -a",0
+chodźmy,chodzić,let's go,431
+mieszka,mieszkać,he / she lives,1061
+krakowie,kraków,locative: after w (ó changes to o),0
+moim,mój,instrumental (with przyjacielem),178
+przyjacielem,przyjaciel,instrumental: after być,1046
+razie,raz,locative: na razie = see you,322
+policzmy,policzyć,let's count,0
+następna,następny,feminine (with zagadka),0
+fontanny,fontanna,genitive: after obok,0
+muzykiem,muzyk,"instrumental: after być, 'I am a…'",0
+gram,grać,I play,0
+zagram,zagrać,I will play,0
+akordeonie,akordeon,locative: grać na + locative,0
+porwał,porwać,it snatched (past tense),0
+nut,nuty,genitive: after bez,0
+drzewie,drzewo,locative: after przy,0
+muzykę,muzyka,accusative (object form),2499
+piosenkę,piosenka,accusative (object form),2459
+zaśpiewajmy,zaśpiewać,let's sing,0
+ta,ten,feminine (with piosenka),128
+stara,stary,feminine (with piosenka),1276
+ubrania,ubranie,plural: clothes,1944
+pada,padać,it falls → it's raining,0
+idzie,iść,he / she is going,477
+wieje,wiać,it blows,0
+chcą,chcieć,they want,476
+ciepłe,ciepły,plural (with ubrania),0
+pracy,praca,genitive: after do,243
+karmię,karmić,I feed,0
+gołębie,gołąb,plural (ą changes to ę),0
+chleba,chleb,"genitive: after szukać, or nie mam",0
+głodne,głodny,plural (with gołębie),0
+szczęśliwe,szczęśliwy,plural (with gołębie),0
+bułki,bułka,plural; also the genitive singular,0
+piekarni,piekarnia,genitive or locative,0
+dużą,duży,"accusative, feminine (with rodzinę)",2531
+rodzinę,rodzina,accusative (object form),918
+wiem,wiedzieć,I know,39
+wiesz,wiedzieć,you know,65
+wie,wiedzieć,he / she knows,202
+przepraszam,przepraszać,"I apologise → sorry, excuse me",90
+go,on,him / it (object form),23
+jej,ona,her; to her (genitive or dative),54
+nią,ona,her (after a preposition: na nią),204
+ci,ty,to you (dative),24
+cię,ty,you (object form),33
+ma,mieć,he / she / it has; nie ma = there isn't,31
+mamy,mieć,we have,86
+jesteś,być,you are,35
+był,być,he / it was,64
+była,być,she was,102
+było,być,it was; there was,67
+byłem,być,I was (said by a man),222
+będzie,być,he / she / it will be,48
+stawie,staw,locative: after przy,0
+robisz,robić,you do,166
+muszę,musieć,I have to,93
+myślę,myśleć,I think,142
+myślisz,myśleć,you think,167
+chodzą,chodzić,they walk,0
+chodź,chodzić,command form: come (here)!,179
+rozumiem,rozumieć,I understand,207
+parku,park,locative (w parku) or genitive (nie było parku),2062
+porządku,porządek,locative: w porządku = all right,94
+słuchają,słuchać,they listen,0
+znasz,znać,you know,427
+piotra,piotr,"accusative: a person, so it ends in -a",0
+martę,marta,accusative (object form),0
+problemu,problem,genitive: after nie ma,1371
+przychodzi,przychodzić,he / she comes,1611
+domu,dom,genitive: after do,98
+czasu,czas,"genitive: after dużo, nie mam",163
+głupie,głupi,neuter (with to),1352
+zabrał,zabrać,he took (past tense),1410
+moją,mój,"accusative, feminine (with deskorolkę)",209
+mówi,mówić,he / she says,195
+niebezpieczne,niebezpieczny,neuter (with to),1706
+pokażę,pokazać,I will show,1385
+szkoły,szkoła,genitive: after do,626
+mamo,mama,vocative: the form for calling someone,282
+minut,minuta,genitive plural: after pięć,363
+czekam,czekać,I'm waiting,1718
+spóźnia,spóźniać,she is late (with się),0
+kocham,kochać,I love,260
+przyjdzie,przyjść,he / she will come,1017
+nadzieję,nadzieja,accusative: mam nadzieję = I hope,286
+kupiłem,kupić,I bought (said by a man),2504
+powiem,powiedzieć,I will say,314
+taka,taki,feminine (with ona),296
+piękna,piękny,feminine (with ona),900
+zrobię,zrobić,I will do,380
+szczęśliwa,szczęśliwy,feminine (with ona),1384
+kaczki,kaczka,plural,0
+stało,stać,it happened (with się),137
+prostu,prosty,"po prostu = simply, just",134
+zmęczona,zmęczony,feminine (Ania is speaking),2627
+kina,kino,genitive: after do,0
+musisz,musieć,you have to,111
+mają,mieć,they have,241
+małe,mały,plural (with dzieci),799
+dzieci,dziecko,plural (irregular),228
+lekarką,lekarka,instrumental: after być,0
+trudne,trudny,neuter (with to),1088
+kupię,kupić,I will buy,0
+sobie,siebie,(to / for) oneself,62
+ciebie,ty,you (genitive: after dla),60
+prawdę,prawda,accusative (object form),502
+ich,oni,their; them,81
+grają,grać,they play,0
+jesteśmy,być,we are,119
+normalne,normalny,neuter (with to),2307
+daj,dać,command form: give!,177
+chwilę,chwila,accusative (object form),335
+możemy,móc,we can,130
+będę,być,I will be,104
+nas,my,us (object form),76
+dziewczyną,dziewczyna,instrumental: after być,992
+musimy,musieć,we have to,126
+chodzi,chodzić,chodzi o = it's about,135
+będziesz,być,you will be,148
+mili,miły,"plural, men in the group (with rodzice)",0
+jego,on,his; him (genitive),69
+tym,ten,locative or instrumental: o tym = about it,21
+czym,co,locative: o czym = about what,152
+te,ten,"plural: these, those (not men)",109
+tę,ten,"accusative, feminine",235
+tych,ten,genitive plural: z tych = of these,184
+tej,ten,"locative, feminine: w tej torbie",115
+temu,ten,dawno temu = long ago,165
+tobą,ty,instrumental: z tobą = with you,132
+tobie,ty,dative: dzięki tobie = thanks to you,253
+mną,ja,instrumental: ze mną = with me,139
+niej,ona,her (after a preposition: dla niej),242
+niego,on,him (after a preposition: dla niego),173
+nim,on,him (locative: o nim = about him),107
+nam,my,to us (dative),108
+nami,my,instrumental: z nami = with us,316
+im,oni,to them (dative),194
+nich,oni,them (after a preposition: o nich),229
+je,one,them (object form),112
+kogo,kto,whom: na kogo = for whom,361
+kim,kto,instrumental: kim jest? = who is (he)?,168
+kogoś,ktoś,someone (object form),244
+czegoś,coś,genitive: after szukać,341
+wszystkich,wszyscy,accusative: everyone (object form),236
+wszystkim,wszystko,locative: o wszystkim = about everything,331
+jakieś,jakiś,neuter (with dziecko),234
+jakie,jaki,neuter (with to),330
+sama,sam,feminine: alone (a woman speaking),307
+samo,sam,neuter: to samo = the same thing,323
+twoja,twój,feminine,162
+twoje,twój,neuter or plural,183
+twojej,twój,"genitive, feminine",299
+mojego,mój,"genitive, masculine",193
+nasze,nasz,plural (with dzieci),321
+swoje,swój,neuter (with zdanie),223
+która,który,feminine: która godzina? = what time?,230
+które,który,plural (with rzeczy),170
+całe,cały,neuter (with życie),471
+dobre,dobry,neuter (with miejsce),325
+piękne,piękny,neuter (with to),1085
+miła,miły,feminine,1797
+ładna,ładny,feminine,1842
+mądre,mądry,plural (with kaczki),0
+nowe,nowy,plural (with drzewa),718
+śmieszne,śmieszny,neuter (with to),1373
+ważne,ważny,plural (with pieniądze),538
+ważnego,ważny,genitive: coś ważnego = something important,2884
+zła,zły,feminine: cross (Teresa is speaking),976
+spóźniona,spóźniony,feminine (Marta is speaking),0
+bardziej,bardzo,more (comparative),247
+życia,życie,genitive: miłość życia = love of (one's) life,276
+życiu,życie,locative: w życiu = in life,442
+boże,bóg,vocative: mój Boże! = my God!,145
+męża,mąż,"accusative: a person, so it ends in -a",947
+pana,pan,accusative or genitive,143
+panie,pan,vocative: the form for calling someone,118
+wiesława,wiesław,"accusative: a person, so it ends in -a",0
+wiesławie,wiesław,vocative: the form for calling someone,0
+ławce,ławka,locative: na ławce = on the bench,0
+parkiem,park,instrumental: za parkiem = past the park,0
+drzewa,drzewo,plural,2926
+kaczkę,kaczka,accusative (object form),0
+stawem,staw,instrumental: after nad,0
+rybę,ryba,accusative (object form),0
+pomocy,pomoc,genitive: after potrzebować,390
+rację,racja,accusative: mieć rację = to be right,264
+rzeczy,rzecz,plural,161
+razy,raz,plural: kilka razy = a few times,384
+roku,rok,genitive: od roku = for a year; locative: w roku,348
+wieczora,wieczór,genitive: after do,0
+dni,dzień,plural (irregular),291
+psa,pies,"accusative: an animal, so it ends in -a",1359
+kwiatów,kwiat,genitive plural: z tych kwiatów,0
+torbie,torba,locative: w torbie = in the bag,0
+egzaminem,egzamin,instrumental: after przed,0
+wnuka,wnuk,genitive: dla wnuka = for (my) grandson,0
+tato,tata,vocative: the form for calling someone,300
+piję,pić,I drink,0
+pójdę,pójść,I will go,520
+słyszę,słyszeć,I hear,1093
+mówisz,mówić,you say,248
+mówię,mówić,I say,261
+mów,mówić,command form: say! (nie mów = don't say),376
+pytasz,pytać,you ask,1799
+szukasz,szukać,you're looking for,1657
+leci,lecieć,it flies,1009
+siedzę,siedzieć,I sit,0
+mogą,móc,they can,349
+wydaje,wydawać,wydaje mi się = it seems to me,382
+żyje,żyć,he / she lives; żyje się = one lives,342
+dzieje,dziać,co się dzieje = what's going on,208
+idź,iść,command form: go!,275
+zobacz,zobaczyć,command form: (go and) see!,911
+przestań,przestać,command form: stop it!,278
+chciałem,chcieć,I wanted (said by a man),280
+chciał,chcieć,he wanted,328
+chciałbym,chcieć,I would like (said by a man),350
+widziałem,widzieć,I saw (said by a man),329
+widzisz,widzieć,you see,298
+wygląda,wyglądać,it looks,191
+umiem,umieć,I know how,1849
+znaczy,znaczyć,it means,206
+wracam,wracać,I come back,1029
+czekaj,czekać,command form: wait!,378
+czekasz,czekać,you're waiting,0
+myślałem,myśleć,I thought (said by a man),266
+myśli,myśleć,he / she thinks,224
+miałem,mieć,I had (said by a man),259
+miał,mieć,he had; miał rację = he was right,160
+zgubiłem,zgubić,I lost (said by a man),0
+musi,musieć,he / she / it has to; musi być = there must be,180
+byłbym,być,I would be (said by a man),2244
+były,być,they were (not men),324
+będą,być,they will be,288
+będziemy,być,we will be,210
+czuję,czuć,I feel,312
+lubi,lubić,he / she likes,714
+powiedz,powiedzieć,command form: tell (me)!,188
+powiedział,powiedzieć,he said,175
+stanie,stać,it will happen (with się),271
+pracuje,pracować,he / she works,778
+daję,dawać,I give,2048
+mieszkają,mieszkać,they live,0
+dzwonią,dzwonić,they phone,0
+zmienia,zmieniać,it changes (with się),1676
+słuchaj,słuchać,command form: listen!,326
+posłuchaj,posłuchać,command form: listen!,369
+zapominam,zapominać,I forget,0
+spójrz,spojrzeć,command form: look!,347
+bawią,bawić,they play (with się),0
+znam,znać,I know,332
+płacze,płakać,he / she cries,0
+robi,robić,he / she does,270
+padało,padać,it rained; gdyby nie padało = if it didn't rain,0
+wiemy,wiedzieć,we know,381
+kocha,kochać,he / she loves,1007
+kota,kot,genitive: after ani… ani (nie mam),0
+wszystkie,wszyscy,all (not men: with drzewa),205
+wam,wy,to you (more than one person),231
+was,wy,"you (more than one person, object form)",153
+takiego,taki,genitive: nikogo takiego = nobody like,254
+nikogo,nikt,genitive: after nie,487
+twoim,twój,locative: w twoim plecaku,277
+plecaku,plecak,locative: after w,0
+swoją,swój,"accusative, feminine",279
+historię,historia,accusative (object form),1258
+mógł,móc,he could,294
+dwóch,dwa,two (genitive: od dwóch lat),459
+dwie,dwa,two (feminine: dwie córki),419
+chwili,chwila,locative: w tej chwili = right now,534
+wiecie,wiedzieć,you know (more than one person),550
+macie,mieć,you have (more than one person),396
+jesteście,być,you are (more than one person),368
+chcemy,chcieć,we want,541
+możliwe,możliwy,neuter: (it's) possible,529
+miejsca,miejsce,genitive: nie ma miejsca = there's no room,482
+miejscu,miejsce,locative: w tym miejscu = on this spot,406
+weź,wziąć,command form: take!,464
+trzymaj,trzymać,command form: hold! here!,513
+wystarczy,wystarczyć,it will be enough,450
+pośpiechu,pośpiech,genitive: after nie ma,0
+martw,martwić,command form: nie martw się = don't worry,600
+dam,dać,I will give,488
+jedną,jeden,"accusative, feminine (with radę)",436
+jedno,jeden,neuter (with pytanie),423
+jedna,jeden,feminine (with kawa),465
+jednego,jeden,accusative: a person (with syna),508
+radę,rada,accusative (object form),640
+pij,pić,command form: drink!,0
+cukrem,cukier,instrumental: z cukrem = with sugar,0
+zostań,zostać,command form: stay!,902
+zamknij,zamknąć,command form: close!,466
+zamkną,zamknąć,they will close,0
+późnej,późny,"genitive, feminine (with nocy)",0
+nocy,noc,genitive: do nocy = until night,305
+wolnym,wolny,locative: w wolnym czasie = in free time,0
+wolne,wolny,mieć wolne = to be off (work),2300
+czasie,czas,locative: w czasie,578
+czasów,czas,genitive plural: za moich czasów = in my day,2088
+czasy,czas,plural: times,2036
+czytam,czytać,I read,0
+którzy,który,"plural, men in the group: who",345
+którym,który,locative: przy którym = at which,421
+którego,który,accusative: a person (whom),404
+której,który,"locative, feminine: o której = about whom",438
+którą,który,"accusative, feminine: which",360
+przychodzą,przychodzić,they come,0
+żadnych,żaden,genitive plural: after nie ma,394
+problemów,problem,genitive plural: after żadnych,1666
+panu,pan,"to you, sir (dative)",392
+zbigniewie,zbigniew,vocative: the form for calling someone,0
+zrobiłem,zrobić,"I made, I did (said by a man)",503
+zrobił,zrobić,he did,315
+słyszałem,słyszeć,I heard (said by a man),545
+powiedziałem,powiedzieć,"I said, I told (said by a man)",370
+powiedziała,powiedzieć,she said,401
+szefowi,szef,dative: to (my) boss,0
+szefa,szef,genitive: after od,2004
+wrócisz,wrócić,you will come back,1620
+nowego,nowy,genitive: co nowego? = what's new?,580
+nowych,nowy,genitive plural: after nie lubię,1653
+nową,nowy,"accusative, feminine (with pracę)",1169
+świecie,świat,locative: na świecie = in the world,497
+zobaczymy,zobaczyć,we will see,740
+lata,rok,years (the plural of rok is irregular),412
+lecą,lecieć,they fly,0
+ojca,ojciec,genitive: (my) father's,410
+musiał,musieć,he had to,437
+mówił,mówić,"he said, he used to say",479
+mówiła,mówić,"she said, she used to say",941
+mówiłem,mówić,"I said, I told (said by a man)",403
+mówią,mówić,they say,551
+mówiąc,mówić,saying: między nami mówiąc = between you and me,721
+pamiętasz,pamiętać,you remember,416
+jaka,jaki,feminine (with pogoda),654
+jakiego,jaki,genitive: z jakiego powodu? = for what reason?,1172
+jaką,jaki,"accusative, feminine (with kawę)",584
+piszą,pisać,they write,0
+piszę,pisać,I write,0
+wierzę,wierzyć,I believe,511
+miało,mieć,it was going to (miało padać),899
+miała,mieć,she had,317
+miałam,mieć,I had (said by a woman),446
+ogóle,ogół,w ogóle = at all,515
+rozumiesz,rozumieć,you understand,443
+sądzę,sądzić,I think,417
+pewna,pewien,sure (said by a woman),549
+byli,być,they were (men in the group),462
+moi,mój,"plural, men in the group (with przyjaciele)",752
+moich,mój,genitive plural: za moich czasów,385
+przyjaciele,przyjaciel,plural,1060
+inne,inny,plural (with czasy),532
+inni,inny,"plural, men in the group (with ludzie)",950
+innego,inny,genitive: coś innego = something else,388
+innych,inny,genitive: dla innych = for others,512
+słaba,słaby,feminine (with kawa),0
+gorąca,gorący,feminine (with kawa),0
+gazecie,gazeta,locative: w gazecie = in the paper,0
+głupoty,głupota,plural: mówić głupoty = to talk nonsense,0
+człowieka,człowiek,"accusative: a person, so it ends in -a",589
+kosztuje,kosztować,it costs,0
+pieniędzy,pieniądze,genitive: after nie mam,509
+patrz,patrzeć,command form: look!,586
+córki,córka,plural,1451
+syna,syn,"accusative: a person, so it ends in -a",628
+miastem,miasto,instrumental: poza miastem = outside the town,0
+nimi,oni,instrumental: z nimi = with them,458
+rozmawiam,rozmawiać,I talk,0
+rodziny,rodzina,genitive: after nie mam,598
+siedzi,siedzieć,he / she sits,1662
+siedział,siedzieć,(he) sat; będę siedział = I'll be sitting (said by a man),2873
+swoim,swój,locative: przy swoim stoliku,441
+stoliku,stolik,locative: przy stoliku = at the table,0
+stolików,stolik,genitive plural: after więcej,0
+tarasie,taras,locative: na tarasie = on the terrace,0
+takim,taki,instrumental: z takim = with such a,415
+kawiarnię,kawiarnia,accusative (object form),0
+gdybym,gdyby,if I (gdyby + -m),507
+wiedział,wiedzieć,(he) knew; gdybym wiedział = if I (a man) had known,546
+wiedziałem,wiedzieć,I knew (said by a man),473
+sprawy,sprawa,plural: things to deal with,377
+sprawę,sprawa,accusative: zdawać sobie sprawę = to realise,449
+pokoju,pokój,locative: w pokoju = in the room,420
+dostałam,dostać,I got (said by a woman),2031
+żebym,żeby,so that I (żeby + -m),399
+przyszła,przyjść,(she) came; żebym przyszła = for me (a woman) to come,1516
+powodu,powód,genitive: z powodu = because of,371
+myślałam,myśleć,I thought (said by a woman),422
+skończę,skończyć,I will finish,2897
+skończyłam,skończyć,I finished (said by a woman),0
+chciałam,chcieć,I wanted (said by a woman),433
+pracowałam,pracować,I worked (said by a woman),0
+całą,cały,"accusative, feminine (with noc)",452
+komputera,komputer,genitive: after od,0
+działa,działać,it works,542
+dziwne,dziwny,neuter (with to),591
+da,dać,nie da się = it can't be done,469
+brzmi,brzmieć,it sounds,510
+cieszę,cieszyć,cieszę się = I'm glad,552
+wyglądasz,wyglądać,you look,499
+czujesz,czuć,you feel; you smell,484
+piecze,piec,he / she bakes,0
+pojęcia,pojęcie,genitive: nie mam pojęcia = I have no idea,558
+godziny,godzina,plural: dwie godziny = two hours,570
+udało,udać,"udało się = it worked, I did it",561
+końcu,koniec,locative: w końcu = at last,374
+zdaję,zdawać,zdaję sobie sprawę = I realise,0
+każdego,każdy,genitive: każdego dnia = every day,569
+każdym,każdy,instrumental: z każdym dniem = with every day,533
+dnia,dzień,genitive: każdego dnia = every day,309
+dniem,dzień,instrumental: z każdym dniem,0
+teksty,tekst,plural,0
+dobrego,dobry,genitive (with słowa),1080
+słowa,słowo,genitive: after szukać,574
+oznacza,oznaczać,it means,583
+polsku,polski,po polsku = in Polish,0
+zostaw,zostawić,command form: leave (it)!,593
+zrób,zrobić,command form: do!,537
+przysługę,przysługa,accusative (object form),1571
+potrzebuje,potrzebować,he / she needs,518
+czymś,coś,locative: w czymś = with something,581
+idziesz,iść,you are going,645
+idziemy,iść,we are going; shall we go?,424
+idą,iść,they are going,2023
+kobiety,kobieta,plural,517
+dziewczyny,dziewczyna,plural,547
+wielu,wiele,many (with people: wielu ludzi),521
+zimne,zimny,plural (with ręce),0
+ręce,ręka,plural (irregular),523
+bolą,boleć,they hurt,0
+oczy,oko,plural (irregular),447
+byłoby,być,it would be,543
+bym,by,would (I): by + -m,344
+poszła,pójść,(she) went; bym poszła = I (a woman) would go,1565
+została,zostać,she stayed,563
+mogła,móc,she could,577
+niczego,nic,genitive: after nie potrzebuję,414
+pracę,praca,accusative (object form),460
+twoją,twój,"accusative, feminine (with torbę)",318
+twojego,twój,"genitive, masculine (with taty)",356
+taty,tata,genitive: od taty = from dad,1744
+sobą,siebie,instrumental: ze sobą = with oneself,337
+we,w,w before some consonant pairs: we wtorek,354
+powinienem,powinien,I should (said by a man),463
+powinniśmy,powinien,we should,372
+witam,witać,"I welcome → hello, welcome",557
+pierwsza,pierwszy,feminine (with kawa),869
+podoba,podobać,podoba ci się? = do you like it?,405
+nasza,nasz,feminine (with kawiarnia),528
+naszej,nasz,"locative, feminine: w naszej kawiarni",527
+najlepsza,najlepszy,feminine (with kawa),1693
+kelnerem,kelner,instrumental: after być,0
+wybacz,wybaczyć,command form: forgive (me) → sorry,539
+został,zostać,(he) stayed; nikt nie został = nobody stayed,339
+przegrali,przegrać,they lost (men in the group),0
+nazywam,nazywać,nazywam się = my name is,848
+kierowcą,kierowca,instrumental: after być,0
+autobusu,autobus,genitive: kierowca autobusu = a bus driver,0
+autobusy,autobus,plural,0
+przerwy,przerwa,genitive: pół godziny przerwy,2889
+jedzie,jechać,"it goes, he / she goes (by vehicle)",1609
+jadę,jechać,"I'm going (by bus, car); I'm on my way",1308
+miasta,miasto,genitive: centrum miasta = the town centre,699
+powrotem,powrót,z powrotem = back (again),614
+jeżdżę,jeździć,I drive (regularly),0
+jeżdżą,jeździć,"they run, they go (regularly)",0
+jeździ,jeździć,he / she rides (regularly),0
+łatwa,łatwy,feminine (with praca),0
+łatwe,łatwy,neuter (with to),2079
+rozkładu,rozkład,genitive: after według,0
+spóźni,spóźnić,it will be late (with się),0
+spóźnię,spóźnić,I will be late (with się),0
+drodze,droga,locative: na drodze = on the road,650
+tygodniu,tydzień,locative: w tygodniu = a week,924
+pierwsze,pierwszy,plural (with autobusy),732
+piątej,pięć,o piątej = at five (o'clock),0
+północy,północ,genitive: o północy = at midnight,2314
+emeryturze,emerytura,locative: na emeryturze = retired,0
+przystanku,przystanek,genitive (blisko) or locative (na przystanku),0
+całym,cały,locative: w całym kraju = all over the country,818
+kraju,kraj,locative: w kraju,906
+świata,świat,genitive: pół świata = half the world,676
+samochodów,samochód,genitive plural: after dużo,0
+urlopu,urlop,genitive: tydzień urlopu = a week off,0
+sierpniu,sierpień,locative: w sierpniu = in August,0
+dziesięciu,dziesięć,genitive: około dziesięciu,0
+osób,osoba,genitive plural: after numbers from five up,892
+uważaj,uważać,command form: careful!,689
+należy,należeć,"należy + infinitive = you must, one should",659
+jazdą,jazda,instrumental: after przed,0
+obchodzi,obchodzić,nie obchodzi mnie = I don't care,682
+zależy,zależeć,to zależy = it depends,706
+zapomniałem,zapomnieć,I forgot (said by a man),1551
+mieliśmy,mieć,we had,631
+mieli,mieć,they had; mieli wygrać = they were supposed to win,651
+wysiada,wysiadać,gets off (with część ludzi),0
+zobaczenia,zobaczenie,do zobaczenia = see you,664
+ścieżce,ścieżka,locative: na ścieżce = on the path,0
+gotowa,gotowy,feminine: ready (Ela is speaking),791
+słucham,słuchać,I'm listening → hello? (on the phone); pardon?,630
+szefie,szef,vocative: the form for calling someone,951
+widziałam,widzieć,I saw (said by a woman),608
+powinnam,powinien,I should (said by a woman); powinnam była = I should have,647
+mówiłam,mówić,"I said, I told (said by a woman)",783
+mężowi,mąż,dative: to (my) husband,0
+wiedziałam,wiedzieć,I knew (said by a woman),743
+zrobiłam,zrobić,"I made, I did (said by a woman)",907
+dzieciom,dziecko,dative plural: for the children,0
+wyszłam,wyjść,I left (said by a woman),0
+chciałabym,chcieć,I would like (said by a woman),709
+skarbie,skarb,vocative: darling!,669
+spraw,sprawa,genitive plural: dużo spraw = a lot to do,1316
+głowie,głowa,locative: na głowie = on (one's) mind,860
+chciała,chcieć,she wanted,637
+musiała,musieć,she had to,933
+same,sam,nothing but: same problemy,1053
+problemy,problem,plural,788
+zmieńmy,zmienić,let's change,0
+zabawne,zabawny,neuter (with to),934
+lekarza,lekarz,genitive: do lekarza = to the doctor,1466
+boli,boleć,it hurts: boli mnie głowa = I've got a headache,1000
+powiedziałam,powiedzieć,"I said, I told (said by a woman)",667
+boję,bać,boję się = I'm afraid,988
+zdążę,zdążyć,I will make it in time,0
+trwa,trwać,"it lasts, it takes",2035
+nożną,nożny,"accusative, feminine: w piłkę nożną",0
+chłopaki,chłopak,plural: the lads,735
+drużyny,drużyna,genitive: z drużyny = from the team,2208
+drużynie,drużyna,locative: w drużynie = on the team,0
+boisku,boisko,locative: na boisku = at the pitch,0
+muszą,musieć,they have to,842
+popatrz,popatrzeć,command form: look!,949
+buty,but,plural,1377
+wielkie,wielki,plural (with buty),838
+pokaż,pokazać,command form: show!,862
+zdjęcia,zdjęcie,plural,779
+ulubione,ulubiony,neuter (with zdjęcie),0
+szkole,szkoła,locative: w szkole = at school,868
+kłopoty,kłopot,plural: mieć kłopoty = to have trouble,847
+matematyką,matematyka,instrumental: z matematyką,0
+zapomnij,zapomnieć,command form: forget (it)!,875
+dawaj,dawać,command form: come on! go on!,746
+spróbuj,spróbować,command form: try!,965
+gramy,grać,we play,0
+synu,syn,vocative: the form for calling someone,943
+chłopcy,chłopiec,plural (irregular),944
+przyjaciół,przyjaciel,genitive plural: dużo przyjaciół,812
+brata,brat,"accusative: a person, so it ends in -a",836
+zaczekaj,zaczekać,command form: wait!,666
+robimy,robić,we do,725
+treningu,trening,genitive: po treningu = after training,0
+pójdziemy,pójść,we will go,1284
+pizzę,pizza,accusative (object form),0
+wszystkiego,wszystko,"wszystkiego najlepszego = all the best, happy birthday",633
+najlepszego,najlepszy,wszystkiego najlepszego = all the best,1717
+zaczyna,zaczynać,it starts (with się),852
+uda,udać,uda się = it will work out,693
+nikomu,nikt,dative: nikomu nie mów = don't tell anyone,968
+tereso,teresa,vocative: the form for calling someone,0
+wiesiu,wiesław,"vocative of Wiesio, a pet name for Wiesław",0
+byłaś,być,you were (to a woman),648
+byłeś,być,you were (to a man),383
+powiedziałaś,powiedzieć,you said (to a woman),796
+powiedziałeś,powiedzieć,you said (to a man),489
+pyta,pytać,she / he asks,2834
+pytam,pytać,I ask,2003
+chciałeś,chcieć,you wanted (to a man),925
+powinnaś,powinien,you should (to a woman),620
+powinieneś,powinien,you should (to a man),411
+powinna,powinien,she should,993
+powinno,powinien,it should,716
+bądź,być,command form: be!,426
+śpią,spać,they sleep,0
+początku,początek,genitive: od początku = from the beginning,832
+liście,liść,plural,1756
+kosze,kosz,plural,0
+zaczęło,zacząć,it started,1830
+ogrodnikiem,ogrodnik,instrumental: after być,0
+pracowałem,pracować,I worked (said by a man),2576
+pracował,pracować,(he) worked; gdybyś pracował = if you (a man) worked,1382
+ojcem,ojciec,instrumental: z ojcem = with (my) father,765
+musiałem,musieć,I had to (said by a man),870
+wracaj,wracać,command form: come back!,871
+obiecuję,obiecywać,I promise,891
+czekał,czekać,(he) waited; będę czekał = I'll wait (said by a man),2785
+mógłbym,móc,I could (said by a man),710
+mógłbyś,móc,you could (to a man),787
+mógłby,móc,he / someone could,808
+mogłem,móc,"I could (said by a man, in the past)",649
+mogli,móc,they could (men in the group),764
+kieszeni,kieszeń,locative: w kieszeni = in (my) pocket,2437
+pomyślałem,pomyśleć,I thought (said by a man),876
+tulipany,tulipan,plural,0
+całego,cały,genitive: z całego serca = with all (my) heart,1461
+serca,serce,genitive: z całego serca,753
+prawdziwe,prawdziwy,neuter (with uczucie),982
+taką,taki,"accusative, feminine: taką, jaka jest = just as she is",632
+takiej,taki,"genitive, feminine: after nie spotkałem",964
+takich,taki,genitive plural: takich ludzi,611
+spotkałem,spotkać,I met (said by a man),2349
+spotyka,spotykać,spotyka się = one meets,0
+szansę,szansa,accusative (object form),742
+dziewczynę,dziewczyna,accusative (object form),861
+matki,matka,genitive: after bać się,855
+marty,marta,genitive: matka Marty = Marta's mother,0
+piosenki,piosenka,plural,0
+miłości,miłość,locative: o miłości = about love,856
+najlepsze,najlepszy,plural (with piosenki),1015
+zrobiłeś,zrobić,you did (to a man),524
+mówiłeś,mówić,you said (to a man),770
+zrobisz,zrobić,you will do,638
+słucha,słuchać,he / she listens,0
+widziałeś,widzieć,have you seen? (to a man),634
+miałeś,mieć,you had; miałeś rację = you were right (to a man),601
+gdybyś,gdyby,if you (gdyby + -ś),712
+żebyś,żeby,so that you (żeby + -ś),297
+byś,by,would (you): by + -ś,430
+odpoczywał,odpoczywać,(he) rested; byś odpoczywał = that you (a man) rest,0
+swojej,swój,"locative, feminine: o swojej pracy",486
+wrócił,wrócić,he came back,995
+cała,cały,feminine: cała rodzina = the whole family,677
+przyjeżdża,przyjeżdżać,"is coming (by car, train)",0
+niedzielę,niedziela,accusative: w niedzielę = on Sunday,0
+wami,wy,instrumental: z wami = with you (more than one),816
+panowie,pan,"plural, and the form for calling them: gentlemen",606
+możecie,móc,you can (more than one person),615
+panią,pani,"accusative: przepraszam panią = excuse me, madam",619
+chcecie,chcieć,you want (more than one person),684
+będziecie,być,you will be (more than one person),939
+potrzebujemy,potrzebować,we need,617
+wrócę,wrócić,I will come back,729
+zrobimy,zrobić,"we will make, we will do",622
+lodami,lody,instrumental: z lodami = with ice cream,0
+robię,robić,"I make, I do",514
+najlepszą,najlepszy,"accusative, feminine (with kawę)",2189
+góry,góra,plural: w góry = to the mountains,814
+górę,góra,accusative: na górę = upstairs,935
+mała,mały,feminine (with kawa),748
+duża,duży,feminine (with kawa),2087
+nazywa,nazywać,nazywa się = is called,605
+rób,robić,command form: do!,603
+środka,środek,genitive: do środka = inside,952
+ładniej,ładnie,nicer (comparative),0
+wasza,wasz,feminine (with kawa),780
+wasze,wasz,neuter (with zamówienie),990
+gotowe,gotowy,neuter (with zamówienie),1268
+pamiętam,pamiętać,I remember,493
+byliśmy,być,we were,639
+młodzi,młody,"plural, men in the group",0
+wieku,wiek,locative: w moim wieku = at my age,940
+cukru,cukier,genitive: bez cukru = without sugar,0
+straciłem,stracić,I lost (said by a man),1776
+żonę,żona,accusative (object form),985
+końca,koniec,genitive: do końca = to the end,644
+tymi,ten,instrumental plural: tymi rękami = with these hands,792
+rękami,ręka,instrumental plural: with (my) hands,0
+zbudowałem,zbudować,I built (said by a man),0
+dobrą,dobry,"accusative, feminine (with głowę)",1174
+głowę,głowa,accusative (object form),724
+liczb,liczba,genitive plural: do liczb = for numbers,0
+swojego,swój,accusative: an animal (with psa),429
+portfelu,portfel,locative: w portfelu = in (my) wallet,0
+swoich,swój,genitive plural (with wnuków),505
+wnuków,wnuk,genitive plural: zdjęcia wnuków,0
+innym,inny,locative: w innym mieście,681
+których,który,"genitive plural: whom (ludzi, których znam)",444
+stoi,stać,"stands, is standing",1154
+ciekawe,ciekawy,ciekawe… = I wonder…,1184
+policji,policja,locative: o policji = about the police,833
+stare,stary,neuter (with ciało),1644
+młoda,młody,feminine (with głowa),1561
+ciała,ciało,genitive: dla ciała = for the body,786
+głowy,głowa,genitive: dla głowy = for the mind,662
+złego,zły,genitive: (not) a bad word,945
+dobrym,dobry,instrumental: after być,846
+człowiekiem,człowiek,instrumental: after być,704
+złe,zły,plural (with wiadomości),755
+wiadomości,wiadomość,plural; also genitive,981
+człowieku,człowiek,locative: o człowieku = about a man,839
+naszego,nasz,"genitive, neuter (with miasta)",576
+istnieje,istnieć,it exists,960
+stu,sto,genitive: od stu lat = for a hundred years,0
+historii,historia,locative: o historii = about history,991
+nowym,nowy,dative plural: to new (people),913
+ludziom,ludzie,dative: to people,1057
+samym,sam,locative: przy tym samym = at the same,954
+prawa,prawo,plural: rights,757
+dał,dać,he gave,798
+godzinę,godzina,accusative: za godzinę = in an hour,864
+kilku,kilka,genitive: od kilku godzin = for several hours,803
+godzin,godzina,"genitive plural: after kilku, pięć…",616
+tekście,tekst,locative: w tekście = in the text,0
+nowa,nowy,feminine (with praca); od nowa = (start) over,994
+roboty,robota,genitive: dużo roboty = loads of work,851
+niemożliwe,niemożliwy,neuter (with to),823
+pomoże,pomóc,it will help,800
+zgadza,zgadzać,zgadza się = that's right,641
+zapomniałam,zapomnieć,I forgot (said by a woman),2416
+spotkaniu,spotkanie,locative: o spotkaniu = about the meeting,0
+słyszysz,słyszeć,you hear,877
+gitarze,gitara,locative: grać na gitarze = to play the guitar,0
+wróci,wrócić,she / he will come back,931
+zamierzam,zamierzać,I intend,959
+uważam,uważać,I think (that),938
+uważasz,uważać,you think,961
+sądzisz,sądzić,you think,758
+zajmę,zająć,zajmę się = I'll deal with,958
+wezmę,wziąć,"I'll take, I'll have",979
+ciągu,ciąg,w ciągu = within,984
+pewnego,pewien,genitive: pewnego dnia = one day,955
+firmę,firma,accusative (object form),2808
+jednym,jeden,locative: w jednym = in one,536
+komputerze,komputer,locative: w komputerze = on the computer,0
+niczym,nic,instrumental: nie martw się niczym = don't worry about anything,946
+rady,rada,genitive: after potrzebować,888
+faceta,facet,"accusative: a person, so it ends in -a",914
+gazetą,gazeta,instrumental: z gazetą = with a newspaper,0
+jedziemy,jechać,we're going; let's go,904
+krzyczą,krzyczeć,they shout,0
+ruszaj,ruszać,command form: get going!,927
+pierwszym,pierwszy,instrumental: za pierwszym razem = the first time,1123
+razu,raz,od razu = straight away,807
+znalazłem,znaleźć,I found (said by a man),726
+znaleźliśmy,znaleźć,we found,953
+znajdziemy,znaleźć,we will find,966
+zgubisz,zgubić,you will lose,0
+autobusie,autobus,locative: w autobusie = on the bus,0
+miesięcy,miesiąc,genitive plural: za kilka miesięcy,723
+drogę,droga,accusative (object form),819
+ostatnie,ostatni,plural (with autobusy),809
+puste,pusty,plural (with autobusy),0
+poczekaj,poczekać,command form: wait!,701
+musicie,musieć,you have to (more than one person),884
+robią,robić,they do,772
+trzech,trzy,three (with men: trzech kierowców),887
+kierowców,kierowca,genitive plural: after trzech,0
+chorych,chory,genitive plural (with kierowców),0
+wiedzą,wiedzieć,they know,797
+samochodu,samochód,genitive: after nie mam,895
+zostanie,zostać,will stay; will become,646
+zostało,zostać,is left: zostało pięć minut = five minutes are left,675
+odjazdu,odjazd,genitive: do odjazdu = until departure,0
+żadnego,żaden,genitive: after nie mam,595
+ludźmi,ludzie,instrumental: z ludźmi = with people,1028
+jakim,jaki,instrumental: jakim autobusem? = by which bus?,898
+autobusem,autobus,instrumental: by bus,0
+jedziesz,jechać,you're going (by vehicle),2120
+zrobiła,zrobić,"she made, she did",811
+kanapkę,kanapka,accusative (object form),0
+dziecka,dziecko,genitive: after nie można zostawić,844
+samego,sam,genitive: alone,841
+jakąś,jakiś,"accusative, feminine (with kawę)",824
+jakaś,jakiś,feminine (with pani),890
+pytała,pytać,she asked,0
+kimś,ktoś,instrumental: być kimś = to be someone,661
+jednej,jeden,"genitive, feminine (with rzeczy)",920
+pozwól,pozwolić,command form: let (me)!,470
+zadzwonię,zadzwonić,I will call,1012
+dasz,dać,you will give; dasz radę = you can do it,905
+zwróć,zwrócić,command form: zwróć uwagę = pay attention,0
+uwagę,uwaga,accusative: zwrócić uwagę = to pay attention,781
+sami,sam,plural: themselves,922
+powie,powiedzieć,he / she / someone will say,921
+powiesz,powiedzieć,you will say; co powiesz na…? = how about…?,494
+twoich,twój,accusative plural: a group with men (with przyjaciół),588
+naszych,nasz,genitive plural (with dzieci),585
+naszą,nasz,"accusative, feminine (with córkę)",671
+córkę,córka,accusative (object form),1301
+lubią,lubić,they like,1901
+lubimy,lubić,we like,0
+doktorze,doktor,vocative: panie doktorze = doctor (calling him),686
+czuje,czuć,feels; czuje się = he / she feels,885
+żadnej,żaden,"genitive, feminine: after nie mam",866
+potrzebujesz,potrzebować,you need,678
+bogu,bóg,dative: dzięki Bogu = thank God,1116
+trenera,trener,genitive,0
+zna,znać,he / she knows,747
+widział,widzieć,"(he, someone) saw",744
+piłkarzem,piłkarz,instrumental: after być,0
+stronę,strona,accusative: w którą stronę? = which way?,813
+strony,strona,genitive: z której strony? = from which side?,657
+przyjedzie,przyjechać,it will come,0
+okazji,okazja,genitive: z okazji = on the occasion of,962
+urodzin,urodziny,genitive: z okazji urodzin = for a birthday,0
+dostanie,dostać,she / he will get,1645
+jakiegoś,jakiś,genitive: after szukać,977
+filmu,film,genitive: after szukać,2229
+sprawie,sprawa,locative: w tej sprawie = about this,612
+wspólnego,wspólny,coś wspólnego = something in common,769
+najważniejszą,najważniejszy,"instrumental, feminine (with osobą)",0
+osobą,osoba,instrumental: after być,967
+przyszedł,przyjść,he came,879
+kciuki,kciuk,plural: trzymać kciuki = to keep your fingers crossed,0
+byłbyś,być,you would be (to a man),0
+rękę,ręka,accusative: daj rękę = give me your hand,806
+gotowi,gotowy,"plural, men in the group: ready?",997
+uczę,uczyć,I teach; uczę się = I study,0
+bibliotece,biblioteka,locative: w bibliotece = in the library,0
+egzaminie,egzamin,locative: na egzaminie = in the exam,0
+pytań,pytanie,genitive plural: mnóstwo pytań,1124
+prosta,prosty,feminine (with odpowiedź),0
+proste,prosty,neuter (with to),1044
+nienawidzę,nienawidzić,I hate,1041
+matematyki,matematyka,genitive: after nienawidzić,0
+uwielbiam,uwielbiać,I love,1074
+próbuję,próbować,I'm trying,1018
+próbuje,próbować,he / she is trying,1267
+próbowałem,próbować,I tried (said by a man),1264
+staram,starać,staram się = I'm trying,1271
+mieszkam,mieszkać,I live,2283
+przyjaciółmi,przyjaciel,instrumental plural: z przyjaciółmi = with friends,1079
+rodziców,rodzice,genitive: do rodziców = to (my) parents',1171
+wolę,woleć,I prefer,1398
+przyszłości,przyszłość,locative: w przyszłości = in the future,1425
+szpitalu,szpital,locative: w szpitalu = in hospital,1215
+szpitala,szpital,genitive: do szpitala = to the hospital,1020
+słyszałam,słyszeć,I heard (said by a woman),1023
+słyszałeś,słyszeć,did you hear? (to a man),1004
+wspaniałe,wspaniały,neuter (with to),1255
+wspaniała,wspaniały,feminine (with pogoda),1991
+sklepu,sklep,genitive: do sklepu = to the shop,1975
+auta,auto,genitive: after nie mam,2000
+pomaga,pomagać,it helps,1661
+nauce,nauka,locative: w nauce = with studying,0
+pomyślałam,pomyśleć,I thought (said by a woman),1406
+pójdziesz,pójść,you will go,1226
+spotkamy,spotkać,we will meet (with się),1362
+potrafię,potrafić,"I can, I know how",1078
+potrafi,potrafić,he / she can,1212
+potrafisz,potrafić,you can,1432
+ochotę,ochota,accusative: mieć ochotę na = to fancy,1692
+wyszła,wyjść,she went out; wyszła za mąż = she got married,1867
+zeszłym,zeszły,locative: w zeszłym roku = last year,1480
+łóżka,łóżko,genitive: do łóżka = to bed,1179
+łóżku,łóżko,locative: w łóżku = in bed,1442
+pomogę,pomóc,I will help,1213
+miłe,miły,neuter (with to),1395
+słońca,słońce,genitive: dużo słońca = lots of sunshine,1972
+świetne,świetny,neuter (with to),1488
+świetna,świetny,feminine (with kawa),1459
+wstawaj,wstawać,command form: get up!,1343
+szóstej,sześć,o szóstej = at six (o'clock),0
+kolejne,kolejny,plural (with liście),1473
+pobliżu,pobliże,w pobliżu = nearby,1361
+narzędziami,narzędzie,instrumental plural: z narzędziami = with tools,0
+ławkę,ławka,accusative (object form),0
+dawna,dawno,od dawna = for a long time,1603
+drzew,drzewo,genitive plural: after pięćdziesiąt,0
+drzewami,drzewo,instrumental plural: pomiędzy drzewami,0
+tysiące,tysiąc,plural: thousands,1804
+liści,liść,genitive plural: tysiące liści,0
+żoną,żona,instrumental: after być; z żoną = with (my) wife,1103
+czterdziestu,czterdzieści,genitive: od czterdziestu lat,0
+jemy,jeść,we eat,0
+spokoju,spokój,genitive: daje mi spokoju = gives me peace,1084
+nogi,noga,plural,1070
+młode,młody,plural (with nogi),0
+stawu,staw,genitive: wokół stawu,0
+rosną,rosnąć,they grow,0
+rośnie,rosnąć,it grows,0
+powiedzmy,powiedzieć,let's say,1909
+znajdziesz,znaleźć,you will find,1329
+znajdę,znaleźć,I will find,1010
+znajdzie,znaleźć,he / she will find,1417
+znalazła,znaleźć,she found,1983
+znalazłam,znaleźć,I found (said by a woman),1250
+rozmawiałem,rozmawiać,I talked (said by a man),1679
+rozmawiasz,rozmawiać,you talk,0
+rozmawialiśmy,rozmawiać,we talked,1555
+piotrem,piotr,instrumental: z Piotrem = with Piotr,0
+chłopca,chłopiec,"accusative: a person, so it ends in -a",1877
+małego,mały,od małego = since (he was) little; accusative: a person,1863
+małą,mały,"accusative, feminine (with prośbę)",1223
+chciałby,chcieć,he would like,1599
+byłby,być,he would be,1282
+kopię,kopać,I dig,0
+ziemię,ziemia,accusative (object form),1067
+zostaję,zostać,I'm staying,0
+domem,dom,instrumental: przed domem = in front of the house,1985
+żartuję,żartować,I'm joking,2493
+żartujesz,żartować,you're joking,1069
+chodźcie,chodzić,"command form: come on, everyone!",1140
+dajcie,dać,command form: give (more than one person)!,1161
+stój,stać,command form: stop! stand still!,1145
+zobaczysz,zobaczyć,you will see,1180
+zobaczę,zobaczyć,I will see,1214
+zobaczmy,zobaczyć,let's see,1575
+zobaczyłem,zobaczyć,I saw (said by a man),1911
+wrócimy,wrócić,we will come back,1891
+dzieckiem,dziecko,instrumental: after być,1014
+przysięgam,przysięgać,I swear,1042
+uspokój,uspokoić,command form: uspokój się = calm down,1150
+gry,gra,plural,1149
+grę,gra,accusative (object form),1597
+niesamowite,niesamowity,plural (with gry),1155
+pozwoli,pozwolić,he / she will let,1946
+pozwolę,pozwolić,I will allow,1142
+usiądź,usiąść,command form: sit down!,1256
+desce,deska,locative: na desce = on a board,0
+wielką,wielki,"accusative, feminine (with ochotę)",1469
+wielka,wielki,feminine (with szkoła),1168
+wielkiego,wielki,genitive: coś wielkiego = something big,1337
+wielkim,wielki,locative: na wielkim stadionie,1456
+daje,dawać,gives,1022
+pewnością,pewność,z pewnością = certainly,1008
+wyjdzie,wyjść,it will turn out,1455
+oczach,oko,locative plural: w oczach = in (her) eyes,1783
+oczu,oko,genitive plural: oderwać oczu,1968
+kochasz,kochać,you love,1071
+kochałem,kochać,I loved (said by a man),0
+pomyśl,pomyśleć,command form: think!,1309
+kolację,kolacja,accusative (object form),1064
+doceniam,doceniać,I appreciate,1607
+podjąłem,podjąć,I took (said by a man): podjąłem decyzję = I've made a decision,0
+decyzję,decyzja,accusative (object form),1617
+wątpię,wątpić,I doubt,1807
+spodoba,spodobać,spodoba się = will like (lit. will please),1814
+czułem,czuć,I felt (said by a man),1960
+pierwszego,pierwszy,genitive: od pierwszego dnia,1591
+poważna,poważny,feminine (with sprawa),0
+pójdzie,pójść,it will go,1221
+dałem,dać,I gave (said by a man),1556
+myślał,myśleć,he thought,1889
+lekarzem,lekarz,instrumental: after być,1716
+mężem,mąż,instrumental: after być,1862
+robił,robić,he did,1077
+przygotuję,przygotować,I will prepare,0
+jedzenia,jedzenie,genitive: dużo jedzenia,1460
+kuchni,kuchnia,locative: w kuchni = in the kitchen,1510
+szefem,szef,instrumental: after być; z szefem = with the boss,1707
+córką,córka,instrumental: z córką = with (my) daughter,1936
+synem,syn,instrumental: z synem = with (my) son,1535
+siostry,siostra,genitive: of (my) sister; also plural,1411
+starsze,starszy,plural (with siostry),0
+najważniejsze,najważniejszy,neuter: the most important thing,2123
+ilu,ile,how many (people),1758
+pięciu,pięć,five (men or boys): pięciu wnuków,2024
+kubę,kuba,accusative: a person,0
+dobrej,dobry,"genitive, feminine: bądź dobrej myśli = look on the bright side",1767
+telewizji,telewizja,locative: w telewizji = on TV,1839
+dole,dół,"locative: na dole = at the bottom, downstairs",1365
+zabierz,zabrać,command form: take (it)!,1063
+bierze,brać,he / she takes,1940
+biorę,brać,I take,1813
+trzyma,trzymać,he / she holds,1590
+każda,każdy,feminine (with kobieta),1424
+każde,każdy,neuter (with dziecko),1844
+każdą,każdy,"accusative, feminine (with kawę)",1583
+sekrety,sekret,plural,0
+zastanawiam,zastanawiać,zastanawiam się = I'm wondering,1726
+widzi,widzieć,he / she sees,1244
+widzimy,widzieć,we see; widzimy się = see you,1725
+widzicie,widzieć,you see (more than one person),1760
+widzieliśmy,widzieć,we saw,1875
+samą,sam,"accusative, feminine: tę samą = the same",1349
+prośbę,prośba,accusative (object form),0
+posiedź,posiedzieć,command form: sit (with me) for a while,0
+wyszedł,wyjść,"he went out, he left",1427
+rodzinie,rodzina,locative: w rodzinie = in the family,1441
+rodziną,rodzina,instrumental: z rodziną = with the family,1326
+święta,święto,"plural: the holidays (Christmas, Easter)",1550
+mogłaś,móc,you could (to a woman),1925
+wyglądają,wyglądać,they look,1709
+wyglądam,wyglądać,I look,1570
+żyją,żyć,they live,1651
+lecie,lato,locative: w lecie = in summer,0
+światła,światło,genitive: dużo światła,1351
+rana,rano,genitive: od rana = since the morning,1573
+drutami,drut,instrumental plural: z drutami = with knitting needles,0
+witamy,witać,we welcome → welcome!,1531
+chwileczkę,chwileczka,accusative: chwileczkę! = just a moment!,1127
+chwilkę,chwilka,accusative: chwilkę! = one moment!,1752
+piwa,piwo,genitive: after nie ma,2929
+ciasta,ciasto,genitive: kawałek ciasta = a piece of cake,0
+pasuje,pasować,"it goes (with), it fits",1039
+miłego,miły,genitive: miłego dnia! = have a nice day!,1625
+dziękujemy,dziękować,we thank (you),1445
+dziękuje,dziękować,he / she thanks,1705
+zapraszamy,zapraszać,we invite → do come!,0
+brakuje,brakować,is missing: brakuje cukru = we're out of sugar,1323
+szkodzi,szkodzić,nic nie szkodzi = never mind,1992
+kanapki,kanapka,plural,0
+dwunastej,dwanaście,od dwunastej = from twelve (o'clock),0
+kończy,kończyć,it ends; finishes,1528
+kończę,kończyć,I finish,0
+sobotę,sobota,accusative: w sobotę = on Saturday,0
+gości,gość,genitive plural: guests,1513
+stoliki,stolik,plural,0
+pełne,pełny,plural (with stoliki),1955
+kolego,kolega,vocative: mate!,1366
+wejdź,wejść,command form: come in!,1322
+siadaj,siadać,command form: have a seat!,1414
+słuchajcie,słuchać,"command form: listen, everyone!",1408
+robicie,robić,you do (more than one person),1294
+dostałem,dostać,I got (said by a man),1188
+dostał,dostać,he got,1165
+otwarte,otwarty,neuter (with okno),1723
+duże,duży,plural (with kawy),1296
+sercem,serce,instrumental: z sercem = with love,0
+własną,własny,"accusative, feminine (with firmę)",1495
+niektóre,niektóry,plural (with ciastka),1629
+niektórzy,niektóry,"plural, men in the group (with ludzie)",1120
+inną,inny,"accusative, feminine (with kawę)",1675
+inna,inny,feminine (with dziewczyna),1730
+innej,inny,"genitive, feminine: z innej strony = on the other hand",1815
+innymi,inny,instrumental plural: z innymi = with others,1491
+waszej,wasz,"genitive, feminine (with kawy)",1761
+twoi,twój,"plural, men in the group (with przyjaciele)",1210
+kobiet,kobieta,genitive plural: dużo kobiet,1234
+kobietę,kobieta,accusative (object form),1200
+kobietą,kobieta,instrumental: after być,1034
+latach,rok,locative plural: w latach = in the (decade),1558
+sześćdziesiątych,sześćdziesiąty,w latach sześćdziesiątych = in the sixties,0
+przyszedłem,przyjść,I came (said by a man),1330
+pamiętaj,pamiętać,command form: remember!,1277
+budynku,budynek,locative: w budynku = in the building,1435
+banku,bank,genitive: obok banku = next to the bank,1838
+przeszłości,przeszłość,locative: o przeszłości = about the past,1803
+zmieniło,zmienić,it changed (with się),1900
+zmieni,zmienić,it will change,1614
+mówili,mówić,they said (men in the group),1906
+imieniu,imię,locative: w imieniu = on behalf of,1539
+najlepszym,najlepszy,instrumental: after być,1420
+ojcu,ojciec,dative: (to my) father,1812
+żył,żyć,he lived,1994
+nikim,nikt,instrumental: z nikim = with nobody,1860
+polityce,polityka,locative: o polityce = about politics,0
+zostałem,zostać,"I was left, I stayed (said by a man)",1585
+moimi,mój,instrumental plural: z moimi = with my,1557
+graliśmy,grać,we played,0
+różne,różny,plural: all sorts of,1569
+kroku,krok,krok po kroku = step by step,0
+czytają,czytać,they read,0
+czyta,czytać,he / she reads,0
+gazet,gazeta,genitive plural: after nie czytają,0
+tacy,taki,"plural, men in the group: tacy są = that's what they're like",1114
+bratem,brat,instrumental: z bratem = with (my) brother,1768
+sensu,sens,genitive: to nie ma sensu = that makes no sense,1156
+znaczenia,znaczenie,genitive: to nie ma znaczenia = it doesn't matter,1100
+jedyną,jedyny,"instrumental, feminine: after być",1153
+jedyna,jedyny,feminine (with rzecz),1350
+rękach,ręka,locative plural: w rękach = in (my) hands,1941
+stole,stół,locative: na stole = on the table,2420
+przypomina,przypominać,it reminds,1957
+dobrych,dobry,genitive plural: dobrych ludzi,1971
+złych,zły,genitive plural: (than) bad (people),0
+stracił,stracić,he lost,1987
+pisałem,pisać,"I wrote, I used to write (said by a man)",0
+listy,list,plural,1568
+żony,żona,genitive: do żony = to (my) wife,1098
+biura,biuro,genitive: do biura = to the office,1091
+biurze,biuro,locative: w biurze = in an office,1354
+informacji,informacja,genitive: szukać informacji,1344
+informacje,informacja,plural,1106
+projekcie,projekt,locative: o projekcie = about the project,0
+firmy,firma,genitive: do firmy = to the company,1340
+zadzwoń,zadzwonić,command form: call (me)!,1059
+rozmowy,rozmowa,plural,1600
+klientami,klient,instrumental plural: z klientami = with clients,0
+rozmowę,rozmowa,accusative (object form),1605
+obawiam,obawiać,obawiam się = I'm afraid,1113
+tygodnie,tydzień,plural: weeks,1128
+tygodni,tydzień,genitive plural: od pięciu tygodni,1095
+straszne,straszny,plural (with tygodnie),1481
+sumie,suma,w sumie = all in all,1981
+zasadzie,zasada,w zasadzie = basically,1950
+lepszego,lepszy,genitive: after potrzebuję,1920
+jasna,jasny,feminine: jasna sprawa = of course,1945
+sprawdź,sprawdzić,command form: check!,1327
+sprawdzę,sprawdzić,I will check,1880
+interesuje,interesować,interesuje mnie = I'm interested in,1897
+zaczynam,zaczynać,I start,1724
+dziewiątej,dziewięć,o dziewiątej = at nine (o'clock),0
+wychodzę,wychodzić,"I leave, I go out",1949
+wychodzi,wychodzić,he / she leaves,1383
+komu,kto,to whom,1678
+całej,cały,"dative, feminine: całej grupie = to the whole group",1237
+grupie,grupa,dative: to the group,0
+pracujesz,pracować,you work,1321
+wyboru,wybór,genitive: nie mam wyboru = I have no choice,1083
+miesiące,miesiąc,plural: months,1287
+ostatniej,ostatni,"locative, feminine: w ostatniej chwili = at the last moment",1302
+ostatnią,ostatni,"accusative, feminine (with kawę)",1757
+ostatnia,ostatni,feminine (with przerwa),1336
+rodzaju,rodzaj,genitive: jakiego rodzaju? = what kind of?,1358
+momencie,moment,locative: w tym momencie = at the moment,1549
+zajęta,zajęty,feminine: busy (Kasia is speaking),2497
+zajmie,zająć,it will take,1209
+listę,lista,accusative (object form),1674
+zrobienia,zrobienie,do zrobienia = to do,2415
+słów,słowo,genitive plural: after szukać,1686
+poradzę,poradzić,poradzę sobie = I'll manage,1729
+zmiany,zmiana,plural,1774
+nowej,nowy,"locative, feminine: w nowej pracy",1884
+okropne,okropny,plural (with korki),1879
+spotkania,spotkanie,plural,1869
+dzwoni,dzwonić,"is calling, is ringing",1984
+dzwonił,dzwonić,he called,1665
+sytuacji,sytuacja,locative: w tej sytuacji = in this situation,1203
+potrzebne,potrzebny,neuter: what's needed,1910
+następnym,następny,instrumental: następnym razem = next time,1002
+następnego,następny,genitive: następnego dnia = the next day,1918
+pojedziesz,pojechać,you will go (by vehicle),0
+powodzenia,powodzenie,genitive: powodzenia! = good luck!,1003
+ulicy,ulica,locative: na ulicy = on the street,1045
+ruchu,ruch,genitive: dużo ruchu = lots of traffic,2507
+jedź,jechać,command form: drive! go!,1274
+wolniej,wolno,slower,0
+zatrzymaj,zatrzymać,command form: stop (it)!,1275
+krzyczy,krzyczeć,he / she shouts,0
+staje,stawać,it stops,1999
+druga,drugi,feminine (with linia),1499
+drugą,drugi,"accusative, feminine: na drugą stronę = to the other side",1283
+drugiego,drugi,genitive (with gola),1907
+prowadzi,prowadzić,it leads,1392
+wypadku,wypadek,genitive: od wypadku = since the accident,1293
+samochodzie,samochód,locative: w samochodzie = in the car,1363
+samochody,samochód,plural,0
+radia,radio,genitive: słuchać radia = to listen to the radio,0
+metrów,metr,genitive plural: sto metrów,1952
+kierunku,kierunek,locative: w którym kierunku? = which way?,1850
+wraca,wracać,it comes back,1633
+mówimy,mówić,we speak,1643
+liczy,liczyć,liczy się = it counts,1648
+przodu,przód,z przodu = at the front,1790
+tyłu,tył,z tyłu = at the back,1102
+wyjścia,wyjście,genitive: nie ma wyjścia = there's no way out,1589
+rogiem,róg,instrumental: za rogiem = round the corner,0
+czerwone,czerwony,neuter (with światło),0
+robotę,robota,accusative (object form),1270
+dojedziemy,dojechać,we will get there,0
+celu,cel,genitive: do celu = to the destination,1310
+minuty,minuta,plural: dwie minuty,1449
+zostawił,zostawić,(someone) left,1421
+powinni,powinien,they should,1619
+bilety,bilet,plural,2540
+dziwnego,dziwny,nic dziwnego = no wonder,1963
+przyjeżdżają,przyjeżdżać,they come,0
+daleka,daleki,z daleka = from far away,1979
+ósma,ósmy,punkt ósma = eight o'clock sharp,0
+przypadku,przypadek,locative: w każdym przypadku = in every case,1699
+miałaś,mieć,you had; miałaś rację = you were right (to a woman),1026
+rzadkie,rzadki,neuter (with to),0
+zrobiłaś,zrobić,did you make? (to a woman),1033
+mówiłaś,mówić,you said (to a woman),1334
+mogłam,móc,I could (said by a woman),1036
+taksówkę,taksówka,accusative (object form),0
+martwię,martwić,martwię się = I'm worried,1823
+martwi,martwić,martwi się = he / she worries,1474
+mamę,mama,accusative: o mamę = about Mum,1874
+mamie,mama,dative: (for) Mum,1990
+mamą,mama,instrumental: z mamą = with Mum,1562
+kupiłam,kupić,I bought (said by a woman),0
+minął,minąć,"it has passed, it's gone",0
+minęło,minąć,(time) has passed,1917
+dziećmi,dziecko,instrumental plural: z dziećmi = with children,1738
+potrzebują,potrzebować,they need,1866
+spóźniam,spóźniać,spóźniam się = I'm late,0
+matkę,matka,accusative (object form),1355
+dosyć,dość,enough (same as dość),1347
+czekania,czekanie,genitive: mam dosyć czekania,0
+uwierz,uwierzyć,command form: believe (me)!,1868
+wierzysz,wierzyć,you believe,1257
+życiem,życie,instrumental: cieszyć się życiem = to enjoy life,1457
+musiałam,musieć,I had to (said by a woman),1496
+skończy,skończyć,it will end,1217
+skończyłem,skończyć,I finished (said by a man),1882
+komuś,ktoś,to someone,1278
+myślą,myśleć,they think,1367
+siódmej,siódmy,o siódmej = at seven (o'clock),0
+dała,dać,she gave,1789
+rzeczą,rzecz,instrumental: after być,1798
+wróciła,wrócić,she came back,1836
+korki,korek,plural: traffic jams,0
+żadna,żaden,feminine (with praca),1923
+potrzeby,potrzeba,genitive: nie ma potrzeby = there's no need,1930
+musiało,musieć,coś musiało się stać = something must have happened,1962
+zajmuje,zajmować,it takes (time),1989
+bracie,brat,vocative: bro! brother!,1006
+niezła,niezły,feminine (with gra),1500
+niezłe,niezły,plural (with buty),1680
+zaczął,zacząć,it started,1198
+sekund,sekunda,genitive plural: dziesięć sekund,1177
+strzelam,strzelać,"I shoot, I score",0
+gola,gol,accusative: strzelić gola = to score a goal,0
+dzieciaki,dzieciak,plural,1331
+fajne,fajny,plural (with dzieciaki),2309
+nasi,nasz,"plural, men in the group: our lads",1656
+chcieli,chcieć,they wanted,1238
+pierwszej,pierwszy,"locative, feminine: w pierwszej drużynie",1404
+musieli,musieć,they had to,1112
+powiedzieli,powiedzieć,"they said, they told",1312
+zabawy,zabawa,genitive: dużo zabawy = a lot of fun,1695
+angielskiego,angielski,z angielskiego = in English (the subject),0
+zrozumiałem,zrozumieć,I understood (said by a man),1587
+lekcji,lekcja,locative: na lekcji = in the lesson,0
+chłopaka,chłopak,accusative or genitive: a person,1314
+chłopakom,chłopak,dative plural: to the lads,0
+spróbuję,spróbować,I'll try,1976
+zostanę,zostać,I will become,1405
+zostaniesz,zostać,will you be? you will become,1465
+kibicem,kibic,instrumental: after zostać,0
+nazywasz,nazywać,jak się nazywasz? = what's your name?,1553
+boisz,bać,boisz się? = are you afraid?,1372
+psów,pies,genitive plural: after bać się,0
+damy,dać,we will give; damy radę = we can do it,1464
+szanse,szansa,plural: duże szanse = a good chance,1820
+stadionie,stadion,locative: na stadionie,0
+zimą,zima,in winter,0
+trenujemy,trenować,we train,0
+sali,sala,locative: na sali = indoors (in a hall),1856
+szkołę,szkoła,accusative (object form),2667
+szukamy,szukać,we're looking for,1624
+bramkarza,bramkarz,"accusative: a person, so it ends in -a",0
+strzelił,strzelić,he scored,0
+zrobili,zrobić,they did,1360
+znamy,znać,we know,1490
+wiedziała,wiedzieć,(she) knew,1141
+wiedzieli,wiedzieć,they knew,1885
+niespodzianki,niespodzianka,plural,0
+szczęścia,szczęście,genitive: after nie można kupić,1574
+rozumie,rozumieć,he / she understands,1677
+zrobiliśmy,zrobić,we did,1669
+imprezę,impreza,accusative: na imprezę = to a party,1853
+pierwszą,pierwszy,"accusative, feminine (with randkę)",1374
+randkę,randka,accusative (object form),1851
+kinie,kino,locative: w kinie = at the cinema,0
+zgadzam,zgadzać,zgadzam się = I agree,1403
+zamierzasz,zamierzać,"you intend, you're planning",1243
+plany,plan,plural,1494
+prawdziwa,prawdziwy,feminine (with miłość),1483
+zróbmy,zrobić,let's do,1511
+zacznie,zacząć,it will start,1728
+patrzcie,patrzeć,"command form: look, everyone!",1357
+tablicę,tablica,accusative: na tablicę = at the board,0
+spójrzcie,spojrzeć,"command form: look, everyone!",1672
+przestańcie,przestać,"command form: stop it, everyone!",1778
+odłóż,odłożyć,command form: put (it) down!,1847
+zaczynamy,zaczynać,we're starting; let's start!,1524
+lekcję,lekcja,accusative (object form),0
+lekcjach,lekcja,locative: po lekcjach = after school,0
+lekcje,lekcja,plural; also homework,0
+otwórz,otworzyć,command form: open!,1115
+napisz,napisać,command form: write!,0
+datę,data,accusative (object form),0
+pytania,pytanie,plural,1030
+odpowiedzi,odpowiedź,plural,1273
+uwagi,uwaga,genitive: chwila uwagi = a moment's attention,1711
+myślicie,myśleć,you think (more than one person),1808
+książce,książka,locative: o książce = about the book,0
+jakiej,jaki,"genitive, feminine: z jakiej książki? = from which book?",1482
+idźcie,iść,"command form: go, everyone!",1660
+względu,wzgląd,ze względu na = because of,1534
+pogodę,pogoda,accusative: ze względu na pogodę,0
+zasady,zasada,plural,1364
+zasadami,zasada,instrumental plural: zgodnie z zasadami,0
+bezpieczeństwa,bezpieczeństwo,genitive: for (the children's) safety,1402
+wyniki,wynik,plural,1593
+testu,test,genitive: wyniki testu = the test results,0
+dumna,dumny,feminine: proud (Dorota is speaking),2710
+piętnastu,piętnaście,genitive: od piętnastu lat,0
+matką,matka,instrumental: z matką = with (my) mother,1118
+każdej,każdy,"dative, feminine: każdej klasie = to every class",1075
+klasie,klasa,dative or locative,2554
+klasę,klasa,accusative (object form),0
+możliwości,możliwość,plural: potential,1630
+abym,aby,so that I (aby + -m),1876
+abyś,aby,so that you (aby + -ś),1430
+byśmy,by,that we would (by + -śmy),1400
+uczyła,uczyć,(she) taught; abym uczyła = for me to teach,0
+uważa,uważać,he / she thinks,1166
+miłym,miły,instrumental (with mężczyzną),0
+mężczyzną,mężczyzna,instrumental: after być,1687
+lepsze,lepszy,plural (with oceny),1152
+oceny,ocena,plural,0
+zostaje,zostawać,he / she stays,1713
+resztę,reszta,accusative (object form),1162
+polskiego,polski,genitive: of a Polish (king),0
+króla,król,"genitive: a person, so it ends in -a",1696
+królem,król,instrumental: after być,2496
+królach,król,locative plural: o królach = about kings,0
+mieszkał,mieszkać,he lived,0
+dużym,duży,locative (with zamku),0
+zamku,zamek,locative: w zamku = in the castle,0
+siły,siła,genitive: dużo siły = a lot of strength,1263
+domowe,domowy,zadanie domowe = homework,0
+domowego,domowy,genitive: zadania domowego,0
+bierz,brać,command form: take!,1595
+oddaj,oddać,command form: give (it) back!,1743
+hani,hania,dative: (give it back) to Hania,0
+haniu,hania,vocative: the form for calling someone,0
+wyjdź,wyjść,command form: step outside!,1727
+zaufaj,zaufać,command form: trust (me)!,1770
+chciałaś,chcieć,did you want? (to a woman or girl),1523
+mogłabyś,móc,could you? (to a woman or girl),1477
+widziałaś,widzieć,did you see? (to a woman or girl),1104
+śpi,spać,he / she is sleeping,2161
+chodziło,chodzić,o co chodziło? = what was that about?,1135
+kacpra,kacper,genitive or accusative: a person,0
+czytał,czytać,(he) read; abyś czytał = that you (a boy) read,0
+czwartej,cztery,o czwartej = at four (o'clock),0
+rodzicami,rodzice,instrumental: z rodzicami = with the parents,0
+ucznia,uczeń,genitive: of a pupil,0
+uczniów,uczeń,genitive plural: of the pupils,0
+uczciwa,uczciwy,feminine: fair (Dorota is speaking),0
+nazwiska,nazwisko,plural,1763
+osoby,osoba,plural: dwadzieścia cztery osoby,1110
+dzielę,dzielić,I divide,0
+grupy,grupa,plural,1969
+celem,cel,instrumental: after być,1961
+sprawia,sprawiać,it gives (joy),1586
+dniu,dzień,locative: w pierwszym dniu = on the first day,1826
+płaczą,płakać,they cry,0
+ostatnich,ostatni,locative plural: w ostatnich latach = in recent years,1792
+telefony,telefon,plural,0
+komputery,komputer,plural,0
+swoimi,swój,instrumental plural: with their own,1974
+zabawkami,zabawka,instrumental plural: with toys,0
+pomogły,pomóc,they helped (women or children),0
+pilnuję,pilnować,I look after,0
+przejściu,przejście,locative: na przejściu = on the crossing,0
+korytarzu,korytarz,locative: po korytarzu = in the corridor,0
+górze,góra,locative: na górze = upstairs,1181
+piętrze,piętro,locative: na pierwszym piętrze,0
+wydarzyło,wydarzyć,co się wydarzyło? = what happened?,1659
+uczyło,uczyć,uczyło się = (many) studied,0
+tysięcy,tysiąc,genitive plural: thousands of,1055
+przede,przed,before (in front of mnie): przede mną,1505
+woźnym,woźny,instrumental: after być,0
+stał,stać,(it) stood,1478
+potrafią,potrafić,they can,2791
+płocie,płot,locative: przy płocie = by the fence,0
+okolicy,okolica,locative: w okolicy = in the area,1749
+zdaje,zdawać,zdaje się = it seems,1576
+puść,puścić,command form: let go!,1386
+rzuć,rzucić,command form: throw!,1921
+pozwolenia,pozwolenie,genitive: bez pozwolenia = without permission,0
+żegnaj,żegnać,command form: goodbye! farewell!,1959
+gościa,gość,accusative: a person,1117
+potrzebował,potrzebować,he needed,1444
+przyszedłeś,przyjść,you came (to a boy or man),1782
+wiedziałeś,wiedzieć,did you know? (to a boy or man),1303
+mogłeś,móc,you could have (to a boy or man),1082
+znalazłeś,znaleźć,did you find? (to a boy or man),1509
+znalazł,znaleźć,he found,1048
+znaleźli,znaleźć,they found (men or boys),1538
+wziął,wziąć,he / someone took,1616
+porze,pora,locative: o tej porze = at this time,2892
+pewne,pewny,neuter: jedno jest pewne = one thing's for sure,1173
+kochają,kochać,they love,0
+przerwę,przerwa,accusative (object form),2614
+mogło,móc,it could have,1231
+tą,ten,"instrumental, feminine: tą sprawą = (with) this matter",272
+sprawą,sprawa,instrumental: zająć się sprawą = to deal with a matter,1938
+krzakach,krzak,locative plural: w krzakach = in the bushes,0
+poszedł,pójść,he went,1109
+złym,zły,instrumental: after być,1993
+surowym,surowy,instrumental: after być,0
+chodzę,chodzić,I go; chodzę do klasy = I'm in year…,0
+trzeciej,trzeci,"genitive, feminine: do trzeciej klasy",0
+przyrodę,przyroda,accusative (object form),0
+mózgu,mózg,locative: w mózgu = in the brain,1388
+milionów,milion,genitive plural: millions of,1286
+komórek,komórka,genitive plural: of cells,0
+badania,badanie,plural: research,1475
+własne,własny,neuter (with laboratorium),1216
+własnego,własny,genitive: (no) own (room),1871
+głupia,głupi,feminine: silly (Hania is speaking),1635
+mądra,mądry,feminine: clever (Hania is speaking),0
+psy,pies,plural (irregular),2292
+uczucia,uczucie,plural,1712
+zwierzęta,zwierzę,plural (irregular),2490
+zwierzętach,zwierzę,locative plural: o zwierzętach = about animals,0
+zwierzęciu,zwierzę,locative: o zwierzęciu = about an animal,0
+ochrony,ochrona,genitive: after potrzebować,1689
+zbieram,zbierać,I collect,0
+kaczkach,kaczka,locative plural: o kaczkach = about ducks,0
+kaczek,kaczka,genitive plural: of ducks,0
+danych,dane,genitive: dużo danych,1932
+ślady,ślad,plural,1438
+błocie,błoto,locative: w błocie = in the mud,0
+huśtawce,huśtawka,locative: na huśtawce = on the swing,0
+jakbym,jakby,as if I (jakby + -m),1126
+latała,latać,(she) flew; jakbym latała = as if I (a girl) were flying,0
+wyprawiasz,wyprawiać,co ty wyprawiasz? = what are you up to?,1755
+hotelu,hotel,locative: w hotelu = in a hotel,1143
+okna,okno,genitive: z okna = from the window,2927
+mieszkania,mieszkanie,genitive: of the flat,1788
+siostrą,siostra,instrumental: z siostrą = with (my) sister,2347
+obu,oba,both (object form),1762
+centymetrów,centymetr,genitive plural: after numbers from five up,0
+filmy,film,plural,2942
+jedyne,jedyny,neuter (with marzenie),1261
+tamtej,tamten,"locative, feminine: na tamtej ulicy",1704
+tamtą,tamten,"instrumental, feminine: z tamtą drużyną",0
+samej,sam,"alone (a girl, after chodzić)",1130
+słyszałaś,słyszeć,did you hear? (to a woman or girl),1998
+prawdy,prawda,genitive: ani słowa prawdy = not a word of truth,1654
+pomożesz,pomóc,will you help?,1750
+zadaniem,zadanie,instrumental: z zadaniem = with the homework,0
+długopisu,długopis,genitive: after użyć,0
+uczymy,uczyć,uczymy się = we learn,0
+różnych,różny,genitive plural: różnych rzeczy,1873
+drugim,drugi,locative: w drugim rzędzie,1780
+rzędzie,rząd,locative: w rzędzie = in a row,0
+części,część,locative: w tej części = in this part,1146
+żebyśmy,żeby,so that we (żeby + -śmy),1144
+woli,woleć,he / she prefers,1953
+mogłabym,móc,I could (said by a woman or girl),1335
+biblioteki,biblioteka,genitive: do biblioteki = to the library,0
+twarzy,twarz,locative: na twarzy = on (my) face,1054
+zostały,zostać,are left (things),1050
+widziała,widzieć,she saw,1794
+odejdź,odejść,command form: go away!,1641
+przeszkadzasz,przeszkadzać,you're bothering (me),0
+jakimś,jakiś,locative: o jakimś = about some,1320
+szkolnym,szkolny,"locative (with przedstawieniu, meczu)",0
+przedstawieniu,przedstawienie,locative: w przedstawieniu = in the play,0
+prawdziwym,prawdziwy,instrumental: after być,1846
+meczu,mecz,locative: w meczu = in the match,0
+mowy,mowa,nie ma mowy = no way,1201
+jedynym,jedyny,instrumental: after być,1204
+fajnym,fajny,instrumental: after być,0
+facetem,facet,instrumental: after być,1187
+stylu,styl,locative: w stylu = in the style,1289
+lewandowskiego,lewandowski,genitive: Lewandowski's,0
+szybkie,szybki,plural (with ruchy),0
+ruchy,ruch,plural,1893
+chłopaków,chłopak,genitive plural: among the lads,0
+dostaniesz,dostać,you will get,1199
+dostanę,dostać,I will get,1688
+cukierka,cukierek,"accusative: a sweet (it ends in -a, like an animal)",0
+piątkę,piątka,accusative (object form),0
+stołówce,stołówka,locative: w stołówce = in the canteen,0
+kasy,kasa,genitive: nie mam kasy = I've got no cash,1825
+kasę,kasa,accusative (object form),1649
+zostawiłem,zostawić,I left (said by a boy or man),2856
+przyjaciela,przyjaciel,accusative: a person,1164
+przyjacielu,przyjaciel,vocative: buddy!,1518
+bartka,bartek,genitive or accusative: a person,0
+chciałbyś,chcieć,would you like? (to a boy or man),1581
+poszło,iść,it went: poszło dobrze = it went well,1136
+umowę,umowa,accusative (object form),1912
+szans,szansa,genitive plural: nie mamy szans = we have no chance,1908
+drużyną,drużyna,instrumental: z drużyną = against / with the team,0
+żadne,żaden,neuter (with zadanie),1948
+pomysłów,pomysł,genitive plural: milion pomysłów,0
+powiedzenia,powiedzenie,nic do powiedzenia = nothing to say,1415
+mojemu,mój,dative: to my,1965
+tacie,tata,dative: (to) Dad,0
+przeszkadza,przeszkadzać,it bothers,2086
+dowie,dowiedzieć,dowie się = (she) will find out,1735
+miałbym,mieć,I would have (said by a boy or man),1650
+miałby,mieć,he / someone would have,1895
+próbował,próbować,he tried,1233
+linii,linia,locative: na linii = on the line,1834
+ostatnim,ostatni,locative: na ostatnim meczu = at the last match,1564
+strzeliłem,strzelić,I scored (said by a boy or man),0
+zabiorę,zabrać,I will take,1905
+statku,statek,locative: na statku = on a ship,1437
+drugie,drugi,drugie śniadanie = packed lunch (lit. second breakfast),1297
+panem,pan,instrumental: z panem = with you (sir),1019
+żyjesz,żyć,are you alive?,1594
+twierdzi,twierdzić,he / she claims,1520
+ciężkie,ciężki,neuter (with życie),2322
+długie,długi,plural (with studia),0
+długa,długi,feminine (with historia),2262
+hiszpańskiego,hiszpański,genitive: uczę się hiszpańskiego = I'm learning Spanish,0
+plaży,plaża,locative: na plaży = on the beach,2535
+odjeżdża,odjeżdżać,it leaves,0
+stacji,stacja,genitive: ze stacji = from the station,2097
+pojadę,pojechać,I will go,2539
+pojedziemy,pojechać,we will go,2994
+przyjaciółką,przyjaciółka,instrumental: z przyjaciółką = with a friend,2338
+pochodzi,pochodzić,comes from,2052
+krakowa,kraków,genitive: z Krakowa = from Kraków,0
+osobę,osoba,accusative (object form),2015
+chińsku,chiński,po chińsku = in Chinese,0
+jakiejś,jakiś,"genitive, feminine: szukam jakiejś pracy",2150
+jutra,jutro,do jutra = by tomorrow,2239
+zacznę,zacząć,I will start,2570
+zaczęła,zacząć,"(it, she) started",2016
+zacząłem,zacząć,I started (said by a man or boy),2146
+kawie,kawa,locative: po kawie = after coffee,0
+pamięci,pamięć,genitive: nie mam pamięci = I've no memory,2273
+imion,imię,genitive plural: do imion = for names,0
+imienia,imię,genitive: nie pamiętam imienia,2588
+siostrę,siostra,accusative (object form),2030
+klubu,klub,genitive: do klubu = to a club,2181
+niebie,niebo,locative: na niebie = in the sky,2641
+chmury,chmura,genitive: ani jednej chmury,0
+świeże,świeży,neuter (with powietrze),0
+czyste,czysty,neuter (with niebo),2770
+próbowałam,próbować,I tried (said by a woman),2067
+jem,jeść,I eat,0
+oczywiste,oczywisty,neuter (with to),2196
+życzę,życzyć,I wish,2636
+dojdziesz,dojść,you'll get there,0
+wierz,wierzyć,command form: (don't) believe,2719
+podobało,podobać,podobało mi się = I liked it,2550
+wiosną,wiosna,in spring,0
+jesienią,jesień,in autumn,0
+sadzę,sadzić,I plant,0
+warte,wart,neuter: worth,2008
+konia,koń,"accusative: an animal, so it ends in -a",2154
+robiłem,robić,I did (said by a man),2109
+robiłeś,robić,you did (to a man),2525
+robiła,robić,she did,2628
+ryby,ryba,plural,2523
+nadchodzi,nadchodzić,is coming,2017
+południa,południe,genitive: z południa = from the south,0
+korzenie,korzeń,plural,0
+wypadły,wypaść,they fell out,0
+ręki,ręka,genitive: z ręki = out of (my) hand,2231
+ręką,ręka,instrumental: machać ręką = to wave,2999
+rąk,ręka,genitive plural: wolnych rąk,2597
+pracujemy,pracować,we work,2694
+kolejna,kolejny,feminine (with jesień),2392
+kolejną,kolejny,"accusative, feminine (with kawę)",2388
+podlewam,podlewać,I water,0
+wodą,woda,instrumental: with water,2925
+ładne,ładny,plural (with kwiaty),2007
+deszczu,deszcz,genitive: pomimo deszczu = despite the rain,0
+pomógł,pomóc,he helped,2266
+liśćmi,liść,instrumental plural: z liśćmi = with the leaves,0
+zobaczył,zobaczyć,he saw,2396
+zobaczy,zobaczyć,he / she will see,2037
+pojawił,pojawić,pojawił się = (it) appeared,2288
+głową,głowa,instrumental: nad głową = overhead,2304
+latają,latać,they fly,0
+ptaki,ptak,plural,0
+poszedłem,pójść,I went (said by a man),2378
+żonie,żona,dative: (for) my wife,2891
+mogłoby,móc,it could (would),2126
+mogłaby,móc,she could (would),2072
+wróciłeś,wrócić,you're back (to a man),2423
+wróciłem,wrócić,I came back (said by a man),2076
+wróciłam,wrócić,I came back (said by a woman),0
+wujku,wujek,vocative: uncle!,2414
+tatusiu,tatuś,vocative: daddy!,2564
+kupisz,kupić,will you buy?,0
+kupił,kupić,he bought,2632
+obiecał,obiecać,he promised,0
+słodkie,słodki,plural (with cukierki),2488
+cukierki,cukierek,plural,0
+cukierków,cukierek,genitive plural: pełno cukierków,0
+wyluzuj,wyluzować,command form: chill!,2211
+śpię,spać,I'm asleep,0
+umiesz,umieć,can you? do you know how?,2168
+czekajcie,czekać,"command form: wait, everyone!",2202
+czekają,czekać,they're waiting,2271
+czekamy,czekać,we're waiting,2442
+czekałem,czekać,I waited (said by a man),2960
+pospiesz,pospieszyć,command form: hurry (up)!,2529
+gwiazdy,gwiazda,plural,2217
+kolana,kolano,plural,2875
+zmarzł,zmarznąć,"it froze, it's frozen",0
+myję,myć,I wash; myję zęby = I brush my teeth,0
+zęby,ząb,plural,2393
+nienawidzi,nienawidzić,he / she hates,2904
+szpinaku,szpinak,genitive: after nienawidzić,0
+zejdź,zejść,command form: get down!,2708
+ufam,ufać,I trust,2028
+gdybyśmy,gdyby,if we (gdyby + -śmy),2010
+porozmawiamy,porozmawiać,we'll talk,2011
+porozmawiam,porozmawiać,I'll talk,2997
+poznałem,poznać,I met (said by a man),2066
+poznaliśmy,poznać,we met,0
+pociągu,pociąg,locative: w pociągu = on a train,0
+sercu,serce,locative: w sercu = in (my) heart,2122
+tęsknię,tęsknić,I miss,2278
+wspomnienia,wspomnienie,plural,2284
+randki,randka,genitive: of (our) date,0
+zostawię,zostawić,I'll leave,2124
+zostawiła,zostawić,she left,2720
+nadziei,nadzieja,genitive: bez nadziei = without hope,2650
+miejmy,mieć,miejmy nadzieję = let's hope,2970
+kochana,kochany,feminine: darling!,2344
+najgorsze,najgorszy,neuter: the worst thing,2748
+odpowiedzią,odpowiedź,instrumental: przed odpowiedzią = of the answer,0
+strachu,strach,genitive: ze strachu = out of fear,2598
+przypuszczam,przypuszczać,I suppose,2457
+żałuję,żałować,I regret,2472
+zapytałem,zapytać,I asked (said by a man),0
+zdarza,zdarzać,zdarza się = it happens,2158
+pragnę,pragnąć,"I want, I long for",2565
+planuję,planować,I'm planning,0
+ślubu,ślub,genitive: data ślubu = the wedding date,2591
+wątpliwości,wątpliwość,plural: doubts,2220
+zmienię,zmienić,I'll change,0
+zmienił,zmienić,he changed,2044
+decyzji,decyzja,genitive: after nie zmienię,2826
+zastanawiałem,zastanawiać,zastanawiałem się = I was wondering (said by a man),2981
+leki,lek,plural,2336
+zdrowia,zdrowie,genitive: dużo zdrowia! = good health!,2901
+nosi,nosić,he / she wears,2557
+czytania,czytanie,genitive: do czytania = for reading,0
+piwnicy,piwnica,locative: w piwnicy = in the cellar,2616
+słoików,słoik,genitive plural: dużo słoików,0
+starych,stary,genitive plural: starych rzeczy,2844
+starego,stary,genitive: of an old (man),2298
+starym,stary,dative plural (with ludziom); instrumental: after być,2819
+świąt,święto,genitive plural: do świąt = until Christmas,2447
+potrzebna,potrzebny,feminine (with cierpliwość),2175
+kolacji,kolacja,genitive: po kolacji = after dinner,2681
+odrobinę,odrobina,a little,2928
+matce,matka,dative: (to my) mother,2572
+zawdzięczam,zawdzięczać,I owe,0
+byliście,być,"you were, have you been? (more than one person)",2188
+restauracji,restauracja,locative: w restauracji,2051
+cudowne,cudowny,plural (with kwiaty),2784
+małym,mały,locative: w małym domu,2058
+musiałeś,musieć,did you have to? (to a man),2061
+dałeś,dać,did you give? (to a man),2090
+kaczkom,kaczka,dative plural: (to) the ducks,0
+skończył,skończyć,he finished,2111
+skończyła,skończyć,she finished,2682
+skończyło,skończyć,skończyło się = it's over,2685
+rozmawiał,rozmawiać,he talked,2941
+mężczyznę,mężczyzna,accusative (object form),2502
+mężczyzny,mężczyzna,genitive: of a man,2783
+sypialni,sypialnia,locative: w sypialni = in the bedroom,2780
+tylu,tyle,as many (as),2726
+włosów,włos,genitive plural: of hair,2790
+boku,bok,genitive: u boku = at (my) side,2530
+chwile,chwila,plural,2738
+rzeczach,rzecz,locative plural: o rzeczach = about things,2902
+naszymi,nasz,instrumental plural: z naszymi = with our,2984
+wnukami,wnuk,instrumental plural: with (our) grandchildren,0
+wolnych,wolny,genitive plural: wolnych rąk,0
+wieczoru,wieczór,genitive: do wieczoru = until the evening,2435
+wybierasz,wybierać,you choose; what will you have?,2651
+płaci,płacić,he / she pays; are you paying (sir)?,0
+kartą,karta,instrumental: kartą = by card,0
+gotówką,gotówka,instrumental: gotówką = in cash,0
+cenę,cena,accusative (object form),2148
+połóż,położyć,command form: put (it) down!,2578
+podejdź,podejść,command form: come up (to)!,2369
+baru,bar,genitive: do baru = to the bar,2898
+barze,bar,"locative: w barze, przy barze",2091
+najlepszych,najlepszy,"accusative plural, men in the group",2279
+klientów,klient,genitive or accusative plural,2132
+klienta,klient,accusative: a person,2752
+uśmiechem,uśmiech,instrumental: z uśmiechem = with a smile,0
+witajcie,witać,"command form: welcome, everyone!",2626
+zapraszam,zapraszać,I invite → do come!,0
+znają,znać,they know,2952
+gitarzystę,gitarzysta,accusative: a person,0
+zespołu,zespół,genitive: z zespołu = from the band,2668
+energii,energia,genitive: pełen energii = full of energy,2065
+łazienki,łazienka,genitive: klucz do łazienki,2823
+przyjemnością,przyjemność,z przyjemnością = with pleasure,2618
+gratuluję,gratulować,congratulations!,2786
+kasiu,kasia,vocative: the form for calling someone,0
+zechcesz,zechcieć,jeśli zechcesz = if you'd like,2233
+okazję,okazja,accusative: na każdą okazję,2332
+chwilą,chwila,przed chwilą = a moment ago,2549
+własnych,własny,genitive plural: own (ideas),2692
+własnym,własny,locative: na własnym,2099
+czytali,czytać,they read (men in the group),0
+znał,znać,he knew,2443
+czasach,czas,locative plural: w czasach = in the days of,2356
+młodości,młodość,genitive: of (my) youth,0
+telefonów,telefon,genitive plural: nie było telefonów,0
+chłopcem,chłopiec,instrumental: after być,2505
+chodziłem,chodzić,I used to go (said by a man),0
+kościoła,kościół,genitive: do kościoła = to church,2479
+dotyczy,dotyczyć,"it concerns, it's about",2697
+zdaniem,zdanie,moim zdaniem = in my opinion,2751
+lepsza,lepszy,feminine (with kawa),0
+tamtego,tamten,accusative: that (man),2299
+kelnera,kelner,accusative: a person,0
+setki,setka,plural: hundreds,2446
+przychodziły,przychodzić,"used to come (people, women)",0
+działo,dziać,działo się = (a lot) went on,2432
+przyjechała,przyjechać,she came,0
+królową,królowa,accusative (object form),2922
+zostawiają,zostawiać,they leave,0
+wydawało,wydawać,wydawało mi się = I thought,2436
+synowie,syn,plural,0
+granicą,granica,za granicą = abroad,0
+ważnych,ważny,locative plural (with sprawach),0
+sprawach,sprawa,locative plural: w sprawach = on matters,2903
+zeszłej,zeszły,"genitive, feminine: zeszłej zimy = last winter",2431
+zimy,zima,genitive: zeszłej zimy,0
+profesorze,profesor,vocative: professor!,2979
+nazywali,nazywać,they called,0
+pamięta,pamiętać,remembers,2142
+odeszła,odejść,she passed away; she left,2604
+kochał,kochać,he loved,2723
+będąc,być,being: będąc młodym = when (I was) young,2339
+młodym,młody,instrumental: będąc młodym,0
+którymi,który,instrumental plural: z którymi = with whom,2285
+bycia,bycie,genitive: (to learn) being,2296
+poważne,poważny,plural (with sprawy),2383
+rzeczywistości,rzeczywistość,locative: w rzeczywistości = in reality,2527
+sądziłem,sądzić,I thought (said by a man),2130
+bywało,bywać,bywało gorzej = it's been worse,0
+gorsze,gorszy,neuter: worse,2993
+trzymał,trzymać,he held,2854
+mając,mieć,having,2395
+wyglądał,wyglądać,it looked,2227
+wyglądało,wyglądać,wyglądało na to = it looked like,2106
+wolności,wolność,genitive: after nie można kupić,2137
+dokumenty,dokument,plural,2083
+wysłał,wysłać,he sent,2450
+wyślę,wysłać,I will send,0
+wymaga,wymagać,it requires,2222
+zaczniemy,zacząć,we'll start,2025
+wyszło,wyjść,it turned out,2027
+planu,plan,genitive: nie ma planu = there's no plan,2235
+szukają,szukać,they're looking for,2839
+firmie,firma,locative: w firmie = at the company,0
+tygodnia,tydzień,genitive: do końca tygodnia = by the end of the week,2286
+mieszkasz,mieszkać,you live,2509
+mieszkamy,mieszkać,we live,0
+patrzysz,patrzeć,you're looking,2375
+patrzę,patrzeć,"I look, I watch",2417
+ciekawego,ciekawy,genitive: nic ciekawego = nothing interesting,0
+interesujące,interesujący,neuter: interesting!,2687
+opowiedz,opowiedzieć,command form: tell (me)!,2149
+opowiem,opowiedzieć,I'll tell,0
+przyda,przydać,przyda się = will come in handy,2556
+zakładam,zakładać,I assume,2866
+szczegóły,szczegół,plural,2874
+stroną,strona,instrumental: nad stroną = on a website,0
+październiku,październik,locative: w październiku = in October,0
+trakcie,trakt,"w trakcie = during, while",2225
+problemem,problem,instrumental: z problemem = about a problem,2240
+sytuację,sytuacja,accusative (object form),2302
+pewnym,pewien,locative: w pewnym momencie = at one point,2306
+przestał,przestać,it stopped,0
+powodów,powód,genitive plural: z wielu powodów = for many reasons,2413
+polega,polegać,polega na = is about,2983
+pisaniu,pisanie,locative: na pisaniu = in writing,0
+pisze,pisać,he / she writes,2517
+sieci,sieć,genitive: nie mam sieci = I've no signal,2528
+skomplikowane,skomplikowany,neuter (with to),2664
+sensie,sens,locative: w pewnym sensie = in a way,2741
+miesiącu,miesiąc,locative: w tym miesiącu = this month,2877
+zapłacę,zapłacić,I will pay,2992
+używa,używać,uses,2583
+wsiadaj,wsiadać,command form: get on!,2624
+drogą,droga,instrumental: tą drogą = along this road,2064
+czterech,cztery,four (men): czterech pasażerów,2056
+pasażerów,pasażer,genitive plural: after czterech,0
+wracamy,wracać,we go back,2057
+zajezdni,zajezdnia,genitive: do zajezdni = to the depot,0
+ruszamy,ruszać,we set off,2911
+minutę,minuta,accusative: za minutę = in a minute,2361
+samolotu,samolot,genitive: z samolotu = from a plane,2865
+okiem,oko,instrumental: jednym okiem = with one eye,2807
+lewej,lewy,"locative, feminine: po lewej stronie = on the left",2663
+prawej,prawy,"locative, feminine: po prawej = on the right",2815
+znajduje,znajdować,znajduje się = is located,2100
+zbliża,zbliżać,"zbliża się = is coming, is approaching",2644
+pozwolisz,pozwolić,you will let,2484
+paru,parę,genitive: paru pasażerów = a couple of passengers,2548
+zapomniało,zapomnieć,forgot (with paru pasażerów),0
+biletów,bilet,genitive plural: (forgot) tickets,0
+jazdy,jazda,genitive: rozkład jazdy = timetable,2427
+dostaje,dostawać,gets,2845
+ostatniego,ostatni,genitive: do ostatniego = to the last,2656
+miejscach,miejsce,locative plural: w wielu miejscach = in many places,2980
+znajdą,znaleźć,they will find,2584
+samochodem,samochód,instrumental: jechać samochodem = to go by car,2864
+pływania,pływanie,genitive: zajęcia z pływania = swimming lessons,0
+potrwa,potrwać,"it will take, it will last",2295
+żyję,żyć,I'm alive,2077
+sił,siła,genitive plural: nie mam sił = I've no strength,2623
+bierzesz,brać,are you taking?,2297
+wiedziałaś,wiedzieć,did you know? (to a woman),2204
+odwiedzam,odwiedzać,I visit,0
+tatę,tata,accusative: a person,2968
+tatą,tata,instrumental: z tatą = with Dad,2367
+śmiejemy,śmiać,śmiejemy się = we laugh,0
+śmieje,śmiać,śmieje się = laughs,0
+boi,bać,boi się = is afraid,2287
+czułam,czuć,I felt (said by a woman),2426
+rozmawiałam,rozmawiać,I talked (said by a woman),2705
+mieszkaniu,mieszkanie,locative: w mieszkaniu = in a flat,2370
+czwartym,czwarty,locative: na czwartym piętrze,0
+sklepie,sklep,locative: w sklepie = in the shop,2374
+dzwonię,dzwonić,I'm calling,2243
+dzwoń,dzwonić,command form: call!,2510
+mężczyźni,mężczyzna,plural: men,2069
+miały,mieć,were supposed to (things),2059
+połowę,połowa,accusative: half (the day),2363
+zrobione,zrobić,done!,2489
+poniedziałki,poniedziałek,plural,0
+chciałabyś,chcieć,would you like? (to a woman),2670
+koleżankę,koleżanka,accusative (object form),0
+przyszłaś,przyjść,you came (to a woman),2537
+dziewczyn,dziewczyna,genitive plural: of girls,2353
+zapytaj,zapytać,command form: ask!,2653
+romana,roman,accusative: a person,0
+synowi,syn,dative: for (my) son,0
+przygotuj,przygotować,command form: get ready!,2678
+ranka,rano,genitive: każdego ranka = every morning,0
+zadzwonił,zadzwonić,he called,2095
+bólu,ból,genitive: bez bólu = without pain,2135
+korków,korek,genitive plural: (can't stand) traffic jams,0
+zdążyłam,zdążyć,I made it (said by a woman),0
+cudem,cud,instrumental: cudem = by a miracle,2966
+przyszło,przyjść,przyszło do głowy = came to mind,2909
+ważna,ważny,feminine (with rozmowa),2824
+pracą,praca,instrumental: z pracą = with work,2841
+filmie,film,locative: w filmie = in a film,2768
+drużynę,drużyna,accusative (object form),0
+nagrodę,nagroda,accusative (object form),2516
+dali,dać,they gave,2828
+uderzyłem,uderzyć,I hit (said by a boy),0
+nogę,noga,accusative: w nogę = (on) the leg,2503
+grasz,grać,do you play?,2883
+grze,gra,locative: w grze = in the game,2707
+chłopakiem,chłopak,instrumental: after być,2365
+boiska,boisko,genitive: z boiska = from the pitch,0
+strzelaj,strzelać,command form: shoot!,2895
+zaczynasz,zaczynać,you start,2914
+usłyszałem,usłyszeć,I heard (said by a boy),2915
+pobiegłem,pobiec,I ran (said by a boy),0
+zacznij,zacząć,command form: start!,2460
+rozgrzewki,rozgrzewka,genitive: od rozgrzewki = with a warm-up,0
+żebyście,żeby,so that you (all),2317
+mylisz,mylić,mylisz się = you're wrong,2574
+bzdury,bzdura,plural: nonsense!,2600
+wygramy,wygrać,we'll win,0
+bracia,brat,plural (irregular),2596
+przyjdź,przyjść,command form: come!,2603
+przyjdziesz,przyjść,will you come?,2868
+przyjdę,przyjść,I'll come,2075
+trzymasz,trzymać,are you holding? trzymasz kciuki = keep your fingers crossed,2362
+widzieliście,widzieć,did you (all) see?,2662
+widzieli,widzieć,they saw,2910
+połowie,połowa,locative: w drugiej połowie = in the second half,2767
+siłę,siła,accusative: mam siłę = I have strength,2190
+gadasz,gadać,co ty gadasz? = what are you on about?,2452
+straciliśmy,stracić,we've lost,2518
+bramki,bramka,genitive: bronić bramki = to defend the goal,0
+szansy,szansa,genitive: nie miałem szansy = I didn't get a chance,2825
+pogadamy,pogadać,we'll have a chat,2561
+marzenia,marzenie,plural,2876
+reprezentacji,reprezentacja,locative: w reprezentacji = in the national team,0
+nazywają,nazywać,they call,2105
+większe,większy,neuter (with boisko),2323
+dziewczynki,dziewczynka,plural; vocative: girls!,2449
+siadajcie,siadać,"command form: sit down, everyone!",0
+odpowiedz,odpowiedzieć,command form: answer!,2919
+powtarzam,powtarzać,I repeat,2746
+zeszyty,zeszyt,plural,0
+ławki,ławka,plural: desks,0
+zamiaru,zamiar,genitive: nie mam zamiaru = I have no intention,2418
+wyjątkiem,wyjątek,z wyjątkiem = except,2582
+szacunku,szacunek,genitive: uczyć szacunku = to teach respect,2547
+rolę,rola,accusative (object form),2695
+przyniosę,przynieść,I'll bring,2280
+napisane,napisać,written,2359
+tablicy,tablica,locative: na tablicy = on the board,0
+napisał,napisać,he wrote,2163
+zasługuje,zasługiwać,she deserves,2691
+dwunastu,dwanaście,twelve (boys): dwunastu chłopców,0
+chłopców,chłopiec,genitive plural: of boys,2568
+niespodziankę,niespodzianka,accusative (object form),0
+lesie,las,locative: w lesie = in the woods,2657
+znacie,znać,do you (all) know?,2609
+odsuń,odsunąć,command form: move (it) back!,2948
+czytamy,czytać,we read,0
+piszemy,pisać,we write,0
+zabawę,zabawa,accusative: poprzez zabawę = through play,0
+rodzicom,rodzice,dative: to (your) parents,0
+waszą,wasz,"accusative, feminine (with pracę)",2110
+waszym,wasz,locative: w waszym wieku = at your age,2045
+domową,domowy,"accusative, feminine: pracę domową = homework",0
+powinny,powinien,"they should (children, things)",2412
+powinniście,powinien,you (all) should,2274
+konieczne,konieczny,neuter (with to),2364
+pozwala,pozwalać,allows,2402
+uczyłam,uczyć,I taught (said by a woman),0
+małej,mały,"locative, feminine: w małej wsi",2605
+wsi,wieś,"locative: we wsi, w małej wsi = in a (small) village",0
+zajmiemy,zająć,zajmiemy się = we'll deal with,2949
+zajmij,zająć,command form: take (a seat)!,2742
+pozwólcie,pozwolić,command form: allow me (said to a group),2787
+mogły,móc,"they could (girls, things)",2959
+aktorką,aktorka,instrumental: after być,0
+sztuki,sztuka,genitive: lekcja sztuki = an art lesson,2328
+dachu,dach,locative: na dachu = on the roof,2987
+zamknięte,zamknięty,plural (with drzwi),2047
+wchodzi,wchodzić,comes in,2372
+obudź,obudzić,command form: obudź się = wake up!,2162
+dotykaj,dotykać,command form: (don't) touch!,2134
+zabierzcie,zabrać,"command form: take (your things), everyone!",2571
+zabieraj,zabierać,command form: take (it) away!,2932
+wszedł,wejść,(it) came in,2654
+stała,stać,(it) stood,2406
+drewniana,drewniany,feminine (with szkoła),0
+brakowało,brakować,was missing,2936
+klucza,klucz,genitive: after brakowało,0
+drzwiami,drzwi,instrumental: za drzwiami = behind the door,2563
+prosił,prosić,he asked,2974
+naprawił,naprawić,(I) fixed; żebym naprawił = me to fix,0
+naprawiłem,naprawić,I fixed (said by a man),0
+poprosił,poprosić,he asked,2971
+zamki,zamek,plural: locks,0
+schodach,schody,locative: po schodach = up the stairs,0
+miejsc,miejsce,genitive plural: places,2722
+wszelkie,wszelki,plural: any,2962
+załatwię,załatwić,I'll sort out,2788
+szukałem,szukać,I was looking for (said by a man),2869
+zabrali,zabrać,they took (boys),2379
+zdarzyło,zdarzyć,co się zdarzyło? = what happened?,2749
+zasad,zasada,genitive plural: bez zasad = without rules,2733
+macham,machać,I wave,0
+oddychają,oddychać,they breathe,0
+wstrzymaj,wstrzymać,command form: hold!,0
+ludzkie,ludzki,neuter (with ciało),2957
+ciele,ciało,locative: w ciele = in the body,2766
+palców,palec,genitive plural: (ten) fingers,2950
+stopy,stopa,plural,2675
+stóp,stopa,genitive plural: od stóp do głowy = from head to toe,2366
+plecaka,plecak,genitive: od plecaka = from the backpack,0
+ust,usta,genitive: nie ma ust = has no lips,2814
+planety,planeta,plural,2760
+krążą,krążyć,they go round,0
+istnieją,istnieć,there are; they exist,2972
+łatwiej,łatwo,easier,2215
+tajemnicy,tajemnica,genitive: żadnej tajemnicy = no secret,2666
+złota,złoty,feminine (with rybka),2855
+dowiem,dowiedzieć,dowiem się = I'll find out,2774
+dowiemy,dowiedzieć,dowiemy się = we'll find out,2444
+prawdą,prawda,instrumental: być prawdą = to be true,2579
+wierzy,wierzyć,believes,2131
+zdjęć,zdjęcie,genitive plural: dużo zdjęć,2463
+zadziała,zadziałać,it will work,2727
+wpadł,wpaść,fell (into),2716
+kałuży,kałuża,genitive: do kałuży = into a puddle,0
+oddam,oddać,I'll give back,2975
+zauważyłem,zauważyć,I noticed (said by a boy),2631
+słyszał,słyszeć,"(he, anyone) heard",2633
+swojemu,swój,dative: to my own,2800
+zrobią,zrobić,they'll make,2473
+mistrzów,mistrz,genitive plural: champions,0
+humoru,humor,genitive: poczucie humoru = sense of humour,0
+wolałbym,woleć,I'd rather (said by a boy or man),2729
+wielkiej,wielki,"genitive, feminine: wielkiej różnicy",2730
+różnicy,różnica,genitive: nie ma różnicy = there's no difference,0
+kaczce,kaczka,locative: o kaczce = about a duck,0
+zeszytu,zeszyt,genitive: zapomnieć zeszytu,0
+wziąłem,wziąć,I took (said by a boy or man),2757
+zapomniałeś,zapomnieć,did you forget? (to a boy or man),2890
+mogliśmy,móc,we could have,2094
+musieliśmy,musieć,we had to,2830
+spotkaliśmy,spotkać,we met,2860
+goście,gość,"plural: guests, visitors",2893
+odpowiada,odpowiadać,it suits,2334
+dajesz,dawać,dajesz radę? = are you managing?,2335
+jakich,jaki,genitive plural: which,2310
+gier,gra,genitive plural: of games,0
+tracę,tracić,I'm losing,0
+kontrolę,kontrola,accusative (object form),2089
+piłką,piłka,instrumental: nad piłką = of the ball,0
+pełni,pełny,"plural, men in the group: full",2343
+wybiegamy,wybiegać,we run out,0
+słuchasz,słuchać,are you listening?,2804
+forsę,forsa,accusative (object form),2953
+prawdziwego,prawdziwy,accusative: a person (with przyjaciela),2543
+bajki,bajka,genitive: z bajki = from a fairy tale,0
+zakochana,zakochany,feminine: in love (Marta is speaking),0
+weekendy,weekend,plural: w weekendy = at weekends,0
+pracowała,pracować,she worked,0
+piotrze,piotr,vocative: the form for calling someone,0
+spóźniłam,spóźnić,spóźniłam się = I was late (said by a woman),0
+okazało,okazać,okazało się = it turned out,2195
+przyjechał,przyjechać,it came,2246
+dostała,dostać,she got,2718
+chora,chory,feminine: ill (Marta is speaking),2342
+podróże,podróż,plural: travelling,0
+podróży,podróż,locative: w podróży = when travelling,2026
+wolna,wolny,feminine: free (Marta is speaking),2861
+muzyki,muzyka,genitive: słuchać muzyki = to listen to music,2602
+pełna,pełny,feminine: full (Marta is speaking),2637
+wybaczcie,wybaczyć,"command form: forgive (me), everyone!",2424
+chcieliśmy,chcieć,we wanted,2341
+łączy,łączyć,"connects, brings together",2486
+rozmawiamy,rozmawiać,we talk,2615
+przypadkiem,przypadek,by chance,2649
+wakacji,wakacje,genitive: z wakacji = from holiday,0
+prawdziwą,prawdziwy,"accusative, feminine (with rodzinę)",2166
+ósmej,ósmy,o ósmej = at eight (o'clock),0
+sądzi,sądzić,he / she thinks,2569
+ludzi,ludzie,genitive: after więcej,156
+takie,taki,neuter (with życie),203
+róże,róża,plural,0
+przyszłam,przyjść,I came (said by a woman),2081
+przychodzimy,przychodzić,we come,0
+zrobi,zrobić,it will do,750
+klucze,klucz,plural,2390
+kluczy,klucz,"genitive plural: after szukać, bez…",0
+jabłka,jabłko,"genitive: after szukać, bez, do…",0
+gruszkę,gruszka,accusative (object form),0
+gruszki,gruszka,"genitive: after szukać, bez, do…",0
+śliwkę,śliwka,accusative (object form),0
+śliwki,śliwka,"genitive: after szukać, bez, do…",0
+cytrynę,cytryna,accusative (object form),0
+cytryny,cytryna,"genitive: after szukać, bez, do…",0
+marchewkę,marchewka,accusative (object form),0
+marchewki,marchewka,"genitive: after szukać, bez, do…",0
+bułkę,bułka,accusative (object form),0
+ciastka,ciastko,"genitive: after szukać, bez, do…",0
+drożdżówkę,drożdżówka,accusative (object form),0
+drożdżówki,drożdżówka,"genitive: after szukać, bez, do…",0
+szarlotkę,szarlotka,accusative (object form),0
+szarlotki,szarlotka,"genitive: after szukać, bez, do…",0
+kawy,kawa,"genitive: after szukać, bez, do…",1552
+herbaty,herbata,"genitive: after szukać, bez, do…",2848
+wodę,woda,accusative (object form),1536
+wody,woda,"genitive: after szukać, bez, do…",745
+soku,sok,"genitive: after szukać, bez, do…",0
+mleka,mleko,"genitive: after szukać, bez, do…",0
+piłkę,piłka,accusative (object form),2438
+piłki,piłka,"genitive: after szukać, bez, do…",0
+lalkę,lalka,accusative (object form),0
+lalki,lalka,"genitive: after szukać, bez, do…",0
+misia,miś,accusative = genitive (miś is animate),0
+latawca,latawiec,"genitive: after szukać, bez, do…",0
+różę,róża,accusative (object form),0
+róży,róża,"genitive: after szukać, bez, do…",0
+lilię,lilia,accusative (object form),0
+lilii,lilia,"genitive: after szukać, bez, do…",0
+stokrotkę,stokrotka,accusative (object form),0
+stokrotki,stokrotka,"genitive: after szukać, bez, do…",0
+orchideę,orchidea,accusative (object form),0
+orchidei,orchidea,"genitive: after szukać, bez, do…",0
+pędzla,pędzel,"genitive: after szukać, bez, do…",0
+listu,list,"genitive: after szukać, bez, do…",0
+paczkę,paczka,accusative (object form),0
+paczki,paczka,"genitive: after szukać, bez, do…",0
+kopertę,koperta,accusative (object form),0
+koperty,koperta,"genitive: after szukać, bez, do…",0
+pocztówkę,pocztówka,accusative (object form),0
+pocztówki,pocztówka,"genitive: after szukać, bez, do…",0
+torbę,torba,accusative (object form),0
+torby,torba,"genitive: after szukać, bez, do…",0
+książkę,książka,accusative (object form),1682
+mapę,mapa,accusative (object form),0
+mapy,mapa,"genitive: after szukać, bez, do…",0
+gazetę,gazeta,accusative (object form),0
+gazety,gazeta,"genitive: after szukać, bez, do…",0
+kredkę,kredka,accusative (object form),0
+kredki,kredka,"genitive: after szukać, bez, do…",0
+kości,kość,"genitive: after szukać, bez, do…",1572
+skakankę,skakanka,accusative (object form),0
+skakanki,skakanka,"genitive: after szukać, bez, do…",0
+czapkę,czapka,accusative (object form),0
+czapki,czapka,"genitive: after szukać, bez, do…",0
+kurtkę,kurtka,accusative (object form),0
+kurtki,kurtka,"genitive: after szukać, bez, do…",0
+parasolkę,parasolka,accusative (object form),0
+parasolki,parasolka,"genitive: after szukać, bez, do…",0
+rękawiczek,rękawiczki,"genitive plural: after szukać, bez…",0
+koszulę,koszula,accusative (object form),0
+koszuli,koszula,"genitive: after szukać, bez, do…",0
+telefonu,telefon,"genitive: after szukać, bez, do…",1299
+deskorolkę,deskorolka,accusative (object form),0
+deskorolki,deskorolka,"genitive: after szukać, bez, do…",0
+kartę,karta,accusative (object form),2453
+karty,karta,"genitive: after szukać, bez, do…",1670
+biletu,bilet,"genitive: after szukać, bez, do…",0
+dzwonka,dzwonek,"genitive: after szukać, bez, do…",0
+sukienkę,sukienka,accusative (object form),0
+sukienki,sukienka,"genitive: after szukać, bez, do…",0
