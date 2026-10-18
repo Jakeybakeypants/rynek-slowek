@@ -1,0 +1,21 @@
+You are translating the characters' dialogue of a language-learning game ("Rynek Słówek") from Polish into {LANGNAME}. The game is a 3D town where the player learns {LANGNAME} by talking to people and running errands. Every word on screen is clickable and coloured by how well the player knows it, and each written form is learned on its own, so natural, varied, everyday language matters more than literal translation.
+
+Read first:
+- {D}polish-npcs-{GROUP}.json — the Polish source for these characters: {IDS}. Every line is a [Polish, English] pair. Sections: intro, remind, wrong, done, after, thanks, regive (lists of lines, or a single line for remind/wrong), receive (lines said when someone hands them something), orders.ask / orders.ok (shop orders), quiz.start / quiz.more, chats (a list of short conversations; each conversation is a list of lines).
+- {D}{LANG}/globals.json — the items (what each errand object is called, with ready noun phrases), label words and phrases already chosen for {LANGNAME}. Use these item words so errands stay consistent.
+- {D}names.json — use the "{LANG}" names for every character, including when one character mentions another.
+- {D}{LANG}/top3000.txt — the 3,000 most common {LANGNAME} word forms, most common first. Prefer common words, and use a wide variety of them: the game aims to teach as many of these as possible.
+
+Write ONE file: {D}{LANG}/npcs-{GROUP}.json — valid JSON, UTF-8:
+{ "<id>": { "intro": [[{LANGNAME}, English], ...], "remind": [{LANGNAME}, English], "wrong": [...], "done": [[...]], "after": [[...]], "thanks": [[...]], "regive": [[...]], "receive": [[...]], "orders": { "ask": [[...]], "ok": [[...]] }, "quiz": { "start": [[...]], "more": [[...]] }, "chats": [ [[...], [...]], ... ] } }
+Include exactly the sections the Polish character has (skip name, role, quest, review, music, pool, from, item: those are copied by the build). Keep every conversation in chats, in the same order; a conversation may gain or lose a line if that reads better.
+
+Rules:
+- {RULES}
+- Each pair is [{LANGNAME} sentence, English meaning]. Keep the English given, changing it only where the {LANGNAME} line differs (names, places, idioms).
+- Orders: orders.ask lines are templates. Use exactly one of these placeholders for the item: {acc} = indefinite object phrase ({ACC_EX}), {gen} = definite object phrase ({GEN_EX}), {nom} = definite subject phrase ({NOM_EX}); the English half uses {en} (e.g. "an apple") or {the} (e.g. "the apple"). The clothes stall (id bogdan) also starts each ask line with {why} and the English with {whyEn}. Every template must be grammatical for EVERY item in that character's pool (check each item's phrases and plural flag in globals.json).
+- Never give the player a grammatical gender: avoid adjectives or participles that agree with "you" or "I" when the player speaks. Characters may of course use their own gender ("I'm tired" said by a woman).
+- Address the player informally ({INFORMAL}), as the Polish does.
+- Polish-only jokes or grammar games (vocative pet names such as "Wiesiu", "Panie Wiesławie", Polish cities) become natural {LANGNAME} equivalents (a {LANGNAME} pet name, a {LANGNAME} city).
+- Short, natural, spoken {LANGNAME} that a native speaker would say; correct grammar, spelling and punctuation{PUNCT}. Suitable for children too: nothing violent or rude.
+- Validate with `node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" <file>` before finishing. Reply with one line: the ids written and the number of lines.

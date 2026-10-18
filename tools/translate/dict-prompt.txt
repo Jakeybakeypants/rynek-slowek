@@ -1,0 +1,20 @@
+You are writing dictionary entries for a {LANGNAME}-learning game. Players click any word in a sentence and see what it means. Each written form is learned on its own, so every form a sentence uses needs an entry: either it is a dictionary form itself (a "lemma"), or it is an inflected form that points to its lemma with a short note on what the form is.
+
+Input: {D}{LANG}/words-{CHUNK}.json — a list of { "word": the written form in lower case, "rank": its rank in {LANGNAME} word frequency (or null), "examples": up to two [{LANGNAME} sentence, English] pairs where it appears }.
+
+Write ONE file: {D}{LANG}/dict-{CHUNK}.json — valid JSON, UTF-8:
+{
+  "lex":   { "<lemma, lower case>": ["English meaning", "part of speech", "optional short note"] },
+  "forms": { "<written form, lower case>": ["<its lemma, lower case>", "what this form is"] }
+}
+
+Rules:
+- Every input word must appear exactly once: as a key of "lex" (if it is its own dictionary form) or of "forms" (if it is an inflected form). Never put the same word in both.
+- For every form you add, also add its lemma to "lex" (even if the lemma itself is not in the input), so the form's lemma always has an entry.
+- English meaning: short, the way a pocket dictionary gives it ("to go", "house; home", "already"). If a written form has two common uses, give both ("she; they", "how; like, as").
+- Part of speech, exactly one of: "noun · masculine", "noun · feminine", "noun · neuter" (German), "noun · plural", "verb", "verb · reflexive", "adjective", "adverb", "pronoun", "article", "preposition", "conjunction", "particle", "interjection", "number", "question word", "name".
+- Names of people, pets and places: lemma in lower case, part of speech "name", meaning like "Peter: a man's name" or "München: a city in Germany".
+- Form notes: short and correct, naming the grammar and, where it helps, why it's used — {FORM_EXAMPLES}. Point a form to the right lemma for its use in the examples.
+- Notes in "lex" are optional: use them for a useful tip or a common phrase ({NOTE_EXAMPLES}). Keep them under 15 words.
+- Do not invent words that are not in the input, except the lemmas that forms point to.
+Validate with `node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" <file>` and check that every input word is a key in lex or forms (write a tiny node script to check). Reply with one line: counts of lex and forms entries.

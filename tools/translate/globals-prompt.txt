@@ -1,0 +1,21 @@
+You are setting up {LANGNAME} for a language-learning game ("Rynek Słówek"), translated from Polish. The game is a 3D town square with a park, a café terrace, a bus stop and a school; the player learns {LANGNAME} by talking to people and running errands. Every word on screen is clickable, and each written form is learned on its own.
+
+Read {D}polish-globals.json: the Polish items (things to pick up), scene labels and signs, phrases, interface words, number words and review lines, each with English. Also {D}{LANG}/top3000.txt, the 3,000 most common {LANGNAME} forms: prefer these words.
+
+Write ONE file: {D}{LANG}/globals.json, valid UTF-8 JSON:
+{
+ "items": { "<item id>": { "word": label shown over it, "lemma": its dictionary form (lower case), "ind": indefinite subject phrase, "nom": definite subject phrase, "acc": indefinite object phrase, "gen": definite object phrase, "plural": true/false, "why": null or [{LANGNAME} reason, English] } },
+ "labels": { "<Polish label or sign>": "{LANGNAME} text" },
+ "phrases": [ [{LANGNAME} multi-word expression in lower case, English], ... ],
+ "ui": { "headings": { "tasks", "vocab", "review", "bag" }, "level": "level", "hello": a greeting, "examples": three common words, "place": "market square" },
+ "numbers": [ "zero" ... "ten" as {LANGNAME} words ],
+ "review": { same keys as the Polish: [{LANGNAME}, English] },
+ "quiz": { "question": "... {a} ... {b} ...?", "right": "... {Sum} ...", "wrong": "... {sum}." },
+ "thisIs": { "one": "That is {ind}.", "many": "Those are {ind}." }
+}
+Rules:
+- Keep every item id, label key and review key exactly as in the Polish. "why" stays null unless the Polish item has a reason.
+- Label values are single words where the Polish is one word (a sign like WARZYWNIAK may become a short sign in capitals). Every word you use must be ordinary {LANGNAME}.
+- Phrases are common set expressions (greetings, thanks, "of course"); about as many as the Polish, made of real words separated by single spaces.
+- {a}, {b} and {sum} are number words; {Sum} is the same word capitalised.
+- Correct spelling, accents and capitalisation{PUNCT}. Validate with `node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" <file>`. Reply with one line: counts of items, labels and phrases.

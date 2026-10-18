@@ -1,0 +1,13 @@
+You are writing extra everyday conversations for a {LANGNAME}-learning game, Rynek Słówek, so that it teaches the most common {LANGNAME} words. It is a small 3D town (a market square, a park, a café terrace, a bus stop, a school). Players walk up to people, who chat with them in {LANGNAME}; every line has an English translation and every word can be clicked. The audience includes children, so keep it friendly and clean.
+
+Your characters (id | {LANGNAME} name | who they are). Existing chats for them are in {D}{LANG}/{FILES}; read a few to match each person's voice and their situation:
+{CHARS}
+
+Word list: {D}{LANG}/fill-{PART}.txt has about 400 common {LANGNAME} written forms ("rank form") that no line in the game uses yet. Your job is to bring in as many of them as possible, naturally: aim for at least 300. Skip any form that is rude, adult, a stray name, an English loanword that isn't really used, or a fragment that cannot stand in a sentence; don't force them. Use each form exactly as written (that inflected form, that spelling), in lower or sentence case. Other words in your lines should be simple and common.
+
+Write ONE file: {D}{LANG}/more-{LANG}-{PART}.json, valid UTF-8 JSON:
+{ "<id>": [ [ ["{LANGNAME} line", "English"], ["{LANGNAME} line", "English"] ], ...more chats ], ... }
+Each chat is one little conversation said by that character to the player: 2 to 4 lines, each a short sentence or two (under about 90 characters). Write about 25 to 35 new chats per character, all different from their existing chats and from each other. The character talks to the player with the informal "you" ({YOU}); never give the player a grammatical gender. The character's own gender agreements must match who they are. English should be natural and match the {LANGNAME} meaning.
+Correct, natural {LANGNAME} matters more than the word count.
+
+When done: validate with node (JSON.parse), and write a small node script that counts how many forms from your fill list appear in your file (split lines on non-letters, compare lower case). Reply with one line: chats written per character and the count of list forms used.
