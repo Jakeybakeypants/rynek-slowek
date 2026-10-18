@@ -117,6 +117,7 @@ src/js/           one module script, split into files that share a single scope:
   07-loop.js        player, camera, labels, minimap, input, the game loop, start-up
 blender/people.py builds the people in Blender: writes assets/people.glb (used by the game) and assets/people.blend
 tools/frequency.mjs downloads the frequency list and writes src/js/01-frequency.js
+tools/export-unreal.mjs writes unreal/Data/, the game's content as Unreal Engine Data Tables
 build.mjs         joins src/ into dist/index.html (a full page) and dist/artifact.html (for claude.ai)
 test/             lexicon and build checks (npm test), browser smoke test (npm run smoke)
 ```
@@ -127,6 +128,10 @@ npm test            # dist/ is up to date, every word has an entry, data is cons
 npm install         # once, for the smoke test (playwright-core, three)
 npm run smoke       # plays the game in headless Chromium; add "-- phone" for phone size, dark mode
 ```
+
+### Unreal Engine
+
+`npm run export:unreal` writes the game's content to `unreal/Data/` as Data Table files for Unreal Engine: words, forms, phrases, the frequency list, characters with their positions and looks, every dialogue line, shop orders, items and labels. `unreal/README.md` explains how to import them, and `unreal/RynekDataTypes.h` has the matching C++ row structs.
 
 ### The people (Blender)
 
