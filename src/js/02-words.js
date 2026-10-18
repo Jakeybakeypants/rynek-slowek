@@ -61,17 +61,29 @@ function findPhrase(ctx) {
   }
   return null;
 }
+// an order template with one item's forms filled in: {why} {acc} {gen} {nom} in Polish, {whyEn} {en} {the} in English
+function fillTemplate([pl, en], it) {
+  return [pl.replace("{why}", it.why?.[0] ?? "").replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.nom ?? it.word).trim(),
+          en.replace("{whyEn}", it.why?.[1] ?? "").replace("{en}", it.en).replace("{the}", it.the).trim()];
+}
+// Zuzia's sums: a + b with a, b from 1 to 5, so every answer is a number word from 2 to 10
+const QUIZ_MAX = 5;
+const quizQuestion = (a, b) => [`Ile to jest ${NUMBERS[a]} plus ${NUMBERS[b]}?`, `What's ${a} plus ${b}?`];
+const quizResult = (right, sum) => right
+  ? [`Tak! ${NUMBERS[sum][0].toUpperCase() + NUMBERS[sum].slice(1)}. Brawo!`, `Yes! ${sum}. Well done!`]
+  : [`Nie, to jest ${NUMBERS[sum]}.`, `No, it's ${sum}.`];
 function validateLexicon() {
   const missing = new Set(), check = t => tokenize(t).forEach(tk => { if (tk.w && !tk.lemma) missing.add(tk.t); });
-  const fill = (tpl, it) => tpl.replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.nom ?? it.word);
   for (const N of Object.values(NPCS)) {
     for (const key of ["intro", "done", "after", "thanks", "regive"]) (N[key] || []).forEach(l => check(l[0]));
     for (const key of ["remind", "wrong"]) if (N[key]) check(N[key][0]);
     N.receive?.lines.forEach(l => check(l[0]));
-    if (N.orders) { N.orders.ok.forEach(l => check(l[0])); for (const id of N.orders.pool) N.orders.ask.forEach(a => check(fill(a[0], ITEMS[id]))); }
+    if (N.orders) { N.orders.ok.forEach(l => check(l[0])); for (const id of N.orders.pool) N.orders.ask.forEach(a => check(fillTemplate(a, ITEMS[id])[0])); }
+    if (N.quiz) [...N.quiz.start, ...N.quiz.more].forEach(l => check(l[0]));
   }
   Object.keys(ITEMS).forEach(id => { check(thisIs(id)[0]); if (!LEX[ITEMS[id].lemma]) missing.add(ITEMS[id].lemma); });
   Object.values(REVIEW_LINES).forEach(l => check(l[0]));
+  for (let a = 1; a <= QUIZ_MAX; a++) for (let b = 1; b <= QUIZ_MAX; b++) { check(quizQuestion(a, b)[0]); check(quizResult(true, a + b)[0]); check(quizResult(false, a + b)[0]); }
   const clashes = Object.keys(FORMS).filter(f => LEX[f]);
   return { missing: [...missing], clashes };
 }

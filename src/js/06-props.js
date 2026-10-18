@@ -104,7 +104,8 @@ function buildShops() {
   addWordLabel({ word: "piaskownica", anchor: sb, y: 0.9, max: 8, kind: "small" });
   HOMES.lalka = new THREE.Vector3(14.7, 0.32, 15.4); HOMES.miś = new THREE.Vector3(17.9, 0.3, 12.2); HOMES.latawiec = new THREE.Vector3(18.6, 0.2, 17.0);
   HOMES.piłka = new THREE.Vector3(2.5, 0.28, -19.5); HOMES.okulary = new THREE.Vector3(-2.6, 0.92, 3.9); HOMES.klucze = new THREE.Vector3(-19.6, 0.12, 14.6);
-  buildPainter(); buildPost(); buildBookstand();
+  buildPainter(); buildPost(); buildBookstand(); buildClothesStall(); buildHopscotch();
+  HOMES.skakanka = new THREE.Vector3(-1.5, 0.1, 10.5); HOMES.nuty = new THREE.Vector3(-20.6, 0.1, 2.9);
   HOMES.torba = new THREE.Vector3(16.4, 0.25, 17.2); HOMES.kość = new THREE.Vector3(-20.7, 0.12, 20.7); HOMES.pędzel = new THREE.Vector3(-7.9, 0.12, -8.0);
 }
 const SURFACE = {};
@@ -162,6 +163,35 @@ function buildPost() {
   addCircle(p + 5.3, 25.6, 0.35);
   addWordLabel({ word: "skrzynka", anchor: box, y: 1.9, max: 7, kind: "small" });
 }
+function buildClothesStall() {
+  const g = new THREE.Group(); g.position.set(-15.5, 0, -11.2); scene.add(g);
+  counter(-15.5, -11.2, false, 4.4, "#3A6EA5");
+  for (const [dx, dz] of [[-2.2, -0.45], [2.2, -0.45], [-2.2, 0.45], [2.2, 0.45]]) g.add(mesh(new THREE.CylinderGeometry(0.05, 0.05, 2.6, 6), M(WOOD_D), dx, 1.3, dz));
+  const awn = mesh(new THREE.BoxGeometry(4.8, 0.06, 1.6), new THREE.MeshStandardMaterial({ map: stripeTex("#3A6EA5", "#F4F1E6"), roughness: 0.9 }), 0, 2.62, 0); awn.rotation.x = -0.12; g.add(awn);
+  const rail = mesh(new THREE.CylinderGeometry(0.025, 0.025, 4.2, 6), M(IRON), 0, 2.1, -0.4); rail.rotation.z = Math.PI / 2; g.add(rail);
+  ["#E5826B", "#F2E3C6", "#8DB3D9", "#A7C77E", "#E9B44C"].forEach((col, i) => g.add(mesh(new THREE.BoxGeometry(0.42, 0.6, 0.05), M(col), -1.7 + i * 0.85, 1.72, -0.4)));
+  const wood = M("#4A3020");
+  const board = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.45, 0.1), [wood, wood, wood, wood, new THREE.MeshStandardMaterial({ map: signTex("UBRANIA", "#3A6EA5", "#FFFFFF") }), wood]);
+  board.position.set(0, 2.32, 0.82); g.add(board);
+  addWordLabel({ word: "ubrania", pos: new THREE.Vector3(-15.5, 3.05, -10.3), max: 26, kind: "sign" });
+  ["czapka", "kurtka", "parasolka", "rękawiczki", "koszula", "sukienka"].forEach((id, i) => { HOMES[id] = new THREE.Vector3(-17.25 + i * 0.7, 1.12, -11.2); });
+  addBox(-17.8, -13.2, -11.7, -10.7);
+}
+function buildHopscotch() {
+  const tex = canvasTex(128, 320, (c, W, H) => {
+    c.clearRect(0, 0, W, H); c.strokeStyle = "rgba(255,255,255,.92)"; c.lineWidth = 5; c.fillStyle = "rgba(255,255,255,.92)";
+    c.font = "800 34px 'Baloo 2', 'Trebuchet MS', sans-serif"; c.textAlign = "center"; c.textBaseline = "middle";
+    // 1 2 [3 4] 5 [6 7] 8 from the bottom
+    const rows = [[1], [2], [3, 4], [5], [6, 7], [8]], rh = H / rows.length;
+    rows.forEach((r, k) => {
+      const y = H - (k + 1) * rh, cw = r.length === 1 ? 64 : 58;
+      r.forEach((n, j) => { const x = r.length === 1 ? W / 2 - cw / 2 : 6 + j * cw; c.strokeRect(x, y + 3, cw, rh - 6); c.fillText(String(n), x + cw / 2, y + rh / 2 + 2); });
+    });
+  });
+  const m = mesh(new THREE.PlaneGeometry(1.6, 4.0), new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 }), -3.0, 0.012, 22.2, false);
+  m.rotation.x = -Math.PI / 2; m.rotation.z = Math.PI; scene.add(m);
+  addWordLabel({ word: "klasy", pos: new THREE.Vector3(-3.0, 0.6, 22.2), max: 7, kind: "small" });
+}
 function buildBookstand() {
   const k = SHOP.księgarnia.a;
   counter(k - 2.6, -25.5, false, 3.0, "#7A4E2D");
@@ -205,6 +235,14 @@ function makePerson(o) {
   if (o.hat === "kidcap") { const c = mesh(new THREE.SphereGeometry(0.228, 14, 8, 0, Math.PI * 2, 0, Math.PI * 0.45), M(o.hatColor)); head.add(c); head.add(mesh(new THREE.BoxGeometry(0.2, 0.025, 0.16), M(o.hatColor), 0, 0.12, -0.25)); }
   if (o.hat === "scarf") { const c = mesh(new THREE.SphereGeometry(0.235, 14, 10, 0, Math.PI * 2, 0, Math.PI * 0.6), M(o.hatColor)); c.rotation.x = -0.5; head.add(c); head.add(mesh(new THREE.SphereGeometry(0.05, 8, 6), M(o.hatColor), 0, -0.2, 0.12)); }
   if (o.ponytail) head.add(mesh(new THREE.SphereGeometry(0.1, 10, 8), hair, 0, 0.02, -0.24));
+  if (o.pigtails) for (const s of [-1, 1]) head.add(mesh(new THREE.SphereGeometry(0.08, 8, 6), hair, 0.2 * s, 0.02, -0.08));
+  if (o.accordion) {
+    const acc = new THREE.Group(); acc.position.set(0, 1.0, 0.32); body.add(acc);
+    acc.add(mesh(new THREE.BoxGeometry(0.1, 0.34, 0.2), M("#B23A3A"), -0.17, 0, 0));
+    acc.add(mesh(new THREE.BoxGeometry(0.1, 0.34, 0.2), M("#B23A3A"), 0.17, 0, 0));
+    for (let i = 0; i < 5; i++) acc.add(mesh(new THREE.BoxGeometry(0.045, 0.32, 0.19), M(i % 2 ? "#2B2B2B" : "#F2EEE6"), -0.1 + i * 0.05, 0, 0));
+    acc.add(mesh(new THREE.BoxGeometry(0.03, 0.3, 0.16), M("#FFFFFF"), -0.235, 0, 0, false));
+  }
   if (o.flower) head.add(mesh(new THREE.SphereGeometry(0.05, 8, 6), M(o.flower), 0.17, 0.12, 0.06, false));
   if (o.hat === "beret") { const b = mesh(new THREE.SphereGeometry(0.25, 14, 8), M(o.hatColor), 0.03, 0.17, -0.01); b.scale.y = 0.32; head.add(b); head.add(mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.05, 5), M(o.hatColor), 0.03, 0.24, 0)); }
   if (o.satchel) {
@@ -261,12 +299,17 @@ const LOOKS = {
   ewa: { shirt: "#3E6FA8", apron: "#F4EFE6", hair: "#2B1D14", hat: "beret", hatColor: "#B23A3A", pants: "#2C3446" },
   tadeusz: { shirt: "#2F4E8C", pants: "#2C3446", hair: "#5A4636", hat: "cap", hatColor: "#2F4E8C", moustache: "#5A4636", satchel: "#7A4E2D" },
   halina: { shirt: "#B5654A", pants: "#4A4A52", hair: "#9A9A9A", ponytail: true, glasses: true },
+  zuzia: { shirt: "#E86FA0", pants: "#2C3446", hair: "#C8913A", pigtails: true, scale: 0.66 },
+  staszek: { shirt: "#7A2E2E", pants: "#2C2F3A", hair: "#3B2A20", hat: "cap", hatColor: "#2B2B2B", moustache: "#3B2A20", accordion: true },
+  bogdan: { shirt: "#E8E0D0", apron: "#3A6EA5", hair: "#5A4636", moustache: "#5A4636" },
+  krysia: { shirt: "#8C5A8A", pants: "#4A4A52", hair: "#BDBDBD", hat: "scarf", hatColor: "#3F6FA0", glasses: true },
 };
 const npcObjs = {};
 function placeNPCs() {
   const b = SHOP.piekarnia.a, c = SHOP.kawiarnia.a, k = SHOP.kwiaciarnia.a;
   const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0],
-    ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0] };
+    ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0],
+    zuzia: [-4.7, 21.0], staszek: [-8.8, -4.2], bogdan: [-12.4, -11.6], krysia: [-5.2, 11.0] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
     const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);
@@ -346,6 +389,47 @@ function itemModel(id) {
       add(new THREE.CylinderGeometry(0.025, 0.025, 0.2, 8), "#F2EDE0").rotation.z = Math.PI / 2;
       for (const x of [-0.1, 0.1]) for (const z of [-0.022, 0.022]) add(new THREE.SphereGeometry(0.035, 8, 6), "#F2EDE0", x, 0, z);
       break;
+    case "skakanka":
+      add(new THREE.TorusGeometry(0.17, 0.008, 4, 28, Math.PI * 1.6), "#D33A3A").rotation.x = Math.PI / 2;
+      for (const a of [0, Math.PI * 1.6]) add(new THREE.CylinderGeometry(0.018, 0.018, 0.1, 8), "#C79A62", Math.cos(a) * 0.17, 0, -Math.sin(a) * 0.17).rotation.z = Math.PI / 2;
+      break;
+    case "nuty":
+      add(new THREE.BoxGeometry(0.22, 0.008, 0.3), "#FBF8EF");
+      for (let i = 0; i < 5; i++) add(new THREE.BoxGeometry(0.19, 0.003, 0.004), "#3A3A3A", 0, 0.006, -0.06 + i * 0.012);
+      for (let i = 0; i < 5; i++) add(new THREE.SphereGeometry(0.008, 5, 4), "#1A1A1A", -0.07 + i * 0.035, 0.008, -0.06 + ((i * 3) % 5) * 0.012);
+      break;
+    case "czapka":
+      add(new THREE.SphereGeometry(0.12, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2), "#C8352E");
+      add(new THREE.TorusGeometry(0.115, 0.022, 6, 18), "#F2EEE6").rotation.x = Math.PI / 2;
+      add(new THREE.SphereGeometry(0.04, 8, 6), "#F2EEE6", 0, 0.13, 0);
+      break;
+    case "kurtka":
+      add(new THREE.BoxGeometry(0.26, 0.06, 0.22), "#2F6FD0");
+      for (const s of [-1, 1]) add(new THREE.BoxGeometry(0.06, 0.05, 0.2), "#2A62B8", s * 0.15, 0, 0.01);
+      add(new THREE.BoxGeometry(0.004, 0.062, 0.2), "#C9CED4", 0, 0.002, 0.01);
+      add(new THREE.BoxGeometry(0.14, 0.03, 0.04), "#2A62B8", 0, 0.04, -0.1);
+      break;
+    case "parasolka": { const u = new THREE.Group(); u.rotation.z = Math.PI / 2; g.add(u);
+      u.add(mesh(new THREE.ConeGeometry(0.045, 0.36, 8), M("#2F4E8C"), 0, 0, 0, false));
+      u.add(mesh(new THREE.CylinderGeometry(0.006, 0.006, 0.1, 5), M("#2B2B2B"), 0, 0.22, 0, false));
+      const hk = mesh(new THREE.TorusGeometry(0.03, 0.008, 4, 10, Math.PI), M("#6B4A30"), 0.03, -0.2, 0, false); hk.rotation.z = Math.PI; u.add(hk); } break;
+    case "rękawiczki":
+      for (const s of [-1, 1]) {
+        add(new THREE.CapsuleGeometry(0.04, 0.08, 4, 8), "#C8352E", s * 0.06, 0, 0).rotation.x = Math.PI / 2;
+        add(new THREE.SphereGeometry(0.022, 6, 5), "#C8352E", s * 0.1, 0, -0.01);
+        add(new THREE.CylinderGeometry(0.042, 0.042, 0.03, 10), "#F2EEE6", s * 0.06, 0, 0.075).rotation.x = Math.PI / 2;
+      }
+      break;
+    case "koszula":
+      add(new THREE.BoxGeometry(0.24, 0.04, 0.2), "#F7F7F2");
+      for (const s of [-1, 1]) add(new THREE.BoxGeometry(0.06, 0.01, 0.05), "#E6E6E0", s * 0.035, 0.024, -0.085).rotation.y = s * 0.5;
+      for (let i = 0; i < 3; i++) add(new THREE.SphereGeometry(0.007, 5, 4), "#8A9096", 0, 0.022, -0.04 + i * 0.05);
+      break;
+    case "sukienka":
+      add(new THREE.ConeGeometry(0.13, 0.26, 12), "#E86FA0", 0, -0.02, 0);
+      add(new THREE.CylinderGeometry(0.055, 0.07, 0.08, 10), "#E86FA0", 0, 0.12, 0);
+      add(new THREE.TorusGeometry(0.06, 0.008, 4, 12), "#F2EEE6", 0, 0.09, 0).rotation.x = Math.PI / 2;
+      break;
     default:
       if (PAINT[id]) {
         add(new THREE.CylinderGeometry(0.09, 0.09, 0.12, 16), "#B8BEC4", 0, 0, 0, { m: 0.6, r: 0.35 });
@@ -356,7 +440,7 @@ function itemModel(id) {
   }
   return g;
 }
-const ITEM_SCALE = { piłka: 1.2, róża: 1.25, lilia: 1.25, stokrotka: 1.25, orchidea: 1.25, okulary: 1.6, klucze: 1.6, pędzel: 1.6, kredka: 1.8, paczka: 1.4, kość: 1.6 };
+const ITEM_SCALE = { skakanka: 1.5, nuty: 1.6, rękawiczki: 1.5, piłka: 1.2, róża: 1.25, lilia: 1.25, stokrotka: 1.25, orchidea: 1.25, okulary: 1.6, klucze: 1.6, pędzel: 1.6, kredka: 1.8, paczka: 1.4, kość: 1.6 };
 const itemObjs = {};
 const ringMat = new THREE.MeshBasicMaterial({ color: 0xe9b53b, transparent: true, opacity: 0.55, depthWrite: false, side: THREE.DoubleSide });
 function placeItems() {

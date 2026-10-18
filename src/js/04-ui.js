@@ -84,7 +84,11 @@ function showLine() {
   const last = dlg.i === dlg.lines.length - 1, extra = $("#d-extra");
   extra.replaceChildren();
   if (last && dlg.actions) {
-    dlg.actions.forEach((a, k) => extra.append(h("button", { type: "button", class: k === 0 ? "primary" : "chip-btn", onclick: () => { endDialogue(); a.fn?.(); } }, a.label)));
+    dlg.actions.forEach((a, k) => extra.append(h("button", {
+      type: "button", class: a.lemma ? "w answer" : k === 0 ? "primary" : "chip-btn",
+      lang: a.lemma ? "pl" : null, dataset: a.lemma ? { lemma: a.lemma, s: String(status(a.lemma)) } : null,
+      onclick: () => { endDialogue(); a.fn?.(); },
+    }, a.label)));
     $("#d-next").hidden = true;
   } else { $("#d-next").hidden = false; $("#d-next").textContent = last ? "Done" : "Next"; }
   if (st.settings.auto) speak(pl); else sfx.talk();
@@ -107,9 +111,8 @@ $("#d-speak").addEventListener("click", () => dlg.open && speak(dlg.lines[dlg.i]
 // errands
 // ===================================================================
 function fillOrder(npcId) {
-  const s = npcState(npcId), it = ITEMS[s.order], tpl = NPCS[npcId].orders.ask[s.tmpl % NPCS[npcId].orders.ask.length];
-  return [tpl[0].replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.nom ?? it.word),
-          tpl[1].replace("{en}", it.en).replace("{the}", it.the)];
+  const s = npcState(npcId), ask = NPCS[npcId].orders.ask;
+  return fillTemplate(ask[s.tmpl % ask.length], ITEMS[s.order]);
 }
 function newOrder(npcId) {
   const N = NPCS[npcId], s = npcState(npcId);
@@ -138,8 +141,25 @@ function npcMark(npcId) {
   if (st.carry && want.includes(st.carry)) return "?";
   if (s.stage === "new") return "!";
   if (s.stage === "done" && N.orders && !s.order) return "!";
+  if (s.stage === "done" && N.quiz) return "!";
   if (N.thanks && s.stage === "done" && !s.thanked) return "!";
   return "";
+}
+// one of Zuzia's sums: three number words to tap, plus a way out
+function quizTurn(id, lead = []) {
+  const a = 1 + Math.floor(Math.random() * QUIZ_MAX), b = 1 + Math.floor(Math.random() * QUIZ_MAX), sum = a + b;
+  const opts = new Set([sum]);
+  while (opts.size < 3) opts.add(clamp(sum + Math.floor(Math.random() * 7) - 3, 2, 10));
+  const answer = n => () => {
+    const right = n === sum;
+    if (right) { reward(3); sfx.ok(); } else sfx.no();
+    save(); refreshCounts();
+    const next = quizTurn(id, [quizResult(right, sum), pick(NPCS[id].quiz.more)]);
+    startDialogue(id, next.lines, { actions: next.actions });
+  };
+  const actions = shuffle([...opts]).map(n => ({ label: NUMBERS[n], lemma: NUMBERS[n], fn: answer(n) }));
+  actions.push({ label: "That's enough" });
+  return { lines: [...lead, quizQuestion(a, b)], actions };
 }
 function talk(id) {
   const N = NPCS[id], s = npcState(id), carry = st.carry, lines = [], after = [];
@@ -148,6 +168,11 @@ function talk(id) {
     lines.push(...NPCS[qid].done || []);
     consumeCarry(); npcState(qid).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
     after.push(() => { sfx.ok(); toast(`Errand done for ${NPCS[qid].name}. +${Q.reward} zł`); });
+  };
+  const followUp = () => {
+    if (N.orders) lines.push(newOrder(id));
+    if (N.quiz) { const q = quizTurn(id); lines.push(...q.lines); actions = q.actions; }
+    if (N.music) after.push(() => sfx.tune());
   };
   if (N.receive && npcState(N.receive.from).stage === "active" && carry === N.receive.item) {
     // meeting someone for the first time with their delivery in hand: say hello, and keep their own errand open
@@ -160,22 +185,23 @@ function talk(id) {
     lines.push(...N.intro);
     if (N.quest) {
       s.stage = "active";
-      if (N.gives) { giveCarry(N.gives); after.push(() => toast(h("span", {}, "Basia gave you ", wordChip(N.gives), ". Take it to Ola."))); }
+      if (N.gives) { giveCarry(N.gives); after.push(() => toast(h("span", {}, `${N.name} gave you `, wordChip(N.gives), `. Take it to ${NPCS[N.quest.deliverTo].name}.`))); }
       else if (carry === N.quest.item) finishQuest(id, N.quest);
     } else s.stage = "done";
-    if (s.stage === "done" && N.orders) lines.push(newOrder(id));
+    if (s.stage === "done") followUp();
   } else if (s.stage === "active") {
     if (N.gives) {
       if (carry === N.gives) lines.push(N.remind);
       else { lines.push(...N.regive); giveCarry(N.gives); }
     } else if (carry === N.quest.item) {
       finishQuest(id, N.quest);
-      if (N.orders) lines.push(newOrder(id));
+      followUp();
     } else if (carry) { lines.push(N.wrong, thisIs(carry), N.remind); sfx.no(); }
     else lines.push(N.remind);
   } else {
     if (N.thanks && !s.thanked) { lines.push(...N.thanks); s.thanked = true; }
-    if (N.orders) {
+    if (N.quiz) { const q = quizTurn(id, [pick(N.quiz.start)]); lines.push(...q.lines); actions = q.actions; }
+    else if (N.orders) {
       if (s.order && carry === s.order) {
         lines.push(pick(N.orders.ok)); consumeCarry(); reward(5); wordDelivered(s.order); s.order = null;
         after.push(() => sfx.ok());
@@ -185,6 +211,7 @@ function talk(id) {
       else lines.push(newOrder(id));
     } else {
       lines.push(pick(N.after));
+      if (N.music) after.push(() => sfx.tune());
       if (N.review) {
         if (Object.keys(LEX).some(l => status(l) === 1)) {
           lines.push(REVIEW_LINES.offer);
@@ -226,7 +253,8 @@ function renderTracker() {
   }
   if (!n) ul.append(h("li", { class: "muted" }, "Talk to someone with a ! over their head."));
   const unmet = NPC_ORDER.filter(id => npcState(id).stage === "new").map(id => NPCS[id].name);
-  $("#unmet").textContent = unmet.length ? `Not met yet: ${unmet.join(", ")}` : "You've met everyone on the square.";
+  const names = unmet.length > 4 ? `${unmet.slice(0, 3).join(", ")} and ${unmet.length - 3} more` : unmet.join(", ");
+  $("#unmet").textContent = unmet.length ? `Not met yet: ${names}` : "You've met everyone on the square.";
   $("#tracker-toggle").textContent = $("#tracker").classList.contains("open") ? "Hide" : `Show ${n || ""}`.trim();
   for (const o of Object.values(npcObjs)) o.mark.textContent = npcMark(o.id);
   if (npcObjs.jozef) npcObjs.jozef.parts.specs.visible = npcState("jozef").stage === "done"; // he wears them once found

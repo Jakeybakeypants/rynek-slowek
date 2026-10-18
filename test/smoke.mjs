@@ -1,6 +1,7 @@
 // Plays the real page in headless Chromium: starts the game, walks, finishes Józef's
-// errand, takes Tadeusz's letter to Józef, delivers Basia's bread to Ola, completes one
-// café order, sorts a word, opens the word list, and fails on any page error.
+// errand, takes Tadeusz's letter to Józef, delivers Basia's bread to Ola, completes a café
+// order and one of Bogdan's, answers one of Zuzia's sums, sorts a word, opens the word list,
+// and fails on any page error.
 // Screenshots land in test/shots/ (git-ignored).
 //
 //   npm install          (once: playwright-core, plus three.js to serve locally)
@@ -119,6 +120,44 @@ check((await state()).carry === want, `picks up ${want} from the counter`);
 await goTo(ox, oz, "Ola"); await press(); await talkThrough();
 check((await state()).coins === 65, "the café order pays 5 zł");
 await shot("3-after-errands");
+
+// Bogdan says hello and gives an order with a reason in the same breath
+const [gx, gz] = await npcAt("bogdan", 0, 1.6);
+await goTo(gx, gz, "Bogdan"); await press();
+const bLines = await talkThrough();
+const bOrder = (await state()).npc.bogdan.order;
+check(!!bOrder && /^(Jest|Wieje|Pada|Ktoś)/.test(bLines.at(-1)), `Bogdan orders with a reason: "${bLines.at(-1)}"`);
+const [cx, cz] = await R(id => { const h = window.__rynek.HOMES[id]; return [h.x, h.z + 1]; }, bOrder);
+await R(([x, z]) => window.__rynek.player.pos.set(x, 0, z), [cx, cz]);
+await page.waitForFunction(id => window.__rynek.itemObjs[id].label.btn.classList.contains("near"), bOrder, { timeout: 20000 });
+await press();
+check((await state()).carry === bOrder, `picks up ${bOrder} from the clothes stall`);
+await goTo(gx, gz, "Bogdan"); await press(); await talkThrough();
+check((await state()).coins === 70, "Bogdan's order pays 5 zł");
+
+// Zuzia: find her skipping rope, then answer a sum by tapping the number word
+const [zx, zz] = await npcAt("zuzia", 1.4, 0);
+await goTo(zx, zz, "Zuzia"); await press(); await talkThrough();
+const sk = await R(() => { const h = window.__rynek.HOMES.skakanka; return [h.x, h.z + 1]; });
+await goTo(sk[0], sk[1], "skakanka"); await press();
+check((await state()).carry === "skakanka", "picks up skakanka");
+await goTo(zx, zz, "Zuzia"); await press();
+await page.waitForFunction(() => !document.querySelector("#dialogue").hidden);
+for (let i = 0; i < 6 && !(await page.$("#d-extra .answer")); i++) { await page.click("#d-next"); await page.waitForTimeout(200); }
+const NUM = ["zero", "jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć", "dziesięć"];
+const sum = (await R(() => document.querySelector("#d-line").textContent)).match(/Ile to jest (\S+) plus (\S+)\?/);
+const answer = NUM[NUM.indexOf(sum[1]) + NUM.indexOf(sum[2])];
+check((await page.$$("#d-extra .answer")).length === 3, "the sum offers three number words");
+await shot("5-quiz");
+await page.click(`#d-extra .answer[data-lemma="${answer}"]`);
+await page.waitForFunction(() => document.querySelector("#d-line").textContent.startsWith("Tak!"), null, { timeout: 15000 });
+check((await state()).coins === 93, `answering "${answer}" pays 3 zł, after 20 for the errand`);
+for (let i = 0; i < 8 && !(await R(() => document.querySelector("#dialogue").hidden)); i++) {
+  const quit = await page.$("#d-extra button:not(.answer)");
+  if (quit) await quit.click(); else await page.click("#d-next");
+  await page.waitForTimeout(200);
+}
+check(await R(() => document.querySelector("#dialogue").hidden), "That's enough ends the sums");
 
 await press("v");
 await page.waitForFunction(() => !document.querySelector("#vocab").hidden);

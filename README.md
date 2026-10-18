@@ -14,7 +14,7 @@ Click any word to see what it means, which dictionary form it comes from (`grusz
 
 ## What's on the square
 
-Eleven characters, each with an errand told in Polish:
+Fifteen characters, each with an errand told in Polish:
 
 | Who | Where | Errand | Then |
 | --- | --- | --- | --- |
@@ -29,10 +29,14 @@ Eleven characters, each with an errand told in Polish:
 | Tadeusz, the postman | post office | take a letter (`list`) to Józef | post office orders |
 | Halina, the bookseller | bookshop | find her bag of books (`torba`) by the sandpit | bookshop orders |
 | Burek, a dog | trees by the flower shop | find his bone (`kość`) under a tree | wags his tail |
+| Zuzia | hopscotch near the flower shop | find her skipping rope (`skakanka`) by the fountain | sets sums: tap the number word that answers `Ile to jest dwa plus trzy?` |
+| Staszek | town hall, with an accordion | find his sheet music (`nuty`) by a tree | plays you a tune |
+| Bogdan | clothes stall | (none: he needs help straight away) | clothes orders, each with a reason: `Pada deszcz. Poproszę parasolkę.` |
+| Babcia Krysia | bench by the fountain, feeding pigeons | bring a roll (`bułka`) from the bakery | talks about her family: `Józef to mój brat.` |
 
 Repeat orders come in several phrasings that need different cases: `Poproszę gruszkę` (accusative), `Szukam gruszki` (genitive), `Gdzie jest miś?` (nominative). Ewa's paint orders put an adjective in front, so the colour changes too: `Poproszę czerwoną farbę`, `Potrzebuję niebieskiej farby`. Bring the wrong thing and they tell you what it actually is: `Nie, to nie to. To jest cytryna.` Orders favour words you haven't marked green yet.
 
-Other things: about 210 words, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
+Other things: about 270 words, numbers from one to ten, a word list (V) with a review mode, the lines read aloud when the device has a Polish voice, a challenge setting that hides labels of green words, a dusk scene with lit street lamps in dark mode, and touch controls on phones.
 
 ## Controls
 
@@ -88,6 +92,6 @@ Everything Polish lives in `src/js/01-data.js`:
 - `FORMS` maps an inflected form to its lemma and a short description of the form. Item forms (accusative and genitive) are filled in automatically from `ITEMS`.
 - `PHRASES` are multi-word expressions shown on the word card.
 - `ITEMS` are things you can pick up. Each needs its accusative, genitive and English, plus a model in `itemModel()` and a home position in `HOMES` (`06-props.js`). An item named by a phrase (the paint: `nom: "czerwona farba"`, `acc: "czerwoną farbę"`) lists every word of every form in `FORMS` by hand.
-- `NPCS` holds each person's lines as `[Polish, English]` pairs.
+- `NPCS` holds each person's lines as `[Polish, English]` pairs. Order templates fill in `{acc}`, `{gen}`, `{nom}` and `{why}` (an item's reason, as Bogdan's clothes have) from the item, and `{en}`, `{the}`, `{whyEn}` in English. A person with `quiz` sets sums from `quizQuestion()` in `02-words.js`; one with `music` plays a tune.
 
 `npm test` fails if any word on screen has no dictionary entry. Avoid masculine inanimate items such as `tulipan`, where everyday Polish often uses a different object form than the textbook one.

@@ -143,4 +143,6 @@ const sfx = {
   coin() { tone(1318, 0.08, "square", 0.025); tone(1760, 0.14, "square", 0.025, 0.07); },
   known() { [784, 988, 1318].forEach((f, i) => tone(f, 0.16, "sine", 0.06, i * 0.05)); },
   talk() { tone(440, 0.06, "sine", 0.03); },
+  // Staszek's accordion: two slightly detuned reeds per note
+  tune() { [392, 523, 523, 587, 659, 587, 523, 494, 523, 392, 523].forEach((f, i) => { tone(f, 0.34, "sawtooth", 0.022, i * 0.26); tone(f * 1.006, 0.34, "sawtooth", 0.016, i * 0.26); }); },
 };
