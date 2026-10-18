@@ -9,18 +9,21 @@
 //   node tools/frequency.mjs DIR          use local copies DIR/<lang>_50k.txt instead
 import { readFileSync, writeFileSync } from "node:fs";
 
-const LANGS = ["pl", "de", "es"];
+const LANGS = ["pl", "de", "es", "fr"];
 const SOURCE = lang => `https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/${lang}/${lang}_50k.txt`;
 const TOP = 3000;
-// typed without their accents in many subtitles, so they would push out the real word
-const SKIP = { pl: new Set(["sie"]), de: new Set(), es: new Set() };
+// left out: Polish "sie", typed without its accent in many subtitles, would push out the real word;
+// the French ones are stray fragments of English and names
+const SKIP = { pl: new Set(["sie"]), de: new Set(), es: new Set(), fr: new Set(["o'", "y'", "p'", "b'"]) };
+// a word as each list writes it: letters only, except French elisions (c', qu') and hyphenated words (peut-être)
+const WORD = { fr: /^(?:aujourd'hui|\p{L}+(?:-\p{L}+)*'?)$/u };
 const lists = {};
 for (const lang of LANGS) {
   const text = process.argv[2] ? readFileSync(`${process.argv[2]}/${lang}_50k.txt`, "utf8") : await (await fetch(SOURCE(lang))).text();
   const words = [], seen = new Set();
   for (const line of text.split("\n")) {
     const w = line.split(" ")[0]?.trim().toLowerCase();
-    if (!w || !/^\p{L}+$/u.test(w) || SKIP[lang].has(w) || seen.has(w)) continue;
+    if (!w || !(WORD[lang] ?? /^\p{L}+$/u).test(w) || SKIP[lang].has(w) || seen.has(w)) continue;
     seen.add(w); words.push(w);
     if (words.length === TOP) break;
   }

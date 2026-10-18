@@ -443,7 +443,7 @@ function applyLanguageText() {
   $("#coins-box").title = `${LANGS[LANG].money[0].toUpperCase() + LANGS[LANG].money.slice(1)} earned from errands`;
   $("#v-search").placeholder = `Search ${name} or English`;
   UI.examples.forEach((w, i) => { const el = $("#ex-" + i); el.textContent = w; el.lang = LANG; });
-  $("#s-lang").replaceChildren(...Object.entries(LANGS).map(([code, l]) => h("option", { value: code, selected: code === LANG }, `${l.name} (${l.native})`)));
+  $("#s-lang").replaceChildren(...Object.entries(LANGS).filter(([code]) => L10N[code]).map(([code, l]) => h("option", { value: code, selected: code === LANG }, `${l.name} (${l.native})`)));
 }
 $("#s-lang").addEventListener("change", e => {
   try { localStorage.setItem(LANG_KEY, e.target.value); } catch {}
