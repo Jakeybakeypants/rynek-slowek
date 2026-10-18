@@ -108,7 +108,7 @@ $("#d-speak").addEventListener("click", () => dlg.open && speak(dlg.lines[dlg.i]
 // ===================================================================
 function fillOrder(npcId) {
   const s = npcState(npcId), it = ITEMS[s.order], tpl = NPCS[npcId].orders.ask[s.tmpl % NPCS[npcId].orders.ask.length];
-  return [tpl[0].replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.word),
+  return [tpl[0].replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.nom ?? it.word),
           tpl[1].replace("{en}", it.en).replace("{the}", it.the)];
 }
 function newOrder(npcId) {
@@ -127,15 +127,15 @@ function wordDelivered(id) {
     actions: [{ label: "Learning", s: 1, fn: () => setStatus(lemma, 1) }, { label: "Known", s: 2, fn: () => setStatus(lemma, 2) }], ms: 6000 });
 }
 function wantedBy(npcId) {
-  const N = NPCS[npcId], s = npcState(npcId);
-  if (N.receive && npcState(N.receive.from).stage === "active") return N.receive.item;
-  if (s.stage === "active" && N.quest && !N.gives) return N.quest.item;
-  if (s.stage === "done" && s.order) return s.order;
-  return null;
+  const N = NPCS[npcId], s = npcState(npcId), out = [];
+  if (N.receive && npcState(N.receive.from).stage === "active") out.push(N.receive.item);
+  if (s.stage === "active" && N.quest && !N.gives) out.push(N.quest.item);
+  if (s.stage === "done" && s.order) out.push(s.order);
+  return out;
 }
 function npcMark(npcId) {
   const N = NPCS[npcId], s = npcState(npcId), want = wantedBy(npcId);
-  if (st.carry && want === st.carry) return "?";
+  if (st.carry && want.includes(st.carry)) return "?";
   if (s.stage === "new") return "!";
   if (s.stage === "done" && N.orders && !s.order) return "!";
   if (N.thanks && s.stage === "done" && !s.thanked) return "!";
@@ -150,11 +150,12 @@ function talk(id) {
     after.push(() => { sfx.ok(); toast(`Errand done for ${NPCS[qid].name}. +${Q.reward} zł`); });
   };
   if (N.receive && npcState(N.receive.from).stage === "active" && carry === N.receive.item) {
-    if (s.stage === "new") { lines.push(...N.intro); s.stage = "done"; }
+    // meeting someone for the first time with their delivery in hand: say hello, and keep their own errand open
+    if (s.stage === "new") { lines.push(...N.intro); s.stage = N.quest ? "active" : "done"; }
     lines.push(...N.receive.lines);
     const from = N.receive.from, Q = NPCS[from].quest;
     consumeCarry(); npcState(from).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
-    after.push(() => { sfx.ok(); toast(`Bread delivered for ${NPCS[from].name}. +${Q.reward} zł`); });
+    after.push(() => { sfx.ok(); toast(`Delivered for ${NPCS[from].name}. +${Q.reward} zł`); });
   } else if (s.stage === "new") {
     lines.push(...N.intro);
     if (N.quest) {
@@ -183,7 +184,7 @@ function talk(id) {
       else if (s.order) lines.push(fillOrder(id));
       else lines.push(newOrder(id));
     } else {
-      lines.push(...N.after);
+      lines.push(pick(N.after));
       if (N.review) {
         if (Object.keys(LEX).some(l => status(l) === 1)) {
           lines.push(REVIEW_LINES.offer);
@@ -228,6 +229,7 @@ function renderTracker() {
   $("#unmet").textContent = unmet.length ? `Not met yet: ${unmet.join(", ")}` : "You've met everyone on the square.";
   $("#tracker-toggle").textContent = $("#tracker").classList.contains("open") ? "Hide" : `Show ${n || ""}`.trim();
   for (const o of Object.values(npcObjs)) o.mark.textContent = npcMark(o.id);
+  if (npcObjs.jozef) npcObjs.jozef.parts.specs.visible = npcState("jozef").stage === "done"; // he wears them once found
   const cw = $("#carry-word");
   if (st.carry) { cw.replaceChildren(wordChip(st.carry)); $("#carry").hidden = false; } else $("#carry").hidden = true;
 }

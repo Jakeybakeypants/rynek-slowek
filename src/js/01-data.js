@@ -163,6 +163,58 @@ const LEX = {
   "ola": ["Ola: a woman's name, short for Aleksandra", "name"],
   "kuba": ["Kuba: a boy's name, short for Jakub (Jacob)", "name"],
   "zosia": ["Zosia: a woman's name, short for Zofia (Sophie)", "name"],
+  // painter, postman, bookseller, dog
+  "a": ["and; while (to contrast two things)", "conjunction"],
+  "ale": ["but", "conjunction"],
+  "tam": ["there", "adverb"],
+  "rano": ["in the morning", "adverb"],
+  "on": ["he; him; it (masculine)", "pronoun"],
+  "malować": ["to paint", "verb"],
+  "czytać": ["to read", "verb"],
+  "potrzebować": ["to need", "verb", "Takes the genitive: potrzebuję farby."],
+  "mieszkać": ["to live (somewhere)", "verb"],
+  "chodzić": ["to walk, to go on foot (often, or there and back)", "verb", "Chodźmy = let's go."],
+  "niebieski": ["blue", "adjective"],
+  "żółty": ["yellow", "adjective"],
+  "czerwony": ["red", "adjective"],
+  "zielony": ["green", "adjective"],
+  "biały": ["white", "adjective"],
+  "szczęśliwy": ["happy", "adjective"],
+  "niebo": ["sky", "noun · neuter"],
+  "słońce": ["sun", "noun · neuter"],
+  "malarka": ["painter (a woman)", "noun · feminine"],
+  "pędzel": ["paintbrush", "noun · masculine", "Pędzla: the e drops out."],
+  "farba": ["paint", "noun · feminine"],
+  "sztaluga": ["easel", "noun · feminine"],
+  "obraz": ["painting, picture", "noun · masculine"],
+  "listonosz": ["postman", "noun · masculine"],
+  "list": ["letter (that you post)", "noun · masculine", "A false friend: an English list is lista."],
+  "paczka": ["parcel", "noun · feminine"],
+  "koperta": ["envelope", "noun · feminine"],
+  "pocztówka": ["postcard", "noun · feminine"],
+  "rower": ["bicycle", "noun · masculine"],
+  "skrzynka": ["box; here, a postbox", "noun · feminine"],
+  "robota": ["work, job (informal)", "noun · feminine", "Dobra robota! = Good job!"],
+  "widzenie": ["seeing", "noun · neuter", "Mostly met in do widzenia = goodbye."],
+  "wnuczka": ["granddaughter", "noun · feminine"],
+  "książka": ["book", "noun · feminine"],
+  "mapa": ["map", "noun · feminine"],
+  "gazeta": ["newspaper", "noun · feminine"],
+  "kredka": ["crayon, coloured pencil", "noun · feminine"],
+  "torba": ["bag", "noun · feminine"],
+  "środek": ["middle, inside", "noun · masculine", "W środku = inside. Środku: the e drops out."],
+  "kość": ["bone", "noun · feminine"],
+  "spacer": ["walk, stroll", "noun · masculine"],
+  "przyjaciel": ["friend", "noun · masculine"],
+  "raz": ["time, once", "noun · masculine", "Na razie = see you; for now."],
+  "zegar": ["clock", "noun · masculine"],
+  "schody": ["stairs, steps", "noun · plural only"],
+  "hau": ["woof", "interjection"],
+  "ewa": ["Ewa: a woman's name (Eve)", "name"],
+  "tadeusz": ["Tadeusz: a man's name (Thaddeus)", "name"],
+  "halina": ["Halina: a woman's name", "name"],
+  "burek": ["Burek: the classic Polish dog's name, from bury (greyish brown)", "name"],
+  "kraków": ["Kraków: a city in southern Poland", "name"],
 };
 
 // surface form -> [lemma, what this form is]
@@ -229,6 +281,45 @@ const FORMS = {
   "basi": ["basia", "genitive: after od"],
   "kawę": ["kawa", "accusative (object form)"],
   "herbatę": ["herbata", "accusative (object form)"],
+  // painter
+  "malarką": ["malarka", "instrumental: after być, 'I am a…'"],
+  "maluję": ["malować", "I paint, I'm painting"],
+  "niebieskie": ["niebieski", "neuter (with niebo)"], "żółte": ["żółty", "neuter (with słońce)"],
+  "czerwona": ["czerwony", "feminine (with farba)"], "czerwoną": ["czerwony", "accusative, feminine (with farbę)"], "czerwonej": ["czerwony", "genitive, feminine (with farby)"],
+  "niebieska": ["niebieski", "feminine (with farba)"], "niebieską": ["niebieski", "accusative, feminine (with farbę)"], "niebieskiej": ["niebieski", "genitive, feminine (with farby)"],
+  "żółta": ["żółty", "feminine (with farba)"], "żółtą": ["żółty", "accusative, feminine (with farbę)"], "żółtej": ["żółty", "genitive, feminine (with farby)"],
+  "zielona": ["zielony", "feminine (with farba)"], "zieloną": ["zielony", "accusative, feminine (with farbę)"], "zielonej": ["zielony", "genitive, feminine (with farby)"],
+  "biała": ["biały", "feminine (with farba)"], "białą": ["biały", "accusative, feminine (with farbę)"], "białej": ["biały", "genitive, feminine (with farby)"],
+  "farbę": ["farba", "accusative (object form)"], "farby": ["farba", "genitive: after potrzebować, szukać"],
+  "potrzebuję": ["potrzebować", "I need"],
+  "ratuszu": ["ratusz", "locative: after przy"],
+  // postman
+  "listonoszem": ["listonosz", "instrumental: after być, 'I am a…'"],
+  "poczcie": ["poczta", "locative: after na (t changes to c)"],
+  "józefa": ["józef", "genitive: after dla"],
+  "mu": ["on", "to him (dative)"],
+  "dobra": ["dobry", "feminine (with robota)"],
+  "widzenia": ["widzenie", "genitive: after do"],
+  "mnie": ["ja", "me (genitive: after dla)"],
+  "mojej": ["mój", "genitive, feminine (with wnuczki)"],
+  "wnuczki": ["wnuczka", "genitive: after od"],
+  // bookseller
+  "księgarni": ["księgarnia", "locative: after w"],
+  "książkami": ["książka", "instrumental plural: after z = with"],
+  "książki": ["książka", "plural; also the genitive singular"],
+  "byłam": ["być", "I was (said by a woman)"],
+  "środku": ["środek", "locative: w środku = inside"],
+  "szuka": ["szukać", "he / she is looking for"],
+  "piaskownicy": ["piaskownica", "locative: after przy"],
+  // dog, and a few more lines for the people you already know
+  "drzewem": ["drzewo", "instrumental: after pod"],
+  "filemona": ["filemon", "accusative: an animal, so it ends in -a"],
+  "chodźmy": ["chodzić", "let's go"],
+  "mieszka": ["mieszkać", "he / she lives"],
+  "krakowie": ["kraków", "locative: after w (ó changes to o)"],
+  "moim": ["mój", "instrumental (with przyjacielem)"],
+  "przyjacielem": ["przyjaciel", "instrumental: after być"],
+  "razie": ["raz", "locative: na razie = see you"],
 };
 
 const PHRASES = [
@@ -247,6 +338,15 @@ const PHRASES = [
   ["prosi o", "asks for"],
   ["czeka na", "is waiting for"],
   ["za pomoc", "for the help"],
+  ["do widzenia", "goodbye (formal)"],
+  ["na razie", "see you; for now"],
+  ["dobra robota", "good job"],
+  ["w środku", "inside"],
+  ["na spacer", "for a walk"],
+  ["na poczcie", "at the post office"],
+  ["pod drzewem", "under a tree"],
+  ["przy ratuszu", "by the town hall"],
+  ["przy piaskownicy", "by the sandpit"],
 ].map(([pl, en]) => ({ pl, en, w: pl.split(" ") }));
 
 // things you can pick up
@@ -276,9 +376,27 @@ const ITEMS = {
   lilia: { acc: "lilię", gen: "lilii", en: "a lily", the: "the lily" },
   stokrotka: { acc: "stokrotkę", gen: "stokrotki", en: "a daisy", the: "the daisy" },
   orchidea: { acc: "orchideę", gen: "orchidei", en: "an orchid", the: "the orchid" },
+  pędzel: { acc: "pędzel", gen: "pędzla", en: "the paintbrush", the: "the paintbrush", story: "ewa" },
+  // paint tins are labelled with the colour; the errand names the whole phrase, which changes with the case
+  czerwona: { lemma: "czerwony", nom: "czerwona farba", acc: "czerwoną farbę", gen: "czerwonej farby", en: "red paint", the: "the red paint" },
+  niebieska: { lemma: "niebieski", nom: "niebieska farba", acc: "niebieską farbę", gen: "niebieskiej farby", en: "blue paint", the: "the blue paint" },
+  żółta: { lemma: "żółty", nom: "żółta farba", acc: "żółtą farbę", gen: "żółtej farby", en: "yellow paint", the: "the yellow paint" },
+  zielona: { lemma: "zielony", nom: "zielona farba", acc: "zieloną farbę", gen: "zielonej farby", en: "green paint", the: "the green paint" },
+  biała: { lemma: "biały", nom: "biała farba", acc: "białą farbę", gen: "białej farby", en: "white paint", the: "the white paint" },
+  list: { acc: "list", gen: "listu", en: "the letter", the: "the letter", story: "tadeusz" },
+  paczka: { acc: "paczkę", gen: "paczki", en: "a parcel", the: "the parcel" },
+  koperta: { acc: "kopertę", gen: "koperty", en: "an envelope", the: "the envelope" },
+  pocztówka: { acc: "pocztówkę", gen: "pocztówki", en: "a postcard", the: "the postcard" },
+  torba: { acc: "torbę", gen: "torby", en: "the bag", the: "the bag", story: "halina" },
+  książka: { acc: "książkę", gen: "książki", en: "a book", the: "the book" },
+  mapa: { acc: "mapę", gen: "mapy", en: "a map", the: "the map" },
+  gazeta: { acc: "gazetę", gen: "gazety", en: "a newspaper", the: "the newspaper" },
+  kredka: { acc: "kredkę", gen: "kredki", en: "a crayon", the: "the crayon" },
+  kość: { acc: "kość", gen: "kości", en: "the bone", the: "the bone", story: "burek" },
 };
 for (const [id, it] of Object.entries(ITEMS)) {
   it.id = id; it.word ??= id; it.lemma ??= id;
+  if (it.acc.includes(" ")) continue; // phrase forms are listed word by word in FORMS
   if (it.word !== it.lemma && !FORMS[it.word]) FORMS[it.word] = [it.lemma, "plural"];
   if (it.acc === it.gen && it.acc !== it.word) FORMS[it.acc] ??= [it.lemma, "accusative = genitive (miś is animate)"];
   else {
@@ -288,7 +406,7 @@ for (const [id, it] of Object.entries(ITEMS)) {
 }
 const thisIs = id => {
   const it = ITEMS[id];
-  return it.pl ? [`To są ${it.word}.`, `Those are ${it.the}.`] : [`To jest ${it.word}.`, `That's ${it.en}.`];
+  return it.pl ? [`To są ${it.word}.`, `Those are ${it.the}.`] : [`To jest ${it.nom ?? it.word}.`, `That's ${it.en}.`];
 };
 
 // people on the square
@@ -306,7 +424,12 @@ const NPCS = {
     remind: ["Moje okulary są chyba przy fontannie.", "My glasses are probably by the fountain."],
     wrong: ["To nie to, czego szukam.", "That's not what I'm looking for."],
     done: [["Moje okulary! Dziękuję bardzo!", "My glasses! Thank you very much!"], ["Teraz widzę wszystko.", "Now I can see everything."]],
-    after: [["Jaki piękny dzień!", "What a beautiful day!"]],
+    after: [
+      ["Jaki piękny dzień!", "What a beautiful day!"],
+      ["Lubię ten rynek.", "I like this square."],
+      ["Moja wnuczka mieszka w Krakowie.", "My granddaughter lives in Kraków."],
+    ],
+    receive: { from: "tadeusz", item: "list", lines: [["List dla mnie? Od mojej wnuczki!", "A letter for me? From my granddaughter!"], ["Dziękuję bardzo!", "Thank you very much!"]] },
     review: true,
   },
   filemon: {
@@ -321,7 +444,10 @@ const NPCS = {
     remind: ["Miau! Gdzie jest mleko?", "Meow! Where's the milk?"],
     wrong: ["Miau? Nie chcę tego.", "Meow? I don't want that."],
     done: [["Mniam! Pyszne mleko!", "Yum! Delicious milk!"], ["Teraz idę spać.", "Now I'm off to bed."]],
-    after: [["Mrrr... Jestem kotem, nie psem.", "Purr... I'm a cat, not a dog."]],
+    after: [
+      ["Mrrr... Jestem kotem, nie psem.", "Purr... I'm a cat, not a dog."],
+      ["Miau! Burek jest moim przyjacielem.", "Meow! Burek is my friend."],
+    ],
   },
   marek: {
     name: "Marek", role: "the greengrocer",
@@ -394,7 +520,7 @@ const NPCS = {
     orders: {
       pool: ["piłka", "lalka", "miś", "latawiec"],
       ask: [["Znajdź {acc}!", "Find {en}!"], ["Gdzie jest {nom}?", "Where is {the}?"], ["Szukam {gen}.", "I'm looking for {the}."]],
-      ok: [["Hurra! Dziękuję!", "Hooray! Thank you!"], ["Super!", "Great!"]],
+      ok: [["Hurra! Dziękuję!", "Hooray! Thank you!"], ["Super!", "Great!"], ["Hurra! Na razie!", "Hooray! See you!"]],
     },
   },
   zosia: {
@@ -416,9 +542,86 @@ const NPCS = {
       ok: [["Pięknie! Dziękuję.", "Lovely! Thank you."], ["Świetnie!", "Great!"]],
     },
   },
+  ewa: {
+    name: "Ewa", role: "a painter at her easel",
+    intro: [
+      ["Dzień dobry! Mam na imię Ewa.", "Good morning! My name is Ewa."],
+      ["Jestem malarką. Maluję rynek.", "I'm a painter. I'm painting the square."],
+      ["Niebo jest niebieskie, a słońce jest żółte.", "The sky is blue and the sun is yellow."],
+      ["Ale zgubiłam pędzel! Nie mogę malować.", "But I've lost my brush! I can't paint."],
+      ["Chyba jest przy ratuszu.", "I think it's by the town hall."],
+    ],
+    quest: { item: "pędzel", reward: 20, task: ["Find Ewa's", ""] },
+    remind: ["Mój pędzel jest chyba przy ratuszu.", "My brush is probably by the town hall."],
+    wrong: ["Ojej, to nie to.", "Oh dear, that's not it."],
+    done: [["Mój pędzel! Dziękuję!", "My brush! Thank you!"], ["Teraz potrzebuję farby.", "Now I need paint."]],
+    orders: {
+      pool: ["czerwona", "niebieska", "żółta", "zielona", "biała"],
+      ask: [["Poproszę {acc}.", "I'd like {en}, please."], ["Potrzebuję {gen}.", "I need {en}."], ["Szukam {gen}.", "I'm looking for {en}."]],
+      ok: [["Pięknie! Dziękuję.", "Lovely! Thank you."], ["Idealnie! Teraz mogę malować.", "Perfect! Now I can paint."]],
+    },
+  },
+  tadeusz: {
+    name: "Tadeusz", role: "the postman",
+    intro: [
+      ["Dzień dobry! Mam na imię Tadeusz.", "Good morning! My name is Tadeusz."],
+      ["Jestem listonoszem. Pracuję na poczcie.", "I'm a postman. I work at the post office."],
+      ["Mam list dla Józefa.", "I have a letter for Józef."],
+      ["Zanieś mu ten list, proszę.", "Please take him this letter."],
+      ["Józef jest przy fontannie.", "Józef is by the fountain."],
+    ],
+    gives: "list",
+    quest: { item: "list", deliverTo: "jozef", reward: 20, task: ["Take", "to Józef"] },
+    remind: ["Józef jest przy fontannie.", "Józef is by the fountain."],
+    regive: [["Masz, to list dla Józefa.", "Here, this is the letter for Józef."]],
+    wrong: ["Nie, to nie to.", "No, that's not it."],
+    thanks: [["Dobra robota! Dziękuję.", "Good job! Thank you."]],
+    orders: {
+      pool: ["paczka", "koperta", "pocztówka"],
+      ask: [["Klient czeka na {acc}.", "A customer is waiting for {en}."], ["Poproszę {acc}.", "I'd like {en}, please."], ["Szukam {gen}.", "I'm looking for {en}."]],
+      ok: [["Świetnie, dziękuję!", "Great, thank you!"], ["Dobra robota!", "Good job!"]],
+    },
+  },
+  halina: {
+    name: "Halina", role: "the bookseller",
+    intro: [
+      ["Dzień dobry! Mam na imię Halina.", "Good morning! My name is Halina."],
+      ["Pracuję w księgarni. Bardzo lubię czytać.", "I work in the bookshop. I really like reading."],
+      ["Zgubiłam torbę z książkami.", "I've lost my bag of books."],
+      ["Byłam rano przy piaskownicy.", "I was by the sandpit this morning."],
+      ["Może tam jest?", "Maybe it's there?"],
+    ],
+    quest: { item: "torba", reward: 20, task: ["Find Halina's", ""] },
+    remind: ["Moja torba jest chyba przy piaskownicy.", "My bag is probably by the sandpit."],
+    wrong: ["Hmm, to nie to.", "Hmm, that's not it."],
+    done: [["Moja torba! Dziękuję!", "My bag! Thank you!"], ["Książki są w środku. Super!", "The books are inside. Great!"]],
+    orders: {
+      pool: ["książka", "mapa", "gazeta", "kredka"],
+      ask: [["Klientka szuka {gen}.", "A customer is looking for {en}."], ["Poproszę {acc}.", "I'd like {en}, please."], ["Gdzie jest {nom}?", "Where is {the}?"]],
+      ok: [["Dziękuję! Świetnie.", "Thank you! Great."], ["Idealnie!", "Perfect!"]],
+    },
+  },
+  burek: {
+    name: "Burek", role: "a dog by the trees", dog: true,
+    intro: [
+      ["Hau, hau! Jestem Burek.", "Woof, woof! I'm Burek."],
+      ["Jestem psem, nie kotem.", "I'm a dog, not a cat."],
+      ["Gdzie jest moja kość?", "Where's my bone?"],
+      ["Chyba jest pod drzewem.", "I think it's under a tree."],
+    ],
+    quest: { item: "kość", reward: 20, task: ["Find Burek's", ""] },
+    remind: ["Hau! Moja kość jest pod drzewem.", "Woof! My bone is under a tree."],
+    wrong: ["Hau? Nie chcę tego.", "Woof? I don't want that."],
+    done: [["Hau, hau! Moja kość!", "Woof, woof! My bone!"], ["Teraz jestem szczęśliwy.", "Now I'm happy."]],
+    after: [
+      ["Hau! Lubię Filemona.", "Woof! I like Filemon."],
+      ["Hau, hau! Chodźmy na spacer!", "Woof, woof! Let's go for a walk!"],
+      ["Hau! Do widzenia!", "Woof! Goodbye!"],
+    ],
+  },
 };
 const REVIEW_LINES = {
   offer: ["Chcesz powtórzyć słówka?", "Do you want to review your words?"],
   none: ["Nie masz teraz słówek do powtórki.", "You have no words to review right now."],
 };
-const NPC_ORDER = ["jozef", "filemon", "marek", "basia", "ola", "kuba", "zosia"];
+const NPC_ORDER = ["jozef", "filemon", "marek", "basia", "ola", "kuba", "zosia", "ewa", "tadeusz", "halina", "burek"];

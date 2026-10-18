@@ -95,6 +95,12 @@ function updateNPCs(dt, T) {
     const want = d < 5 || talking ? Math.atan2(dx, dz) : o.base;
     o.heading = angLerp(o.heading, want, 1 - Math.exp(-dt * 4)); o.group.rotation.y = o.heading;
     const tt = T + o.phase, p = o.parts;
+    if (o.dog) {
+      const happy = npcState(o.id).stage === "done";
+      p.tail.rotation.y = Math.sin(tt * (talking ? 16 : happy ? 11 : 4)) * (happy || talking ? 0.7 : 0.35);
+      p.head.rotation.z = talking ? Math.sin(T * 2.4) * 0.2 : 0;
+      continue;
+    }
     if (o.cat) {
       const asleep = npcState("filemon").stage === "done" && !talking;
       p.tail.rotation.y = Math.sin(tt * (asleep ? 0.8 : 2.2)) * 0.5;
@@ -338,4 +344,4 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { get st() { return st; }, validateLexicon, talk, player, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
+window.__rynek = { get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };

@@ -338,6 +338,8 @@ function buildRatusz() {
   const board = new THREE.Mesh(new THREE.BoxGeometry(3.4, 0.6, 0.12), [wood, wood, wood, wood, new THREE.MeshStandardMaterial({ map: signTex("RATUSZ", "#1F3C91", "#F4E3B5") }), wood]);
   board.position.set(0, 5.2, d / 2 + 0.07); g.add(board);
   addWordLabel({ word: "ratusz", pos: new THREE.Vector3(0, 5.9, -9.5 + d / 2 + 0.3), max: 30, kind: "sign" });
+  addWordLabel({ word: "zegar", pos: new THREE.Vector3(tx, 18.2, -9.5 + tz + 2.0), max: 40, kind: "small" });
+  addWordLabel({ word: "schody", pos: new THREE.Vector3(-2.0, 0.95, -9.5 + d / 2 + 1.0), max: 7, kind: "small" });
   addOccluder(hall); addOccluder(tower);
   addBox(-7.2, 7.2, -14.2, -4.8); addBox(-3.2, 3.2, -4.8, -3.9);
 }

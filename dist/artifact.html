@@ -519,6 +519,58 @@ const LEX = {
   "ola": ["Ola: a woman's name, short for Aleksandra", "name"],
   "kuba": ["Kuba: a boy's name, short for Jakub (Jacob)", "name"],
   "zosia": ["Zosia: a woman's name, short for Zofia (Sophie)", "name"],
+  // painter, postman, bookseller, dog
+  "a": ["and; while (to contrast two things)", "conjunction"],
+  "ale": ["but", "conjunction"],
+  "tam": ["there", "adverb"],
+  "rano": ["in the morning", "adverb"],
+  "on": ["he; him; it (masculine)", "pronoun"],
+  "malować": ["to paint", "verb"],
+  "czytać": ["to read", "verb"],
+  "potrzebować": ["to need", "verb", "Takes the genitive: potrzebuję farby."],
+  "mieszkać": ["to live (somewhere)", "verb"],
+  "chodzić": ["to walk, to go on foot (often, or there and back)", "verb", "Chodźmy = let's go."],
+  "niebieski": ["blue", "adjective"],
+  "żółty": ["yellow", "adjective"],
+  "czerwony": ["red", "adjective"],
+  "zielony": ["green", "adjective"],
+  "biały": ["white", "adjective"],
+  "szczęśliwy": ["happy", "adjective"],
+  "niebo": ["sky", "noun · neuter"],
+  "słońce": ["sun", "noun · neuter"],
+  "malarka": ["painter (a woman)", "noun · feminine"],
+  "pędzel": ["paintbrush", "noun · masculine", "Pędzla: the e drops out."],
+  "farba": ["paint", "noun · feminine"],
+  "sztaluga": ["easel", "noun · feminine"],
+  "obraz": ["painting, picture", "noun · masculine"],
+  "listonosz": ["postman", "noun · masculine"],
+  "list": ["letter (that you post)", "noun · masculine", "A false friend: an English list is lista."],
+  "paczka": ["parcel", "noun · feminine"],
+  "koperta": ["envelope", "noun · feminine"],
+  "pocztówka": ["postcard", "noun · feminine"],
+  "rower": ["bicycle", "noun · masculine"],
+  "skrzynka": ["box; here, a postbox", "noun · feminine"],
+  "robota": ["work, job (informal)", "noun · feminine", "Dobra robota! = Good job!"],
+  "widzenie": ["seeing", "noun · neuter", "Mostly met in do widzenia = goodbye."],
+  "wnuczka": ["granddaughter", "noun · feminine"],
+  "książka": ["book", "noun · feminine"],
+  "mapa": ["map", "noun · feminine"],
+  "gazeta": ["newspaper", "noun · feminine"],
+  "kredka": ["crayon, coloured pencil", "noun · feminine"],
+  "torba": ["bag", "noun · feminine"],
+  "środek": ["middle, inside", "noun · masculine", "W środku = inside. Środku: the e drops out."],
+  "kość": ["bone", "noun · feminine"],
+  "spacer": ["walk, stroll", "noun · masculine"],
+  "przyjaciel": ["friend", "noun · masculine"],
+  "raz": ["time, once", "noun · masculine", "Na razie = see you; for now."],
+  "zegar": ["clock", "noun · masculine"],
+  "schody": ["stairs, steps", "noun · plural only"],
+  "hau": ["woof", "interjection"],
+  "ewa": ["Ewa: a woman's name (Eve)", "name"],
+  "tadeusz": ["Tadeusz: a man's name (Thaddeus)", "name"],
+  "halina": ["Halina: a woman's name", "name"],
+  "burek": ["Burek: the classic Polish dog's name, from bury (greyish brown)", "name"],
+  "kraków": ["Kraków: a city in southern Poland", "name"],
 };
 
 // surface form -> [lemma, what this form is]
@@ -585,6 +637,45 @@ const FORMS = {
   "basi": ["basia", "genitive: after od"],
   "kawę": ["kawa", "accusative (object form)"],
   "herbatę": ["herbata", "accusative (object form)"],
+  // painter
+  "malarką": ["malarka", "instrumental: after być, 'I am a…'"],
+  "maluję": ["malować", "I paint, I'm painting"],
+  "niebieskie": ["niebieski", "neuter (with niebo)"], "żółte": ["żółty", "neuter (with słońce)"],
+  "czerwona": ["czerwony", "feminine (with farba)"], "czerwoną": ["czerwony", "accusative, feminine (with farbę)"], "czerwonej": ["czerwony", "genitive, feminine (with farby)"],
+  "niebieska": ["niebieski", "feminine (with farba)"], "niebieską": ["niebieski", "accusative, feminine (with farbę)"], "niebieskiej": ["niebieski", "genitive, feminine (with farby)"],
+  "żółta": ["żółty", "feminine (with farba)"], "żółtą": ["żółty", "accusative, feminine (with farbę)"], "żółtej": ["żółty", "genitive, feminine (with farby)"],
+  "zielona": ["zielony", "feminine (with farba)"], "zieloną": ["zielony", "accusative, feminine (with farbę)"], "zielonej": ["zielony", "genitive, feminine (with farby)"],
+  "biała": ["biały", "feminine (with farba)"], "białą": ["biały", "accusative, feminine (with farbę)"], "białej": ["biały", "genitive, feminine (with farby)"],
+  "farbę": ["farba", "accusative (object form)"], "farby": ["farba", "genitive: after potrzebować, szukać"],
+  "potrzebuję": ["potrzebować", "I need"],
+  "ratuszu": ["ratusz", "locative: after przy"],
+  // postman
+  "listonoszem": ["listonosz", "instrumental: after być, 'I am a…'"],
+  "poczcie": ["poczta", "locative: after na (t changes to c)"],
+  "józefa": ["józef", "genitive: after dla"],
+  "mu": ["on", "to him (dative)"],
+  "dobra": ["dobry", "feminine (with robota)"],
+  "widzenia": ["widzenie", "genitive: after do"],
+  "mnie": ["ja", "me (genitive: after dla)"],
+  "mojej": ["mój", "genitive, feminine (with wnuczki)"],
+  "wnuczki": ["wnuczka", "genitive: after od"],
+  // bookseller
+  "księgarni": ["księgarnia", "locative: after w"],
+  "książkami": ["książka", "instrumental plural: after z = with"],
+  "książki": ["książka", "plural; also the genitive singular"],
+  "byłam": ["być", "I was (said by a woman)"],
+  "środku": ["środek", "locative: w środku = inside"],
+  "szuka": ["szukać", "he / she is looking for"],
+  "piaskownicy": ["piaskownica", "locative: after przy"],
+  // dog, and a few more lines for the people you already know
+  "drzewem": ["drzewo", "instrumental: after pod"],
+  "filemona": ["filemon", "accusative: an animal, so it ends in -a"],
+  "chodźmy": ["chodzić", "let's go"],
+  "mieszka": ["mieszkać", "he / she lives"],
+  "krakowie": ["kraków", "locative: after w (ó changes to o)"],
+  "moim": ["mój", "instrumental (with przyjacielem)"],
+  "przyjacielem": ["przyjaciel", "instrumental: after być"],
+  "razie": ["raz", "locative: na razie = see you"],
 };
 
 const PHRASES = [
@@ -603,6 +694,15 @@ const PHRASES = [
   ["prosi o", "asks for"],
   ["czeka na", "is waiting for"],
   ["za pomoc", "for the help"],
+  ["do widzenia", "goodbye (formal)"],
+  ["na razie", "see you; for now"],
+  ["dobra robota", "good job"],
+  ["w środku", "inside"],
+  ["na spacer", "for a walk"],
+  ["na poczcie", "at the post office"],
+  ["pod drzewem", "under a tree"],
+  ["przy ratuszu", "by the town hall"],
+  ["przy piaskownicy", "by the sandpit"],
 ].map(([pl, en]) => ({ pl, en, w: pl.split(" ") }));
 
 // things you can pick up
@@ -632,9 +732,27 @@ const ITEMS = {
   lilia: { acc: "lilię", gen: "lilii", en: "a lily", the: "the lily" },
   stokrotka: { acc: "stokrotkę", gen: "stokrotki", en: "a daisy", the: "the daisy" },
   orchidea: { acc: "orchideę", gen: "orchidei", en: "an orchid", the: "the orchid" },
+  pędzel: { acc: "pędzel", gen: "pędzla", en: "the paintbrush", the: "the paintbrush", story: "ewa" },
+  // paint tins are labelled with the colour; the errand names the whole phrase, which changes with the case
+  czerwona: { lemma: "czerwony", nom: "czerwona farba", acc: "czerwoną farbę", gen: "czerwonej farby", en: "red paint", the: "the red paint" },
+  niebieska: { lemma: "niebieski", nom: "niebieska farba", acc: "niebieską farbę", gen: "niebieskiej farby", en: "blue paint", the: "the blue paint" },
+  żółta: { lemma: "żółty", nom: "żółta farba", acc: "żółtą farbę", gen: "żółtej farby", en: "yellow paint", the: "the yellow paint" },
+  zielona: { lemma: "zielony", nom: "zielona farba", acc: "zieloną farbę", gen: "zielonej farby", en: "green paint", the: "the green paint" },
+  biała: { lemma: "biały", nom: "biała farba", acc: "białą farbę", gen: "białej farby", en: "white paint", the: "the white paint" },
+  list: { acc: "list", gen: "listu", en: "the letter", the: "the letter", story: "tadeusz" },
+  paczka: { acc: "paczkę", gen: "paczki", en: "a parcel", the: "the parcel" },
+  koperta: { acc: "kopertę", gen: "koperty", en: "an envelope", the: "the envelope" },
+  pocztówka: { acc: "pocztówkę", gen: "pocztówki", en: "a postcard", the: "the postcard" },
+  torba: { acc: "torbę", gen: "torby", en: "the bag", the: "the bag", story: "halina" },
+  książka: { acc: "książkę", gen: "książki", en: "a book", the: "the book" },
+  mapa: { acc: "mapę", gen: "mapy", en: "a map", the: "the map" },
+  gazeta: { acc: "gazetę", gen: "gazety", en: "a newspaper", the: "the newspaper" },
+  kredka: { acc: "kredkę", gen: "kredki", en: "a crayon", the: "the crayon" },
+  kość: { acc: "kość", gen: "kości", en: "the bone", the: "the bone", story: "burek" },
 };
 for (const [id, it] of Object.entries(ITEMS)) {
   it.id = id; it.word ??= id; it.lemma ??= id;
+  if (it.acc.includes(" ")) continue; // phrase forms are listed word by word in FORMS
   if (it.word !== it.lemma && !FORMS[it.word]) FORMS[it.word] = [it.lemma, "plural"];
   if (it.acc === it.gen && it.acc !== it.word) FORMS[it.acc] ??= [it.lemma, "accusative = genitive (miś is animate)"];
   else {
@@ -644,7 +762,7 @@ for (const [id, it] of Object.entries(ITEMS)) {
 }
 const thisIs = id => {
   const it = ITEMS[id];
-  return it.pl ? [`To są ${it.word}.`, `Those are ${it.the}.`] : [`To jest ${it.word}.`, `That's ${it.en}.`];
+  return it.pl ? [`To są ${it.word}.`, `Those are ${it.the}.`] : [`To jest ${it.nom ?? it.word}.`, `That's ${it.en}.`];
 };
 
 // people on the square
@@ -662,7 +780,12 @@ const NPCS = {
     remind: ["Moje okulary są chyba przy fontannie.", "My glasses are probably by the fountain."],
     wrong: ["To nie to, czego szukam.", "That's not what I'm looking for."],
     done: [["Moje okulary! Dziękuję bardzo!", "My glasses! Thank you very much!"], ["Teraz widzę wszystko.", "Now I can see everything."]],
-    after: [["Jaki piękny dzień!", "What a beautiful day!"]],
+    after: [
+      ["Jaki piękny dzień!", "What a beautiful day!"],
+      ["Lubię ten rynek.", "I like this square."],
+      ["Moja wnuczka mieszka w Krakowie.", "My granddaughter lives in Kraków."],
+    ],
+    receive: { from: "tadeusz", item: "list", lines: [["List dla mnie? Od mojej wnuczki!", "A letter for me? From my granddaughter!"], ["Dziękuję bardzo!", "Thank you very much!"]] },
     review: true,
   },
   filemon: {
@@ -677,7 +800,10 @@ const NPCS = {
     remind: ["Miau! Gdzie jest mleko?", "Meow! Where's the milk?"],
     wrong: ["Miau? Nie chcę tego.", "Meow? I don't want that."],
     done: [["Mniam! Pyszne mleko!", "Yum! Delicious milk!"], ["Teraz idę spać.", "Now I'm off to bed."]],
-    after: [["Mrrr... Jestem kotem, nie psem.", "Purr... I'm a cat, not a dog."]],
+    after: [
+      ["Mrrr... Jestem kotem, nie psem.", "Purr... I'm a cat, not a dog."],
+      ["Miau! Burek jest moim przyjacielem.", "Meow! Burek is my friend."],
+    ],
   },
   marek: {
     name: "Marek", role: "the greengrocer",
@@ -750,7 +876,7 @@ const NPCS = {
     orders: {
       pool: ["piłka", "lalka", "miś", "latawiec"],
       ask: [["Znajdź {acc}!", "Find {en}!"], ["Gdzie jest {nom}?", "Where is {the}?"], ["Szukam {gen}.", "I'm looking for {the}."]],
-      ok: [["Hurra! Dziękuję!", "Hooray! Thank you!"], ["Super!", "Great!"]],
+      ok: [["Hurra! Dziękuję!", "Hooray! Thank you!"], ["Super!", "Great!"], ["Hurra! Na razie!", "Hooray! See you!"]],
     },
   },
   zosia: {
@@ -772,12 +898,89 @@ const NPCS = {
       ok: [["Pięknie! Dziękuję.", "Lovely! Thank you."], ["Świetnie!", "Great!"]],
     },
   },
+  ewa: {
+    name: "Ewa", role: "a painter at her easel",
+    intro: [
+      ["Dzień dobry! Mam na imię Ewa.", "Good morning! My name is Ewa."],
+      ["Jestem malarką. Maluję rynek.", "I'm a painter. I'm painting the square."],
+      ["Niebo jest niebieskie, a słońce jest żółte.", "The sky is blue and the sun is yellow."],
+      ["Ale zgubiłam pędzel! Nie mogę malować.", "But I've lost my brush! I can't paint."],
+      ["Chyba jest przy ratuszu.", "I think it's by the town hall."],
+    ],
+    quest: { item: "pędzel", reward: 20, task: ["Find Ewa's", ""] },
+    remind: ["Mój pędzel jest chyba przy ratuszu.", "My brush is probably by the town hall."],
+    wrong: ["Ojej, to nie to.", "Oh dear, that's not it."],
+    done: [["Mój pędzel! Dziękuję!", "My brush! Thank you!"], ["Teraz potrzebuję farby.", "Now I need paint."]],
+    orders: {
+      pool: ["czerwona", "niebieska", "żółta", "zielona", "biała"],
+      ask: [["Poproszę {acc}.", "I'd like {en}, please."], ["Potrzebuję {gen}.", "I need {en}."], ["Szukam {gen}.", "I'm looking for {en}."]],
+      ok: [["Pięknie! Dziękuję.", "Lovely! Thank you."], ["Idealnie! Teraz mogę malować.", "Perfect! Now I can paint."]],
+    },
+  },
+  tadeusz: {
+    name: "Tadeusz", role: "the postman",
+    intro: [
+      ["Dzień dobry! Mam na imię Tadeusz.", "Good morning! My name is Tadeusz."],
+      ["Jestem listonoszem. Pracuję na poczcie.", "I'm a postman. I work at the post office."],
+      ["Mam list dla Józefa.", "I have a letter for Józef."],
+      ["Zanieś mu ten list, proszę.", "Please take him this letter."],
+      ["Józef jest przy fontannie.", "Józef is by the fountain."],
+    ],
+    gives: "list",
+    quest: { item: "list", deliverTo: "jozef", reward: 20, task: ["Take", "to Józef"] },
+    remind: ["Józef jest przy fontannie.", "Józef is by the fountain."],
+    regive: [["Masz, to list dla Józefa.", "Here, this is the letter for Józef."]],
+    wrong: ["Nie, to nie to.", "No, that's not it."],
+    thanks: [["Dobra robota! Dziękuję.", "Good job! Thank you."]],
+    orders: {
+      pool: ["paczka", "koperta", "pocztówka"],
+      ask: [["Klient czeka na {acc}.", "A customer is waiting for {en}."], ["Poproszę {acc}.", "I'd like {en}, please."], ["Szukam {gen}.", "I'm looking for {en}."]],
+      ok: [["Świetnie, dziękuję!", "Great, thank you!"], ["Dobra robota!", "Good job!"]],
+    },
+  },
+  halina: {
+    name: "Halina", role: "the bookseller",
+    intro: [
+      ["Dzień dobry! Mam na imię Halina.", "Good morning! My name is Halina."],
+      ["Pracuję w księgarni. Bardzo lubię czytać.", "I work in the bookshop. I really like reading."],
+      ["Zgubiłam torbę z książkami.", "I've lost my bag of books."],
+      ["Byłam rano przy piaskownicy.", "I was by the sandpit this morning."],
+      ["Może tam jest?", "Maybe it's there?"],
+    ],
+    quest: { item: "torba", reward: 20, task: ["Find Halina's", ""] },
+    remind: ["Moja torba jest chyba przy piaskownicy.", "My bag is probably by the sandpit."],
+    wrong: ["Hmm, to nie to.", "Hmm, that's not it."],
+    done: [["Moja torba! Dziękuję!", "My bag! Thank you!"], ["Książki są w środku. Super!", "The books are inside. Great!"]],
+    orders: {
+      pool: ["książka", "mapa", "gazeta", "kredka"],
+      ask: [["Klientka szuka {gen}.", "A customer is looking for {en}."], ["Poproszę {acc}.", "I'd like {en}, please."], ["Gdzie jest {nom}?", "Where is {the}?"]],
+      ok: [["Dziękuję! Świetnie.", "Thank you! Great."], ["Idealnie!", "Perfect!"]],
+    },
+  },
+  burek: {
+    name: "Burek", role: "a dog by the trees", dog: true,
+    intro: [
+      ["Hau, hau! Jestem Burek.", "Woof, woof! I'm Burek."],
+      ["Jestem psem, nie kotem.", "I'm a dog, not a cat."],
+      ["Gdzie jest moja kość?", "Where's my bone?"],
+      ["Chyba jest pod drzewem.", "I think it's under a tree."],
+    ],
+    quest: { item: "kość", reward: 20, task: ["Find Burek's", ""] },
+    remind: ["Hau! Moja kość jest pod drzewem.", "Woof! My bone is under a tree."],
+    wrong: ["Hau? Nie chcę tego.", "Woof? I don't want that."],
+    done: [["Hau, hau! Moja kość!", "Woof, woof! My bone!"], ["Teraz jestem szczęśliwy.", "Now I'm happy."]],
+    after: [
+      ["Hau! Lubię Filemona.", "Woof! I like Filemon."],
+      ["Hau, hau! Chodźmy na spacer!", "Woof, woof! Let's go for a walk!"],
+      ["Hau! Do widzenia!", "Woof! Goodbye!"],
+    ],
+  },
 };
 const REVIEW_LINES = {
   offer: ["Chcesz powtórzyć słówka?", "Do you want to review your words?"],
   none: ["Nie masz teraz słówek do powtórki.", "You have no words to review right now."],
 };
-const NPC_ORDER = ["jozef", "filemon", "marek", "basia", "ola", "kuba", "zosia"];
+const NPC_ORDER = ["jozef", "filemon", "marek", "basia", "ola", "kuba", "zosia", "ewa", "tadeusz", "halina", "burek"];
 
 // ---- src/js/02-words.js ----
 // ===================================================================
@@ -844,7 +1047,7 @@ function findPhrase(ctx) {
 }
 function validateLexicon() {
   const missing = new Set(), check = t => tokenize(t).forEach(tk => { if (tk.w && !tk.lemma) missing.add(tk.t); });
-  const fill = (tpl, it) => tpl.replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.word);
+  const fill = (tpl, it) => tpl.replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.nom ?? it.word);
   for (const N of Object.values(NPCS)) {
     for (const key of ["intro", "done", "after", "thanks", "regive"]) (N[key] || []).forEach(l => check(l[0]));
     for (const key of ["remind", "wrong"]) if (N[key]) check(N[key][0]);
@@ -1115,7 +1318,7 @@ $("#d-speak").addEventListener("click", () => dlg.open && speak(dlg.lines[dlg.i]
 // ===================================================================
 function fillOrder(npcId) {
   const s = npcState(npcId), it = ITEMS[s.order], tpl = NPCS[npcId].orders.ask[s.tmpl % NPCS[npcId].orders.ask.length];
-  return [tpl[0].replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.word),
+  return [tpl[0].replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.nom ?? it.word),
           tpl[1].replace("{en}", it.en).replace("{the}", it.the)];
 }
 function newOrder(npcId) {
@@ -1134,15 +1337,15 @@ function wordDelivered(id) {
     actions: [{ label: "Learning", s: 1, fn: () => setStatus(lemma, 1) }, { label: "Known", s: 2, fn: () => setStatus(lemma, 2) }], ms: 6000 });
 }
 function wantedBy(npcId) {
-  const N = NPCS[npcId], s = npcState(npcId);
-  if (N.receive && npcState(N.receive.from).stage === "active") return N.receive.item;
-  if (s.stage === "active" && N.quest && !N.gives) return N.quest.item;
-  if (s.stage === "done" && s.order) return s.order;
-  return null;
+  const N = NPCS[npcId], s = npcState(npcId), out = [];
+  if (N.receive && npcState(N.receive.from).stage === "active") out.push(N.receive.item);
+  if (s.stage === "active" && N.quest && !N.gives) out.push(N.quest.item);
+  if (s.stage === "done" && s.order) out.push(s.order);
+  return out;
 }
 function npcMark(npcId) {
   const N = NPCS[npcId], s = npcState(npcId), want = wantedBy(npcId);
-  if (st.carry && want === st.carry) return "?";
+  if (st.carry && want.includes(st.carry)) return "?";
   if (s.stage === "new") return "!";
   if (s.stage === "done" && N.orders && !s.order) return "!";
   if (N.thanks && s.stage === "done" && !s.thanked) return "!";
@@ -1157,11 +1360,12 @@ function talk(id) {
     after.push(() => { sfx.ok(); toast(`Errand done for ${NPCS[qid].name}. +${Q.reward} zł`); });
   };
   if (N.receive && npcState(N.receive.from).stage === "active" && carry === N.receive.item) {
-    if (s.stage === "new") { lines.push(...N.intro); s.stage = "done"; }
+    // meeting someone for the first time with their delivery in hand: say hello, and keep their own errand open
+    if (s.stage === "new") { lines.push(...N.intro); s.stage = N.quest ? "active" : "done"; }
     lines.push(...N.receive.lines);
     const from = N.receive.from, Q = NPCS[from].quest;
     consumeCarry(); npcState(from).stage = "done"; reward(Q.reward); wordDelivered(Q.item);
-    after.push(() => { sfx.ok(); toast(`Bread delivered for ${NPCS[from].name}. +${Q.reward} zł`); });
+    after.push(() => { sfx.ok(); toast(`Delivered for ${NPCS[from].name}. +${Q.reward} zł`); });
   } else if (s.stage === "new") {
     lines.push(...N.intro);
     if (N.quest) {
@@ -1190,7 +1394,7 @@ function talk(id) {
       else if (s.order) lines.push(fillOrder(id));
       else lines.push(newOrder(id));
     } else {
-      lines.push(...N.after);
+      lines.push(pick(N.after));
       if (N.review) {
         if (Object.keys(LEX).some(l => status(l) === 1)) {
           lines.push(REVIEW_LINES.offer);
@@ -1235,6 +1439,7 @@ function renderTracker() {
   $("#unmet").textContent = unmet.length ? `Not met yet: ${unmet.join(", ")}` : "You've met everyone on the square.";
   $("#tracker-toggle").textContent = $("#tracker").classList.contains("open") ? "Hide" : `Show ${n || ""}`.trim();
   for (const o of Object.values(npcObjs)) o.mark.textContent = npcMark(o.id);
+  if (npcObjs.jozef) npcObjs.jozef.parts.specs.visible = npcState("jozef").stage === "done"; // he wears them once found
   const cw = $("#carry-word");
   if (st.carry) { cw.replaceChildren(wordChip(st.carry)); $("#carry").hidden = false; } else $("#carry").hidden = true;
 }
@@ -1721,6 +1926,8 @@ function buildRatusz() {
   const board = new THREE.Mesh(new THREE.BoxGeometry(3.4, 0.6, 0.12), [wood, wood, wood, wood, new THREE.MeshStandardMaterial({ map: signTex("RATUSZ", "#1F3C91", "#F4E3B5") }), wood]);
   board.position.set(0, 5.2, d / 2 + 0.07); g.add(board);
   addWordLabel({ word: "ratusz", pos: new THREE.Vector3(0, 5.9, -9.5 + d / 2 + 0.3), max: 30, kind: "sign" });
+  addWordLabel({ word: "zegar", pos: new THREE.Vector3(tx, 18.2, -9.5 + tz + 2.0), max: 40, kind: "small" });
+  addWordLabel({ word: "schody", pos: new THREE.Vector3(-2.0, 0.95, -9.5 + d / 2 + 1.0), max: 7, kind: "small" });
   addOccluder(hall); addOccluder(tower);
   addBox(-7.2, 7.2, -14.2, -4.8); addBox(-3.2, 3.2, -4.8, -3.9);
 }
@@ -1882,6 +2089,69 @@ function buildShops() {
   addWordLabel({ word: "piaskownica", anchor: sb, y: 0.9, max: 8, kind: "small" });
   HOMES.lalka = new THREE.Vector3(14.7, 0.32, 15.4); HOMES.miś = new THREE.Vector3(17.9, 0.3, 12.2); HOMES.latawiec = new THREE.Vector3(18.6, 0.2, 17.0);
   HOMES.piłka = new THREE.Vector3(2.5, 0.28, -19.5); HOMES.okulary = new THREE.Vector3(-2.6, 0.92, 3.9); HOMES.klucze = new THREE.Vector3(-19.6, 0.12, 14.6);
+  buildPainter(); buildPost(); buildBookstand();
+  HOMES.torba = new THREE.Vector3(16.4, 0.25, 17.2); HOMES.kość = new THREE.Vector3(-20.7, 0.12, 20.7); HOMES.pędzel = new THREE.Vector3(-7.9, 0.12, -8.0);
+}
+const SURFACE = {};
+const PAINT = { czerwona: "#C8352E", niebieska: "#2F6FD0", żółta: "#F1D034", zielona: "#3F9A4A", biała: "#F7F7F2" };
+function buildPainter() {
+  const t = new THREE.Group(); t.position.set(12.6, 0, -0.9); scene.add(t);
+  t.add(mesh(new THREE.BoxGeometry(3.6, 0.06, 0.8), M(WOOD), 0, 0.5, 0));
+  for (const [dx, dz] of [[-1.7, -0.32], [1.7, -0.32], [-1.7, 0.32], [1.7, 0.32]]) t.add(mesh(new THREE.BoxGeometry(0.06, 0.48, 0.06), M(WOOD_D), dx, 0.24, dz));
+  Object.keys(PAINT).forEach((id, i) => { HOMES[id] = new THREE.Vector3(11.2 + i * 0.7, 0.66, -0.9); SURFACE[id] = 0.54; });
+  addBox(10.8, 14.4, -1.3, -0.5);
+  const e = new THREE.Group(); e.position.set(14.2, 0, 1.4); e.rotation.y = Math.atan2(0 - 14.2, 6 - 1.4); scene.add(e);
+  for (const [x, z, rx, rz] of [[-0.35, 0.1, -0.12, -0.12], [0.35, 0.1, -0.12, 0.12], [0, -0.35, 0.3, 0]]) {
+    const leg = mesh(new THREE.BoxGeometry(0.04, 1.75, 0.04), M(WOOD_D), x, 0.85, z); leg.rotation.set(rx, 0, rz); e.add(leg);
+  }
+  const painting = new THREE.MeshStandardMaterial({ roughness: 0.9, map: canvasTex(160, 120, (c, W, H) => {
+    const sky = c.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, "#5F9EE6"); sky.addColorStop(1, "#CFE3F7"); c.fillStyle = sky; c.fillRect(0, 0, W, H);
+    c.fillStyle = "#F1D034"; c.beginPath(); c.arc(126, 28, 15, 0, Math.PI * 2); c.fill();
+    [["#E5826B", 8], ["#9FC5B8", 40], ["#E9B44C", 72], ["#8DB3D9", 104]].forEach(([col, x], i) => {
+      c.fillStyle = col; c.fillRect(x, 54 - i % 2 * 8, 30, 50); c.fillStyle = "#A84B32"; c.beginPath(); c.moveTo(x, 54 - i % 2 * 8); c.lineTo(x + 15, 38 - i % 2 * 8); c.lineTo(x + 30, 54 - i % 2 * 8); c.fill();
+      c.fillStyle = "#F7F3EA"; c.fillRect(x + 8, 66, 5, 7); c.fillRect(x + 18, 66, 5, 7);
+    });
+    c.fillStyle = "#B9AE9C"; c.fillRect(0, 100, W, 20);
+  }) });
+  const wood = M("#F2EEE6");
+  const canv = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.72, 0.03), [wood, wood, wood, wood, painting, wood]); canv.position.set(0, 1.3, 0.16); canv.rotation.x = -0.12; canv.castShadow = true; e.add(canv);
+  e.add(mesh(new THREE.BoxGeometry(0.9, 0.04, 0.1), M(WOOD_D), 0, 0.92, 0.2));
+  addCircle(14.2, 1.4, 0.55);
+  addWordLabel({ word: "obraz", anchor: e, y: 2.3, max: 7, kind: "small" });
+  addWordLabel({ word: "sztaluga", anchor: e, y: 0.45, max: 6, kind: "small" });
+}
+function buildPost() {
+  const p = SHOP.poczta.a;
+  counter(p + 2.6, 25.5, false, 3.0, "#C8352E");
+  ["paczka", "koperta", "pocztówka", "list"].forEach((id, i) => { HOMES[id] = new THREE.Vector3(p + 1.55 + i * 0.7, 1.12, 25.5); });
+  addBox(p + 1.0, p + 4.2, 25.0, 26.0);
+  const bike = new THREE.Group(); bike.position.set(p - 2.7, 0, 25.6); scene.add(bike);
+  const frame = M("#2F4E8C"), tyre = M("#222222");
+  for (const x of [-0.5, 0.5]) {
+    bike.add(mesh(new THREE.TorusGeometry(0.32, 0.035, 6, 20), tyre, x, 0.34, 0));
+    const hub = mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.08, 6), M("#B8BEC4", { m: 0.6 }), x, 0.34, 0); hub.rotation.x = Math.PI / 2; bike.add(hub);
+  }
+  for (const [x, y, w, h, rz] of [[0, 0.55, 0.85, 0.04, 0], [-0.25, 0.48, 0.5, 0.04, 0.9], [0.32, 0.5, 0.42, 0.04, -1.0]]) { const b = mesh(new THREE.BoxGeometry(w, h, 0.04), frame, x, y, 0); b.rotation.z = rz; bike.add(b); }
+  bike.add(mesh(new THREE.BoxGeometry(0.04, 0.32, 0.04), frame, -0.22, 0.72, 0));
+  bike.add(mesh(new THREE.BoxGeometry(0.22, 0.05, 0.12), M("#2B2B2B"), -0.22, 0.9, 0));
+  bike.add(mesh(new THREE.BoxGeometry(0.04, 0.42, 0.04), frame, 0.42, 0.74, 0));
+  bike.add(mesh(new THREE.BoxGeometry(0.04, 0.04, 0.46), M("#2B2B2B"), 0.42, 0.95, 0));
+  bike.add(mesh(new THREE.BoxGeometry(0.3, 0.2, 0.3), M("#B98A55"), 0.62, 0.82, 0));
+  addBox(p - 3.4, p - 2.0, 25.3, 25.9);
+  addWordLabel({ word: "rower", anchor: bike, y: 1.35, max: 7, kind: "small" });
+  const box = new THREE.Group(); box.position.set(p + 5.3, 0, 25.6); scene.add(box);
+  box.add(mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.9, 8), M(IRON), 0, 0.45, 0));
+  box.add(mesh(new THREE.BoxGeometry(0.44, 0.52, 0.32), M("#C8352E"), 0, 1.15, 0));
+  box.add(mesh(new THREE.BoxGeometry(0.26, 0.03, 0.02), M("#2B2B2B"), 0, 1.28, -0.17, false));
+  box.add(mesh(new THREE.BoxGeometry(0.5, 0.06, 0.38), M("#A82A24"), 0, 1.44, 0));
+  addCircle(p + 5.3, 25.6, 0.35);
+  addWordLabel({ word: "skrzynka", anchor: box, y: 1.9, max: 7, kind: "small" });
+}
+function buildBookstand() {
+  const k = SHOP.księgarnia.a;
+  counter(k - 2.6, -25.5, false, 3.0, "#7A4E2D");
+  ["książka", "mapa", "gazeta", "kredka"].forEach((id, i) => { HOMES[id] = new THREE.Vector3(k - 1.55 - i * 0.7, 1.12, -25.5); });
+  addBox(k - 4.2, k - 1.0, -26.0, -25.0);
 }
 function buildProps() {
   bench(6.9, 11.3, -2.4); bench(-6.9, 11.3, 2.4); bench(9.6, -1.6, -0.5); bench(-9.6, -1.6, 0.5); bench(-19.6, 14.6, Math.PI / 2); bench(20.2, 11.4, -Math.PI / 2);
@@ -1921,12 +2191,35 @@ function makePerson(o) {
   if (o.hat === "scarf") { const c = mesh(new THREE.SphereGeometry(0.235, 14, 10, 0, Math.PI * 2, 0, Math.PI * 0.6), M(o.hatColor)); c.rotation.x = -0.5; head.add(c); head.add(mesh(new THREE.SphereGeometry(0.05, 8, 6), M(o.hatColor), 0, -0.2, 0.12)); }
   if (o.ponytail) head.add(mesh(new THREE.SphereGeometry(0.1, 10, 8), hair, 0, 0.02, -0.24));
   if (o.flower) head.add(mesh(new THREE.SphereGeometry(0.05, 8, 6), M(o.flower), 0.17, 0.12, 0.06, false));
+  if (o.hat === "beret") { const b = mesh(new THREE.SphereGeometry(0.25, 14, 8), M(o.hatColor), 0.03, 0.17, -0.01); b.scale.y = 0.32; head.add(b); head.add(mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.05, 5), M(o.hatColor), 0.03, 0.24, 0)); }
+  if (o.satchel) {
+    body.add(mesh(new THREE.BoxGeometry(0.1, 0.26, 0.3), M(o.satchel), 0.33, 0.86, 0.02));
+    const strap = mesh(new THREE.BoxGeometry(0.05, 0.75, 0.03), M(o.satchel), 0.02, 1.22, 0.26, false); strap.rotation.z = 0.75; body.add(strap);
+  }
   if (o.cane) arms[1].add(mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.95, 6), M("#6B4A30"), 0, -0.6, 0.06));
   if (o.backpack) body.add(mesh(new THREE.BoxGeometry(0.38, 0.44, 0.18), M(o.backpack), 0, 1.12, -0.3));
-  const specs = new THREE.Group(); specs.visible = false; head.add(specs);
+  const specs = new THREE.Group(); specs.visible = !!o.glasses; head.add(specs);
   for (const s of [-1, 1]) specs.add(mesh(new THREE.TorusGeometry(0.05, 0.012, 6, 14), M("#222222"), 0.075 * s, 0.03, 0.2, false));
   g.scale.setScalar(o.scale ?? 1);
   g.userData.parts = { body, legs, arms, head, specs };
+  return g;
+}
+function makeDog() {
+  const g = new THREE.Group(), fur = M("#9B6A3E"), light = M("#E8D2B0"), dark = M("#5A3B22");
+  const body = mesh(new THREE.SphereGeometry(0.3, 12, 10), fur, 0, 0.44, 0); body.scale.set(0.75, 0.7, 1.35); g.add(body);
+  for (const [x, z] of [[-0.13, 0.25], [0.13, 0.25], [-0.13, -0.25], [0.13, -0.25]]) g.add(mesh(new THREE.CylinderGeometry(0.06, 0.055, 0.34, 6), fur, x, 0.17, z));
+  const head = new THREE.Group(); head.position.set(0, 0.72, 0.42); g.add(head);
+  head.add(mesh(new THREE.SphereGeometry(0.19, 12, 10), fur));
+  const muzzle = mesh(new THREE.SphereGeometry(0.11, 10, 8), light, 0, -0.05, 0.15); muzzle.scale.set(1, 0.8, 1.2); head.add(muzzle);
+  head.add(mesh(new THREE.SphereGeometry(0.04, 8, 6), M("#1A1A1A"), 0, -0.01, 0.28, false));
+  for (const s of [-1, 1]) {
+    head.add(mesh(new THREE.SphereGeometry(0.028, 6, 5), M("#1A1A1A"), 0.075 * s, 0.07, 0.15, false));
+    const ear = mesh(new THREE.BoxGeometry(0.07, 0.2, 0.05), dark, 0.17 * s, 0.0, -0.02); ear.rotation.z = 0.3 * s; head.add(ear);
+  }
+  head.add(mesh(new THREE.BoxGeometry(0.05, 0.02, 0.06), M("#E58A9A"), 0, -0.12, 0.2, false));
+  const tail = new THREE.Group(); tail.position.set(0, 0.56, -0.4); g.add(tail);
+  const t = mesh(new THREE.CylinderGeometry(0.035, 0.02, 0.28, 6), fur, 0, 0.11, -0.06); t.rotation.x = -0.6; tail.add(t);
+  g.userData.parts = { head, tail };
   return g;
 }
 function makeCat() {
@@ -1950,14 +2243,18 @@ const LOOKS = {
   ola: { shirt: "#E05A47", apron: "#2E2E2E", hair: "#C8913A", ponytail: true, pants: "#2C3446" },
   kuba: { shirt: "#F2C230", pants: "#3C6FB0", hair: "#6B3F1F", hat: "kidcap", hatColor: "#D33A3A", scale: 0.68 },
   zosia: { shirt: "#4BA3A0", pants: "#3B4252", hair: "#4A2B1A", hat: "scarf", hatColor: "#C83C3C", flower: "#F2C14E" },
+  ewa: { shirt: "#3E6FA8", apron: "#F4EFE6", hair: "#2B1D14", hat: "beret", hatColor: "#B23A3A", pants: "#2C3446" },
+  tadeusz: { shirt: "#2F4E8C", pants: "#2C3446", hair: "#5A4636", hat: "cap", hatColor: "#2F4E8C", moustache: "#5A4636", satchel: "#7A4E2D" },
+  halina: { shirt: "#B5654A", pants: "#4A4A52", hair: "#9A9A9A", ponytail: true, glasses: true },
 };
 const npcObjs = {};
 function placeNPCs() {
   const b = SHOP.piekarnia.a, c = SHOP.kawiarnia.a, k = SHOP.kwiaciarnia.a;
-  const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0] };
+  const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0],
+    ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
-    const g = N.cat ? makeCat() : makePerson(LOOKS[id]);
+    const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);
     const y = N.cat ? 0.4 : 0;
     g.position.set(x, y, z);
     const base = Math.atan2(0 - x, 8 - z);
@@ -1966,10 +2263,10 @@ function placeNPCs() {
     const mark = h("span", { class: "mark" }), btn = h("button", { class: "npc-tag", type: "button", "aria-label": `${N.name}, ${N.role}` }, mark, h("span", { class: "nm" }, N.name));
     btn.addEventListener("click", ev => { ev.stopPropagation(); tryInteract({ kind: "npc", id }); });
     const el = h("div", { class: "lbl", hidden: true }, btn); labelLayer.append(el);
-    const L = { anchor: g, y: N.cat ? 1.25 : 2.3 * (LOOKS[id]?.scale ?? 1), max: 34, el, btn, shown: false, occ: false, slot: labels.length % 4 };
+    const L = { anchor: g, y: N.cat ? 1.25 : N.dog ? 1.35 : 2.3 * (LOOKS[id]?.scale ?? 1), max: 34, el, btn, shown: false, occ: false, slot: labels.length % 4 };
     labels.push(L);
-    npcObjs[id] = { id, group: g, parts: g.userData.parts, x, z, base, heading: base, phase: Math.random() * 10, mark, cat: !!N.cat, kid: !!N.kid };
-    addCircle(x, z, N.cat ? 0.4 : 0.45);
+    npcObjs[id] = { id, group: g, parts: g.userData.parts, x, z, base, heading: base, phase: Math.random() * 10, mark, cat: !!N.cat, dog: !!N.dog, kid: !!N.kid };
+    addCircle(x, z, N.cat ? 0.4 : N.dog ? 0.5 : 0.45);
   }
 }
 
@@ -2007,25 +2304,60 @@ function itemModel(id) {
     case "orchidea": flowerStem(); for (let i = 0; i < 3; i++) add(new THREE.SphereGeometry(0.05, 8, 6), "#C04FA8", 0.03 * (i - 1), 0.22 + i * 0.07, 0.05).scale.set(1.3, 1, 0.4); break;
     case "okulary": for (const s of [-1, 1]) { add(new THREE.TorusGeometry(0.06, 0.012, 6, 16), "#2A2A2A", s * 0.075, 0, 0); add(new THREE.BoxGeometry(0.01, 0.01, 0.15), "#2A2A2A", s * 0.135, 0, -0.07); } add(new THREE.BoxGeometry(0.04, 0.01, 0.01), "#2A2A2A", 0, 0.02, 0); break;
     case "klucze": add(new THREE.TorusGeometry(0.05, 0.01, 6, 14), "#C9A227", 0, 0, 0, { m: 0.7, r: 0.3 }).rotation.x = Math.PI / 2; for (const a of [0.4, -0.5]) { const k = new THREE.Group(); k.rotation.y = a; k.add(mesh(new THREE.BoxGeometry(0.16, 0.012, 0.02), M("#C9A227", { m: 0.7, r: 0.3 }), 0.12, 0, 0, false)); k.add(mesh(new THREE.BoxGeometry(0.03, 0.012, 0.05), M("#C9A227", { m: 0.7, r: 0.3 }), 0.18, 0, 0.02, false)); g.add(k); } break;
+    case "pędzel": { const b = new THREE.Group(); b.rotation.z = Math.PI / 2 - 0.25; g.add(b);
+      b.add(mesh(new THREE.CylinderGeometry(0.012, 0.016, 0.26, 6), M("#B5603A"), 0, 0, 0, false));
+      b.add(mesh(new THREE.CylinderGeometry(0.018, 0.014, 0.05, 8), M("#B8BEC4", { m: 0.6, r: 0.35 }), 0, 0.15, 0, false));
+      b.add(mesh(new THREE.ConeGeometry(0.02, 0.07, 8), M("#2F6FD0"), 0, 0.21, 0, false)); } break;
+    case "list": case "koperta":
+      add(new THREE.BoxGeometry(0.24, 0.012, 0.16), id === "list" ? "#FAF7F0" : "#EED9A8");
+      for (const s of [-1, 1]) add(new THREE.BoxGeometry(0.15, 0.004, 0.008), "#C9B98F", s * 0.06, 0.008, -0.03).rotation.y = s * 0.55;
+      if (id === "list") add(new THREE.BoxGeometry(0.04, 0.004, 0.05), "#C8352E", 0.085, 0.008, 0.045);
+      break;
+    case "pocztówka": add(new THREE.BoxGeometry(0.22, 0.01, 0.15), "#FFFFFF"); add(new THREE.BoxGeometry(0.2, 0.004, 0.13), "#8DB3D9", 0, 0.007, 0); add(new THREE.BoxGeometry(0.2, 0.005, 0.05), "#7FB069", 0, 0.008, 0.04); add(new THREE.BoxGeometry(0.03, 0.006, 0.03), "#F1D034", 0.06, 0.009, -0.03); break;
+    case "paczka": add(new THREE.BoxGeometry(0.22, 0.16, 0.18), "#B98A55"); add(new THREE.BoxGeometry(0.225, 0.165, 0.014), "#EDE3CF"); add(new THREE.BoxGeometry(0.014, 0.165, 0.185), "#EDE3CF"); break;
+    case "książka": add(new THREE.BoxGeometry(0.18, 0.05, 0.24), "#B23A3A"); add(new THREE.BoxGeometry(0.17, 0.042, 0.226), "#F5EFE0", 0.008, 0, 0); break;
+    case "mapa": add(new THREE.BoxGeometry(0.22, 0.012, 0.16), "#EADCB8"); add(new THREE.BoxGeometry(0.09, 0.004, 0.07), "#7FB069", -0.04, 0.008, -0.02); add(new THREE.BoxGeometry(0.2, 0.004, 0.014), "#4F8FD0", 0.01, 0.009, 0.03).rotation.y = 0.35; break;
+    case "gazeta": add(new THREE.BoxGeometry(0.2, 0.02, 0.26), "#ECEBE6"); add(new THREE.BoxGeometry(0.17, 0.004, 0.035), "#2A2A2A", 0, 0.012, -0.095); for (let i = 0; i < 4; i++) add(new THREE.BoxGeometry(0.17, 0.003, 0.012), "#9A9A9A", 0, 0.012, -0.04 + i * 0.035); break;
+    case "kredka": { const c = new THREE.Group(); c.rotation.z = Math.PI / 2; g.add(c);
+      c.add(mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.2, 6), M("#2F6FD0"), 0, 0, 0, false));
+      c.add(mesh(new THREE.ConeGeometry(0.012, 0.03, 6), M("#F2D9B0"), 0, 0.115, 0, false));
+      c.add(mesh(new THREE.ConeGeometry(0.005, 0.012, 6), M("#2F6FD0"), 0, 0.13, 0, false)); } break;
+    case "torba":
+      add(new THREE.BoxGeometry(0.26, 0.2, 0.12), "#E3D3B0");
+      for (const s of [-1, 1]) add(new THREE.TorusGeometry(0.05, 0.01, 4, 10, Math.PI), "#8A6A40", s * 0.06, 0.1, 0);
+      add(new THREE.BoxGeometry(0.06, 0.06, 0.09), "#2F6FD0", -0.05, 0.11, 0); add(new THREE.BoxGeometry(0.05, 0.08, 0.09), "#B23A3A", 0.03, 0.12, 0);
+      break;
+    case "kość":
+      add(new THREE.CylinderGeometry(0.025, 0.025, 0.2, 8), "#F2EDE0").rotation.z = Math.PI / 2;
+      for (const x of [-0.1, 0.1]) for (const z of [-0.022, 0.022]) add(new THREE.SphereGeometry(0.035, 8, 6), "#F2EDE0", x, 0, z);
+      break;
+    default:
+      if (PAINT[id]) {
+        add(new THREE.CylinderGeometry(0.09, 0.09, 0.12, 16), "#B8BEC4", 0, 0, 0, { m: 0.6, r: 0.35 });
+        add(new THREE.CylinderGeometry(0.086, 0.086, 0.012, 16), PAINT[id], 0, 0.064, 0);
+        add(new THREE.BoxGeometry(0.03, 0.05, 0.008), PAINT[id], 0.04, 0.035, 0.088);
+        add(new THREE.TorusGeometry(0.07, 0.006, 4, 12, Math.PI), "#8A9096", 0, 0.07, 0);
+      }
   }
   return g;
 }
-const ITEM_SCALE = { piłka: 1.2, róża: 1.25, lilia: 1.25, stokrotka: 1.25, orchidea: 1.25, okulary: 1.6, klucze: 1.6 };
+const ITEM_SCALE = { piłka: 1.2, róża: 1.25, lilia: 1.25, stokrotka: 1.25, orchidea: 1.25, okulary: 1.6, klucze: 1.6, pędzel: 1.6, kredka: 1.8, paczka: 1.4, kość: 1.6 };
 const itemObjs = {};
 const ringMat = new THREE.MeshBasicMaterial({ color: 0xe9b53b, transparent: true, opacity: 0.55, depthWrite: false, side: THREE.DoubleSide });
 function placeItems() {
-  for (const id of Object.keys(ITEMS)) {
+  Object.keys(ITEMS).forEach((id, i) => {
     const home = HOMES[id], g = new THREE.Group();
     const model = itemModel(id); model.scale.setScalar(ITEM_SCALE[id] ?? 1.5); g.add(model);
     const ring = new THREE.Mesh(new THREE.RingGeometry(0.26, 0.34, 28), ringMat); ring.rotation.x = -Math.PI / 2;
-    const surface = home.y < 0.5 ? 0.02 : home.y > 1 ? 0.97 : id === "okulary" ? 0.84 : 0.48;
+    const surface = SURFACE[id] ?? (home.y < 0.5 ? 0.02 : home.y > 1 ? 0.97 : id === "okulary" ? 0.84 : 0.48);
     ring.position.y = surface - home.y;
     g.add(ring);
     g.position.copy(home); scene.add(g);
     g.userData.target = { kind: "item", id }; clickables.push(g);
-    const L = addWordLabel({ word: ITEMS[id].word, lemma: ITEMS[id].lemma, anchor: g, y: 0.55, max: 15 });
+    // neighbours on a counter alternate heights so their labels don't cover each other
+    const L = addWordLabel({ word: ITEMS[id].word, lemma: ITEMS[id].lemma, anchor: g, y: 0.55 + (i % 2) * 0.34, max: 15 });
     itemObjs[id] = { id, group: g, model, ring, label: L, available: true, phase: Math.random() * 6, pop: 1 };
-  }
+  });
 }
 function placeItem(id, animate) { const o = itemObjs[id]; if (!o) return; o.available = true; o.group.visible = true; o.group.position.copy(HOMES[id]); o.pop = animate ? 0 : 1; }
 function removeItem(id) { const o = itemObjs[id]; if (!o) return; o.available = false; o.group.visible = false; }
@@ -2183,6 +2515,12 @@ function updateNPCs(dt, T) {
     const want = d < 5 || talking ? Math.atan2(dx, dz) : o.base;
     o.heading = angLerp(o.heading, want, 1 - Math.exp(-dt * 4)); o.group.rotation.y = o.heading;
     const tt = T + o.phase, p = o.parts;
+    if (o.dog) {
+      const happy = npcState(o.id).stage === "done";
+      p.tail.rotation.y = Math.sin(tt * (talking ? 16 : happy ? 11 : 4)) * (happy || talking ? 0.7 : 0.35);
+      p.head.rotation.z = talking ? Math.sin(T * 2.4) * 0.2 : 0;
+      continue;
+    }
     if (o.cat) {
       const asleep = npcState("filemon").stage === "done" && !talking;
       p.tail.rotation.y = Math.sin(tt * (asleep ? 0.8 : 2.2)) * 0.5;
@@ -2426,5 +2764,5 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { get st() { return st; }, validateLexicon, talk, player, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
+window.__rynek = { get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES };
 </script>

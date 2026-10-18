@@ -63,7 +63,7 @@ function findPhrase(ctx) {
 }
 function validateLexicon() {
   const missing = new Set(), check = t => tokenize(t).forEach(tk => { if (tk.w && !tk.lemma) missing.add(tk.t); });
-  const fill = (tpl, it) => tpl.replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.word);
+  const fill = (tpl, it) => tpl.replace("{acc}", it.acc).replace("{gen}", it.gen).replace("{nom}", it.nom ?? it.word);
   for (const N of Object.values(NPCS)) {
     for (const key of ["intro", "done", "after", "thanks", "regive"]) (N[key] || []).forEach(l => check(l[0]));
     for (const key of ["remind", "wrong"]) if (N[key]) check(N[key][0]);

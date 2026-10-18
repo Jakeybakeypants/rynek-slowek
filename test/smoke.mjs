@@ -1,6 +1,7 @@
 // Plays the real page in headless Chromium: starts the game, walks, finishes Józef's
-// errand, delivers Basia's bread to Ola, completes one café order, sorts a word, opens the
-// word list, and fails on any page error. Screenshots land in test/shots/ (git-ignored).
+// errand, takes Tadeusz's letter to Józef, delivers Basia's bread to Ola, completes one
+// café order, sorts a word, opens the word list, and fails on any page error.
+// Screenshots land in test/shots/ (git-ignored).
 //
 //   npm install          (once: playwright-core, plus three.js to serve locally)
 //   npm run smoke        (desktop, light)     npm run smoke -- phone   (390×844, dark)
@@ -90,13 +91,22 @@ const done = await talkThrough();
 const s1 = await state();
 check(done[0] === "Moje okulary! Dziękuję bardzo!" && s1.npc.jozef.stage === "done" && s1.coins === 20, "Józef's errand completes (+20 zł)");
 
+// Tadeusz's letter goes to Józef, who already has an errand of his own
+const [tx, tz] = await npcAt("tadeusz", 0, -1.6);
+await goTo(tx, tz, "Tadeusz"); await press(); await talkThrough();
+check((await state()).carry === "list", "Tadeusz hands over a letter for Józef");
+await goTo(5.2, 12.9, "Józef"); await press();
+const letter = await talkThrough();
+const sL = await state();
+check(letter[0] === "List dla mnie? Od mojej wnuczki!" && sL.npc.tadeusz.stage === "done" && sL.coins === 40 && !sL.carry, "Józef receives the letter (+20 zł)");
+
 const [bx, bz] = await npcAt("basia", 1.6, 0);
 await goTo(bx, bz, "Basia"); await press(); await talkThrough();
 check((await state()).carry === "chleb", "Basia hands over the bread");
 const [ox, oz] = await npcAt("ola", -1.6, 0);
 await goTo(ox, oz, "Ola"); await press(); await talkThrough();
 const s2 = await state();
-check(s2.npc.basia.stage === "done" && s2.coins === 40 && !s2.carry, "Ola receives the bread (+20 zł)");
+check(s2.npc.basia.stage === "done" && s2.coins === 60 && !s2.carry, "Ola receives the bread (+20 zł)");
 
 await goTo(ox, oz, "Ola"); await press(); await talkThrough();
 const want = (await state()).npc.ola.order;
@@ -107,7 +117,7 @@ await page.waitForFunction(id => window.__rynek.itemObjs[id].label.btn.classList
 await press();
 check((await state()).carry === want, `picks up ${want} from the counter`);
 await goTo(ox, oz, "Ola"); await press(); await talkThrough();
-check((await state()).coins === 45, "the café order pays 5 zł");
+check((await state()).coins === 65, "the café order pays 5 zł");
 await shot("3-after-errands");
 
 await press("v");

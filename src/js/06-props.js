@@ -104,6 +104,69 @@ function buildShops() {
   addWordLabel({ word: "piaskownica", anchor: sb, y: 0.9, max: 8, kind: "small" });
   HOMES.lalka = new THREE.Vector3(14.7, 0.32, 15.4); HOMES.miś = new THREE.Vector3(17.9, 0.3, 12.2); HOMES.latawiec = new THREE.Vector3(18.6, 0.2, 17.0);
   HOMES.piłka = new THREE.Vector3(2.5, 0.28, -19.5); HOMES.okulary = new THREE.Vector3(-2.6, 0.92, 3.9); HOMES.klucze = new THREE.Vector3(-19.6, 0.12, 14.6);
+  buildPainter(); buildPost(); buildBookstand();
+  HOMES.torba = new THREE.Vector3(16.4, 0.25, 17.2); HOMES.kość = new THREE.Vector3(-20.7, 0.12, 20.7); HOMES.pędzel = new THREE.Vector3(-7.9, 0.12, -8.0);
+}
+const SURFACE = {};
+const PAINT = { czerwona: "#C8352E", niebieska: "#2F6FD0", żółta: "#F1D034", zielona: "#3F9A4A", biała: "#F7F7F2" };
+function buildPainter() {
+  const t = new THREE.Group(); t.position.set(12.6, 0, -0.9); scene.add(t);
+  t.add(mesh(new THREE.BoxGeometry(3.6, 0.06, 0.8), M(WOOD), 0, 0.5, 0));
+  for (const [dx, dz] of [[-1.7, -0.32], [1.7, -0.32], [-1.7, 0.32], [1.7, 0.32]]) t.add(mesh(new THREE.BoxGeometry(0.06, 0.48, 0.06), M(WOOD_D), dx, 0.24, dz));
+  Object.keys(PAINT).forEach((id, i) => { HOMES[id] = new THREE.Vector3(11.2 + i * 0.7, 0.66, -0.9); SURFACE[id] = 0.54; });
+  addBox(10.8, 14.4, -1.3, -0.5);
+  const e = new THREE.Group(); e.position.set(14.2, 0, 1.4); e.rotation.y = Math.atan2(0 - 14.2, 6 - 1.4); scene.add(e);
+  for (const [x, z, rx, rz] of [[-0.35, 0.1, -0.12, -0.12], [0.35, 0.1, -0.12, 0.12], [0, -0.35, 0.3, 0]]) {
+    const leg = mesh(new THREE.BoxGeometry(0.04, 1.75, 0.04), M(WOOD_D), x, 0.85, z); leg.rotation.set(rx, 0, rz); e.add(leg);
+  }
+  const painting = new THREE.MeshStandardMaterial({ roughness: 0.9, map: canvasTex(160, 120, (c, W, H) => {
+    const sky = c.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, "#5F9EE6"); sky.addColorStop(1, "#CFE3F7"); c.fillStyle = sky; c.fillRect(0, 0, W, H);
+    c.fillStyle = "#F1D034"; c.beginPath(); c.arc(126, 28, 15, 0, Math.PI * 2); c.fill();
+    [["#E5826B", 8], ["#9FC5B8", 40], ["#E9B44C", 72], ["#8DB3D9", 104]].forEach(([col, x], i) => {
+      c.fillStyle = col; c.fillRect(x, 54 - i % 2 * 8, 30, 50); c.fillStyle = "#A84B32"; c.beginPath(); c.moveTo(x, 54 - i % 2 * 8); c.lineTo(x + 15, 38 - i % 2 * 8); c.lineTo(x + 30, 54 - i % 2 * 8); c.fill();
+      c.fillStyle = "#F7F3EA"; c.fillRect(x + 8, 66, 5, 7); c.fillRect(x + 18, 66, 5, 7);
+    });
+    c.fillStyle = "#B9AE9C"; c.fillRect(0, 100, W, 20);
+  }) });
+  const wood = M("#F2EEE6");
+  const canv = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.72, 0.03), [wood, wood, wood, wood, painting, wood]); canv.position.set(0, 1.3, 0.16); canv.rotation.x = -0.12; canv.castShadow = true; e.add(canv);
+  e.add(mesh(new THREE.BoxGeometry(0.9, 0.04, 0.1), M(WOOD_D), 0, 0.92, 0.2));
+  addCircle(14.2, 1.4, 0.55);
+  addWordLabel({ word: "obraz", anchor: e, y: 2.3, max: 7, kind: "small" });
+  addWordLabel({ word: "sztaluga", anchor: e, y: 0.45, max: 6, kind: "small" });
+}
+function buildPost() {
+  const p = SHOP.poczta.a;
+  counter(p + 2.6, 25.5, false, 3.0, "#C8352E");
+  ["paczka", "koperta", "pocztówka", "list"].forEach((id, i) => { HOMES[id] = new THREE.Vector3(p + 1.55 + i * 0.7, 1.12, 25.5); });
+  addBox(p + 1.0, p + 4.2, 25.0, 26.0);
+  const bike = new THREE.Group(); bike.position.set(p - 2.7, 0, 25.6); scene.add(bike);
+  const frame = M("#2F4E8C"), tyre = M("#222222");
+  for (const x of [-0.5, 0.5]) {
+    bike.add(mesh(new THREE.TorusGeometry(0.32, 0.035, 6, 20), tyre, x, 0.34, 0));
+    const hub = mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.08, 6), M("#B8BEC4", { m: 0.6 }), x, 0.34, 0); hub.rotation.x = Math.PI / 2; bike.add(hub);
+  }
+  for (const [x, y, w, h, rz] of [[0, 0.55, 0.85, 0.04, 0], [-0.25, 0.48, 0.5, 0.04, 0.9], [0.32, 0.5, 0.42, 0.04, -1.0]]) { const b = mesh(new THREE.BoxGeometry(w, h, 0.04), frame, x, y, 0); b.rotation.z = rz; bike.add(b); }
+  bike.add(mesh(new THREE.BoxGeometry(0.04, 0.32, 0.04), frame, -0.22, 0.72, 0));
+  bike.add(mesh(new THREE.BoxGeometry(0.22, 0.05, 0.12), M("#2B2B2B"), -0.22, 0.9, 0));
+  bike.add(mesh(new THREE.BoxGeometry(0.04, 0.42, 0.04), frame, 0.42, 0.74, 0));
+  bike.add(mesh(new THREE.BoxGeometry(0.04, 0.04, 0.46), M("#2B2B2B"), 0.42, 0.95, 0));
+  bike.add(mesh(new THREE.BoxGeometry(0.3, 0.2, 0.3), M("#B98A55"), 0.62, 0.82, 0));
+  addBox(p - 3.4, p - 2.0, 25.3, 25.9);
+  addWordLabel({ word: "rower", anchor: bike, y: 1.35, max: 7, kind: "small" });
+  const box = new THREE.Group(); box.position.set(p + 5.3, 0, 25.6); scene.add(box);
+  box.add(mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.9, 8), M(IRON), 0, 0.45, 0));
+  box.add(mesh(new THREE.BoxGeometry(0.44, 0.52, 0.32), M("#C8352E"), 0, 1.15, 0));
+  box.add(mesh(new THREE.BoxGeometry(0.26, 0.03, 0.02), M("#2B2B2B"), 0, 1.28, -0.17, false));
+  box.add(mesh(new THREE.BoxGeometry(0.5, 0.06, 0.38), M("#A82A24"), 0, 1.44, 0));
+  addCircle(p + 5.3, 25.6, 0.35);
+  addWordLabel({ word: "skrzynka", anchor: box, y: 1.9, max: 7, kind: "small" });
+}
+function buildBookstand() {
+  const k = SHOP.księgarnia.a;
+  counter(k - 2.6, -25.5, false, 3.0, "#7A4E2D");
+  ["książka", "mapa", "gazeta", "kredka"].forEach((id, i) => { HOMES[id] = new THREE.Vector3(k - 1.55 - i * 0.7, 1.12, -25.5); });
+  addBox(k - 4.2, k - 1.0, -26.0, -25.0);
 }
 function buildProps() {
   bench(6.9, 11.3, -2.4); bench(-6.9, 11.3, 2.4); bench(9.6, -1.6, -0.5); bench(-9.6, -1.6, 0.5); bench(-19.6, 14.6, Math.PI / 2); bench(20.2, 11.4, -Math.PI / 2);
@@ -143,12 +206,35 @@ function makePerson(o) {
   if (o.hat === "scarf") { const c = mesh(new THREE.SphereGeometry(0.235, 14, 10, 0, Math.PI * 2, 0, Math.PI * 0.6), M(o.hatColor)); c.rotation.x = -0.5; head.add(c); head.add(mesh(new THREE.SphereGeometry(0.05, 8, 6), M(o.hatColor), 0, -0.2, 0.12)); }
   if (o.ponytail) head.add(mesh(new THREE.SphereGeometry(0.1, 10, 8), hair, 0, 0.02, -0.24));
   if (o.flower) head.add(mesh(new THREE.SphereGeometry(0.05, 8, 6), M(o.flower), 0.17, 0.12, 0.06, false));
+  if (o.hat === "beret") { const b = mesh(new THREE.SphereGeometry(0.25, 14, 8), M(o.hatColor), 0.03, 0.17, -0.01); b.scale.y = 0.32; head.add(b); head.add(mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.05, 5), M(o.hatColor), 0.03, 0.24, 0)); }
+  if (o.satchel) {
+    body.add(mesh(new THREE.BoxGeometry(0.1, 0.26, 0.3), M(o.satchel), 0.33, 0.86, 0.02));
+    const strap = mesh(new THREE.BoxGeometry(0.05, 0.75, 0.03), M(o.satchel), 0.02, 1.22, 0.26, false); strap.rotation.z = 0.75; body.add(strap);
+  }
   if (o.cane) arms[1].add(mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.95, 6), M("#6B4A30"), 0, -0.6, 0.06));
   if (o.backpack) body.add(mesh(new THREE.BoxGeometry(0.38, 0.44, 0.18), M(o.backpack), 0, 1.12, -0.3));
-  const specs = new THREE.Group(); specs.visible = false; head.add(specs);
+  const specs = new THREE.Group(); specs.visible = !!o.glasses; head.add(specs);
   for (const s of [-1, 1]) specs.add(mesh(new THREE.TorusGeometry(0.05, 0.012, 6, 14), M("#222222"), 0.075 * s, 0.03, 0.2, false));
   g.scale.setScalar(o.scale ?? 1);
   g.userData.parts = { body, legs, arms, head, specs };
+  return g;
+}
+function makeDog() {
+  const g = new THREE.Group(), fur = M("#9B6A3E"), light = M("#E8D2B0"), dark = M("#5A3B22");
+  const body = mesh(new THREE.SphereGeometry(0.3, 12, 10), fur, 0, 0.44, 0); body.scale.set(0.75, 0.7, 1.35); g.add(body);
+  for (const [x, z] of [[-0.13, 0.25], [0.13, 0.25], [-0.13, -0.25], [0.13, -0.25]]) g.add(mesh(new THREE.CylinderGeometry(0.06, 0.055, 0.34, 6), fur, x, 0.17, z));
+  const head = new THREE.Group(); head.position.set(0, 0.72, 0.42); g.add(head);
+  head.add(mesh(new THREE.SphereGeometry(0.19, 12, 10), fur));
+  const muzzle = mesh(new THREE.SphereGeometry(0.11, 10, 8), light, 0, -0.05, 0.15); muzzle.scale.set(1, 0.8, 1.2); head.add(muzzle);
+  head.add(mesh(new THREE.SphereGeometry(0.04, 8, 6), M("#1A1A1A"), 0, -0.01, 0.28, false));
+  for (const s of [-1, 1]) {
+    head.add(mesh(new THREE.SphereGeometry(0.028, 6, 5), M("#1A1A1A"), 0.075 * s, 0.07, 0.15, false));
+    const ear = mesh(new THREE.BoxGeometry(0.07, 0.2, 0.05), dark, 0.17 * s, 0.0, -0.02); ear.rotation.z = 0.3 * s; head.add(ear);
+  }
+  head.add(mesh(new THREE.BoxGeometry(0.05, 0.02, 0.06), M("#E58A9A"), 0, -0.12, 0.2, false));
+  const tail = new THREE.Group(); tail.position.set(0, 0.56, -0.4); g.add(tail);
+  const t = mesh(new THREE.CylinderGeometry(0.035, 0.02, 0.28, 6), fur, 0, 0.11, -0.06); t.rotation.x = -0.6; tail.add(t);
+  g.userData.parts = { head, tail };
   return g;
 }
 function makeCat() {
@@ -172,14 +258,18 @@ const LOOKS = {
   ola: { shirt: "#E05A47", apron: "#2E2E2E", hair: "#C8913A", ponytail: true, pants: "#2C3446" },
   kuba: { shirt: "#F2C230", pants: "#3C6FB0", hair: "#6B3F1F", hat: "kidcap", hatColor: "#D33A3A", scale: 0.68 },
   zosia: { shirt: "#4BA3A0", pants: "#3B4252", hair: "#4A2B1A", hat: "scarf", hatColor: "#C83C3C", flower: "#F2C14E" },
+  ewa: { shirt: "#3E6FA8", apron: "#F4EFE6", hair: "#2B1D14", hat: "beret", hatColor: "#B23A3A", pants: "#2C3446" },
+  tadeusz: { shirt: "#2F4E8C", pants: "#2C3446", hair: "#5A4636", hat: "cap", hatColor: "#2F4E8C", moustache: "#5A4636", satchel: "#7A4E2D" },
+  halina: { shirt: "#B5654A", pants: "#4A4A52", hair: "#9A9A9A", ponytail: true, glasses: true },
 };
 const npcObjs = {};
 function placeNPCs() {
   const b = SHOP.piekarnia.a, c = SHOP.kawiarnia.a, k = SHOP.kwiaciarnia.a;
-  const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0] };
+  const spots = { jozef: [5.2, 11.0], filemon: [2.4, -4.45], marek: [-10.9, 2.2], basia: [-24.9, b - 0.6], ola: [25.0, c - 0.6], kuba: [12.4, 12.8], zosia: [k - 0.6, 25.0],
+    ewa: [12.0, 0.45], tadeusz: [SHOP.poczta.a - 0.6, 25.0], halina: [SHOP.księgarnia.a + 0.6, -25.0], burek: [-17.0, 21.0] };
   for (const id of NPC_ORDER) {
     const [x, z] = spots[id], N = NPCS[id];
-    const g = N.cat ? makeCat() : makePerson(LOOKS[id]);
+    const g = N.cat ? makeCat() : N.dog ? makeDog() : makePerson(LOOKS[id]);
     const y = N.cat ? 0.4 : 0;
     g.position.set(x, y, z);
     const base = Math.atan2(0 - x, 8 - z);
@@ -188,10 +278,10 @@ function placeNPCs() {
     const mark = h("span", { class: "mark" }), btn = h("button", { class: "npc-tag", type: "button", "aria-label": `${N.name}, ${N.role}` }, mark, h("span", { class: "nm" }, N.name));
     btn.addEventListener("click", ev => { ev.stopPropagation(); tryInteract({ kind: "npc", id }); });
     const el = h("div", { class: "lbl", hidden: true }, btn); labelLayer.append(el);
-    const L = { anchor: g, y: N.cat ? 1.25 : 2.3 * (LOOKS[id]?.scale ?? 1), max: 34, el, btn, shown: false, occ: false, slot: labels.length % 4 };
+    const L = { anchor: g, y: N.cat ? 1.25 : N.dog ? 1.35 : 2.3 * (LOOKS[id]?.scale ?? 1), max: 34, el, btn, shown: false, occ: false, slot: labels.length % 4 };
     labels.push(L);
-    npcObjs[id] = { id, group: g, parts: g.userData.parts, x, z, base, heading: base, phase: Math.random() * 10, mark, cat: !!N.cat, kid: !!N.kid };
-    addCircle(x, z, N.cat ? 0.4 : 0.45);
+    npcObjs[id] = { id, group: g, parts: g.userData.parts, x, z, base, heading: base, phase: Math.random() * 10, mark, cat: !!N.cat, dog: !!N.dog, kid: !!N.kid };
+    addCircle(x, z, N.cat ? 0.4 : N.dog ? 0.5 : 0.45);
   }
 }
 
@@ -229,25 +319,60 @@ function itemModel(id) {
     case "orchidea": flowerStem(); for (let i = 0; i < 3; i++) add(new THREE.SphereGeometry(0.05, 8, 6), "#C04FA8", 0.03 * (i - 1), 0.22 + i * 0.07, 0.05).scale.set(1.3, 1, 0.4); break;
     case "okulary": for (const s of [-1, 1]) { add(new THREE.TorusGeometry(0.06, 0.012, 6, 16), "#2A2A2A", s * 0.075, 0, 0); add(new THREE.BoxGeometry(0.01, 0.01, 0.15), "#2A2A2A", s * 0.135, 0, -0.07); } add(new THREE.BoxGeometry(0.04, 0.01, 0.01), "#2A2A2A", 0, 0.02, 0); break;
     case "klucze": add(new THREE.TorusGeometry(0.05, 0.01, 6, 14), "#C9A227", 0, 0, 0, { m: 0.7, r: 0.3 }).rotation.x = Math.PI / 2; for (const a of [0.4, -0.5]) { const k = new THREE.Group(); k.rotation.y = a; k.add(mesh(new THREE.BoxGeometry(0.16, 0.012, 0.02), M("#C9A227", { m: 0.7, r: 0.3 }), 0.12, 0, 0, false)); k.add(mesh(new THREE.BoxGeometry(0.03, 0.012, 0.05), M("#C9A227", { m: 0.7, r: 0.3 }), 0.18, 0, 0.02, false)); g.add(k); } break;
+    case "pędzel": { const b = new THREE.Group(); b.rotation.z = Math.PI / 2 - 0.25; g.add(b);
+      b.add(mesh(new THREE.CylinderGeometry(0.012, 0.016, 0.26, 6), M("#B5603A"), 0, 0, 0, false));
+      b.add(mesh(new THREE.CylinderGeometry(0.018, 0.014, 0.05, 8), M("#B8BEC4", { m: 0.6, r: 0.35 }), 0, 0.15, 0, false));
+      b.add(mesh(new THREE.ConeGeometry(0.02, 0.07, 8), M("#2F6FD0"), 0, 0.21, 0, false)); } break;
+    case "list": case "koperta":
+      add(new THREE.BoxGeometry(0.24, 0.012, 0.16), id === "list" ? "#FAF7F0" : "#EED9A8");
+      for (const s of [-1, 1]) add(new THREE.BoxGeometry(0.15, 0.004, 0.008), "#C9B98F", s * 0.06, 0.008, -0.03).rotation.y = s * 0.55;
+      if (id === "list") add(new THREE.BoxGeometry(0.04, 0.004, 0.05), "#C8352E", 0.085, 0.008, 0.045);
+      break;
+    case "pocztówka": add(new THREE.BoxGeometry(0.22, 0.01, 0.15), "#FFFFFF"); add(new THREE.BoxGeometry(0.2, 0.004, 0.13), "#8DB3D9", 0, 0.007, 0); add(new THREE.BoxGeometry(0.2, 0.005, 0.05), "#7FB069", 0, 0.008, 0.04); add(new THREE.BoxGeometry(0.03, 0.006, 0.03), "#F1D034", 0.06, 0.009, -0.03); break;
+    case "paczka": add(new THREE.BoxGeometry(0.22, 0.16, 0.18), "#B98A55"); add(new THREE.BoxGeometry(0.225, 0.165, 0.014), "#EDE3CF"); add(new THREE.BoxGeometry(0.014, 0.165, 0.185), "#EDE3CF"); break;
+    case "książka": add(new THREE.BoxGeometry(0.18, 0.05, 0.24), "#B23A3A"); add(new THREE.BoxGeometry(0.17, 0.042, 0.226), "#F5EFE0", 0.008, 0, 0); break;
+    case "mapa": add(new THREE.BoxGeometry(0.22, 0.012, 0.16), "#EADCB8"); add(new THREE.BoxGeometry(0.09, 0.004, 0.07), "#7FB069", -0.04, 0.008, -0.02); add(new THREE.BoxGeometry(0.2, 0.004, 0.014), "#4F8FD0", 0.01, 0.009, 0.03).rotation.y = 0.35; break;
+    case "gazeta": add(new THREE.BoxGeometry(0.2, 0.02, 0.26), "#ECEBE6"); add(new THREE.BoxGeometry(0.17, 0.004, 0.035), "#2A2A2A", 0, 0.012, -0.095); for (let i = 0; i < 4; i++) add(new THREE.BoxGeometry(0.17, 0.003, 0.012), "#9A9A9A", 0, 0.012, -0.04 + i * 0.035); break;
+    case "kredka": { const c = new THREE.Group(); c.rotation.z = Math.PI / 2; g.add(c);
+      c.add(mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.2, 6), M("#2F6FD0"), 0, 0, 0, false));
+      c.add(mesh(new THREE.ConeGeometry(0.012, 0.03, 6), M("#F2D9B0"), 0, 0.115, 0, false));
+      c.add(mesh(new THREE.ConeGeometry(0.005, 0.012, 6), M("#2F6FD0"), 0, 0.13, 0, false)); } break;
+    case "torba":
+      add(new THREE.BoxGeometry(0.26, 0.2, 0.12), "#E3D3B0");
+      for (const s of [-1, 1]) add(new THREE.TorusGeometry(0.05, 0.01, 4, 10, Math.PI), "#8A6A40", s * 0.06, 0.1, 0);
+      add(new THREE.BoxGeometry(0.06, 0.06, 0.09), "#2F6FD0", -0.05, 0.11, 0); add(new THREE.BoxGeometry(0.05, 0.08, 0.09), "#B23A3A", 0.03, 0.12, 0);
+      break;
+    case "kość":
+      add(new THREE.CylinderGeometry(0.025, 0.025, 0.2, 8), "#F2EDE0").rotation.z = Math.PI / 2;
+      for (const x of [-0.1, 0.1]) for (const z of [-0.022, 0.022]) add(new THREE.SphereGeometry(0.035, 8, 6), "#F2EDE0", x, 0, z);
+      break;
+    default:
+      if (PAINT[id]) {
+        add(new THREE.CylinderGeometry(0.09, 0.09, 0.12, 16), "#B8BEC4", 0, 0, 0, { m: 0.6, r: 0.35 });
+        add(new THREE.CylinderGeometry(0.086, 0.086, 0.012, 16), PAINT[id], 0, 0.064, 0);
+        add(new THREE.BoxGeometry(0.03, 0.05, 0.008), PAINT[id], 0.04, 0.035, 0.088);
+        add(new THREE.TorusGeometry(0.07, 0.006, 4, 12, Math.PI), "#8A9096", 0, 0.07, 0);
+      }
   }
   return g;
 }
-const ITEM_SCALE = { piłka: 1.2, róża: 1.25, lilia: 1.25, stokrotka: 1.25, orchidea: 1.25, okulary: 1.6, klucze: 1.6 };
+const ITEM_SCALE = { piłka: 1.2, róża: 1.25, lilia: 1.25, stokrotka: 1.25, orchidea: 1.25, okulary: 1.6, klucze: 1.6, pędzel: 1.6, kredka: 1.8, paczka: 1.4, kość: 1.6 };
 const itemObjs = {};
 const ringMat = new THREE.MeshBasicMaterial({ color: 0xe9b53b, transparent: true, opacity: 0.55, depthWrite: false, side: THREE.DoubleSide });
 function placeItems() {
-  for (const id of Object.keys(ITEMS)) {
+  Object.keys(ITEMS).forEach((id, i) => {
     const home = HOMES[id], g = new THREE.Group();
     const model = itemModel(id); model.scale.setScalar(ITEM_SCALE[id] ?? 1.5); g.add(model);
     const ring = new THREE.Mesh(new THREE.RingGeometry(0.26, 0.34, 28), ringMat); ring.rotation.x = -Math.PI / 2;
-    const surface = home.y < 0.5 ? 0.02 : home.y > 1 ? 0.97 : id === "okulary" ? 0.84 : 0.48;
+    const surface = SURFACE[id] ?? (home.y < 0.5 ? 0.02 : home.y > 1 ? 0.97 : id === "okulary" ? 0.84 : 0.48);
     ring.position.y = surface - home.y;
     g.add(ring);
     g.position.copy(home); scene.add(g);
     g.userData.target = { kind: "item", id }; clickables.push(g);
-    const L = addWordLabel({ word: ITEMS[id].word, lemma: ITEMS[id].lemma, anchor: g, y: 0.55, max: 15 });
+    // neighbours on a counter alternate heights so their labels don't cover each other
+    const L = addWordLabel({ word: ITEMS[id].word, lemma: ITEMS[id].lemma, anchor: g, y: 0.55 + (i % 2) * 0.34, max: 15 });
     itemObjs[id] = { id, group: g, model, ring, label: L, available: true, phase: Math.random() * 6, pop: 1 };
-  }
+  });
 }
 function placeItem(id, animate) { const o = itemObjs[id]; if (!o) return; o.available = true; o.group.visible = true; o.group.position.copy(HOMES[id]); o.pop = animate ? 0 : 1; }
 function removeItem(id) { const o = itemObjs[id]; if (!o) return; o.available = false; o.group.visible = false; }
