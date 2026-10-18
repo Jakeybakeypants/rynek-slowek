@@ -8,7 +8,7 @@ function normalize(d) {
   const s = freshState();
   if (!d || typeof d !== "object") return s;
   if (d.words && typeof d.words === "object") for (const [l, r] of Object.entries(d.words)) {
-    if (!LEX[l] || !r || typeof r !== "object") continue;
+    if (!lookup(l) || !r || typeof r !== "object") continue;
     s.words[l] = { s: clamp(Math.round(+r.s || 0), 0, 2), seen: Math.max(0, +r.seen || 0), ok: Math.max(0, +r.ok || 0) };
   }
   if (d.npc && typeof d.npc === "object") for (const id of NPC_ORDER) if (d.npc[id]) {
@@ -68,22 +68,24 @@ async function connectRemote() {
 const rec = l => (st.words[l] ??= { s: 0, seen: 0, ok: 0 });
 const status = l => st.words[l]?.s ?? 0;
 const npcState = id => (st.npc[id] ??= { stage: "new", order: null, tmpl: 0, thanked: false });
-function setStatus(lemma, s) {
-  if (!LEX[lemma]) return;
-  const before = status(lemma);
-  rec(lemma).s = s;
+function setStatus(key, s) {
+  if (!lookup(key)) return;
+  const before = status(key);
+  rec(key).s = s;
   save(); refreshWordViews();
   if (s === 2 && before !== 2) sfx.known(); else sfx.tick();
 }
-function markSeen(lemmas) { for (const l of new Set(lemmas)) if (LEX[l]) rec(l).seen++; save(); refreshCounts(); }
+function markSeen(keys) { for (const k of new Set(keys)) if (lookup(k)) rec(k).seen++; save(); refreshCounts(); }
+let totalWords = 0; // every distinct form on the square, counted once the labels exist
 function counts() {
   let known = 0, learning = 0, fresh = 0, met = 0;
-  for (const l of Object.keys(LEX)) {
-    const r = st.words[l]; if (!r) continue;
+  for (const [k, r] of Object.entries(st.words)) {
+    if (!lookup(k)) continue;
     if (r.s === 2) known++; else if (r.s === 1) learning++; else if (r.seen > 0) fresh++;
     if (r.seen > 0 || r.s > 0) met++;
   }
-  return { known, learning, fresh, met, total: Object.keys(LEX).length };
+  totalWords ||= new Set([...gameWords(), ...labels.filter(L => L.key).map(L => L.key)]).size;
+  return { known, learning, fresh, met, total: Math.max(totalWords, met) };
 }
 function refreshCounts() {
   const c = counts();
@@ -91,8 +93,8 @@ function refreshCounts() {
   $("#coins").textContent = st.coins;
 }
 function refreshWordViews() {
-  for (const el of $$("[data-lemma]")) el.dataset.s = String(status(el.dataset.lemma));
-  for (const L of labels) if (L.lemma) L.btn.textContent = labelText(L);
+  for (const el of $$("[data-key]")) el.dataset.s = String(status(el.dataset.key));
+  for (const L of labels) if (L.key) L.btn.textContent = labelText(L);
   refreshCounts();
   if (cardState) renderCard();
   if (!$("#vocab").hidden) renderVocab();

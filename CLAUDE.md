@@ -13,6 +13,8 @@ Read `README.md` first. The game is a single page: `src/` is the source, `dist/`
 
 ## Polish content
 
+- Word status (purple, orange, green) belongs to each written form, keyed by `keyOf()` (lower case), never to the lemma. This is the owner's choice: words are learned one form at a time, like a child, not through grammar. Lemmas are only used to explain what a form means.
+
 - Every Polish word shown anywhere must resolve through `FORMS` or `LEX` in `src/js/01-data.js`; `npm test` checks every line, label and errand. Each new line is a `[Polish, English]` pair.
 - Grammar notes should be short and correct. Name the case and why it's used ("genitive: after bez").
 - Avoid masculine inanimate items whose everyday object form differs from the textbook one (`tulipan`, `pomidor`, `pączek`). Feminine and neuter items, and animate ones like `miś → misia`, are safe.

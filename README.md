@@ -8,7 +8,7 @@ A 3D Polish market square where you learn words by talking to people and running
 | Orange | You're learning it. |
 | Green | You know it. |
 
-Click any word to see what it means, which dictionary form it comes from (`gruszkę → gruszka`, object form), any phrase it belongs to (`dzień dobry`), and to sort it with 1, 2 or 3. The colour changes everywhere at once.
+Each written form is its own word, the way a child learns them: `mam` and `masz` are sorted separately, and so are `gruszka`, `gruszkę` and `gruszki`. Click any word to see what it means, which dictionary form it comes from (`gruszkę → gruszka`, object form), any phrase it belongs to (`dzień dobry`), and to sort it with 1, 2 or 3. The colour changes everywhere at once.
 
 **Play it:** <https://claude.ai/artifact/RhDfB4eqWVcRcvQUpjFbkv> (private to the owner unless shared), or open `dist/index.html` from this repo.
 

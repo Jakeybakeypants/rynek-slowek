@@ -8,8 +8,8 @@ import vm from "node:vm";
 
 const src = ["01-data.js", "02-words.js"].map(f => readFileSync(new URL("../src/js/" + f, import.meta.url), "utf8")).join("\n");
 const ctx = vm.createContext({});
-vm.runInContext(src + "\n;globalThis.out = { LEX, FORMS, PHRASES, ITEMS, NPCS, NPC_ORDER, lookup, tokenize, findPhrase, validateLexicon };", ctx);
-const { LEX, FORMS, PHRASES, ITEMS, NPCS, NPC_ORDER, lookup, tokenize, findPhrase, validateLexicon } = ctx.out;
+vm.runInContext(src + "\n;globalThis.out = { LEX, FORMS, PHRASES, ITEMS, NPCS, NPC_ORDER, lookup, tokenize, findPhrase, validateLexicon, gameWords, keyOf };", ctx);
+const { LEX, FORMS, PHRASES, ITEMS, NPCS, NPC_ORDER, lookup, tokenize, findPhrase, validateLexicon, gameWords, keyOf } = ctx.out;
 
 test("every word in every line, label and errand has a dictionary entry", () => {
   const { missing, clashes } = validateLexicon();
@@ -51,4 +51,12 @@ test("lookup, tokenize and phrases behave", () => {
   assert.equal(findPhrase({ words: ["dzień", "dobry", "mam"], index: 1 }).pl, "dzień dobry");
   assert.equal(findPhrase({ words: ["mam", "na", "imię", "józef"], index: 2 }).pl, "mam na imię");
   assert.equal(findPhrase({ words: ["teraz"], index: 0 }), null);
+});
+
+test("each written form is its own word, so learning one form doesn't mark the others", () => {
+  const words = gameWords();
+  for (const w of ["mam", "masz", "gruszka", "gruszkę", "gruszki", "jest", "są"]) assert.ok(words.has(w), `${w} should be a word of its own`);
+  assert.equal(keyOf("Dziękuję"), "dziękuję");
+  assert.notEqual(keyOf("mam"), keyOf("masz"));
+  assert.equal(lookup("mam").lemma, lookup("masz").lemma, "both still show what they mean via mieć");
 });

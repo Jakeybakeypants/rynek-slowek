@@ -72,8 +72,9 @@ const quizQuestion = (a, b) => [`Ile to jest ${NUMBERS[a]} plus ${NUMBERS[b]}?`,
 const quizResult = (right, sum) => right
   ? [`Tak! ${NUMBERS[sum][0].toUpperCase() + NUMBERS[sum].slice(1)}. Brawo!`, `Yes! ${sum}. Well done!`]
   : [`Nie, to jest ${NUMBERS[sum]}.`, `No, it's ${sum}.`];
-function validateLexicon() {
-  const missing = new Set(), check = t => tokenize(t).forEach(tk => { if (tk.w && !tk.lemma) missing.add(tk.t); });
+// every Polish sentence the game can show (labels aside)
+function gameTexts() {
+  const out = [], check = t => out.push(t);
   for (const N of Object.values(NPCS)) {
     for (const key of ["intro", "done", "after", "thanks", "regive"]) (N[key] || []).forEach(l => check(l[0]));
     for (const key of ["remind", "wrong"]) if (N[key]) check(N[key][0]);
@@ -81,9 +82,25 @@ function validateLexicon() {
     if (N.orders) { N.orders.ok.forEach(l => check(l[0])); for (const id of N.orders.pool) N.orders.ask.forEach(a => check(fillTemplate(a, ITEMS[id])[0])); }
     if (N.quiz) [...N.quiz.start, ...N.quiz.more].forEach(l => check(l[0]));
   }
-  Object.keys(ITEMS).forEach(id => { check(thisIs(id)[0]); if (!LEX[ITEMS[id].lemma]) missing.add(ITEMS[id].lemma); });
+  Object.keys(ITEMS).forEach(id => { check(thisIs(id)[0]); check(ITEMS[id].word); });
   Object.values(REVIEW_LINES).forEach(l => check(l[0]));
   for (let a = 1; a <= QUIZ_MAX; a++) for (let b = 1; b <= QUIZ_MAX; b++) { check(quizQuestion(a, b)[0]); check(quizResult(true, a + b)[0]); check(quizResult(false, a + b)[0]); }
+  return out;
+}
+// Words are learned form by form, the way a child picks them up: mam and masz are two
+// separate words with their own colour. A word's key is its lower-case written form.
+const keyOf = w => w.toLowerCase();
+// what a form means, for lists: the dictionary word's meaning plus, for an inflected form, what this form is
+function meaningOf(key) {
+  const info = lookup(key), [gloss, pos, note] = LEX[info.lemma];
+  return { gloss: info.form ? `${gloss} · ${info.form}` : gloss, pos, note, lemma: info.lemma };
+}
+const displayWord = key => LEX[lookup(key)?.lemma]?.[1] === "name" ? key[0].toUpperCase() + key.slice(1) : key;
+function gameWords() { const set = new Set(); for (const t of gameTexts()) for (const tk of tokenize(t)) if (tk.w) set.add(keyOf(tk.t)); return set; }
+function validateLexicon() {
+  const missing = new Set();
+  for (const t of gameTexts()) for (const tk of tokenize(t)) if (tk.w && !tk.lemma) missing.add(tk.t);
+  for (const it of Object.values(ITEMS)) if (!LEX[it.lemma]) missing.add(it.lemma);
   const clashes = Object.keys(FORMS).filter(f => LEX[f]);
   return { missing: [...missing], clashes };
 }

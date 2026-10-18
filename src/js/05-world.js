@@ -160,11 +160,11 @@ const addCircle = (x, z, r) => circleColliders.push({ x, z, r });
 const addOccluder = obj => { obj.updateMatrixWorld(true); occluders.push(new THREE.Box3().setFromObject(obj)); };
 const labels = [];
 const labelLayer = $("#labels");
-function labelText(L) { return L.lemma && st.settings.hideKnown && status(L.lemma) === 2 ? "?" : L.word; }
-function addWordLabel({ word, lemma, anchor, pos, y = 0, max = 10, kind = "", near = null }) {
-  lemma ??= lookup(word)?.lemma;
-  const L = { word, lemma, anchor, pos, y, max, shown: false, occ: false, slot: labels.length % 4, near };
-  const btn = h("button", { class: "wl " + kind, type: "button", lang: "pl", dataset: { lemma, s: String(status(lemma)) } });
+function labelText(L) { return L.key && st.settings.hideKnown && status(L.key) === 2 ? "?" : L.word; }
+function addWordLabel({ word, anchor, pos, y = 0, max = 10, kind = "", near = null }) {
+  const key = keyOf(word);
+  const L = { word, key, anchor, pos, y, max, shown: false, occ: false, slot: labels.length % 4, near };
+  const btn = h("button", { class: "wl " + kind, type: "button", lang: "pl", dataset: { key, s: String(status(key)) } });
   btn.addEventListener("click", ev => { ev.stopPropagation(); openCard(word, btn, null); });
   L.btn = btn; btn.textContent = labelText(L);
   L.el = h("div", { class: "lbl", hidden: true }, btn);

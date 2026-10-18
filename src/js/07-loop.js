@@ -178,8 +178,8 @@ function updateLabels(frame) {
     }
     if (show) { lv.project(camera); if (lv.z > 1 || lv.z < -1) show = false; }
     if (!show) { if (L.shown) { L.el.hidden = true; L.shown = false; } continue; }
-    if (!L.shown) { L.el.hidden = false; L.shown = true; if (L.lemma && d < 6 && !L.met) { L.met = true; markSeen([L.lemma]); } }
-    else if (L.lemma && !L.met && d < 6) { L.met = true; markSeen([L.lemma]); }
+    if (!L.shown) { L.el.hidden = false; L.shown = true; if (L.key && d < 6 && !L.met) { L.met = true; markSeen([L.key]); } }
+    else if (L.key && !L.met && d < 6) { L.met = true; markSeen([L.key]); }
     const x = (lv.x * 0.5 + 0.5) * W, y = (-lv.y * 0.5 + 0.5) * H;
     L.el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) translate(-50%,-100%)`;
     L.el.style.opacity = Math.min(1, (L.max - d) / 2.5).toFixed(2);
@@ -243,7 +243,7 @@ addEventListener("keydown", e => {
     else if (!$("#vocab").hidden) toggleVocab(false); else if (dlg.open) endDialogue();
     return;
   }
-  if (cardState && ["1", "2", "3"].includes(k)) { setStatus(cardState.lemma, +k - 1); return; }
+  if (cardState && ["1", "2", "3"].includes(k)) { setStatus(cardState.key, +k - 1); return; }
   const onButton = !!e.target.closest?.("button");
   if (k === "e" || ((k === " " || k === "enter") && !onButton)) { e.preventDefault(); if (!e.repeat) interact(); return; }
   if (!introClosed) return;

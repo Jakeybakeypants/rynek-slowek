@@ -454,7 +454,7 @@ function placeItems() {
     g.position.copy(home); scene.add(g);
     g.userData.target = { kind: "item", id }; clickables.push(g);
     // neighbours on a counter alternate heights so their labels don't cover each other
-    const L = addWordLabel({ word: ITEMS[id].word, lemma: ITEMS[id].lemma, anchor: g, y: 0.55 + (i % 2) * 0.34, max: 15 });
+    const L = addWordLabel({ word: ITEMS[id].word, anchor: g, y: 0.55 + (i % 2) * 0.34, max: 15 });
     itemObjs[id] = { id, group: g, model, ring, label: L, available: true, phase: Math.random() * 6, pop: 1 };
   });
 }

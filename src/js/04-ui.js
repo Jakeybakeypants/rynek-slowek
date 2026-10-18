@@ -2,8 +2,9 @@
 // ===================================================================
 // word buttons + the word card
 // ===================================================================
-function wordBtn(surface, lemma, cls = "w", ctx = null) {
-  const b = h("button", { class: cls, type: "button", lang: "pl", dataset: { lemma, s: String(status(lemma)) } }, surface);
+function wordBtn(surface, cls = "w", ctx = null) {
+  const key = keyOf(surface);
+  const b = h("button", { class: cls, type: "button", lang: "pl", dataset: { key, s: String(status(key)) } }, surface);
   b.addEventListener("click", ev => { ev.stopPropagation(); openCard(surface, b, ctx); });
   return b;
 }
@@ -12,16 +13,16 @@ const card = $("#card");
 function openCard(surface, anchor, ctx) {
   const info = lookup(surface);
   if (!info || !LEX[info.lemma]) return;
-  cardState = { surface, lemma: info.lemma, form: info.form, anchor, ctx };
+  cardState = { surface, key: keyOf(surface), lemma: info.lemma, form: info.form, anchor, ctx };
   renderCard();
   card.hidden = false;
   positionCard(anchor);
   if (!st.tips.word) { st.tips.word = true; $("#d-tip").hidden = true; save(); }
 }
 function renderCard() {
-  const { surface, lemma, form, ctx } = cardState;
+  const { surface, key, lemma, form, ctx } = cardState;
   const [gloss, pos, note] = LEX[lemma];
-  const r = st.words[lemma] || { seen: 0, ok: 0 }, s = status(lemma), phrase = findPhrase(ctx);
+  const r = st.words[key] || { seen: 0, ok: 0 }, s = status(key), phrase = findPhrase(ctx);
   card.dataset.s = String(s);
   card.replaceChildren(...[
     h("div", { class: "c-top" },
@@ -34,9 +35,9 @@ function renderCard() {
     phrase ? h("p", { class: "c-phrase" }, h("b", { lang: "pl" }, phrase.pl), " = ", phrase.en) : null,
     note ? h("p", { class: "c-note" }, note) : null,
     h("div", { class: "seg", role: "group", "aria-label": "Sort this word" },
-      [0, 1, 2].map(k => h("button", { type: "button", dataset: { s: String(k) }, "aria-pressed": String(s === k), onclick: () => setStatus(lemma, k) },
+      [0, 1, 2].map(k => h("button", { type: "button", dataset: { s: String(k) }, "aria-pressed": String(s === k), onclick: () => setStatus(key, k) },
         h("span", { class: "k" }, String(k + 1)), STATUS_NAMES[k]))),
-    h("p", { class: "c-meta" }, `Seen ${r.seen || 0}×` + (r.ok ? ` · delivered ${r.ok}×` : ""))].filter(Boolean));
+    h("p", { class: "c-meta" }, `Seen ${r.seen || 0}×` + (r.ok ? ` · delivered ${r.ok}×` : "") + (form ? " · only this form changes colour" : ""))].filter(Boolean));
 }
 function positionCard(anchor) {
   const r = anchor.getBoundingClientRect(), cw = card.offsetWidth, ch = card.offsetHeight;
@@ -47,7 +48,7 @@ function positionCard(anchor) {
 }
 function closeCard() { card.hidden = true; cardState = null; }
 document.addEventListener("pointerdown", e => {
-  if (!card.hidden && !card.contains(e.target) && !e.target.closest("[data-lemma]")) closeCard();
+  if (!card.hidden && !card.contains(e.target) && !e.target.closest("[data-key]")) closeCard();
   const pop = $("#settings");
   if (!pop.hidden && !pop.contains(e.target) && !e.target.closest("#btn-settings")) pop.hidden = true;
 }, true);
@@ -72,12 +73,12 @@ function showLine() {
   const line = $("#d-line"); line.replaceChildren();
   let wi = 0;
   toks.forEach((tk, i) => {
-    const node = tk.w && tk.lemma ? wordBtn(tk.t, tk.lemma, "w", { words, index: wi }) : h("span", { class: "p" }, tk.t);
+    const node = tk.w && tk.lemma ? wordBtn(tk.t, "w", { words, index: wi }) : h("span", { class: "p" }, tk.t);
     if (tk.w) wi++;
     node.style.setProperty("--i", i);
     line.append(node);
   });
-  markSeen(toks.filter(t => t.lemma).map(t => t.lemma));
+  markSeen(toks.filter(t => t.lemma).map(t => keyOf(t.t)));
   const tr = $("#d-tr"); tr.textContent = en; tr.hidden = !st.settings.tr && !dlg.trOnce;
   $("#d-trbtn").setAttribute("aria-pressed", String(!tr.hidden));
   $("#d-step").textContent = dlg.lines.length > 1 ? `${dlg.i + 1} / ${dlg.lines.length}` : "";
@@ -85,8 +86,8 @@ function showLine() {
   extra.replaceChildren();
   if (last && dlg.actions) {
     dlg.actions.forEach((a, k) => extra.append(h("button", {
-      type: "button", class: a.lemma ? "w answer" : k === 0 ? "primary" : "chip-btn",
-      lang: a.lemma ? "pl" : null, dataset: a.lemma ? { lemma: a.lemma, s: String(status(a.lemma)) } : null,
+      type: "button", class: a.word ? "w answer" : k === 0 ? "primary" : "chip-btn",
+      lang: a.word ? "pl" : null, dataset: a.word ? { key: a.word, s: String(status(a.word)) } : null,
       onclick: () => { endDialogue(); a.fn?.(); },
     }, a.label)));
     $("#d-next").hidden = true;
@@ -117,17 +118,17 @@ function fillOrder(npcId) {
 function newOrder(npcId) {
   const N = NPCS[npcId], s = npcState(npcId);
   const pool = N.orders.pool.filter(id => id !== s.last && (!ITEMS[id].story));
-  const weighted = pool.flatMap(id => Array(status(ITEMS[id].lemma) === 2 ? 1 : 3).fill(id));
+  const weighted = pool.flatMap(id => Array(status(ITEMS[id].word) === 2 ? 1 : 3).fill(id));
   s.order = pick(weighted); s.last = s.order; s.tmpl = Math.floor(Math.random() * N.orders.ask.length);
   return fillOrder(npcId);
 }
 function reward(n) { st.coins += n; sfx.coin(); }
 function wordDelivered(id) {
-  const lemma = ITEMS[id].lemma; rec(lemma).ok++;
-  if (status(lemma) === 2) return;
+  const key = ITEMS[id].word; rec(key).ok++;
+  if (status(key) === 2) return;
   const word = ITEMS[id].word;
-  toast(h("span", {}, h("b", { class: "chip", dataset: { lemma, s: String(status(lemma)) } }, word), " delivered. Sort it?"), {
-    actions: [{ label: "Learning", s: 1, fn: () => setStatus(lemma, 1) }, { label: "Known", s: 2, fn: () => setStatus(lemma, 2) }], ms: 6000 });
+  toast(h("span", {}, h("b", { class: "chip", dataset: { key, s: String(status(key)) } }, word), " delivered. Sort it?"), {
+    actions: [{ label: "Learning", s: 1, fn: () => setStatus(key, 1) }, { label: "Known", s: 2, fn: () => setStatus(key, 2) }], ms: 6000 });
 }
 function wantedBy(npcId) {
   const N = NPCS[npcId], s = npcState(npcId), out = [];
@@ -157,7 +158,7 @@ function quizTurn(id, lead = []) {
     const next = quizTurn(id, [quizResult(right, sum), pick(NPCS[id].quiz.more)]);
     startDialogue(id, next.lines, { actions: next.actions });
   };
-  const actions = shuffle([...opts]).map(n => ({ label: NUMBERS[n], lemma: NUMBERS[n], fn: answer(n) }));
+  const actions = shuffle([...opts]).map(n => ({ label: NUMBERS[n], word: NUMBERS[n], fn: answer(n) }));
   actions.push({ label: "That's enough" });
   return { lines: [...lead, quizQuestion(a, b)], actions };
 }
@@ -213,7 +214,7 @@ function talk(id) {
       lines.push(pick(N.after));
       if (N.music) after.push(() => sfx.tune());
       if (N.review) {
-        if (Object.keys(LEX).some(l => status(l) === 1)) {
+        if (Object.values(st.words).some(r => r.s === 1)) {
           lines.push(REVIEW_LINES.offer);
           actions = [{ label: "Review my words", fn: () => openReview("learning") }, { label: "Not now" }];
         } else lines.push(REVIEW_LINES.none);
@@ -232,7 +233,7 @@ function consumeCarry() {
 function pickUp(id) {
   if (st.carry) placeItem(st.carry, true);
   removeItem(id); st.carry = id; setCarryVisual(); sfx.pop();
-  markSeen([ITEMS[id].lemma]);
+  markSeen([ITEMS[id].word]);
   save(); renderTracker();
 }
 function putBack() { if (!st.carry) return; const id = st.carry; st.carry = null; placeItem(id, true); setCarryVisual(); sfx.tick(); save(); renderTracker(); }
@@ -241,8 +242,8 @@ $("#btn-drop").addEventListener("click", putBack);
 // ===================================================================
 // tracker, HUD, toasts, prompt
 // ===================================================================
-const wordChip = (id) => wordBtn(ITEMS[id].word, ITEMS[id].lemma, "chip");
-function headingWord(sel, word) { const info = lookup(word); $(sel).replaceChildren(wordBtn(word[0].toUpperCase() + word.slice(1), info.lemma, "w")); }
+const wordChip = (id) => wordBtn(ITEMS[id].word, "chip");
+function headingWord(sel, word) { $(sel).replaceChildren(wordBtn(word[0].toUpperCase() + word.slice(1), "w")); }
 function renderTracker() {
   const ul = $("#tasks"); ul.replaceChildren();
   let n = 0;
@@ -290,19 +291,19 @@ function renderVocab() {
   const bar = $("#v-bar").children, tot = c.total || 1;
   bar[0].style.width = (c.known / tot * 100) + "%"; bar[1].style.width = (c.learning / tot * 100) + "%"; bar[2].style.width = (c.fresh / tot * 100) + "%";
   $("#v-summary").textContent = `${c.known} known, ${c.learning} learning, ${c.fresh} new. You've met ${c.met} of the ${c.total} words on the square.`;
-  const met = Object.keys(LEX).filter(l => (st.words[l]?.seen || 0) > 0 || status(l) > 0);
-  const list = met.filter(l => vFilter === "all" || String(status(l)) === vFilter)
-    .filter(l => !q || l.includes(q) || LEX[l][0].toLowerCase().includes(q))
+  const met = Object.keys(st.words).filter(k => lookup(k) && ((st.words[k].seen || 0) > 0 || status(k) > 0));
+  const list = met.filter(k => vFilter === "all" || String(status(k)) === vFilter)
+    .filter(k => !q || k.includes(q) || meaningOf(k).gloss.toLowerCase().includes(q))
     .sort((a, b) => a.localeCompare(b, "pl"));
   const ul = $("#v-list");
   ul.replaceChildren(...list.map(l => {
     const s = status(l);
-    return h("li", { class: "v-row" }, wordBtn(displayLemma(l), l, "w"), h("span", { class: "v-gloss" }, LEX[l][0]),
+    return h("li", { class: "v-row" }, wordBtn(displayWord(l), "w"), h("span", { class: "v-gloss" }, meaningOf(l).gloss),
       h("span", { class: "v-dots", role: "group", "aria-label": `Sort ${l}` }, [0, 1, 2].map(k =>
         h("button", { type: "button", class: "dot", dataset: { s: String(k) }, "aria-pressed": String(s === k), "aria-label": STATUS_NAMES[k], title: STATUS_NAMES[k], onclick: () => setStatus(l, k) }))));
   }));
   if (!list.length) ul.append(h("li", { class: "v-empty" }, met.length ? "No words match." : "No words yet. Talk to people on the square and every word they say lands here."));
-  const nl = Object.keys(LEX).filter(l => status(l) === 1).length, nn = c.fresh;
+  const nl = c.learning, nn = c.fresh;
   $("#v-review").textContent = `Review learning words (${nl})`; $("#v-review").disabled = !nl;
   $("#v-review-new").textContent = `Sort new words (${nn})`; $("#v-review-new").disabled = !nn;
 }
@@ -326,7 +327,7 @@ $$("[data-close]").forEach(b => b.addEventListener("click", () => { const id = b
 // ===================================================================
 let rv = null;
 function openReview(kind) {
-  const deck = shuffle(Object.keys(LEX).filter(l => kind === "learning" ? status(l) === 1 : status(l) === 0 && (st.words[l]?.seen || 0) > 0));
+  const deck = shuffle(Object.keys(st.words).filter(k => lookup(k) && (kind === "learning" ? status(k) === 1 : status(k) === 0 && (st.words[k].seen || 0) > 0)));
   if (!deck.length) { toast(kind === "learning" ? "No orange words to review yet. Mark some words as Learning first." : "No new words to sort right now."); return; }
   rv = { deck, i: 0, shown: false, kind, known: 0 };
   closeCard(); toggleVocab(false); $("#review").hidden = false; renderReview();
@@ -342,9 +343,9 @@ function renderReview() {
       h("div", { class: "r-btns", dataset: { s: "2" } }, h("button", { type: "button", class: "fill", onclick: closeReview }, "Back to the square"))));
     return;
   }
-  const l = rv.deck[rv.i], [gloss, pos, note] = LEX[l], s = status(l);
+  const l = rv.deck[rv.i], { gloss, pos, note } = meaningOf(l), s = status(l);
   $("#r-step").textContent = `${rv.i + 1} / ${rv.deck.length}`;
-  const word = h("div", { class: "r-word", dataset: { s: String(s) }, lang: "pl" }, displayLemma(l));
+  const word = h("div", { class: "r-word", dataset: { s: String(s) }, lang: "pl" }, displayWord(l));
   const top = [word, h("button", { class: "icon-btn small", type: "button", "aria-label": "Listen", onclick: () => speak(l) }, svgSpeaker())];
   if (!rv.shown) {
     body.replaceChildren(h("div", { class: "r-card" }, ...top, h("p", { class: "r-note" }, "Do you remember what it means?"),

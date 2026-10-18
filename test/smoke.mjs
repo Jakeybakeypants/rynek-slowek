@@ -149,7 +149,7 @@ const sum = (await R(() => document.querySelector("#d-line").textContent)).match
 const answer = NUM[NUM.indexOf(sum[1]) + NUM.indexOf(sum[2])];
 check((await page.$$("#d-extra .answer")).length === 3, "the sum offers three number words");
 await shot("5-quiz");
-await page.click(`#d-extra .answer[data-lemma="${answer}"]`);
+await page.click(`#d-extra .answer[data-key="${answer}"]`);
 await page.waitForFunction(() => document.querySelector("#d-line").textContent.startsWith("Tak!"), null, { timeout: 15000 });
 check((await state()).coins === 93, `answering "${answer}" pays 3 zł, after 20 for the errand`);
 for (let i = 0; i < 8 && !(await R(() => document.querySelector("#dialogue").hidden)); i++) {
