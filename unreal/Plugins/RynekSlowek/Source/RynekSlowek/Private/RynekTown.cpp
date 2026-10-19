@@ -28,6 +28,15 @@ namespace
 	{
 		return H.StartsWith(TEXT("#")) ? FLinearColor(FColor::FromHex(H)) : Fallback;
 	}
+
+	// hide a screen-space label: the component's own visibility doesn't always reach the screen layer
+	void ShowLabel(UWidgetComponent* W, bool bShow)
+	{
+		if (W->IsVisible() != bShow) W->SetVisibility(bShow);
+		UUserWidget* U = W->GetUserWidgetObject();
+		const ESlateVisibility V = bShow ? ESlateVisibility::SelfHitTestInvisible : ESlateVisibility::Collapsed;
+		if (U && U->GetVisibility() != V) U->SetVisibility(V);
+	}
 }
 
 ARynekTown::ARynekTown()
@@ -93,7 +102,7 @@ void ARynekTown::BeginPlay()
 	}
 	Dialogue = CreateWidget<URynekDialogueWidget>(PC, URynekDialogueWidget::StaticClass());
 	if (Dialogue) Dialogue->AddToViewport(10);
-	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::White, TEXT("Rynek Słówek: walk up to someone and press E. L changes language."));
+	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::White, TEXT("Rynek S\u0142\u00F3wek: walk up to someone and press E. L changes language."));
 }
 
 void ARynekTown::EndPlay(const EEndPlayReason::Type Reason)
@@ -103,6 +112,7 @@ void ARynekTown::EndPlay(const EEndPlayReason::Type Reason)
 		Words->OnLanguageChanged.Remove(LanguageHandle);
 		Words->OnStatusChanged.Remove(StatusHandle);
 	}
+	if (Dialogue) Dialogue->RemoveFromParent();
 	Super::EndPlay(Reason);
 }
 
@@ -143,11 +153,11 @@ void ARynekTown::Align()
 	{
 		// nothing to trace against (the town has no collision, or isn't in this level)
 		TownTurn = SetTurn; bMirror = bSetMirror;
-		UE_LOG(LogRynekTown, Warning, TEXT("Auto Align found no ground to stand on; using Town Turn %.0f, Mirror %d"), TownTurn, bMirror);
+		UE_LOG(LogRynekTown, Warning, TEXT("Auto Align found no ground to stand on; using Town Turn %.0f, Mirror %d"), TownTurn, bMirror ? 1 : 0);
 		return;
 	}
 	TownTurn = BestTurn; bMirror = bBestMirror;
-	UE_LOG(LogRynekTown, Log, TEXT("Auto Align: Town Turn %.0f, Mirror %d (%d of %d on the ground)"), TownTurn, bMirror, Best, Points.Num());
+	UE_LOG(LogRynekTown, Log, TEXT("Auto Align: Town Turn %.0f, Mirror %d (%d of %d on the ground)"), TownTurn, bMirror ? 1 : 0, Best, Points.Num());
 }
 
 UWidgetComponent* ARynekTown::AddWidget(const FVector& Where, const FString& Text, int32 Status)
@@ -274,9 +284,9 @@ void ARynekTown::Tick(float DeltaSeconds)
 	if (!PC || !PC->PlayerCameraManager) return;
 	const FVector Eye = PC->PlayerCameraManager->GetCameraLocation();
 	for (const FWorldLabel& L : WorldLabels)
-		if (L.Widget) L.Widget->SetVisibility(FVector::Dist(Eye, L.Where) < LabelDistance * (L.bSign ? 1.6f : 1.f));
+		if (L.Widget) ShowLabel(L.Widget, FVector::Dist(Eye, L.Where) < LabelDistance * (L.bSign ? 1.6f : 1.f));
 	for (const FPerson& P : People)
-		if (P.Tag) P.Tag->SetVisibility(FVector::Dist(Eye, P.Where) < LabelDistance);
+		if (P.Tag) ShowLabel(P.Tag, FVector::Dist(Eye, P.Where) < LabelDistance);
 }
 
 void ARynekTown::OnTalk()

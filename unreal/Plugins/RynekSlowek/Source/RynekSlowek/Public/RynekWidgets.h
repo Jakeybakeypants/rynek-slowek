@@ -18,7 +18,7 @@ class RYNEKSLOWEK_API URynekWordWidget : public UUserWidget
 	GENERATED_BODY()
 public:
 	// Status 0, 1, 2 colour the word; -1 makes it a name tag.
-	void Show(const FString& Text, int32 Status);
+	void Show(const FString& InText, int32 InStatus);
 protected:
 	virtual TSharedRef<SWidget> RebuildWidget() override;
 	virtual void ReleaseSlateResources(bool bReleaseChildren) override;
