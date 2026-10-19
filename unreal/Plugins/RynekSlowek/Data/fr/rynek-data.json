@@ -24400,15 +24400,6 @@
    "FrequencyRank": 0
   },
   {
-   "Name": "aujourd'",
-   "Lemma": "aujourd'hui",
-   "English": "today",
-   "Form": "first part of aujourd'hui: today",
-   "PartOfSpeech": "adverb",
-   "Note": "",
-   "FrequencyRank": 0
-  },
-  {
    "Name": "automne",
    "Lemma": "automne",
    "English": "autumn, fall",
@@ -27214,15 +27205,6 @@
    "Form": "",
    "PartOfSpeech": "interjection",
    "Note": "",
-   "FrequencyRank": 0
-  },
-  {
-   "Name": "hui",
-   "Lemma": "hui",
-   "English": "today",
-   "Form": "",
-   "PartOfSpeech": "adverb",
-   "Note": "only in aujourd'hui",
    "FrequencyRank": 0
   },
   {
@@ -109356,8 +109338,8 @@
    "Name": "label_155",
    "Word": "pigeon",
    "Kind": "small",
-   "X": -153.4,
-   "Y": 1058.3,
+   "X": 169.2,
+   "Y": 1084.8,
    "Z": 60
   }
  ]

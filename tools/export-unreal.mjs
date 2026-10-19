@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Writes the game's content as Unreal Engine Data Table files in unreal/Data/<language>/:
+// Writes the game's content for Unreal Engine into the plugin, unreal/Plugins/RynekSlowek/Data/<language>/:
 // CSV files (one per table, the first column is the row name) and one JSON file with everything.
-// The column names match the structs in unreal/RynekDataTypes.h.
+// The column names match the structs in the plugin's RynekDataTypes.h; the plugin reads rynek-data.json.
 //
 //   npm install                 (once: playwright-core, plus three.js to serve locally)
 //   npm run export:unreal          (every language; or name some: npm run export:unreal -- de es)
@@ -37,7 +37,7 @@ if (!langs.length) {
   await p.close();
 }
 for (const lang of langs) {
-const OUT = new URL(`../unreal/Data/${lang}/`, import.meta.url);
+const OUT = new URL(`../unreal/Plugins/RynekSlowek/Data/${lang}/`, import.meta.url);
 mkdirSync(OUT, { recursive: true });
 const page = await context.newPage();
 await page.goto(`https://rynek.test/#lang=${lang}`);

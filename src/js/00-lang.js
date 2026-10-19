@@ -11,7 +11,7 @@ const LANGS = {
   de: { name: "German", native: "Deutsch", speech: "de-DE", currency: "€", money: "euros" },
   es: { name: "Spanish", native: "Español", speech: "es-ES", currency: "€", money: "euros" },
   // French splits elisions off the way its frequency list does (c'est → c' + est) and keeps hyphenated words whole (peut-être)
-  fr: { name: "French", native: "Français", speech: "fr-FR", currency: "€", money: "euros", words: /aujourd'hui|\p{L}+(?:-\p{L}+)*(?:'(?=\p{L}))?/gu },
+  fr: { name: "French", native: "Français", speech: "fr-FR", currency: "€", money: "euros", words: /aujourd'hui|\p{L}+(?:-\p{L}+)*(?:'(?=\p{L}))?/giu },
 };
 const L10N = {};
 const LANG_KEY = "rynek-slowek:lang";
