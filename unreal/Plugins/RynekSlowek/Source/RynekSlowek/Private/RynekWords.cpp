@@ -6,6 +6,7 @@
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
 #include "JsonObjectConverter.h"
+#include "Templates/Function.h"
 #include "Kismet/GameplayStatics.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogRynek, Log, All);
@@ -127,7 +128,7 @@ TArray<FRynekToken> URynekWords::Tokenize(const FString& Line) const
 			if (bApostrophe && LowerString(Line.Mid(Start, I - Start)).EndsWith(TEXT("aujourd")) && LowerString(Line.Mid(I + 1, 3)) == TEXT("hui")) I += 4;
 			else if (bApostrophe) ++I;
 		}
-		Push(Line.Mid(Start, I - Start).Replace(TEXT("’"), TEXT("'")), true);
+		Push(Line.Mid(Start, I - Start).Replace(TEXT("\u2019"), TEXT("'")), true);
 	}
 	return Out;
 }

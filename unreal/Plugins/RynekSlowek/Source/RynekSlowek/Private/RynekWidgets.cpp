@@ -6,6 +6,7 @@
 #include "Widgets/SBoxPanel.h"
 #include "Styling/CoreStyle.h"
 #include "Brushes/SlateRoundedBoxBrush.h"
+#include "Styling/StyleDefaults.h"
 
 namespace
 {
@@ -26,9 +27,11 @@ void URynekWordWidget::Show(const FString& InText, int32 InStatus)
 
 TSharedRef<SWidget> URynekWordWidget::RebuildWidget()
 {
-	Brushes.Reset();
-	for (int32 S = 0; S < 3; ++S) Brushes.Add(MakeShared<FSlateRoundedBoxBrush>(Glaze(), 12.f, URynekWords::StatusColor(S), 2.f));
-	Brushes.Add(MakeShared<FSlateRoundedBoxBrush>(Rim(), 12.f, Glaze(), 2.f));
+	if (Brushes.Num() == 0)
+	{
+		for (int32 S = 0; S < 3; ++S) Brushes.Add(MakeShared<FSlateRoundedBoxBrush>(Glaze(), 12.f, URynekWords::StatusColor(S), 2.f));
+		Brushes.Add(MakeShared<FSlateRoundedBoxBrush>(Rim(), 12.f, Glaze(), 2.f));
+	}
 	TSharedRef<SWidget> W = SAssignNew(Border, SBorder).Padding(FMargin(10.f, 4.f))
 		[
 			SAssignNew(TextBlock, STextBlock).Font(FCoreStyle::GetDefaultFontStyle("Bold", 14))
@@ -55,8 +58,8 @@ void URynekWordWidget::ReleaseSlateResources(bool bReleaseChildren)
 
 TSharedRef<SWidget> URynekDialogueWidget::RebuildWidget()
 {
-	PanelBrush = MakeShared<FSlateRoundedBoxBrush>(Glaze(), 16.f, Rim(), 3.f);
-	SelectedBrush = MakeShared<FSlateRoundedBoxBrush>(Glaze2(), 6.f, Rim(), 2.f);
+	if (!PanelBrush.IsValid()) PanelBrush = MakeShared<FSlateRoundedBoxBrush>(Glaze(), 16.f, Rim(), 3.f);
+	if (!SelectedBrush.IsValid()) SelectedBrush = MakeShared<FSlateRoundedBoxBrush>(Glaze2(), 6.f, Rim(), 2.f);
 	return SNew(SBox).HAlign(HAlign_Center).VAlign(VAlign_Bottom).Padding(FMargin(20.f, 0.f, 20.f, 30.f))
 		[
 			SNew(SBox).WidthOverride(900.f)
@@ -83,7 +86,7 @@ TSharedRef<SWidget> URynekDialogueWidget::RebuildWidget()
 					+ SVerticalBox::Slot().AutoHeight().Padding(FMargin(0.f, 8.f, 0.f, 0.f))
 					[
 						SAssignNew(HintText, STextBlock).Font(FCoreStyle::GetDefaultFontStyle("Regular", 13)).ColorAndOpacity(FSlateColor(Ink2()))
-						.Text(FText::FromString(TEXT("E next line  ·  Tab next word  ·  1 new · 2 learning · 3 known  ·  Q leave")))
+						.Text(FText::FromString(TEXT("E next line  \u00B7  Tab next word  \u00B7  1 new \u00B7 2 learning \u00B7 3 known  \u00B7  Q leave")))
 					]
 				]
 			]
@@ -106,7 +109,7 @@ void URynekDialogueWidget::ShowLine(const FString& Speaker, const TArray<FRynekT
 		const FLinearColor Color = T.bWord ? URynekWords::StatusColor(Words->GetStatus(T.Key)) : Ink();
 		WordBox->AddSlot().Padding(FMargin(0.f, 2.f))
 			[
-				SNew(SBorder).BorderImage(bSelected ? SelectedBrush.Get() : FCoreStyle::Get().GetBrush("NoBorder")).Padding(FMargin(bSelected ? 3.f : 0.f, 0.f))
+				SNew(SBorder).BorderImage(bSelected ? SelectedBrush.Get() : FStyleDefaults::GetNoBrush()).Padding(FMargin(bSelected ? 3.f : 0.f, 0.f))
 				[
 					SNew(STextBlock).Text(FText::FromString(T.Text)).ColorAndOpacity(FSlateColor(Color))
 					.Font(FCoreStyle::GetDefaultFontStyle(T.bWord ? "Bold" : "Regular", 24))
@@ -118,7 +121,7 @@ void URynekDialogueWidget::ShowLine(const FString& Speaker, const TArray<FRynekT
 			if (Words->Lookup(T.Key, W))
 			{
 				Card = W.Form.IsEmpty() ? FString::Printf(TEXT("%s: %s"), *T.Text, *W.English)
-					: FString::Printf(TEXT("%s → %s: %s (%s)"), *T.Text, *W.Lemma, *W.English, *W.Form);
+					: FString::Printf(TEXT("%s \u2192 %s: %s (%s)"), *T.Text, *W.Lemma, *W.English, *W.Form);
 				if (!W.Note.IsEmpty()) Card += TEXT("\n") + W.Note;
 			}
 			else Card = T.Text;
@@ -137,5 +140,6 @@ void URynekDialogueWidget::Hide()
 void URynekDialogueWidget::ReleaseSlateResources(bool bReleaseChildren)
 {
 	Super::ReleaseSlateResources(bReleaseChildren);
+	bShown = false;
 	Panel.Reset(); NameText.Reset(); EnglishText.Reset(); CardText.Reset(); HintText.Reset(); WordBox.Reset();
 }
