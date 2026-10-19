@@ -372,4 +372,4 @@ try {
   if (window.claude?.hot?.ready) { window.claude.hot.ready(bootOnce); setTimeout(() => bootOnce(window.claude?.hot?.data ?? {}), 1500); }
   else bootOnce(window.claude?.hot?.data ?? {});
 } catch { bootOnce({}); }
-window.__rynek = { LANG, LANGS, modelledPeople: !!PEOPLE, park: PARK, busStop: BUS_STOP, school: SCHOOL, get bus() { return bus; }, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES, LOOKS, labels, NPCS, ITEMS, LEX, FORMS, PHRASES, FREQ, REVIEW_LINES, gameWords }; // tests and tools/export-unreal.mjs read these
+window.__rynek = { LANG, LANGS, scene, sky, pigeons, itemObjs, modelledPeople: !!PEOPLE, park: PARK, busStop: BUS_STOP, school: SCHOOL, get bus() { return bus; }, get st() { return st; }, validateLexicon, talk, player, cam, npcObjs, itemObjs, interact, pickUp, setStatus, HOMES, LOOKS, labels, NPCS, ITEMS, LEX, FORMS, PHRASES, FREQ, REVIEW_LINES, gameWords }; // tests and tools/export-unreal.mjs read these

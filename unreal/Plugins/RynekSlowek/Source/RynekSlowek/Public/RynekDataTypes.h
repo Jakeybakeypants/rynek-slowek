@@ -1,8 +1,6 @@
-// Row structs for the Data Tables exported by tools/export-unreal.mjs (unreal/Data/<language>/*.csv).
-// Each field name matches a CSV column, so Unreal can import the files as Data Tables.
-// Copy this file into your C++ project's Source/<Project>/ folder and rename the
-// RYNEK_API macro to your module's (for example MYGAME_API) if you use these types from
-// other modules; otherwise you can remove it.
+// Row structs for the game's data, exported by tools/export-unreal.mjs into Data/<language>/
+// (CSV files plus rynek-data.json). Each field name matches a CSV column, so the CSVs also import
+// as Data Tables if you want them as assets. The plugin itself reads rynek-data.json (URynekWords).
 //
 // Positions are in centimetres, Unreal axes (Z up). Yaw is in degrees. Colours are
 // "#RRGGBB" strings: FColor::FromHex(Row.Shirt) turns one into a colour.
@@ -14,7 +12,7 @@
 
 // One written form, the unit the player learns (keyed by lower-case form, as the game saves it).
 USTRUCT(BlueprintType)
-struct FRynekWordForm : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekWordForm : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Lemma;        // dictionary form it belongs to
@@ -27,7 +25,7 @@ struct FRynekWordForm : public FTableRowBase
 
 // The dictionary: one row per lemma.
 USTRUCT(BlueprintType)
-struct FRynekWord : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekWord : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString English;
@@ -38,7 +36,7 @@ struct FRynekWord : public FTableRowBase
 
 // Inflected forms: row name is the form, pointing at its lemma.
 USTRUCT(BlueprintType)
-struct FRynekForm : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekForm : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Lemma;
@@ -47,7 +45,7 @@ struct FRynekForm : public FTableRowBase
 };
 
 USTRUCT(BlueprintType)
-struct FRynekPhrase : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekPhrase : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Text;           // in the language being learned
@@ -56,7 +54,7 @@ struct FRynekPhrase : public FTableRowBase
 
 // The top 3000 list (FrequencyWords by Hermit Dave, OpenSubtitles 2018, CC BY-SA 4.0).
 USTRUCT(BlueprintType)
-struct FRynekFrequency : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekFrequency : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) int32 Rank = 0;
@@ -65,7 +63,7 @@ struct FRynekFrequency : public FTableRowBase
 };
 
 USTRUCT(BlueprintType)
-struct FRynekCharacter : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekCharacter : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString DisplayName;
@@ -102,7 +100,7 @@ struct FRynekCharacter : public FTableRowBase
 // Every fixed line, in order. Section: intro, remind, wrong, done, after, thanks, regive,
 // receive, quiz_start, quiz_more, chat (Conversation = which chat), review_offer, review_none.
 USTRUCT(BlueprintType)
-struct FRynekDialogueLine : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekDialogueLine : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Character;
@@ -116,7 +114,7 @@ struct FRynekDialogueLine : public FTableRowBase
 // Shop orders. "ask" lines are templates: {acc}, {gen}, {nom}, {why} take the item's forms in the
 // language being learned (Items.Accusative, Genitive, Nominative, WhyText); {en}, {the}, {whyEn} its English.
 USTRUCT(BlueprintType)
-struct FRynekOrderLine : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekOrderLine : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Character;
@@ -127,7 +125,7 @@ struct FRynekOrderLine : public FTableRowBase
 };
 
 USTRUCT(BlueprintType)
-struct FRynekItem : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekItem : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Word;          // the label shown over it
@@ -148,7 +146,7 @@ struct FRynekItem : public FTableRowBase
 
 // The word labels that float over things in the world.
 USTRUCT(BlueprintType)
-struct FRynekLabel : public FTableRowBase
+struct RYNEKSLOWEK_API FRynekLabel : public FTableRowBase
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) FString Word;

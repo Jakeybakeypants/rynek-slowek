@@ -133,7 +133,9 @@ src/js/           one module script, split into files that share a single scope:
   07-loop.js        player, camera, labels, minimap, input, the game loop, start-up
 blender/people.py builds the people in Blender: writes assets/people.glb (used by the game) and assets/people.blend
 tools/frequency.mjs downloads the frequency lists and writes src/js/01-frequency.js
-tools/export-unreal.mjs writes unreal/Data/<language>/, the game's content as Unreal Engine Data Tables
+tools/export-unreal.mjs writes the game's content for Unreal Engine into unreal/Plugins/RynekSlowek/Data/<language>/
+tools/export-scene.mjs writes unreal/Scene/: the town and the props as glTF files for Unreal
+unreal/           the Unreal Engine version: the RynekSlowek plugin, the town scene, and how to set it up
 tools/translate/  how German, Spanish and French were made from the Polish, for adding more languages
 build.mjs         joins src/ into dist/index.html (a full page) and dist/artifact.html (for claude.ai)
 test/             lexicon and build checks (npm test), browser smoke test (npm run smoke)
@@ -149,7 +151,9 @@ npm run smoke -- de # the opening errand in German (or es, fr)
 
 ### Unreal Engine
 
-`npm run export:unreal` writes the game's content to `unreal/Data/<language>/` (`pl`, `de`, `es`, `fr`) as Data Table files for Unreal Engine: words, forms, phrases, the frequency list, characters with their positions and looks, every dialogue line, shop orders, items and labels. `unreal/README.md` explains how to import them, and `unreal/RynekDataTypes.h` has the matching C++ row structs.
+The game is moving to Unreal Engine 5 for better graphics. `unreal/README.md` walks through it: make a Third Person C++ project, drop in the `RynekSlowek` plugin, import the town (`unreal/Scene/rynek-town.glb`), put a Rynek Town actor in the level and press Play. Everyone stands where they do here, the word labels float in their colours, and you can talk to people in all four languages.
+
+`npm run export:unreal` writes the content (words, forms, phrases, the frequency list, characters with their positions and looks, every line, orders, items, labels) into the plugin's `Data/<language>/` (`pl`, `de`, `es`, `fr`), and `npm run export:scene` writes the town and props as glTF into `unreal/Scene/`.
 
 ### The people (Blender)
 

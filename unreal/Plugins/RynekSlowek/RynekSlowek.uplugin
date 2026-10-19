@@ -1,0 +1,18 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1",
+	"FriendlyName": "Rynek Słówek",
+	"Description": "The Rynek Słówek word game's data and town: people, items, coloured word labels and talking, in Polish, German, Spanish and French.",
+	"Category": "Rynek",
+	"CreatedBy": "Rynek Słówek",
+	"CanContainContent": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "RynekSlowek",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
